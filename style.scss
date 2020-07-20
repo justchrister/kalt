@@ -1,0 +1,568 @@
+$tv: "Temp.var";
+$m: 10vw; //margin
+$sw: 100vw - $m - $m * 1.5;
+$tw: $sw/10;
+$fs: 2.5vw;
+@import 'dds_default_font';
+
+
+$_cb: cubic-bezier(0,.69,1,.73);
+$_G_CB: $_cb;
+$_G_animation__QUANTOM_timing_function: opacity .8s $_G_CB 10ms;
+$_G: $_G_animation__QUANTOM_timing_function;
+$_g: $_G;
+$c1: #000;
+$c3: #000;
+$c2: #00ffcd;
+*::selection {
+  color: red;
+  background: black;
+  text-transform: lowercase;
+}
+button.cta{
+  background-color:transparent;
+  border: none;
+  color:$c3;
+  padding:0;
+  font: inherit;
+  text-decoration: underline;
+}
+.companyname {
+  width:5vw;
+  height:2vw;
+  background-color:$c2;
+  padding:1vw 3vw;
+  border-radius:50%;
+  border: 1px solid #000;
+  img{
+    height:100%;
+
+  }
+}
+body {
+  background-color:#fff;
+  font: normal 2.5vw/1.5 "FiraCode-Regular", "Courier New", monospace !important; /* :-) */
+  color: $c3;
+  min-height: 100vw;
+  &.k_iopen{
+    background-image:none;
+  }
+  .na {
+    pointer-events: none;
+  }
+  .x {
+    display: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+    font-weight: normal;
+    font-size: 2.5vw;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+  {
+      font-family: "fallback", sans-serif;
+      text-decoration: underline;
+      text-transform: uppercase;
+  }
+  del{
+
+    /**Redacted**/
+    display:inline-block;
+    user-select: none;
+    cursor: none;
+    transform: rotate(.2deg) skew(-.2deg);
+    color: transparent;
+    &:after,
+    &:before{
+      height: 33%;
+      width:110%;
+      position:absolute;
+      border-radius: .1vw;
+      left:0;
+      top:0;
+      z-index:-4;
+      content:' ';
+      background:$c1;
+    }
+    &:before{
+      transform: translate(-.1vw, 1.5vw) rotate(1deg);
+    }
+    &:after{
+      transform:translate(-0.25vw, 1.1vw) rotate(2deg) skewy(.2deg);
+    }
+  }
+  /*
+      whilst it should be avoided, sometimes you are forced I work hard to avoid <img>, its the shittiest object of them all.
+      so static, impossible to manipulate without wrappers.
+  */
+  img{
+    max-height: 82vh; // Why not 82?
+    max-width: 100%;
+    margin: auto;
+  }
+  &.k_iopen{
+    header{
+      color:#fff;
+    }
+  }
+  header {
+    z-index: 1000;
+    top: $m;
+    left: $m;
+    right: $m;
+    position: fixed;
+    width: (100vw-$m * 2);
+    height: 1.8vw;
+    margin: 0;
+    color: $c3;
+    &:before,
+    &:after {
+      display: none;
+    }
+    .k_io,
+    a {
+      top: 0;
+      left: 0;
+      line-height: 2vw;
+      margin: 0;
+      position: absolute;
+      display: block;
+    }
+    a:nth-child(1),
+    a:nth-child(2) {
+      text-decoration: none;
+    }
+    a:nth-child(1):before {
+      content: "コールド";
+      position:absolute;
+      width:$m;
+      transform:rotate(90deg) translate(10vw, 0);
+      transform-origin: bottom left;
+    }
+    .k_io {
+      left: ($m/2)+ ($tw * 9);
+    }
+  }
+  main {
+    margin: $m * 2 $m $m $m * 1.5;
+    width: 100vw-10vw-15vw;
+    section#intro {
+      margin: 0;
+      padding: 0;
+      margin-left: $tw * 2;
+      color:#fff;
+      height:$tw*6;
+      h1 {
+        margin-bottom: $fs * 1.5;
+        margin-left: 0;
+        margin-top: $tw*2;
+        height:7vw;
+        font-size:$fs*2;
+        font-family: "fallback", sans-serif;
+        text-decoration: none;
+        border-bottom:.5vw solid  #00ffcd;
+        text-transform: lowercase;
+        z-index: 3;
+        display: inline-block;
+      }
+      img{
+        position: absolute;
+        width:$tw*3;
+        //opacity:.6;
+        filter:contrast(100) brightness(100) grayscale(100);
+        opacity:.333;
+        top:$tw*3;
+        left:$tw*5;
+        z-index: -1;
+        animation: sat 10s infinite ease;
+        &:nth-child(3){
+
+          left:$tw*9;
+        }
+      }
+      p {
+        margin-bottom: $fs * 1.5;
+      }
+    }
+  }
+  a:hover,
+  a {
+    color: $c3;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  li {
+    list-style: none;
+    a {
+      text-decoration: none;
+    }
+  }
+  section {
+    h2 {
+      padding-left: $tw;
+    }
+  }
+}
+
+/*
+
+  NAVIGATION/MENU/INDEX
+
+*/
+.k_iopen{
+  .k_io{
+    width:4*$tw;
+    &:after{
+      content:'close';
+      position:absolute;
+      display: block;
+      right:0;
+      top:0;
+    }
+  }
+  main,
+  header,
+  .companyname,
+  .guides{
+    margin-left:(-$tw)-(1.5*$m);
+  }
+  header a:nth-child(1):before{
+    text-shadow: $c1 0 0vw 0.5vw;
+    color: transparent;
+  }
+  main{
+    pointer-events: none;
+    *,
+    *:after,
+    *:before{
+      text-shadow: $c1 0 0vw 0.5vw;
+      color: transparent;
+    }
+    opacity:.3;
+    figure{
+
+    }
+  }
+}
+h1,h2,h3,p{
+  color:$c3;
+}
+.index {
+  top:0;
+  width:100vw;
+  height:80vw;
+  left:0;
+  display:block;
+  opacity:0;
+  position: absolute;
+  pointer-events: none;
+  &.open{
+    opacity:1;
+    pointer-events: all;
+    ul{
+      position:absolute;
+      margin: $tw*3 0 0 $tw*8;
+      li{
+        width:$tw*4;
+        overflow:hidden;
+        a{
+          padding-right:1.5*$fs;
+        }
+        a:hover{
+          margin-left:1.5*$fs;
+        }
+        a:hover:before{
+          content:"->";
+          display: block;
+          position: absolute;
+        }
+      }
+      li:after{
+          position:absolute;
+          right:0;
+      }
+      li:nth-child(1):after{
+          content: '1';
+      }
+      li:nth-child(2):after{
+        content: '2';
+      }
+      li:nth-child(3):after{
+        content: '3';
+      }
+      li:nth-child(4):after{
+        content: '4';
+      }
+      li:nth-child(5):after{
+        content: '5';
+      }
+      li:nth-child(6):after{
+        content: '6';
+      }
+      li:nth-child(7):after{
+        content: '7';
+      }
+      li:nth-child(8):after{
+        content: '8';
+      }
+      li:nth-child(9):after{
+        content: '9';
+      }
+      li:nth-child(10):after{
+          content: '10';
+      }
+      li:nth-child(11):after{
+        content: '11';
+      }
+      li:nth-child(12):after{
+        content: '12';
+      }
+      li:nth-child(13):after{
+        content: '13';
+      }
+      li:nth-child(14):after{
+        content: '14';
+      }
+      li:nth-child(15):after{
+        content: '15';
+      }
+      li:nth-child(16):after{
+        content: '16';
+      }
+      li:nth-child(17):after{
+        content: '17';
+      }
+      li:nth-child(18):after{
+        content: '18';
+      }
+      li:nth-child(19):after{
+        content: '19';
+      }
+    }
+  }
+}
+
+/*
+
+    PRODUCTS
+
+*/
+
+#products article {
+  overflow: hidden;
+  padding-left: $tw * 4;
+  height: $tw * 3;
+  background:#fff;
+  border:$fs/2 solid $c3;
+  figure{
+    color:transparent;
+    position:absolute;
+    margin-left: -$tw * 4;
+    width:$tw*2;
+    height:$tw*3;
+    &:after,
+    &:before{
+      content: " ";
+      position: absolute;
+      display: block;
+    }
+    &:before {
+      width: $tw * 3;
+      height: $tw * 3;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-image: url(media/postal.png); /* Placeholder image */
+    }
+  }
+  .info {
+    margin-top: ($fs * 1.5) * 2;
+    height: $fs * 4;
+    width: $tw * 5;
+    .by,
+    .price,
+    .buy {
+      display: inline-block;
+    }
+    .by {
+      width: $tw * 5;
+    }
+    .price {
+      width: $tw * 3;
+    }
+  }
+}
+
+/*
+
+   FOOTER
+
+*/
+
+footer {
+  padding-top: 4vw;
+  width: 100vw - $m * 2;
+  margin: $m;
+  text-align: left;
+  .c {
+    width: ($m/2)+ ($tw * 5);
+  }
+  a {
+    float: right;
+  }
+  &:before {
+    content: " ";
+    width: 100vw;
+    height: 1px;
+    background: cyan;
+  }
+}
+/*
+
+      UPPER
+    Is supposed to be used to get to the top of the window.
+*/
+
+#upper{
+  top:0;
+  left:0;
+  width:1px;
+  height:1px;
+  position:absolute;
+  display:block;
+  opacity:0;
+}
+
+/*
+
+  GUIDES
+
+*/
+
+.guides {
+  $tv: red;
+  opacity: 0;
+  transition: $_G;
+  &:before {
+    width: 1px;
+    height: 100vh;
+    background: $tv;
+    top: 0;
+    left: $m * 1.5;
+    box-shadow: -$m/2 0 $tv, $tw * 1 0 $tv, $tw * 2 0 $tv, $tw * 3 0 $tv,
+      $tw * 4 0 $tv, $tw * 5 0 $tv, $tw * 6 0 $tv, $tw * 7 0 $tv, $tw * 8 0 $tv,
+      $tw * 9 0 $tv, $tw * 10 0 $tv;
+  }
+  $tv: red;
+  &:after {
+    top: $m + $fs * 0.7;
+    left: 0;
+    width: 100vw;
+    height: 1px;
+    background: $tv;
+    box-shadow: 0 -1.7vw $tv;
+  }
+  &:before,
+  &:after {
+    z-index:1100;
+    position: fixed;
+    content: " ";
+    display: block;
+    opacity: 1;
+  }
+}
+
+section {
+  &:before,
+  &:after {
+    opacity: 0;
+    transition: $_G;
+  }
+}
+.lol section {
+  &:before,
+  &:after {
+    left: 0;
+    width: 100vw;
+    height: 1px;
+    background-color: cyan;
+    content: " ";
+    position: absolute;
+    opacity: 0.7;
+    transition: $_G;
+  }
+  &:before {
+    margin-top: -1px;
+  }
+}
+.k_iopen .guides{
+  opacity: .4;
+  transition: $_G;
+
+}
+.lol .guides {
+  opacity: 1;
+  transition: $_G;
+}
+#work{
+  margin: $tw*2 0;
+  h2{
+    margin-bottom: $fs*2;
+  }
+  ol{
+    list-style:none;
+    margin-left:$tw*3;
+    li{
+      padding-bottom:$fs*1.5;
+      h3{
+        text-decoration:underline;
+      }
+    }
+  }
+}
+button{
+  font-size:$fs;
+  background:yellow;
+  color:red;
+  padding:1vw 5vw;
+  border-radius:50%;
+  text-transform: uppercase;
+  font-weight:700;
+  border:#000 solid 1px;
+  display: block;
+  font-family:'fallback', sans-serif;
+}
+#about{
+  p{
+    vertical-align: top;
+    font-family: monospace;
+    width: $tw*4;
+    display:inline-block;
+    margin-left: $tw;
+  }
+  figure{
+    width:$tw*2;
+    height: $tw*2;
+    border-radius: 50%;
+    display:inline-block;
+    margin:$tw;
+    box-sizing: border-box;
+  }
+}
+/*
+
+  THIS IS SUPPOSED TO BE AN EXPRESSION
+
+*/
