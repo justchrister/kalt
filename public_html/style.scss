@@ -36,7 +36,6 @@ button.cta{
   border: 1px solid #000;
   img{
     height:100%;
-
   }
 }
 body {
@@ -180,12 +179,10 @@ body {
         position: absolute;
         width:$tw*3;
         //opacity:.6;
-        filter:contrast(100) brightness(100) grayscale(100);
-        opacity:.333;
+        filter:grayscale(100);
         top:$tw*3;
         left:$tw*5;
         z-index: -1;
-        animation: sat 10s infinite ease;
         &:nth-child(3){
 
           left:$tw*9;
