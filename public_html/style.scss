@@ -14,6 +14,10 @@ $_g: $_G;
 $c1: #000;
 $c3: #000;
 $c2: #00ffcd;
+$yellow: #FCFC62;
+$black: #050517;
+$blue: #5C95FF;
+
 *::selection {
   color: red;
   background: black;
@@ -33,7 +37,7 @@ button.cta{
   background-color:$c2;
   padding:1vw 3vw;
   border-radius:50%;
-  border: 1px solid #000;
+  border: 1px solid $black;
   img{
     height:100%;
   }
@@ -71,9 +75,12 @@ body {
   h6
   {
       font-family: "fallback", sans-serif;
-      text-decoration: underline;
-      text-transform: uppercase;
   }
+  h2{
+    font-size:($fs*2)*.8
+  }
+  h1 {
+  font-size:$fs*2;}
   del{
 
     /**Redacted**/
@@ -160,20 +167,22 @@ body {
       margin: 0;
       padding: 0;
       margin-left: $tw * 2;
+      margin-top:$tw*4;
       color:#fff;
       height:$tw*6;
       h1 {
         margin-bottom: $fs * 1.5;
         margin-left: 0;
-        margin-top: $tw*2;
-        height:7vw;
+        transform: translateY();
         font-size:$fs*2;
         font-family: "fallback", sans-serif;
         text-decoration: none;
-        border-bottom:.5vw solid  #00ffcd;
+        background-image: linear-gradient( transparent calc(95% - 5px), #00ffcd 5px, );
+        background-size: 100%;
+        background-repeat: no-repeat;
+        display: inline;
         text-transform: lowercase;
         z-index: 3;
-        display: inline-block;
       }
       img{
         position: absolute;
@@ -531,20 +540,19 @@ section {
 }
 button{
   font-size:$fs;
-  background:yellow;
+  background:$yellow;
   color:red;
   padding:1vw 5vw;
   border-radius:50%;
   text-transform: uppercase;
   font-weight:700;
-  border:#000 solid 1px;
+  border:$black solid 1px;
   display: block;
   font-family:'fallback', sans-serif;
 }
 #about{
   p{
     vertical-align: top;
-    font-family: monospace;
     width: $tw*4;
     display:inline-block;
     margin-left: $tw;
@@ -557,6 +565,11 @@ button{
     margin:$tw;
     box-sizing: border-box;
   }
+}
+
+#spot{
+  background:$black;
+  color:$yellow;
 }
 /*
 
