@@ -19,18 +19,11 @@ $black: #050517;
 $blue: #5C95FF;
 
 *::selection {
-  color: red;
-  background: black;
+  color: $black;
+  background: $c2;
   text-transform: lowercase;
 }
-button.cta{
-  background-color:transparent;
-  border: none;
-  color:$c3;
-  padding:0;
-  font: inherit;
-  text-decoration: underline;
-}
+
 .companyname {
   width:5vw;
   height:2vw;
@@ -167,11 +160,10 @@ body {
       margin: 0;
       padding: 0;
       margin-left: $tw * 2;
-      margin-top:$tw*4;
+      margin-top:$tw*6;
       color:#fff;
-      height:$tw*6;
+      height:$tw*4;
       h1 {
-        margin-bottom: $fs * 1.5;
         margin-left: 0;
         transform: translateY();
         font-size:$fs*2;
@@ -186,16 +178,12 @@ body {
       }
       img{
         position: absolute;
-        width:$tw*3;
+        width:auto;
+        height:$tw*10;
         //opacity:.6;
-        filter:grayscale(100);
-        top:$tw*3;
-        left:$tw*5;
+        top:$tw*2;
+        left:$tw*4;
         z-index: -1;
-        &:nth-child(3){
-
-          left:$tw*9;
-        }
       }
       p {
         margin-bottom: $fs * 1.5;
@@ -540,36 +528,68 @@ section {
 }
 button{
   font-size:$fs;
-  background:$yellow;
-  color:red;
+  color:$black;
   padding:1vw 5vw;
   border-radius:50%;
-  text-transform: uppercase;
-  font-weight:700;
+  background-color:transparent;
   border:$black solid 1px;
   display: block;
   font-family:'fallback', sans-serif;
+  &:hover{
+    background-color:$yellow;
+  }
 }
+section{
+  h2{
+    margin-bottom:0;
+  }
+  &#about{
+    p{
+      text-align:justify;
+    }
+  }
+  &#methodology{
+    p{
+      &:nth-child(1),
+      &:nth-child(3),
+      &:nth-child(5),
+      &:nth-child(7){
+        margin-left:$tw*4;
+      }
+    }
+  }
+  button{
+    width:$tw*6;
+  }
+}
+#methodology,
 #about{
+  margin-bottom:$tw*2;
+  h2{
+    text-align:justify;
+    width: $tw*8;
+  }
   p{
     vertical-align: top;
-    width: $tw*4;
-    display:inline-block;
-    margin-left: $tw;
-  }
-  figure{
-    width:$tw*2;
-    height: $tw*2;
-    border-radius: 50%;
-    display:inline-block;
-    margin:$tw;
-    box-sizing: border-box;
+    width: $tw*6;
+    margin:$tw 0 $tw $tw;
   }
 }
-
-#spot{
-  background:$black;
-  color:$yellow;
+#collaborations{
+  text-align:center;
+  h2{
+    text-align:left;
+  }
+  p{
+    padding:1vw 5vw;
+    border-radius:50%;
+    text-align:center;
+    background-color:transparent;
+    border:$c2 solid 1px;
+    display:inline-block;
+    margin-bottom:$tw/3;
+    width:$tw*3;
+  }
 }
 /*
 
