@@ -21,6 +21,10 @@ $(".k_io, .k_io:after").click(function () {
       scrollTop: $("#upper").offset().top
   }, 500);
 });
+
+$("#menu article h3").click(function () {
+  $(this).parent().toggleClass("toggled");
+});
 $("a").click(function () {
   var pag = $(this).attr("href");
   $(".active_section").removeClass("active_section");

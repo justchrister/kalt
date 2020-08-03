@@ -16,7 +16,16 @@ $c3: #000;
 $c2: #00ffcd;
 $yellow: #FCFC62;
 $black: #050517;
-$blue: #5C95FF;
+$blue: $c2;
+
+@keyframes blinky{
+  0%{
+    background-color: transparent;
+  }
+  100%{
+    background-color: $yellow;
+  }
+}
 
 *::selection {
   color: $black;
@@ -145,8 +154,8 @@ body {
     a:nth-child(1):before {
       content: "コールド";
       position:absolute;
-      width:$m;
-      transform:rotate(90deg) translate(10vw, 0);
+      width:$m*2;
+      transform:rotate(90deg) translate(10vw, .2vw);
       transform-origin: bottom left;
     }
     .k_io {
@@ -160,9 +169,18 @@ body {
       margin: 0;
       padding: 0;
       margin-left: $tw * 2;
-      margin-top:$tw*6;
+      margin-top:$tw*5;
+      margin-bottom:$tw*4;
       color:#fff;
       height:$tw*4;
+
+      button{
+        animation: blinky 333ms infinite step-end;
+        margin-top: $fs*1.5;
+        &:hover{
+          animation:none;
+        }
+      }
       h1 {
         margin-left: 0;
         transform: translateY();
@@ -175,17 +193,19 @@ body {
         display: inline;
         text-transform: lowercase;
         z-index: 3;
+        margin-bottom: $fs*2*1.5;
       }
       img{
         position: absolute;
-        width:auto;
-        height:$tw*10;
+        height:auto;
+        width:$tw*4;
         //opacity:.6;
         top:$tw*2;
-        left:$tw*4;
+        left:$tw*5;
         z-index: -1;
       }
       p {
+        margin-top: $fs*1.5;
         margin-bottom: $fs * 1.5;
       }
     }
@@ -589,6 +609,44 @@ section{
     display:inline-block;
     margin-bottom:$tw/3;
     width:$tw*3;
+  }
+}
+#menu{
+  h2{
+    margin-bottom:$fs*1.5;
+  }
+  p{
+    margin-bottom:$fs*1.5;
+    width:$tw*6;
+    margin-left:$tw;
+  }
+  article{
+    border-bottom:1px solid $black;
+    max-height:$fs*1.5;
+    overflow:hidden;
+    width:$tw*7;
+    margin-left:$tw *1.5;
+    &.toggled{
+      max-height:70vh;
+      overflow:scroll;
+    }
+    h3{
+      width:100%;
+      padding-left:0;
+      #price{
+        float:right;
+      }
+    }
+    p{
+      margin:0;
+      border-left:$tw/2 transparent solid;
+      border-right:$tw/2 transparent solid;
+      border-top:$fs/2 transparent solid;
+      border-bottom:$fs transparent solid;
+      box-sizing: border-box;
+      width:100%;
+      font-size:$fs*.8;
+    }
   }
 }
 /*
