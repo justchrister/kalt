@@ -4,39 +4,29 @@ $sw: 100vw - $m - $m * 1.5;
 $tw: $sw/10;
 $fs: 2.5vw;
 @import 'dds_default_font';
-
+@import url(“https://cdn.kalt.co/fonts/Anonymous-Pro/stylesheet.css”);
 
 $_cb: cubic-bezier(0,.69,1,.73);
 $_G_CB: $_cb;
 $_G_animation__QUANTOM_timing_function: opacity .8s $_G_CB 10ms;
 $_G: $_G_animation__QUANTOM_timing_function;
 $_g: $_G;
-$c1: #000;
-$c3: #000;
-$c2: #00ffcd;
-$yellow: #FCFC62;
+$focus: #00ffcd;
 $black: #050517;
-$blue: $c2;
-
-@keyframes blinky{
-  0%{
-    background-color: transparent;
-  }
-  100%{
-    background-color: $yellow;
-  }
-}
+$white: #ffffff;
+$intro_height: $tw*10;
+$values_height: $tw*8;
+$investments_height:$tw*11;
 
 *::selection {
   color: $black;
-  background: $c2;
+  background: $focus;
   text-transform: lowercase;
 }
 
 .companyname {
   width:5vw;
   height:2vw;
-  background-color:$c2;
   padding:1vw 3vw;
   border-radius:50%;
   border: 1px solid $black;
@@ -47,17 +37,8 @@ $blue: $c2;
 body {
   background-color:#fff;
   font: normal 2.5vw/1.5 "FiraCode-Regular", "Courier New", monospace !important; /* :-) */
-  color: $c3;
+  color: $black;
   min-height: 100vw;
-  &.k_iopen{
-    background-image:none;
-  }
-  .na {
-    pointer-events: none;
-  }
-  .x {
-    display: none;
-  }
   h1,
   h2,
   h3,
@@ -67,7 +48,13 @@ body {
   p {
     margin: 0;
     font-weight: normal;
-    font-size: 2.5vw;
+    font-size: $fs;
+    strong{
+      font-weight: bold;
+    }
+    em{
+      text-decoration: underline;
+    }
   }
   h1,
   h2,
@@ -83,6 +70,10 @@ body {
   }
   h1 {
   font-size:$fs*2;}
+
+  p{
+    font-size: $fs*.65;
+  }
   del{
 
     /**Redacted**/
@@ -101,7 +92,7 @@ body {
       top:0;
       z-index:-4;
       content:' ';
-      background:$c1;
+      background:$black;
     }
     &:before{
       transform: translate(-.1vw, 1.5vw) rotate(1deg);
@@ -110,109 +101,59 @@ body {
       transform:translate(-0.25vw, 1.1vw) rotate(2deg) skewy(.2deg);
     }
   }
-  /*
-      whilst it should be avoided, sometimes you are forced I work hard to avoid <img>, its the shittiest object of them all.
-      so static, impossible to manipulate without wrappers.
-  */
-  img{
-    max-height: 82vh; // Why not 82?
-    max-width: 100%;
-    margin: auto;
-  }
-  &.k_iopen{
-    header{
-      color:#fff;
-    }
-  }
   header {
     z-index: 1000;
-    top: $m;
-    left: $m;
-    right: $m;
-    position: fixed;
-    width: (100vw-$m * 2);
-    height: 1.8vw;
+    width: 0;
     margin: 0;
-    color: $c3;
+    color: $black;
     &:before,
     &:after {
       display: none;
     }
-    .k_io,
     a {
+      z-index:3000;
       top: 0;
-      left: 0;
       line-height: 2vw;
       margin: 0;
-      position: absolute;
-      display: block;
     }
-    a:nth-child(1),
-    a:nth-child(2) {
+    .companyname{
       text-decoration: none;
+      top:$m;
+      position: fixed;
+      left:$m;
     }
-    a:nth-child(1):before {
+    .index-btn{
+      text-decoration: none;
+      top:$m;
+      position: fixed;
+      box-sizing: border-box;
+      top:$m;
+      right:$m;
+      display:block;
+      z-index: 2005;
+      background:$white;
+      border:1px solid $black;
+      width:$tw*2;
+      height:$tw/2;
+      line-height:$tw/2;
+      text-align: center;
+    }
+    .companyname:before {
       content: "コールド";
       position:absolute;
       width:$m*2;
       transform:rotate(90deg) translate(10vw, .2vw);
       transform-origin: bottom left;
     }
-    .k_io {
-      left: ($m/2)+ ($tw * 9);
-    }
   }
   main {
-    margin: $m * 2 $m $m $m * 1.5;
+    margin: $m $m $m $m * 1.5;
     width: 100vw-10vw-15vw;
-    section#intro {
-      margin: 0;
-      padding: 0;
-      margin-left: $tw * 2;
-      margin-top:$tw*5;
-      margin-bottom:$tw*4;
-      color:#fff;
-      height:$tw*4;
-
-      button{
-        animation: blinky 333ms infinite step-end;
-        margin-top: $fs*1.5;
-        &:hover{
-          animation:none;
-        }
-      }
-      h1 {
-        margin-left: 0;
-        transform: translateY();
-        font-size:$fs*2;
-        font-family: "fallback", sans-serif;
-        text-decoration: none;
-        background-image: linear-gradient( transparent calc(95% - 5px), #00ffcd 5px, );
-        background-size: 100%;
-        background-repeat: no-repeat;
-        display: inline;
-        text-transform: lowercase;
-        z-index: 3;
-        margin-bottom: $fs*2*1.5;
-      }
-      img{
-        position: absolute;
-        height:auto;
-        width:$tw*4;
-        //opacity:.6;
-        top:$tw*2;
-        left:$tw*5;
-        z-index: -1;
-      }
-      p {
-        margin-top: $fs*1.5;
-        margin-bottom: $fs * 1.5;
-      }
-    }
+    height: $investments_height + $values_height + $intro_height;
   }
   a:hover,
   a {
-    color: $c3;
+    color: $black;
   }
   a:hover {
     text-decoration: none;
@@ -229,195 +170,279 @@ body {
     }
   }
 }
-
-/*
-
-  NAVIGATION/MENU/INDEX
-
-*/
-.k_iopen{
-  .k_io{
-    width:4*$tw;
-    &:after{
-      content:'close';
-      position:absolute;
-      display: block;
-      right:0;
-      top:0;
-    }
+.index{
+  display:none;
+  position:fixed;
+  z-index:2004;
+  background:$white;
+  top:$m;
+  right:$m;
+  padding-top:$tw;
+  border:1px solid $black;
+  box-sizing: border-box;
+  width:$tw*5;
+  height:$tw*4;
+  ul li{
+    margin-left:$tw;
+    width:$tw*3;
   }
-  main,
-  header,
-  .companyname,
-  .guides{
-    margin-left:(-$tw)-(1.5*$m);
-  }
-  header a:nth-child(1):before{
-    text-shadow: $c1 0 0vw 0.5vw;
-    color: transparent;
-  }
-  main{
-    pointer-events: none;
-    *,
-    *:after,
-    *:before{
-      text-shadow: $c1 0 0vw 0.5vw;
-      color: transparent;
-    }
-    opacity:.3;
-    figure{
-
-    }
+  &.toggled{
+    display:block;
   }
 }
-h1,h2,h3,p{
-  color:$c3;
-}
-.index {
-  top:0;
-  width:100vw;
-  height:80vw;
-  left:0;
-  display:block;
-  opacity:0;
-  position: absolute;
-  pointer-events: none;
-  &.open{
-    opacity:1;
-    pointer-events: all;
-    ul{
-      position:absolute;
-      margin: $tw*3 0 0 $tw*8;
-      li{
-        width:$tw*4;
-        overflow:hidden;
-        a{
-          padding-right:1.5*$fs;
-        }
-        a:hover{
-          margin-left:1.5*$fs;
-        }
-        a:hover:before{
-          content:"->";
-          display: block;
-          position: absolute;
-        }
-      }
-      li:after{
-          position:absolute;
-          right:0;
-      }
-      li:nth-child(1):after{
-          content: '1';
-      }
-      li:nth-child(2):after{
-        content: '2';
-      }
-      li:nth-child(3):after{
-        content: '3';
-      }
-      li:nth-child(4):after{
-        content: '4';
-      }
-      li:nth-child(5):after{
-        content: '5';
-      }
-      li:nth-child(6):after{
-        content: '6';
-      }
-      li:nth-child(7):after{
-        content: '7';
-      }
-      li:nth-child(8):after{
-        content: '8';
-      }
-      li:nth-child(9):after{
-        content: '9';
-      }
-      li:nth-child(10):after{
-          content: '10';
-      }
-      li:nth-child(11):after{
-        content: '11';
-      }
-      li:nth-child(12):after{
-        content: '12';
-      }
-      li:nth-child(13):after{
-        content: '13';
-      }
-      li:nth-child(14):after{
-        content: '14';
-      }
-      li:nth-child(15):after{
-        content: '15';
-      }
-      li:nth-child(16):after{
-        content: '16';
-      }
-      li:nth-child(17):after{
-        content: '17';
-      }
-      li:nth-child(18):after{
-        content: '18';
-      }
-      li:nth-child(19):after{
-        content: '19';
-      }
-    }
-  }
-}
-
 /*
 
     PRODUCTS
 
 */
 
-#products article {
-  overflow: hidden;
-  padding-left: $tw * 4;
-  height: $tw * 3;
-  background:#fff;
-  border:$fs/2 solid $c3;
-  figure{
-    color:transparent;
-    position:absolute;
-    margin-left: -$tw * 4;
-    width:$tw*2;
-    height:$tw*3;
-    &:after,
-    &:before{
-      content: " ";
-      position: absolute;
-      display: block;
-    }
-    &:before {
-      width: $tw * 3;
-      height: $tw * 3;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-image: url(media/postal.png); /* Placeholder image */
-    }
+section#intro {
+  margin: 0;
+  padding: 0;
+  top:0;
+  margin-left: $tw * 2;
+  height:$intro_height;
+  button{
+    bottom:0;
+    position: absolute;
   }
-  .info {
-    margin-top: ($fs * 1.5) * 2;
-    height: $fs * 4;
-    width: $tw * 5;
-    .by,
-    .price,
-    .buy {
-      display: inline-block;
-    }
-    .by {
-      width: $tw * 5;
-    }
-    .price {
-      width: $tw * 3;
-    }
+  h1 {
+    position:absolute;
+    margin-left: 0;
+    transform: translateY();
+    font-size:$fs*2;
+    margin-top:$tw*4;
+    top:0;
+    width:$tw*6;
+    font-family: "fallback", sans-serif;
+    text-decoration: underline;
+    display: inline;
+    text-transform: lowercase;
+    z-index: 3;
+    margin-bottom: $fs*2*1.5;
+  }
+  img{
+    position: absolute;
+    height:auto;
+    width:$tw*4;
+    margin-top:$tw;
+    left:$tw;
+    z-index: -1;
+    border:1px solid $black;
+    box-sizing: border-box;
+  }
+  p {
+    top:0;
+    position:absolute;
+    margin-top:$tw*7;
+    width:$tw*6;
+    margin-bottom: $fs * 1.5;
+    font-size: 100%;
   }
 }
+
+#values{
+  height:$values_height;
+  h2{
+    position:absolute;
+    top:$tw*2;
+  }
+  p{
+    top:0;
+    position:absolute;
+    margin-top:$tw*3;
+    width:$tw*7;
+    margin-left:$tw;
+  }
+  nav{
+    position:absolute;
+    top:0;
+    margin-top:$tw*5;
+    article{
+      border-bottom:1px solid $black;
+      max-height:$fs*1.5;
+      overflow:hidden;
+      width:$tw*7;
+      margin-left:$tw;
+      &.toggled{
+        max-height:70vh;
+        overflow:scroll;
+        position: fixed;
+        z-index: 3000;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        padding:$m ($m + $tw);
+        background: #fff;
+      }
+      h3{
+        width:100%;
+        padding-left:0;
+        .nr{
+          float:right;
+          width:$fs;
+          height:$fs;
+          border-radius:50%;
+          border: 1px solid $black;
+          font-size: $fs/2;
+          text-align:center;
+          transform: translatey(.5vw);
+          line-height: $fs;
+        }
+      }
+      p{
+        position: relative;
+        margin:0;
+        border-top:$fs/2 transparent solid;
+        border-bottom:$fs transparent solid;
+        box-sizing: border-box;
+        width:100%;
+      }
+    }
+  }
+
+}
+
+
+
+#investments{
+  position:absolute;
+  height:$investments_height;
+  h2{
+    margin-left:-(.3vw);
+    margin-top:-1.4vw;
+  }
+  article.stock{
+    width:$tw*3;
+    height:$tw/2;
+    line-height:$tw/2;
+    text-align: center;
+    border-radius:50%;
+    border:1px solid $black;
+    box-sizing: border-box;
+    position: absolute;
+    margin-top:$tw*5;
+    &:nth-child(3){
+      //tesla
+      margin-top:$tw*5.5;
+    }
+    &:nth-child(4){
+      //apple
+      margin-top:$tw*6;
+    }
+    &:nth-child(5){
+      //google
+      margin-top:$tw*6.5;
+    }
+    &:nth-child(6){
+      //twitter
+      margin-top:$tw*7;
+    }
+    p{
+      text-align: inherit;
+      width: 100%;
+    }
+  }
+  h2,
+  .arrow,
+  p,
+  figure{
+    position:absolute;
+  }
+  figure{
+    box-sizing: border-box;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .arrow{
+    &:before,
+    &:after{
+      display:block;
+      height: $tw/4;
+      width:1px;
+      background:$black;
+      transform-origin: top;
+      position:absolute;
+      display:block;
+      content: ' ';
+    }
+    &:before{
+      transform:rotate(45deg) translatex(-1px);
+    }
+    &:after{
+      transform:rotate(-45deg) translatex(-1px);
+    }
+  }
+
+  // montcada-i
+  article:nth-child(2){
+    figure{
+      margin-left:$tw*2;
+      margin-top:$tw*2;
+      border:1px solid $black;
+      width:$tw*3;
+      height:$tw*2;
+    }
+    p{
+      width:$tw*3;
+      margin-left:$tw*6;
+      margin-top:$tw*5;
+    }
+    .arrow{
+      width:$tw;
+      height:$tw*2;
+      display:block;
+      left: $tw*6;
+      top:$tw*3;
+      border-top: 1px solid $black;
+      border-right: 1px solid $black;
+      &:before{
+        transform:rotate(-135deg) translatex(1px);
+      }
+      &:after{
+        transform:rotate(-45deg) translate(0px,-1px);
+      }
+    }
+  }
+  article:nth-child(7){
+    figure{
+      margin-left:$tw*6;
+      margin-top:$tw*8;
+      border:1px solid $black;
+      width:$tw*3;
+      height:$tw*2;
+    }
+    p{
+      width:$tw*3;
+      margin-left:$tw;
+      margin-top:$tw*10;
+    }
+    .arrow{
+      width:$tw*3;
+      height:$tw;
+      display:block;
+      left: $tw*2;
+      top:$tw*9;
+      border-top: 1px solid $black;
+      border-left: 1px solid $black;
+      &:before,
+      &:after{
+        left:$tw*3;
+      }
+      &:before{
+
+        transform:rotate(45deg);
+      }
+      &:after{
+        transform:rotate(135deg);
+      }
+    }
+  }
+
+}
+
+
 
 /*
 
@@ -427,123 +452,18 @@ h1,h2,h3,p{
 
 footer {
   padding-top: 4vw;
+  text-align: left;
   width: 100vw - $m * 2;
   margin: $m;
   text-align: left;
+  bottom: 0;
+  height: 4vw;
+  display: block;
   .c {
     width: ($m/2)+ ($tw * 5);
   }
   a {
     float: right;
-  }
-  &:before {
-    content: " ";
-    width: 100vw;
-    height: 1px;
-    background: cyan;
-  }
-}
-/*
-
-      UPPER
-    Is supposed to be used to get to the top of the window.
-*/
-
-#upper{
-  top:0;
-  left:0;
-  width:1px;
-  height:1px;
-  position:absolute;
-  display:block;
-  opacity:0;
-}
-
-/*
-
-  GUIDES
-
-*/
-
-.guides {
-  $tv: red;
-  opacity: 0;
-  transition: $_G;
-  &:before {
-    width: 1px;
-    height: 100vh;
-    background: $tv;
-    top: 0;
-    left: $m * 1.5;
-    box-shadow: -$m/2 0 $tv, $tw * 1 0 $tv, $tw * 2 0 $tv, $tw * 3 0 $tv,
-      $tw * 4 0 $tv, $tw * 5 0 $tv, $tw * 6 0 $tv, $tw * 7 0 $tv, $tw * 8 0 $tv,
-      $tw * 9 0 $tv, $tw * 10 0 $tv;
-  }
-  $tv: red;
-  &:after {
-    top: $m + $fs * 0.7;
-    left: 0;
-    width: 100vw;
-    height: 1px;
-    background: $tv;
-    box-shadow: 0 -1.7vw $tv;
-  }
-  &:before,
-  &:after {
-    z-index:1100;
-    position: fixed;
-    content: " ";
-    display: block;
-    opacity: 1;
-  }
-}
-
-section {
-  &:before,
-  &:after {
-    opacity: 0;
-    transition: $_G;
-  }
-}
-.lol section {
-  &:before,
-  &:after {
-    left: 0;
-    width: 100vw;
-    height: 1px;
-    background-color: cyan;
-    content: " ";
-    position: absolute;
-    opacity: 0.7;
-    transition: $_G;
-  }
-  &:before {
-    margin-top: -1px;
-  }
-}
-.k_iopen .guides{
-  opacity: .4;
-  transition: $_G;
-
-}
-.lol .guides {
-  opacity: 1;
-  transition: $_G;
-}
-#work{
-  margin: $tw*2 0;
-  h2{
-    margin-bottom: $fs*2;
-  }
-  ol{
-    list-style:none;
-    margin-left:$tw*3;
-    li{
-      padding-bottom:$fs*1.5;
-      h3{
-        text-decoration:underline;
-      }
-    }
   }
 }
 button{
@@ -556,10 +476,11 @@ button{
   display: block;
   font-family:'fallback', sans-serif;
   &:hover{
-    background-color:$yellow;
+    background-color:$focus;
   }
 }
 section{
+  position:relative;
   h2{
     margin-bottom:0;
   }
@@ -582,72 +503,156 @@ section{
     width:$tw*6;
   }
 }
-#methodology,
-#about{
-  margin-bottom:$tw*2;
-  h2{
-    text-align:justify;
-    width: $tw*8;
+
+
+.guides {
+  $tv: $focus;
+  opacity: 0;
+  transition: $_G;
+  .vertical{
+    width: 1px;
+    height: 100vh;
+    background: transparent;
+    position:fixed;
+    top: 0;
+    border-left:dashed 1px $focus;
+    &.one {
+      left: $m * 1;
+    }
+    &.two {
+      left: $m * 1.5;
+    }
+    &.three,
+    &.four,
+    &.five,
+    &.six {
+      left: ($m * 1.5);
+    }
+    &.three{
+      margin-left: $tw;
+    }
+    &.four{
+      margin-left: $tw*2;
+    }
+    &.five{
+      margin-left: $tw*3;
+    }
+    &.six{
+      margin-left: $tw*4;
+    }
+    &.seven{
+      margin-left: $tw*5;
+    }
+    &.eight{
+      margin-left: $tw*6;
+    }
+    &.nine{
+      margin-left: $tw*7;
+    }
+    &.ten{
+      margin-left: $tw*8;
+    }
+    &.eleven{
+      margin-left: $tw*9;
+    }
+    &.twelve{
+      margin-left: $tw*10;
+    }
+    &.thirteen{
+      margin-left: $tw*11;
+    }
+    &.fourteen{
+      margin-left: $tw*12;
+    }
   }
-  p{
-    vertical-align: top;
-    width: $tw*6;
-    margin:$tw 0 $tw $tw;
+  .horizontal{
+    height:1px;
+    width:100vw;
+    background:transparent;
+    border-bottom:1px $focus dashed;
+    position:absolute;
+    display:block;
+    top:$m;
+    left:0;
+    &.two{
+      margin-top:$tw;
+    }
+    &.three{
+      margin-top:$tw*2;
+    }
+    &.four{
+      margin-top:$tw*3;
+    }
+    &.five{
+      margin-top:$tw*4;
+    }
+    &.six{
+      margin-top:$tw*5;
+    }
+    &.seven{
+      margin-top:$tw*6;
+    }
+    &.eight{
+      margin-top:$tw*7;
+    }
+    &.nine{
+      margin-top:$tw*8;
+    }
+    &.ten{
+      margin-top:$tw*9;
+    }
+    &.eleven{
+      margin-top:$tw*10;
+    }
+    &.twelve{
+      margin-top:$tw*11;
+    }
+    &.thirteen{
+      margin-top:$tw*12;
+    }
+    &.fourteen{
+      margin-top:$tw*13;
+    }
+    &.fifteen{
+      margin-top:$tw*14;
+    }
+    &.sixteen{
+      margin-top:$tw*15;
+    }
+    &.seventeen{
+      margin-top:$tw*16;
+    }
+    &.eighteen{
+      margin-top:$tw*17;
+    }
+    &.nineteen{
+      margin-top:$tw*18;
+    }
+    &.twenty{
+      margin-top:$tw*19;
+    }
+    &.twentyone{
+      margin-top:$tw*20;
+    }
+    &.twentytwo{
+      margin-top:$tw*21;
+    }
+    &.twentythree{
+      margin-top:$tw*22;
+    }
+    &.twentyfour{
+      margin-top:$tw*23;
+    }
+    &.twentyfive{
+      margin-top:$tw*24;
+    }
+    &.twentysix{
+      margin-top:$tw*25;
+    }
   }
 }
-#collaborations{
-  text-align:center;
-  h2{
-    text-align:left;
-  }
-  p{
-    padding:1vw 5vw;
-    border-radius:50%;
-    text-align:center;
-    background-color:transparent;
-    border:$c2 solid 1px;
-    display:inline-block;
-    margin-bottom:$tw/3;
-    width:$tw*3;
-  }
-}
-#menu{
-  h2{
-    margin-bottom:$fs*1.5;
-  }
-  p{
-    margin-bottom:$fs*1.5;
-    width:$tw*6;
-    margin-left:$tw;
-  }
-  article{
-    border-bottom:1px solid $black;
-    max-height:$fs*1.5;
-    overflow:hidden;
-    width:$tw*7;
-    margin-left:$tw *1.5;
-    &.toggled{
-      max-height:70vh;
-      overflow:scroll;
-    }
-    h3{
-      width:100%;
-      padding-left:0;
-      #price{
-        float:right;
-      }
-    }
-    p{
-      margin:0;
-      border-left:$tw/2 transparent solid;
-      border-right:$tw/2 transparent solid;
-      border-top:$fs/2 transparent solid;
-      border-bottom:$fs transparent solid;
-      box-sizing: border-box;
-      width:100%;
-      font-size:$fs*.8;
-    }
-  }
+.lol .guides {
+  opacity: 1;
 }
 /*
 
