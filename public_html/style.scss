@@ -4,7 +4,6 @@ $sw: 100vw - $m - $m * 1.5;
 $tw: $sw/10;
 $fs: 2.5vw;
 @import 'dds_default_font';
-@import url(“https://cdn.kalt.co/fonts/Anonymous-Pro/stylesheet.css”);
 
 $_cb: cubic-bezier(0,.69,1,.73);
 $_G_CB: $_cb;
@@ -36,7 +35,7 @@ $investments_height:$tw*11;
 }
 body {
   background-color:#fff;
-  font: normal 2.5vw/1.5 "FiraCode-Regular", "Courier New", monospace !important; /* :-) */
+  font: normal 2.5vw/1.5 "Anonymous Pro", "Courier New", monospace !important; /* :-) */
   color: $black;
   min-height: 100vw;
   h1,
