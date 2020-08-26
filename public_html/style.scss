@@ -14,8 +14,8 @@ $focus: #00ffcd;
 $black: #050517;
 $white: #ffffff;
 $intro_height: $tw*10;
-$values_height: $tw*10;
-$investments_height:$tw*11;
+$values_height: $tw*12;
+$investments_height:$tw*13;
 .vertical-space{
   height:10vh;
   width:100vw;
@@ -38,16 +38,8 @@ $investments_height:$tw*11;
     height:100%;
   }
 }
-@keyframes flow {
-    0%{background-position:57% 0%}
-    50%{background-position:44% 100%}
-    100%{background-position:57% 0%}
-}
 body {
   background-color:#fff;
-  background: linear-gradient(226deg, $white, darken($white,2%));
-  background-size: 400% 400%;
-  animation: flow 6s ease infinite;
   font: normal 2.5vw/1.5 "Fira Code", "Anonymous Pro", "Courier New", monospace !important; /* :-) */
   color: $black;
   overflow-x:hidden;
@@ -82,7 +74,7 @@ body {
   }
 
   p{
-    font-size: $fs*.65;
+    font-size: $fs;
   }
   del{
 
@@ -138,7 +130,7 @@ body {
       position: fixed;
       box-sizing: border-box;
       top:$m;
-      right:$m;
+      left:($m*1.5)+($tw*8);
       display:block;
       z-index: 2005;
       background:$white;
@@ -264,14 +256,13 @@ section#intro {
     width:$tw*7;
     margin-left:$tw;
     &:nth-child(2){
-    margin-top:$tw*3.95;
-
+      margin-top:$tw*4.95;
     }
   }
   nav{
     position:absolute;
     top:0;
-    margin-top:$tw*6;
+    margin-top:$tw*8;
     article{
       border-bottom:1px solid $black;
       max-height:$fs*1.5;
@@ -279,15 +270,43 @@ section#intro {
       width:$tw*7;
       margin-left:$tw;
       &.toggled{
-        max-height:70vh;
-        overflow:scroll;
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
         position: fixed;
+        display: block;
         z-index: 3000;
         top: 0;
         left: 0;
-        height: 100vh;
-        padding:$m ($m + $tw);
         background: #fff;
+        border: none;
+        margin:0;
+        h3{
+
+          width:$tw*7;
+          left:($m*1.5)+$tw;
+        }
+        h3{
+          top:$m;
+          position:fixed;
+          font-size:($fs*2)*.8;
+          .nr{
+            display:none;
+          }
+        }
+        .content{
+          margin-left:($m*1.5)+$tw;
+          width:$tw*7;
+          border-top:$m+($tw*2) transparent solid;
+          border-bottom:$m transparent solid;
+          box-sizing: border-box;
+          max-height:100vh;
+          overflow: scroll;
+
+        }
+        p{
+          margin-top:0;
+        }
       }
       h3{
         width:100%;
@@ -327,8 +346,8 @@ section#intro {
     margin-top:-1.4vw;
   }
   article.stock{
-    width:$tw*3;
-    height:$tw/2;
+    width:$tw*5;
+    height:$tw;
     line-height:$tw/2;
     text-align: center;
     border-radius:50%;
@@ -423,22 +442,22 @@ section#intro {
   article:nth-child(7){
     figure{
       margin-left:$tw*6;
-      margin-top:$tw*8;
+      margin-top:$tw*9;
       border:1px solid $black;
       width:$tw*3;
       height:$tw*2;
     }
     p{
-      width:$tw*3;
+      width:$tw*5;
       margin-left:$tw;
-      margin-top:$tw*10;
+      margin-top:$tw*11;
     }
     .arrow{
       width:$tw*3;
       height:$tw;
       display:block;
       left: $tw*2;
-      top:$tw*9;
+      top:$tw*10;
       border-top: 1px solid $black;
       border-left: 1px solid $black;
       &:before,
@@ -506,6 +525,7 @@ button{
   }
 }
 section{
+  padding-top:$tw;
   position:relative;
   h2{
     margin-bottom:0;
