@@ -38,8 +38,16 @@ $investments_height:$tw*11;
     height:100%;
   }
 }
+@keyframes flow {
+    0%{background-position:57% 0%}
+    50%{background-position:44% 100%}
+    100%{background-position:57% 0%}
+}
 body {
   background-color:#fff;
+  background: linear-gradient(226deg, $white, darken($white,2%));
+  background-size: 400% 400%;
+  animation: flow 6s ease infinite;
   font: normal 2.5vw/1.5 "Fira Code", "Anonymous Pro", "Courier New", monospace !important; /* :-) */
   color: $black;
   overflow-x:hidden;
@@ -211,7 +219,7 @@ section#intro {
   h1 {
     position:absolute;
     margin-left: 0;
-    transform: translateY();
+    transform: translateY(-2vw);
     font-size:$fs*2;
     margin-top:$tw*4;
     top:0;
