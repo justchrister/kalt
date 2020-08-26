@@ -2,7 +2,7 @@ $tv: "Temp.var";
 $m: 10vw; //margin
 $sw: 100vw - $m - $m * 1.5;
 $tw: $sw/10;
-$fs: 2.5vw;
+$fs: 2.9vw;
 @import 'dds_default_font';
 
 $_cb: cubic-bezier(0,.69,1,.73);
@@ -14,9 +14,13 @@ $focus: #00ffcd;
 $black: #050517;
 $white: #ffffff;
 $intro_height: $tw*10;
-$values_height: $tw*8;
+$values_height: $tw*10;
 $investments_height:$tw*11;
-
+.vertical-space{
+  height:10vh;
+  width:100vw;
+  display: block;
+}
 *::selection {
   color: $black;
   background: $focus;
@@ -26,9 +30,10 @@ $investments_height:$tw*11;
 .companyname {
   width:5vw;
   height:2vw;
-  padding:1vw 3vw;
+  padding:1vw 3.7vw;
   border-radius:50%;
   border: 1px solid $black;
+  background-color:$white;
   img{
     height:100%;
   }
@@ -37,7 +42,7 @@ body {
   background-color:#fff;
   font: normal 2.5vw/1.5 "Fira Code", "Anonymous Pro", "Courier New", monospace !important; /* :-) */
   color: $black;
-  min-height: 100vw;
+  overflow-x:hidden;
   h1,
   h2,
   h3,
@@ -65,7 +70,8 @@ body {
     font-size:($fs*2)*.8
   }
   h1 {
-  font-size:$fs*2;}
+  font-size:$fs*2;
+  }
 
   p{
     font-size: $fs*.65;
@@ -241,19 +247,23 @@ section#intro {
   height:$values_height;
   h2{
     position:absolute;
-    top:$tw*2;
+    top:$tw*1.775;
   }
   p{
     top:0;
     position:absolute;
-    margin-top:$tw*3;
+    margin-top:$tw*2.95;
     width:$tw*7;
     margin-left:$tw;
+    &:nth-child(2){
+    margin-top:$tw*3.95;
+
+    }
   }
   nav{
     position:absolute;
     top:0;
-    margin-top:$tw*5;
+    margin-top:$tw*6;
     article{
       border-bottom:1px solid $black;
       max-height:$fs*1.5;
@@ -350,6 +360,7 @@ section#intro {
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color:$focus;
   }
   .arrow{
     &:before,
@@ -455,8 +466,19 @@ footer {
   bottom: 0;
   height: 4vw;
   display: block;
-  .c {
-    width: ($m/2)+ ($tw * 5);
+  .circles,
+  .circles:before,
+  .circles:after {
+    margin-left:$m/2;
+    transform:translatey($tw/3);
+    width:$fs;
+    height:$fs;
+    border-radius:50%;
+    border:1px solid $black;
+    display: block;
+    content: ' ';
+    left:0;
+    bottom:0;
   }
   a {
     float: right;
