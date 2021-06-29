@@ -1,0 +1,378 @@
+//  Includes
+
+ @import 'reset';
+
+
+//  Set variables
+
+$sans-serif: "Helvetica", sans-serif;
+$serif: "Ogg", serif;
+$alt-sans-serif: "Neue Haas Grotesk Display Pro", sans-serif; //used for clickables
+$sectionmargin: 30vh auto;
+$sitewidth: 86vw;
+$maxsitewidth: 720px;
+$border-width: 1px;
+$border: $border-width solid black;
+$color: #1E96FC;
+$whitecolor: #fdffff;
+$column-divider: 2.4; //% of sitewidth
+
+
+
+// Font sizes
+
+@mixin font-display {
+  font-family: $serif;
+  font-size: clamp(25px, 6.48vw, 50px);
+  line-height: clamp(37px, 9.72vw, 75px);
+  margin-bottom: clamp(12px, 3.24vw, 25px);
+}
+
+
+@mixin font-body {
+  font-size: clamp(14px, 3.6vw, 26px);
+  line-height: 150%;
+  font-family: $sans-serif;
+}
+
+// Site Width
+
+@mixin site-width {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+}
+
+//  Override some defaults
+.section.hide,
+.page.hide{
+  display:none;
+}
+
+body {
+  background: $whitecolor;
+}
+a{
+  color: #000;
+  text-decoration: underline;
+  &:hover:after{
+    content: " → ";
+    position: relative;
+  }
+}
+body {
+  @include font-body;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+  /*
+  mimicking the chrome outline effect, with a custom color.
+  */
+  border-color: 1px solid $color;
+  box-shadow: 0px 0px 5px $color;
+}
+a:focus {
+  border: none;
+  box-shadow: none;
+  text-decoration-color: $color;
+}
+*::selection {
+  background-color: $color;
+}
+button {
+  border-radius: 50%;
+  border: $border;
+  padding: 1% 8%;
+  background: transparent;
+  font-family: $alt-sans-serif;
+  a{
+    text-decoration: none;
+  }
+  &:hover {
+    cursor: pointer;
+    border-radius: 0%;
+    a{
+      &:after{
+        content: " → ";
+        position: relative;
+      }
+    }
+  }
+}
+
+//  Header (logo + cart)
+
+button {
+  &.logo {
+    left: $border-width;
+  }
+  &.menu {
+    right: $border-width;
+    border-radius: 0;
+
+    &:hover {
+      border-radius: 50%;
+    }
+  }
+  &.menu,
+  &.logo {
+    font-size: clamp(16px, 3.6vw, 26px);
+    position: fixed;
+    top: $border-width;
+  }
+}
+
+//  Insignia
+
+//  It is somewhat of an alter-ego
+//  logo, and an
+
+.insignia,
+.insignia-inner,
+.insignia-inner:before {
+  height: 25vw;
+  max-height: 209px;
+  border: $border;
+  border-radius: 50%;
+  &:hover {
+    border-radius: 0%;
+  }
+}
+.insignia {
+  z-index: -1;
+  background: $whitecolor;
+  background: white;
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  margin: $sectionmargin;
+  transform-style: preserve-3d;
+  &:hover{
+
+    .insignia-inner {
+      transform: translateZ(120px) scale(0.5);
+      transition: transform .5s 0s;
+      &:before{
+        transform: translateZ(20px) scale(0.8);
+      }
+    }
+  }
+  .insignia-inner,
+  .insignia-inner:before {
+    position: relative;
+  }
+  .insignia-inner {
+  transition: transform .5s 0s;
+    width: 25vw;
+    max-width: 209px;
+    margin: 0 auto;
+    margin-top: -$border-width;
+    &:before {
+    transition: transform .5s 0s;
+      z-index: 2;
+      display: block;
+      content: " ";
+      width: 61vw;
+      max-width: 511px;
+      margin-left: -75%;
+      margin-top: -$border-width;
+    }
+  }
+}
+
+//  Store section
+
+button.add-to-cart,
+button.read_more {
+  width: 100%;
+  padding: 2% 0;
+  @include font-body;
+}
+
+.section,
+.item {
+  p {
+    font-weight: 300;
+  }
+}
+
+//  The featured product
+
+//  It is changed when a user
+//  clicks a product.
+
+.section {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  margin: $sectionmargin;
+  .frame {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: start;
+    .image {
+      width: 49%;
+      height: 32vw;
+      max-height: 268px;
+      display: inline-block;
+      flex: 0 0 auto;
+      margin: 0px;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      &:first-child {
+        height: 50vw;
+        max-height: 418px;
+      }
+    }
+    &:after {
+      display: block;
+      margin: 0px;
+      flex: 999 999 auto;
+    }
+  }
+  .title {
+    @include font-display;
+  }
+  .body {
+    margin-top: 40px;
+    margin: 40px 0;
+  }
+  nav{
+    ol{
+      li{
+        font-size: 75%;
+        line-height: 150%;
+        width:100%;
+        .category,
+        .subject,
+        .date{
+          display:inline-block;
+        }
+        .category{
+          width:15%;
+          a:after{
+            content: "";
+          }
+        }
+        .subject{
+          width:70%;
+        }
+        .date{
+          width:10%;
+          text-align:right;
+          float:right;
+        }
+      }
+    }
+  }
+}
+
+// The product grid
+
+.grid {
+  @include site-width;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: auto;
+  align-content: start;
+  margin: auto;
+
+  .title {
+    @include font-display;
+    width: 100%;
+  }
+
+  .item {
+    width: $sitewidth/$column-divider;
+    max-width: $maxsitewidth/$column-divider;
+    flex: 0 0 auto;
+    margin: 0 0 clamp(56px, 14.4vw, 104px) 0;
+    .image {
+      margin-bottom: clamp(14px, 3.6vw, 26px);
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+      width: $sitewidth/$column-divider;
+      max-width: $maxsitewidth/$column-divider;
+      height: $sitewidth/$column-divider;
+      max-height: $maxsitewidth/$column-divider;
+    }
+    .body {
+      .title {
+        @include font-body;
+        font-family: $sans-serif;
+      }
+      .description {
+        font-size: 75%;
+        line-height: 150%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        margin-bottom: clamp(14px, 3.6vw, 26px);
+      }
+    }
+    button{
+      font-size:75%;
+    }
+  }
+}
+
+// Menu in the bottom left.
+.show-menu{
+  .menu{
+    button.menu{
+      &:before{
+        content:"close ";
+        display:inline-block;
+
+      }
+
+    }
+    ul {
+      display:block;
+      opacity:1;
+      pointer-events : all;
+    }
+  }
+  .logo,
+  .page{
+    opacity:0;
+    pointer-events : none;
+  }
+
+}
+.menu {
+
+  ul {
+
+    opacity:0;
+    pointer-events : none;
+    position: fixed;
+    display:none;
+    bottom: $border-width*2;
+    left: $border-width;
+    li {
+      margin: 10px 0 0 0;
+      line-height: 1;
+      font-weight: 300;
+      a {
+        @include font-display;
+        font-family: $sans-serif;
+        line-height: 1;
+        padding: 0 0px;
+      }
+    }
+  }
+}
