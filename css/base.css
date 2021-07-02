@@ -83,10 +83,10 @@ button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: cl
 .grid .item button { font-size: 75%; }
 
 .show-menu .menu button.menu:before { content: "close "; display: inline-block; }
-.show-menu .menu ul { display: block; opacity: 1; pointer-events: all; }
+.show-menu .menu ul { display: block; width: 86vw; max-width: 720px; right: 1px; top: 1px; background: #fff; border: 1px solid black; opacity: 1; pointer-events: all; }
 .show-menu .logo, .show-menu .page { opacity: 0; pointer-events: none; }
 
-.menu ul { opacity: 0; pointer-events: none; position: fixed; display: none; bottom: 2px; left: 1px; }
+.menu ul { opacity: 0; pointer-events: none; position: fixed; display: none; }
 .menu ul li { margin: 10px 0 0 0; line-height: 1; font-weight: 300; }
 .menu ul li a { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: clamp(37px, 9.72vw, 75px); margin-bottom: clamp(12px, 3.24vw, 25px); font-family: "Helvetica", sans-serif; line-height: 1; padding: 0 0px; }
 

@@ -338,6 +338,12 @@ button.read_more {
     }
     ul {
       display:block;
+      width: $sitewidth;
+      max-width: $maxsitewidth;
+      right:1px;
+      top:1px;
+      background:#fff;
+      border: $border;
       opacity:1;
       pointer-events : all;
     }
@@ -357,8 +363,6 @@ button.read_more {
     pointer-events : none;
     position: fixed;
     display:none;
-    bottom: $border-width*2;
-    left: $border-width;
     li {
       margin: 10px 0 0 0;
       line-height: 1;
