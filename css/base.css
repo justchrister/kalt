@@ -84,7 +84,6 @@ button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: cl
 
 .show-menu .menu button.menu:before { content: "close "; display: inline-block; }
 .show-menu .menu ul { display: block; width: 86vw; max-width: 720px; right: 1px; top: 1px; background: #fff; border: 1px solid black; opacity: 1; pointer-events: all; }
-.show-menu .logo, .show-menu .page { opacity: 0; pointer-events: none; }
 
 .menu ul { opacity: 0; pointer-events: none; position: fixed; display: none; }
 .menu ul li { margin: 10px 0 0 0; line-height: 1; font-weight: 300; }
