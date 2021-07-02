@@ -114,10 +114,6 @@ button {
   &.menu {
     right: $border-width;
     border-radius: 0;
-
-    &:hover {
-      border-radius: 50%;
-    }
   }
   &.menu,
   &.logo {
