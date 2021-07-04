@@ -5,9 +5,13 @@
 
 //  Set variables
 
-$sans-serif: "Helvetica", sans-serif;
+$sans-serif: "Helvetica",
+						 "Arial",
+						 "Raleway",
+						 "Roboto",
+						 Sans-Serif;
+
 $serif: "Ogg", serif;
-$alt-sans-serif: "Neue Haas Grotesk Display Pro", sans-serif; //used for clickables
 $sectionmargin: 30vh auto;
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
@@ -88,7 +92,8 @@ button {
   border: $border;
   padding: 1% 8%;
   background: transparent;
-  font-family: $alt-sans-serif;
+  font-family: $sans-serif;
+  font-weight:300;
   a{
     text-decoration: none;
   }
@@ -109,11 +114,13 @@ button {
 button {
   &.logo {
     left: $border-width;
+    font-weight: 500;
   }
   &.menu {
     right: $border-width;
     border-radius: 0;
   }
+
   &.menu,
   &.logo {
     font-size: clamp(16px, 3.6vw, 26px);
@@ -326,6 +333,11 @@ button.read_more {
 
 // Menu in the bottom left.
 .show-menu{
+  .page,
+  .logo{
+    opacity:0;
+    pointer-events : none;
+  }
   .menu{
     button.menu{
 
@@ -349,27 +361,26 @@ button.read_more {
     z-index: 3;
   }
   ul {
-    padding-top: clamp(50px, 12.96vw, 100px);
-    padding-bottom: clamp(25px, 6.48vw, 50px);
-    padding-left: clamp(25px, 6.48vw, 50px);
+    padding: clamp(50px, 12.96vw, 100px);
+      margin: clamp(50px, 12.96vw, 100px);
     opacity:0;
     pointer-events : none;
     position: fixed;
     display:none;
     z-index: 2;
-    width: $sitewidth*.8;
-    max-width: $maxsitewidth*.8;
-    right:1px;
+    width: $sitewidth*.7;
+    max-width: $maxsitewidth*.7;
+    //right:1px;
     top:1px;
     background:#fff;
     border: $border;
     li {
-      display:inline-block;
       margin-right:20px;
-      line-height: 1;
+      line-height: 1.5;
       font-weight: 300;
       a {
         @include font-body;
+        font-family: $sans-serif;
         line-height: 1;
         padding: 0 0px;
       }

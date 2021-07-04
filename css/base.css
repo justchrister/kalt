@@ -21,7 +21,7 @@ body { background: #fdffff; }
 
 a { color: #000; text-decoration: underline; }
 
-body { font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", sans-serif; }
+body { font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; }
 
 *, *:before, *:after { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -35,11 +35,11 @@ a:focus { border: none; -webkit-box-shadow: none; box-shadow: none; -webkit-text
 
 *::selection { background-color: #1E96FC; }
 
-button { border-radius: 50%; border: 1px solid black; padding: 1% 8%; background: transparent; font-family: "Neue Haas Grotesk Display Pro", sans-serif; }
+button { border-radius: 50%; border: 1px solid black; padding: 1% 8%; background: transparent; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-weight: 300; }
 button a { text-decoration: none; }
 button:hover { cursor: pointer; border-radius: 0%; }
 
-button.logo { left: 1px; }
+button.logo { left: 1px; font-weight: 500; }
 button.menu { right: 1px; border-radius: 0; }
 button.menu, button.logo { font-size: clamp(16px, 3.6vw, 26px); position: fixed; top: 1px; }
 
@@ -53,7 +53,7 @@ button.menu, button.logo { font-size: clamp(16px, 3.6vw, 26px); position: fixed;
 .insignia .insignia-inner { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; width: 25vw; max-width: 209px; margin: 0 auto; margin-top: -1px; }
 .insignia .insignia-inner:before { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; z-index: 2; display: block; content: " "; width: 61vw; max-width: 511px; margin-left: -75%; margin-top: -1px; }
 
-button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", sans-serif; }
+button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; }
 
 .section p, .item p { font-weight: 300; }
 
@@ -75,17 +75,18 @@ button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: cl
 .grid .title { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: clamp(37px, 9.72vw, 75px); margin-bottom: clamp(12px, 3.24vw, 25px); width: 100%; }
 .grid .item { width: 35.8333333333vw; max-width: 300px; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; margin: 0 0 clamp(56px, 14.4vw, 104px) 0; }
 .grid .item .image { margin-bottom: clamp(14px, 3.6vw, 26px); background-size: cover; background-position: center center; background-repeat: no-repeat; display: block; width: 35.8333333333vw; max-width: 300px; height: 35.8333333333vw; max-height: 300px; }
-.grid .item .body .title { font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", sans-serif; font-family: "Helvetica", sans-serif; }
+.grid .item .body .title { font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; }
 .grid .item .body .description { font-size: 75%; line-height: 150%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; /* number of lines to show */ -webkit-box-orient: vertical; margin-bottom: clamp(14px, 3.6vw, 26px); }
 .grid .item button { font-size: 75%; }
 
+.show-menu .page, .show-menu .logo { opacity: 0; pointer-events: none; }
 .show-menu .menu button.menu { z-index: 3; }
 .show-menu .menu button.menu:before { content: "close "; display: inline-block; }
 .show-menu .menu ul { display: block; opacity: 1; pointer-events: all; }
 
 .menu button.menu { z-index: 3; }
-.menu ul { padding-top: clamp(50px, 12.96vw, 100px); padding-bottom: clamp(25px, 6.48vw, 50px); padding-left: clamp(25px, 6.48vw, 50px); opacity: 0; pointer-events: none; position: fixed; display: none; z-index: 2; width: 68.8vw; max-width: 576px; right: 1px; top: 1px; background: #fff; border: 1px solid black; }
-.menu ul li { display: inline-block; margin-right: 20px; line-height: 1; font-weight: 300; }
-.menu ul li a { font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", sans-serif; line-height: 1; padding: 0 0px; }
+.menu ul { padding: clamp(50px, 12.96vw, 100px); margin: clamp(50px, 12.96vw, 100px); opacity: 0; pointer-events: none; position: fixed; display: none; z-index: 2; width: 60.2vw; max-width: 504px; top: 1px; background: #fff; border: 1px solid black; }
+.menu ul li { margin-right: 20px; line-height: 1.5; font-weight: 300; }
+.menu ul li a { font-size: clamp(14px, 3.6vw, 26px); line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; line-height: 1; padding: 0 0px; }
 
 /*# sourceMappingURL=base.css.map */
