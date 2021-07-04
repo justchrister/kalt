@@ -28,7 +28,6 @@ $column-divider: 2.4; //% of sitewidth
   margin-bottom: clamp(12px, 3.24vw, 25px);
 }
 
-
 @mixin font-body {
   font-size: clamp(14px, 3.6vw, 26px);
   line-height: 150%;
@@ -55,8 +54,8 @@ a{
   color: #000;
   text-decoration: underline;
   &:hover:after{
-    content: " → ";
-    position: relative;
+    //content: " → ";
+    //position: relative;
   }
 }
 body {
@@ -98,8 +97,8 @@ button {
     border-radius: 0%;
     a{
       &:after{
-        content: " → ";
-        position: relative;
+        //content: " → ";
+        //position: relative;
       }
     }
   }
@@ -329,6 +328,8 @@ button.read_more {
 .show-menu{
   .menu{
     button.menu{
+
+      z-index: 3;
       &:before{
         content:"close ";
         display:inline-block;
@@ -338,32 +339,37 @@ button.read_more {
     }
     ul {
       display:block;
-      width: $sitewidth;
-      max-width: $maxsitewidth;
-      right:1px;
-      top:1px;
-      background:#fff;
-      border: $border;
       opacity:1;
       pointer-events : all;
     }
   }
 }
 .menu {
-
+  button.menu{
+    z-index: 3;
+  }
   ul {
-
+    padding-top: clamp(50px, 12.96vw, 100px);
+    padding-bottom: clamp(25px, 6.48vw, 50px);
+    padding-left: clamp(25px, 6.48vw, 50px);
     opacity:0;
     pointer-events : none;
     position: fixed;
     display:none;
+    z-index: 2;
+    width: $sitewidth*.8;
+    max-width: $maxsitewidth*.8;
+    right:1px;
+    top:1px;
+    background:#fff;
+    border: $border;
     li {
-      margin: 10px 0 0 0;
+      display:inline-block;
+      margin-right:20px;
       line-height: 1;
       font-weight: 300;
       a {
-        @include font-display;
-        font-family: $sans-serif;
+        @include font-body;
         line-height: 1;
         padding: 0 0px;
       }
