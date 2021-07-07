@@ -129,9 +129,18 @@
           </ol>
         </nav>
       </div>
+    <!-- Including jquery -->
     <script src="js/lib/jq.js"></script>
+    <!-- Including tilt.js for <div class="insignia"> -->
     <script src="js/lib/tilt.js"></script>
+    <!-- Including base javascript -->
     <script src="js/base.js"></script>
+    <!-- Enabling tilt js -->
+    <script>
+      $('.js-tilt').tilt({
+          reset: false
+      })
+    </script>
   </body>
 
 </html>
