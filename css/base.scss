@@ -70,11 +70,6 @@ body {
 
 *:focus {
   outline: none;
-  /*
-  mimicking the chrome outline effect, with a custom color.
-  */
-  border-color: 1px solid $color;
-  box-shadow: 0px 0px 5px $color;
 }
 a:focus {
   border: none;
@@ -82,12 +77,12 @@ a:focus {
   text-decoration-color: $color;
 }
 *::selection {
-  background-color: $color;
+  background-color: rgba($color,0.3);
 }
 button {
   border-radius: 50%;
   border: $border;
-  padding: 1% 8%;
+  padding: 1% 2%;
   background: transparent;
   @include font-body;
   a{
@@ -107,24 +102,79 @@ button {
 
 //  Header (logo + cart)
 
-button {
-  &.logo {
+header {
+  button.logo {
     left: $border-width;
-    font-weight: 500;
+    span{
+      font-weight: 500;
+    }
   }
-  &.menu {
+  button.menu {
     right: $border-width;
-    border-radius: 0;
   }
 
-  &.menu,
-  &.logo {
+  button {
     font-size: clamp(16px, 3.6vw, 26px);
     position: fixed;
     top: $border-width;
+    border: 0;
+    &:hover{
+      text-decoration: underline;
+      &:before{
+        text-decoration: underline;
+
+      }
+    }
+  }
+
+  .menu {
+    button{
+      z-index: 3;
+    }
+    ul {
+      opacity:0;
+      pointer-events : none;
+      position: fixed;
+      display:none;
+      z-index: 3;
+      width: $sitewidth;
+      max-width: $maxsitewidth;
+      top: clamp(48px, 10.8vw, 78px);
+      left: clamp(57px, 12vw, 86px);
+      margin: 0;
+      padding: 0 0 0 2%;
+      li {
+        line-height: 1;
+        a {
+          @include font-body;
+          padding: 0 0px;
+          //text-decoration: none;
+        }
+      }
+    }
   }
 }
 
+// Menu in the bottom left.
+.show-menu{
+  .page{
+    opacity:0;
+    pointer-events : none;
+  }
+  .menu{
+    button{
+      &:before{
+        content:"close ";
+        display:inline-block;
+      }
+    }
+    ul {
+      display:block;
+      opacity:1;
+      pointer-events : all;
+    }
+  }
+}
 //  Insignia
 
 //  It is somewhat of an alter-ego
@@ -229,8 +279,12 @@ button.read_more {
       flex: 999 999 auto;
     }
   }
-  .title {
+  h1,h2 {
     @include font-display;
+  }
+  h3{
+    @include font-body;
+    text-decoration: underline;
   }
   .body {
     margin-top: 40px;
@@ -320,58 +374,23 @@ button.read_more {
     }
   }
 }
-
-// Menu in the bottom left.
-.show-menu{
-  .page,
-  .logo{
-    opacity:0;
-    pointer-events : none;
-  }
-  .menu{
-    button.menu{
-
-      z-index: 3;
-      &:before{
-        content:"close ";
-        display:inline-block;
-
-      }
-
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #011628;
+        color: white;
     }
-    ul {
-      display:block;
-      opacity:1;
-      pointer-events : all;
+    button,
+    .insignia,
+    .insignia-inner,
+    .insignia-inner:before {
+      border-color:white;
     }
-  }
-}
-.menu {
-  button.menu{
-    z-index: 3;
-  }
-  ul {
-    padding: clamp(50px, 12.96vw, 100px);
-      margin: clamp(50px, 12.96vw, 100px);
-    opacity:0;
-    pointer-events : none;
-    position: fixed;
-    display:none;
-    z-index: 2;
-    width: $sitewidth*.7;
-    max-width: $maxsitewidth*.7;
-    //right:1px;
-    top:1px;
-    background-color:#fff;
-    border: $border;
-    li {
-      margin-right:20px;
-      line-height: 1.5;
-      a {
-        @include font-body;
-        line-height: 1;
-        padding: 0 0px;
-      }
+    .insignia{
+
+      background:#011628;
     }
-  }
+    .menu,
+    a{
+      color: white;
+    }
 }

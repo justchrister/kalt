@@ -1,0 +1,141 @@
+<!doctype html>
+
+
+    <!--                             kalt.co                                -->
+
+
+    <!--                                (                                   -->
+    <!--                    .            )        )                         -->
+    <!--                              (  (|              .                  -->
+    <!--                         )   )\/ ( ( (                              -->
+    <!--                 *  (   ((  /     ))\))  (  )    )                  -->
+    <!--               (     \   )\(          |  ))( )  (|                  -->
+    <!--               >)     ))/   |          )/  \((  ) \                 -->
+
+
+<html>
+  <head>
+    <!-- Setting the title -->
+    <title> Kalt — Styleguide </title>
+    <!-- Including the base stylesheet -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- Including the page stylesheet -->
+    <link rel="stylesheet" href="css/styleguide.css">
+    <!-- Defining the character set used -->
+    <meta charset="UTF-8">
+    <!-- Setting the viewport to make your website look good on all devices: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+    <header>
+      <button class="logo">
+        <a href="index.html"><span>Kalt</span> — Styleguide</a>
+      </button>
+      <nav class="menu">
+        <button class="menu">
+          menu
+        </button>
+        <ul>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#documents">Documents</a>
+          </li>
+          <li>
+            <a href="#documents">Styleguide</a>
+          </li>
+          <li>
+            <a href="#documents">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--
+      Start the homepage
+    -->
+    <div class="page" id="homepage">
+
+      <!--
+        Featured section
+      -->
+      <div class="section">
+        <div class="body">
+          <p class="description">
+            The goal of the visual profile of Kalt is to communicate ideas as clearly as possible, whilst also beeing extremely versatile. This is achived in combination with the <a href="#">Kalt — Stylebook</a>.
+          </p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="body">
+          <h3> The logo </h3>
+          <p class="description">
+            The logotype is set in Helvetica Regular; Kalt. It is always be capitalized, even in URL's.<br><br>
+            The logomark — also called the insignia — is the outline of one circle, inside the outline of an oval, inside the outline of another oval. The outlines has to be 1 pixel on digital platforms, and as thin as possible in print, whilst still being visable.
+            While the insignia is a set of one inner circle, and two outer ovals.
+          </p>
+          <pre><code class="language-scss">$serif : "Ogg",
+				 "STIXGeneral Regular",
+				 "Times New Roman",
+	       Serif;
+
+@mixin font-display {
+  font-family: $serif;
+  font-size: clamp(25px, 6.48vw, 50px);
+  line-height: clamp(37px, 9.72vw, 75px);
+  margin-bottom: clamp(12px, 3.24vw, 25px);
+}</code></pre>
+<pre><code class="language-css">$serif : "Ogg",
+"STIXGeneral Regular",
+"Times New Roman",
+Serif;
+
+@mixin font-display {
+font-family: $serif;
+font-size: clamp(25px, 6.48vw, 50px);
+line-height: clamp(37px, 9.72vw, 75px);
+margin-bottom: clamp(12px, 3.24vw, 25px);
+}</code></pre>
+
+        </div>
+      </div>
+      <div class="section" id="documents">
+        <h2 class="title">
+          Documents
+        </h2>
+        <nav>
+          <ol>
+            <li>
+              <span class="category">
+                Privacy
+              </span>
+              <span class="subject">
+                <a href="documents/Hardening a Mac.pdf" target="_blank">
+                  Hardening a Mac
+                </a>
+              </span>
+              <span class="date">2021</span>
+            </li>
+            <li>
+              <span class="category">
+                Policy
+              </span>
+              <span class="subject">
+                <a href="documents/Hardening a Mac.pdf" target="_blank">
+                  Strengthening local business
+                </a>
+              </span>
+              <span class="date">2021</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    <script src="js/lib/jq.js"></script>
+    <script src="js/lib/highlight.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="js/base.js"></script>
+  </body>
+
+</html>

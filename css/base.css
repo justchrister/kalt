@@ -23,23 +23,32 @@ body { font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%;
 
 *, *:before, *:after { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-*:focus { outline: none; /*
-mimicking the chrome outline effect, with a custom color.
-*/ border-color: 1px solid #1E96FC; -webkit-box-shadow: 0px 0px 5px #1E96FC; box-shadow: 0px 0px 5px #1E96FC; }
+*:focus { outline: none; }
 
 a:focus { border: none; -webkit-box-shadow: none; box-shadow: none; -webkit-text-decoration-color: #1E96FC; text-decoration-color: #1E96FC; }
 
-*::-moz-selection { background-color: #1E96FC; }
+*::-moz-selection { background-color: rgba(30, 150, 252, 0.3); }
 
-*::selection { background-color: #1E96FC; }
+*::selection { background-color: rgba(30, 150, 252, 0.3); }
 
-button { border-radius: 50%; border: 1px solid black; padding: 1% 8%; background: transparent; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; }
+button { border-radius: 50%; border: 1px solid black; padding: 1% 2%; background: transparent; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; }
 button a { text-decoration: none; }
 button:hover { cursor: pointer; border-radius: 0%; }
 
-button.logo { left: 1px; font-weight: 500; }
-button.menu { right: 1px; border-radius: 0; }
-button.menu, button.logo { font-size: clamp(16px, 3.6vw, 26px); position: fixed; top: 1px; }
+header button.logo { left: 1px; }
+header button.logo span { font-weight: 500; }
+header button.menu { right: 1px; }
+header button { font-size: clamp(16px, 3.6vw, 26px); position: fixed; top: 1px; border: 0; }
+header button:hover { text-decoration: underline; }
+header button:hover:before { text-decoration: underline; }
+header .menu button { z-index: 3; }
+header .menu ul { opacity: 0; pointer-events: none; position: fixed; display: none; z-index: 3; width: 86vw; max-width: 720px; top: clamp(48px, 10.8vw, 78px); left: clamp(57px, 12vw, 86px); margin: 0; padding: 0 0 0 2%; }
+header .menu ul li { line-height: 1; }
+header .menu ul li a { font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; padding: 0 0px; }
+
+.show-menu .page { opacity: 0; pointer-events: none; }
+.show-menu .menu button:before { content: "close "; display: inline-block; }
+.show-menu .menu ul { display: block; opacity: 1; pointer-events: all; }
 
 .insignia, .insignia-inner, .insignia-inner:before { height: 25vw; max-height: 209px; border: 1px solid black; border-radius: 50%; }
 .insignia:hover, .insignia-inner:hover, .insignia-inner:before:hover { border-radius: 0%; }
@@ -58,7 +67,8 @@ button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: cl
 .section .frame .image { width: 49%; height: 32vw; max-height: 268px; display: inline-block; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; margin: 0px; background-size: cover; background-position: center center; background-repeat: no-repeat; }
 .section .frame .image:first-child { height: 50vw; max-height: 418px; }
 .section .frame:after { display: block; margin: 0px; -webkit-box-flex: 999; -ms-flex: 999 999 auto; flex: 999 999 auto; }
-.section .title { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: clamp(37px, 9.72vw, 75px); margin-bottom: clamp(12px, 3.24vw, 25px); }
+.section h1, .section h2 { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: clamp(37px, 9.72vw, 75px); margin-bottom: clamp(12px, 3.24vw, 25px); }
+.section h3 { font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; text-decoration: underline; }
 .section .body { margin-top: 40px; margin: 40px 0; }
 .section nav ol li { font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: 75%; line-height: 150%; width: 100%; }
 .section nav ol li .category, .section nav ol li .subject, .section nav ol li .date { display: inline-block; }
@@ -75,14 +85,9 @@ button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-size: cl
 .grid .item .body .description { font-size: 75%; line-height: 150%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; /* number of lines to show */ -webkit-box-orient: vertical; margin-bottom: clamp(14px, 3.6vw, 26px); }
 .grid .item button { font-size: 75%; }
 
-.show-menu .page, .show-menu .logo { opacity: 0; pointer-events: none; }
-.show-menu .menu button.menu { z-index: 3; }
-.show-menu .menu button.menu:before { content: "close "; display: inline-block; }
-.show-menu .menu ul { display: block; opacity: 1; pointer-events: all; }
-
-.menu button.menu { z-index: 3; }
-.menu ul { padding: clamp(50px, 12.96vw, 100px); margin: clamp(50px, 12.96vw, 100px); opacity: 0; pointer-events: none; position: fixed; display: none; z-index: 2; width: 60.2vw; max-width: 504px; top: 1px; background-color: #fff; border: 1px solid black; }
-.menu ul li { margin-right: 20px; line-height: 1.5; }
-.menu ul li a { font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; line-height: 1; padding: 0 0px; }
+@media (prefers-color-scheme: dark) { body { background-color: #011628; color: white; }
+  button, .insignia, .insignia-inner, .insignia-inner:before { border-color: white; }
+  .insignia { background: #011628; }
+  .menu, a { color: white; } }
 
 /*# sourceMappingURL=base.css.map */
