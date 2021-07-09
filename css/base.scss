@@ -12,7 +12,7 @@ $sans-serif: "Helvetica",
 						 Sans-Serif;
 
 $serif: "Ogg", serif;
-$sectionmargin: 30vh auto;
+$sectionpadding: 30vh;
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
 $border-width: 1px;
@@ -32,10 +32,17 @@ $column-divider: 2.4; //% of sitewidth
 }
 
 @mixin font-body {
+  font-family: $sans-serif;
   font-size: clamp(14px, 3.6vw, 26px);
   font-weight:300;
   line-height: 150%;
+}
+
+@mixin font-logotype {
   font-family: $sans-serif;
+  font-size: clamp(14px, 3.6vw, 26px);
+  font-weight: 500;
+  line-height: 100%;
 }
 
 // Site Width
@@ -46,10 +53,6 @@ $column-divider: 2.4; //% of sitewidth
 }
 
 //  Override some defaults
-.section.hide,
-.page.hide{
-  display:none;
-}
 
 a{
   color: #000;
@@ -98,6 +101,11 @@ button {
       }
     }
   }
+}
+// Page wrapper
+
+.page{
+  padding-bottom: $sectionpadding;
 }
 
 //  Header (logo + cart)
@@ -196,7 +204,7 @@ header {
   background: white;
   width: $sitewidth;
   max-width: $maxsitewidth;
-  margin: $sectionmargin;
+  margin: $sectionpadding auto 0 auto;
   transform-style: preserve-3d;
   &:hover{
 
@@ -250,7 +258,8 @@ button.read_more {
 .section {
   width: $sitewidth;
   max-width: $maxsitewidth;
-  margin: $sectionmargin;
+  padding: $sectionpadding 0 0 0;
+  margin: auto;
   .frame {
     display: flex;
     flex-wrap: wrap;
@@ -374,7 +383,8 @@ button.read_more {
     }
   }
 }
-// Change the 
+// Change the
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #011628;
