@@ -288,6 +288,17 @@ button.read_more {
       flex: 999 999 auto;
     }
   }
+  p{
+
+    ul > li {
+    margin-left: clamp(28px, 7.2vw, 52px);
+    }
+    ul > li:before {
+      position: absolute;
+      margin-left: clamp(-28px, -7.2vw, -52px);
+      content: "-";
+    }
+  }
   h1,h2 {
     @include font-display;
   }
@@ -296,6 +307,14 @@ button.read_more {
     text-decoration: underline;
   }
   .body {
+
+    h3{
+      margin-bottom:2;
+      margin-bottom:clamp(7px, 1.8vw, 13px);
+    }
+    h4{
+      margin-bottom:clamp(7px, 1.8vw, 13px);
+    }
     margin-top: 40px;
     margin: 40px 0;
   }
@@ -384,7 +403,7 @@ button.read_more {
   }
 }
 // Change the
-
+/*
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #011628;
@@ -404,4 +423,4 @@ button.read_more {
     a{
       color: white;
     }
-}
+}*/
