@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
@@ -15,6 +16,7 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 
 table { border-collapse: collapse; border-spacing: 0; }
 
+/* The following clamps are half of their counterpart. Example: $big-clamp-half is half of $big-clamp. */
 a { color: #000; text-decoration: underline; }
 
 body { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
@@ -38,13 +40,13 @@ button:hover { cursor: pointer; border-radius: 0%; }
 header button.logo { left: 1px; }
 header button.logo span { font-weight: 500; }
 header button.menu { right: 1px; }
-header button { font-size: clamp(16px, 3.6vw, 26px); position: fixed; top: 1px; border: 0; }
+header button { font-size: clamp(14px, 3.6vw, 26px); position: fixed; top: 1px; border: 0; }
 header button:hover { text-decoration: underline; }
 header button:hover:before { text-decoration: underline; }
 header .menu button { z-index: 3; }
-header .menu ul { opacity: 0; pointer-events: none; position: fixed; display: none; z-index: 3; width: 86vw; max-width: 720px; top: clamp(48px, 10.8vw, 78px); left: clamp(57px, 12vw, 86px); margin: 0; padding: 0 0 0 2%; }
+header .menu ul { opacity: 0; pointer-events: none; position: fixed; z-index: 3; margin: 0; padding: 0 0 0 2%; top: clamp(48px, 10.8vw, 78px); left: clamp(57px, 12vw, 86px); }
 header .menu ul li { line-height: 1; }
-header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; padding: 0 0px; }
+header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; padding: 0; }
 
 .show-menu .page { opacity: 0; pointer-events: none; }
 .show-menu .menu button:before { content: "close "; display: inline-block; }
@@ -60,29 +62,29 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 .insignia .insignia-inner { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; width: 25vw; max-width: 209px; margin: 0 auto; margin-top: -1px; }
 .insignia .insignia-inner:before { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; z-index: 2; display: block; content: " "; width: 61vw; max-width: 511px; margin-left: -75%; margin-top: -1px; }
 
-button.add-to-cart, button.read_more { width: 100%; padding: 2% 0; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
-
 .section { width: 86vw; max-width: 720px; padding: 30vh 0 0 0; margin: auto; }
 .section .frame { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; -ms-flex-line-pack: start; align-content: start; }
 .section .frame .image { width: 49%; height: 32vw; max-height: 268px; display: inline-block; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; margin: 0px; background-size: cover; background-position: center center; background-repeat: no-repeat; }
 .section .frame .image:first-child { height: 50vw; max-height: 418px; }
 .section .frame:after { display: block; margin: 0px; -webkit-box-flex: 999; -ms-flex: 999 999 auto; flex: 999 999 auto; }
-.section p ul > li { margin-left: clamp(28px, 7.2vw, 52px); }
-.section p ul > li:before { position: absolute; margin-left: clamp(-28px, -7.2vw, -52px); content: "-"; }
-.section h1, .section h2 { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: clamp(37px, 9.72vw, 75px); margin-bottom: clamp(12px, 3.24vw, 25px); }
+.section h1, .section h2 { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: 150%; margin-bottom: clamp(12px, 3.24vw, 25px); }
 .section h3 { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; text-decoration: underline; }
-.section .body { margin-top: 40px; margin: 40px 0; }
-.section .body h3 { margin-bottom: 2; margin-bottom: clamp(7px, 1.8vw, 13px); }
-.section .body h4 { margin-bottom: clamp(7px, 1.8vw, 13px); }
+.section .block { margin-top: 40px; margin: 40px 0; }
+.section .block h3 { margin-bottom: 2; margin-bottom: clamp(7px, 1.8vw, 13px); }
+.section .block h4 { margin-bottom: clamp(7px, 1.8vw, 13px); margin-top: clamp(7px, 1.8vw, 13px); }
+.section .block ul { margin-left: clamp(33.6px, 8.64vw, 62.4px); }
+.section .block ul > li { margin-bottom: clamp(7px, 1.8vw, 13px); }
+.section .block ul > li:before { position: absolute; margin-left: clamp(-42px, -10.8vw, -78px); content: "→"; }
 .section nav ol li { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-size: 75%; line-height: 150%; width: 100%; }
 .section nav ol li .category, .section nav ol li .subject, .section nav ol li .date { display: inline-block; }
 .section nav ol li .category { width: 15%; }
 .section nav ol li .category a:after { content: ""; }
 .section nav ol li .subject { width: 70%; }
 .section nav ol li .date { width: 10%; text-align: right; float: right; }
+.section button { width: 100%; padding: 2% 0; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
 
 .grid { width: 86vw; max-width: 720px; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: auto; -ms-flex-align: auto; align-items: auto; -ms-flex-line-pack: start; align-content: start; margin: auto; }
-.grid .title { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: clamp(37px, 9.72vw, 75px); margin-bottom: clamp(12px, 3.24vw, 25px); width: 100%; }
+.grid .title { font-family: "Ogg", serif; font-size: clamp(25px, 6.48vw, 50px); line-height: 150%; margin-bottom: clamp(12px, 3.24vw, 25px); width: 100%; }
 .grid .item { width: 35.8333333333vw; max-width: 300px; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; margin: 0 0 clamp(56px, 14.4vw, 104px) 0; }
 .grid .item .image { margin-bottom: clamp(14px, 3.6vw, 26px); background-size: cover; background-position: center center; background-repeat: no-repeat; display: block; width: 35.8333333333vw; max-width: 300px; height: 35.8333333333vw; max-height: 300px; }
 .grid .item .body .title { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
