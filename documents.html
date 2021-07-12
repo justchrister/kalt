@@ -16,7 +16,7 @@
 <html>
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Homepage </title>
+    <title> Kalt — Documents </title>
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="css/base.css">
     <!-- Defining the character set used -->
@@ -34,7 +34,7 @@
   <body>
     <header>
       <button class="logo">
-        <a href="/"><span>Kalt</span> — Homepage</a>
+        <a href="/"><span>Kalt</span> — Documents</a>
       </button>
       <nav class="menu">
         <button class="menu">
@@ -50,37 +50,47 @@
     -->
     <div class="page" id="homepage">
 
-      <!--
-        Symbolic logo
-      -->
-      <div class="insignia" data-tilt>
-        <div class="insignia-inner">
-        </div>
-      </div>
-
-      <!--
-        Featured section
-      -->
-      <div class="section" id="about">
-        <div class="frame">
-          <div class="image" style="background-image:url(media/brutal.jpg);">
-          </div>
-          <div class="image" style="background-image:url(media/speed.jpg);">
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title">
-            Designing long-term solutions to tough challenges.
-          </h2>
-          <p>
-            Kalt is a think tank focused on creating local change, with an international perspective.
-            Promoting local autonomy means empowering local communities to be self-starters, giving them stewardship over their environment, and providing support instead of exerting control.
-            We operate on a set of politically agnostic values.
-          </p>
-        </div>
-        <button class="read_more">
-          <a href="mailto:christer@kalt.co">contact</a>
-        </button>
+      <div class="section" id="documents">
+        <h2 class="title">
+          Documents
+        </h2>
+        <nav>
+          <ol>
+            <li>
+              <span class="category">
+                Guide
+              </span>
+              <span class="subject">
+                <a href="documents/Hardening a Mac.pdf" target="_blank">
+                  Hardening a Mac.pdf
+                </a>
+              </span>
+              <span class="date">2021</span>
+            </li>
+            <li>
+              <span class="category">
+                Policy
+              </span>
+              <span class="subject">
+                <a href="documents/Hardening a Mac.pdf" target="_blank">
+                  Strengthening local business.pdf
+                </a>
+              </span>
+              <span class="date">2021</span>
+            </li>
+            <li>
+              <span class="category">
+                Pamplet
+              </span>
+              <span class="subject">
+                <a href="documents/Hardening a Mac.pdf" target="_blank">
+                  Something political.psd
+                </a>
+              </span>
+              <span class="date">2021</span>
+            </li>
+          </ol>
+        </nav>
       </div>
     </div>
     <!-- Including jquery -->
@@ -94,7 +104,6 @@
       $('.js-tilt').tilt({
           reset: false
       })
-      console.log("%c Kalt: Enabled tilt.js.", okStyle);
     </script>
   </body>
 

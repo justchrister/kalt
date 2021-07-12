@@ -19,12 +19,12 @@
     <title> Kalt — Visual profile </title>
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="css/base.css">
-    <!-- Including the page stylesheet -->
-    <link rel="stylesheet" href="css/visual-profile.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Asking search engines not to index the website: -->
+    <meta name=”robots” content=”noindex”>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
@@ -42,21 +42,6 @@
           menu
         </button>
         <ul>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#documents">Documents</a>
-          </li>
-          <li>
-            <a href="visual-profile.html">Visual profile</a>
-          </li>
-          <li>
-            <a href="stylebook.html">Stylebook</a>
-          </li>
-          <li>
-            <a href="mailto:christer@kalt.co">Contact</a>
-          </li>
         </ul>
       </nav>
     </header>
@@ -87,7 +72,7 @@
           </p>
           <p>
             The logomark — also called the insignia — is the outline of one circle, inside the outline of two ovals. The outlines has to be 1 pixel on digital platforms, and as thin as possible in print, whilst still being visable.
-            It is very forgiving and can be made in almost any graphic software. <br> <br>
+            It is very forgiving and can be made in almost any graphic software, even just in text ( (o) ).<br> <br>
           </p>
           <div class="insignia" style="margin:0;transform:scale(0.8)">
             <div class="insignia-inner">
@@ -112,7 +97,6 @@
             <li>STIXGeneral Regular </li>
             <li>Times New Roman </li>
           </ol>
-          <h4> SCSS variable and mixin</h4>
 <pre><code>$serif : "Ogg",
          "STIXGeneral Regular",
          "Times New Roman",
@@ -134,7 +118,6 @@
             <li> Raleway </li>
             <li> Roboto </li>
           </ol>
-          <h4> SCSS variable and mixin</h4>
 <pre><code>$sans-serif: "Helvetica",
              "Arial",
              "Raleway",
