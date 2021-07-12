@@ -49,12 +49,6 @@ $(function () {
             name: 'Documents',
             link: 'documents.html' },
             {
-            name: 'Visual profile',
-            link: 'visual-profile.html' },
-            {
-            name: 'Stylebook',
-            link: 'stylebook.html' },
-            {
             name: 'Contact',
             link: 'mailto:christer@kalt.co'
         }]
@@ -76,12 +70,4 @@ $(function () {
         );
     });
     $menu.menu();
-});
-
-// Store page
-
-$("#store .more").click(function(){
-  $(this).parent(".item").addClass("open");
-  $("body").addClass("item-open");
-  console.log("%c Kalt: Opened a product.", okStyle);
 });
