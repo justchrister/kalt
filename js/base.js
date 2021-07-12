@@ -34,12 +34,18 @@ console.log("%c               >)     ))/   |          )/  \((  ) \              
 
 
 
-
+// Build the menu
 
 $(function () {
 
     var data = {
         menu: [{
+            name: 'Store',
+            link: 'store.html' },
+            {
+            name: 'About',
+            link: 'about.html'},
+            {
             name: 'Documents',
             link: 'documents.html' },
             {
@@ -70,4 +76,12 @@ $(function () {
         );
     });
     $menu.menu();
+});
+
+// Store page
+
+$("#store .more").click(function(){
+  $(this).parent(".item").addClass("open");
+  $("body").addClass("item-open");
+  console.log("%c Kalt: Opened a product.", okStyle);
 });
