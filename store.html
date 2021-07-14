@@ -31,7 +31,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
     <link rel="manifest" href="media/favicon/site.webmanifest">
   </head>
-  <body>
+  <body class="item-open">
     <header>
       <button class="logo">
         <a href="/"><span>Kalt</span> — Store</a>
@@ -48,6 +48,27 @@
     <!--
       Start the store
     -->
+    <div class="item-page">
+
+      <div class="item">
+        <div class="image" style="background-image:url(media/memphis.jpeg);">
+        </div>
+        <div class="body">
+          <h2>Memphis</h2>
+          <p class="byline">
+            Jean-Michel Basquiat
+          </p>
+          <p class="description">
+          </div>
+          <p class="information">
+            <span data-artistname></span> was an artist back in 100 cet.
+          </p>
+          <button class="more">
+            <a href="#title1111">300 000 /nok </a>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="page" id="store">
 
       <!--
@@ -60,7 +81,7 @@
         <p>
           We curate art from upencoming artists worldwide that you can decorate your
         </p>
-        <input type="text" class="search"></input>
+        <input type="text" class="search"   placeholder="Search" ></input>
       </div>
       <div class="section grid" id="store">
         <div class="item">
@@ -80,12 +101,12 @@
 
           </button>
         </div>
-        <div class="item">
+        <div class="item" data-price="3">
           <div class="image" style="background-image:url(media/basquiat.jpeg);">
           </div>
           <div class="body">
             <h2 class="title">Basquiat</h2>
-            <p class="description">
+            <p class="byline">
               Ready for a riot and the company meeting. 100% cotton, 100% sustainable, dope colors.
             </p>
           </div>
@@ -93,7 +114,7 @@
             more
           </button>
         </div>
-        <div class="item">
+        <div class="item" data-price="1">
           <div class="image" style="background-image:url(https://images.topman.com/i/TopMan/TM71B27TGRY_F_1.jpg);">
           </div>
           <div class="body">
@@ -106,7 +127,7 @@
             more
           </button>
         </div>
-        <div class="item">
+        <div class="item" data-price="4">
           <div class="image" style="background-image:url(https://junkyardmedia.imgix.net/media/catalog/product/9/2/924919.jpg?auto=format&w=640&h=640&fit=crop&crop=faces);">
           </div>
           <div class="body">
@@ -119,12 +140,12 @@
             more
           </button>
         </div>
-        </div>
+      </div>
     </div>
     <!-- Including jquery -->
     <script src="js/lib/jq.js"></script>
-    <!-- Including tilt.js for <div class="insignia"> -->
-    <script src="js/lib/tilt.js"></script>
+    <!-- Including list.js for search and filter functionality -->
+    <script src="js/lib/list.js"></script>
     <!-- Including base javascript -->
     <script src="js/base.js"></script>
     <!-- Including store javascript -->
