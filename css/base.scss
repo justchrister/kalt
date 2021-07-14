@@ -261,7 +261,7 @@ header {
       margin: 0;
       padding: 0 0 0 2%;
       //Proprietary clamps for the menu
-      top: clamp(48px, 10.8vw, 78px);
+      top: clamp(48px, 10.8vw, 78px); // to ensure the clamp is under the logo
       left: clamp(57px, 12vw, 86px);
       li {
         line-height: 1;
@@ -514,56 +514,44 @@ header {
     }
   }
 }
-.item-open {
-  header{
-    display:none;
-  }
-  .item-page{
-    @include site-width;
-    margin:auto;
+#artwork {
+	margin-top:0;
+	padding-top:0;
+  .section{
+    margin:0 auto;
+		padding:0;
     .image{
       width:100%;
       height:90vh;
-      border-top:$medium-clamp solid white;
-      border-bottom:$medium-clamp solid white;
+      border-top:clamp(48px, 10.8vw, 78px) solid white;
+      border-bottom:$big-clamp solid white;
       box-sizing: border-box;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
     }
-  }
-  .page{
-    opacity:0;
-    pointer-events : none;
-  }
-  .item{
-    display: block;
-    @include site-width;
     h2{
       @include font-display;
       margin:0;
-    }
-    .image{
-      width:100%;
-      max-width:100%;
-      height:90vh;
-      max-height:100vh;
-    }
-    .byline:before{
-      position: relative;
-      display: inline;
-      content: 'By ';
     }
     p{
       @include font-body;
       line-height: 150%;
       margin-bottom: $medium-clamp;
     }
+		.byline{
+			margin-top:$medium-clamp-half;
+	    &:before{
+	      position: relative;
+	      display: inline;
+	      content: 'By ';
+	    }
+		}
     button{
-      @include site-width;
-      background: white;
-    }
-  }
+	    @include site-width;
+	    background: white;
+		}
+	}
 }
 // Change the
 /*
