@@ -111,7 +111,7 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 .item-open .item .image { width: 100%; max-width: 100%; height: 90vh; max-height: 100vh; }
 .item-open .item .byline:before { position: relative; display: inline; content: 'By '; }
 .item-open .item p { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; line-height: 150%; margin-bottom: clamp(14px, 3.6vw, 26px); }
-.item-open .item button { width: 100%; color: transparent; }
+.item-open .item button { width: 86vw; max-width: 720px; background: white; }
 
 /*
 @media (prefers-color-scheme: dark) { body { background-color: #011628; color: white; } button, .insignia, .insignia-inner, .insignia-inner:before { border-color:white; } .insignia{

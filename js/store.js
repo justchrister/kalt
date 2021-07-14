@@ -10,8 +10,6 @@ $("#store .more").click(function(){
 $(".item").data('price-level');
 
 
-//
-
 
 
 console.log();

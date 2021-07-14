@@ -560,8 +560,8 @@ header {
       margin-bottom: $medium-clamp;
     }
     button{
-      width:100%;
-      color:transparent;
+      @include site-width;
+      background: white;
     }
   }
 }
