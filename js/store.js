@@ -16,8 +16,8 @@ $.urlParameter = function(name){
 }
 
 
-const artworks = {
-		menu: [{
+const artworks =
+			[{
 				artid: '2993',
 				title: 'Untitled (History of the Black People)' },
 				{
