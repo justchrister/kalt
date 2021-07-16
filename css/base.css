@@ -32,7 +32,7 @@ h3 { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-si
 
 a:focus { border: none; -webkit-box-shadow: none; box-shadow: none; color: #1E96FC; }
 
-button { border-radius: 50%; border: 1px solid black; padding: 1% 2%; background: transparent; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
+button { border-radius: 50%; border: 1px solid black; padding: 1% clamp(12px, 3.24vw, 25px); background: transparent; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
 button a { text-decoration: none; }
 button:hover { cursor: pointer; border-radius: 0%; }
 
@@ -52,7 +52,7 @@ header button { font-size: clamp(14px, 3.6vw, 26px); position: fixed; top: 1px; 
 header button:hover { text-decoration: underline; }
 header button:hover:before { text-decoration: underline; }
 header .menu button { z-index: 3; }
-header .menu ul { opacity: 0; pointer-events: none; position: fixed; z-index: 3; margin: 0; padding: 0 0 0 2%; top: clamp(48px, 10.8vw, 78px); left: clamp(57px, 12vw, 86px); }
+header .menu ul { opacity: 0; pointer-events: none; position: fixed; z-index: 3; margin: 0; padding: 0 0 0 clamp(12px, 3.24vw, 25px); top: clamp(35px, 8vw, 75px); left: clamp(48px, 12vw, 86px); }
 header .menu ul li { line-height: 1; }
 header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; padding: 0; }
 

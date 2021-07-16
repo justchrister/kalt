@@ -161,7 +161,7 @@ a:focus {
 button {
   border-radius: 50%;
   border: $border;
-  padding: 1% 2%;
+  padding: 1%  $big-clamp-half;
   background: transparent;
   @include font-body;
   a{
@@ -259,10 +259,10 @@ header {
       position: fixed;
       z-index: 3;
       margin: 0;
-      padding: 0 0 0 2%;
+      padding: 0 0 0 $big-clamp-half;
       //Proprietary clamps for the menu
-      top: clamp(48px, 10.8vw, 78px); // to ensure the clamp is under the logo
-      left: clamp(57px, 12vw, 86px);
+      top: clamp(35px, 8vw, 75px); // to ensure the clamp is under the logo
+      left: clamp(48px, 12vw, 86px);
       li {
         line-height: 1;
         a {
