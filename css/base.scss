@@ -303,6 +303,7 @@ header {
   max-height: 209px;
   border: $border;
   border-radius: 50%;
+	box-sizing: border-box;
   &:hover {
     border-radius: 0%;
   }

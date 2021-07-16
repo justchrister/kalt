@@ -60,7 +60,7 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 .show-menu .menu button:before { content: "close "; display: inline-block; }
 .show-menu .menu ul { display: block; opacity: 1; pointer-events: all; }
 
-.insignia, .insignia-inner, .insignia-inner:before { height: 25vw; max-height: 209px; border: 1px solid black; border-radius: 50%; }
+.insignia, .insignia-inner, .insignia-inner:before { height: 25vw; max-height: 209px; border: 1px solid black; border-radius: 50%; -webkit-box-sizing: border-box; box-sizing: border-box; }
 .insignia:hover, .insignia-inner:hover, .insignia-inner:before:hover { border-radius: 0%; }
 
 .insignia { z-index: -1; background: white; width: 86vw; max-width: 720px; margin: 30vh auto 15vh auto; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
