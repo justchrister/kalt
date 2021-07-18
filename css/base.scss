@@ -35,7 +35,7 @@ $medium-clamp-half: clamp(7px, 1.8vw, 13px);
 $medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
 // Font sizes
 
-//@import "https://cdnkalt.ams3.cdn.digitaloceanspaces.com/fonts/font.css";
+@import "https://cdnkalt.ams3.cdn.digitaloceanspaces.com/fonts/font.css";
 
 @mixin font-display {
   font-family: $serif;
