@@ -2,7 +2,6 @@ let okStyle = [
   "color: #FF0"
 ].join(";");
 
-
 $(".menu button").click(function(){
   $("body").toggleClass("show-menu");
   console.log("%c Kalt: Toggled menu.", okStyle);
@@ -69,5 +68,4 @@ $(function () {
             getMenuItem(this)
         );
     });
-    $menu.menu();
 });

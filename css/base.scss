@@ -168,6 +168,8 @@ button {
   @include font-body;
   a{
     text-decoration: none;
+    width: 100%;
+    display: block;
   }
   &:hover {
     cursor: pointer;

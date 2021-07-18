@@ -34,7 +34,7 @@ h3 { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-si
 a:focus { border: none; -webkit-box-shadow: none; box-shadow: none; color: #1E96FC; }
 
 button { border-radius: 50%; border: 1px solid black; padding: 1% clamp(12px, 3.24vw, 25px); background: transparent; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; }
-button a { text-decoration: none; }
+button a { text-decoration: none; width: 100%; display: block; }
 button:hover { cursor: pointer; border-radius: 0%; }
 
 pre code { display: block; overflow-x: auto; padding: clamp(14px, 3.6vw, 26px); margin: clamp(14px, 3.6vw, 26px) 0; font-family: "Courier New", "some type mono", Monospace; font-size: clamp(14px, 3.6vw, 26px); font-weight: 500; line-height: 100%; font-size: 80%; background-color: rgba(30, 150, 252, 0.1); line-height: 1.2; height: clamp(14px, 3.6vw, 26px); color: transparent; }

@@ -1,33 +1,38 @@
+function createArtwork(artworkData) {
+  var artworkTemplate = [
+		'<div class="item">',
+		'<div class="image" style="background-image:url(',
+		artworkData.image,
+	  ');"></div>',
+		'<div class="body">',
+		'<h2>',
+		artworkData.title,
+		'</h2>',
+		'<p class="byline">',
+		artworkData.byline,
+		'</p>',
+		'</div>',
+		'<button class="more">',
+		'<a href="artwork.html?id=',
+		artworkData.artid,
+		'">',
+		'300 000 /nok',
+		'</a>',
+		'</button>',
+		'</div>'
+  ];
 
-// Store page
-
-$("#store .more").click(function(){
-  $(this).parent(".item").addClass("open");
-  $("body").addClass("item-open");
-  console.log("%c Kalt: Opened a product.", okStyle);
-});
-
-$(".item").data('price-level');
-
-
-$.urlParameter = function(name){
-	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-	return results[1] || 0;
+  // a jQuery node
+  return $(artworkTemplate.join(''));
 }
 
+var items = $();
+// Store all the card nodes
+artworks.forEach(function(item, i) {
+  items = items.add(createArtwork(item));
+});
 
-const artworks =
-			[{
-				artid: '2993',
-				title: 'Untitled (History of the Black People)' },
-				{
-				name: '2995',
-				link: 'Untitled'
-		}]
-};
-
-$(document).ready(function() {
-	var artid = $.urlParameter("id");
-	console.log(artid);
-	$("#artid").html(artid);
- });
+// Add them to the page... for instance the <body>
+$(function() {
+  $('.grid#store').append(items);
+});
