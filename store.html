@@ -34,7 +34,7 @@
   <body>
     <header>
       <button class="logo">
-        <a href="/"><span>Kalt</span>— Store</a>
+        <a href="/"><span>Kalt </span>— Store</a>
       </button>
       <nav class="menu">
         <button class="menu">
@@ -75,6 +75,9 @@
     <script>
 			function createArtwork(artworkData) {
 			  var artworkTemplate = [
+					'<a href="artwork.html?id=',
+					artworkData.artid,
+					'">',
 					'<div class="item">',
 					'<div class="image" style="background-image:url(',
 					artworkData.image,
@@ -88,13 +91,11 @@
 					'</p>',
 					'</div>',
 					'<button class="more">',
-					'<a href="artwork.html?id=',
-					artworkData.artid,
-					'">',
 					'300 000 /nok',
 					'</a>',
 					'</button>',
-					'</div>'
+					'</div>',
+					'</a>'
 			  ];
 
 			  // a jQuery node
