@@ -115,6 +115,8 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 #artwork .section .byline:before { position: relative; display: inline; content: 'By '; }
 #artwork .section button { width: 86vw; max-width: 720px; background: white; }
 
+span#artid { font-weight: 300; }
+
 /*
 @media (prefers-color-scheme: dark) { body { background-color: #011628; color: white; } button, .insignia, .insignia-inner, .insignia-inner:before { border-color:white; } .insignia{
  background:#011628; } .menu, a{ color: white; }
