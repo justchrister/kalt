@@ -15,7 +15,8 @@ $monospace:  "Courier New",
              "some type mono",
              Monospace;
 
-$sectionpadding: 15vh;
+$sectionpadding: clamp(75px, 15vh, 175px);
+$sectionpadding-double: clamp(150px, 30vh, 350px);
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
 $border-width: 1px;
@@ -317,7 +318,7 @@ header {
   background: white;
   width: $sitewidth;
   max-width: $maxsitewidth;
-  margin: $sectionpadding*2 auto $sectionpadding auto;
+  margin: $sectionpadding-double auto $sectionpadding auto;
   transform-style: preserve-3d;
   &[data-tilt]:hover{
     .insignia-inner {
@@ -476,6 +477,17 @@ header {
     width:100%;
     display: block;
   }
+	a{
+		text-decoration: none;
+		&:hover{
+			h2{
+				text-decoration: underline;
+			}
+			button{
+				border-radius:0%;
+			}
+		}
+	}
   .item {
     width: $sitewidth/$column-divider;
     max-width: $maxsitewidth/$column-divider;
