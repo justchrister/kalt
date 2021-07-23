@@ -510,10 +510,10 @@ header {
         @include font-body;
         margin-bottom: 0;
 				display: -webkit-box;
--webkit-line-clamp: 1;
--webkit-box-orient: vertical;
-overflow: hidden;
-text-overflow: ellipsis;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
       }
       p {
         font-size: 75%;
