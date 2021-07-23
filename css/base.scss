@@ -155,7 +155,9 @@ h1,h2 {
 h3{
   @include font-body;
 }
-
+.bold-text{
+	text-transform: uppercase;
+}
 a:focus {
   border: none;
   box-shadow: none;
@@ -567,6 +569,25 @@ header {
     button{
 	    @include site-width;
 	    background: white;
+		}
+	}
+}
+#artwork{
+	#information{
+		margin-top:$sectionpadding;
+		padding-bottom:$sectionpadding;
+		li{
+			font-size:80%;
+			border-bottom:$border;
+			span{
+				width: 25%;
+				display:inline-block;
+				&.right-cell{
+					width: 73%;
+					padding-left:1%;
+					border-left:$border;
+				}
+			}
 		}
 	}
 }

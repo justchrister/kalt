@@ -50,19 +50,65 @@
     -->
     <div class="page" id="artwork">
 
-	    <div class="section">
+	    <div class="section" id="description">
         <div class="image"></div>
-        <h2></h2>
+        <h2 id="title"></h2>
         <p class="byline">
           Jean-Michel Basquiat
         </p>
         <p class="description">
           In this large work Basquiat recreates the epic of their ancestral arrival to the Americas. This includes references to Egypt and other parts of Africa, and most African American music centers in the southern United States. The paintings are rich in visual and textual references to African history and capture the fascinating subject of Basquiat aesthetics. Art historian Andre Fron proposed that the painting &quot;reject Egypt as an African&quot; in an attempt to neutralize Putremy&#x27;s revisionist position as a pioneer of Western civilization, not his own Africa. Emphasizes a person&#x27;s identity.
         </p>
-        <p class="information"></p>
-        <button class="more">
-          <a href="artwork.html?id=299394">est 300 000 /nok </a>
-        </button>
+
+				<button class="more">
+					<a href="artwork.html?id=299394">est 300 000 /nok </a>
+				</button>
+			</div>
+			<div class="section" id="information">
+				<ul>
+					<li class="bold-text">Artwork information </li>
+					<li id="curator">
+						<span class="left-cell">Curator: </span> <span class="right-cell">Christer Bjørnstad </span>
+					</li>
+					<li id="materials">
+						<span class="left-cell">Materials: </span> <span class="right-cell">Oil on canvas </span>
+					</li>
+					<li id="year">
+						<span class="left-cell">Year: </span> <span class="right-cell">1965 </span>
+					</li>
+					<li id="colors">
+						<span class="left-cell">Prominent Colors: </span> <span class="right-cell">
+							<span id="color-01" background-color="#c2bdba"></span>
+							<span id="color-02"></span>
+							<span id="color-03"></span>
+							<span id="color-04"></span>
+							<span id="color-05"></span>
+						</span>
+					</li>
+					<li id="price-range">
+						<span class="left-cell">Price: </span> <span class="right-cell" data-pricelevel="2">$$$ </span>
+					</li>
+				<li class="bold-text">Notable exhibitions</li>
+					<li>
+						<span class="left-cell"> 2020 </span> <span class="right-cell">Something </span>
+					</li>
+					<li>
+						<span class="left-cell"> 2020 </span> <span class="right-cell">Something </span>
+					</li>
+					<li>
+						<span class="left-cell"> 2020 </span> <span class="right-cell">Something </span>
+					</li>
+					<li>
+						<span class="left-cell"> 2020 </span> <span class="right-cell"> Something </span>
+					</li>
+				<li class="bold-text"> Previous owners  </li>
+					<li>
+						<span class="left-cell"> 2015 - 2020 </span> <span class="right-cell">Someone </span>
+					</li>
+					<li>
+						<span class="left-cell"> 2007 - 2015 </span> <span class="right-cell">Someone </span>
+					</li>
+				</ul>
 	    </div>
     </div>
     <!-- Including jquery -->
@@ -91,11 +137,10 @@
 				});
 
 				$("#artid").html(artwork.artid);
-				$("h2").html(artwork.title);
+				$("#title").html(artwork.title);
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
 				$('.byline').html(artwork.byline);
 				$('.description').html(artwork.description);
-
 
 				// show the site after content has loaded
 				$('body').css('opacity', '1');
