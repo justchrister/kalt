@@ -42,6 +42,7 @@ $medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
   font-size: $big-clamp;
   line-height: 150%;
   margin-bottom: $big-clamp-half;
+	font-display: optional;
 }
 
 @mixin font-body {
@@ -49,6 +50,7 @@ $medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
   font-size: $medium-clamp;
   font-weight:300;
   line-height: 150%;
+	font-display: optional;
 }
 
 @mixin font-monospace {
@@ -56,6 +58,7 @@ $medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
   font-size: $medium-clamp;
   font-weight: 500;
   line-height: 100%;
+	font-display: optional;
 }
 
 @mixin font-logotype {
