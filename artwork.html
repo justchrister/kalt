@@ -134,6 +134,7 @@
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
 				$('.byline').html(artwork.byline);
 				$('.description').html(artwork.description);
+				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
 
 				// show the site after content has loaded
 				$('body').css('opacity', '1');
