@@ -36,6 +36,9 @@ $(function () {
 
     var data = {
         menu: [{
+            name: 'Store',
+            link: 'store.html' },
+            {
             name: 'About',
             link: 'about.html'},
             {
