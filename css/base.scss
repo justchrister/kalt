@@ -19,7 +19,7 @@ $sectionpadding: clamp(75px, 15vh, 175px);
 $sectionpadding-double: clamp(150px, 30vh, 350px);
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
-$border-width: 1px;
+$border-width: .1px;
 $border: $border-width solid black;
 $color: #1E96FC;
 $column-divider: 2.4; //% of sitewidth
@@ -199,6 +199,7 @@ pre code {
   line-height:1.2;
   height: $medium-clamp;
   color: transparent;
+	overflow:hidden;
   &:hover{
     cursor: pointer;
   }
@@ -211,7 +212,6 @@ pre code {
       content: '';
       color:transparent;
     }
-
     &:hover{
       cursor: auto;
     }

@@ -35,11 +35,11 @@ h3 { font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-si
 
 a:focus { border: none; -webkit-box-shadow: none; box-shadow: none; color: #1E96FC; }
 
-button { border-radius: 50%; border: 1px solid black; padding: 1% clamp(12px, 3.24vw, 25px); background: transparent; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-display: optional; }
+button { border-radius: 50%; border: 0.1px solid black; padding: 1% clamp(12px, 3.24vw, 25px); background: transparent; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-display: optional; }
 button a { text-decoration: none; width: 100%; display: block; }
 button:hover { cursor: pointer; border-radius: 0%; }
 
-pre code { display: block; overflow-x: auto; padding: clamp(14px, 3.6vw, 26px); margin: clamp(14px, 3.6vw, 26px) 0; font-family: "Courier New", "some type mono", Monospace; font-size: clamp(14px, 3.6vw, 26px); font-weight: 500; line-height: 100%; font-display: optional; font-size: 80%; background-color: rgba(30, 150, 252, 0.1); line-height: 1.2; height: clamp(14px, 3.6vw, 26px); color: transparent; }
+pre code { display: block; overflow-x: auto; padding: clamp(14px, 3.6vw, 26px); margin: clamp(14px, 3.6vw, 26px) 0; font-family: "Courier New", "some type mono", Monospace; font-size: clamp(14px, 3.6vw, 26px); font-weight: 500; line-height: 100%; font-display: optional; font-size: 80%; background-color: rgba(30, 150, 252, 0.1); line-height: 1.2; height: clamp(14px, 3.6vw, 26px); color: transparent; overflow: hidden; }
 pre code:hover { cursor: pointer; }
 pre code.show-code { color: black; height: auto; padding: clamp(14px, 3.6vw, 26px); }
 pre code.show-code:before { display: block; content: ''; color: transparent; }
@@ -48,10 +48,10 @@ pre code:before { position: absolute; display: block; content: '> show code'; co
 
 .page { padding: clamp(48px, 10.8vw, 78px) 0 clamp(75px, 15vh, 175px) 0; }
 
-header button.logo { left: 1px; }
+header button.logo { left: 0.1px; }
 header button.logo span { font-weight: 500; }
-header button.menu { right: 1px; }
-header button { font-size: clamp(14px, 3.6vw, 26px); position: fixed; top: 1px; border: 0; }
+header button.menu { right: 0.1px; }
+header button { font-size: clamp(14px, 3.6vw, 26px); position: fixed; top: 0.1px; border: 0; }
 header button:hover { text-decoration: underline; }
 header button:hover:before { text-decoration: underline; }
 header .menu button { z-index: 3; }
@@ -63,15 +63,15 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 .show-menu .menu button:before { content: "close "; display: inline-block; }
 .show-menu .menu ul { display: block; opacity: 1; pointer-events: all; }
 
-.insignia, .insignia-inner, .insignia-inner:before { height: 25vw; max-height: 209px; border: 1px solid black; border-radius: 50%; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.insignia, .insignia-inner, .insignia-inner:before { height: 25vw; max-height: 209px; border: 0.1px solid black; border-radius: 50%; -webkit-box-sizing: border-box; box-sizing: border-box; }
 .insignia:hover, .insignia-inner:hover, .insignia-inner:before:hover { border-radius: 0%; }
 
 .insignia { z-index: -1; background: white; width: 86vw; max-width: 720px; margin: clamp(150px, 30vh, 350px) auto clamp(75px, 15vh, 175px) auto; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
 .insignia[data-tilt]:hover .insignia-inner { -webkit-transform: translateZ(120px) scale(0.5); transform: translateZ(120px) scale(0.5); -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; }
 .insignia[data-tilt]:hover .insignia-inner:before { -webkit-transform: translateZ(20px) scale(0.8); transform: translateZ(20px) scale(0.8); }
 .insignia .insignia-inner, .insignia .insignia-inner:before { position: relative; }
-.insignia .insignia-inner { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; width: 25vw; max-width: 209px; margin: 0 auto; margin-top: -1px; }
-.insignia .insignia-inner:before { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; z-index: 2; display: block; content: " "; width: 61vw; max-width: 511px; margin-left: -75%; margin-top: -1px; }
+.insignia .insignia-inner { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; width: 25vw; max-width: 209px; margin: 0 auto; margin-top: -0.1px; }
+.insignia .insignia-inner:before { -webkit-transition: -webkit-transform .5s 0s; transition: -webkit-transform .5s 0s; transition: transform .5s 0s; transition: transform .5s 0s, -webkit-transform .5s 0s; z-index: 2; display: block; content: " "; width: 61vw; max-width: 511px; margin-left: -75%; margin-top: -0.1px; }
 
 .section { width: 86vw; max-width: 720px; padding: clamp(75px, 15vh, 175px) 0 0 0; margin: auto; }
 .section .frame { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: end; -ms-flex-align: end; align-items: flex-end; -ms-flex-line-pack: start; align-content: start; }
@@ -94,7 +94,7 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 .section nav ol li .subject { width: 70%; }
 .section nav ol li .date { width: 10%; text-align: right; float: right; }
 .section button { width: 100%; padding: 2% 0; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-display: optional; }
-.section input { width: 100%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-display: optional; border-radius: 0%; border: 1px solid black; height: clamp(14px, 3.6vw, 26px); margin: clamp(14px, 3.6vw, 26px) 0; padding: clamp(7px, 1.8vw, 13px); }
+.section input { width: 100%; font-family: "Helvetica", "Arial", "Raleway", "Roboto", Sans-Serif; font-size: clamp(14px, 3.6vw, 26px); font-weight: 300; line-height: 150%; font-display: optional; border-radius: 0%; border: 0.1px solid black; height: clamp(14px, 3.6vw, 26px); margin: clamp(14px, 3.6vw, 26px) 0; padding: clamp(7px, 1.8vw, 13px); }
 
 .grid { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: auto; -ms-flex-align: auto; align-items: auto; -ms-flex-line-pack: start; align-content: start; margin: auto; }
 .grid h1 { width: 100%; display: block; }
@@ -118,9 +118,9 @@ header .menu ul li a { font-family: "Helvetica", "Arial", "Raleway", "Roboto", S
 #artwork .section button { width: 86vw; max-width: 720px; background: white; }
 
 #artwork #information { margin-top: clamp(75px, 15vh, 175px); padding-bottom: clamp(75px, 15vh, 175px); }
-#artwork #information li { font-size: 80%; border-bottom: 1px solid black; }
+#artwork #information li { font-size: 80%; border-bottom: 0.1px solid black; }
 #artwork #information li span { width: 30%; display: inline-block; }
-#artwork #information li span.right-cell { width: 65%; padding-left: 1%; border-left: 1px solid black; }
+#artwork #information li span.right-cell { width: 65%; padding-left: 1%; border-left: 0.1px solid black; }
 
 span#artid { font-weight: 300; }
 
