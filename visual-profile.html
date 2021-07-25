@@ -143,9 +143,9 @@ p {
             <a href="#colors"> Colors </a>
           </h2>
           <p>
-            Since not all operating systems have the same fonts available, we have decided to use a stack of fonts instead of a restrictive set of fonts. This means we support almost every system.
+            You may use any color you like, but we do prefer the use of the ones below. They are also in this <a href="https://coolors.co/1e96fc-2afc98-f3c969" target="_blank">coolors.co</a>
           </p>
-          <h3>Brand color</h3>
+          <h3>Brand colors</h3>
           <ul>
 						<li style="background-color:#1E96FC;">
 							Primary
@@ -162,57 +162,65 @@ p {
 						<li style="background-color:#1E96FC;opacity:.2;">
 							Shade 01
 						</li>
-					</ul>
-          <h3>Good color</h3>
-          <ul>
-						<li style="background-color:#2AFC98;">
+					</ul><ul>
+						<li style="background-color:#F991CC;">
 							Primary
 						</li>
-						<li style="background-color:#2AFC98;opacity:.8;">
+						<li style="background-color:#F991CC;opacity:.8;">
 							Shade 04
 						</li>
-						<li style="background-color:#2AFC98;opacity:.6;">
+						<li style="background-color:#F991CC;opacity:.6;">
 							Shade 03
 						</li>
-						<li style="background-color:#2AFC98;opacity:.4;">
+						<li style="background-color:#F991CC;opacity:.4;">
 							Shade 02
 						</li>
-						<li style="background-color:#2AFC98;opacity:.2;">
+						<li style="background-color:#F991CC;opacity:.2;">
 							Shade 01
 						</li>
 					</ul>
-          <h3>Bad color</h3>
-          <ul>
-						<li style="background-color:#F3C969;">
-							Primary
-						</li>
-						<li style="background-color:#F3C969;opacity:.8;">
-							Shade 04
-						</li>
-						<li style="background-color:#F3C969;opacity:.6;">
-							Shade 03
-						</li>
-						<li style="background-color:#F3C969;opacity:.4;">
-							Shade 02
-						</li>
-						<li style="background-color:#F3C969;opacity:.2;">
-							Shade 01
-						</li>
+        </div>
+      </div>
+      <div class="section">
+        <div class="block" id="margins">
+          <h2>
+            <a href="#margins"> Margins </a>
+          </h2>
+          <p>
+            The margins on both the web, in documents etc is a creative restriction that lets the content breathe. When you are restricted to using only a set amount of space you
+          </p>
+          <h3>Digital</h3>
+					<p>
+						The margins on digital surfaces should be equal on all sides, the width of the margin is determined by the width of the surface. The margin should be 7% of the width of the screen.
+					</p>
+					<h4>Exceptions.</h4>
+					<ul>
+						<li>The menu of a website or an app has only a 1px margin around it.</li>
+						<li>On ultrawide screens the width of the site will only reach 720px. Therefore, the margins on the left and right side will be larger.</li>
 					</ul>
+					<h3>Print</h3>
         </div>
       </div>
 			<style>
 
 
 			#colors ul{
-				margin-left:0;
+				margin:0;
+				padding:0;
+				display: inline-block;
 				width:50%;
 			}
+
 			#colors ul li{
-				padding:0 10px;
 				margin:0;
 				color:transparent;
+				line-height: 100%;
 			}
+
+			#colors ul li:first-child{
+				line-height:200%;
+			}
+
 			#colors ul li:before{
 				display:none;
 			}
