@@ -338,20 +338,20 @@ header {
     position: relative;
   }
   .insignia-inner {
-  transition: transform .5s 0s;
+	  transition: transform .5s 0s;
     width: 25vw;
     max-width: 209px;
     margin: 0 auto;
-    margin-top: -$border-width;
+    margin-top: -1px;
     &:before {
-    transition: transform .5s 0s;
+	    transition: transform .5s 0s;
       z-index: 2;
       display: block;
       content: " ";
       width: 61vw;
       max-width: 511px;
       margin-left: -75%;
-      margin-top: -$border-width;
+      margin-top: -1px;
     }
   }
 }
