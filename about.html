@@ -33,7 +33,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
     <link rel="manifest" href="media/favicon/site.webmanifest">
   </head>
-  <body>
+  <body style="	background: rgb(255,255,0);
+		background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+	">
     <header>
       <button class="logo">
         <a href="/"><span>Kalt</span> — About</a>
@@ -48,33 +50,36 @@
     </header>
 
     <!--
-      Start the homepage
+      Start the about page
     -->
     <div class="page" id="about">
-
-      <!--
-        Featured section
-      -->
       <div class="section" id="about">
-        <div class="frame">
-          <div class="image" style="background-image:url(media/brutal.jpg);">
-          </div>
-          <div class="image" style="background-image:url(media/speed.jpg);">
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title">
-            Designing long-term solutions to tough challenges.
-          </h2>
-          <p>
-            Kalt is a think tank focused on creating local change, with an international perspective.
-            Promoting local autonomy means empowering local communities to be self-starters, giving them stewardship over their environment, and providing support instead of exerting control.
-            We operate on a set of politically agnostic values.
+        <div class="block" style="border:1px solid blue;background:#fff;
+				padding:20px;">
+					<h1 style="border:1px solid blue;"> About </h1>
+          <p style="border:1px solid blue;">
+						This is a think tank — that is practical, rather than theoretical — with the goal of making everywhere more inclusive and interesting. Through local change, with a global perspective.
           </p>
+				</div>
+			</div>
+			<div class="section" style="padding-top:0;">
+				<button style=" background:#fff;">something</button>
+			</div>
+			<div class="section">
+        <div class="block">
+					<p>
+						<strong>Events/exhibtions</strong> Our goal is to find interesting and one of a kind curators that can put together unique experiences with up and coming artists.
+					</p>
+					<p>
+						<strong>Art</strong> Artists are one of the few that are able to bring up taboo topic, set the agenda for public discussion, and amplify important voices.
+					</p>
+					<p>
+						<strong>Capital</strong> Our enourmous goals are capital intensive, and require us to earn money continously. However, profits is a means to an end, and an outcome of doing extraordinary work.
+					</p>
+					<p>
+						<strong>Nomadic</strong> Our team is located everywhere, and we have no headquarters or physical location. This lets us find the perfect venue for an event, and work with artists from anywhere.
+					</p>
         </div>
-        <button class="read_more">
-          <a href="mailto:christer@kalt.co">contact</a>
-        </button>
       </div>
     </div>
     <!-- Including jquery -->

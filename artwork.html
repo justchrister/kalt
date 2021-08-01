@@ -34,24 +34,7 @@
     <link rel="manifest" href="media/favicon/site.webmanifest">
   </head>
   <body class="item-open" style="opacity:0;">
-    <header>
-      <button class="logo">
-        <a href="/"><span>Kalt</span> — <span id="artid"></span></a>
-      </button>
-      <nav class="menu">
-        <button class="menu">
-          menu
-        </button>
-        <ul>
-        </ul>
-      </nav>
-    </header>
-
-    <!--
-      Start the store
-    -->
     <div class="page" id="artwork">
-
 	    <div class="section" id="description">
         <div class="image"></div>
         <h2 id="title"></h2>
@@ -61,7 +44,6 @@
         <p class="description">
           In this large work Basquiat recreates the epic of their ancestral arrival to the Americas. This includes references to Egypt and other parts of Africa, and most African American music centers in the southern United States. The paintings are rich in visual and textual references to African history and capture the fascinating subject of Basquiat aesthetics. Art historian Andre Fron proposed that the painting &quot;reject Egypt as an African&quot; in an attempt to neutralize Putremy&#x27;s revisionist position as a pioneer of Western civilization, not his own Africa. Emphasizes a person&#x27;s identity.
         </p>
-
 				<button class="more">
 					<a href="artwork.html?id=299394">est 300 000 /nok </a>
 				</button>
@@ -96,10 +78,16 @@
 					</li>
 				<li class="bold-text"> Previous owners  </li>
 					<li>
-						<span class="left-cell"> 2015 - 2020 </span> <span class="right-cell">Someone </span>
+						<span class="left-cell"> 2015 - 2020 </span> <span class="right-cell">Charles Saatchi </span>
 					</li>
 					<li>
-						<span class="left-cell"> 2007 - 2015 </span> <span class="right-cell">Someone </span>
+						<span class="left-cell"> 2007 - 2015 </span> <span class="right-cell">Bernard Arnault </span>
+					</li>
+					<li>
+						<span class="left-cell"> 2000 - 2007 </span> <span class="right-cell"><del>REDACTED</del> </span>
+					</li>
+					<li>
+						<span class="left-cell"> 1996 - 2000 </span> <span class="right-cell">Steven Cohen </span>
 					</li>
 				</ul>
 	    </div>
@@ -107,14 +95,10 @@
     <!-- Including jquery -->
     <script src="js/lib/jq.js"></script>
     <!-- Including base javascript -->
-    <script src="js/base.js"></script>
-    <!-- Including store javascript -->
     <script src="js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
-
-			// Artwork page
-
+		
 			$.urlParameter = function(name){
 				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 				return results[1] || 0;
