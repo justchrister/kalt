@@ -19,9 +19,10 @@ $sectionpadding: clamp(75px, 15vh, 175px);
 $sectionpadding-double: clamp(150px, 30vh, 350px);
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
-$border-width: 1px;
+$border-width: .1px;
 $border: $border-width solid black;
 $color: #1E96FC;
+$background-color: #FCF9F2;
 $column-divider: 2.4; //% of sitewidth
 
 $big-clamp: clamp(25px, 6.48vw, 50px);
@@ -33,6 +34,7 @@ $big-clamp-half: clamp(12px, 3.24vw, 25px);
 $medium-clamp-half: clamp(7px, 1.8vw, 13px);
 
 $medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
+$medium-clamp-half-negative: clamp(-7px, -1.8vw, -13px);
 
 :root {
   --medium-clamp: $medium-clamp;
@@ -114,8 +116,13 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	background:$background-color;
   @include font-body;
 	touch-action: manipulation; // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
+}
+body.yellow-gradient{
+	background: rgb(255,255,0);
+	background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba($background-color,1) 35%, rgba($background-color,1) 100%);
 }
 ol, ul {
 	list-style: none;
@@ -165,11 +172,15 @@ h3{
 }
 .bold-text{
 	text-transform: uppercase;
+	margin-top:$medium-clamp;
 }
 a:focus {
   border: none;
   box-shadow: none;
-  color: $color;
+  //color: $color;
+}
+*:focus{
+	background:rgba($color,0.2);
 }
 button {
   border-radius: 50%;
@@ -182,6 +193,7 @@ button {
     width: 100%;
     display: block;
   }
+	&:focus,
   &:hover {
     cursor: pointer;
     border-radius: 0%;
@@ -317,6 +329,7 @@ header {
   height: 25vw;
   max-height: 209px;
   border: $border;
+	border-width: 1px;
   border-radius: 50%;
 	box-sizing: border-box;
   &:hover {
@@ -325,7 +338,7 @@ header {
 }
 .insignia {
   z-index: -1;
-  background: white;
+  background: $background-color;
   width: $sitewidth;
   max-width: $maxsitewidth;
   margin: $sectionpadding-double auto $sectionpadding auto;
@@ -377,12 +390,11 @@ header {
     align-items: flex-end;
     align-content: start;
     .image {
-      width: 49%;
-      height: 32vw;
-      max-height: 268px;
+			height: 32vw;
+			max-height: 268px;
       display: inline-block;
-      flex: 0 0 auto;
-      margin: 0px;
+	    flex-grow: 1;
+	    flex-basis: 0;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -390,6 +402,9 @@ header {
         height: 50vw;
         max-height: 418px;
       }
+			&:last-child{
+				margin-left: $medium-clamp;
+			}
     }
     &:after {
       display: block;
@@ -463,14 +478,37 @@ header {
     @include font-body;
   }
   input{
-    width:100%;
+		background-color: $background-color;
+
+		max-width: $maxsitewidth;
+    width:$sitewidth;
     @include font-body;
     border-radius: 0%;
     border: $border;
     height:$medium-clamp;
-    margin: $medium-clamp 0;
-    padding: $medium-clamp-half;
+    margin: $medium-clamp  0;
+		box-sizing: border-box;
+    padding: $medium-clamp $medium-clamp-half;
   }
+}
+
+.section.intro{
+	.block{
+		background:$background-color;
+		padding:$medium-clamp-half;
+		margin-left:$medium-clamp-half-negative;
+		margin-right:$medium-clamp-half-negative;
+	}
+	button{
+		background:$background-color;
+	}
+	.block,
+	.block p,
+	.block h1,
+	.block h2,
+	.block h3{
+		border:1px solid;
+	}
 }
 
 // The product grid
@@ -549,19 +587,24 @@ header {
 #artwork {
 	margin-top:0;
 	padding-top:0;
+	.image{
+		background-color:white;
+		width:100vw;
+		height:95vh;
+		max-height: 100vw;
+		border: $big-clamp solid #fff;
+		box-sizing: border-box;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	#description{
+		margin-top:$sectionpadding;
+
+	}
   .section{
     margin:0 auto;
 		padding:0;
-    .image{
-      width:100%;
-      height:90vh;
-      border-top:clamp(48px, 10.8vw, 78px) solid white;
-      border-bottom:$big-clamp solid white;
-      box-sizing: border-box;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
     h2{
       @include font-display;
       margin:0;
@@ -581,7 +624,7 @@ header {
 		}
     button{
 	    @include site-width;
-	    background: white;
+	    background: $background-color;
 		}
 	}
 }
@@ -591,16 +634,18 @@ header {
 		padding-bottom:$sectionpadding;
 		li{
 			font-size:80%;
-			border-bottom:$border;
+			line-height: 150%;
+			overflow:hidden;
+	    border-bottom: 1px dotted rgba(0,0,0,.5);
 			span{
-				width: 30%;
+				width: 37%;
+		    vertical-align:top; /* <------ HAHA! */
 				display:inline-block;
 				&.right-cell{
-					width: 65%;
+					width: 61%;
 					padding-left:1%;
-					border-left:$border;
+					text-transform: lowercase;
 				}
-
 			}
 		}
 	}
@@ -632,13 +677,13 @@ del{
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #011628;
-        color: white;
+        color: $background-color;
     }
     button,
     .insignia,
     .insignia-inner,
     .insignia-inner:before {
-      border-color:white;
+      border-color:$background-color;
     }
 		#artwork .section .image{
 		      border-color:#011628;
@@ -654,12 +699,12 @@ del{
 		pre code{
 			&:before,
 			&.show-code{
-				color: white;
+				color: $background-color;
 			}
 		}
     .menu,
     a{
-      color: white;
+      color: $background-color;
     }
 }
 */
