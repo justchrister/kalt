@@ -36,14 +36,14 @@ $(function () {
 
     var data = {
         menu: [{
-            name: 'Store',
-            link: 'store.html' },
+            name: 'Artworks',
+            link: '🖼' },
             {
             name: 'About',
-            link: 'about.html'},
+            link: '/👋'},
             {
             name: 'Documents',
-            link: 'documents.html' },
+            link: '/📄' },
             {
             name: 'Contact',
             link: 'mailto:christer@kalt.co'

@@ -16,7 +16,7 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Error </title>
+    <title> Kalt — Privacy </title>
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="css/base.css">
     <!-- Defining the character set used -->
@@ -36,7 +36,7 @@
   <body>
     <header>
       <button class="logo">
-        <a href="/"><span>Kalt</span> — Error</a>
+        <a href="/"><span>Kalt</span> — Privacy</a>
       </button>
       <nav class="menu">
         <button class="menu">
@@ -48,34 +48,31 @@
     </header>
 
     <!--
-      Start the error page
+      Start the homepage
     -->
-    <div class="page" id="Error">
+    <div class="page" id="privacy">
 
-      <!--
-        Featured section
-      -->
-      <div class="section" id="about">
-        <div class="frame">
-          <div class="image" style="background-image:url(media/brutal.jpg);">
-          </div>
-          <div class="image" style="background-image:url(media/speed.jpg);">
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title">
-						This page does not exist
-          </h2>
-        </div>
-        <button class="read_more">
-          <a href="https://kalt.co">homepage</a>
-        </button>
+      <div class="section" id="documents">
+        <h2 class="title">
+          Privacy
+        </h2>
+        <p>
+          We do not store any data on anyone.
+        </p>
       </div>
     </div>
-    <!-- Including jquery2 -->
+    <!-- Including jquery -->
     <script src="https://beta.kalt.co/js/lib/jq.js"></script>
+    <!-- Including tilt.js for <div class="insignia"> -->
+    <script src="https://beta.kalt.co/js/lib/tilt.js"></script>
     <!-- Including base javascript -->
     <script src="https://beta.kalt.co/js/base.js"></script>
+    <!-- Enabling tilt js -->
+    <script>
+      $('.js-tilt').tilt({
+          reset: false
+      })
+    </script>
   </body>
 
 </html>

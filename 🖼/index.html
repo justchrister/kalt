@@ -16,9 +16,9 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Error </title>
+    <title> Kalt — Store </title>
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -36,7 +36,7 @@
   <body>
     <header>
       <button class="logo">
-        <a href="/"><span>Kalt</span> — Error</a>
+        <a href="/"><span>Kalt </span>— Store</a>
       </button>
       <nav class="menu">
         <button class="menu">
@@ -48,34 +48,74 @@
     </header>
 
     <!--
-      Start the error page
+      Start the store
     -->
-    <div class="page" id="Error">
+    <div class="page">
 
       <!--
         Featured section
       -->
-      <div class="section" id="about">
-        <div class="frame">
-          <div class="image" style="background-image:url(media/brutal.jpg);">
-          </div>
-          <div class="image" style="background-image:url(media/speed.jpg);">
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title">
-						This page does not exist
-          </h2>
-        </div>
-        <button class="read_more">
-          <a href="https://kalt.co">homepage</a>
-        </button>
+      <div class="section" id="intro">
+        <h1>
+          Find carefully curated art
+        </h1>
+        <p>
+          We curate art from upencoming artists worldwide that you can decorate your
+        </p>
+        <input type="text" class="search"   placeholder="Search" ></input>
+      </div>
+      <div class="section grid list" id="store">
       </div>
     </div>
-    <!-- Including jquery2 -->
+    <!-- Including jquery -->
     <script src="https://beta.kalt.co/js/lib/jq.js"></script>
     <!-- Including base javascript -->
     <script src="https://beta.kalt.co/js/base.js"></script>
+    <!-- Including store javascript -->
+    <script src="https://beta.kalt.co/js/artworks.js"></script>
+    <!-- Including store javascript -->
+    <script>
+
+			function createArtwork(artworkData) {
+			  var artworkTemplate = [
+					'<a href="artwork.html?id=',
+					artworkData.artid,
+					'">',
+					'<div class="item">',
+					'<div class="image" style="background-image:url(',
+					artworkData.image,
+				  ');"></div>',
+					'<div class="body">',
+					'<h2 class="title">',
+					artworkData.title,
+					'</h2>',
+					'<p class="byline">',
+					artworkData.byline,
+					'</p>',
+					'</div>',
+					'<button class="more">',
+					'300 000 /nok',
+					'</button>',
+					'</div>',
+					'</a>'
+			  ];
+
+			  // a jQuery node
+			  return $(artworkTemplate.join(''));
+			}
+
+			var items = $();
+			// Store all the card nodes
+			artworks.forEach(function(item, i) {
+			  items = items.add(createArtwork(item));
+			});
+
+			// Add them to the page... for instance the <body>
+			$(function() {
+			  $('.grid#store').append(items);
+			});
+
+		</script>
   </body>
 
 </html>

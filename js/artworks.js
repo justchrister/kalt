@@ -4,7 +4,7 @@ const artworks = [
 		{
 			artid: '2993',
 			title: 'Untitled (History of the Black People)',
-			image: 'media/basquiat.jpeg',
+			image: 'https://cdn.kalt.co/media/basquiat.jpeg',
 			year: '1931',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
 			state: 'bid',
@@ -14,7 +14,7 @@ const artworks = [
 		{
 			artid: '2991',
 			title: 'Untitled (Memphis)',
-			image: 'media/memphis.jpeg',
+			image: 'https://cdn.kalt.co/media/memphis.jpeg',
 			year: '1931',
 			state: 'bid',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
@@ -24,7 +24,7 @@ const artworks = [
 		{
 			artid: '2992',
 			title: 'Large still life with pedestal table',
-			image: 'media/picasso.jpg',
+			image: 'https://cdn.kalt.co/media/picasso.jpg',
 			year: '1931',
 			state: 'sold',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
