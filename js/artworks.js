@@ -4,7 +4,7 @@ const artworks = [
 		{
 			artid: '00001',
 			title: 'All Colored Cast (Part II)',
-			image: 'https://cdn.kalt.co/media/00001.jpeg',
+			image: 'https://cdn.kalt.co/media/00001.jpg',
 			year: '1982',
 			price: '208 861 200',
 			currency: 'NOK',
@@ -16,7 +16,7 @@ const artworks = [
 		{
 			artid: '00002',
 			title: 'David Hockney - For Louisiana',
-			image: 'https://cdn.kalt.co/media/0002.jpeg',
+			image: 'https://cdn.kalt.co/media/0002.jpg',
 			year: '2021',
 			price: '6 000',
 			state: 'bid',
