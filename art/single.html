@@ -34,7 +34,7 @@
     <link rel="manifest" href="https://cdn.kalt.co/media/favicon/site.webmanifest">
   </head>
   <body class="item-open" style="opacity:0;background:#fff;">
-			<button style="border-color:transparent;position:fixed;" onclick="window.history.back();">╳</button>
+			<a href="https://beta.kalt.co/art"><button style="border-color:transparent;position:fixed;" id="close">╳</button></a>
     <div class="page" id="artwork">
 			<div class="image"></div>
 	    <div class="section" id="description">
@@ -99,7 +99,10 @@
     <script src="https://beta.kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
-
+			if (navigator.appVersion.indexOf("Win")!=-1)
+			{
+			  $("#close").css('right','0');
+			}
 			$.urlParameter = function(name){
 				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 				return results[1] || 0;
