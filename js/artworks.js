@@ -19,6 +19,7 @@ const artworks = [
 			image: 'https://cdn.kalt.co/media/0002.jpg',
 			year: '2021',
 			price: '6 000',
+			currency: 'NOK',
 			state: 'bid',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
 			byline: 'Memphis group',

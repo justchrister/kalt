@@ -46,7 +46,7 @@
           In this large work Basquiat recreates the epic of their ancestral arrival to the Americas. This includes references to Egypt and other parts of Africa, and most African American music centers in the southern United States. The paintings are rich in visual and textual references to African history and capture the fascinating subject of Basquiat aesthetics. Art historian Andre Fron proposed that the painting &quot;reject Egypt as an African&quot; in an attempt to neutralize Putremy&#x27;s revisionist position as a pioneer of Western civilization, not his own Africa. Emphasizes a person&#x27;s identity.
         </p>
 				<button class="more">
-					<a href="artwork.html?id=299394">est 300 000 /nok </a>
+					<a href="artwork.html?id=299394">est <span id="price">$$$</span> <span id="currency">$$$</span> </a>
 				</button>
 			</div>
 			<div class="section" id="information">
@@ -119,6 +119,8 @@
 
 				$("#artid").html(artwork.artid);
 				$("#title").html(artwork.title);
+				$("#price").html(artwork.price);
+				$("#currency").html(artwork.currency);
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
 				$('.byline').html(artwork.byline);
 				$('.description').html(artwork.description);
