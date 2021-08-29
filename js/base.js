@@ -37,7 +37,7 @@ $(function () {
     var data = {
         menu: [{
             name: 'Artworks',
-            link: '🖼' },
+            link: '/art' },
             {
             name: 'About',
             link: '/👋'},
