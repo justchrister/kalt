@@ -16,7 +16,7 @@ const artworks = [
 		{
 			artid: '00002',
 			title: 'David Hockney - For Louisiana',
-			image: 'https://cdn.kalt.co/media/memphis.jpeg',
+			image: 'https://cdn.kalt.co/media/0002.jpeg',
 			year: '2021',
 			price: '6 000',
 			state: 'bid',
