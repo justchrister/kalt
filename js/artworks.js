@@ -8,6 +8,7 @@ const artworks = [
 			year: '1982',
 			price: '208 861 200',
 			currency: 'NOK',
+			curator: 'christer',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
 			state: 'bid',
 			byline: 'Jean-Michel Basquiat',
@@ -15,14 +16,15 @@ const artworks = [
 		},
 		{
 			artid: '00002',
-			title: 'David Hockney - For Louisiana',
-			image: 'https://cdn.kalt.co/media/0002.jpg',
+			title: 'For Louisiana',
+			image: 'https://cdn.kalt.co/media/00002.jpg',
 			year: '2021',
 			price: '6 000',
 			currency: 'NOK',
+			curator: 'christer',
 			state: 'bid',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
-			byline: 'Memphis group',
+			byline: 'David Hockney',
 			description: 'In this large work Basquiat recreates the epic of their ancestral arrival to the Americas. This includes references to Egypt and other parts of Africa, and most African American music centers in the southern United States. The paintings are rich in visual and textual references to African history and capture the fascinating subject of Basquiat aesthetics. Art historian Andre Fron proposed that the painting "reject Egypt as an African" in an attempt to neutralize Putremys revisionist position as a pioneer of Western civilization, not his own Africa. Emphasizes a persons identity.'
 		}
 ];

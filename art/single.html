@@ -59,7 +59,7 @@
 						<span class="left-cell">Materials: </span> <span class="right-cell">Oil on canvas </span>
 					</li>
 					<li id="year">
-						<span class="left-cell">Year: </span> <span class="right-cell">1965 </span>
+						<span class="left-cell">Year: </span> <span class="right-cell" id="year">1965 </span>
 					</li>
 					<li id="price-range">
 						<span class="left-cell">Price: </span> <span class="right-cell" data-pricelevel="2">$$$ </span>
@@ -120,6 +120,8 @@
 				$("#artid").html(artwork.artid);
 				$("#title").html(artwork.title);
 				$("#price").html(artwork.price);
+				$("#year").html(artwork.year);
+				$("#curator").html(artwork.curator);
 				$("#currency").html(artwork.currency);
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
 				$('.byline').html(artwork.byline);
