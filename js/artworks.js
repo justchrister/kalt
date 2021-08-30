@@ -12,7 +12,13 @@ const artworks = [
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
 			state: 'bid',
 			byline: 'Jean-Michel Basquiat',
-			description: 'All Colored Cast (Part II) is one of two canvases that Basquiat created in 1982, whose title is a direct comment on racism in Hollywood. The work also has a number of historical references in regard to black history, such as famous boxer Jersey Joe Walcott, and Haitian revolutionary Toussaint L’Overture.'
+			description: 'All Colored Cast (Part II) is one of two canvases that Basquiat created in 1982, whose title is a direct comment on racism in Hollywood. The work also has a number of historical references in regard to black history, such as famous boxer Jersey Joe Walcott, and Haitian revolutionary Toussaint L’Overture.',
+			exhibited: (
+				'Los Angeles, Gagosian Gallery, Jean-Michel Basquiat: New Paintings, March-April 1983',
+				'Geneva, Musée d\'art moderne et contemporain, Rudiments d\'un musée possible, September 1994-June 1995',
+				'Geneva, Musée d\'art moderne et contemporain, Patchwork in progress 1 to 7, November 1997-December 1999',
+				'Geneva, Musée d\'art moderne et contemporain, Vivement 2002 ! premier épisode, January-March 2000'
+			)
 		},
 		{
 			artid: '00002',
