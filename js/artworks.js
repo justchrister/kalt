@@ -25,6 +25,6 @@ const artworks = [
 			state: 'bid',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
 			byline: 'David Hockney',
-			description: 'In this large work Basquiat recreates the epic of their ancestral arrival to the Americas. This includes references to Egypt and other parts of Africa, and most African American music centers in the southern United States. The paintings are rich in visual and textual references to African history and capture the fascinating subject of Basquiat aesthetics. Art historian Andre Fron proposed that the painting "reject Egypt as an African" in an attempt to neutralize Putremys revisionist position as a pioneer of Western civilization, not his own Africa. Emphasizes a persons identity.'
+			description: 'A pioneer of the 1960s British movement, David Hockney is one of the most celebrated and prolific artists of the 20th and 21st centuries. Endlessly versatile, he has produced acrylic paintings, photo collages, full-scale opera set designs, and digital works created on iPads. Hockney first gained recognition for his semi-abstract paintings of gay love. He moved to California in 1964 and captured his new home in sensual, pastel-hued scenes of uninhibited queer men whose idyllic, sunny backdrops feature swimming pools, palm trees, and light, beautiful homes. Hockney has exhibited at the Museum of Modern Art in New York, the Royal Academy of Arts in London, and the Van Gogh Museum in Amsterdam, among many other institutions.'
 		}
 ];

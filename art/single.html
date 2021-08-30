@@ -40,10 +40,10 @@
 	    <div class="section" id="description">
         <h2 id="title"></h2>
         <p class="byline">
-          Jean-Michel Basquiat
+					byline
         </p>
         <p class="description">
-          In this large work Basquiat recreates the epic of their ancestral arrival to the Americas. This includes references to Egypt and other parts of Africa, and most African American music centers in the southern United States. The paintings are rich in visual and textual references to African history and capture the fascinating subject of Basquiat aesthetics. Art historian Andre Fron proposed that the painting &quot;reject Egypt as an African&quot; in an attempt to neutralize Putremy&#x27;s revisionist position as a pioneer of Western civilization, not his own Africa. Emphasizes a person&#x27;s identity.
+          Description
         </p>
 				<button class="more">
 					<a href="artwork.html?id=299394">est <span id="price">$$$</span> <span id="currency">$$$</span> </a>
@@ -52,13 +52,13 @@
 			<div class="section" id="information">
 				<ul>
 					<li class="bold-text">Artwork information </li>
-					<li id="curator">
-						<span class="left-cell">Curator: </span> <span class="right-cell">Christer Bjørnstad </span>
+					<li>
+						<span class="left-cell">Curator: </span> <span class="right-cell" id="curator">Christer Bjørnstad </span>
 					</li>
 					<li id="materials">
 						<span class="left-cell">Materials: </span> <span class="right-cell">Oil on canvas </span>
 					</li>
-					<li id="year">
+					<li>
 						<span class="left-cell">Year: </span> <span class="right-cell" id="year">1965 </span>
 					</li>
 					<li id="price-range">
@@ -127,7 +127,6 @@
 				$('.byline').html(artwork.byline);
 				$('.description').html(artwork.description);
 				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
-
 				// show the site after content has loaded
 				$('body').css('opacity', '1');
 
