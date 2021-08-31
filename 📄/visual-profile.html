@@ -17,7 +17,9 @@
   <head>
     <!-- Setting the title -->
     <title> Kalt — Visual profile </title>
-		<!-- prefetching the cdn -->
+		<!-- prefetching from the cdn -->
+		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
+		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
@@ -230,7 +232,7 @@ p {
 			}
 			</style>
     <!-- Including jquery -->
-    <script src="https://beta.kalt.co/js/lib/jq.js"></script>
+    <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
     <!-- Including base javascript -->
     <script src="https://beta.kalt.co/js/base.js"></script>
   </body>
