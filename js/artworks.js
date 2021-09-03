@@ -31,6 +31,7 @@ const artworks = [
 			currency: 'NOK',
 			curator: 'christer',
 			state: 'bid',
+			medium: 'Print',
 			dimensions: '92 x 140 cm (36.22" x 55.12")',
 			byline: 'David Hockney',
 			description: 'A pioneer of the 1960s British movement, David Hockney is one of the most celebrated and prolific artists of the 20th and 21st centuries. Endlessly versatile, he has produced acrylic paintings, photo collages, full-scale opera set designs, and digital works created on iPads. Hockney first gained recognition for his semi-abstract paintings of gay love. He moved to California in 1964 and captured his new home in sensual, pastel-hued scenes of uninhibited queer men whose idyllic, sunny backdrops feature swimming pools, palm trees, and light, beautiful homes. Hockney has exhibited at the Museum of Modern Art in New York, the Royal Academy of Arts in London, and the Van Gogh Museum in Amsterdam, among many other institutions.',
