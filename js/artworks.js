@@ -13,6 +13,7 @@ const artworks = [
 			state: 'bid',
 			medium: 'Acrylic and Collage on Canvas',
 			size: '152.5 x 152.5 cm',
+			button: 'https://www.sec.gov/Archives/edgar/data/1860454/000149315221017359/form253g2.htm',
 			description: 'All Colored Cast (Part II) is one of two canvases that Basquiat created in 1982, whose title is a direct comment on racism in Hollywood. The work also has a number of historical references in regard to black history, such as famous boxer Jersey Joe Walcott, and Haitian revolutionary Toussaint L’Overture.'
 		},
 		{

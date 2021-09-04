@@ -116,6 +116,9 @@
 				$("#medium").html(artwork.medium);
 				// show the site after content has loaded
 				$('body').css('opacity', '1');
+				if(artwork.button){
+					$('button.more').html("read more");
+				}
 			 });
 		</script>
   </body>
