@@ -66,3 +66,10 @@ $(function () {
         );
     });
 });
+// Add _blank target to all external links
+$('a[href^="http://"]').not('a[href*=kalt.co]').attr('target','_blank');
+$('a[href^="https://"]').not('a[href*=kalt.co]').attr('target','_blank');
+
+// Add nofollow rel to all external links
+$('a[href^="http://"]').not('a[href*=kalt.co]').attr('rel','nofollow');
+$('a[href^="https://"]').not('a[href*=kalt.co]').attr('rel','nofollow');
