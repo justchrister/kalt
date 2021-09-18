@@ -20,8 +20,8 @@
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
 		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
-		<link rel="preload" href="https://beta.kalt.co/js/base.js" as="script">
-		<link rel="preload" href="https://beta.kalt.co/js/artworks.js" as="script">
+		<link rel="preload" href="https://kalt.co/js/base.js" as="script">
+		<link rel="preload" href="https://kalt.co/js/artworks.js" as="script">
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
@@ -41,7 +41,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
   </head>
   <body class="item-open" style="opacity:0;background:#fff;">
-		<a href="https://beta.kalt.co/art"><button style="border-color:transparent;position:fixed;right:0;" id="close">╳</button></a>
+		<a href="https://kalt.co/art"><button style="border-color:transparent;position:fixed;right:0;" id="close">╳</button></a>
     <div class="page" id="artwork">
 			<div class="image"></div>
 	    <div class="section" id="description">
@@ -80,7 +80,7 @@
     <!-- Including jquery -->
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
     <!-- Including base javascript -->
-    <script src="https://beta.kalt.co/js/artworks.js"></script>
+    <script src="https://kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
 			if (navigator.appVersion.indexOf("Win")!=-1)
@@ -108,7 +108,7 @@
 				$('.byline').html(artwork.byline);
 				$('.description').html(artwork.description);
 				$("#price").html(artwork.price);
-				$("#price2").html(artwork.price); // this one seems unecessarry 
+				$("#price2").html(artwork.price); // this one seems unecessarry
 				$("#currency").html(artwork.currency);
 				$("#year").html(artwork.year);
 				$("#exhibitions").append(artwork.exhibited);
