@@ -39,9 +39,6 @@ $(function () {
             name: 'Artworks',
             link: '/art' },
             {
-            name: 'About',
-            link: '/👋'},
-            {
             name: 'Documents',
             link: '/📄' },
             {
@@ -73,3 +70,7 @@ $('a[href^="https://"]').not('a[href*=kalt.co]').attr('target','_blank');
 // Add nofollow rel to all external links
 $('a[href^="http://"]').not('a[href*=kalt.co]').attr('rel','nofollow');
 $('a[href^="https://"]').not('a[href*=kalt.co]').attr('rel','nofollow');
+
+
+// set a cookie, lool
+document.cookie = "cookie!";
