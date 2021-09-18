@@ -1,3 +1,3 @@
 # Kalt
 
-I am making a website.
+This is just christer's personal enterprise. 

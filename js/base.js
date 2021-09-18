@@ -16,15 +16,15 @@ $("code").click(function(){
   $(this).addClass("show-code");
 });
 console.log("");
-console.log("%c                          (                          ", okStyle)
-console.log("%c              .            )        )                ", okStyle)
-console.log("%c                        (  (|              .         ", okStyle)
-console.log("%c                   )   )\\/ ( ( (                     ", okStyle)
-console.log("%c           *  (   ((  /     ))\\))  (  )    )         ", okStyle)
-console.log("%c         (     \\   )\\(          |  ))( )  (|         ", okStyle)
+console.log("%c                          (                              ", okStyle)
+console.log("%c              .            )        )                    ", okStyle)
+console.log("%c                        (  (|              .             ", okStyle)
+console.log("%c                   )   )\\/ ( ( (                        ", okStyle)
+console.log("%c           *  (   ((  /     ))\\))  (  )    )            ", okStyle)
+console.log("%c         (     \\   )\\(          |  ))( )  (|           ", okStyle)
 console.log("%c        >)     ))/   |          )/  \\((  ) \\ \\        ", okStyle)
 console.log("");
-console.log("%c                       kalt.co                       ", okStyle)
+console.log("%c                       kalt.co                           ", okStyle)
 console.log("");
 
 
@@ -36,11 +36,8 @@ $(function () {
 
     var data = {
         menu: [{
-            name: 'About',
-            link: 'about.html'},
-            {
-            name: 'Documents',
-            link: 'documents.html' },
+            name: 'Artworks',
+            link: '/art' },
             {
             name: 'Contact',
             link: 'mailto:christer@kalt.co'
@@ -63,3 +60,14 @@ $(function () {
         );
     });
 });
+// Add _blank target to all external links
+$('a[href^="http://"]').not('a[href*=kalt.co]').attr('target','_blank');
+$('a[href^="https://"]').not('a[href*=kalt.co]').attr('target','_blank');
+
+// Add nofollow rel to all external links
+$('a[href^="http://"]').not('a[href*=kalt.co]').attr('rel','nofollow');
+$('a[href^="https://"]').not('a[href*=kalt.co]').attr('rel','nofollow');
+
+
+// set a cookie, lool
+document.cookie = "cookie!";

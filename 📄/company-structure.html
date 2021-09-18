@@ -16,7 +16,7 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Error </title>
+    <title> Kalt — Company structure </title>
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
 		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
@@ -41,7 +41,7 @@
   <body>
     <header>
 			<a href="/">
-	      <button class="logo"><span>Kalt</span> — Error</button>
+	      <button class="logo"><span>Kalt</span> — Company structure</button>
 			</a>
       <nav class="menu">
         <button class="menu">
@@ -53,32 +53,35 @@
     </header>
 
     <!--
-      Start the error page
+      Start the homepage
     -->
-    <div class="page" id="Error">
+    <div class="page" id="taxes">
 
-      <!--
-        Featured section
-      -->
-      <div class="section" id="about">
-        <div class="frame">
-          <div class="image" style="background-image:url(https://cdn.kalt.co/media/error_min.jpg);margin-left:0;">
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title">
-						This page does not exist
-          </h2>
-        </div>
-        <button class="read_more">
-          <a href="https://kalt.co">homepage</a>
-        </button>
-      </div>
+			<div class="section">
+				<div class="block">
+					<h2> Company structure </h2>
+					<p>
+						<strong>Subsidiaries</strong> The organization is located everywhere, we have no physical location. This lets us find perfect venues , and work with awesome talent from anywhere.
+						<ul>
+							<li>Kalt — Semi-Liquid Capital Reserve</li>
+							<li>Kalt — Specialized Consulting</li>
+							<li>Kalt — Public Relations</li>
+					</p>
+				</div>
+			</div>
     </div>
-    <!-- Including jquery2 -->
+    <!-- Including jquery -->
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <!-- Including tilt.js for <div class="insignia"> -->
+    <script src="https://cdn.kalt.co/js/lib/tilt.js"></script>
     <!-- Including base javascript -->
     <script src="https://kalt.co/js/base.js"></script>
+    <!-- Enabling tilt js -->
+    <script>
+      $('.js-tilt').tilt({
+          reset: false
+      })
+    </script>
   </body>
 
 </html>

@@ -1,0 +1,131 @@
+<!doctype html>
+
+
+    <!--                             kalt.co                                -->
+
+
+    <!--                                (                                   -->
+    <!--                    .            )        )                         -->
+    <!--                              (  (|              .                  -->
+    <!--                         )   )\/ ( ( (                              -->
+    <!--                 *  (   ((  /     ))\))  (  )    )                  -->
+    <!--               (     \   )\(          |  ))( )  (|                  -->
+    <!--               >)     ))/   |          )/  \((  ) \                 -->
+
+
+<html lang="en">
+  <head>
+    <!-- Setting the title -->
+    <title> Kalt — Untitled (History of the Black People) </title>
+		<!-- prefetching from the cdn -->
+		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
+		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
+		<link rel="preload" href="https://kalt.co/js/base.js" as="script">
+		<link rel="preload" href="https://kalt.co/js/artworks.js" as="script">
+		<link rel="preconnect" href="https://cdn.kalt.co">
+    <!-- Including the base stylesheet -->
+    <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
+    <!-- Defining the character set used -->
+    <meta charset="UTF-8">
+    <!-- Setting the viewport to make your website look good on all devices: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Asking search engines not to index the website: -->
+    <meta name=”robots” content=”noindex”>
+    <!-- Adding description -->
+		<meta name="description" content="Carefully curated art">
+		<!-- Adding theme color -->
+		<meta name="theme-color" content="#FCF9F2"/>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
+  </head>
+  <body class="item-open" style="opacity:0;background:#fff;">
+		<a href="https://kalt.co/art"><button style="border-color:transparent;position:fixed;right:0;" id="close">╳</button></a>
+    <div class="page" id="artwork">
+			<div class="image"></div>
+	    <div class="section" id="description">
+        <h2 id="title"></h2>
+        <p class="byline">
+					byline
+        </p>
+        <p class="description">
+          Description
+        </p>
+				<a href="mailto:christer@kalt.co" id="button_href">
+					<button class="more" style="background:#fff;">est <span id="price">$$$</span> <span id="currency">$$$</span></button>
+				</a>
+			</div>
+			<div class="section" id="information">
+				<ul>
+					<li class="bold-text">Artwork information </li>
+					<li>
+						<span class="left-cell">Curator: </span> <span class="right-cell" id="curator">Curator </span>
+					</li>
+					<li id="materials">
+						<span class="left-cell">Medium: </span> <span class="right-cell">Medium </span>
+					</li>
+					<li>
+						<span class="left-cell">Year: </span> <span class="right-cell" id="year">1965 </span>
+					</li>
+					<li id="price-range">
+						<span class="left-cell">Price: </span> <span class="right-cell" id="price2">$$$ </span>
+					</li>
+				</ul>
+				<ul id="exhibitions">
+					<li class="bold-text">Notable exhibitions</li>
+				</ul>
+	    </div>
+    </div>
+    <!-- Including jquery -->
+    <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <!-- Including base javascript -->
+    <script src="https://kalt.co/js/artworks.js"></script>
+    <!-- Including store javascript -->
+    <script>
+			if (navigator.appVersion.indexOf("Win")!=-1)
+			{
+			  $("#close").css('right','0');
+			}
+			$.urlParameter = function(name){
+				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+				return results[1] || 0;
+			}
+
+			$(document).ready(function() {
+				var artid = $.urlParameter("id");
+
+				console.log("Loading " + artid);
+				// Get the coresponding artwork object in the artworks array.
+				var artwork = artworks.find(obj => {
+				  return obj.artid === artid;
+				});
+
+				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
+				$('.image').css('background-image', 'url(' + artwork.image + ')');
+				$("#artid").html(artwork.artid);
+				$("#title").html(artwork.title);
+				$('.byline').html(artwork.byline);
+				$('.description').html(artwork.description);
+				$("#price").html(artwork.price);
+				$("#price2").html(artwork.price); // this one seems unecessarry
+				$("#currency").html(artwork.currency);
+				$("#year").html(artwork.year);
+				$("#exhibitions").append(artwork.exhibited);
+				$("#curator").html(artwork.curator);
+				$("#medium").html(artwork.medium);
+				// show the site after content has loaded
+				$('body').css('opacity', '1');
+				if(artwork.button){
+					$('button.more').html("read more");
+					$('#button_href').attr("href", artwork.button);
+					$('#button_href').attr("target", "_blank");
+				} else {
+					$('#button_href').attr("href", "mailto:" + artwork.curator + "@kalt.co?cc=christer@kalt.co&subject=Acquisition Inquiry: " + artwork.title + " by " + artwork.byline + " (artwork id: " + artwork.artid + ")&body=Hello " + artwork.curator + ", %0D%0A");
+
+				}
+			 });
+		</script>
+  </body>
+
+</html>

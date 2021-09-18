@@ -16,7 +16,7 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Error </title>
+    <title> Kalt — Prioritizing tasks </title>
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
 		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
@@ -41,7 +41,7 @@
   <body>
     <header>
 			<a href="/">
-	      <button class="logo"><span>Kalt</span> — Error</button>
+	      <button class="logo"><span>Kalt</span> — Privacy</button>
 			</a>
       <nav class="menu">
         <button class="menu">
@@ -53,32 +53,37 @@
     </header>
 
     <!--
-      Start the error page
+      Start the homepage
     -->
-    <div class="page" id="Error">
+    <div class="page" id="taxes">
 
-      <!--
-        Featured section
-      -->
-      <div class="section" id="about">
-        <div class="frame">
-          <div class="image" style="background-image:url(https://cdn.kalt.co/media/error_min.jpg);margin-left:0;">
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title">
-						This page does not exist
-          </h2>
-        </div>
-        <button class="read_more">
-          <a href="https://kalt.co">homepage</a>
-        </button>
+      <div class="section" id="documents">
+        <h2 class="title">
+          Prioritizing tasks
+        </h2>
+        <p>
+          Dont answer emails, slack messages or teams right away.
+        </p>
+				<p>
+					In this modern society we have gotten used to being available to everyone all the time. In doing so, we loose focus constantly, instead of focusing on the tasks we should be doing, we often end up communicating with people instead of actually getting things done.
+				</p>
+				<p>
+					Using the Eisenhower matrix in combination with a goal-oriented list, we delegate or eliminate everything that is not a part of our DO list (5 items).
+				</p>
       </div>
     </div>
-    <!-- Including jquery2 -->
+    <!-- Including jquery -->
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <!-- Including tilt.js for <div class="insignia"> -->
+    <script src="https://cdn.kalt.co/js/lib/tilt.js"></script>
     <!-- Including base javascript -->
     <script src="https://kalt.co/js/base.js"></script>
+    <!-- Enabling tilt js -->
+    <script>
+      $('.js-tilt').tilt({
+          reset: false
+      })
+    </script>
   </body>
 
 </html>

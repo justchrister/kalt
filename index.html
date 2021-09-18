@@ -17,8 +17,12 @@
   <head>
     <!-- Setting the title -->
     <title> Kalt — Homepage </title>
+		<!-- prefetching from the cdn -->
+		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
+		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
+		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -27,17 +31,18 @@
     <meta name=”robots” content=”noindex”>
     <!-- Adding description -->
 		<meta name="description" content="Carefully curated art">
+		<!-- Adding theme color -->
+		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
-    <link rel="manifest" href="media/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
   </head>
   <body><!--
     <header>
-      <button class="logo">
-        <a href="/"><span>Kalt</span> — Homepage</a>
-      </button>
+			<a href="/">
+	      <button class="logo"><span>Kalt</span> — Homepage</button>
+			</a>
       <nav class="menu">
         <button class="menu">
           menu
@@ -63,9 +68,9 @@
         Featured sectionss
       <div class="section" id="about">
         <div class="frame">
-          <div class="image" style="background-image:url(media/brutal.jpg);">
+          <div class="image" style="background-image:url(https://cdn.kalt.co/media/homepage_01_min.jpg);">
           </div>
-          <div class="image" style="background-image:url(media/speed.jpg);">
+          <div class="image" style="background-image:url(https://cdn.kalt.co/media/homepage_02_min.jpg);">
           </div>
         </div>
         <div class="block">
@@ -73,22 +78,20 @@
             Designing long-term solutions to tough challenges.
           </h2>
           <p>
-            Kalt is a think tank focused on creating local change, with an international perspective.
-            Promoting local autonomy means empowering local communities to be self-starters, giving them stewardship over their environment, and providing support instead of exerting control.
-            We operate on a set of politically agnostic values.
+						Through practical solutions — rather than theoretical — we are working to make everywhere more inclusive and interesting. We make our decisions based on a set of politially agnostic values, and are doing our best to be a positive impact to everyone.
           </p>
         </div>
-        <button class="read_more">
-          <a href="mailto:christer@kalt.co">contact</a>
-        </button>
+        <a href="mailto:christer@kalt.co">
+	        <button class="read_more">contact</button>
+				</a>
       </div>
     </div>
     <!-- Including jquery2 -->
-    <script src="js/lib/jq.js"></script>
+    <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
     <!-- Including tilt.js for <div class="insignia"> -->
-    <script src="js/lib/tilt.js"></script>
+    <script src="https://cdn.kalt.co/js/lib/tilt.js"></script>
     <!-- Including base javascript -->
-    <script src="js/base.js"></script>
+    <script src="https://kalt.co/js/base.js"></script>
     <!-- Enabling tilt js -->
     <script>
       $('.js-tilt').tilt({

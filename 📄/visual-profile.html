@@ -1,0 +1,239 @@
+<!doctype html>
+
+
+    <!--                             kalt.co                                -->
+
+
+    <!--                                (                                   -->
+    <!--                    .            )        )                         -->
+    <!--                              (  (|              .                  -->
+    <!--                         )   )\/ ( ( (                              -->
+    <!--                 *  (   ((  /     ))\))  (  )    )                  -->
+    <!--               (     \   )\(          |  ))( )  (|                  -->
+    <!--               >)     ))/   |          )/  \((  ) \                 -->
+
+
+<html lang="en">
+  <head>
+    <!-- Setting the title -->
+    <title> Kalt — Visual profile </title>
+		<!-- prefetching from the cdn -->
+		<link rel="preload" href="https://cdn.kalt.co/css/base.css" as="style">
+		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
+		<link rel="preconnect" href="https://cdn.kalt.co">
+    <!-- Including the base stylesheet -->
+    <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
+    <!-- Defining the character set used -->
+    <meta charset="UTF-8">
+    <!-- Setting the viewport to make your website look good on all devices: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Asking search engines not to index the website: -->
+    <meta name=”robots” content=”noindex”>
+    <!-- Adding description -->
+		<meta name="description" content="Carefully curated art">
+		<!-- Adding theme color -->
+		<meta name="theme-color" content="#FCF9F2"/>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
+  </head>
+  <body>
+
+    <header>
+			<a href="/">
+	      <button class="logo"><span>Kalt</span> — Visual profile</button>
+			</a>
+      <nav class="menu">
+        <button class="menu">
+          menu
+        </button>
+        <ul>
+        </ul>
+      </nav>
+    </header>
+
+    <!--
+      Start the homepage
+    -->
+    <div class="page" id="visual-profile">
+
+      <!--
+        Featured section
+      -->
+      <div class="section">
+        <div class="body">
+          <p>
+            The goal of the visual profile is to communicate ideas as clearly as possible, while not being restrictive. This is achived in combination with the <a href="stylebook.html">Kalt — Stylebook</a>.
+          </p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="block" id="logo">
+          <h2>
+            <a href="#logo"> The logo </a>
+          </h2>
+          <p>
+            The logotype is set in Helvetica Regular; <span style="font-weight:400;">Kalt</span>. It is always be capitalized, even in URL's.<br>
+
+          </p>
+          <p>
+            The logomark — also called the insignia — is the outline of one circle, inside the outline of two ovals. The outlines has to be 1 pixel on digital platforms, and as thin as possible in print, whilst still being visable.
+            It is very forgiving and can be made in almost any graphic software, even just in text ( (o) ).<br> <br>
+          </p>
+          <div class="insignia" style="margin:0;transform:scale(0.8)">
+            <div class="insignia-inner">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="block" id="font-stack">
+          <h2>
+            <a href="#font-stack"> Font stack </a>
+          </h2>
+          <p>
+            Since not all operating systems have the same fonts available, we have decided to use a stack of fonts instead of a restrictive set of fonts. This means we support almost every system.
+          </p>
+          <h3>Display font</h3>
+          <p>
+            We decided to use a serif fonts for titles and headlines.
+          </p>
+          <ol>
+            <li> Ogg </li>
+            <li>STIXGeneral Regular </li>
+            <li>Times New Roman </li>
+          </ol>
+<pre><code>$serif : "Ogg",
+         "STIXGeneral Regular",
+         "Times New Roman",
+         Serif;
+
+@mixin font-display {
+  font-family: $serif;
+  font-size: clamp(25px, 6.48vw, 50px);
+  line-height: clamp(37px, 9.72vw, 75px);
+  margin-bottom: clamp(12px, 3.24vw, 25px);
+}</code></pre>
+          <h3>Body font</h3>
+          <p>
+            Used for large blocks of texts,
+          </p>
+          <ol>
+            <li> Helvetica </li>
+            <li> Arial </li>
+            <li> Raleway </li>
+            <li> Roboto </li>
+          </ol>
+<pre><code>$sans-serif: "Helvetica",
+             "Arial",
+             "Raleway",
+             "Roboto",
+             Sans-Serif;
+
+@mixin font-body {
+  font-size: clamp(14px, 3.6vw, 26px);
+	font-weight: 300;
+  line-height: 150%;
+  font-family: $sans-serif;
+}
+p {
+  @include font-body;
+}</code></pre>
+        </div>
+      </div>
+      <div class="section">
+        <div class="block" id="colors">
+          <h2>
+            <a href="#colors"> Colors </a>
+          </h2>
+          <p>
+            You may use any color you like, but we do prefer the use of the ones below. They are also in this <a href="https://coolors.co/1e96fc-2afc98-f3c969" target="_blank">coolors.co</a>
+          </p>
+          <h3>Brand colors</h3>
+          <ul>
+						<li style="background-color:#1E96FC;">
+							Primary
+						</li>
+						<li style="background-color:#1E96FC;opacity:.8;">
+							Shade 04
+						</li>
+						<li style="background-color:#1E96FC;opacity:.6;">
+							Shade 03
+						</li>
+						<li style="background-color:#1E96FC;opacity:.4;">
+							Shade 02
+						</li>
+						<li style="background-color:#1E96FC;opacity:.2;">
+							Shade 01
+						</li>
+					</ul><ul>
+						<li style="background-color:#F991CC;">
+							Primary
+						</li>
+						<li style="background-color:#F991CC;opacity:.8;">
+							Shade 04
+						</li>
+						<li style="background-color:#F991CC;opacity:.6;">
+							Shade 03
+						</li>
+						<li style="background-color:#F991CC;opacity:.4;">
+							Shade 02
+						</li>
+						<li style="background-color:#F991CC;opacity:.2;">
+							Shade 01
+						</li>
+					</ul>
+        </div>
+      </div>
+      <div class="section">
+        <div class="block" id="margins">
+          <h2>
+            <a href="#margins"> Margins </a>
+          </h2>
+          <p>
+            The margins on both the web, in documents etc is a creative restriction that lets the content breathe. When you are restricted to using only a set amount of space you
+          </p>
+          <h3>Digital</h3>
+					<p>
+						The margins on digital surfaces should be equal on all sides, the width of the margin is determined by the width of the surface. The margin should be 7% of the width of the screen.
+					</p>
+					<h4>Exceptions.</h4>
+					<ul>
+						<li>The menu of a website or an app has only a 1px margin around it.</li>
+						<li>On ultrawide screens the width of the site will only reach 720px. Therefore, the margins on the left and right side will be larger.</li>
+					</ul>
+					<h3>Print</h3>
+        </div>
+      </div>
+			<style>
+
+
+			#colors ul{
+				margin:0;
+				padding:0;
+				display: inline-block;
+				width:50%;
+			}
+
+			#colors ul li{
+				margin:0;
+				color:transparent;
+				line-height: 100%;
+			}
+
+			#colors ul li:first-child{
+				line-height:200%;
+			}
+
+			#colors ul li:before{
+				display:none;
+			}
+			</style>
+    <!-- Including jquery -->
+    <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <!-- Including base javascript -->
+    <script src="https://kalt.co/js/base.js"></script>
+  </body>
+
+</html>
