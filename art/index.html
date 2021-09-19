@@ -34,6 +34,16 @@
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
+		<style>
+		.item{
+			display:none;
+			height:0;
+			width:0;
+		}
+		.item.active{
+			display:block;
+		}
+		</style>
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
@@ -120,6 +130,17 @@
 			$(function() {
 			  $('.grid#store').append(items);
 			});
+			jQuery.expr[':'].contains = function(a, i, m) {
+			  return jQuery(a).text().toUpperCase()
+			      .indexOf(m[3].toUpperCase()) >= 0;
+			};
+			$('.search').on('input', function() {
+			  var something = $('.search').val();
+				$('h2:contains(' + something + ')').closest(".item").addClass('active');
+				$('h2:not(:contains('+ something +'))').closest(".item").removeClass('active');
+			});
+
+
 
 		</script>
   </body>
