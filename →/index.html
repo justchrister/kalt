@@ -53,23 +53,29 @@
           Loading...
         </p>
 				<a href="mailto:christer@kalt.co" id="button_href">
-					<button class="more" style="background:#fff;"><span id="price"></span> <span id="currency">Loading...</span></button>
+					<button class="more" style="background:#fff;" id="price">Loading...</button>
 				</a>
 			</div>
 			<div class="section" id="information">
 				<ul>
 					<li class="bold-text">Artwork information </li>
 					<li>
-						<span class="left-cell">Curator: </span> <span class="right-cell" id="curator">Loading... </span>
-					</li>
-					<li id="materials">
-						<span class="left-cell">Medium: </span> <span class="right-cell" id="medium">Loading... </span>
+						<span class="left-cell">Artist: </span> <span class="right-cell" data-artworks="byline">Loading... </span>
 					</li>
 					<li>
-						<span class="left-cell">Year: </span> <span class="right-cell" id="year">Loading... </span>
+						<span class="left-cell">Title: </span> <span class="right-cell" data-artworks="title">Loading... </span>
 					</li>
-					<li id="price-range">
-						<span class="left-cell">Price: </span> <span class="right-cell" id="price2">Loading... </span>
+					<li>
+						<span class="left-cell">Curator: </span> <span class="right-cell" data-artworks="curator">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Medium: </span> <span class="right-cell" data-artworks="medium">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Year: </span> <span class="right-cell" data-artworks="year">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Price: </span> <span class="right-cell" data-artworks="price-combined">Loading... </span>
 					</li>
 				</ul>
 	    </div>
@@ -90,22 +96,25 @@
 			}
 
 			$(document).ready(function() {
-				var artid = $.urlParameter("id");
+				var artid = $.urlParameter("id");   // CAN be combined with 89
 				console.log("Loading " + artid);
 				// Get the coresponding artwork object in the artworks array.
 				var artwork = artworks.find(obj => {
 				  return obj.artid === artid;
 				});
-
+				$('[data-artworks]').each(function(){
+					var data = this.getAttribute("data-artworks");
+					$(this).html(this.getAttribute("data-artworks"));
+				});
 				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
-				$("#artid").html(artwork.artid);
 				$("#title").html(artwork.title);
 				document.title = "Kalt — " + artwork.title + "by " + artwork.byline;
 				$('.byline').html(artwork.byline);
 				$('.description').html(artwork.description);
-				$("#price").html(artwork.price);
-				$("#price2").html(artwork.price + " " + artwork.currency); // this one seems unecessarry
+				$('#price').each(function () {
+						this.innerHTML = artwork.price + " " + artwork.currency;
+				});
 				$("#currency").html(artwork.currency);
 				$("#year").html(artwork.year);
 				$("#exhibitions").append(artwork.exhibited);
