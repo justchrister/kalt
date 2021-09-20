@@ -24,6 +24,7 @@
 		<link rel="preload" href="https://kalt.co/js/artworks.js" as="script">
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
+    <link rel="stylesheet" href="https://cdn.kalt.co/css/emoticon.css">
     <link rel="stylesheet" href="https://cdn.kalt.co/css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
@@ -128,6 +129,9 @@
 					$('#button_href').attr("href", "mailto:" + artwork.curator + "@kalt.co?cc=christer@kalt.co&subject=Acquisition Inquiry: " + artwork.title + " by " + artwork.byline + " (artwork id: " + artwork.artid + ")&body=Hello " + artwork.curator + ", %0D%0A");
 
 				}
+			 });
+			 $("*:contains(':-\)')").html(function(_, html) {
+			   return html.replace(/(:-\))/g, '<span data-emoticon="smile">$1</span>');
 			 });
 		</script>
   </body>
