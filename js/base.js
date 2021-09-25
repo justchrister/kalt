@@ -2,19 +2,6 @@ let okStyle = [
   "color: #FF0"
 ].join(";");
 
-$(".menu button").click(function(){
-  $("body").toggleClass("show-menu");
-  console.log("%c Kalt: Toggled menu.", okStyle);
-});
-
-$(".menu ul li a").click(function(){
-  $("body").toggleClass("show-menu");
-  console.log("%c Kalt: Toggled menu.", okStyle);
-});
-
-$("code").click(function(){
-  $(this).addClass("show-code");
-});
 console.log("");
 console.log("%c                          (                              ", okStyle)
 console.log("%c              .            )        )                    ", okStyle)
@@ -27,13 +14,21 @@ console.log("");
 console.log("%c                       kalt.co                           ", okStyle)
 console.log("");
 
+$(".menu button, .menu ul li a").click(function(){
+  $("body").toggleClass("show-menu");
+  console.log("%c Kalt: Toggled menu.", okStyle);
+});
+
+$("code").click(function(){
+  $(this).addClass("show-code");
+});
+
 
 
 
 // Build the menu
 
 $(function () {
-
     var data = {
         menu: [{
             name: 'Artworks',
@@ -60,6 +55,7 @@ $(function () {
         );
     });
 });
+
 // Add _blank target to all external links
 $('a[href^="http://"]').not('a[href*=kalt.co]').attr('target','_blank');
 $('a[href^="https://"]').not('a[href*=kalt.co]').attr('target','_blank');
