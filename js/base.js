@@ -34,6 +34,9 @@ $(function () {
             name: 'Artworks',
             link: '/art' },
             {
+            name: 'Omoji',
+            link: '/Omoji' },
+            {
             name: 'Contact',
             link: 'mailto:christer@kalt.co'
         }]

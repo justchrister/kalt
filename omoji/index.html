@@ -56,26 +56,40 @@
     <!--
       Start the homepage
     -->
-    <div class="page omoji" id="taxes">
+    <div class="page">
 
-      <div class="section" id="documents">
+      <div class="section">
 				<div class="block">
 	        <h2 class="title" style="font-family:helvetica;">
 	          Omoji
 	        </h2>
 	        <p>
-	          Start communicating clearer and cleaner. 😀
+	          Be playful and stay serious all at once, clean communication has never been so easy.
 	        </p>
+				</div>
+				<div class="block">
 					<p>
-						1. Add the javascript
+						1. Add the javascript, right before the body tag.
+						<input type="text" value="<script src='https://cdn.kalt.co/js/omoji.js'></script>">
+						2. Watch the Emoji's get replaced by beautiful Omoji's.
 					</p>
+				</div>
+				<div class="block">
+					<br>
+					<p style="font-size:300%;text-align:center;">
+						😀 → <span class="omoji">😀</span>
+					</p>
+						<br>
+							<br>
 				</div>
       </div>
     </div>
     <!-- Including jquery -->
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <!-- Including jquery -->
+    <script src="https://kalt.co/js/base.js"></script>
     <!-- Including tilt.js for <div class="insignia"> -->
-    <script src="omo.js"></script>
+    <script src="https://kalt.co/js/omoji.js"></script>
   </body>
 
 </html>
