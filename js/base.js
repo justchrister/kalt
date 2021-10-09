@@ -34,11 +34,14 @@ $(function () {
             name: 'Artworks',
             link: '/art' },
             {
+            name: 'Documents',
+            link: '/📄' },
+            {
             name: 'Omoji',
-            link: '/Omoji' },
+            link: '/omoji' },
             {
             name: 'Contact',
-            link: 'mailto:christer@kalt.co'
+            link: 'mailto:hello@kalt.co'
         }]
     };
     var getMenuItem = function (itemData) {
