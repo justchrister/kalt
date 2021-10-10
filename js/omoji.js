@@ -31,10 +31,8 @@ const omojis = [
 ];
 
 for(var i = 0; i < omojis.length; i++) {
-    const item = omojis[i];
-    for(var j = 0; j < item.length; j++) {
-			const emoji = new RegExp(item[0], "g");
-			const omoji = '<omoji style="background-image:url(https://cdn.kalt.co/media/omoji/' + item[1] + ');">' + item[0] + '</omoji>';
-			document.body.innerHTML = document.body.innerHTML.replace(emoji, omoji);
-    }
+  const item = omojis[i];
+	const emoji = new RegExp(item[0], "g");
+	const omoji = '<omoji style="background-image:url(https://cdn.kalt.co/media/omoji/' + item[1] + ');">' + item[0] + '</omoji>';
+	document.body.innerHTML = document.body.innerHTML.replace(emoji, omoji);
 }

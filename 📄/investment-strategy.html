@@ -55,62 +55,34 @@
     <!--
       Start the homepage
     -->
-    <div class="page" id="values">
-      <div class="section" id="values">
-				<div class="block">
-					<h2>Foundational guiding values and principles</h2>
-					<p>
-						We strive to be politically agnostic, and make objective decisions based on facts derrived from data. No grandstanding.
-					</p>
+    <div class="page">
+      <div class="section" id="feature">
+				<span id="value" data-value="30000">30000</span>
+			</div>
+      <div class="section">
+				<div class="block" id="stocks">
+					<h2>Stocks</h2>
+	        <p>
+	          <strong>Specialized software-as-a-service</strong>
+						Large all-in-one cover-all-your-needs SaaS solutions are getting strangled by corporations such as Notion, Miro, etc.
+	        </p>
+	        <p>
+	          <strong>Small to medium social media</strong>
+						The future is quite clear for us, monolithic global social media such as Facebook, Instagram and YouTube are slowly getting strangled by both smaller social media players such as Twitter, Reddit, TickTock, and Discord, as well as huge entertainment companies like Netflix.
+	        </p>
 				</div>
 			</div>
       <div class="section">
-				<div class="block" id="values">
-					<h2>Core principles</h2>
+				<div class="block" id="stocks">
+					<h2>Artworks</h2>
 	        <p>
-	          <strong>Integrity</strong>
-						Simply put, it is making the honest, fair, and smart decision, over the quick and easy one. Short term this might result in monetary loss, but doing the right thing always result in increased value in some form. One outcome of using integrity asa guiding principle, you achieve a higher level of trust between parties, mostly because outcomes become highly predictable.
+	          <strong>Specialized software-as-a-service</strong>
+						Large all-in-one cover-all-your-needs SaaS solutions are getting strangled by corporations such as Notion, Miro, etc.
 	        </p>
-					<p>
-						<strong>Transparency</strong>
-						We are proactively open and honest, even though we are thoughtful and responsible with the insights we share, there is no little diffrence between internal discussions, and public statements. We have a commitment to having no hidden agenda, and to be open and honest internally and with the public.
-					</p>
-					<p>
-						<strong>Equality</strong>
-						Everyone should have access to the same opportunites.
-					</p>
-					<p>
-						<strong>Productive</strong>
-						People, governments and organizations should be constantly collaborating and competing to achieve bigger goals, and reach new limits. This creates an effective and productive population that can tackle challenges without delay and deliver innovation that matters.
-					</p>
-					<p>
-						<strong>Inclusive</strong>
-						When our differences are embraced and respected help us develop better solutions that benefit everyone, rather than some. Being met with differences in opinion and background increases innovation and help us, as individuals, and as an organiation to get out of our bubble to drive better performance and to create a world where everyone can be themselves.
-					</p>
-					<p>
-						<strong>Privacy</strong>
-						Everyone have a right to privacy, even in an always online world we have to
-					</p>
-					<p>
-						<strong>Accountability</strong>
-						Every person and organization is responsibilty for their actions and decisions, as well as
-					</p>
-					<p>
-						<strong>Freedom</strong>
-						Freedom of thought, worship, speech, and association are all essential to create an innovative, inclusive, and effective population. Each person should have the freedom to determine their own fate.
-					</p>
-					<p>
-						<strong>Aesthetics</strong>
-						The world should not just be productive, it should be beautiful as well.
-					</p>
-					<p>
-						<strong>Lean government</strong>
-						Governments main objective ought to be to secure individual rights. Moreover, government ought to nurture and encourage its citizens through incentives. By treating everyone equally; neither rewarding failure nor punishing success. In general government authority must reside at the lowest feasible level.
-					</p>
-					<p>
-						<strong>The Golden Rule</strong>
-						Deal with others honestly and require honesty in return.
-					</p>
+	        <p>
+	          <strong>Small to medium social media</strong>
+						The future is quite clear for us, monolithic global social media such as Facebook, Instagram and YouTube are slowly getting strangled by both smaller social media players such as Twitter, Reddit, TickTock, and Discord, as well as huge entertainment companies like Netflix.
+	        </p>
 				</div>
 			</div>
     </div>
@@ -118,6 +90,52 @@
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
     <!-- Including base javascript -->
     <script src="https://kalt.co/js/base.js"></script>
+		<script>
+		function animateValue(obj, start, end, duration) {
+		  let startTimestamp = null;
+		  const step = (timestamp) => {
+		    if (!startTimestamp) startTimestamp = timestamp;
+		    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+		    obj.innerHTML = Math.floor(progress * (end - start) + start);
+		    if (progress < 1) {
+		      window.requestAnimationFrame(step);
+		    }
+		  };
+		  window.requestAnimationFrame(step);
+		}
+		//const api_key = 'POCPZTWH5TSPCI7D';
+		const api_key = 'demo';
+		const holdings = [
+			["IBM", 20],
+			["IBM", 700],
+			["IBM", 2],
+			["IBM", 700],
+			["IBM", 9],
+		];
+
+		for(var i = 0; i < holdings.length; i++) {
+		    const item = holdings[i];
+				const timeout = 10000;
+				var symbol = item[0];
+				var uri = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + symbol + '&interval=1min&apikey=' + api_key;
+				fetch(uri)
+				  .then(response => response.json())
+				  .then(data => {
+						var obj = document.getElementById("value");
+						var json = data["Time Series (1min)"];
+						// Select the last entry in the json response from alpha advantage
+						var last_entry = json[ Object.keys(json).sort().pop() ];
+						// Select the closing price
+						var last_price = last_entry["4. close"];
+						// Multiply by the ammount of shares with the price of one share
+						var position = last_price*item[1];
+						// get the old value in the data attribute old_value
+						var old_value = parseInt(obj.dataset.value);
+						var new_value = old_value+position;
+						obj.dataset.value = new_value;
+					});
+			};
+		</script>
   </body>
 
 </html>
