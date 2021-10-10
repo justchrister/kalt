@@ -1,5 +1,5 @@
 
-const css = 'o { background-size:contain;color:transparent;background-repeat:no-repeat;}',
+const css = 'omoji { background-size:contain;color:transparent;background-repeat:no-repeat;}',
     	head = document.head || document.getElementsByTagName('head')[0],
     	style = document.createElement('style');
 
