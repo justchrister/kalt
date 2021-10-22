@@ -619,28 +619,28 @@ p strong{
 		display: block;
 		margin: $medium-clamp 0 0 0;
 }
-/*
+.insignia{
+	fill:none;
+	stroke:#000000;
+	stroke-width:4;
+	stroke-miterlimit:10;
+}
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #011628;
+        background-color: #202124;
         color: $background-color;
     }
+		.image{
+			filter:grayscale(1);
+		}
     button,
-    .insignia,
-    .insignia-inner,
-    .insignia-inner:before {
-      border-color:$background-color;
+    .insignia {
+      stroke:$background-color;
     }
 		#artwork .section .image{
 		      border-color:#011628;
-
 		}
 		#artwork .section button,
-    .insignia{
-
-	      background:#011628;
-	      background-color:#011628;
-    }
 
 		pre code{
 			&:before,
@@ -653,4 +653,3 @@ p strong{
       color: $background-color;
     }
 }
-*/
