@@ -627,11 +627,14 @@ p strong{
 }
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #202124;
+        background-color: #202124 !important;
         color: $background-color;
     }
 		.image{
 			filter:grayscale(1);
+		}
+		#artwork .image{
+			filter:none;
 		}
     button,
     .insignia {

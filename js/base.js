@@ -19,12 +19,9 @@ $(".menu button, .menu ul li a").click(function(){
   console.log("%c Kalt: Toggled menu.", okStyle);
 });
 
-$("code").click(function(){
-  $(this).addClass("show-code");
+document.getElementsByTagName('code').addEventListener('click', function () {
+	this.classList.add('show-code');
 });
-
-
-
 
 // Build the menu
 
