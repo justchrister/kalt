@@ -321,59 +321,6 @@ header {
     }
   }
 }
-//  Logomark
-
-.insignia,
-.insignia-inner,
-.insignia-inner:before {
-  height: 25vw;
-  max-height: 209px;
-  border: $border;
-	border-width: 1px;
-  border-radius: 50%;
-	box-sizing: border-box;
-  &:hover {
-    border-radius: 0%;
-  }
-}
-.insignia {
-  z-index: -1;
-  background: $background-color;
-  width: $sitewidth;
-  max-width: $maxsitewidth;
-  margin: $sectionpadding-double auto $sectionpadding auto;
-  transform-style: preserve-3d;
-  &[data-tilt]:hover{
-    .insignia-inner {
-      transform: translateZ(120px) scale(0.5);
-      transition: transform .5s 0s;
-      &:before{
-        transform: translateZ(20px) scale(0.8);
-      }
-    }
-  }
-  .insignia-inner,
-  .insignia-inner:before {
-    position: relative;
-  }
-  .insignia-inner {
-	  transition: transform .5s 0s;
-    width: 25vw;
-    max-width: 209px;
-    margin: 0 auto;
-    margin-top: -$border-width;
-    &:before {
-	    transition: transform .5s 0s;
-      z-index: 2;
-      display: block;
-      content: " ";
-      width: 61vw;
-      max-width: 511px;
-      margin-left: -75%;
-      margin-top: -$border-width;
-    }
-  }
-}
 
 //  Sections
 
