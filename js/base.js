@@ -18,16 +18,13 @@ $(".menu button, .menu ul li a").click(function(){
   $("body").toggleClass("show-menu");
   console.log("%c Kalt: Toggled menu.", okStyle);
 });
-// First we detect the click event
-document.getElementsByTagName('code').addEventListener('click', function () {
-	  // Using an if statement to check the class
-  if (this.classList.contains('show-code')) {
-    // If show-code is present; dont do anything.
-  } else {
-		// If its missing; add it.
-		this.classList.add('show-code');
-  }
+
+$("code").click(function(){
+  $(this).addClass("show-code");
 });
+
+
+
 
 // Build the menu
 
