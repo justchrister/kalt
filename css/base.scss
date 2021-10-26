@@ -6,8 +6,8 @@ $serif :     "Ogg",
              Serif;
 
 $sans-serif: "Helvetica",
-						 "Arial",
 						 "Raleway",
+						 "Arial",
 						 "Roboto",
 						 Sans-Serif;
 
@@ -21,6 +21,7 @@ $maxsitewidth: 720px;
 $border-width: .1px;
 $border: $border-width solid black;
 $color: #1E96FC;
+$color: #F991CC;
 $background-color: #FCF9F2;
 $column-divider: 2.4; //% of sitewidth
 
@@ -34,12 +35,6 @@ $medium-clamp-half: clamp(7px, 1.8vw, 13px);
 
 $medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
 $medium-clamp-half-negative: clamp(-7px, -1.8vw, -13px);
-
-:root {
-  --medium-clamp: $medium-clamp;
-}
-
-
 
 // Font sizes
 
@@ -180,7 +175,7 @@ a:focus {
   //color: $color;
 }
 *:focus{
-	background:rgba($color,0.2);
+	background:mix($color, white, 20%);
 }
 button {
   border-radius: 50%;
@@ -188,11 +183,6 @@ button {
   padding: 1%  $big-clamp-half;
   background: transparent;
   @include font-body;
-  a{
-    text-decoration: none;
-    width: 100%;
-    display: block;
-  }
 	&:focus,
   &:hover {
     cursor: pointer;
@@ -204,6 +194,15 @@ button {
       }
     }
   }
+}
+a:focus button{
+	background:mix($color, white, 20%);
+}
+a:focus{
+	button{
+		border-radius: 0%;
+    cursor: pointer;
+	}
 }
 
 pre code {
@@ -261,6 +260,10 @@ header {
   button.menu {
     right: $border-width;
   }
+	button.menu:active,
+	button.menu:focus{
+		background-color: transparent;
+	}
 
   button {
     font-size: $medium-clamp;
@@ -626,33 +629,41 @@ p strong{
 	stroke-miterlimit:10;
 }
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #202124 !important;
-        color: $background-color;
-    }
-		.image{
-			filter:grayscale(1);
-		}
-		#artwork .image{
-			filter:none;
-		}
-    button,
-    .insignia {
-      stroke:$background-color;
-    }
-		#artwork .section .image{
-		      border-color:#011628;
-		}
-		#artwork .section button,
 
-		pre code{
-			&:before,
-			&.show-code{
-				color: $background-color;
-			}
-		}
-    .menu,
-    a{
+	a:focus button,
+	*:focus{
+		background: $color;
+	}
+  body {
+      background-color: #202124 !important;
       color: $background-color;
-    }
+  }
+	.image{
+		filter:grayscale(1);
+	}
+	#artwork .image{
+		filter:none;
+	}
+  button{
+		color: $background-color;
+    border-color:$background-color;
+	}
+  .insignia {
+    stroke:$background-color;
+  }
+	#artwork .section .image{
+	      border-color:#011628;
+	}
+	#artwork .section button,
+
+	pre code{
+		&:before,
+		&.show-code{
+			color: $background-color;
+		}
+	}
+  .menu,
+  a{
+    color: $background-color;
+  }
 }
