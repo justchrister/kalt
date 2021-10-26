@@ -149,7 +149,7 @@ a{
     outline: none;
   }
   &::selection {
-    background-color: rgba($color,0.1);
+    background-color: mix($color,white,20%);
   }
 }
 
@@ -657,6 +657,7 @@ p strong{
 	#artwork .section button,
 
 	pre code{
+		background-color: mix($color,black,20%);
 		&:before,
 		&.show-code{
 			color: $background-color;
