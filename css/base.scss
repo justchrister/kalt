@@ -631,6 +631,7 @@ p strong{
 @media (prefers-color-scheme: dark) {
 
 	a:focus button,
+	*::selection,
 	*:focus{
 		background: $color;
 	}
