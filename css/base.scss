@@ -21,7 +21,7 @@ $maxsitewidth: 720px;
 $border-width: .1px;
 $border: $border-width solid black;
 $color: #1E96FC;
-$color: #F991CC;
+$alt-color: #F991CC;
 $background-color: #FCF9F2;
 $column-divider: 2.4; //% of sitewidth
 
@@ -657,7 +657,7 @@ p strong{
 	#artwork .section button,
 
 	pre code{
-		background-color: mix($color,black,20%);
+		background-color: mix($color,white,20%);
 		&:before,
 		&.show-code{
 			color: $background-color;
