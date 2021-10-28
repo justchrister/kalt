@@ -24,6 +24,14 @@ $("code").click(function(){
 });
 
 
+$.urlParameter = function(name){
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	if (results == null){
+		window.location.href = "http://kalt.co/art";
+	} else {
+		return results[1] || 0;
+	}
+}
 
 
 // Build the menu
@@ -35,7 +43,7 @@ $(function () {
             link: '/art' },
             {
             name: 'Documents',
-            link: '/📄' },
+            link: '📄' },
             {
             name: 'Omoji',
             link: '📄/omoji.html' },
