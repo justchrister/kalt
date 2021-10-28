@@ -1,4 +1,4 @@
-let okStyle = [
+const okStyle = [
   "color: #FF0"
 ].join(";");
 
@@ -22,16 +22,6 @@ $(".menu button, .menu ul li a").click(function(){
 $("code").click(function(){
   $(this).addClass("show-code");
 });
-
-
-$.urlParameter = function(name){
-	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-	if (results == null){
-		window.location.href = "http://kalt.co/art";
-	} else {
-		return results[1] || 0;
-	}
-}
 
 
 // Build the menu

@@ -87,6 +87,14 @@
     <script src="https://kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
+			$.urlParameter = function(name){
+				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+				if (results == null){
+					window.location.href = "http://kalt.co/art";
+				} else {
+					return results[1] || 0;
+				}
+			}
 			$(document).ready(function() {
 				var artid = $.urlParameter("id");   // CAN be combined with 89
 				console.log("Loading " + artid);
