@@ -20,6 +20,7 @@
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://kalt.co/css/base.css" as="style">
 		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
+		<!-- preconnecting to the cdn to get the images quicker -->
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="https://kalt.co/css/base.css">
@@ -30,7 +31,7 @@
     <!-- Asking search engines not to index the website: -->
     <meta name=”robots” content=”noindex”>
     <!-- Adding description -->
-		<meta name="description" content="The kalt art collection">
+		<meta name="description" content="Carefully curated art">
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
@@ -82,9 +83,7 @@
     </div>
     <!-- Including jquery -->
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
-    <!-- Including base javascript -->
-    <script src="https://kalt.co/js/menu.js"></script>
-    <!-- Including store javascript -->
+    <!-- Including artwork array -->
     <script src="https://kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
@@ -141,6 +140,8 @@
 
 
 		</script>
+    <!-- Generating the menu -->
+    <script src="https://kalt.co/js/menu.js"></script>
   </body>
 
 </html>

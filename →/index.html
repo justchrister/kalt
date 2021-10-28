@@ -19,7 +19,7 @@
     <title> Kalt — Loading... </title>
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://kalt.co/css/base.css" as="style">
-		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
+		<link rel="preload" href="https://cdn.kalt.co/lib/js/jq.js" as="script">
 		<link rel="preload" href="https://kalt.co/js/artworks.js" as="script">
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
@@ -31,7 +31,7 @@
     <!-- Asking search engines not to index the website: -->
     <meta name=”robots” content=”noindex”>
     <!-- Adding description -->
-		<meta name="description" content="Carefully curated art">
+		<meta name="description" content="Loading...">
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
@@ -81,7 +81,7 @@
     </div>
     <!-- Including jquery -->
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
-    <!-- Including base javascript -->
+    <!-- Including artwork array -->
     <script src="https://kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
@@ -104,11 +104,11 @@
 					var data = this.getAttribute("data-artworks");
 					$(this).html(this.getAttribute("data-artworks"));
 				});
-				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
 				$("#title").html(artwork.title);
 				document.title = "Kalt — " + artwork.title + "by " + artwork.byline;
 				$('.byline').html(artwork.byline);
+				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
 				$('.description').html(artwork.description);
 				$('#price').each(function () {
 						this.innerHTML = artwork.price + " " + artwork.currency;
@@ -128,6 +128,8 @@
 				}
 			 });
 		</script>
+    <!-- Generating the menu -->
+    <script src="https://kalt.co/js/menu.js"></script>
   </body>
 
 </html>
