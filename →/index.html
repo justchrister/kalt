@@ -102,7 +102,8 @@
 				});
 				$('[data-artworks]').each(function(){
 					var data = this.getAttribute("data-artworks");
-					$(this).html(this.getAttribute("data-artworks"));
+
+					$(this).html(artwork.data);
 				});
 				$('.image').css('background-image', 'url(' + artwork.image + ')');
 				$("#title").html(artwork.title);
