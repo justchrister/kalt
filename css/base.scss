@@ -1,6 +1,6 @@
 
 
-$serif :     "Ogg",
+$serif :     "Kalt Display",
              "STIXGeneral Regular",
              "Times New Roman",
              Serif;
@@ -11,7 +11,8 @@ $sans-serif: "Helvetica",
 						 "Roboto",
 						 Sans-Serif;
 
-$monospace:  "Courier New",
+$monospace:  "Kalt Monospace",
+						 "Courier New",
              Monospace;
 
 $sectionpadding: clamp(75px, 15vh, 175px);
@@ -20,9 +21,10 @@ $sitewidth: 86vw;
 $maxsitewidth: 720px;
 $border-width: .1px;
 $border: $border-width solid black;
-$color: #1E96FC;
-$alt-color: #F991CC;
-$background-color: #FCF9F2;
+$blue: #1E96FC;
+$pink: #F991CC;
+$light: #FCF9F2;
+$dark: #202124;
 $column-divider: 2.4; //% of sitewidth
 
 $big-clamp: clamp(25px, 6.48vw, 50px);
@@ -38,7 +40,8 @@ $medium-clamp-half-negative: clamp(-7px, -1.8vw, -13px);
 
 // Font sizes
 
-@import "https://cdn.kalt.co/fonts/font.css";
+@import "fonts/display.css";
+@import "fonts/monospace.css";
 
 @mixin font-display {
   font-family: $serif;
@@ -110,14 +113,14 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background:$background-color;
+	background:$light;
   @include font-body;
 	touch-action: manipulation; // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
 	overflow-x: hidden;
 }
 body.yellow-gradient{
 	background: rgb(255,255,0);
-	background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba($background-color,1) 35%, rgba($background-color,1) 100%);
+	background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba($light,1) 35%, rgba($light,1) 100%);
 }
 ol, ul {
 	list-style: none;
@@ -149,7 +152,7 @@ a{
     outline: none;
   }
   &::selection {
-    background-color: mix($color,white,20%);
+    background-color: mix($blue,white,20%);
   }
 }
 
@@ -172,10 +175,10 @@ h3{
 a:focus {
   border: none;
   box-shadow: none;
-  //color: $color;
+  //color: $blue;
 }
 *:focus{
-	background:mix($color, white, 20%);
+	background:mix($blue, white, 20%);
 }
 button {
   border-radius: 50%;
@@ -196,7 +199,7 @@ button {
   }
 }
 a:focus button{
-	background:mix($color, white, 20%);
+	background:mix($blue, white, 20%);
 }
 a:focus{
 	button{
@@ -212,7 +215,7 @@ pre code {
   margin: $medium-clamp 0;
   @include font-monospace;
   font-size:80%;
-  background-color: rgba($color,0.1);
+  background-color: rgba($blue,0.1);
   line-height:1.2;
   height: $medium-clamp;
   color: transparent;
@@ -428,7 +431,7 @@ header {
     @include font-body;
   }
   input{
-		background-color: $background-color;
+		background-color: $light;
 
 		max-width: $maxsitewidth;
     width:$sitewidth;
@@ -444,13 +447,13 @@ header {
 
 .section.intro{
 	.block{
-		background:$background-color;
+		background:$light;
 		padding:$medium-clamp-half;
 		margin-left:$medium-clamp-half-negative;
 		margin-right:$medium-clamp-half-negative;
 	}
 	button{
-		background:$background-color;
+		background:$light;
 	}
 	.block,
 	.block p,
@@ -574,7 +577,7 @@ header {
 		}
     button{
 	    @include site-width;
-	    background: $background-color;
+	    background: $light;
 		}
 	}
 }
@@ -633,11 +636,11 @@ p strong{
 	a:focus button,
 	*::selection,
 	*:focus{
-		background: $color;
+		background: $blue;
 	}
   body {
-      background-color: #202124 !important;
-      color: $background-color;
+      background-color: $dark !important;
+      color: $light;
   }
 	.image{
 		filter:grayscale(1);
@@ -646,26 +649,24 @@ p strong{
 		filter:none;
 	}
   button{
-		color: $background-color;
-    border-color:$background-color;
+		color: $light;
+    border-color:$light;
 	}
   .insignia {
-    stroke:$background-color;
+    stroke:$light;
   }
 	#artwork .section .image{
-	      border-color:#011628;
+    border-color: #011628;
 	}
 	#artwork .section button,
-
 	pre code{
-		background-color: mix($color,white,20%);
 		&:before,
 		&.show-code{
-			color: $background-color;
+			color: $light;
 		}
 	}
   .menu,
   a{
-    color: $background-color;
+    color: $light;
   }
 }

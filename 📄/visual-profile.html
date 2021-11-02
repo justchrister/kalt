@@ -20,7 +20,7 @@
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://kalt.co/css/base.css" as="style">
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="https://kalt.co/css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -101,11 +101,11 @@
             We decided to use a serif fonts for titles and headlines.
           </p>
           <ol>
-            <li> Ogg </li>
+            <li> Kalt Display </li>
             <li>STIXGeneral Regular </li>
             <li>Times New Roman </li>
           </ol>
-<pre><code>$serif : "Ogg",
+<pre><code>$serif : "Kalt Display",
          "STIXGeneral Regular",
          "Times New Roman",
          Serif;
@@ -139,6 +139,52 @@
   font-family: $sans-serif;
 }
 p {
+  @include font-body;
+}</code></pre>
+          <h3>Body font</h3>
+          <p>
+            Used for large blocks of texts,
+          </p>
+          <ol>
+            <li> Helvetica </li>
+            <li> Arial </li>
+            <li> Raleway </li>
+            <li> Roboto </li>
+          </ol>
+<pre><code>$sans-serif: "Helvetica",
+             "Arial",
+             "Raleway",
+             "Roboto",
+             Sans-Serif;
+
+@mixin font-body {
+  font-size: clamp(14px, 3.6vw, 26px);
+	font-weight: 300;
+  line-height: 150%;
+  font-family: $sans-serif;
+}
+p {
+  @include font-body;
+}</code></pre>
+          <h3>Monospace font</h3>
+          <p>
+            Used for code.
+          </p>
+          <ol>
+            <li> Kalt Monospace </li>
+            <li> Courier New </li>
+          </ol>
+<pre><code>$monospace: "Kalt Monospace",
+             "Courier New",
+             Monospace;
+
+@mixin font-body {
+  font-size: inherit;
+	font-weight: 300;
+  line-height: inherit;
+  font-family: $monospace;
+}
+pre code {
   @include font-body;
 }</code></pre>
         </div>
