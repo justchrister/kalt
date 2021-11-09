@@ -20,9 +20,61 @@
 		<!-- prefetching from the cdn -->
 		<link rel="preload" href="https://kalt.co/css/base.css" as="style">
 		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
+		<style>
+		.wrapper{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%) scale(.5);
+		}
+		.cube-wrap {
+		width: 400px;
+		height: 400px;
+		-webkit-perspective: 2000px;
+		-webkit-perspective-origin: 50% -500px;
+		}
+		.single-box {
+		background-size: cover;
+		display: block;
+		position: absolute;
+		width: 360px;
+		height: 360px;
+		-webkit-transform: rotateY(45deg) translateZ(-200px) rotateX(15deg);
+		-webkit-transform-origin: 50% 50% 0;
+		border: 1px solid #fff;
+		}
+		.box {
+		-webkit-transform-style: preserve-3d;
+		-webkit-animation: rotate 7s infinite linear;
+		}
+		.side-front {
+		-webkit-transform: translateZ(180px);
+		}
+		.side-back {
+		-webkit-transform: rotateY(180deg) translateZ(180px);
+		}
+		.side-top {
+		-webkit-transform: rotateX(90deg) translateZ(180px);
+		}
+		.side-bottom {
+		-webkit-transform: rotateX(-90deg) translateZ(180px);
+		}
+		.side-left {
+		-webkit-transform: rotateY(-90deg) translateZ(180px);
+		}
+		.side-right {
+		-webkit-transform: rotateY(90deg) translateZ(180px);
+		}
+
+		@-webkit-keyframes rotate {
+		0% { -webkit-transform: rotateX(0) rotateY(0)  rotateZ(0deg); }
+		100% { -webkit-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+		}
+
+		</style>
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="https://kalt.co/css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -55,52 +107,70 @@
     <!--
       Start the homepage
     -->
+
+			<div class="wrapper">
+		<div class="cube-wrap">
+			<div class="box">
+				<div class="single-box side-back"></div>
+				<div class="single-box side-top"></div>
+				<div class="single-box side-bottom"></div>
+				<div class="single-box side-left"></div>
+				<div class="single-box side-right"></div>
+				<div class="single-box side-front"></div>
+			</div>
+		</div>
+	</div>
+		<div class="section">
+	</div>
+		<div class="section">
+	</div>
+		<div class="section">
+	</div>
     <div class="page">
-      <div class="section" id="feature">
-				<p>The current value of the capital reserve:</p></br>
-				<span id="value" style="font-size:200%;" data-value="0">1,600 $</span>
-			</div>
-      <div class="section">
-				<div class="block" id="stocks">
-					<h2>Public stocks</h2>
-	        <p>
-						<ul>
-						</ul>
-	        </p>
-	        <p>
-						Monolithic global companies such as Facebook, Instagram and YouTube are slowly getting strangled by smaller players. We are currently invested in:
-						<ul>
-							<li>Twitter</li>
-							<li>Reddit</li>
-							<li>Discord</li>
-						</ul>
-	        </p>
+			<div class="section">
+				<div class="block">
+					<p> We run a fund that invest in interesting ideas. It could be called alternative fundemental value investing, but that would be too technical. We base them on a set of thesis' and values.
 				</div>
+				<a href="mailto:hello@kalt.co">
+					<button class="read_more">
+						contact
+					</button>
+				</a>
 			</div>
       <div class="section">
-				<div class="block" id="stocks">
+				<div class="block">
 					<h2>Crypto</h2>
 	        <p>
-						The crypto 100 fund aims to be an index fund covering the top 100 crypto currencies with a market cap over 1bln usd. The fund is rebalanced every quarter, and 4% of the profits are paid out annually as dividents. The fund does not hold any stablecoins.
+						The crypto fund aims to be an index fund covering the top 100 crypto. We only invest if they have had an average market cap above 550 million euro over the past 12 months. And are not a stablecoin or a scam.
 	        </p>
 				</div>
 			</div>
       <div class="section">
-				<div class="block" id="stocks">
+				<div class="block">
 					<h2>Artworks</h2>
 	        <p>
-	          Art is one of the few platforms that give voice to minorities. <a href="https://kalt.co/art">See all our artworks</a>
+						Art is one of the few platforms that give voice to minorities, however, owning and profiting from art has long been exclusive to the super-wealthy. <a href="https://kalt.co/art">See the artworks</a>.
 	        </p>
 				</div>
 			</div>
       <div class="section">
-				<div class="block" id="stocks">
-					<h2>Venture capital</h2>
+				<div class="block">
+					<h2>Private companies</h2>
 	        <p>
-	         	When the right company is raising capital we might consider investing in them.
+	         	When the right company is raising capital we might consider investing in them. Currently we are only invested in Tillit, a Norwegian insurance company.
+	        </p>
+				</div>
+			</div>
+
+      <div class="section">
+				<div class="block">
+					<h2>Public companies</h2>
+	        <p>
 						<ul>
-							<li>Tillit</li>
 						</ul>
+	        </p>
+	        <p>
+						We rarely invest in public companies, but we have positions in Twitter, Reddit, Airbnb, and Discord.
 	        </p>
 				</div>
 			</div>
@@ -109,55 +179,6 @@
     <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
     <!-- Generating the menu -->
     <script src="https://kalt.co/js/menu.js"></script>
-		<script>
-		function numberWithCommas(x) {
-	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-		function animateValue(obj, start, end, duration) {
-		  let startTimestamp = null;
-		  const step = (timestamp) => {
-		    if (!startTimestamp) startTimestamp = timestamp;
-		    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-		    obj.innerHTML = numberWithCommas(Math.round(progress * (end - start) + start))+" $";
-		    if (progress < 1) {
-		      window.requestAnimationFrame(step);
-		    }
-		  };
-		  window.requestAnimationFrame(step);
-		}
-		const api_key = 'POCPZTWH5TSPCI7D';
-		//const api_key = 'demo';
-		// Array as table
-		const holdings = [
-			["TSLA", 1000, "stock"],
-			["MSFT", 25, "stock"],
-			["AAPL", 199, "stock"],
-		];
-		// Loop through holdings array
-		for(var i = 0; i < holdings.length; i++) {
-				const item = holdings[i];
-				var symbol = item[0];
-
-				var uri = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + symbol + '&interval=1min&apikey=' + api_key;
-
-				fetch(uri)
-					.then(response => response.json())
-					.then(data => {
-						var json = data["Time Series (1min)"];
-						// Select the last entry in the json response from alpha advantage
-						var last_entry = json[ Object.keys(json).sort().pop() ];
-						// Select the closing price
-						var last_price = last_entry["4. close"];
-						// Multiply by the ammount of shares with the price of one share
-						var position = last_price*item[1];
-						var obj = document.getElementById("value");
-						// Get HTML content
-						var html = parseInt(obj.innerHTML.replace(",","").replace(" $",""));
-						var result = Math.round(html+position);
-						obj.innerHTML = numberWithCommas(result+" $");
-					});
-			};
-		</script>
   </body>
 
 </html>
