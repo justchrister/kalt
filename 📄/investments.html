@@ -22,59 +22,67 @@
 		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
 		<style>
 		.wrapper{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%) scale(.5);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%) scale(.5);
 		}
 		.cube-wrap {
-		width: 400px;
-		height: 400px;
-		-webkit-perspective: 2000px;
-		-webkit-perspective-origin: 50% -500px;
+			width: 400px;
+			height: 400px;
+			-webkit-perspective: 2000px;
+			-webkit-perspective-origin: 50% -500px;
 		}
 		.single-box {
-		background-size: cover;
-		display: block;
-		position: absolute;
-		width: 360px;
-		height: 360px;
-		-webkit-transform: rotateY(45deg) translateZ(-200px) rotateX(15deg);
-		-webkit-transform-origin: 50% 50% 0;
-		border: 1px solid #fff;
+			display: block;
+			position: absolute;
+			width: 360px;
+			height: 360px;
+			transform: rotateY(45deg) translateZ(-200px) rotateX(15deg);
+			transform-origin: 50% 50% 0;
+			border: 1px solid #000;
 		}
 		.box {
-		-webkit-transform-style: preserve-3d;
-		-webkit-animation: rotate 7s infinite linear;
+			transform-style: preserve-3d;
+			animation: rotate 7s infinite linear;
 		}
 		.side-front {
-		-webkit-transform: translateZ(180px);
+			transform: translateZ(180px);
 		}
 		.side-back {
-		-webkit-transform: rotateY(180deg) translateZ(180px);
+			transform: rotateY(180deg) translateZ(180px);
 		}
 		.side-top {
-		-webkit-transform: rotateX(90deg) translateZ(180px);
+			transform: rotateX(90deg) translateZ(180px);
 		}
 		.side-bottom {
-		-webkit-transform: rotateX(-90deg) translateZ(180px);
+			transform: rotateX(-90deg) translateZ(180px);
 		}
 		.side-left {
-		-webkit-transform: rotateY(-90deg) translateZ(180px);
+			transform: rotateY(-90deg) translateZ(180px);
 		}
 		.side-right {
-		-webkit-transform: rotateY(90deg) translateZ(180px);
+			transform: rotateY(90deg) translateZ(180px);
 		}
 
 		@-webkit-keyframes rotate {
-		0% { -webkit-transform: rotateX(0) rotateY(0)  rotateZ(0deg); }
-		100% { -webkit-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+			0% {
+				transform: rotateX(0) rotateY(0)  rotateZ(0deg);
+			}
+			100% {
+				transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+			}
 		}
 
+		@media (prefers-color-scheme: dark) {
+			.single-box {
+				border: 1px solid #fff;
+			}
+		}
 		</style>
 		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="https://kalt.co/css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
