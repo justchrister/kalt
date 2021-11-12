@@ -270,6 +270,7 @@ header {
 
   button {
     font-size: $medium-clamp;
+		line-height: $medium-clamp;
     position: fixed;
     top: $border-width;
     border: 0;
@@ -391,9 +392,10 @@ header {
       margin-bottom:$medium-clamp-half;
     }
     ul > li:before {
-      position: absolute;
-      margin-left: clamp(-42px, -10.8vw, -78px);
-      content: "→";
+			position: relative;
+			margin-left: -7%;
+			margin-right: 3.3%;
+			content: "\2192";
     }
   }
   nav{
