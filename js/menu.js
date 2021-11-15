@@ -25,13 +25,13 @@ $(function () {
     var data = {
         menu: [{
             name: 'Artworks',
-            link: '/art' },
+            link: 'https://kalt.co/art' },
             {
             name: 'Documents',
-            link: '📄' },
+            link: 'https://kalt.co/📄' },
             {
             name: 'Omoji',
-            link: '📄/omoji.html' },
+            link: 'https://kalt.co/📄/omoji.html' },
             {
             name: 'Contact',
             link: 'mailto:hello@kalt.co'
