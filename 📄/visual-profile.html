@@ -141,31 +141,6 @@
 p {
   @include font-body;
 }</code></pre>
-          <h3>Body font</h3>
-          <p>
-            Used for large blocks of texts,
-          </p>
-          <ol>
-            <li> Helvetica </li>
-            <li> Arial </li>
-            <li> Raleway </li>
-            <li> Roboto </li>
-          </ol>
-<pre><code>$sans-serif: "Helvetica",
-             "Arial",
-             "Raleway",
-             "Roboto",
-             Sans-Serif;
-
-@mixin font-body {
-  font-size: clamp(14px, 3.6vw, 26px);
-	font-weight: 300;
-  line-height: 150%;
-  font-family: $sans-serif;
-}
-p {
-  @include font-body;
-}</code></pre>
           <h3>Monospace font</h3>
           <p>
             Used for code.
