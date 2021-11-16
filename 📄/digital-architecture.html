@@ -75,31 +75,33 @@
         <div class="block">
 					<h2> Introduction </h2>
 					<p>
-						Digital architecture is no different than software architecture, but the scope is much broader. Digital architecture does favour one particular architectural paradigm over another, therefore it does not dictate that you need to choose a particular paradigm either. Digital architecture aims to be a set of principles that you can apply to any paradigm - or a combination of pardigms - to allow teams, departments and entire organizations to create, iterate, and evolve, faster.
+						Digital architecture is no different than software architecture, but the scope is much broader, and the principles more abstract. It does not favour one particular architectural paradigm over another, which means you do not have to choose a particular paradigm either. These principles can be applied to any paradigm - or a combination of pardigms - to allow teams, departments and entire organizations to create and iterate faster.
           </p>
-	      </div>
-        <div class="block">
 					<p>
-						We have all listened to talks by employees at Netflix about their architecture and thought "Everything should be event based microservices" in awe. But not all companies are made the same, not all companies are global streaming services, and therefore their technological solutions have to differ. This whitepaper leverages principles over paradigms, taking key elements from clean architecture and try to apply them to an entire business.
-					</p>
+						We have all listened to talks by employees at Netflix about their architecture and thought "Everything should be event based microservices". But not all companies are made equal, not all companies are global streaming services, so naturally their technological solutions have to differ. This whitepaper leverages principles over paradigms. Taking inspiration from design systems, functional architecture, and organizational structures, to create a set of fundemental principles of digital architecture.
+          </p>
         </div>
         <div class="block">
 					<p>
 					<strong>Contents.</strong>
 					<ul>
+						<li>Parts</li>
+						<ul>
+							<li>Serverless microservices</li>
+							<li>Modular monoliths</li>
+							<li>Specilized software as a service</li>
+						</ul>
+						<li>Adapters</li>
+						<ul>
+							<li>API first</li>
+							<li>Event driven</li>
+						</ul>
 						<li>Interfaces</li>
 						<ul>
 							<li>Decoupled/headless</li>
 							<li>Semi-static</li>
 						</ul>
 						<li>Versatile design systems</li>
-						<li>API first & event driven</li>
-						<li>Seperate parts</li>
-						<ul>
-							<li>Serverless microservices</li>
-							<li>Modular monoliths</li>
-							<li>Specilized software as a service</li>
-						</ul>
 					</ul>
 				</p>
 				</div>
@@ -108,10 +110,10 @@
         <div class="block">
 					<h2>Independent parts</h2>
 					<p>
-						The principle of decoupling interfaces from services, and services from services, and parts of code from parts of code, is what we mean here. It does not simply mean that you should "not build a monolith", but that when you are building components or microservices, they should be not be coupled to eachother.
+						The principle of decoupling interfaces from services, and services from services, and parts of code from parts of code, starts with decoupling logic from eachother. In a monolith, you should still be able to develop, upgrade and deploy the different parts independently. And each part should be resilient to the individual failures of any other part.
 					</p>
 					<p>
-						Think of the "parts" as both SaaS solutions, microservices, low-code solutions, components, modules etc.
+						Think of the "parts" as both <a href="#saas">SaaS solutions</a>, <a href="#microservices">serverless microservices</a>, low-code solutions, components, modules etc.
 					</p>
 				</div> <!-- End block -->
         <div class="block">
@@ -124,16 +126,64 @@
 						<ul>
 							<li>If you use Auth0 or Okta to allow users to authenticate on your site, and this third party is down, the users should still be able to browse the website and interact with it.</li>
 							<li>If the warehouse management SaaS is down, users should still be able to place orders and check the latest status of it. This can be achieved by having redundant fulfillment services, that can queue messages to the warehouse management solution.</li>
+							<li>If the payment service is not working properly, the cart in the store should ask for your email to save the cart for when the payment service is available again. </li>
+							<li>You can take this principle to the extreme, and have styling for a specific page, live only on that specific page. This can be possible for smaller organizations and solutions, but can also be possible for larger ones. Finding and replacing an old brand-color in the sourcecode is not that hard.</li>
 						</ul>
 					</p>
         </div> <!-- End block -->
-        <div class="block">
+				<div class="block">
 					<p>
-						<strong>Extreme:</strong>
-						You can take this principle to the extreme, and have styling for a specific page, live only on that specific page. This can be possible for smaller organizations and solutions, but can also be possible for larger ones. Finding and replacing an old brand-color in the sourcecode is not that hard.
+						<strong>Specialized software as a service</strong>
+						Developing huge in-house solutions is a thing of the past, the overhead becomes immense.
+
+						The business should only build what is required themselves, specialized SaaS solutions and
+
+
+						PS The marketing department will be joyous when they get to use WebFlow to build and test landing pages, over using wordpress, bigcommerce or some other CMS. 
+					</p>
+        </div> <!-- End block -->
+				<div class="block">
+					<p>
+						<strong>Third party API's</strong>
+						Certain logic does not even have to be a SaaS solution, but a simple third party API. For instance for checking the weather at a specific place, or the exchange rates. They should also be considered parts.
+					</p>
+        </div> <!-- End block -->
+				<div class="block">
+					<p>
+						<strong>Third party API's</strong>
+						Certain logic does not even have to be a SaaS solution, but a simple third party API. For instance for checking the weather at a specific place, or the exchange rates. They should also be considered parts.
 					</p>
         </div> <!-- End block -->
       </div> <!-- End section -->
+
+			<div class="section">
+        <div class="block">
+					<h2>Robust adapters</h2>
+					<p>
+						To achieve the independence between the parts, and allow of interopperatibility, the parts have to be able to speak to eachother. This can come in many forms, and will differ for each environment, from no-code integrations with Zappier to event driven microservices. But the fundemental principles stay the same. Each "adapter", should do little logic, it may convert a CSV format to a JSON API call, but you should be able to understand it in minutes, not hours. Logic should be left to the parts, the adapters allow the parts to talk to eachother.
+					</p>
+					<p>
+						<strong>Serverless</strong>
+						Whenever possible, you should always opt for a serverless adapter, in most cases this will be the most resiliant solution.
+					</p>
+					<p>
+						<strong>API first</strong>
+						<ul>
+							<li>
+								Standardized
+							</li>
+						</ul>
+					</p>
+					<p>
+						<strong>Event driven</strong>
+						<ul>
+							<li>
+								Standardized
+							</li>
+						</ul>
+					</p>
+        </div> <!-- End block -->
+			</div> <!-- End section -->
 			<div class="section">
         <div class="block">
 					<h2>Interfaces</h2>
@@ -149,31 +199,19 @@
 				</div>
 			</div>
 			<div class="section">
-        <div class="block">
-					<h2>API first</h2>
+        <div class="block" id="microservices">
+					<h2>Examplars</h2>
 					<p>
+						<strong>Serverless microservices</strong>
+
 						<ul>
-							<li>
-								Standardized
-							</li>
+							<li>As adapters:</li>
 						</ul>
 					</p>
         </div>
 			</div>
 			<div class="section">
         <div class="block">
-					<h2>Serverless microservices</h2>
-					<p>
-						Developing huge in-house solutions is a thing of the past, the overhead becomes immense.
-					</p>
-        </div>
-			</div>
-			<div class="section">
-        <div class="block">
-					<h2>Software as a service</h2>
-					<p>
-						Developing huge in-house solutions is a thing of the past, the overhead becomes immense.
-					</p>
         </div>
 			</div>
 			<div class="section">
@@ -201,7 +239,7 @@
 				</div>
 			</div>
 			<div class="section">
-        <div class="block" id="abbreviations">
+        <div class="block">
 					<p>
 						<strong>
 							Sources
