@@ -14,7 +14,12 @@ console.log("");
 console.log("%c                       kalt.co                           ", okStyle)
 console.log("");
 
-$(".menu button, .menu ul li a").click(function(){
+$(".menu ul li a").click(function(){
+  $("body").toggleClass("show-menu");
+  console.log("%c Kalt: Toggled menu.", okStyle);
+});
+$(".menu button").click(function(){
+	event.preventDefault();
   $("body").toggleClass("show-menu");
   console.log("%c Kalt: Toggled menu.", okStyle);
 });
