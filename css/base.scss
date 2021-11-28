@@ -295,7 +295,7 @@ header {
       margin: 0;
       padding: 0 0 0 $big-clamp-half;
       //Proprietary clamps for the menu
-      top: clamp(35px, 8vw, 75px); // to ensure the clamp is under the logo
+      top: clamp(26px, 6vw, 56px); // to ensure the menu is under the logo
       left: clamp(48px, 12vw, 86px);
       li {
         line-height: 1;
@@ -352,6 +352,8 @@ header {
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+			background-color:rgba($blue, 0.2);
+			border-radius:2px;
       &:first-child {
         height: 50vw;
         max-height: 418px;
@@ -447,24 +449,6 @@ header {
   }
 }
 
-.section.intro{
-	.block{
-		background:$light;
-		padding:$medium-clamp-half;
-		margin-left:$medium-clamp-half-negative;
-		margin-right:$medium-clamp-half-negative;
-	}
-	button{
-		background:$light;
-	}
-	.block,
-	.block p,
-	.block h1,
-	.block h2,
-	.block h3{
-		border:1px solid;
-	}
-}
 
 // The product grid
 
