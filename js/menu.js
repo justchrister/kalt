@@ -59,7 +59,7 @@ $(function () {
         );
     });
 });
-let curval = $(".logo").innerHTML;
+let curval = $(".logo").html();
 let orgval = 100;
 let randval = 0;
 setTimeout(() => { $(".logo").html("_K_____"); }, orgval);
