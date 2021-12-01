@@ -59,6 +59,29 @@ $(function () {
         );
     });
 });
+let curval = $(".logo").innerHTML;
+let orgval = 100;
+let randval = 0;
+setTimeout(() => { $(".logo").html("_K_____"); }, orgval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("__K____"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("___K___"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("____K__"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("_____K_"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("____K__"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("___K___"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("__K____"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html("_K_____"); }, randval);
+randval = randval + orgval;
+setTimeout(() => { $(".logo").html(curval); }, randval);
+
 
 // set a cookie, lool
 document.cookie = "cookie!";
