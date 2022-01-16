@@ -16,9 +16,9 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Transactions </title>
+    <title> Kalt — Documents</title>
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="https://kalt.co/css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -26,7 +26,7 @@
     <!-- Asking search engines not to index the website: -->
     <meta name=”robots” content=”noindex”>
     <!-- Adding description -->
-		<meta name="description" content="About Kalt">
+		<meta name="description" content="Our document archive">
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
@@ -37,7 +37,7 @@
   <body>
     <header>
 			<a href="/">
-	      <button class="logo"><span>Kalt</span> — Dashboard</button>
+	      <button class="logo"><span>Kalt</span> — Documents</button>
 			</a>
       <nav class="menu">
 				<a href="https://kalt.co/menu.html">
@@ -53,30 +53,45 @@
     </header>
 
     <!--
-      Start the about page
+      Start the documents page
     -->
     <div class="page">
-      <div class="section">
+
+      <div class="section" id="documents">
         <h2 class="title">
-          Dashbaord
+          Documents
         </h2>
-        <div class="block">
-          <p>
-						So far you've invested 23 004 949 USD and currently that investment is worth 859 943 923 USD.
-					</p>
-        </div>
-        <a href="authenticate.html">
-	        <button class="read_more" tabindex="-1">deposit</button>
-				</a>
-				<p style="text-align:center;">
-					<br>
-				<a href="authenticate.html">withdraw</a></p>
-			</div>
+        <nav>
+          <ol>
+						<li>
+							<span class="category">
+								Contract
+							</span>
+							<span class="subject">
+								<a href="https://docs.google.com/document/d/1dkj9J-73FkyLZMPCGt928zdQ-II1nRo60adtTh1-33Y/edit?usp=sharing" target="blank">
+									Capital investment agreement
+								</a>
+							</span>
+							<span class="date">2022</span>
+						</li>
+						<li>
+							<span class="category">
+								Document
+							</span>
+							<span class="subject">
+								<a href="/📄/art-aquisition-strategy.html">
+									art-aquisition-strategy.html
+								</a>
+							</span>
+							<span class="date">2022</span>
+						</li>
+          </ol>
+        </nav>
+      </div>
     </div>
     <!-- Including jquery -->
     <script src="https://kalt.co/js/lib/jq.js"></script>
     <!-- Generating the menu -->
-    <script src="https://kalt.co/js/contextual-menu/fund.js"></script>
     <script src="https://kalt.co/js/menu.js"></script>
   </body>
 
