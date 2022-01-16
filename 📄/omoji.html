@@ -46,8 +46,10 @@
 	          menu
 	        </button>
 				</a>
-        <ul>
+        <ul id="main">
         </ul>
+				<ul id="contextual">
+				</ul>
       </nav>
     </header>
 
@@ -74,7 +76,7 @@
 				</div>
 				<div class="block">
 					<br>
-					<p style="font-size:300%;text-align:center;">
+					<p style="font-size:300%;text-align:center;" id="omoji">
 						😊 → <omoji style="background-image:url(https://cdn.kalt.co/media/omoji/super-happy.svg);">😊</omoji>
 					</p>
 					<br>
@@ -82,9 +84,12 @@
       </div>
     </div>
     <!-- Including jquery -->
-    <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <script src="https://kalt.co/js/lib/jq.js"></script>
     <!-- Generating the menu -->
     <script src="https://kalt.co/js/menu.js"></script>
+		<script>
+			console.log(window.getComputedStyle(document.getElementById("omoji")).getPropertyValue("color"));
+		</script>
   </body>
 
 </html>

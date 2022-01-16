@@ -16,9 +16,9 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Principles</title>
+    <title> Kalt — Fund: Open account </title>
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="https://kalt.co/css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -26,18 +26,23 @@
     <!-- Asking search engines not to index the website: -->
     <meta name=”robots” content=”noindex”>
     <!-- Adding description -->
-		<meta name="description" content="Our values">
+		<meta name="description" content="About Kalt">
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
+		<style>
+			.section p input {
+				margin-top:2px;
+			}
+		</style>
   </head>
   <body>
     <header>
 			<a href="/">
-	      <button class="logo"><span>Kalt</span> — Principles</button>
+	      <button class="logo"><span>Kalt</span> — Register</button>
 			</a>
       <nav class="menu">
 				<a href="https://kalt.co/menu.html">
@@ -53,28 +58,32 @@
     </header>
 
     <!--
-      Start the homepage
+      Start the about page
     -->
-    <div class="page" id="values">
-      <div class="section" id="values">
-        <div class="frame">
-						<div class="image" style="margin-left:0;background-image:url(https://cdn.kalt.co/media/values_02.jpg)">
-	          </div>
-        </div>
-				<div class="block">
-					<!--<h2>Foundational guiding values and principles</h2>-->
-					<h2>Fundemental values</h2>
+    <div class="page" id="about">
+      <div class="section" id="about">
+        <div class="block">
+          <h2 class="title">
+            Set up for success!
+          </h2>
 					<p>
-						We strive to be politically agnostic, and make objective decisions based on facts derrived from data. But all our decisions are guided by our core values.
-		        <ol>
-							<li>Be nice</li>
-							<li>Do the right thing</li>
-							<li>Make everywhere better</li>
-							<li>Be fair</li>
-							<li>Trust others</li>
-						</ol>
+						We need to some more info about you before you start investing. This information will not be used for marketing, sold to anyone or made available to our employees.
 					</p>
-				</div>
+          <p>
+						First name
+					<input type="text" placeholder="Kelon"></input>
+						Last name
+					<input type="text" placeholder="Wusk"></input>
+						Phonenumber
+					<input type="text" placeholder="911"></input>
+						E-mail
+					<input type="text" placeholder="bill@gates.org"></input>
+						Address
+					<input type="text" placeholder="Wilkshire, London"></input>
+        </div>
+        <a href="fund/dashboard.html">
+	        <button class="read_more" tabindex="-1">done →</button>
+				</a>
 			</div>
     </div>
     <!-- Including jquery -->

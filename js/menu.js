@@ -27,7 +27,7 @@ $(".menu button").click(function(){
 // Build the menu
 
 $(function () {
-    var data = {
+    var menuData = {
         menu: [{
             name: 'Artworks',
             link: 'https://kalt.co/art' },
@@ -52,13 +52,36 @@ $(function () {
         return item;
     };
 
-    var $menu = $(".menu ul");
-    $.each(data.menu, function () {
+    var $menu = $(".menu ul#main");
+    $.each(menuData.menu, function () {
         $menu.append(
             getMenuItem(this)
         );
     });
 });
+
+if (typeof contextualMenuData !== 'undefined') { // Check if the contextual menu variable is set to anything
+	$(function () {
+			var getMenuItem = function (itemData) {
+					var item = $("<li>")
+							.append(
+					$("<a>", {
+							href: itemData.link,
+							html: itemData.name
+					}));
+					return item;
+			};
+
+			var $menu = $(".menu ul#contextual");
+			$.each(contextualMenuData.menu, function () {
+					$menu.append(
+							getMenuItem(this)
+					);
+			});
+	});
+}
+
+
 let curval = $(".logo").html();
 let orgval = 100;
 let randval = 0;

@@ -17,10 +17,6 @@
   <head>
     <!-- Setting the title -->
     <title> Kalt — Digital architecture </title>
-		<!-- prefetching from the cdn -->
-		<link rel="preload" href="https://kalt.co/css/base.css" as="style">
-		<link rel="preload" href="https://cdn.kalt.co/js/lib/jq.js" as="script">
-		<link rel="preconnect" href="https://cdn.kalt.co">
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="https://kalt.co/css/base.css">
     <!-- Defining the character set used -->
@@ -44,11 +40,15 @@
 	      <button class="logo"><span>Kalt</span> — Digital architecture</button>
 			</a>
       <nav class="menu">
-        <button class="menu">
-          menu
-        </button>
-        <ul>
+				<a href="https://kalt.co/menu.html">
+	        <button class="menu">
+	          menu
+	        </button>
+				</a>
+        <ul id="main">
         </ul>
+				<ul id="contextual">
+				</ul>
       </nav>
     </header>
     <!--
@@ -73,7 +73,7 @@
       </div>
       <div class="section">
         <div class="block">
-					<h2> Introduction </h2>
+					<h2> A whitepaper on the principles of digital architecture. </h2>
 					<p>
 						Digital architecture is no different than software architecture, but the scope is much broader, and the principles more abstract. It does not favour one particular architectural paradigm over another, which means you do not have to choose a particular paradigm either. These principles can be applied to any paradigm - or a combination of pardigms - to allow teams, departments and entire organizations to create and iterate faster.
           </p>
@@ -139,7 +139,7 @@
 						The business should only build what is required themselves, specialized SaaS solutions and
 
 
-						PS The marketing department will be joyous when they get to use WebFlow to build and test landing pages, over using wordpress, bigcommerce or some other CMS. 
+						PS The marketing department will be joyous when they get to use WebFlow to build and test landing pages, over using wordpress, bigcommerce or some other CMS.
 					</p>
         </div> <!-- End block -->
 				<div class="block">
@@ -150,8 +150,8 @@
         </div> <!-- End block -->
 				<div class="block">
 					<p>
-						<strong>Third party API's</strong>
-						Certain logic does not even have to be a SaaS solution, but a simple third party API. For instance for checking the weather at a specific place, or the exchange rates. They should also be considered parts.
+						<strong>Serverless microservices</strong>
+						They dont have to be serverless, but this is
 					</p>
         </div> <!-- End block -->
       </div> <!-- End section -->
@@ -250,7 +250,7 @@
 				</div>
 			</div>
     <!-- Including jquery -->
-    <script src="https://cdn.kalt.co/js/lib/jq.js"></script>
+    <script src="https://kalt.co/js/lib/jq.js"></script>
     <!-- Generating the menu -->
     <script src="https://kalt.co/js/menu.js"></script>
   </body>

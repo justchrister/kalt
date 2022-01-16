@@ -296,7 +296,12 @@ header {
       padding: 0 0 0 $big-clamp-half;
       //Proprietary clamps for the menu
       top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
-      left: clamp(48px, 12vw, 86px);
+			&#main{
+	      left: clamp(48px, 12vw, 86px);
+			}
+			&#contextual{
+				right: $medium-clamp;
+			}
       li {
         line-height: 1;
         a {
@@ -343,6 +348,11 @@ header {
     justify-content: space-between;
     align-items: flex-end;
     align-content: start;
+		canvas{
+			height: 32vw;
+			max-height: 268px;
+
+		}
     .image {
 			height: 32vw;
 			max-height: 268px;

@@ -16,7 +16,7 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Art collection </title>
+    <title> Kalt — Web 3.0 resources </title>
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="https://kalt.co/css/base.css">
     <!-- Defining the character set used -->
@@ -30,14 +30,6 @@
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
-		<style>
-		.item{
-			display:none;
-		}
-		.item.active{
-			display:block;
-		}
-		</style>
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
@@ -45,7 +37,7 @@
   <body>
     <header>
 			<a href="/">
-	      <button class="logo"><span>Kalt </span>— Art collection</button>
+	      <button class="logo"><span>Kalt</span> — Books</button>
 			</a>
       <nav class="menu">
 				<a href="https://kalt.co/menu.html">
@@ -59,86 +51,53 @@
 				</ul>
       </nav>
     </header>
-
     <!--
-      Start the store
+      Start page
     -->
-    <div class="page" id="art">
+    <div class="page" id="stylebook">
 
       <!--
         Featured section
       -->
       <div class="section">
-        <h1>
-          Find carefully curated art
-        </h1>
-        <p>
-          We curate art from upencoming and established artists from all around the world.
-        </p>
-        <!--<input type="text" class="search"   placeholder="Search" ></input>-->
-      </div>
-      <div class="section grid list" id="store">
-      </div>
-    </div>
+        <div class="block">
+          <h2> A curated list of web 3.0 resources </h2>
+					<p>
+						<strong> Disclaimer </strong>
+					</p>
+          <p>
+						<strong> Business </strong>
+						<ul>
+							<li>The Lean Startup by Eric Ries </li>
+							<li>How to Win Friends and Influence People </li>
+							<li>Grit: The Power of Passion and Perseverance </li>
+							<li>The Effective Executive: The Definitive Guide to Getting the Right Things Done </li>
+							<li>Good To Great </li>
+							<li>Zero to One by Peter Thiel </li>
+							<li>Grit: The Power of Passion and Perseverance </li>
+						</ul>
+						<strong> Philosophy </strong>
+						<ul>
+							<li>The Stranger by Albert Camus</li>
+							<li>The Metamorphosis by Franz Kafka</li>
+							<li>Grit: The Power of Passion and Perseverance </li>
+						</ul>
+						<strong> Investing </strong>
+						<ul>
+							<li>The intelligent investor</li>
+						</ul>
+						<strong> Technology </strong>
+						<ul>
+							<li>Microservice patterns</li>
+							<li>Clean architecture </li>
+						</ul>
+
+					</p>
+        </div>
+			</div>
+		</div>
     <!-- Including jquery -->
     <script src="https://kalt.co/js/lib/jq.js"></script>
-    <!-- Including artwork array -->
-    <script src="https://kalt.co/js/artworks.js"></script>
-    <!-- Including store javascript -->
-    <script>
-
-			function createArtwork(artworkData) {
-			  var artworkTemplate = [
-					'<a href="/→?id=',
-					artworkData.artid,
-					'">',
-					'<div class="item active">',
-					'<div class="image" style="filter:grayscale(0);background-image:url(',
-					artworkData.image,
-				  ');"></div>',
-					'<div class="body">',
-					'<h2 class="title">',
-					artworkData.title,
-					'</h2>',
-					'<p class="byline">',
-					artworkData.byline,
-					'</p>',
-					'</div>',
-					'<button class="more">est ',
-					artworkData.price,' ',
-					artworkData.currency,
-					'</button>',
-					'</div>',
-					'</a>'
-			  ];
-
-			  // a jQuery node
-			  return $(artworkTemplate.join(''));
-			}
-
-			var items = $();
-			// Store all the card nodes
-			artworks.forEach(function(item, i) {
-			  items = items.add(createArtwork(item));
-			});
-
-			// Add them to the page... for instance the <body>
-			$(function() {
-			  $('.grid#store').append(items);
-			});
-			jQuery.expr[':'].contains = function(a, i, m) {
-			  return jQuery(a).text().toUpperCase()
-			      .indexOf(m[3].toUpperCase()) >= 0;
-			};
-			$('.search').on('input', function() {
-			  var something = $('.search').val();
-				$('h2:contains(' + something + ')').closest(".item").addClass('active');
-				$('h2:not(:contains('+ something +'))').closest(".item").removeClass('active');
-			});
-
-
-
-		</script>
     <!-- Generating the menu -->
     <script src="https://kalt.co/js/menu.js"></script>
   </body>
