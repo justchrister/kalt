@@ -1,0 +1,131 @@
+<!doctype html>
+
+
+    <!--                             kalt.co                                -->
+
+
+    <!--                                (                                   -->
+    <!--                    .            )        )                         -->
+    <!--                              (  (|              .                  -->
+    <!--                         )   )\/ ( ( (                              -->
+    <!--                 *  (   ((  /     ))\))  (  )    )                  -->
+    <!--               (     \   )\(          |  ))( )  (|                  -->
+    <!--               >)     ))/   |          )/  \((  ) \                 -->
+
+
+<html lang="en">
+  <head>
+    <!-- Setting the title -->
+    <title> Kalt — Loading... </title>
+    <!-- Including the base stylesheet -->
+    <link rel="stylesheet" href="https://kalt.co/css/base.css">
+    <!-- Defining the character set used -->
+    <meta charset="UTF-8">
+    <!-- Setting the viewport to make your website look good on all devices: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Asking search engines not to index the website: -->
+    <meta name=”robots” content=”noindex”>
+    <!-- Adding description -->
+		<meta name="description" content="Loading...">
+		<!-- Adding theme color -->
+		<meta name="theme-color" content="#FCF9F2"/>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
+  </head>
+  <body class="item-open" style="background:#fff;">
+		<a href="https://kalt.co/art"><button style="border-color:transparent;position:fixed;right:0;" id="close">╳</button></a>
+    <div class="page" id="artwork">
+			<div class="image"></div>
+	    <div class="section" id="description">
+        <h2 id="title">Loading...</h2>
+        <p class="byline">
+					Loading...
+        </p>
+        <p class="description">
+          Loading...
+        </p>
+				<a href="mailto:christer@kalt.co" id="button_href">
+					<button class="more" style="background:transparent;" id="price">Loading...</button>
+				</a>
+			</div>
+			<div class="section" id="information">
+				<ul>
+					<li class="bold-text">Artwork information </li>
+					<li>
+						<span class="left-cell">Artist: </span> <span class="right-cell" data-artworks="byline">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Title: </span> <span class="right-cell" data-artworks="title">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Curator: </span> <span class="right-cell" data-artworks="curator">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Medium: </span> <span class="right-cell" data-artworks="medium">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Year: </span> <span class="right-cell" data-artworks="year">Loading... </span>
+					</li>
+					<li>
+						<span class="left-cell">Price: </span> <span class="right-cell" data-artworks="price-combined">Loading... </span>
+					</li>
+				</ul>
+	    </div>
+    </div>
+    <!-- Including jquery -->
+    <script src="https://kalt.co/js/lib/jq.js"></script>
+    <!-- Including artwork array -->
+    <script src="https://kalt.co/js/artworks.js"></script>
+    <!-- Including store javascript -->
+    <script>
+			$.urlParameter = function(name){
+				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+				if (results == null){
+					window.location.href = "http://kalt.co/art";
+				} else {
+					return results[1] || 0;
+				}
+			}
+			$(document).ready(function() {
+				var artid = $.urlParameter("id");   // CAN be combined with 89
+				console.log("Loading " + artid);
+				// Get the coresponding artwork object in the artworks array.
+				var artwork = artworks.find(obj => {
+				  return obj.artid === artid;
+				});
+				$('[data-artworks]').each(function(){
+					var data = this.getAttribute("data-artworks");
+
+					$(this).html(artwork.data);
+				});
+				$('.image').css('background-image', 'url(' + artwork.image + ')');
+				$("#title").html(artwork.title);
+				document.title = "Kalt — " + artwork.title + "by " + artwork.byline;
+				$('.byline').html(artwork.byline);
+				$("meta[name='description']").attr("content", artwork.title + " by " + artwork.byline);
+				$('.description').html(artwork.description);
+				$('#price').each(function () {
+						this.innerHTML = artwork.price + " " + artwork.currency;
+				});
+				$("#currency").html(artwork.currency);
+				$("#year").html(artwork.year);
+				$("#exhibitions").append(artwork.exhibited);
+				$("#curator").html(artwork.curator);
+				$("#medium").html(artwork.medium);
+				if(artwork.button){
+					$('button.more').html("read more");
+					$('#button_href').attr("href", artwork.button);
+					$('#button_href').attr("target", "_blank");
+				} else {
+					$('#button_href').attr("href", "mailto:hello@kalt.co&subject=Acquisition Inquiry: " + artwork.title + " by " + artwork.byline + " (artwork id: " + artwork.artid + ")&body=Hello " + artwork.curator + ", %0D%0A");
+
+				}
+			 });
+		</script>
+    <!-- Generating the menu -->
+    <script src="https://kalt.co/js/menu.js"></script>
+  </body>
+
+</html>
