@@ -37,6 +37,14 @@
 			.section p input {
 				margin-top:2px;
 			}
+			input:not(:placeholder-shown) {
+			  border-color: green;
+			}
+
+			input:not(:placeholder-shown):not(:focus) {
+				border-radius:50%;
+				text-align:center;
+			}
 		</style>
   </head>
   <body>
@@ -71,9 +79,9 @@
 					</p>
           <p>
 						Username
-					<input type="text" placeholder="satoshi69"></input>
+					<input type="text" placeholder="satoshi69" id="username"></input>
 						Password
-					<input type="password" placeholder="********"></input>
+					<input type="password" placeholder="Elon_9001!"></input>
 					</p>
         </div>
         <a href="register.html">

@@ -86,49 +86,58 @@
     <script src="https://kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
-			const space = "xdtovtw3dsvp";
-			const content = "artwork"; // content type
-			const token = "rZP5wX9KmtkpApVSxPK_e9mnYImLR7wi7MbepyyFxgw";
-			const object = document.getElementById("store");
 
+			function createArtwork(artworkData) {
+			  var artworkTemplate = [
+					'<a href="/→?id=',
+					artworkData.artid,
+					'">',
+					'<div class="item active">',
+					'<div class="image" style="filter:grayscale(0);background-image:url(',
+					artworkData.image,
+				  ');"></div>',
+					'<div class="body">',
+					'<h2 class="title">',
+					artworkData.title,
+					'</h2>',
+					'<p class="byline">',
+					artworkData.byline,
+					'</p>',
+					'</div>',
+					'<button class="more">est ',
+					artworkData.price,' ',
+					artworkData.currency,
+					'</button>',
+					'</div>',
+					'</a>'
+			  ];
 
-			var formatter = new Intl.NumberFormat('en-US', {
-			  style: 'currency',
-			  currency: 'NOK',
-				maximumFractionDigits: 0
+			  // a jQuery node
+			  return $(artworkTemplate.join(''));
+			}
+
+			var items = $();
+			// Store all the card nodes
+			artworks.forEach(function(item, i) {
+			  items = items.add(createArtwork(item));
+			});
+
+			// Add them to the page... for instance the <body>
+			$(function() {
+			  $('.grid#store').append(items);
+			});
+			jQuery.expr[':'].contains = function(a, i, m) {
+			  return jQuery(a).text().toUpperCase()
+			      .indexOf(m[3].toUpperCase()) >= 0;
+			};
+			$('.search').on('input', function() {
+			  var something = $('.search').val();
+				$('h2:contains(' + something + ')').closest(".item").addClass('active');
+				$('h2:not(:contains('+ something +'))').closest(".item").removeClass('active');
 			});
 
 
-			async function getEntries(){
-				// Get the fields
-				await fetch(
-				  "https://cdn.contentful.com/spaces/" +
-				  space +
-				  "/environments/master/entries/?access_token=" + token + "&content_type=" + content).then(res => {
-					return res.json()
-				}).then(data => {
-						data.items.forEach((item)=>{
-							fetch(
-								"https://cdn.contentful.com/spaces/" +
-								space +
-								"/environments/master/assets/" + item.fields.media[0].sys.id + "?access_token=" + token).then(asset_res => {
-								return asset_res.json()
-							}).then(asset_data => {
-								fetch(
-									"https://cdn.contentful.com/spaces/" +
-									space +
-									"/environments/master/entries/" + item.fields.artist.sys.id + "?access_token=" + token).then(artist_res => {
-									return artist_res.json()
-								}).then(artist_data => {
 
-									object.insertAdjacentHTML('beforeend', '<a href="https://kalt.co/→?=' + item.sys.id + '"><div class="item active"><div class="image" style="filter:grayscale(0);background-image:url(https://'+ asset_data.fields.file.url +'?fm=jpg&fl=progressive);"></div><div class="body"><h2 class="title">' + item.fields.title + '</h2><p class="byline">' + artist_data.fields.artistName + '</p></div><button class="more">' + formatter.format(item.fields.price) + ' NOK</button></div></a>');
-								});
-							});
-						});
-					});
-				};
-				// Get the artist
-				getEntries();
 		</script>
     <!-- Generating the menu -->
     <script src="https://kalt.co/js/menu.js"></script>
