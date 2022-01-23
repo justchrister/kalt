@@ -111,7 +111,7 @@
 							fetch(
 								"https://cdn.contentful.com/spaces/" +
 								space +
-								"/environments/master/assets/" + item.fields.media[0].sys.id + "?access_token=" + token +  "?fm=jpg&fl=progressive").then(asset_res => {
+								"/environments/master/assets/" + item.fields.media[0].sys.id + "?access_token=" + token).then(asset_res => {
 								return asset_res.json()
 							}).then(asset_data => {
 								fetch(
