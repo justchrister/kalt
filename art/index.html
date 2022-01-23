@@ -16,7 +16,7 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Art collection </title>
+    <title> Kalt — Loading... </title>
     <!-- Including the base stylesheet -->
     <link rel="stylesheet" href="https://kalt.co/css/base.css">
     <!-- Defining the character set used -->
@@ -26,44 +26,52 @@
     <!-- Asking search engines not to index the website: -->
     <meta name=”robots” content=”noindex”>
     <!-- Adding description -->
-		<meta name="description" content="Carefully curated art">
+		<meta name="description" content="Loading...">
 		<!-- Adding theme color -->
 		<meta name="theme-color" content="#FCF9F2"/>
     <!-- Favicon -->
-		<style>
-		.item{
-			display:none;
-		}
-		.item.active{
-			display:block;
-		}
-		</style>
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.kalt.co/media/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.kalt.co/media/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.kalt.co/media/favicon/favicon-16x16.png">
   </head>
-  <body>
-    <header>
-			<a href="/">
-	      <button class="logo"><span>Kalt </span>— Art collection</button>
-			</a>
-      <nav class="menu">
-				<a href="https://kalt.co/menu.html">
-	        <button class="menu">
-	          menu
-	        </button>
-				</a>
-        <ul id="main">
-        </ul>
-				<ul id="contextual">
-				</ul>
-      </nav>
-    </header>
+  <body class="item-open">
+    <div class="page" id="artwork" style="display:none;">
+			<a href="https://kalt.co/art"><button style="border-color:transparent;position:fixed;right:0;" id="close">╳</button></a>
+			<div class="image" data-cms="image"></div>
+	    <div class="section" id="description">
+        <h2 data-cms="title"></h2>
+        <p class="byline" data-cms="artist">
+        </p>
+        <div data-cms="content">
 
-    <!--
-      Start the store
-    -->
-    <div class="page" id="art">
+        </div>
+				<a href="mailto:christer@kalt.co" id="button_href">
+					<button class="more" style="background:transparent;" data-cms="price"]></button>
+				</a>
+			</div>
+			<div class="section" id="information">
+				<ul>
+					<li class="bold-text">Artwork information </li>
+					<li>
+						<span class="left-cell">Title: </span> <span class="right-cell" data-cms="title"> </span>
+					</li>
+					<li>
+						<span class="left-cell">Artist: </span> <span class="right-cell" data-cms="artist"></span>
+					</li>
+					<li>
+						<span class="left-cell">Medium: </span> <span class="right-cell" data-cms="medium"> </span>
+					</li>
+					<li>
+						<span class="left-cell">Year: </span> <span class="right-cell" data-cms="year"></span>
+					</li>
+					<li>
+						<span class="left-cell">Price: </span> <span class="right-cell" data-cms="price"></span>
+					</li>
+				</ul>
+	    </div>
+    </div>
+
+    <div class="page" id="art" style="display:none;">
 
       <!--
         Featured section
@@ -87,24 +95,23 @@
     <!-- Including store javascript -->
     <script>
 			const space = "xdtovtw3dsvp";
-			const content = "artwork"; // content type
 			const token = "rZP5wX9KmtkpApVSxPK_e9mnYImLR7wi7MbepyyFxgw";
+			const content = "artwork"; // content type
+			const id = window.location.search.replace('?%E2%86%92', '');
+			console.log(id);
 			const object = document.getElementById("store");
-
-
 			var formatter = new Intl.NumberFormat('en-US', {
-			  style: 'currency',
-			  currency: 'NOK',
+				style: 'currency',
+				currency: 'NOK',
 				maximumFractionDigits: 0
 			});
-
 
 			async function getEntries(){
 				// Get the fields
 				await fetch(
-				  "https://cdn.contentful.com/spaces/" +
-				  space +
-				  "/environments/master/entries/?access_token=" + token + "&content_type=" + content).then(res => {
+					"https://cdn.contentful.com/spaces/" +
+					space +
+					"/environments/master/entries/?access_token=" + token + "&content_type=" + content).then(res => {
 					return res.json()
 				}).then(data => {
 						data.items.forEach((item)=>{
@@ -121,14 +128,69 @@
 									return artist_res.json()
 								}).then(artist_data => {
 
-									object.insertAdjacentHTML('beforeend', '<a href="https://kalt.co/→?=' + item.sys.id + '"><div class="item active"><div class="image" style="filter:grayscale(0);background-image:url(https://'+ asset_data.fields.file.url +');"></div><div class="body"><h2 class="title">' + item.fields.title + '</h2><p class="byline">' + artist_data.fields.artistName + '</p></div><button class="more">' + formatter.format(item.fields.price) + ' NOK</button></div></a>');
+									object.insertAdjacentHTML('beforeend', '<a href="https://kalt.co/art?→' + item.sys.id + '"><div class="item active"><div class="image" style="filter:grayscale(0);background-image:url(https:'+ asset_data.fields.file.url +');"></div><div class="body"><h2 class="title">' + item.fields.title + '</h2><p class="byline">' + artist_data.fields.artistName + '</p></div><button class="more">' + formatter.format(item.fields.price) + ' NOK</button></div></a>');
 								});
 							});
 						});
 					});
 				};
-				// Get the artist
-				getEntries();
+
+					async function getFields(){
+						// Get the fields
+						await fetch(
+						  "https://cdn.contentful.com/spaces/" +
+						  space +
+						  "/environments/master/entries/" + id + "?access_token=" + token).then(res => {
+							return res.json()
+						}).then(data => {
+							console.log(data);
+								fetch(
+									"https://cdn.contentful.com/spaces/" +
+									space +
+									"/environments/master/assets/" + data.fields.media[0].sys.id + "?access_token=" + token).then(asset_res => {
+									return asset_res.json()
+								}).then(asset_data => {
+									document.body.querySelector('[data-cms="image"]').style.backgroundImage = "url(https:" + asset_data.fields.file.url + ")";
+								});
+
+								var formatter = new Intl.NumberFormat('en-US', {
+								  style: 'currency',
+								  currency: 'NOK',
+									maximumFractionDigits: 0
+								});
+
+								var price = formatter.format(data.fields.price); /* $2,500.00 */
+								document.body.querySelector('[data-cms="title"]').innerHTML = (data.fields.title);
+								document.body.querySelector('button[data-cms="price"]').innerHTML = (price);
+								document.body.querySelector('span[data-cms="title"]').innerHTML = (data.fields.title);
+								document.body.querySelector('span[data-cms="year"]').innerHTML = (data.fields.date.slice(0,4));
+								document.body.querySelector('span[data-cms="price"]').innerHTML = (price);
+								document.body.querySelector('span[data-cms="medium"]').innerHTML = (data.fields.medium);
+								console.log(data);
+								for(var i = 0; i < data.fields.description.content.length; i++) {
+									if(data.fields.description.content[i].nodeType === "paragraph"){
+										document.body.querySelector('[data-cms="content"]').innerHTML += "<p>" + (data.fields.description.content[i].content[0].value) + "</p>";
+									}
+								}
+								fetch(
+								  "https://cdn.contentful.com/spaces/" +
+								  space +
+								  "/environments/master/entries/" + data.fields.artist.sys.id + "?access_token=" + token).then(artist_res => {
+									return artist_res.json()
+								}).then(artist_data => {
+									document.body.querySelector('[data-cms="artist"]').innerHTML = (artist_data.fields.artistName);
+									document.body.querySelector('span[data-cms="artist"]').innerHTML = (artist_data.fields.artistName);
+									document.title = "Kalt — " + data.fields.title + " by " + artist_data.fields.artistName;
+								});
+						});
+					};
+				if (id == ""){
+					getEntries();
+					document.getElementById("art").style.display = "block";
+				} else {
+					getFields();
+					document.getElementById("artwork").style.display = "block";
+				};
 		</script>
     <!-- Generating the menu -->
     <script src="https://kalt.co/js/menu.js"></script>
