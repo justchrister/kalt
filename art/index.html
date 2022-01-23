@@ -117,11 +117,11 @@
 								fetch(
 									"https://cdn.contentful.com/spaces/" +
 									space +
-									"/environments/master/entries/" + item.fields.artist.sys.id + "?access_token=" + token).then(artist_res => {
+									"/environments/master/entries/" + item.fields.artist.sys.id + "?access_token=" + token + "?fm=jpg&fl=progressive").then(artist_res => {
 									return artist_res.json()
 								}).then(artist_data => {
 
-									object.insertAdjacentHTML('beforeend', '<a href="https://kalt.co/→?=' + item.sys.id + '"><div class="item active"><div class="image" style="filter:grayscale(0);background-image:url(https://'+ asset_data.fields.file.url +'?fm=jpg&fl=progressive);"></div><div class="body"><h2 class="title">' + item.fields.title + '</h2><p class="byline">' + artist_data.fields.artistName + '</p></div><button class="more">' + formatter.format(item.fields.price) + ' NOK</button></div></a>');
+									object.insertAdjacentHTML('beforeend', '<a href="https://kalt.co/→?=' + item.sys.id + '"><div class="item active"><div class="image" style="filter:grayscale(0);background-image:url(https://'+ asset_data.fields.file.url +');"></div><div class="body"><h2 class="title">' + item.fields.title + '</h2><p class="byline">' + artist_data.fields.artistName + '</p></div><button class="more">' + formatter.format(item.fields.price) + ' NOK</button></div></a>');
 								});
 							});
 						});
