@@ -454,6 +454,16 @@ header {
 			border-style: dashed;
 		}
   }
+	form{
+		input:not(:placeholder-shown) {
+			border-color: $blue;
+		}
+
+		input:not(:placeholder-shown):not(:focus) {
+			border-radius:50%;
+			text-align:center;
+		}
+	}
 }
 
 
