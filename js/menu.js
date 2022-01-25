@@ -60,28 +60,6 @@ $(function () {
     });
 });
 
-if (typeof contextualMenuData !== 'undefined') { // Check if the contextual menu variable is set to anything
-	$(function () {
-			var getMenuItem = function (itemData) {
-					var item = $("<li>")
-							.append(
-					$("<a>", {
-							href: itemData.link,
-							html: itemData.name
-					}));
-					return item;
-			};
-
-			var $menu = $(".menu ul#contextual");
-			$.each(contextualMenuData.menu, function () {
-					$menu.append(
-							getMenuItem(this)
-					);
-			});
-	});
-}
-
-
 let curval = $(".logo").html();
 let orgval = 100;
 let randval = 0;
