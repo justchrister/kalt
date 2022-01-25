@@ -16,9 +16,9 @@
 <html lang="en">
   <head>
     <!-- Setting the title -->
-    <title> Kalt — Loading... </title>
+    <title> Kalt — Art </title>
     <!-- Including the base stylesheet -->
-    <link rel="stylesheet" href="https://kalt.co/css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
     <!-- Defining the character set used -->
     <meta charset="UTF-8">
     <!-- Setting the viewport to make your website look good on all devices: -->
@@ -36,7 +36,6 @@
   </head>
   <body class="item-open">
     <div class="page" id="artwork" style="display:none;">
-			<a href="https://kalt.co/art"><button style="border-color:transparent;position:fixed;right:0;" id="close">╳</button></a>
 			<div class="image" data-cms="image"></div>
 	    <div class="section" id="description">
         <h2 data-cms="title"></h2>
@@ -70,21 +69,6 @@
 				</ul>
 	    </div>
     </div>
-
-		<header>
-			<a href="/">
-				<button class="logo"><span>Kalt</span> — Error</button>
-			</a>
-			<nav class="menu">
-				<a href="https://kalt.co/menu.html">
-					<button class="menu">
-						menu
-					</button>
-				</a>
-				<ul id="main">
-				</ul>
-			</nav>
-		</header>
     <div class="page" id="art" style="display:none;">
 
       <!--
@@ -102,16 +86,12 @@
       <div class="section grid list" id="store">
       </div>
     </div>
-    <!-- Including jquery -->
-    <script src="https://kalt.co/js/lib/jq.js"></script>
-    <!-- Including artwork array -->
-    <script src="https://kalt.co/js/artworks.js"></script>
     <!-- Including store javascript -->
     <script>
 
 			/*
 
-				This javascript is extremely blaoted, I get all the data in a single fetch when I retrieve all the entries. There I have the titles etc. I can store that data in a cookie. 
+				This javascript is extremely blaoted, I get all the data in a single fetch when I retrieve all the entries. There I have the titles etc. I can store that data in a cookie.
 
 			*/
 
@@ -208,16 +188,14 @@
 					};
 				if (id == ""){
 					getEntries();
-
 					document.getElementById("art").style.display = "block";
-					document.getElementsByTagName('header').style.display = "block";
 				} else {
 					getFields();
 					document.getElementById("artwork").style.display = "block";
 				};
 		</script>
     <!-- Generating the menu -->
-    <script src="https://kalt.co/js/menu.js"></script>
+    <script src="../js/menu.js"></script>
   </body>
 
 </html>

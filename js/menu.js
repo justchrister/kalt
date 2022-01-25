@@ -1,3 +1,14 @@
+const bod = document.getElementsByTagName('body')[0];
+
+bod.insertAdjacentHTML('afterBegin', '<header><a href="/"><button class="logo"><span>Kalt</span> — About</button></a><nav class="menu"><a href="https://kalt.co/menu.html"> <button id="menu"> menu</button></a><ul id="menu_items"><li><a href="https://kalt.co/art">Artworks</a></li><li><a href="https://kalt.co/fund">Fund</a></li><li><a href="mailto:hello@kalt.co">Contact</a></li><li><a href="https://kalt.co/📄">Documents</a></li></ul></nav></header>');
+
+const menubtn = document.getElementById("menu");
+
+menubtn.addEventListener("click", ()=>{
+	event.preventDefault();
+  bod.classList.toggle("show-menu");
+});
+
 const okStyle = [
   "color: #FF0"
 ].join(";");
@@ -14,75 +25,30 @@ console.log("");
 console.log("%c                       kalt.co                           ", okStyle)
 console.log("");
 
-$(".menu ul li a").click(function(){
-  $("body").toggleClass("show-menu");
-  console.log("%c Kalt: Toggled menu.", okStyle);
-});
-$(".menu button").click(function(){
-	event.preventDefault();
-  $("body").toggleClass("show-menu");
-  console.log("%c Kalt: Toggled menu.", okStyle);
-});
-
-// Build the menu
-
-$(function () {
-    var menuData = {
-        menu: [{
-            name: 'Artworks',
-            link: 'https://kalt.co/art' },
-            {
-            name: 'Documents',
-            link: 'https://kalt.co/📄' },
-            {
-            name: 'Omoji',
-            link: 'https://kalt.co/📄/omoji.html' },
-            {
-            name: 'Contact',
-            link: 'mailto:hello@kalt.co'
-        }]
-    };
-    var getMenuItem = function (itemData) {
-        var item = $("<li>")
-            .append(
-        $("<a>", {
-            href: itemData.link,
-            html: itemData.name
-        }));
-        return item;
-    };
-
-    var $menu = $(".menu ul#main");
-    $.each(menuData.menu, function () {
-        $menu.append(
-            getMenuItem(this)
-        );
-    });
-});
-
-let curval = $(".logo").html();
+/*
+const logoel = document.getElementsById("logo");
+let curval = logoel.html();
 let orgval = 100;
 let randval = 0;
-setTimeout(() => { $(".logo").html("_K_____"); }, orgval);
+setTimeout(() => { logoel.html("_K_____"); }, orgval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("__K____"); }, randval);
+setTimeout(() => { logoel.html("__K____"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("___K___"); }, randval);
+setTimeout(() => { logoel.html("___K___"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("____K__"); }, randval);
+setTimeout(() => { logoel.html("____K__"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("_____K_"); }, randval);
+setTimeout(() => { logoel.html("_____K_"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("____K__"); }, randval);
+setTimeout(() => { logoel.html("____K__"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("___K___"); }, randval);
+setTimeout(() => { logoel.html("___K___"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("__K____"); }, randval);
+setTimeout(() => { logoel.html("__K____"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html("_K_____"); }, randval);
+setTimeout(() => { logoel.html("_K_____"); }, randval);
 randval = randval + orgval;
-setTimeout(() => { $(".logo").html(curval); }, randval);
-
-
+setTimeout(() => { logoel.html(curval); }, randval);
+*/
 // set a cookie, lool
 document.cookie = "cookie!";

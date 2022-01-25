@@ -260,11 +260,11 @@ header {
       font-weight: 500;
     }
   }
-  button.menu {
+  button#menu {
     right: $border-width;
   }
-	button.menu:active,
-	button.menu:focus{
+	button#menu:active,
+	button#menu:focus{
 		background-color: transparent;
 	}
 
@@ -295,13 +295,8 @@ header {
       margin: 0;
       padding: 0 0 0 $big-clamp-half;
       //Proprietary clamps for the menu
-      top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
-			&#main{
-	      left: clamp(48px, 12vw, 86px);
-			}
-			&#contextual{
-				right: $medium-clamp;
-			}
+	    top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
+      left: clamp(48px, 12vw, 86px);
       li {
         line-height: 1;
         a {
@@ -322,7 +317,7 @@ header {
   .menu{
     button{
       &:before{
-        content:"close ";
+        content:"close  ";
         display:inline-block;
       }
     }
@@ -446,7 +441,6 @@ header {
   }
   input{
 		background-color: $light;
-
 		max-width: $maxsitewidth;
     width:$sitewidth;
     @include font-body;
@@ -456,6 +450,9 @@ header {
     margin: $medium-clamp  0;
 		box-sizing: border-box;
     padding: $medium-clamp $medium-clamp-half;
+		&:focus{
+			border-style: dashed;
+		}
   }
 }
 
