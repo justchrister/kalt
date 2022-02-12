@@ -183,7 +183,7 @@ a:focus {
 button {
   border-radius: 50%;
   border: $border;
-  padding: 1%  $big-clamp-half;
+  padding: $big-clamp-half;
   background: transparent;
   @include font-body;
 	&:focus,
