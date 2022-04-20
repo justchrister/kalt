@@ -1,0 +1,673 @@
+
+
+$serif :     "Kalt Display",
+             "STIXGeneral Regular",
+             "Times New Roman",
+             Serif;
+
+$sans-serif: "Helvetica",
+						 "Raleway",
+						 "Arial",
+						 "Roboto",
+						 Sans-Serif;
+
+$monospace:  "Kalt Monospace",
+						 "Courier New",
+             Monospace;
+
+$sectionpadding: clamp(75px, 15vh, 175px);
+$sectionpadding-double: clamp(150px, 30vh, 350px);
+$sitewidth: 86vw;
+$maxsitewidth: 720px;
+$border-width: .1px;
+$border: $border-width solid black;
+$blue: #1E96FC;
+$pink: #F991CC;
+$light: #FCF9F2;
+$dark: #202124;
+$column-divider: 2.4; //% of sitewidth
+
+$big-clamp: clamp(25px, 6.48vw, 50px);
+$medium-clamp: clamp(14px, 3.6vw, 26px);
+
+/* The following clamps are half of their counterpart.
+   Example: $big-clamp-half is half of $big-clamp. */
+$big-clamp-half: clamp(12px, 3.24vw, 25px);
+$medium-clamp-half: clamp(7px, 1.8vw, 13px);
+
+$medium-clamp-negative: clamp(-14px, -3.6vw, -26px);
+$medium-clamp-half-negative: clamp(-7px, -1.8vw, -13px);
+
+// Font sizes
+
+@mixin font-display {
+  font-family: $serif;
+  font-size: $big-clamp;
+  line-height: 150%;
+  margin-bottom: $big-clamp-half;
+	font-display: optional;
+}
+
+@mixin font-body {
+  font-family: $sans-serif;
+  font-size: $medium-clamp;
+  font-weight:300;
+  line-height: 150%;
+	font-display: optional;
+}
+
+@mixin font-monospace {
+  font-family: $monospace;
+  font-size: $medium-clamp;
+  font-weight: normal;
+  line-height: 100%;
+	font-display: optional;
+}
+
+@mixin font-logotype {
+  font-family: $sans-serif;
+  font-size: $medium-clamp;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+// Site Width
+
+@mixin site-width {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+}
+
+//  Override some defaults
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	background:$light;
+  @include font-body;
+	touch-action: manipulation; // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
+	overflow-x: hidden;
+}
+body.yellow-gradient{
+	background: rgb(255,255,0);
+	background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba($light,1) 35%, rgba($light,1) 100%);
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+  color: #000;
+  text-decoration: underline;
+}
+* {
+
+  &:before,
+  &:after{
+    box-sizing: border-box;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::selection {
+    background-color: mix($blue,white,20%);
+  }
+}
+
+h1,h2 {
+  @include font-display;
+  a{
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+h3{
+  @include font-body;
+}
+.bold-text{
+	text-transform: uppercase;
+	margin-top:$medium-clamp;
+}
+a:focus {
+  border: none;
+  box-shadow: none;
+  //color: $blue;
+}
+*:focus{
+	background:mix($blue, white, 20%);
+}
+button {
+  border-radius: 50%;
+  border: $border;
+  padding: $big-clamp-half;
+  background: transparent;
+  @include font-body;
+	&:focus,
+  &:hover {
+    cursor: pointer;
+    border-radius: 0%;
+    a{
+      &:after{
+        //content: " → ";
+        //position: relative;
+      }
+    }
+  }
+}
+a:focus button{
+	background:mix($blue, white, 20%);
+}
+a:focus{
+	button{
+		border-radius: 0%;
+    cursor: pointer;
+	}
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: $medium-clamp;
+  margin: $medium-clamp 0;
+  @include font-monospace;
+  font-size:80%;
+  background-color: rgba($blue,0.1);
+  line-height:1.2;
+  height: $medium-clamp;
+  color: transparent;
+	overflow:hidden;
+  &:hover{
+    cursor: pointer;
+  }
+  &.show-code{
+    color: black;
+    height: auto;
+    padding: $medium-clamp;
+    &:before{
+      display: block;
+      content: '';
+      color:transparent;
+    }
+    &:hover{
+      cursor: auto;
+    }
+  }
+  &:before{
+    position: absolute;
+    display: block;
+    content: '> show code';
+    color:black;
+  }
+}
+
+
+// Page wrapper
+
+.page{
+  padding: clamp(48px, 10.8vw, 78px) 0 $sectionpadding 0;
+}
+
+//  Header (logo + cart)
+
+header {
+  button.logo {
+    left: $border-width;
+    span{
+      font-weight: 500;
+    }
+  }
+  button#menu {
+    right: $border-width;
+  }
+	button#menu:active,
+	button#menu:focus{
+		background-color: transparent;
+	}
+
+  button {
+    font-size: $medium-clamp;
+		line-height: $medium-clamp;
+    position: fixed;
+    top: $border-width;
+    border: 0;
+    &:hover{
+      text-decoration: underline;
+      &:before{
+        text-decoration: underline;
+
+      }
+    }
+  }
+
+  .menu {
+    button{
+      z-index: 3;
+    }
+    ul {
+      opacity:0;
+      pointer-events : none;
+      position: fixed;
+      z-index: 3;
+      margin: 0;
+      padding: 0 0 0 $big-clamp-half;
+      //Proprietary clamps for the menu
+	    top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
+      left: clamp(48px, 12vw, 86px);
+      li {
+        line-height: 1;
+        a {
+          @include font-body;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+// Toggling the menu
+.show-menu{
+  .page{
+    opacity:0;
+    pointer-events : none;
+  }
+  .menu{
+    button{
+      &:before{
+        content:"close  ";
+        display:inline-block;
+      }
+    }
+    ul {
+      display:block;
+      opacity:1;
+      pointer-events : all;
+    }
+  }
+}
+
+//  Sections
+
+.section {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  padding: $sectionpadding 0 0 0;
+  margin: auto;
+  .frame {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: start;
+		canvas{
+			height: 32vw;
+			max-height: 268px;
+
+		}
+    .image {
+			height: 32vw;
+			max-height: 268px;
+      display: inline-block;
+	    flex-grow: 1;
+	    flex-basis: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+			background-color:rgba($blue, 0.2);
+			border-radius:2px;
+      &:first-child {
+        height: 50vw;
+        max-height: 418px;
+      }
+			&:last-child{
+				margin-left: $medium-clamp;
+			}
+    }
+    &:after {
+      display: block;
+      margin: 0px;
+      flex: 999 999 auto;
+    }
+  }
+  .block {
+    margin: 40px 0;
+    h3{
+      font-size: 110%;
+      font-weight: 400;
+    }
+    h4{
+      text-decoration: underline;
+    }
+    h3, h4{
+      margin:$medium-clamp 0 $medium-clamp-half 0;
+    }
+    p{
+      margin: $medium-clamp-half 0;
+    }
+    ol{
+      list-style: decimal;
+      margin-left: clamp(33.6px, 8.64vw, 62.4px);
+    }
+    ul{
+      margin-left: clamp(33.6px, 8.64vw, 62.4px);
+    }
+    ul > li {
+      margin-bottom:$medium-clamp-half;
+    }
+    ul > li:before {
+			position: relative;
+			margin-left: -7%;
+			margin-right: 3.3%;
+			content: "\2192";
+    }
+  }
+  nav{
+    ol{
+      li{
+        @include font-body;
+        font-size: 75%;
+        line-height: 150%;
+        width:100%;
+        .category,
+        .subject,
+        .date{
+          display:inline-block;
+        }
+        .category{
+          width:20%;
+          a:after{
+            content: "";
+          }
+        }
+        .subject{
+          width:67%;
+        }
+        .date{
+          width:10%;
+          text-align:right;
+          float:right;
+        }
+      }
+    }
+  }
+  button {
+    width: 100%;
+    padding: 2% 0;
+    @include font-body;
+  }
+  input{
+		background-color: $light;
+		max-width: $maxsitewidth;
+    width:$sitewidth;
+    @include font-body;
+    border-radius: 0%;
+    border: $border;
+    height:$medium-clamp;
+    margin: $medium-clamp  0;
+		box-sizing: border-box;
+    padding: $medium-clamp $medium-clamp-half;
+		&:focus{
+			border-style: dashed;
+		}
+  }
+	form{
+		input:not(:placeholder-shown) {
+			border-color: $blue;
+		}
+
+		input:not(:placeholder-shown):not(:focus) {
+			border-radius:50%;
+			text-align:center;
+		}
+	}
+}
+
+
+// The product grid
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: auto;
+  align-content: start;
+  margin: auto;
+  h1{
+    width:100%;
+    display: block;
+  }
+	a{
+		text-decoration: none;
+		&:hover{
+			h2{
+				text-decoration: underline;
+			}
+			button{
+				border-radius:0%;
+			}
+		}
+	}
+  .item {
+    width: $sitewidth/$column-divider;
+    max-width: $maxsitewidth/$column-divider;
+    flex: 0 0 auto;
+    margin: 0 0 clamp(56px, 14.4vw, 104px) 0;
+    .image {
+      margin-bottom: $medium-clamp;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+      width: $sitewidth/$column-divider;
+      max-width: $maxsitewidth/$column-divider;
+      height: $sitewidth/$column-divider;
+      max-height: $maxsitewidth/$column-divider;
+    }
+    .body {
+      h2 {
+        @include font-body;
+        margin-bottom: 0;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+      }
+      p {
+        font-size: 75%;
+        line-height: 150%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        margin-bottom: $medium-clamp;
+      }
+
+      .byline:before{
+        position: relative;
+        display: inline;
+        content: 'By ';
+      }
+    }
+    button{
+      font-size:75%;
+    }
+  }
+}
+#artwork {
+	margin-top:0;
+	padding-top:0;
+	.image{
+		background-color:white;
+		width:100vw;
+		height:95vh;
+		max-height: 100vw;
+		border: $big-clamp solid #fff;
+		box-sizing: border-box;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	#description{
+		margin-top:$sectionpadding;
+
+	}
+  .section{
+    margin:0 auto;
+		padding:0;
+    h2{
+      @include font-display;
+      margin:0;
+    }
+    p{
+      @include font-body;
+      line-height: 150%;
+      margin-bottom: $medium-clamp;
+    }
+		.byline{
+			margin-top:$medium-clamp-half;
+	    &:before{
+	      position: relative;
+	      display: inline;
+	      content: 'By ';
+	    }
+		}
+    button{
+	    @include site-width;
+	    background: $light;
+		}
+	}
+}
+#artwork{
+	#information{
+		margin-top:$sectionpadding;
+		padding-bottom:$sectionpadding;
+		li{
+			font-size:80%;
+			line-height: 150%;
+			overflow:hidden;
+	    border-bottom: 1px dotted rgba(0,0,0,.5);
+			span{
+				width: 37%;
+		    vertical-align:top; /* <------ HAHA! */
+				display:inline-block;
+				&.right-cell{
+					width: 61%;
+					padding-left:1%;
+				}
+			}
+		}
+	}
+}
+span#artid{
+	font-weight: 300;
+}
+
+// this should probably be removed
+del{
+	pointer-events: none;
+	background: #000;
+	opacity:.8;
+	border-radius: 3% 1% .5% 1%;
+  user-select: none;
+	transform:rotate(25deg);
+	&:hover{
+		cursor: not-allowed;
+	}
+}
+
+p strong{
+		font-weight: 400;
+		padding-right: $medium-clamp;
+		display: block;
+		margin: $medium-clamp 0 0 0;
+}
+.insignia{
+	fill:none;
+	stroke:#000000;
+	stroke-width:10;
+	stroke-miterlimit:10;
+}
+/*
+@media (prefers-color-scheme: dark) {
+
+	a:focus button,
+	*::selection,
+	*:focus{
+		background: $blue;
+	}
+  body {
+      background-color: $dark !important;
+      color: $light;
+  }
+	.image{
+		filter:grayscale(1);
+	}
+	#artwork .image{
+		filter:none;
+	}
+  button{
+		color: $light;
+    border-color:$light;
+	}
+  .insignia {
+    stroke:$light;
+  }
+	#artwork .section .image{
+    border-color: #011628;
+	}
+	#artwork .section button,
+	pre code{
+		&:before,
+		&.show-code{
+			color: $light;
+		}
+	}
+  .menu,
+  a{
+    color: $light;
+  }
+}*/

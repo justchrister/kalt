@@ -1,0 +1,40 @@
+{
+  "name": "get-port-please",
+  "version": "2.3.0",
+  "description": "Get an available TCP port to listen",
+  "repository": "unjs/get-port-please",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint --ext ts .",
+    "prepack": "unbuild",
+    "release": "yarn build && standard-version && npm publish && git push --follow-tags",
+    "test": "jest"
+  },
+  "dependencies": {
+    "fs-memo": "^1.2.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "eslint": "latest",
+    "jest": "latest",
+    "standard-version": "latest",
+    "ts-jest": "latest",
+    "ts-node": "latest",
+    "typescript": "latest",
+    "unbuild": "latest"
+  }
+}
