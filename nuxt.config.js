@@ -24,6 +24,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://auth.nuxtjs.org/
+    "@nuxtjs/auth-next",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -38,7 +40,13 @@ export default {
       lang: 'en',
     },
   },
-  // Set environemnt variables
+
+  // Authentication configuration
+  auth: {
+    // Options
+  },
+
+  // Set environemnt variables for Contentful integration
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID || 'xdtovtw3dsvp',
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || 'rZP5wX9KmtkpApVSxPK_e9mnYImLR7wi7MbepyyFxgw'

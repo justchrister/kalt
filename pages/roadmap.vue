@@ -13,54 +13,51 @@
         </div>
       </div>
 
-      <div class="section" id="completed">
+      <div class="section completed" id="completed">
         <div class="block">
             <h2 class="title">
                 Completed.
             </h2>
             <nav>
                 <ul>
+                    <Milestone v-for="milestone in milestones" :key="milestone.fields.title" :title="milestone.fields.title" :category="milestone.fields.category" :stage="milestone.fields.stage"/>
                     <li class="document"> Visual profile </li>
                 </ul>
           </nav>
         </div>
       </div>
-      <div class="section" id="in-progress">
+      <div class="section in-progress" id="in-progress">
         <div class="block">
             <h2 class="title">
                 In progress.
             </h2>
             <nav>
                 <ul>
+                    <Milestone v-for="milestone in milestones" :key="milestone.fields.title" :title="milestone.fields.title" :category="milestone.fields.category" :stage="milestone.fields.stage"/>
                 </ul>
           </nav>
         </div>
       </div>
-      <div class="section">
+      <div class="section to-do">
         <div class="block">
             <h2 class="title">
                 To do.
             </h2>
             <nav>
                 <ul>
-                    <li class="document"> Questions & answers </li>
-                    <li class="feature"> Add search to menu </li>
-                    <li class="feature"> Log in </li>
-                    <li class="concept"> Omoji </li>
-                    <li class="product"> Turtleneck </li>
+                    <Milestone v-for="milestone in milestones" :key="milestone.fields.title" :title="milestone.fields.title" :category="milestone.fields.category" :stage="milestone.fields.stage"/>
                 </ul>
           </nav>
         </div>
       </div>
-      <div class="section">
+      <div class="section ideas">
         <div class="block">
             <h2 class="title">
                 Ideas.
             </h2>
             <nav>
                 <ul>
-                    <li class="concept"> Residual income </li>
-                    <li class="concept"> Digital agency </li>
+                    <Milestone v-for="milestone in milestones" :key="milestone.fields.title" :title="milestone.fields.title" :category="milestone.fields.category" :stage="milestone.fields.stage"/>
                 </ul>
           </nav>
         </div>
@@ -70,35 +67,37 @@
 
 <script>
 const axios = require('axios');
+import milestone from '../components/milestone.vue';
 export default {
-    async created(){
-
+    data: () => ({
+        milestones: []
+    }),
+    async fetch(){
         const space = "xdtovtw3dsvp";
         const token = "rZP5wX9KmtkpApVSxPK_e9mnYImLR7wi7MbepyyFxgw";
         const content = "roadmap"; // content type
-        
-        await axios.get('https://cdn.contentful.com/spaces/' + space + '/environments/master/entries/?access_token=' + token + '&content_type=' + content).then(response => (
-            response.data.items.forEach(function(item){
-                let title    = item.fields.title;
-                let stage    = item.fields.stage[0].toLowerCase().replace(" ", "-");
-                let category = item.fields.category[0].toLowerCase().replace(" ", "-");
+        const config = {
+            headers: {
+                'Accept': 'application/json'
+            }
+        };
 
-                let element  = '<li class="' + category + '"> ' + title + '</li>';
-
-                let list  = document.getElementById(stage).getElementsByTagName('ul')[0];
-
-                list.insertAdjacentHTML('beforeend', element);
-                
-            })
-        ));
+        try {
+            const res = await axios.get('https://cdn.contentful.com/spaces/' + space + '/environments/master/entries/?access_token=' + token + '&content_type=' + content, config);
+            this.milestones = res.data.items;
+            console.log(res.data.items);
+        } catch(err) {
+            console.log(err);
+        }
     },
+    fetchOnServer: true,
     head() {
         return{
-            title: 'Kalt — Homepage',
+            title: 'Kalt — Roadmap',
             meta: [{
                 hid: 'description',
                 name: 'description',
-                content: 'Best app ever'
+                content: 'Our roadmap'
             }]
         }
     },
@@ -110,7 +109,7 @@ export default {
         margin-left:0;
     }
     .section .block ul li{
-        display: inline-block;
+        display: none;
         font-family: "Kalt Monospace", "Courier New", Monospace;
         font-size:60%;
         border:1px rgba(0,0,0,0.5) solid;
@@ -118,17 +117,30 @@ export default {
         background-repeat: no-repeat;
         background-position: clamp(7px, 1.8vw, 13px) center;
         background-size: auto 50% ;
+        margin-right:10px;
     }
-    .section .block ul li.document{
+    .section#in-progress .block ul li.to.do,
+    .section#in-progress .block ul li.to-do,
+    .section#in-progress .block ul li.in.progress,
+    .section#in-progress .block ul li.in-progress,
+    .section#completed .block ul li.completed,
+    .section#completed .block ul li.Completed{
+        display:inline-block;
+    }
+    .section .block ul li.document,
+    .section .block ul li.Document{
         background-image:url('../static/doc.png');
     }
-    .section .block ul li.concept{
+    .section .block ul li.concept,
+    .section .block ul li.Concept{
         background-image:url('../static/concept.png');
     }
-    .section .block ul li.feature{
+    .section .block ul li.feature,
+    .section .block ul li.Feature{
         background-image:url('../static/feature.png');
     }
-    .section .block ul li.product{
+    .section .block ul li.product,
+    .section .block ul li.Product{
         background-image:url('../static/product.png');
     }
     .section .block ul li:before{

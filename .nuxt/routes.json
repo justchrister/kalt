@@ -1,0 +1,58 @@
+[
+  {
+    "name": "authenticate",
+    "path": "/authenticate",
+    "component": "/Users/nn/Documents/GitHub/k/pages/authenticate.vue",
+    "chunkName": "pages/authenticate",
+    "_name": "_0f169b22"
+  },
+  {
+    "name": "brand",
+    "path": "/brand",
+    "component": "/Users/nn/Documents/GitHub/k/pages/brand.vue",
+    "chunkName": "pages/brand",
+    "_name": "_68d7d00a"
+  },
+  {
+    "name": "questions",
+    "path": "/questions",
+    "component": "/Users/nn/Documents/GitHub/k/pages/questions/index.vue",
+    "chunkName": "pages/questions/index",
+    "_name": "_24b9e05a"
+  },
+  {
+    "name": "roadmap",
+    "path": "/roadmap",
+    "component": "/Users/nn/Documents/GitHub/k/pages/roadmap.vue",
+    "chunkName": "pages/roadmap",
+    "_name": "_2771c57f"
+  },
+  {
+    "name": "values",
+    "path": "/values",
+    "component": "/Users/nn/Documents/GitHub/k/pages/values.vue",
+    "chunkName": "pages/values",
+    "_name": "_44a6a2a2"
+  },
+  {
+    "name": "questions-style",
+    "path": "/questions/style",
+    "component": "/Users/nn/Documents/GitHub/k/pages/questions/style.vue",
+    "chunkName": "pages/questions/style",
+    "_name": "_ed41059c"
+  },
+  {
+    "name": "questions-id",
+    "path": "/questions/:id",
+    "component": "/Users/nn/Documents/GitHub/k/pages/questions/_id/index.vue",
+    "chunkName": "pages/questions/_id/index",
+    "_name": "_8c0bed84"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/nn/Documents/GitHub/k/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_67a30fd5"
+  }
+]

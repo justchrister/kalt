@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <kaltHeader kaltHeaderTitle="Some title"/>
+        <kaltHeader />
         <nuxt />
     </div>
 </template>

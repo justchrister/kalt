@@ -3,7 +3,7 @@
     <header>
         <a href="/">
             <button class="logo" id="logo">
-                <span>Kalt</span> — {{ kaltHeaderTitle }}
+                <span>Kalt</span> — Something
             </button>
         </a>
         <nav class="menu">

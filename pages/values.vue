@@ -8,11 +8,13 @@
         <!--<h2>Foundational guiding values and principles</h2>-->
         <h2>Fundemental values</h2>
         <p>
-            With the overarching goal of making everywhere better, we aim to make the right decisions derrived from research and data.
-        <ol>
-            <li>Be kind</li>
-            <li>Be fair</li>
-            <li>Do the right thing</li>
+            With the overarching goal of making everywhere better, we aim to make the right decisions derrived from research, and data.
+        </p>
+        <p>
+            <ol>
+                <li>Be kind</li>
+                <li>Be fair</li>
+                <li>Do the right thing</li>
             </ol>
         </p>
     </div>
