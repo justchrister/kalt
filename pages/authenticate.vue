@@ -24,12 +24,18 @@
 export default {
     head() {
         return{
-            title: 'Kalt — Homepage',
+            title: 'Kalt — Login',
             meta: [{
                 hid: 'description',
                 name: 'description',
                 content: 'Best app ever'
             }]
+        }
+    },
+    middleware: 'auth',
+    computed: {
+        user() {
+        return this.$auth.user
         }
     },
 }
