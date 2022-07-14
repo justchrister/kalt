@@ -31,6 +31,7 @@
                 </li>
             </ul>
         </nav>
+        <div class="notification"></div>
         <a href="../authenticate"> 
             <div class="my-profile-button"></div>
         </a>

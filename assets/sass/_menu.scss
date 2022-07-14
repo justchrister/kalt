@@ -1,34 +1,36 @@
 
 
 .my-profile-button{
-    width:$medium-clamp;
-    height:$medium-clamp;
-    display:block; 
-    border-radius:50%;
-    position:fixed;
-    top:$border-width;
-    right:$border-width;
-    background-image: url("https://cdn.kalt.co/media/omoji/happy.svg");
-    background-size:contain;
-    margin: $big-clamp-half;
-    &:hover{
-      background-image: url("https://cdn.kalt.co/media/omoji/suprised.svg");
-    }
+  width:$medium-clamp;
+  height:$medium-clamp;
+  display:block; 
+  border-radius:50%;
+  position:fixed;
+  top:$border-width;
+  right:$border-width;
+  background-image: url("https://cdn.kalt.co/media/omoji/happy.svg");
+  background-size:contain;
+  margin: $big-clamp-half;
+  &:hover{
+    background-image: url("https://cdn.kalt.co/media/omoji/suprised.svg");
   }
-  
-  nav.my-profile{
-    ul li{ line-height: 1; }
-    position:fixed;
-    top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
-    padding:$medium-clamp-half $medium-clamp;
-    right:$border-width;
-    margin-right: $big-clamp-half;
-    margin-top: clamp($__BU__MIN*.8,$__BU__VAL*.8,$__BU__MAX*.8); // to account for line-height of main menu
-    border-radius:2px;
-    border:1px solid $dark;
-    width:auto;
-  }
+}
+ 
 
+.notification{
+  min-width: calc($__BU__MIN / 2);
+  width:     calc($__BU__VAL / 2);
+  max-width: calc($__BU__MAX / 2);
+  min-height: calc($__BU__MIN / 2);
+  height:     calc($__BU__VAL / 2);
+  max-height: calc($__BU__MAX / 2);
+  top:$border-width;
+  right:$border-width;
+  position: fixed;
+  display:block;
+  border-radius:50%;
+  background-color:rgba(red,0.2);
+}
 
 
 //  Header (logo + cart)
@@ -87,6 +89,10 @@ header {
     }
   }
 }
+
+
+
+
 
 // Toggling the menu
 .show-menu{

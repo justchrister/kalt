@@ -3,48 +3,56 @@
     "name": "@username",
     "path": "/@username",
     "component": "/Users/nn/Documents/GitHub/k/pages/@username.vue",
-    "chunkName": "pages/@username"
+    "chunkName": "pages/@username",
+    "_name": "_d87e7ece"
   },
   {
     "name": "about",
     "path": "/about",
     "component": "/Users/nn/Documents/GitHub/k/pages/about.vue",
-    "chunkName": "pages/about"
+    "chunkName": "pages/about",
+    "_name": "_47eb3510"
   },
   {
     "name": "authenticate",
     "path": "/authenticate",
     "component": "/Users/nn/Documents/GitHub/k/pages/authenticate/index.vue",
-    "chunkName": "pages/authenticate/index"
+    "chunkName": "pages/authenticate/index",
+    "_name": "_66d6c025"
   },
   {
     "name": "brand",
     "path": "/brand",
     "component": "/Users/nn/Documents/GitHub/k/pages/brand.vue",
-    "chunkName": "pages/brand"
+    "chunkName": "pages/brand",
+    "_name": "_68d7d00a"
   },
   {
     "name": "roadmap",
     "path": "/roadmap",
     "component": "/Users/nn/Documents/GitHub/k/pages/roadmap.vue",
-    "chunkName": "pages/roadmap"
+    "chunkName": "pages/roadmap",
+    "_name": "_2771c57f"
   },
   {
     "name": "values",
     "path": "/values",
     "component": "/Users/nn/Documents/GitHub/k/pages/values.vue",
-    "chunkName": "pages/values"
+    "chunkName": "pages/values",
+    "_name": "_44a6a2a2"
   },
   {
     "name": "authenticate-kyc",
     "path": "/authenticate/kyc",
     "component": "/Users/nn/Documents/GitHub/k/pages/authenticate/kyc.vue",
-    "chunkName": "pages/authenticate/kyc"
+    "chunkName": "pages/authenticate/kyc",
+    "_name": "_46fac148"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/nn/Documents/GitHub/k/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_67a30fd5"
   }
 ]

@@ -221,8 +221,8 @@ pre code {
 		}
 	}
   .item {
-    width: $sitewidth/$column-divider;
-    max-width: $maxsitewidth/$column-divider;
+    width: calc($sitewidth / $column-divider);
+    max-width: calc($maxsitewidth / $column-divider);
     flex: 0 0 auto;
     margin: 0 0 clamp(56px, 14.4vw, 104px) 0;
     .image {
@@ -231,10 +231,10 @@ pre code {
       background-position: center center;
       background-repeat: no-repeat;
       display: block;
-      width: $sitewidth/$column-divider;
-      max-width: $maxsitewidth/$column-divider;
-      height: $sitewidth/$column-divider;
-      max-height: $maxsitewidth/$column-divider;
+      width: calc($sitewidth / $column-divider);
+      max-width: calc($maxsitewidth / $column-divider);
+      height: calc($sitewidth / $column-divider);
+      max-height: calc($maxsitewidth / $column-divider);
     }
     .body {
       h2 {
