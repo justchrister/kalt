@@ -4,13 +4,13 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _0f169b22 = () => interopDefault(import('../pages/authenticate.vue' /* webpackChunkName: "pages/authenticate" */))
+const _d87e7ece = () => interopDefault(import('../pages/@username.vue' /* webpackChunkName: "pages/@username" */))
+const _47eb3510 = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _66d6c025 = () => interopDefault(import('../pages/authenticate/index.vue' /* webpackChunkName: "pages/authenticate/index" */))
 const _68d7d00a = () => interopDefault(import('../pages/brand.vue' /* webpackChunkName: "pages/brand" */))
-const _24b9e05a = () => interopDefault(import('../pages/questions/index.vue' /* webpackChunkName: "pages/questions/index" */))
 const _2771c57f = () => interopDefault(import('../pages/roadmap.vue' /* webpackChunkName: "pages/roadmap" */))
 const _44a6a2a2 = () => interopDefault(import('../pages/values.vue' /* webpackChunkName: "pages/values" */))
-const _ed41059c = () => interopDefault(import('../pages/questions/style.vue' /* webpackChunkName: "pages/questions/style" */))
-const _8c0bed84 = () => interopDefault(import('../pages/questions/_id/index.vue' /* webpackChunkName: "pages/questions/_id/index" */))
+const _46fac148 = () => interopDefault(import('../pages/authenticate/kyc.vue' /* webpackChunkName: "pages/authenticate/kyc" */))
 const _67a30fd5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -25,17 +25,21 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/@username",
+    component: _d87e7ece,
+    name: "@username"
+  }, {
+    path: "/about",
+    component: _47eb3510,
+    name: "about"
+  }, {
     path: "/authenticate",
-    component: _0f169b22,
+    component: _66d6c025,
     name: "authenticate"
   }, {
     path: "/brand",
     component: _68d7d00a,
     name: "brand"
-  }, {
-    path: "/questions",
-    component: _24b9e05a,
-    name: "questions"
   }, {
     path: "/roadmap",
     component: _2771c57f,
@@ -45,13 +49,9 @@ export const routerOptions = {
     component: _44a6a2a2,
     name: "values"
   }, {
-    path: "/questions/style",
-    component: _ed41059c,
-    name: "questions-style"
-  }, {
-    path: "/questions/:id",
-    component: _8c0bed84,
-    name: "questions-id"
+    path: "/authenticate/kyc",
+    component: _46fac148,
+    name: "authenticate-kyc"
   }, {
     path: "/",
     component: _67a30fd5,

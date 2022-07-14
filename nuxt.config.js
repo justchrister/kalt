@@ -44,11 +44,11 @@ export default {
   // Authentication configuration
   auth: {
     strategies: {
-      local: false,
-      auth0: {
-        domain: process.env.AUTH0_DOMAIN,
-        client_id: process.env.AUTH0_CLIENT_ID
-      }
+      local: true,
+      //auth0: {
+      //  domain: process.env.AUTH0_DOMAIN,
+      //  client_id: process.env.AUTH0_CLIENT_ID
+      //}
     }
   },
   // Set environemnt variables for Contentful integration

@@ -31,6 +31,9 @@
                 </li>
             </ul>
         </nav>
+        <a href="../authenticate"> 
+            <div class="my-profile-button"></div>
+        </a>
     </header>
 </template>
 

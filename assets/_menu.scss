@@ -1,0 +1,110 @@
+
+
+.my-profile-button{
+    width:$medium-clamp;
+    height:$medium-clamp;
+    display:block; 
+    border-radius:50%;
+    position:fixed;
+    top:$border-width;
+    right:$border-width;
+    background-image: url("https://cdn.kalt.co/media/omoji/happy.svg");
+    background-size:contain;
+    margin: $big-clamp-half;
+    &:hover{
+      background-image: url("https://cdn.kalt.co/media/omoji/suprised.svg");
+    }
+  }
+  
+  nav.my-profile{
+    ul li{ line-height: 1; }
+    position:fixed;
+    top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
+    padding:$medium-clamp-half $medium-clamp;
+    right:$border-width;
+    margin-right: $big-clamp-half;
+    margin-top: clamp($__BU__MIN*.8,$__BU__VAL*.8,$__BU__MAX*.8); // to account for line-height of main menu
+    border-radius:2px;
+    border:1px solid $dark;
+    width:auto;
+  }
+
+
+
+//  Header (logo + cart)
+
+header {
+  button.logo {
+    left: $border-width;
+    span{
+      font-weight: 500;
+    }
+  }
+  button#menu {
+    right: $big-clamp;
+  }
+	button#menu:active,
+	button#menu:focus{
+		background-color: transparent;
+	}
+
+  button {
+    font-size: $medium-clamp;
+		line-height: $medium-clamp;
+    position: fixed;
+    top: $border-width;
+    border: 0;
+    &:hover{
+      text-decoration: underline;
+      &:before{
+        text-decoration: underline;
+
+      }
+    }
+  }
+
+  .menu {
+    button{
+      z-index: 3;
+    }
+    ul {
+      opacity:0;
+      pointer-events : none;
+      position: fixed;
+      z-index: 3;
+      margin: 0;
+      padding: 0 0 0 $big-clamp-half;
+      //Proprietary clamps for the menu
+	    top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
+      left: clamp(48px, 12vw, 86px);
+      li {
+        line-height: 1;
+        a {
+          @include font-body;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+// Toggling the menu
+.show-menu{
+  .page{
+    opacity:0;
+    pointer-events : none;
+  }
+  .menu{
+    button{
+      &:before{
+        content:"close  ";
+        display:inline-block;
+      }
+    }
+    ul {
+      display:block;
+      opacity:1;
+      pointer-events : all;
+    }
+  }
+} 

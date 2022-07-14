@@ -1,0 +1,41 @@
+
+/*
+@media (prefers-color-scheme: dark) {
+
+	a:focus button,
+	*::selection,
+	*:focus{
+		background: $blue;
+	}
+  body {
+      background-color: $dark !important;
+      color: $light;
+  }
+	.image{
+		filter:grayscale(1);
+	}
+	#artwork .image{
+		filter:none;
+	}
+  button{
+		color: $light;
+    border-color:$light;
+	}
+  .insignia {
+    stroke:$light;
+  }
+	#artwork .section .image{
+    border-color: #011628;
+	}
+	#artwork .section button,
+	pre code{
+		&:before,
+		&.show-code{
+			color: $light;
+		}
+	}
+  .menu,
+  a{
+    color: $light;
+  }
+}*/
