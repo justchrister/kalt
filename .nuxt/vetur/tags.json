@@ -1,4 +1,7 @@
 {
+  "Kaltmenu": {
+    "description": "Auto imported from components/kaltmenu.vue"
+  },
   "Milestone": {
     "description": "Auto imported from components/milestone.vue"
   }

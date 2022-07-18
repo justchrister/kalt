@@ -1,5 +1,6 @@
 <template>
     <div class='page'>
+        <Kaltmenu pageTitle="Homepage" />
         <!--
           Symbolic logo
         -->
@@ -40,6 +41,8 @@
 </template>
 
 <script>
+import kaltmenu from '../components/kaltmenu.vue';
+
 export default {
     head() {
         return{

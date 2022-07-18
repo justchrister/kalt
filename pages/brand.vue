@@ -1,6 +1,7 @@
 <template>
     <div class='page'>
 
+      <Kaltmenu pageTitle="Brand" />
       <div class="section">
         <div class="body">
           <p>
@@ -234,6 +235,7 @@ pre code {
 </template>
 
 <script>
+import kaltmenu from '../components/kaltmenu.vue';
 export default {
     head() {
         return{

@@ -1,3 +1,4 @@
+export { default as Kaltmenu } from '../../components/kaltmenu.vue'
 export { default as Milestone } from '../../components/milestone.vue'
 
 // nuxt/nuxt.js#8607

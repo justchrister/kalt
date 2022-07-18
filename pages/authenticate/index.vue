@@ -1,4 +1,4 @@
-<template :title="Authenticate">
+<template>
     <div class='page'>
       <div class="section">
         <div class="block">
