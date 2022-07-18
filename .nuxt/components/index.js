@@ -1,4 +1,3 @@
-export { default as KaltHeader } from '../../components/kaltHeader.vue'
 export { default as Milestone } from '../../components/milestone.vue'
 
 // nuxt/nuxt.js#8607

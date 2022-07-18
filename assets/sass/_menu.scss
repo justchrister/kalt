@@ -26,6 +26,7 @@
   max-height: calc($__BU__MAX / 2);
   top:$border-width;
   right:$border-width;
+  margin: clamp(12px, 3.24vw, 25px);
   position: fixed;
   display:block;
   border-radius:50%;

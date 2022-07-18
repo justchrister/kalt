@@ -8,9 +8,11 @@ const _d87e7ece = () => interopDefault(import('../pages/@username.vue' /* webpac
 const _47eb3510 = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
 const _66d6c025 = () => interopDefault(import('../pages/authenticate/index.vue' /* webpackChunkName: "pages/authenticate/index" */))
 const _68d7d00a = () => interopDefault(import('../pages/brand.vue' /* webpackChunkName: "pages/brand" */))
+const _a61ae5f6 = () => interopDefault(import('../pages/invest/index.vue' /* webpackChunkName: "pages/invest/index" */))
 const _2771c57f = () => interopDefault(import('../pages/roadmap.vue' /* webpackChunkName: "pages/roadmap" */))
 const _44a6a2a2 = () => interopDefault(import('../pages/values.vue' /* webpackChunkName: "pages/values" */))
 const _46fac148 = () => interopDefault(import('../pages/authenticate/kyc.vue' /* webpackChunkName: "pages/authenticate/kyc" */))
+const _40770a72 = () => interopDefault(import('../pages/invest/transactions.vue' /* webpackChunkName: "pages/invest/transactions" */))
 const _67a30fd5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -41,6 +43,10 @@ export const routerOptions = {
     component: _68d7d00a,
     name: "brand"
   }, {
+    path: "/invest",
+    component: _a61ae5f6,
+    name: "invest"
+  }, {
     path: "/roadmap",
     component: _2771c57f,
     name: "roadmap"
@@ -52,6 +58,10 @@ export const routerOptions = {
     path: "/authenticate/kyc",
     component: _46fac148,
     name: "authenticate-kyc"
+  }, {
+    path: "/invest/transactions",
+    component: _40770a72,
+    name: "invest-transactions"
   }, {
     path: "/",
     component: _67a30fd5,

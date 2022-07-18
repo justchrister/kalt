@@ -154,6 +154,7 @@ button:focus, button:hover {
   max-height: 6.5px;
   top: 0.1px;
   right: 0.1px;
+  margin: clamp(12px, 3.24vw, 25px);
   position: fixed;
   display: block;
   border-radius: 50%;
@@ -226,7 +227,7 @@ header .menu ul li a {
 }
 
 a:focus button {
-  background: #d2eafe;
+  background: #d0e9fe;
 }
 
 a:focus button {

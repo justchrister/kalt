@@ -1,21 +1,63 @@
 <template>
     <div class="container">
-        <kaltHeader />
+        <header>
+            <a href="/">
+                <button class="logo" id="logo">
+                    <span>Kalt</span> — {{ name }}
+                </button>
+            </a>
+            <nav class="menu">
+                <button id="menu" v-on:click="showMenu"> menu</button>
+                <ul id="menu_items">
+                    <li>
+                        <a href="../values">
+                            Values
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../brand">
+                            Brand
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../solutions">
+                            Solutions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../questions">
+                            Questions
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="notification"></div>
+            <a href="../authenticate"> 
+                <div class="my-profile-button"></div>
+            </a>
+        </header>
         <nuxt />
     </div>
 </template>
 
+
 <script>
-    import kaltHeader from '../components/kaltHeader';
 
     export default {
-        components: {
-            kaltHeader
-        }
+        methods: {
+            showMenu(){
+                document.getElementsByTagName('body')[0].classList.toggle("show-menu");
+            }
+        },
+        computed: {
+            name() {
+                return this.$store.getters['page/getName']
+            }
+        },
     }
-    console.log();
 
 </script>
+
 
 <style>
     @import url('../assets/base.css');
@@ -33,6 +75,5 @@
         font-weight: normal;
         font-style: normal;
     }
-
 
 </style>

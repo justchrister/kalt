@@ -234,9 +234,12 @@ pre code {
 
 <script>
 export default {
+    created() {
+      this.$store.commit('page/setName', 'About')
+    },
     head() {
         return{
-            title: 'Kalt — Brand',
+            title: 'Kalt — ' + this.$store.state['page'].name,
             meta: [{
                 hid: 'description',
                 name: 'description',

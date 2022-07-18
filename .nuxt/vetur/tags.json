@@ -1,7 +1,4 @@
 {
-  "KaltHeader": {
-    "description": "Auto imported from components/kaltHeader.vue"
-  },
   "Milestone": {
     "description": "Auto imported from components/milestone.vue"
   }
