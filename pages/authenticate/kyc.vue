@@ -12,7 +12,7 @@
             <input type="text" placeholder="Nakamura">
             <label>Address</label>
             <input type="text" placeholder="Nakamura">
-            <button> <a href="../username?invest=yes"> Next </a> </button>
+            <button> <a href="../@username"> Next </a> </button>
           </form>
         </div>
       </div>

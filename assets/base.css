@@ -137,12 +137,12 @@ button:focus, button:hover {
   position: fixed;
   top: 0.1px;
   right: 0.1px;
-  background-image: url("https://cdn.kalt.co/media/omoji/happy.svg");
+  background-image: url("/happy.svg");
   background-size: contain;
   margin: clamp(12px, 3.24vw, 25px);
 }
 .my-profile-button:hover {
-  background-image: url("https://cdn.kalt.co/media/omoji/suprised.svg");
+  background-image: url("/suprised.svg");
 }
 
 .notification {
@@ -226,13 +226,14 @@ header .menu ul li a {
   pointer-events: all;
 }
 
-a:focus button {
-  background: #d0e9fe;
+table {
+  width: 100%;
 }
 
-a:focus button {
-  border-radius: 0%;
-  cursor: pointer;
+tr th,
+tr td {
+  text-align: left;
+  border-bottom: 0.1px solid black;
 }
 
 pre code {
@@ -273,6 +274,78 @@ pre code:before {
   display: block;
   content: "> show code";
   color: black;
+}
+
+.section form input,
+.section form button {
+  margin-top: clamp(7px, 1.8vw, 13px);
+}
+
+.card-chart {
+  overflow: hidden;
+}
+.card-chart .card-header .card-title i {
+  font-size: 16px;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+.card-chart .card-header .card-category {
+  margin-bottom: 5px;
+}
+.card-chart .card-body {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.card-chart .card-body .tab-space {
+  padding: 0;
+}
+.card-chart .table {
+  margin-bottom: 0;
+}
+.card-chart .table td {
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.card-chart .card-progress {
+  margin-top: 30px;
+  padding: 0 10px;
+}
+.card-chart .chart-area {
+  height: 220px;
+  width: 100%;
+}
+.card-chart .card-footer {
+  margin-top: 15px;
+}
+.card-chart .card-footer .stats {
+  color: gray;
+}
+.card-chart .dropdown {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.card-chart .dropdown .btn {
+  margin: 0;
+}
+.card-chart.card-chart-pie .chart-area {
+  padding: 10px 0 25px;
+  height: auto;
+}
+.card-chart.card-chart-pie .card-title {
+  margin-bottom: 10px;
+}
+.card-chart.card-chart-pie .card-title i {
+  font-size: 1rem;
+}
+
+a:focus button {
+  background: #d0e9fe;
+}
+
+a:focus button {
+  border-radius: 0%;
+  cursor: pointer;
 }
 
 .page {

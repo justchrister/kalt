@@ -4,5 +4,17 @@
   },
   "Milestone": {
     "description": "Auto imported from components/milestone.vue"
+  },
+  "ChartsBarChart": {
+    "description": "Auto imported from components/Charts/BarChart.js"
+  },
+  "ChartsLineChart": {
+    "description": "Auto imported from components/Charts/LineChart.js"
+  },
+  "ChartsConfig": {
+    "description": "Auto imported from components/Charts/config.js"
+  },
+  "ChartsUtils": {
+    "description": "Auto imported from components/Charts/utils.js"
   }
 }

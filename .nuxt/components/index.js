@@ -1,5 +1,9 @@
 export { default as Kaltmenu } from '../../components/kaltmenu.vue'
 export { default as Milestone } from '../../components/milestone.vue'
+export { default as ChartsBarChart } from '../../components/Charts/BarChart.js'
+export { default as ChartsLineChart } from '../../components/Charts/LineChart.js'
+export { default as ChartsConfig } from '../../components/Charts/config.js'
+export { default as ChartsUtils } from '../../components/Charts/utils.js'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

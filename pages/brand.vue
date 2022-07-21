@@ -1,7 +1,7 @@
 <template>
+  <div class="PageWrapper">
+    <Kaltmenu pageTitle="About" />
     <div class='page'>
-
-      <Kaltmenu pageTitle="Brand" />
       <div class="section">
         <div class="body">
           <p>
@@ -231,6 +231,7 @@ pre code {
           </p>
         </div>
         </div>
+      </div>
     </div>
 </template>
 

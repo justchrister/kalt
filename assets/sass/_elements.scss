@@ -1,0 +1,57 @@
+// <table>
+
+table{
+    width: 100%;
+}
+tr {
+    th,
+    td{
+        text-align:left;
+        border-bottom: $border;
+    }
+}
+// <code>
+
+pre code {
+    display: block;
+    overflow-x: auto;
+    padding: $medium-clamp;
+    margin: $medium-clamp 0;
+    @include font-monospace;
+    font-size:80%;
+    background-color: rgba($blue,0.1);
+    line-height:1.2;
+    height: $medium-clamp;
+    color: transparent;
+      overflow:hidden;
+    &:hover{
+      cursor: pointer;
+    }
+    &.show-code{
+      color: black;
+      height: auto;
+      padding: $medium-clamp;
+      &:before{
+        display: block;
+        content: '';
+        color:transparent;
+      }
+      &:hover{
+        cursor: auto;
+      }
+    }
+    &:before{
+      position: absolute;
+      display: block;
+      content: '> show code';
+      color:black;
+    }
+  }
+
+// <form>
+
+.section form input,
+.section form button
+{
+    margin-top:$medium-clamp-half;
+}

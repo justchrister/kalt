@@ -1,7 +1,8 @@
 @import 'vars-and-mixins';
 @import 'reset';            // css reset, overriding browser rendering engines
 @import 'menu';             // menu
-//@import 'elements';         // forms, anchors, headers etc
+@import 'elements';         // forms, anchors, headers etc
+@import 'chart';         // forms, anchors, headers etc
 
 a:focus button{
 	background:mix($blue, white, 21%);
@@ -13,41 +14,6 @@ a:focus{
 	}
 }
 
-pre code {
-  display: block;
-  overflow-x: auto;
-  padding: $medium-clamp;
-  margin: $medium-clamp 0;
-  @include font-monospace;
-  font-size:80%;
-  background-color: rgba($blue,0.1);
-  line-height:1.2;
-  height: $medium-clamp;
-  color: transparent;
-	overflow:hidden;
-  &:hover{
-    cursor: pointer;
-  }
-  &.show-code{
-    color: black;
-    height: auto;
-    padding: $medium-clamp;
-    &:before{
-      display: block;
-      content: '';
-      color:transparent;
-    }
-    &:hover{
-      cursor: auto;
-    }
-  }
-  &:before{
-    position: absolute;
-    display: block;
-    content: '> show code';
-    color:black;
-  }
-}
 
 
 // Page wrapper

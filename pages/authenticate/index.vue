@@ -1,10 +1,9 @@
 <template>
+  <div class="PageWrapper">
+    <Kaltmenu pageTitle="About" />
     <div class='page'>
       <div class="section">
         <div class="block">
-          <h2 class="title">
-            Hello!
-          </h2>
           <form>
             <label>Username</label>
             <input type="text" placeholder="elonmusk@sec.gov">
@@ -15,6 +14,7 @@
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>

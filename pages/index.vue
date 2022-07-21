@@ -1,6 +1,7 @@
 <template>
+  <div class="PageWrapper">
+    <Kaltmenu pageTitle="Homepage" />
     <div class='page'>
-        <Kaltmenu pageTitle="Homepage" />
         <!--
           Symbolic logo
         -->
@@ -37,6 +38,7 @@
             <button class="read_more" tabindex="-1">contact</button>
           </a>
         </div>
+    </div>
     </div>
 </template>
 
