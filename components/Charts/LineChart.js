@@ -9,7 +9,7 @@ export default {
     gradientColors: {
       type: Array,
       default: () => [
-        'rgba(72,72,176,0.2)',
+        'rgba(72,72,176,0.0)',
         'rgba(72,72,176,0.0)',
         'rgba(119,52,169,0)'
       ],

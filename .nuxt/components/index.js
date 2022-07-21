@@ -1,5 +1,6 @@
 export { default as Kaltmenu } from '../../components/kaltmenu.vue'
 export { default as Milestone } from '../../components/milestone.vue'
+export { default as Transactions } from '../../components/transactions.vue'
 export { default as ChartsBarChart } from '../../components/Charts/BarChart.js'
 export { default as ChartsLineChart } from '../../components/Charts/LineChart.js'
 export { default as ChartsConfig } from '../../components/Charts/config.js'

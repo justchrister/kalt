@@ -8,6 +8,7 @@ You can directly use them in pages and other components without the need to impo
 
 - `<Kaltmenu>` | `<kaltmenu>` (components/kaltmenu.vue)
 - `<Milestone>` | `<milestone>` (components/milestone.vue)
+- `<Transactions>` | `<transactions>` (components/transactions.vue)
 - `<ChartsBarChart>` | `<charts-bar-chart>` (components/Charts/BarChart.js)
 - `<ChartsLineChart>` | `<charts-line-chart>` (components/Charts/LineChart.js)
 - `<ChartsConfig>` | `<charts-config>` (components/Charts/config.js)

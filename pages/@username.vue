@@ -3,133 +3,37 @@
     <Kaltmenu pageTitle="Overview" />
     <div class='page'>
       <div class="section">
-        <div class="frame card-chart chart">
-            
-      <card type="chart">
-        <template slot="header">
-          <div class="row">
-            <div class="col-sm-6">
-              <h5 class="card-category">Total shipments</h5>
-              <h2 class="card-title">Performance</h2>
-            </div>
-            <div class="col-sm-6 d-flex d-sm-block">
-              <div
-                class="btn-group btn-group-toggle"
-                data-toggle="buttons"
+        <div class="frame">
+          <card type="chart">
+            <div class="chart-area">
+              <line-chart
+                style="height: 100%; width:100%;"
+                ref="bigChart"
+                :chart-data="bigLineChart.chartData"
+                :gradient-colors="bigLineChart.gradientColors"
+                :gradient-stops="bigLineChart.gradientStops"
+                :extra-options="bigLineChart.extraOptions"
               >
-                <label
-                  v-for="(option, index) in bigLineChartCategories"
-                  :key="option.name"
-                  class="btn btn-sm btn-primary btn-simple"
-                  :class="{ active: bigLineChart.activeIndex === index }"
-                  :id="index"
-                >
-                  <input
-                    type="radio"
-                    @click="initBigChart(index)"
-                    name="options"
-                    autocomplete="off"
-                    :checked="bigLineChart.activeIndex === index"
-                  />
-                  <span class="d-none d-sm-block">{{ option.name }}</span>
-                  <span class="d-block d-sm-none">
-                    <i :class="option.icon"></i>
-                  </span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </template>
-        <div class="chart-area">
-          <line-chart
-            style="height: 100%"
-            ref="bigChart"
-            :chart-data="bigLineChart.chartData"
-            :gradient-colors="bigLineChart.gradientColors"
-            :gradient-stops="bigLineChart.gradientStops"
-            :extra-options="bigLineChart.extraOptions"
-          >
           </line-chart>
         </div>
       </card>
         </div>
         <nav class="legend">
           <ul>
-            <li>
+            <li id="deposit">
               Deposits
             </li>
-            <li>
+            <li id="dividends">
               Dividends
             </li>
           </ul>
         </nav>
+
         <div class="block">
-          <h1>
-            @Christer Bjørnstad
-          </h1>
+        <button> Invest more </button>
         </div>
         <div class="block">
-          <p> <strong> Transactions </strong> </p>
-          <table>
-            <tr>
-              <th>Amount</th>
-              <th>Account</th>
-              <th>Date</th>
-            </tr>
-            <tr>
-              <td>+ 103.44 €</td>
-              <td>Account name</td>
-              <td>13.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 34.44 €</td>
-              <td>Account name</td>
-              <td>14.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 103.44 €</td>
-              <td>Account name</td>
-              <td>13.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 34.44 €</td>
-              <td>Account name</td>
-              <td>14.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 103.44 €</td>
-              <td>Account name</td>
-              <td>13.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 34.44 €</td>
-              <td>Account name</td>
-              <td>14.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 103.44 €</td>
-              <td>Account name</td>
-              <td>13.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 34.44 €</td>
-              <td>Account name</td>
-              <td>14.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 103.44 €</td>
-              <td>Account name</td>
-              <td>13.02.22</td>
-            </tr>
-            <tr>
-              <td>+ 34.44 €</td>
-              <td>Account name</td>
-              <td>14.02.22</td>
-            </tr>
-            <tr>
-              <td>See all transactions</td>
-            </tr>
-        </table>
+          <Transactions />
       </div>
       <div class="block" style="text-align: center;">
         <button> Invest more </button>
@@ -142,13 +46,14 @@
 </template>
 
 <script>
-import Kaltmenu from '../components/kaltmenu.vue';
+import Kaltmenu from '@/components/kaltmenu.vue';
 import LineChart from '@/components/Charts/LineChart';
+import Transactions from '@/components/Transactions.vue';
 import config from '@/config';
 import * as chartConfigs from '@/components/Charts/config';
 
 let bigChartData = [
-  [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
+  [100, 150, 155, 159, 175, 180, 210, 280, 305, 330, 390, 450],
   [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120],
   [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
 ]
@@ -185,75 +90,49 @@ export default {
   }, 
   data () {
     return {
-      tableData: [
-        {
-          id: 1,
-          name: 'Dakota Rice',
-          salary: '$36.738',
-          country: 'Niger',
-          city: 'Oud-Turnhout'
-        },
-        {
-          id: 2,
-          name: 'Minerva Hooper',
-          salary: '$23,789',
-          country: 'Curaçao',
-          city: 'Sinaai-Waas'
-        },
-        {
-          id: 3,
-          name: 'Sage Rodriguez',
-          salary: '$56,142',
-          country: 'Netherlands',
-          city: 'Baileux'
-        },
-        {
-          id: 4,
-          name: 'Philip Chaney',
-          salary: '$38,735',
-          country: 'Korea, South',
-          city: 'Overland Park'
-        },
-        {
-          id: 5,
-          name: 'Doris Greene',
-          salary: '$63,542',
-          country: 'Malawi',
-          city: 'Feldkirchen in Kärnten'
-        }
-      ],
       bigLineChart: {
         activeIndex: 0,
         chartData: {
           datasets: [{
+            label: 'Dataset 1',
             ...bigChartDatasetOptions,
             data: bigChartData[0]
-          }],
+          },
+          {
+            label: 'Dataset 2',
+            data: bigChartData[1]
+          },
+          {
+            label: 'Dataset 3',
+            data: bigChartData[2]
+          }
+          ],
           labels: bigChartLabels
         },
         extraOptions: chartConfigs.purpleChartOptions,
-        gradientColors: config.colors.primaryGradient,
         gradientStops: [1, 0.4, 0],
         categories: []
       }
     };
   },
-  computed: {
-    bigLineChartCategories () {
-      return [{ name: 'Accounts', icon: 'tim-icons icon-single-02' }, {
-        name: 'Purchases',
-        icon: 'tim-icons icon-gift-2'
-      }, { name: 'Sessions', icon: 'tim-icons icon-tap-02' }];
-    }
-  },
   methods: {
     initBigChart (index) {
       let chartData = {
-        datasets: [{
-          ...bigChartDatasetOptions,
-          data: bigChartData[index]
-        }],
-        labels: bigChartLabels
+          datasets: [{
+            label: 'Dataset 1',
+            ...bigChartDatasetOptions,
+            data: bigChartData[0]
+          },
+          {
+            label: 'Dataset 2',
+            data: bigChartData[1]
+          },
+          {
+            label: 'Dataset 3',
+            data: bigChartData[2]
+          }
+          ],
+          labels: bigChartLabels
       };
       this.$refs.bigChart.updateGradients(chartData);
       this.bigLineChart.chartData = chartData;

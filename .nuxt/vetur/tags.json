@@ -5,6 +5,9 @@
   "Milestone": {
     "description": "Auto imported from components/milestone.vue"
   },
+  "Transactions": {
+    "description": "Auto imported from components/transactions.vue"
+  },
   "ChartsBarChart": {
     "description": "Auto imported from components/Charts/BarChart.js"
   },
