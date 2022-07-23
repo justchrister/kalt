@@ -41,7 +41,7 @@ export default {
     },
     components: {
       Kaltmenu,
-    }, 
+    },
 }
 </script>
 

@@ -2,7 +2,6 @@ import Middleware from './middleware'
 import { Auth, authMiddleware, ExpiredAuthSessionError } from '~auth/runtime'
 
 // Active schemes
-import { LocalScheme } from '~auth/runtime'
 import { Auth0Scheme } from '~auth/runtime'
 
 Middleware.auth = authMiddleware
@@ -34,20 +33,16 @@ export default function (ctx, inject) {
   "localStorage": {
     "prefix": "auth."
   },
-  "defaultStrategy": "local"
+  "defaultStrategy": "auth0"
 }
 
   // Create a new Auth instance
   const $auth = new Auth(ctx, options)
 
   // Register strategies
-  // local
-  $auth.registerStrategy('local', new LocalScheme($auth, {
-  "name": "local"
-}))
-
   // auth0
   $auth.registerStrategy('auth0', new Auth0Scheme($auth, {
+  "logoutRedirectUri": "http://localhost:3000",
   "domain": "kalt.eu.auth0.com",
   "client_id": "4IZfQkq9I0XnclwLFguNa1sGO3B4onDx",
   "name": "auth0",
