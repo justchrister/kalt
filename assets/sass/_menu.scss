@@ -8,11 +8,11 @@
   position:fixed;
   top:$border-width;
   right:$border-width;
-  background-image: url("/happy.svg");
+  background-image: url("/images/happy.svg");
   background-size:contain;
   margin: $big-clamp-half;
   &:hover{
-    background-image: url("/suprised.svg");
+    background-image: url("/images/suprised.svg");
   }
 }
  

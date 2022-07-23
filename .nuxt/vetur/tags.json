@@ -2,11 +2,8 @@
   "Kaltmenu": {
     "description": "Auto imported from components/kaltmenu.vue"
   },
-  "Milestone": {
-    "description": "Auto imported from components/milestone.vue"
-  },
-  "Transactions": {
-    "description": "Auto imported from components/transactions.vue"
+  "Transactionhistory": {
+    "description": "Auto imported from components/transactionhistory.vue"
   },
   "ChartsBarChart": {
     "description": "Auto imported from components/Charts/BarChart.js"

@@ -3,6 +3,7 @@ import { Auth, authMiddleware, ExpiredAuthSessionError } from '~auth/runtime'
 
 // Active schemes
 import { LocalScheme } from '~auth/runtime'
+import { Auth0Scheme } from '~auth/runtime'
 
 Middleware.auth = authMiddleware
 
@@ -16,10 +17,10 @@ export default function (ctx, inject) {
   "fullPathRedirect": false,
   "watchLoggedIn": true,
   "redirect": {
-    "login": "/login",
+    "login": "/",
     "logout": "/",
     "home": "/",
-    "callback": "/login"
+    "callback": "/auth/signed-in"
   },
   "vuex": {
     "namespace": "auth"
@@ -43,6 +44,24 @@ export default function (ctx, inject) {
   // local
   $auth.registerStrategy('local', new LocalScheme($auth, {
   "name": "local"
+}))
+
+  // auth0
+  $auth.registerStrategy('auth0', new Auth0Scheme($auth, {
+  "domain": "kalt.eu.auth0.com",
+  "client_id": "4IZfQkq9I0XnclwLFguNa1sGO3B4onDx",
+  "name": "auth0",
+  "endpoints": {
+    "authorization": "https://kalt.eu.auth0.com/authorize",
+    "userInfo": "https://kalt.eu.auth0.com/userinfo",
+    "token": "https://kalt.eu.auth0.com/oauth/token",
+    "logout": "https://kalt.eu.auth0.com/v2/logout"
+  },
+  "scope": [
+    "openid",
+    "profile",
+    "email"
+  ]
 }))
 
   // Inject it to nuxt context as $auth

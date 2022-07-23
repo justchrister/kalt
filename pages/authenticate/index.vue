@@ -1,6 +1,6 @@
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="About" />
+    <Kaltmenu pageTitle="Authenticate" />
     <div class='page'>
       <div class="section">
         <div class="block">
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import Kaltmenu from '@/components/kaltmenu.vue';
+
 export default {
     head() {
         return{
@@ -29,6 +31,9 @@ export default {
             }]
         }
     },
+    components: {
+      Kaltmenu,
+    }, 
 }
 </script>
 

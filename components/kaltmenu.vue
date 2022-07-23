@@ -9,29 +9,28 @@
             <button id="menu" v-on:click="showMenu"> menu</button>
             <ul id="menu_items">
                 <li>
-                    <a href="../values">
-                        Values
+                    <a href="@/invest">
+                        Invest
                     </a>
                 </li>
                 <li>
-                    <a href="../brand">
-                        Brand
+                    <a href="@/about">
+                        About
                     </a>
                 </li>
                 <li>
-                    <a href="../solutions">
-                        Solutions
-                    </a>
+                    <a v-if="$auth.loggedIn" @click="$auth.logout()">Sign out</a>
+                    <a v-else @click="$auth.loginWith('auth0')">Sign out</a>
                 </li>
                 <li>
-                    <a href="../questions">
-                        Questions
+                    <a href="@/authenticate">
+                        Create account
                     </a>
                 </li>
             </ul>
         </nav>
         <div class="notification"></div>
-        <a href="../authenticate"> 
+        <a href="#" @click="$auth.loginWith('auth0')"> 
             <div class="my-profile-button"></div>
         </a>
     </header>

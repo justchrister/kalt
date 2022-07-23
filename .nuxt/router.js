@@ -4,13 +4,11 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _d87e7ece = () => interopDefault(import('../pages/@username.vue' /* webpackChunkName: "pages/@username" */))
-const _47eb3510 = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _781faf93 = () => interopDefault(import('../pages/about/index.vue' /* webpackChunkName: "pages/about/index" */))
 const _66d6c025 = () => interopDefault(import('../pages/authenticate/index.vue' /* webpackChunkName: "pages/authenticate/index" */))
-const _68d7d00a = () => interopDefault(import('../pages/brand.vue' /* webpackChunkName: "pages/brand" */))
 const _a61ae5f6 = () => interopDefault(import('../pages/invest/index.vue' /* webpackChunkName: "pages/invest/index" */))
-const _2771c57f = () => interopDefault(import('../pages/roadmap.vue' /* webpackChunkName: "pages/roadmap" */))
-const _44a6a2a2 = () => interopDefault(import('../pages/values.vue' /* webpackChunkName: "pages/values" */))
+const _79546fc8 = () => interopDefault(import('../pages/about/brand.vue' /* webpackChunkName: "pages/about/brand" */))
+const _4677f29e = () => interopDefault(import('../pages/about/values.vue' /* webpackChunkName: "pages/about/values" */))
 const _46fac148 = () => interopDefault(import('../pages/authenticate/kyc.vue' /* webpackChunkName: "pages/authenticate/kyc" */))
 const _40770a72 = () => interopDefault(import('../pages/invest/transactions.vue' /* webpackChunkName: "pages/invest/transactions" */))
 const _67a30fd5 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -27,33 +25,25 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/@username",
-    component: _d87e7ece,
-    name: "@username"
-  }, {
     path: "/about",
-    component: _47eb3510,
+    component: _781faf93,
     name: "about"
   }, {
     path: "/authenticate",
     component: _66d6c025,
     name: "authenticate"
   }, {
-    path: "/brand",
-    component: _68d7d00a,
-    name: "brand"
-  }, {
     path: "/invest",
     component: _a61ae5f6,
     name: "invest"
   }, {
-    path: "/roadmap",
-    component: _2771c57f,
-    name: "roadmap"
+    path: "/about/brand",
+    component: _79546fc8,
+    name: "about-brand"
   }, {
-    path: "/values",
-    component: _44a6a2a2,
-    name: "values"
+    path: "/about/values",
+    component: _4677f29e,
+    name: "about-values"
   }, {
     path: "/authenticate/kyc",
     component: _46fac148,

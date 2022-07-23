@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import Kaltmenu from '@/components/kaltmenu.vue';
 export default {
     created() {
       this.$store.commit('page/setName', 'Transactions')
@@ -55,6 +56,9 @@ export default {
             }]
         }
     },
+    components: {
+      Kaltmenu,
+    }, 
 }
 </script>
 

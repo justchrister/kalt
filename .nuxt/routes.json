@@ -1,15 +1,9 @@
 [
   {
-    "name": "@username",
-    "path": "/@username",
-    "component": "/Users/nn/Documents/GitHub/k/pages/@username.vue",
-    "chunkName": "pages/@username"
-  },
-  {
     "name": "about",
     "path": "/about",
-    "component": "/Users/nn/Documents/GitHub/k/pages/about.vue",
-    "chunkName": "pages/about"
+    "component": "/Users/nn/Documents/GitHub/k/pages/about/index.vue",
+    "chunkName": "pages/about/index"
   },
   {
     "name": "authenticate",
@@ -18,28 +12,22 @@
     "chunkName": "pages/authenticate/index"
   },
   {
-    "name": "brand",
-    "path": "/brand",
-    "component": "/Users/nn/Documents/GitHub/k/pages/brand.vue",
-    "chunkName": "pages/brand"
-  },
-  {
     "name": "invest",
     "path": "/invest",
     "component": "/Users/nn/Documents/GitHub/k/pages/invest/index.vue",
     "chunkName": "pages/invest/index"
   },
   {
-    "name": "roadmap",
-    "path": "/roadmap",
-    "component": "/Users/nn/Documents/GitHub/k/pages/roadmap.vue",
-    "chunkName": "pages/roadmap"
+    "name": "about-brand",
+    "path": "/about/brand",
+    "component": "/Users/nn/Documents/GitHub/k/pages/about/brand.vue",
+    "chunkName": "pages/about/brand"
   },
   {
-    "name": "values",
-    "path": "/values",
-    "component": "/Users/nn/Documents/GitHub/k/pages/values.vue",
-    "chunkName": "pages/values"
+    "name": "about-values",
+    "path": "/about/values",
+    "component": "/Users/nn/Documents/GitHub/k/pages/about/values.vue",
+    "chunkName": "pages/about/values"
   },
   {
     "name": "authenticate-kyc",

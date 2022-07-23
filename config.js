@@ -2,6 +2,8 @@ export default {
     colors: {
       default: '#1E96FC',
       primary: '#F991CC',
+      blue: '#1E96FC',
+      pink: '#F991CC',
       info: '#1d8cf8',
       danger: '#fd5d93',
       orange: '#ff8a76',

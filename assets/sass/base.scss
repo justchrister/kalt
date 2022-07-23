@@ -332,9 +332,18 @@ p strong{
 @import 'darkmode';
 
 .userpage .section{
-
-  ul li { display: inline-block; font-size:80%; margin-right: $medium-clamp; }
-  ul li:before { display: inline-block; width: $medium-clamp-half; height: $medium-clamp-half; content:' '; border-radius:50%; }
-  ul li#dividends:before{ background-color:$pink;}
-  ul li#deposit:before{ background-color:$blue;}
+  ul li { 
+    display: inline-block; 
+    font-size:80%; 
+    margin-right: $medium-clamp; 
+    &:before {
+      display: inline-block; 
+      width: $medium-clamp-half; 
+      height: $medium-clamp-half; 
+      content:' '; 
+      border-radius:50%;
+    }
+    &#dividends:before{ background-color:$pink;}
+    &#deposit:before{ background-color:$blue;}
+  }
 }
