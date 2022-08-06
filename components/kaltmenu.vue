@@ -6,23 +6,23 @@
             </button>
         </a>
         <nav class="menu">
-            <button id="menu" v-on:click="showMenu"> menu</button>
+            <button id="menu" v-on:click="toggleMenu"> menu</button>
             <ul id="menu_items">
-                <li>
-                    <a href="@/invest">
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/invest" >
                         Invest
-                    </a>
+                    </nuxt-link>
                 </li>
-                <li>
-                    <a href="@/about">
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/about">
                         About
-                    </a>
+                    </nuxt-link>
                 </li>
-                <li>
+                <li v-on:click="toggleMenu">
                     <a v-if="$auth.loggedIn" @click="$auth.logout()">Sign out</a>
-                    <a v-else @click="$auth.loginWith('auth0')">Sign out</a>
+                    <a v-else @click="$auth.loginWith('auth0')">Sign in</a>
                 </li>
-                <li>
+                <li v-on:click="toggleMenu">
                     <a href="@/authenticate">
                         Create account
                     </a>
@@ -41,7 +41,7 @@ export default{
     name: 'Kaltmenu',
     props: ['pageTitle'],
     methods: {
-        showMenu(){
+        toggleMenu(){
             document.getElementsByTagName('body')[0].classList.toggle("show-menu");
         }
     },

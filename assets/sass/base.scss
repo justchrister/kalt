@@ -128,36 +128,6 @@ a:focus{
       }
     }
   }
-  button {
-    width: 100%;
-    padding: 2% 0;
-    @include font-body;
-  }
-  input{
-		background-color: $light;
-		max-width: $maxsitewidth;
-    width:$sitewidth;
-    @include font-body;
-    border-radius: 0%;
-    border: $border;
-    height:$medium-clamp;
-    margin: $medium-clamp  0;
-		box-sizing: border-box;
-    padding: $medium-clamp $medium-clamp-half;
-		&:focus{
-			border-style: dashed;
-		}
-  }
-	form{
-		input:not(:placeholder-shown) {
-			border-color: $blue;
-		}
-
-		input:not(:placeholder-shown):not(:focus) {
-			border-radius:50%;
-			text-align:center;
-		}
-	}
 }
 
 

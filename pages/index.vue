@@ -17,16 +17,13 @@
             Through practical solutions — rather than theoretical — we are working to make everywhere more inclusive and interesting. We make our decisions based on a set of politially agnostic values, and are doing our best to have a positive impact on everyone.
           </p>
         </div>
-        <a href="mailto:hello@kalt.co">
-          <button class="read_more" tabindex="-1">contact</button>
-        </a>
+        <Cta />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Kaltmenu from '../components/kaltmenu.vue';
 
 export default {
     head() {
@@ -38,9 +35,6 @@ export default {
                 content: 'Best app ever'
             }]
         }
-    },
-    components: {
-      Kaltmenu,
     },
 }
 </script>

@@ -56,3 +56,30 @@ pre code {
 {
     margin-top:$medium-clamp-half;
 }
+
+.section form input[type=number],
+.section form input[type=text]{
+  width:100%;
+  max-width: 100%;
+  border-radius:0;
+  background-color: $light;
+  @include font-body;
+  border-radius: 0%;
+  border: $border;
+  height:$medium-clamp;
+  margin: $medium-clamp  0;
+  box-sizing: border-box;
+  padding: $medium-clamp $medium-clamp-half;
+  &:focus{
+    border-style: dashed;
+  }
+}
+.section form input[type=radio]{
+  width:$big-clamp-half;
+  height:$big-clamp-half;
+}
+.section button {
+  width: 100%;
+  padding: 2% 0;
+  @include font-body;
+}

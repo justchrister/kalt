@@ -236,7 +236,6 @@ pre code {
 </template>
 
 <script>
-import Kaltmenu from '@/components/kaltmenu.vue';
 export default {
     head() {
         return{
@@ -248,9 +247,6 @@ export default {
             }]
         }
     },
-    components: {
-      Kaltmenu,
-    }, 
 }
 </script>
 

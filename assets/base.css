@@ -203,13 +203,16 @@ header .menu ul {
 header .menu ul li {
   line-height: 1;
 }
-header .menu ul li a {
+header .menu ul li * {
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(14px, 3.6vw, 26px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
   padding: 0;
+}
+header .menu ul li *:hover {
+  cursor: pointer;
 }
 
 .show-menu .page {
@@ -282,7 +285,45 @@ pre code:before {
   margin-top: clamp(7px, 1.8vw, 13px);
 }
 
-card {
+.section form input[type=number],
+.section form input[type=text] {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+  background-color: #FCF9F2;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(14px, 3.6vw, 26px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  border-radius: 0%;
+  border: 0.1px solid black;
+  height: clamp(14px, 3.6vw, 26px);
+  margin: clamp(14px, 3.6vw, 26px) 0;
+  box-sizing: border-box;
+  padding: clamp(14px, 3.6vw, 26px) clamp(7px, 1.8vw, 13px);
+}
+.section form input[type=number]:focus,
+.section form input[type=text]:focus {
+  border-style: dashed;
+}
+
+.section form input[type=radio] {
+  width: clamp(12px, 3.24vw, 25px);
+  height: clamp(12px, 3.24vw, 25px);
+}
+
+.section button {
+  width: 100%;
+  padding: 2% 0;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(14px, 3.6vw, 26px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+}
+
+.chart {
   background: #FFF;
   padding: clamp(24.5px, 6.3vw, 45.5px) 0;
   border-right: #fff solid clamp(14px, 3.6vw, 26px);
@@ -291,7 +332,7 @@ card {
   border-radius: 4px;
 }
 
-card,
+.chart,
 canvas,
 .chartjs {
   width: 100%;
@@ -412,41 +453,6 @@ a:focus button {
   width: 10%;
   text-align: right;
   float: right;
-}
-.section button {
-  width: 100%;
-  padding: 2% 0;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(14px, 3.6vw, 26px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-}
-.section input {
-  background-color: #FCF9F2;
-  max-width: 720px;
-  width: 86vw;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(14px, 3.6vw, 26px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-  border-radius: 0%;
-  border: 0.1px solid black;
-  height: clamp(14px, 3.6vw, 26px);
-  margin: clamp(14px, 3.6vw, 26px) 0;
-  box-sizing: border-box;
-  padding: clamp(14px, 3.6vw, 26px) clamp(7px, 1.8vw, 13px);
-}
-.section input:focus {
-  border-style: dashed;
-}
-.section form input:not(:placeholder-shown) {
-  border-color: #1E96FC;
-}
-.section form input:not(:placeholder-shown):not(:focus) {
-  border-radius: 50%;
-  text-align: center;
 }
 
 .grid {

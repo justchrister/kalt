@@ -82,9 +82,12 @@ header {
       left: clamp(48px, 12vw, 86px);
       li {
         line-height: 1;
-        a {
+        * {
           @include font-body;
           padding: 0;
+          &:hover{
+            cursor: pointer;
+          }
         }
       }
     }

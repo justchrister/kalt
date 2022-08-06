@@ -37,14 +37,17 @@
           <a href="mailto:hello@kalt.co">
             <button class="read_more" tabindex="-1">contact</button>
           </a>
+          <div class="block">
+            <h2>Direct dividend shares</h2>
+            <strong>Carbon offset credits</strong>
+            Another income stream is carbon offset credits we earn on our electric generation.
+          </div>
         </div>
     </div>
     </div>
 </template>
 
 <script>
-import Kaltmenu from '@/components/kaltmenu.vue';
-
 export default {
     head() {
         return{
@@ -56,9 +59,6 @@ export default {
             }]
         }
     },
-    components: {
-      Kaltmenu,
-    }, 
 }
 </script>
 

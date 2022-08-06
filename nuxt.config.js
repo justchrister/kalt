@@ -45,7 +45,7 @@ export default {
   auth: {
     redirect: {
       login: '/', // redirect user when not connected
-      callback: '/invest'
+      callback: '/authenticate'
     },
     strategies: {
       local: false,

@@ -1,5 +1,5 @@
 
-card{
+.chart{
     background:#FFF;
     padding:$big-clamp 0;
     border-right:#fff solid  $medium-clamp;
@@ -8,7 +8,7 @@ card{
     border-radius:4px;
 }
 
-card,
+.chart,
 canvas,
 .chartjs{
     width:100%;

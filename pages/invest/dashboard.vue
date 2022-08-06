@@ -1,11 +1,12 @@
 <template>
   <div class="PageWrapper userpage">
-    <Kaltmenu pageTitle="Invest" />
+    <Kaltmenu pageTitle="Dashboard" />
     <div class='page'>
       <div class="section">
         <div class="frame">
-          <Chart />
-        </div>
+            <Chart />
+        </div>      <h1>Hello, {{ $auth.loggedIn ? $auth.user.username : 'friend' }}!</h1>
+
         <nav class="legend">
           <ul>
             <li id="deposit">
@@ -17,7 +18,7 @@
           </ul>
         </nav>
         <div class="block">
-          <cta />
+          <button> Invest more </button>
         </div>
         <div class="block" v-if="$auth.loggedIn">
           <Transactions />
@@ -32,11 +33,10 @@
 </template>
 
 <script>
-
 export default {
   head() {
     return{
-      title: 'Kalt — Invest',
+      title: 'Kalt — Dashboard',
       meta: [{
           hid: 'description',
           name: 'description',
