@@ -22,6 +22,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@nuxtjs/supabase": "^0.2.2",
     "prettier": "^2.5.1"
   }
 }

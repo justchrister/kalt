@@ -25,6 +25,7 @@ export default {
     '@nuxtjs/pwa',
     // https://auth.nuxtjs.org/
     "@nuxtjs/auth-next",
+    "@nuxtjs/supabase",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
