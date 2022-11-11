@@ -13,26 +13,12 @@
                         Invest
                     </nuxt-link>
                 </li>
-                <li v-on:click="toggleMenu">
-                    <nuxt-link to="/about">
-                        About
-                    </nuxt-link>
-                </li>
-                <li v-on:click="toggleMenu">
-                    <a v-if="$auth.loggedIn" @click="$auth.logout()">Sign out</a>
-                    <a v-else @click="$auth.loginWith('auth0')">Sign in</a>
-                </li>
-                <li v-on:click="toggleMenu">
-                    <a href="@/authenticate">
-                        Create account
-                    </a>
-                </li>
             </ul>
         </nav>
         <div class="notification"></div>
-        <a href="#" @click="$auth.loginWith('auth0')"> 
+        <nuxt-link to="/profile" >
             <div class="my-profile-button"></div>
-        </a>
+        </nuxt-link>
     </header>
 </template>
 
@@ -47,5 +33,3 @@ export default{
     },
 }
 </script>
-<style>
-</style>

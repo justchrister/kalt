@@ -4,16 +4,6 @@
 @import 'elements';         // forms, anchors, headers etc
 @import 'chart';         // forms, anchors, headers etc
 
-a:focus button{
-	background:mix($blue, white, 21%);
-}
-a:focus{
-	button{
-		border-radius: 0%;
-    cursor: pointer;
-	}
-}
-
 
 
 // Page wrapper
@@ -34,7 +24,7 @@ a:focus{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
     align-content: start;
 		canvas{
@@ -137,7 +127,7 @@ a:focus{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: auto;
   align-content: start;
   margin: auto;

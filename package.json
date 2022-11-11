@@ -1,28 +1,19 @@
 {
   "name": "kalt",
-  "version": "2.0.0",
+  "version": "4.2.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
-  },
-  "dependencies": {
-    "@nuxtjs/auth-next": "^5.0.0-1648802546.c9880dc",
-    "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/pwa": "^3.3.5",
-    "chart.js": "^2.9.4",
-    "core-js": "^3.19.3",
-    "nuxt": "^2.15.8",
-    "vue": "^2.6.14",
-    "vue-chartjs": "^3.5.1",
-    "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@nuxtjs/supabase": "^0.2.2",
-    "prettier": "^2.5.1"
+    "@nuxtjs/supabase": "^0.1.25",
+    "nuxt": "3.0.0-rc.9"
+  },
+  "dependencies": {
+    "chart.js": "^3.9.1",
+    "vue-chartjs": "^4.1.2"
   }
 }

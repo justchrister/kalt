@@ -52,12 +52,14 @@ pre code {
 // <form>
 
 .section form input,
-.section form button
+.section form button,
+.section form input[type=submit]
 {
     margin-top:$medium-clamp-half;
 }
-
+.section form input[type=password],
 .section form input[type=number],
+.section form input[type=email],
 .section form input[type=text]{
   width:100%;
   max-width: 100%;
@@ -78,8 +80,25 @@ pre code {
   width:$big-clamp-half;
   height:$big-clamp-half;
 }
+.section form input[type=submit],
 .section button {
   width: 100%;
   padding: 2% 0;
   @include font-body;
+  border-radius:100%;
+  border:$border;
+}
+
+
+
+.section form input[type=submit]:focus,
+a:focus button{
+	background:mix($blue, white, 21%);
+}
+
+.section form input[type=submit],
+a:focus button,
+a:hover button{
+  border-radius: 0%;
+  cursor: pointer;
 }
