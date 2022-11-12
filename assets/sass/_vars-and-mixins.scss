@@ -36,21 +36,65 @@ $monospace:
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
 
+// Colors
+$noon: #FCF9F2;
+$midnight: #202124;
+$tuscany: #1E96FC;
+$bliss: #F7B538;
+$botanic: #0CF574;
+$amsterdam: #F4442E;
+$merlot: #624CAB;
+$kobi: #F991CC;
+
+// Color variations
+$tuscany-80: rgba($tuscany,0.8);
+$tuscany-60: rgba($tuscany,0.6);
+$tuscany-40: rgba($tuscany,0.4);
+$tuscany-20: rgba($tuscany,0.2);
+
+$bliss-80: rgba($bliss,0.8);
+$bliss-60: rgba($bliss,0.6);
+$bliss-40: rgba($bliss,0.4);
+$bliss-20: rgba($bliss,0.2);
+
+$botanic-80: rgba($botanic,0.8);
+$botanic-60: rgba($botanic,0.6);
+$botanic-40: rgba($botanic,0.4);
+$botanic-20: rgba($botanic,0.2);
+
+$amsterdam-80: rgba($amsterdam,0.8);
+$amsterdam-60: rgba($amsterdam,0.6);
+$amsterdam-40: rgba($amsterdam,0.4);
+$amsterdam-20: rgba($amsterdam,0.2);
+
+$merlot-80: rgba($merlot,0.8);
+$merlot-60: rgba($merlot,0.6);
+$merlot-40: rgba($merlot,0.4);
+$merlot-20: rgba($merlot,0.2);
+
+$kobi-80: rgba($kobi,0.8);
+$kobi-60: rgba($kobi,0.6);
+$kobi-40: rgba($kobi,0.4);
+$kobi-20: rgba($kobi,0.2);
+
+// Gradients
+$tuscany-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $tuscany 0%, $tuscany-60, $noon);
+$bliss-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $bliss 0%, $kobi-60, $noon);
+$botanic-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $botanic 0%, $botanic-60, $noon);
+$amsterdam-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $amsterdam 0%, $amsterdam-60, $noon);
+$merlot-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $merlot 0%, $merlot-60, $noon);
+$kobi-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $kobi 0%, $kobi-60, $noon);
+
 // Site sections
 $sectionpadding: clamp(75px, 15vh, 175px);
 $sectionpadding-double: clamp(150px, 30vh, 350px);
 
 // Borders
 $border-width: .1px;
-$border: $border-width solid black;
+$border: $border-width solid $midnight;
 
-// Colors
-$blue: #1E96FC;
-$pink: #F991CC;
-$light: #FCF9F2;
-$dark: #202124;
+//clamps
 $column-divider: 2.4; // % of sitewidth
-//  OLD : $big-clamp: clamp(25px, 6.48vw, 50px);
 $big-clamp: clamp($__BU__MIN*3.5, $__BU__VAL*3.5, $__BU__MAX*3.5);
 $medium-clamp: clamp($__BU__MIN*2, $__BU__VAL*2, $__BU__MAX*2);
 

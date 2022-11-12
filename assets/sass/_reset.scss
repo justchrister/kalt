@@ -31,14 +31,11 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background:$light;
-    @include font-body;
-	touch-action: manipulation; // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
+	background:$noon;
+  // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
+	touch-action: manipulation; 
 	overflow-x: hidden;
-}
-body.yellow-gradient{
-	background: rgb(255,255,0);
-	background: linear-gradient(180deg, rgba(255,255,0,1) 0%, rgba($light,1) 35%, rgba($light,1) 100%);
+  @include font-body;
 }
 ol, ul {
 	list-style: none;
@@ -57,7 +54,7 @@ table {
 }
 
 a{
-  color: #000;
+  color: $midnight;
   text-decoration: underline;
 }
 * {
@@ -70,7 +67,7 @@ a{
     outline: none;
   }
   &::selection {
-    background-color: mix($blue,white,20%);
+    background-color: $tuscany-20;
   }
 }
 
@@ -89,10 +86,9 @@ h3{
 a:focus {
   border: none;
   box-shadow: none;
-  //color: $blue;
 }
 *:focus{
-	background:mix($blue, white, 20%);
+	background:$tuscany-20;
 }
 button {
   border-radius: 50%;

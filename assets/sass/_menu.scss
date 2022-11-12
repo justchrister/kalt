@@ -1,39 +1,5 @@
 
 
-.my-profile-button{
-  width:$medium-clamp;
-  height:$medium-clamp;
-  display:block; 
-  border-radius:50%;
-  position:fixed;
-  top:$border-width;
-  right:$border-width;
-  background-image: url("/images/happy.svg");
-  background-size:contain;
-  margin: $big-clamp-half;
-  &:hover{
-    background-image: url("/images/suprised.svg");
-  }
-}
- 
-
-.notification{
-  min-width: calc($__BU__MIN / 2);
-  width:     calc($__BU__VAL / 2);
-  max-width: calc($__BU__MAX / 2);
-  min-height: calc($__BU__MIN / 2);
-  height:     calc($__BU__VAL / 2);
-  max-height: calc($__BU__MAX / 2);
-  top:$border-width;
-  right:$border-width;
-  margin: clamp(12px, 3.24vw, 25px);
-  position: fixed;
-  display:block;
-  border-radius:50%;
-  background-color:rgba(red,0.2);
-}
-
-
 //  Header (logo + cart)
 
 header {
@@ -118,3 +84,35 @@ header {
     }
   }
 } 
+
+.my-profile-button{
+  width:$medium-clamp;
+  height:$medium-clamp;
+  display:block; 
+  border-radius:50%;
+  position:fixed;
+  top:$border-width;
+  right:$border-width;
+  background-image: url("/images/happy.svg");
+  background-size:contain;
+  margin: $big-clamp-half;
+  &:hover{
+    background-image: url("/images/suprised.svg");
+  }
+}
+
+.notification{
+  min-width: calc($__BU__MIN / 2);
+  width:     calc($__BU__VAL / 2);
+  max-width: calc($__BU__MAX / 2);
+  min-height: calc($__BU__MIN / 2);
+  height:     calc($__BU__VAL / 2);
+  max-height: calc($__BU__MAX / 2);
+  top:$border-width;
+  right:$border-width;
+  margin: clamp(12px, 3.24vw, 25px);
+  position: fixed;
+  display:block;
+  border-radius:50%;
+  background-color:rgba(red,0.2);
+}

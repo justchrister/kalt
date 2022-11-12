@@ -20,7 +20,7 @@ pre code {
     margin: $medium-clamp 0;
     @include font-monospace;
     font-size:80%;
-    background-color: rgba($blue,0.1);
+    background-color: $tuscany-20;
     line-height:1.2;
     height: $medium-clamp;
     color: transparent;
@@ -29,7 +29,7 @@ pre code {
       cursor: pointer;
     }
     &.show-code{
-      color: black;
+      color: $midnight;
       height: auto;
       padding: $medium-clamp;
       &:before{
@@ -51,23 +51,23 @@ pre code {
 
 // <form>
 
-.section form input,
-.section form button,
-.section form input[type=submit]
+form input,
+form button,
+form input[type=submit]
 {
     margin-top:$medium-clamp-half;
 }
-.section form input[type=password],
-.section form input[type=number],
-.section form input[type=email],
-.section form input[type=text]{
+form input[type=password],
+form input[type=number],
+form input[type=email],
+form input[type=text]{
   width:100%;
-  max-width: 100%;
   border-radius:0;
-  background-color: $light;
+  background-color: $noon;
   @include font-body;
   border-radius: 0%;
   border: $border;
+  max-width: 100%;
   height:$medium-clamp;
   margin: $medium-clamp  0;
   box-sizing: border-box;
@@ -91,14 +91,35 @@ pre code {
 
 
 
-.section form input[type=submit]:focus,
+form input[type=submit]:focus,
 a:focus button{
-	background:mix($blue, white, 21%);
+	background:$tuscany-20;
 }
 
-.section form input[type=submit],
+form input[type=submit],
 a:focus button,
 a:hover button{
   border-radius: 0%;
   cursor: pointer;
+}
+
+
+form{
+  input[type=email],
+  input[type=password]{
+    margin-top:$medium-clamp-half;
+  }
+}
+
+// this should probably be removed
+del{
+	pointer-events: none;
+	background: #000;
+	opacity:.8;
+	border-radius: 3% 1% .5% 1%;
+  user-select: none;
+	transform:rotate(25deg);
+	&:hover{
+		cursor: not-allowed;
+	}
 }

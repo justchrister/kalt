@@ -20,101 +20,103 @@
   max-width: $maxsitewidth;
   padding: $sectionpadding 0 0 0;
   margin: auto;
-  .frame {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
-    align-content: start;
-		canvas{
-			height: 32vw;
-			max-height: 268px;
+  margin:0 auto;
+  padding:0;
+}
+.frame {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  align-content: start;
+  canvas{
+    height: 32vw;
+    max-height: 268px;
 
-		}
-    .image {
-			height: 32vw;
-			max-height: 268px;
-      display: inline-block;
-	    flex-grow: 1;
-	    flex-basis: 0;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-			background-color:rgba($blue, 0.2);
-			border-radius:2px;
-      &:first-child {
-        height: 50vw;
-        max-height: 418px;
+  }
+  .image {
+    height: 32vw;
+    max-height: 268px;
+    display: inline-block;
+    flex-grow: 1;
+    flex-basis: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color:$tuscany-20;
+    border-radius:2px;
+    &:first-child {
+      height: 50vw;
+      max-height: 418px;
+    }
+    &:last-child{
+      margin-left: $medium-clamp;
+    }
+  }
+  &:after {
+    display: block;
+    margin: 0px;
+    flex: 999 999 auto;
+  }
+}
+.block {
+  margin: 40px 0;
+  h3{
+    font-size: 110%;
+    font-weight: 400;
+  }
+  h4{
+    text-decoration: underline;
+  }
+  h3, h4{
+    margin:$medium-clamp 0 $medium-clamp-half 0;
+  }
+  p{
+    margin: $medium-clamp-half 0;
+  }
+  ol{
+    list-style: decimal;
+    margin-left: clamp(33.6px, 8.64vw, 62.4px);
+  }
+  ul{
+    margin-left: clamp(33.6px, 8.64vw, 62.4px);
+  }
+  ul > li {
+    margin-bottom:$medium-clamp-half;
+  }
+  ul > li:before {
+    position: relative;
+    margin-left: -7%;
+    margin-right: 3.3%;
+    content: "\2192";
+  }
+}
+nav{
+  ol{
+    li{
+      @include font-body;
+      font-size: 75%;
+      line-height: 150%;
+      width:100%;
+      .category,
+      .subject,
+      .date{
+        display:inline-block;
       }
-			&:last-child{
-				margin-left: $medium-clamp;
-			}
-    }
-    &:after {
-      display: block;
-      margin: 0px;
-      flex: 999 999 auto;
-    }
-  }
-  .block {
-    margin: 40px 0;
-    h3{
-      font-size: 110%;
-      font-weight: 400;
-    }
-    h4{
-      text-decoration: underline;
-    }
-    h3, h4{
-      margin:$medium-clamp 0 $medium-clamp-half 0;
-    }
-    p{
-      margin: $medium-clamp-half 0;
-    }
-    ol{
-      list-style: decimal;
-      margin-left: clamp(33.6px, 8.64vw, 62.4px);
-    }
-    ul{
-      margin-left: clamp(33.6px, 8.64vw, 62.4px);
-    }
-    ul > li {
-      margin-bottom:$medium-clamp-half;
-    }
-    ul > li:before {
-			position: relative;
-			margin-left: -7%;
-			margin-right: 3.3%;
-			content: "\2192";
-    }
-  }
-  nav{
-    ol{
-      li{
-        @include font-body;
-        font-size: 75%;
-        line-height: 150%;
-        width:100%;
-        .category,
-        .subject,
-        .date{
-          display:inline-block;
+      .category{
+        width:20%;
+        a:after{
+          content: "";
         }
-        .category{
-          width:20%;
-          a:after{
-            content: "";
-          }
-        }
-        .subject{
-          width:67%;
-        }
-        .date{
-          width:10%;
-          text-align:right;
-          float:right;
-        }
+      }
+      .subject{
+        width:67%;
+      }
+      .date{
+        width:10%;
+        text-align:right;
+        float:right;
       }
     }
   }
@@ -194,87 +196,6 @@
     }
   }
 }
-#artwork {
-	margin-top:0;
-	padding-top:0;
-	.image{
-		background-color:white;
-		width:100vw;
-		height:95vh;
-		max-height: 100vw;
-		border: $big-clamp solid #fff;
-		box-sizing: border-box;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	#description{
-		margin-top:$sectionpadding;
-
-	}
-  .section{
-    margin:0 auto;
-		padding:0;
-    h2{
-      @include font-display;
-      margin:0;
-    }
-    p{
-      @include font-body;
-      line-height: 150%;
-      margin-bottom: $medium-clamp;
-    }
-		.byline{
-			margin-top:$medium-clamp-half;
-	    &:before{
-	      position: relative;
-	      display: inline;
-	      content: 'By ';
-	    }
-		}
-    button{
-	    @include site-width;
-	    background: $light;
-		}
-	}
-}
-#artwork{
-	#information{
-		margin-top:$sectionpadding;
-		padding-bottom:$sectionpadding;
-		li{
-			font-size:80%;
-			line-height: 150%;
-			overflow:hidden;
-	    border-bottom: 1px dotted rgba(0,0,0,.5);
-			span{
-				width: 37%;
-		    vertical-align:top; /* <------ HAHA! */
-				display:inline-block;
-				&.right-cell{
-					width: 61%;
-					padding-left:1%;
-				}
-			}
-		}
-	}
-}
-span#artid{
-	font-weight: 300;
-}
-
-// this should probably be removed
-del{
-	pointer-events: none;
-	background: #000;
-	opacity:.8;
-	border-radius: 3% 1% .5% 1%;
-  user-select: none;
-	transform:rotate(25deg);
-	&:hover{
-		cursor: not-allowed;
-	}
-}
 
 p strong{
 		font-weight: 400;
@@ -290,20 +211,3 @@ p strong{
 }
 
 @import 'darkmode';
-
-.userpage .section{
-  ul li { 
-    display: inline-block; 
-    font-size:80%; 
-    margin-right: $medium-clamp; 
-    &:before {
-      display: inline-block; 
-      width: $medium-clamp-half; 
-      height: $medium-clamp-half; 
-      content:' '; 
-      border-radius:50%;
-    }
-    &#dividends:before{ background-color:$pink;}
-    &#deposit:before{ background-color:$blue;}
-  }
-}
