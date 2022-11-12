@@ -22,8 +22,9 @@
       email: email.value,
       password: password.value
     })
-    //const { user, error } = await supabase.from('userProfiles').insert({'user_id': user.value.id});
-    //const { user, error } = await supabase.from('KYC').insert({'user_id': user.value.id});
+    if (error.status) {
+      console.log(error)
+    }
   }
 
   onMounted(() => {
@@ -42,19 +43,23 @@
       <div class="section">
         <div class="block">
           <h2 class="title">
-            Time to start building your residual income!!
+            Log in or register now 😃
           </h2>
         </div>
         <form @submit.prevent="() => (isSignUp ? signUp() : login())">
+        <label  for='email'> E-mail</label>
           <input
             type="email"
             placeholder="Email"
             v-model="email"
+            id='email'
           />
+          <label for='password'> Password </label>
           <input
             type="password"
             placeholder="Password"
             v-model="password"
+            id='password'
           />
           <button
             type="submit"
@@ -72,6 +77,7 @@
         </button>
       </div>
     </div>
+    <div class="notification"></div>
   </div>
 </template>
 <style scoped>

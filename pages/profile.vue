@@ -18,10 +18,10 @@ const loading = ref(true)
 const firstName = ref('')
 const lastName = ref('')
 
-const { data: userProfile } = await useAsyncData('userProfiles', async () => {
+const { data: userProfile } = await useAsyncData('user_profiles', async () => {
     loading.value = true
     const { data } = await supabase
-        .from('userProfiles')
+        .from('user_profiles')
         .select('firstName, lastName, user_id')
         .eq('user_id', user.value.id)
         .single()
@@ -42,7 +42,7 @@ async function updateProfile() {
             lastName: lastName.value,
             updated_at: new Date(),
         }
-        let { error } = await supabase.from('userProfiles').update(updates).match({'user_id': user.value.id})
+        let { error } = await supabase.from('user_profiles').update(updates).match({'user_id': user.value.id})
     } catch (error) {
         console.log(error)
     } finally {
