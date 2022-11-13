@@ -16,6 +16,25 @@
           <p>
             Through practical solutions — rather than theoretical — we are working to make everywhere more inclusive and interesting. We make our decisions based on a set of politially agnostic values, and are doing our best to have a positive impact on everyone.
           </p>
+          <p>
+            Sociatal mission:
+          </p>
+          <nav>
+            <ul>
+              <li>
+                More democracy
+              </li>
+              <li>
+                More stability
+              </li>
+              <li>
+                More sovergnty
+              </li>
+              <li>
+                More security
+              </li>
+            </ul>
+          </nav>
         </div>
         <Cta />
       </div>

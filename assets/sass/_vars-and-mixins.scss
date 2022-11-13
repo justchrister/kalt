@@ -47,41 +47,41 @@ $merlot: #624CAB;
 $kobi: #F991CC;
 
 // Color variations
-$tuscany-80: rgba($tuscany,0.8);
-$tuscany-60: rgba($tuscany,0.6);
-$tuscany-40: rgba($tuscany,0.4);
-$tuscany-20: rgba($tuscany,0.2);
+$tuscany-80: mix($tuscany, $noon, 80%);
+$tuscany-60: mix($tuscany, $noon, 60%);
+$tuscany-40: mix($tuscany, $noon, 40%);
+$tuscany-20: mix($tuscany, $noon, 20%);
 
-$bliss-80: rgba($bliss,0.8);
-$bliss-60: rgba($bliss,0.6);
-$bliss-40: rgba($bliss,0.4);
-$bliss-20: rgba($bliss,0.2);
+$bliss-80: mix($bliss, $noon, 80%);
+$bliss-60: mix($bliss, $noon, 60%);
+$bliss-40: mix($bliss, $noon, 40%);
+$bliss-20: mix($bliss, $noon, 20%);
 
-$botanic-80: rgba($botanic,0.8);
-$botanic-60: rgba($botanic,0.6);
-$botanic-40: rgba($botanic,0.4);
-$botanic-20: rgba($botanic,0.2);
+$botanic-80: mix($botanic, $noon, 80%);
+$botanic-60: mix($botanic, $noon, 60%);
+$botanic-40: mix($botanic, $noon, 40%);
+$botanic-20: mix($botanic, $noon, 20%);
 
-$amsterdam-80: rgba($amsterdam,0.8);
-$amsterdam-60: rgba($amsterdam,0.6);
-$amsterdam-40: rgba($amsterdam,0.4);
-$amsterdam-20: rgba($amsterdam,0.2);
+$amsterdam-80: mix($amsterdam, $noon, 80%);
+$amsterdam-60: mix($amsterdam, $noon, 60%);
+$amsterdam-40: mix($amsterdam, $noon, 40%);
+$amsterdam-20: mix($amsterdam, $noon, 20%);
 
-$merlot-80: rgba($merlot,0.8);
-$merlot-60: rgba($merlot,0.6);
-$merlot-40: rgba($merlot,0.4);
-$merlot-20: rgba($merlot,0.2);
+$merlot-80: mix($merlot, $noon, 80%);
+$merlot-60: mix($merlot, $noon, 60%);
+$merlot-40: mix($merlot, $noon, 40%);
+$merlot-20: mix($merlot, $noon, 20%);
 
-$kobi-80: rgba($kobi,0.8);
-$kobi-60: rgba($kobi,0.6);
-$kobi-40: rgba($kobi,0.4);
-$kobi-20: rgba($kobi,0.2);
+$kobi-80: mix($kobi, $noon, 80%);
+$kobi-60: mix($kobi, $noon, 60%);
+$kobi-40: mix($kobi, $noon, 40%);
+$kobi-20: mix($kobi, $noon, 20%);
 
 // Gradients
 $tuscany-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $tuscany 0%, $tuscany-60, $noon);
 $bliss-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $bliss 0%, $kobi-60, $noon);
 $botanic-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $botanic 0%, $botanic-60, $noon);
-$amsterdam-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $amsterdam 0%, $amsterdam-60, $noon);
+$amsterdam-gradient: url('images/gradient.webp'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $amsterdam 0%, $amsterdam-60, $noon);
 $merlot-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $merlot 0%, $merlot-60, $noon);
 $kobi-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $kobi 0%, $kobi-60, $noon);
 

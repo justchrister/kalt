@@ -5,37 +5,31 @@
 	a:focus button,
 	*::selection,
 	*:focus{
-		background: $blue;
+		background: $tuscany;
 	}
-  body {
-      background-color: $dark !important;
-      color: $light;
-  }
+	body {
+		background-color: $midnight !important;
+		color: $noon;
+	}
 	.image{
 		filter:grayscale(1);
 	}
-	#artwork .image{
-		filter:none;
+	button{
+		color: $noon;
+		border-color:$noon;
 	}
-  button{
-		color: $light;
-    border-color:$light;
+	.insignia {
+		stroke:$noon;
 	}
-  .insignia {
-    stroke:$light;
-  }
-	#artwork .section .image{
-    border-color: #011628;
-	}
-	#artwork .section button,
 	pre code{
 		&:before,
 		&.show-code{
-			color: $light;
+			color: $noon;
 		}
 	}
-  .menu,
-  a{
-    color: $light;
-  }
-}*/
+	.menu,
+	a{
+		color: $noon;
+	}
+}
+*/

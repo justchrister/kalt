@@ -1,11 +1,22 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ['auth']
-})
 
 const client = useSupabaseClient()
 const user = useSupabaseUser()
+const loading = ref(true)
+const first_name = ref('')
+const birthdate = ref('')
+const last_name = ref('')
+const country = ref('')
+const city = ref('')
 
+//import charts = module('highcharts');
+
+// Redirect if user is not logged in
+definePageMeta({
+  title: 'Articles',
+  middleware: ['auth']
+
+})
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
@@ -13,47 +24,47 @@ onMounted(() => {
     }
   })
 })
+// need error handling here
 
-const loading = ref(true)
-const firstName = ref('')
-const lastName = ref('')
-
-const { data: userProfile } = await useAsyncData('user_profiles', async () => {
+const { data: profile } = await useAsyncData('profiles', async () => {
     loading.value = true
-    const { data } = await supabase
-        .from('user_profiles')
-        .select('firstName, lastName, user_id')
-        .eq('user_id', user.value.id)
-        .single()
+    const { data } = await client.from('profiles').select('first_name, last_name, birthdate').eq('user_id', user.value.id).single()
       loading.value = false
       return data
 })
 
-if (userProfile.value.user_id) {
-    firstName.value = userProfile.value.firstName
-    lastName.value = userProfile.value.lastName
+if (profile.value.first_name) {
+    first_name.value = profile.value.first_name
+}
+
+if (profile.value.last_name) {
+  last_name.value = profile.value.last_name
+}
+
+if (profile.value.birthdate) {
+  birthdate.value = profile.value.birthdate
 }
 
 async function updateProfile() {
     try {
         loading.value = true
         const updates = {
-            firstName: firstName.value,
-            lastName: lastName.value,
+            first_name: first_name.value,
+            last_name: last_name.value,
+            birthdate: birthdate.value,
             updated_at: new Date(),
         }
-        let { error } = await supabase.from('user_profiles').update(updates).match({'user_id': user.value.id})
+        const { error } = await client.from('profiles').update(updates).eq('user_id', user.value.id)
     } catch (error) {
         console.log(error)
     } finally {
         loading.value = false
     }
 }
-
 async function signOut() {
     try {
         loading.value = true
-        let { error } = await supabase.auth.signOut()
+        let { error } = await client.auth.signOut()
         if (error) throw error
     } catch (error) {
         alert(error.message)
@@ -64,41 +75,27 @@ async function signOut() {
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu :pageTitle='user.id' />
+    <Kaltmenu pageTitle='Profile' />
     <div class="page">
       <div class="section">
+        <kaltheader :first_name="first_name" :last_name="last_name" />
         <div class="block">
-          <div class="frame">
-            <div class="image" style="background-image:url(/images/values_02.jpg);margin-left:0;">
-            </div>
-          </div>
-          <p class="title">
-            {{ firstName }} {{ lastName }}
-          </p>
-          <nav>
-            <ul>
-              <li>
-                Dashboard
-              </li>
-              <li>
-                Preferences
-              </li>
-              <li>
-                Transactions
-              </li>
-            </ul>
-          </nav>
           <form @submit.prevent="updateProfile">
             <label for="email">Email</label>
             <input id="email" type="text" :value="user.email" disabled />
             <label for="first-name">First name</label>
-            <input id="first-name" type="text" v-model="firstName" />
+            <input id="first-name" type="text" v-model="first_name" />
             <label for="first-name">Last name</label>
-            <input id="first-name" type="text" v-model="lastName" />
-            <input type="submit" :value="loading ? 'Loading ...' : 'Update'"
-                :disabled="loading" />
-            <button type="button" class="button block" @click="signOut">
-                Sign Out
+            <input id="first-name" type="text" v-model="last_name" />
+            <label for="birthdate">Birthdate</label>
+            <input id="birthdate" type="date" v-model="birthdate">
+            <label for="country">Country</label>
+            <input id="country" type="text" v-model="country" />
+            <label for="city">City</label>
+            <input id="city" type="text" v-model="city" />
+            <input type="submit" value="update"/>
+            <button type="button" class="underbutton" @click="signOut">
+                sign out 👋
             </button>
           </form>
         </div>

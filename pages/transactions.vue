@@ -25,13 +25,11 @@ console.log(transactions.value)
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Invest" />
+    <Kaltmenu pageTitle="Transactions" />
     <div class="page">
       <div class="section">
+        <kaltheader :first_name="first_name" :last_name="last_name" />
         <div class="block">
-          <h2 class="title">
-            Here's your transactions :)
-          </h2>
           <div v-if="transactions?.length > 0">
             <table>
               <tr>
@@ -51,7 +49,6 @@ console.log(transactions.value)
             </table>
           </div>
         </div>
-        <Cta />
       </div>
     </div>
   </div>

@@ -11,9 +11,5 @@
   "devDependencies": {
     "@nuxtjs/supabase": "^0.1.25",
     "nuxt": "3.0.0-rc.9"
-  },
-  "dependencies": {
-    "chart.js": "^3.9.1",
-    "vue-chartjs": "^4.1.2"
   }
 }

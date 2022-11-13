@@ -9,6 +9,7 @@
   const email = ref('')
   const password = ref('')
   const isSignUp = ref(false)
+  const errormsg = ref(false)
 
   const signUp = async () => {
     const { user, error } = await client.auth.signUp({
@@ -22,15 +23,16 @@
       email: email.value,
       password: password.value
     })
-    if (error.status) {
-      console.log(error)
+    if (error) {
+      console.log(error.message)
+      errormsg = 1;
     }
   }
 
   onMounted(() => {
     watchEffect(() => {
       if (user.value) {
-        navigateTo('/invest')
+        navigateTo('/profile')
       }
     })
   })
@@ -38,7 +40,7 @@
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Homepage" />
+    <Kaltmenu pageTitle="Authenticate" />
     <div class='page'>
       <div class="section">
         <div class="block">
@@ -68,26 +70,12 @@
             <span v-else> Log in </span>
           </button>
         </form>
-        <button
-          @click="isSignUp = !isSignUp"
-          class="underbutton"
-        >
+        <button @click="isSignUp = !isSignUp" class="underbutton">
           <span v-if="isSignUp"> Have an account? Log in instead </span>
           <span v-else> Create a new account </span>
         </button>
       </div>
     </div>
-    <div class="notification"></div>
+    <div class="notifications-box error" v-if="errormsg">Invalid login credentials</div>
   </div>
 </template>
-<style scoped>
-.underbutton{
-  border:none;
-  font-size:70%;
-  text-decoration: underline;
-}
-.underbutton:focus,
-.underbutton:active{
-  background:transparent;
-}
-</style>

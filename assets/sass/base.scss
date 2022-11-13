@@ -18,16 +18,14 @@
 .section {
   width: $sitewidth;
   max-width: $maxsitewidth;
-  padding: $sectionpadding 0 0 0;
+  padding: $sectionpadding 0;
   margin: auto;
   margin:0 auto;
-  padding:0;
 }
 .frame {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: flex-end;
   align-content: start;
   canvas{
@@ -129,7 +127,6 @@ nav{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: auto;
   align-content: start;
   margin: auto;

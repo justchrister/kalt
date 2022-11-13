@@ -74,7 +74,7 @@ a {
   outline: none;
 }
 *::selection {
-  background-color: rgba(30, 150, 252, 0.2);
+  background-color: #d0e5f4;
 }
 
 h1, h2 {
@@ -105,7 +105,7 @@ a:focus {
 }
 
 *:focus {
-  background: rgba(30, 150, 252, 0.2);
+  background: #d0e5f4;
 }
 
 button {
@@ -224,6 +224,23 @@ header .menu ul li *:hover {
   background-color: rgba(255, 0, 0, 0.2);
 }
 
+.notifications-box {
+  font-size: clamp(14px, 3.6vw, 26px);
+  line-height: clamp(14px, 3.6vw, 26px);
+  position: fixed;
+  display: block;
+  top: clamp(24.5px, 6.3vw, 45.5px);
+  margin: clamp(14px, 3.6vw, 26px);
+  border: 0;
+  padding: clamp(7px, 1.8vw, 13px) clamp(14px, 3.6vw, 26px);
+}
+.notifications-box.error {
+  background: #f9b1a4;
+}
+.notifications-box.success {
+  background: #9cf7c0;
+}
+
 table {
   width: 100%;
 }
@@ -246,7 +263,7 @@ pre code {
   line-height: 100%;
   font-display: optional;
   font-size: 80%;
-  background-color: rgba(30, 150, 252, 0.2);
+  background-color: #d0e5f4;
   line-height: 1.2;
   height: clamp(14px, 3.6vw, 26px);
   color: transparent;
@@ -272,22 +289,17 @@ pre code:before {
   position: absolute;
   display: block;
   content: "> show code";
-  color: black;
+  color: #202124;
 }
 
-form input,
-form button,
-form input[type=submit] {
-  margin-top: clamp(7px, 1.8vw, 13px);
-}
-
+form input[type=date],
 form input[type=password],
 form input[type=number],
 form input[type=email],
 form input[type=text] {
+  background: transparent;
   width: 100%;
   border-radius: 0;
-  background-color: #FCF9F2;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(14px, 3.6vw, 26px);
   font-weight: 300;
@@ -297,10 +309,11 @@ form input[type=text] {
   border: 0.1px solid #202124;
   max-width: 100%;
   height: clamp(14px, 3.6vw, 26px);
-  margin: clamp(14px, 3.6vw, 26px) 0;
+  margin: clamp(7px, 1.8vw, 13px) 0 clamp(14px, 3.6vw, 26px) 0;
   box-sizing: border-box;
   padding: clamp(14px, 3.6vw, 26px) clamp(7px, 1.8vw, 13px);
 }
+form input[type=date]:focus,
 form input[type=password]:focus,
 form input[type=number]:focus,
 form input[type=email]:focus,
@@ -324,11 +337,12 @@ form input[type=text]:focus {
   font-display: optional;
   border-radius: 100%;
   border: 0.1px solid #202124;
+  background: #FCF9F2;
 }
 
 form input[type=submit]:focus,
 a:focus button {
-  background: rgba(30, 150, 252, 0.2);
+  background: #d0e5f4;
 }
 
 form input[type=submit],
@@ -355,6 +369,17 @@ del:hover {
   cursor: not-allowed;
 }
 
+.section .underbutton {
+  border: none;
+  font-size: 70%;
+  text-decoration: underline;
+}
+
+.section .underbutton:focus,
+.section .underbutton:active {
+  background: transparent;
+}
+
 .chart {
   background: #FFF;
   padding: clamp(24.5px, 6.3vw, 45.5px) 0;
@@ -377,17 +402,15 @@ canvas,
 .section {
   width: 86vw;
   max-width: 720px;
-  padding: clamp(75px, 15vh, 175px) 0 0 0;
+  padding: clamp(75px, 15vh, 175px) 0;
   margin: auto;
   margin: 0 auto;
-  padding: 0;
 }
 
 .frame {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: flex-end;
   align-content: start;
 }
@@ -404,7 +427,7 @@ canvas,
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  background-color: rgba(30, 150, 252, 0.2);
+  background-color: #d0e5f4;
   border-radius: 2px;
 }
 .frame .image:first-child {
@@ -487,7 +510,6 @@ nav ol li .date {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: auto;
   align-content: start;
   margin: auto;
@@ -574,37 +596,31 @@ p strong {
 	a:focus button,
 	*::selection,
 	*:focus{
-		background: $blue;
+		background: $tuscany;
 	}
-  body {
-      background-color: $dark !important;
-      color: $light;
-  }
+	body {
+		background-color: $midnight !important;
+		color: $noon;
+	}
 	.image{
 		filter:grayscale(1);
 	}
-	#artwork .image{
-		filter:none;
+	button{
+		color: $noon;
+		border-color:$noon;
 	}
-  button{
-		color: $light;
-    border-color:$light;
+	.insignia {
+		stroke:$noon;
 	}
-  .insignia {
-    stroke:$light;
-  }
-	#artwork .section .image{
-    border-color: #011628;
-	}
-	#artwork .section button,
 	pre code{
 		&:before,
 		&.show-code{
-			color: $light;
+			color: $noon;
 		}
 	}
-  .menu,
-  a{
-    color: $light;
-  }
-}*/
+	.menu,
+	a{
+		color: $noon;
+	}
+}
+*/

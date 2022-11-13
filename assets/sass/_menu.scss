@@ -116,3 +116,20 @@ header {
   border-radius:50%;
   background-color:rgba(red,0.2);
 }
+
+.notifications-box{
+  font-size: clamp(14px, 3.6vw, 26px);
+  line-height: clamp(14px, 3.6vw, 26px);
+  position: fixed;
+  display:block;
+  top: $big-clamp;
+  margin: $medium-clamp;
+  border: 0;
+  padding: $medium-clamp-half $medium-clamp;
+  &.error{
+    background: $amsterdam-40;
+  }
+  &.success{
+    background: $botanic-40;
+  }
+}

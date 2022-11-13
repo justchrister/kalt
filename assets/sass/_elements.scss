@@ -45,31 +45,26 @@ pre code {
       position: absolute;
       display: block;
       content: '> show code';
-      color:black;
+      color:$midnight;
     }
   }
 
 // <form>
 
-form input,
-form button,
-form input[type=submit]
-{
-    margin-top:$medium-clamp-half;
-}
+form input[type=date],
 form input[type=password],
 form input[type=number],
 form input[type=email],
 form input[type=text]{
+  background: transparent;
   width:100%;
   border-radius:0;
-  background-color: $noon;
   @include font-body;
   border-radius: 0%;
   border: $border;
   max-width: 100%;
   height:$medium-clamp;
-  margin: $medium-clamp  0;
+  margin: $medium-clamp-half  0 $medium-clamp 0;
   box-sizing: border-box;
   padding: $medium-clamp $medium-clamp-half;
   &:focus{
@@ -87,6 +82,7 @@ form input[type=text]{
   @include font-body;
   border-radius:100%;
   border:$border;
+  background:$noon;
 }
 
 
@@ -122,4 +118,18 @@ del{
 	&:hover{
 		cursor: not-allowed;
 	}
+}
+
+
+// used under sign in form and at the bottom of the profile page
+
+
+.section .underbutton{
+  border:none;
+  font-size:70%;
+  text-decoration: underline;
+}
+.section .underbutton:focus,
+.section .underbutton:active{
+  background:transparent;
 }

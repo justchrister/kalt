@@ -1,3 +1,4 @@
+// Using this technique allows users to still copy text *with* emojis.
 
 const css = 'omoji { background-size:contain;color:transparent;background-repeat:no-repeat;}',
     	head = document.head || document.getElementsByTagName('head')[0],
@@ -8,7 +9,7 @@ style.type = 'text/css';
 style.appendChild(document.createTextNode(css));
 
 const omojis = [
-	["😃", "smile.svg"], commented out for the preview page
+	["😃", "smile.svg"],
 	["☺️", "happy.svg"],
 	["😊", "happy.svg"],
 	["🙂", "happy.svg"],

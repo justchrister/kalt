@@ -13,10 +13,20 @@
                         Invest
                     </nuxt-link>
                 </li>
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/about" >
+                        Invest
+                    </nuxt-link>
+                </li>
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/profile" >
+                        Profile
+                    </nuxt-link>
+                </li>
             </ul>
         </nav>
         <div class="notification"></div>
-        <nuxt-link to="/profile" >
+        <nuxt-link to="/profile" v-on:click="toggleMenu">
             <div class="my-profile-button"></div>
         </nuxt-link>
     </header>
