@@ -2,8 +2,8 @@
 <div>
 
         <div class="block">
-              <Chart />
-          <Cta />
+            <Chart />
+            <Cta />
         </div>
         <div class="block">
           <!--

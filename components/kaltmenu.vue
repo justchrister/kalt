@@ -9,13 +9,8 @@
             <button id="menu" v-on:click="toggleMenu"> menu</button>
             <ul id="menu_items">
                 <li v-on:click="toggleMenu">
-                    <nuxt-link to="/invest" >
-                        Invest
-                    </nuxt-link>
-                </li>
-                <li v-on:click="toggleMenu">
                     <nuxt-link to="/about" >
-                        Invest
+                        About
                     </nuxt-link>
                 </li>
                 <li v-on:click="toggleMenu">
