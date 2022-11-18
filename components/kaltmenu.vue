@@ -13,6 +13,11 @@
                         About
                     </nuxt-link>
                 </li>
+                <li>
+                    <a href="https://discord.gg/AxuVKuPQAU" target="_blank">
+                        Discord
+                    </a>
+                </li>
                 <li v-on:click="toggleMenu">
                     <nuxt-link to="/profile" >
                         Profile

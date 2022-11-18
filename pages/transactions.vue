@@ -20,7 +20,7 @@ const { data: transactions } = await useAsyncData('transactions', async () => {
   const { data } = await client.from('transactions').select('id, currency, amount, type,completed, initiated').order('initiated')
   return data
 })
-console.log(transactions.value)
+console.log(transactions)
 
 </script>
 <template>

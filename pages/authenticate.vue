@@ -9,8 +9,7 @@
   const email = ref('')
   const password = ref('')
   const isSignUp = ref(false)
-  const errormsg = ref(false)
-
+  const errormsg = ref('')
   const signUp = async () => {
     const { user, error } = await client.auth.signUp({
       email: email.value,
@@ -24,8 +23,9 @@
       password: password.value
     })
     if (error) {
-      console.log(error.message)
-      errormsg = 1;
+      errormsg.value + error.message
+      console.log(errormsg.value)
+      console.log(errormsg)
     }
   }
 

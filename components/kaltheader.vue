@@ -2,7 +2,7 @@
 <div>
 
         <div class="block">
-            <Chart />
+            <!--<Chart />-->
             <Cta />
         </div>
         <div class="block">
