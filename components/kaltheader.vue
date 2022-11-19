@@ -1,20 +1,12 @@
 <template>
 <div>
-
         <div class="block">
-            <!--<Chart />-->
-            <Cta />
-        </div>
-        <div class="block">
-          <!--
-          <div class="frame">
-            <div class="image" style="background-image:url(/images/values_02.jpg);margin-left:0;">
-            </div>
-          </div>-->
           <nav>
             <ul>
               <li>
+                <nuxt-link to="/dashboard" >
                 Dashboard
+                </nuxt-link>
               </li>
               <li>
                 

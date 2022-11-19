@@ -441,6 +441,18 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.pills input {
+  display: none;
+}
+
+.pills label {
+  font-size: 70%;
+  padding: 2px 8px;
+  border: 1px solid #202124;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
 .chart {
   background: #FFF;
   padding: clamp(24.5px, 6.3vw, 45.5px) 0;
@@ -474,6 +486,9 @@ canvas,
   flex-direction: row;
   align-items: flex-end;
   align-content: start;
+}
+.frame div {
+  width: 100%;
 }
 .frame canvas {
   height: 50vw;

@@ -28,6 +28,9 @@
   flex-direction: row;
   align-items: flex-end;
   align-content: start;
+  div {
+    width:100%;
+  }
   canvas{
     height: 50vw;
     max-height: 418px;

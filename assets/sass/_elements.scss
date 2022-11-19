@@ -197,3 +197,16 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+// PILLS
+
+.pills input{
+  display:none; 
+}
+.pills label{
+  font-size:70%;
+  padding:2px 8px;
+  border:1px solid $midnight;
+  border-radius:3px;
+  margin-right:10px;
+}

@@ -1,5 +1,13 @@
 <script setup lang="ts">
 
+
+definePageMeta({
+  middleware: ['auth']
+})
+
+const client = useSupabaseClient()
+const user = useSupabaseUser()
+
 const frequency = ref(true);
 
 const years = 40;
@@ -8,6 +16,14 @@ const deposit = ref(2000);
 const rateText = ref('Monthly');
 let calcedArr = [];
 
+
+onMounted(() => {
+  watchEffect(() => {
+    if (!user.value) {
+      navigateTo('/authenticate')
+    }
+  })
+})
 // should probably find a way to push the value into the array automatically but this will do for now
 const compound = (principalAmount, monthly) => {
 
@@ -27,7 +43,6 @@ const compound = (principalAmount, monthly) => {
 }
 
 const depositCalc = computed(()=>(deposit.value.toLocaleString(undefined,{ maximumFractionDigits: 0 })))
-
 
 
 const noMonthly = computed (() => deposit.value)
