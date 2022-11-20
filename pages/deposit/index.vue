@@ -1,5 +1,15 @@
 <script setup lang="ts">
+const pagename = 'Deposit';
+const title = 'Kalt — ' + pagename;
+const description = ref('My App Description')
 
+useHead({
+  title,
+  meta: [{
+    name: 'description',
+    content: description
+  }]
+})
 
 definePageMeta({
   middleware: ['auth']
@@ -11,10 +21,7 @@ const user = useSupabaseUser()
 const frequency = ref(true);
 
 const years = 40;
-const thisYear = new Date().getFullYear();
 const deposit = ref(2000);
-const rateText = ref('Monthly');
-let calcedArr = [];
 
 
 onMounted(() => {
@@ -24,16 +31,12 @@ onMounted(() => {
     }
   })
 })
-// should probably find a way to push the value into the array automatically but this will do for now
-const compound = (principalAmount, monthly) => {
 
+
+// should probably find a way to push the value into the array automatically but this will do for now
+const compounding = (principalAmount, monthlyDeposit) => {
+    let calcedArr = [];
     let interestRate = 8;
-    let monthlyDeposit
-    if (monthly === true){
-        monthlyDeposit = principalAmount;
-    } else {
-        monthlyDeposit = 0;
-    }
     for (let i = 0; i < years; i++) {
       // Runs 5 times, with values of step 0 through 4.
       let year = (i+1);
@@ -42,22 +45,20 @@ const compound = (principalAmount, monthly) => {
     return calcedArr
 }
 
-const depositCalc = computed(()=>(deposit.value.toLocaleString(undefined,{ maximumFractionDigits: 0 })))
+// this code is extremely redundant
 
-
-const noMonthly = computed (() => deposit.value)
-const dataChart =  computed(() =>({
+const dataChartMonthly = computed(() =>({
                 labels: ['first year', '10 years', '20 years', '30 years', '40 years'],
                 datasets: [
                     {
-                        label: "what your investment will be worth",
+                        label: "what your XXX will be worth",
                         backgroundColor: "#1E96FC",
                         borderColor: "#1E96FC",
                         data: [deposit.value, 
-                              computed(() =>(compound (deposit.value, frequency.value)[years*0.25])).value, 
-                              computed(() =>(compound (deposit.value, frequency.value))[years*0.5]).value, 
-                              computed(() =>(compound (deposit.value, frequency.value))[years*0.75]).value, 
-                              computed(() =>(compound (deposit.value, frequency.value))[years-1]).value
+                              computed(() =>(compounding (deposit.value, deposit.value)[years*0.25])).value, 
+                              computed(() =>(compounding (deposit.value, deposit.value))[years*0.5]).value, 
+                              computed(() =>(compounding (deposit.value, deposit.value))[years*0.75]).value, 
+                              computed(() =>(compounding (deposit.value, deposit.value))[years-1]).value
                               ],
                     },
                     {
@@ -76,26 +77,58 @@ const dataChart =  computed(() =>({
                 ],
             }));
 
+const dataChartOnce = computed(() =>({
+                labels: ['first year', '10 years', '20 years', '30 years', '40 years'],
+                datasets: [
+                    {
+                        label: "what your investment will be worth",
+                        backgroundColor: "#1E96FC",
+                        borderColor: "#1E96FC",
+                        data: [deposit.value,
+                              computed(() =>(compounding (deposit.value, 0)[years*0.25])).value, 
+                              computed(() =>(compounding (deposit.value, 0))[years*0.5]).value, 
+                              computed(() =>(compounding (deposit.value, 0))[years*0.75]).value, 
+                              computed(() =>(compounding (deposit.value, 0))[years-1]).value
+                              ],
+                    },
+                    {
+                      // if its not monthly then this has to stay deposit.value 4
+                        label: "what you invest",
+                        backgroundColor: "#F7B538",
+                        borderColor: "#F7B538",
+                        fill: 1,
+                        data: [deposit.value, 
+                               deposit.value, 
+                               deposit.value, 
+                               deposit.value, 
+                               deposit.value
+                              ],
+                    },
+                ],
+            }));
 
+
+console.log(deposit.value)
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle='Deposit' />
+    <Kaltmenu :pageTitle='pagename' />
     <div class="page">
       <div class="section">
         <div class="block">
           <div class="frame">
-          <LineChart :chartData="dataChart"/>
+          <LineChart :chartData="dataChartMonthly" v-if="frequency"/>
+          <LineChart :chartData="dataChartOnce" v-else/>
           </div>
         </div>
         <div class="block">
-          <form @submit.prevent="updateProfile">
+          <form>
 
             <label for="deposit" >
-                <span v-if="frequency"> Monthly deposit </span>
-                <span v-else> Single deposit </span>
+            <span v-if="frequency"> Monthly deposit </span>
+            <span v-else> Single deposit </span>
             </label>
-            <input id="deposit" type="number" v-model="deposit" min="500" max="1000000"/>
+            <input id="deposit" type="number" v-model="deposit"/>
 
             <br/>
             <label class="switch">
@@ -108,7 +141,7 @@ const dataChart =  computed(() =>({
             <br/>
 
             <nuxt-link to="/deposit/payment" >
-              <input type="submit" value="deposit"/>
+              <input type="submit" value="next ->"/>
             </nuxt-link>
           </form>
         </div>
