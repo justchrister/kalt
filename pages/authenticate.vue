@@ -1,5 +1,18 @@
 <script setup lang="ts">
+  const pagename = 'Authenticate';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
 
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+  
   definePageMeta({
     middleware: ['auth']
   })
@@ -40,7 +53,7 @@
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Authenticate" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
         <div class="block">

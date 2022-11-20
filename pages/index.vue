@@ -1,6 +1,22 @@
+<script setup lang="ts">
+  const pagename = 'Homepage';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+
+</script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Homepage" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class='page'>
       <div class="section" id="about">
         <div class="frame">
@@ -14,26 +30,12 @@
           <p>
             Through practical solutions — rather than theoretical — we are working to make everywhere more inclusive and interesting. We make our decisions based on a set of politially agnostic values, and are doing our best to have a positive impact on everyone.
           </p>
+          <p>
+            <nuxt-link to="/about">About us</nuxt-link>
+          </p>
         </div>
         <Cta />
       </div>
     </div>
   </div>
 </template>
-
-<script>
-
-export default {
-    head() {
-        return{
-            title: 'Kalt — Homepage',
-            meta: [{
-                hid: 'description',
-                name: 'description',
-                content: 'Best app ever'
-            }]
-        }
-    },
-}
-
-</script>
