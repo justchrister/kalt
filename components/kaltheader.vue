@@ -4,19 +4,24 @@
           <nav>
             <ul>
               <li>
-                <nuxt-link to="/dashboard" >
-                Dashboard
+                <nuxt-link to="/portfolio" >
+                  Portfolio
                 </nuxt-link>
               </li>
               <li>
                 
-                <nuxt-link to="/profile" >
-                    Settings
+                <nuxt-link to="/account" >
+                    Account
                 </nuxt-link>
               </li>
               <li>
                 <nuxt-link to="/transactions" >
                     Transactions
+                </nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/notifications" >
+                    Notifications
                 </nuxt-link>
               </li>
             </ul>
