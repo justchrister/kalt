@@ -73,8 +73,37 @@ export default defineComponent({
 
     const chartOptions = {
       responsive: true,
+      elements: {
+          point:{
+              radius: 0.1
+          }
+      },
+
+      animation: {
+          duration: 0
+      },
+      interaction: {
+          intersect: 0
+      },
       maintainAspectRatio: false,
-      tension: 0.2
+      tension: 0.5,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'NOK' }).format(context.parsed.y);
+                        }
+                        return label;
+                    }
+                }
+            }
+        }
     }
 
     return () =>
