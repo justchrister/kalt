@@ -1,8 +1,22 @@
+<script setup lang="ts">
+const pagename = 'About us';
+const title = 'Kalt — ' + pagename;
+const description = ref('My App Description')
+
+useHead({
+  title,
+  meta: [{
+    name: 'description',
+    content: description
+  }]
+})
+</script>
+
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Homepage" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class='page'>
-      <div class="section" id="about">
+      <div class="section">
         <div class="frame">
           <div class="image" style="background-image:url(/images/homepage_01_min.jpg);">
           </div>
@@ -11,7 +25,7 @@
         </div>
         <div class="block">
           <h2 class="title">
-            Time to start building your residual income!!
+            It is time for us to make a change!
           </h2>
           <p>
             Through practical solutions — rather than theoretical — we are working to make everywhere more inclusive and interesting. We make our decisions based on a set of politially agnostic values, and are doing our best to have a positive impact on everyone.
@@ -41,19 +55,3 @@
     </div>
   </div>
 </template>
-
-<script>
-
-export default {
-    head() {
-        return{
-            title: 'Kalt — Homepage',
-            meta: [{
-                hid: 'description',
-                name: 'description',
-                content: 'Best app ever'
-            }]
-        }
-    },
-}
-</script>
