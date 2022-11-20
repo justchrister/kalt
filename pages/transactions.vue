@@ -1,4 +1,15 @@
 <script setup lang="ts">
+    const pagename = 'Transactions';
+    const title = 'Kalt — ' + pagename;
+    const description = ref('My App Description')
+
+    useHead({
+      title,
+      meta: [{
+        name: 'description',
+        content: description
+      }]
+    })
 
 definePageMeta({
   middleware: ['auth']
@@ -25,7 +36,7 @@ console.log(transactions)
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Transactions" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class="page">
       <div class="section">
         <kaltheader :first_name="first_name" :last_name="last_name" />

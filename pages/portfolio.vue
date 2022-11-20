@@ -1,4 +1,17 @@
 <script setup lang="ts">
+    const pagename = 'Portfolio';
+    const title = 'Kalt — ' + pagename;
+    const description = ref('My App Description')
+
+    useHead({
+    title,
+    meta: [
+        {
+        name: "description",
+        content: description,
+        },
+    ],
+    });
 
     definePageMeta({
         middleware: ['auth']
@@ -61,7 +74,7 @@ console.log(days.value)
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Dashboard" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class="page">
       <div class="section">
         <kaltheader/>
@@ -72,18 +85,26 @@ console.log(days.value)
         </div>
         <div class="block">
             <div class="pills">
-                <label for="seven">One week</label>
+                <label for="seven">Last week</label>
                 <input id="seven" type="radio" value="7" v-model="days" />
 
-                <label for="thirty">One month</label>
+                <label for="thirty">Last month</label>
                 <input id="thirty" type="radio" value="30" v-model="days" />
 
-                <label for="oneyear">One year</label>
+                <label for="oneyear">Last year</label>
                 <input id="oneyear" type="radio" value="365" v-model="days" />
 
-                <label for="max">max</label>
+                <label for="max">Total</label>
                 <input id="max" type="radio" value="420420420" v-model="days" />
             </div>
+        </div>
+        <div class="block">
+            <p> So far you've deposited 128398348</p>
+            <p> So far you've earned 128398348</p>
+            <p> Which makes your portfolio worth 128398348</p>
+            <p> This equates to 7 trips in a private jet around the world</p>
+            <p> This equates to eating 19475 avocadoes</p>
+
         </div>
         <div class="block">
             <Cta />
