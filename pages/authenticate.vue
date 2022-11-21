@@ -2,7 +2,7 @@
   const pagename = 'Authenticate';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
-
+  var errormsg = ref('');
   useHead({
     title,
     meta: [
@@ -19,10 +19,19 @@
 
   const user = useSupabaseUser()
   const client = useSupabaseClient()
+
+  onMounted(() => {
+    watchEffect(() => {
+      if (user.value) {
+        navigateTo('/portfolio')
+      }
+    })
+  })
+
   const email = ref('')
   const password = ref('')
   const isSignUp = ref(false)
-  const errormsg = ref('')
+
   const signUp = async () => {
     const { user, error } = await client.auth.signUp({
       email: email.value,
@@ -35,20 +44,11 @@
       email: email.value,
       password: password.value
     })
-    if (error) {
-      errormsg.value + error.message
-      console.log(errormsg.value)
-      console.log(errormsg)
+    if (error.status = 400){
+      errormsg.value = 'Please check login details'
     }
   }
 
-  onMounted(() => {
-    watchEffect(() => {
-      if (user.value) {
-        navigateTo('/profile')
-      }
-    })
-  })
 
 </script>
 <template>
@@ -62,7 +62,7 @@
           </h2>
         </div>
         <form @submit.prevent="() => (isSignUp ? signUp() : login())">
-        <label  for='email'> E-mail</label>
+          <label  for='email'> E-mail</label>
           <input
             type="email"
             placeholder="Email"
@@ -89,6 +89,6 @@
         </button>
       </div>
     </div>
-    <div class="notifications-box error" v-if="errormsg">Invalid login credentials</div>
+    <div class="notifications-box error" v-if="errormsg">{{errormsg}}</div>
   </div>
 </template>
