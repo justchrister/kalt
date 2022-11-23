@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  const pagename = 'Authenticate';
+  const pagename = 'Sign up';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
   var errormsg = ref('');
+
   useHead({
     title,
     meta: [
@@ -30,7 +31,6 @@
 
   const email = ref('')
   const password = ref('')
-  const isSignUp = ref(false)
 
   const signUp = async () => {
     const { user, error } = await client.auth.signUp({
@@ -38,18 +38,6 @@
       password: password.value
     })
   }
-
-  const login = async () => {
-    const { user, error } = await client.auth.signIn({
-      email: email.value,
-      password: password.value
-    })
-    if (error.status = 400){
-      errormsg.value = 'Please check login details'
-    }
-  }
-
-
 </script>
 <template>
   <div class="PageWrapper">
@@ -61,7 +49,7 @@
             Log in or register now 😃
           </h2>
         </div>
-        <form @submit.prevent="() => (isSignUp ? signUp() : login())">
+        <form @submit.prevent="() => (signUp())">
           <label  for='email'> E-mail</label>
           <input
             type="email"
@@ -78,14 +66,11 @@
           />
           <button
             type="submit"
-          >
-            <span v-if="isSignUp"> Sign up </span>
-            <span v-else> Log in </span>
+          >Sign up
           </button>
         </form>
-        <button @click="isSignUp = !isSignUp" class="underbutton">
-          <span v-if="isSignUp"> Have an account? Log in instead </span>
-          <span v-else> Create a new account </span>
+        <button class="underbutton">
+          <span> Have an account? Log in instead </span>
         </button>
       </div>
     </div>
