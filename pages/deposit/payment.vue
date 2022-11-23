@@ -21,7 +21,7 @@
   onMounted(() => {
     watchEffect(() => {
       if (!user.value) {
-        navigateTo('/authenticate')
+        navigateTo('/account/sign-in')
       }
     })
   })
@@ -34,16 +34,6 @@
     <div class="page">
       <div class="section">
         <div class="block">
-          <nav>
-            <ul>
-              <li>
-                Invoice
-              </li>
-              <li>
-                Credit card
-              </li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>

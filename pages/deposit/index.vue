@@ -27,7 +27,7 @@ const deposit = ref(2000);
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      navigateTo('/authenticate')
+      navigateTo('/account/sign-in')
     }
   })
 })
@@ -122,7 +122,12 @@ console.log(deposit.value)
           </div>
         </div>
         <div class="block">
-          <form>
+          <form action="https://payment.v1.kalt.co/once" method="POST">
+
+
+            <input type="hidden" name="lookup_key" value="DDF_Global_Monthly" />
+            <input type="hidden" name="user_id" value="{{user.value.id}}" />
+
 
             <label for="deposit" >
             <span v-if="frequency"> Monthly deposit </span>
@@ -140,9 +145,7 @@ console.log(deposit.value)
             <br/>
             <br/>
 
-            <nuxt-link to="/deposit/payment" >
-              <input type="submit" value="next ->"/>
-            </nuxt-link>
+            <input type="submit" value="next ->"/>
           </form>
         </div>
       </div>
