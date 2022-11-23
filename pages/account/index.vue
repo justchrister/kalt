@@ -32,7 +32,8 @@ definePageMeta({
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      navigateTo("/authenticate");
+      
+      navigateTo('/authenticate/sign-in')
     }
   });
 });

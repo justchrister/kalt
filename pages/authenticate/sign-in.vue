@@ -1,9 +1,8 @@
 <script setup lang="ts">
-  const pagename = 'Sign up';
+  const pagename = 'Sign in';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
   var errormsg = ref('');
-
   useHead({
     title,
     meta: [
@@ -24,20 +23,25 @@
   onMounted(() => {
     watchEffect(() => {
       if (user.value) {
-        navigateTo('/portfolio')
+        navigateTo('/account/portfolio')
       }
     })
   })
 
   const email = ref('')
   const password = ref('')
+  const isSignUp = ref(false)
 
-  const signUp = async () => {
-    const { user, error } = await client.auth.signUp({
+  const signIn = async () => {
+    const { user, error } = await client.auth.signIn({
       email: email.value,
       password: password.value
     })
+    if (error.status = 400){
+      errormsg.value = 'Please check login details'
+    }
   }
+
 </script>
 <template>
   <div class="PageWrapper">
@@ -46,10 +50,10 @@
       <div class="section">
         <div class="block">
           <h2 class="title">
-            Log in or register now 😃
+            Welcome back!
           </h2>
         </div>
-        <form @submit.prevent="() => (signUp())">
+        <form @submit.prevent="() => (signIn())">
           <label  for='email'> E-mail</label>
           <input
             type="email"
@@ -66,11 +70,17 @@
           />
           <button
             type="submit"
-          >Sign up
+          >
+            Log in
           </button>
         </form>
-        <button class="underbutton">
-          <span> Have an account? Log in instead </span>
+        <nuxt-link to="/account/sign-up">
+          <button class="underbutton">
+            Create a new account
+          </button>
+        </nuxt-link>
+        <button @click="passwordReset()" class="underbutton">
+          <span> Reset password </span>
         </button>
       </div>
     </div>

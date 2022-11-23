@@ -27,7 +27,7 @@ const deposit = ref(2000);
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      navigateTo('/account/sign-in')
+      navigateTo('/authenticate/sign-up')
     }
   })
 })
@@ -116,6 +116,7 @@ console.log(deposit.value)
     <div class="page">
       <div class="section">
         <div class="block">
+          <h1> See how much you could make:</h1>
           <div class="frame">
           <LineChart :chartData="dataChartMonthly" v-if="frequency"/>
           <LineChart :chartData="dataChartOnce" v-else/>
@@ -123,7 +124,6 @@ console.log(deposit.value)
         </div>
         <div class="block">
           <form action="https://payment.v1.kalt.co/once" method="POST">
-
 
             <input type="hidden" name="lookup_key" value="DDF_Global_Monthly" />
             <input type="hidden" name="user_id" value="{{user.value.id}}" />
@@ -145,8 +145,9 @@ console.log(deposit.value)
             <br/>
             <br/>
 
-            <input type="submit" value="next ->"/>
+            <input type="submit" value="→" />
           </form>
+
         </div>
       </div>
     </div>

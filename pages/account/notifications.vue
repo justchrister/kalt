@@ -23,7 +23,8 @@ const loading = ref(null)
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      navigateTo('/authenticate')
+      
+      navigateTo('/authenticate/sign-in')
     }
   })
 })

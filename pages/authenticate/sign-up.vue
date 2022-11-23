@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  const pagename = 'Sign in';
+  const pagename = 'Sign up';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
   var errormsg = ref('');
+
   useHead({
     title,
     meta: [
@@ -30,18 +31,18 @@
 
   const email = ref('')
   const password = ref('')
-  const isSignUp = ref(false)
 
-  const signIn = async () => {
-    const { user, error } = await client.auth.signIn({
+  const signUp = async () => {
+    const { user, error } = await client.auth.signUp({
       email: email.value,
       password: password.value
-    })
-    if (error.status = 400){
-      errormsg.value = 'Please check login details'
+    }) 
+    if(!error){
+      navigateTo('/authenticate/lobby')
+    } else {
+      console.log(error)
     }
   }
-
 </script>
 <template>
   <div class="PageWrapper">
@@ -50,10 +51,10 @@
       <div class="section">
         <div class="block">
           <h2 class="title">
-            Log in or register now 😃
+            Create an account today, earn money tomorrow!
           </h2>
         </div>
-        <form @submit.prevent="() => (signIn())">
+        <form @submit.prevent="() => (signUp())">
           <label  for='email'> E-mail</label>
           <input
             type="email"
@@ -68,20 +69,14 @@
             v-model="password"
             id='password'
           />
-          <button
-            type="submit"
-          >
-            Log in
+          <button type="submit">Sign up
           </button>
         </form>
-        <nuxt-link to="/account/sign-up">
+        <nuxt-link to="/authenticate/sign-in">
           <button class="underbutton">
-            Create a new account
+            <span> Have an account? Log in instead </span>
           </button>
         </nuxt-link>
-        <button @click="passwordReset()" class="underbutton">
-          <span> Reset password </span>
-        </button>
       </div>
     </div>
     <div class="notifications-box error" v-if="errormsg">{{errormsg}}</div>
