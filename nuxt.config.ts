@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase'],
   css: ['@/assets/base.css', '@/assets/fonts/display/stylesheet.css', '@/assets/fonts/body/stylesheet.css'],
   build: {
-    transpile: ['chart.js']
+    transpile: ['chart.js'],
   },
   app: {
     head: {
