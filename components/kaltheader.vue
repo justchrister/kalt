@@ -4,23 +4,22 @@
           <nav>
             <ul>
               <li>
-                <nuxt-link to="/portfolio" >
+                <nuxt-link to="/account/portfolio" >
                   Portfolio
                 </nuxt-link>
               </li>
               <li>
-                
                 <nuxt-link to="/account" >
                     Account
                 </nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/transactions" >
+                <nuxt-link to="/account/transactions" >
                     Transactions
                 </nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/notifications" >
+                <nuxt-link to="/account/notifications" >
                     Notifications
                 </nuxt-link>
               </li>

@@ -19,7 +19,7 @@
                     </nuxt-link>
                 </li>
                 <li v-on:click="toggleMenu">
-                    <nuxt-link to="/portfolio" >
+                    <nuxt-link to="/account/portfolio" >
                         Portfolio
                     </nuxt-link>
                 </li>
