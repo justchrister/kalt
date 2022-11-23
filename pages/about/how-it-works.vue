@@ -53,7 +53,6 @@ useHead({
         </div>
         <Cta />
       </div>
-      </div>
     </div>
   </div>
 </template>
