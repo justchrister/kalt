@@ -1,16 +1,28 @@
-# Kalt
+# Kalt — Front-end
 
-This is just christer's personal enterprise. 
+Kalt is a startup building a vertically integrated fossil-free energy generator and exchange that lets anyone invest directly in fossil free energy generation, and earn direct dividends from it. 
 
+## Design
 
 The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where you create one design to fit every single screen. While this has its limitations, the limitations can be used to your advantage. It requires some abstract thinking around the design, however, with the proper testing, you can achieve a beatiful design that works on all surfaces, for all users.
 
-The site is generated mostly static, this may seem oldschool to some, but this is to ensure that the website is available to even those in regions with poor connectivity and/or older hardware. 
+## Technologies:
 
-![alt text](https://github.com/justchrister/kalt/blob/master/public/images/icons/supabase.png?raw=true) Supabase
+<a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
+  <img src="https://www.vectorlogo.zone/logos/nuxtjs/nuxtjs-icon.svg" alt="" width="40" height="40" />
+  Nuxt
+</a>
 
-![alt text](https://github.com/justchrister/kalt/blob/master/public/images/icons/supabase.png?raw=true) Nuxt.js
+<a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
+  <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="" width="40" height="40" />
+  Supabase
+</a>
 
-![alt text](https://github.com/justchrister/kalt/blob/master/public/images/icons/supabase.png?raw=true) Vercel
+
+<a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
+  <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="40" height="40" />
+  Stripe
+</a>
+
 
 
