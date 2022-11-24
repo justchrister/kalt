@@ -28,7 +28,7 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 
 ## The team
 
-<a href="https://github.com/justchrister>
-  <img src="https://avatars.githubusercontent.com/u/42318403?s=48&v=4">@justchrister - CEO
+<a href="https://github.com/justchrister">
+  <img src="https://avatars.githubusercontent.com/u/42318403?s=48&v=4" width="15" height="15">@justchrister - CEO
 </a>
 
