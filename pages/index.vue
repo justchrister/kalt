@@ -31,7 +31,7 @@
             By investing your money in solar energy with Kalt, you can do both good and build residual income and wealth at the same time. Feel great, and let your money do something important. 
           </p>
           <p>
-            <nuxt-link to="/about">About us</nuxt-link>
+            <nuxt-link to="/about/how-it-works">How it works</nuxt-link> <span style="margin-right:30px;"></span><nuxt-link to="/about">About us</nuxt-link>
           </p>
         </div>
         <Cta />
