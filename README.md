@@ -9,18 +9,18 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 ## Technologies:
 
 <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
-  <img src="https://www.vectorlogo.zone/logos/nuxtjs/nuxtjs-icon.svg" alt="" width="40" height="40" />
+  <img src="https://www.vectorlogo.zone/logos/nuxtjs/nuxtjs-icon.svg" alt="" width="15" height="15" />
   Nuxt
 </a>
 
 <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
-  <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="" width="40" height="40" />
+  <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="" width="15" height="15" />
   Supabase
 </a>
 
 
 <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
-  <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="40" height="40" />
+  <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="15" height="15" />
   Stripe
 </a>
 
