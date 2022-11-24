@@ -1,4 +1,4 @@
-<img src="https://github.com/justchrister/kalt/master/public/images/frontpage.webp" alt="" width="100%" height="auto">
+<img src="https://poc.kalt.co/images/frontpage.webp" alt="" width="100%" height="auto">
 
 # Kalt — Front-end
 
@@ -75,7 +75,7 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
 
 The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where you create one design to fit every single screen. While this has its limitations, the limitations have an advantage: Good design, all the time. It requires some abstract thinking around the design, however, with the proper testing, you can achieve a beatiful design that works on all surfaces, for all users.
 
-<img src="https://github.com/justchrister/kalt/master/public/images/lobby_2.jpg" alt="" width="100%" height="auto">
+<img src="https://poc.kalt.co/images/lobby_2.jpg" alt="" width="100%" height="auto">
 
 ## The team
 
@@ -89,3 +89,5 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 - Engineering centered
 - Good money (bonuses, stocks etc)
 - Good developer tooling
+- Cool domain: ka.lt
+- Use any tool you would like
