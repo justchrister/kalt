@@ -8,7 +8,9 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 The site is generated mostly static, this may seem oldschool to some, but this is to ensure that the website is available to even those in regions with poor connectivity and/or older hardware. 
 
 ![alt text](https://github.com/justchrister/kalt/blob/master/public/images/icons/supabase.png?raw=true) Supabase
+
 ![alt text](https://github.com/justchrister/kalt/blob/master/public/images/icons/supabase.png?raw=true) Nuxt.js
+
 ![alt text](https://github.com/justchrister/kalt/blob/master/public/images/icons/supabase.png?raw=true) Vercel
 
 
