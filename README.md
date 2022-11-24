@@ -45,18 +45,22 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
   <img src="https://www.vectorlogo.zone/logos/discordapp/discordapp-tile.svg" alt="" width="15" height="15" />
   Discord
 </a>
+<br>
 <a href="https://miro.com/welcomeonboard/QkVnMjVRTGRpSHRIZVJiQjNwalZndE9tcUltN0ZYM1l0bnVyd3MxdHRRUE9ZZTBabDRtS2g5ZTRsSnFFTjJ1UHwzMDc0NDU3MzY0NTMxMDgwOTA4fDI=?share_link_id=869274622638" target="_blank" rel="noreferrer">
   <img src="https://www.freelogovectors.net/svg11/mirologo-freelogovectors.net.svg" alt="" width="15" height="15" />
   Miro
 </a>
+<br>
 <a href="https://www.figma.com/file/iJKyrKeLtdbw6wLCxKnIF1/Kalt-%E2%80%94-Brandbook?node-id=0%3A1&t=IKGO6uB1Mgkfcmhl-0" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="" width="15" height="15" />
   Figma
 </a>
+<br>
 <a href="https://github.com/users/justchrister/projects/1" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/github/github-tile.svg" alt="" width="15" height="15" />
   Github Projects
 </a>
+<br>
 <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" alt="" width="15" height="15" />
   Visual Studio Code
