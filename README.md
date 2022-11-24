@@ -8,7 +8,7 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 
 ## Technologies:
 
-<a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
+<a href="https://supabase.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/nuxtjs/nuxtjs-icon.svg" alt="" width="15" height="15" />
   Nuxt
 </a>
@@ -20,7 +20,7 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 </a>
 <br>
 
-<a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
+<a href="https://stripe.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="15" height="15" />
   Stripe
 </a>
@@ -29,6 +29,11 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 ## The team
 
 <a href="https://github.com/justchrister">
-  <img src="https://avatars.githubusercontent.com/u/42318403?s=48&v=4" width="15" height="15">@justchrister - CEO
+  <img src="https://avatars.githubusercontent.com/u/42318403?s=48&v=4" alt="" width="15" height="15">@justchrister - CEO
 </a>
 
+### Stuff:
+- Free panini
+- Pet friendly
+- Engineering centered
+- Good money
