@@ -39,10 +39,29 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
   Sentry
 </a>
 <br>
-<a href="https://stripe.com/" target="_blank" rel="noreferrer">
+
+### Tools
+<a href="" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/discordapp/discordapp-tile.svg" alt="" width="15" height="15" />
-  Our discord
+  Discord
 </a>
+<a href="https://miro.com/welcomeonboard/QkVnMjVRTGRpSHRIZVJiQjNwalZndE9tcUltN0ZYM1l0bnVyd3MxdHRRUE9ZZTBabDRtS2g5ZTRsSnFFTjJ1UHwzMDc0NDU3MzY0NTMxMDgwOTA4fDI=?share_link_id=869274622638" target="_blank" rel="noreferrer">
+  <img src="https://www.freelogovectors.net/svg11/mirologo-freelogovectors.net.svg" alt="" width="15" height="15" />
+  Miro
+</a>
+<a href="https://www.figma.com/file/iJKyrKeLtdbw6wLCxKnIF1/Kalt-%E2%80%94-Brandbook?node-id=0%3A1&t=IKGO6uB1Mgkfcmhl-0" target="_blank" rel="noreferrer">
+  <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="" width="15" height="15" />
+  Figma
+</a>
+<a href="https://github.com/users/justchrister/projects/1" target="_blank" rel="noreferrer">
+  <img src="https://www.vectorlogo.zone/logos/github/github-tile.svg" alt="" width="15" height="15" />
+  Github Projects
+</a>
+<a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
+  <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" alt="" width="15" height="15" />
+  Visual Studio Code
+</a>
+
 
 
 
@@ -58,10 +77,7 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 
 ### Stuff:
 - Free panini
-- Pet friendly
+- Pet friendly offices
 - Engineering centered
-- Good money
-
-### Links
-
-Discord
+- Good money (bonuses, stocks etc)
+- Good developer tooling
