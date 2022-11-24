@@ -1,4 +1,15 @@
 <script setup lang="ts">
+    const pagename = 'Transactions';
+    const title = 'Kalt — ' + pagename;
+    const description = ref('My App Description')
+
+    useHead({
+      title,
+      meta: [{
+        name: 'description',
+        content: description
+      }]
+    })
 
 definePageMeta({
   middleware: ['auth']
@@ -11,7 +22,7 @@ const loading = ref(null)
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      navigateTo('/authenticate')
+      navigateTo('/authenticate/sign-in')
     }
   })
 })
@@ -20,12 +31,12 @@ const { data: transactions } = await useAsyncData('transactions', async () => {
   const { data } = await client.from('transactions').select('id, currency, amount, type,completed, initiated').order('initiated')
   return data
 })
-console.log(transactions.value)
+console.log(transactions)
 
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Transactions" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class="page">
       <div class="section">
         <kaltheader :first_name="first_name" :last_name="last_name" />

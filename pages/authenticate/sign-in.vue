@@ -1,55 +1,60 @@
 <script setup lang="ts">
-
+  const pagename = 'Sign in';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+  var errormsg = ref('');
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+  
   definePageMeta({
     middleware: ['auth']
   })
 
   const user = useSupabaseUser()
   const client = useSupabaseClient()
-  const email = ref('')
-  const password = ref('')
-  const isSignUp = ref(false)
-  const errormsg = ref(false)
-
-  const signUp = async () => {
-    const { user, error } = await client.auth.signUp({
-      email: email.value,
-      password: password.value
-    })
-  }
-
-  const login = async () => {
-    const { user, error } = await client.auth.signIn({
-      email: email.value,
-      password: password.value
-    })
-    if (error) {
-      console.log(error.message)
-      errormsg = 1;
-    }
-  }
 
   onMounted(() => {
     watchEffect(() => {
       if (user.value) {
-        navigateTo('/profile')
+        navigateTo('/account/portfolio')
       }
     })
   })
 
+  const email = ref('')
+  const password = ref('')
+  const isSignUp = ref(false)
+
+  const signIn = async () => {
+    const { user, error } = await client.auth.signIn({
+      email: email.value,
+      password: password.value
+    })
+    if (error.status = 400){
+      errormsg.value = 'Please check login details'
+    }
+  }
+
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu pageTitle="Authenticate" />
+    <Kaltmenu :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
         <div class="block">
           <h2 class="title">
-            Log in or register now 😃
+            Welcome back!
           </h2>
         </div>
-        <form @submit.prevent="() => (isSignUp ? signUp() : login())">
-        <label  for='email'> E-mail</label>
+        <form @submit.prevent="() => (signIn())">
+          <label  for='email'> E-mail</label>
           <input
             type="email"
             placeholder="Email"
@@ -66,16 +71,19 @@
           <button
             type="submit"
           >
-            <span v-if="isSignUp"> Sign up </span>
-            <span v-else> Log in </span>
+            Log in
           </button>
         </form>
-        <button @click="isSignUp = !isSignUp" class="underbutton">
-          <span v-if="isSignUp"> Have an account? Log in instead </span>
-          <span v-else> Create a new account </span>
+        <nuxt-link to="/account/sign-up">
+          <button class="underbutton">
+            Create a new account
+          </button>
+        </nuxt-link>
+        <button @click="passwordReset()" class="underbutton">
+          <span> Reset password </span>
         </button>
       </div>
     </div>
-    <div class="notifications-box error" v-if="errormsg">Invalid login credentials</div>
+    <div class="notifications-box error" v-if="errormsg">{{errormsg}}</div>
   </div>
 </template>

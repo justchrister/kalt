@@ -1,30 +1,26 @@
 <template>
 <div>
-
         <div class="block">
-              <Chart />
-          <Cta />
-        </div>
-        <div class="block">
-          <!--
-          <div class="frame">
-            <div class="image" style="background-image:url(/images/values_02.jpg);margin-left:0;">
-            </div>
-          </div>-->
           <nav>
             <ul>
               <li>
-                Dashboard
-              </li>
-              <li>
-                
-                <nuxt-link to="/profile" >
-                    Settings
+                <nuxt-link to="/account/portfolio" >
+                  Portfolio
                 </nuxt-link>
               </li>
               <li>
-                <nuxt-link to="/transactions" >
+                <nuxt-link to="/account" >
+                    Account
+                </nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/account/transactions" >
                     Transactions
+                </nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/account/notifications" >
+                    Notifications
                 </nuxt-link>
               </li>
             </ul>

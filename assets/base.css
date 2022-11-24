@@ -380,6 +380,79 @@ del:hover {
   background: transparent;
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  top: clamp(3.5px, 0.9vw, 6.5px);
+  width: clamp(24.5px, 6.3vw, 45.5px);
+  height: clamp(14px, 3.6vw, 26px);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d0e5f4;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: clamp(12.6px, 3.24vw, 23.4px);
+  width: clamp(12.6px, 3.24vw, 23.4px);
+  left: clamp(0.7px, 0.18vw, 1.3px);
+  bottom: clamp(0.7px, 0.18vw, 1.3px);
+  background-color: #FCF9F2;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #1E96FC;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #1E96FC;
+}
+
+input:checked + .slider:before {
+  transform: translateX(clamp(9.8px, 2.52vw, 18.2px));
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: clamp(13.3px, 3.42vw, 24.7px);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.pills input {
+  display: none;
+}
+
+.pills label {
+  font-size: 70%;
+  padding: 2px 8px;
+  border: 1px solid #202124;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
 .chart {
   background: #FFF;
   padding: clamp(24.5px, 6.3vw, 45.5px) 0;
@@ -414,9 +487,12 @@ canvas,
   align-items: flex-end;
   align-content: start;
 }
+.frame div {
+  width: 100%;
+}
 .frame canvas {
-  height: 32vw;
-  max-height: 268px;
+  height: 50vw;
+  max-height: 418px;
 }
 .frame .image {
   height: 32vw;

@@ -9,24 +9,34 @@
             <button id="menu" v-on:click="toggleMenu"> menu</button>
             <ul id="menu_items">
                 <li v-on:click="toggleMenu">
-                    <nuxt-link to="/invest" >
-                        Invest
-                    </nuxt-link>
-                </li>
-                <li v-on:click="toggleMenu">
                     <nuxt-link to="/about" >
-                        Invest
+                        About
                     </nuxt-link>
                 </li>
                 <li v-on:click="toggleMenu">
-                    <nuxt-link to="/profile" >
-                        Profile
+                    <nuxt-link to="/about/how-it-works" >
+                        How it works
+                    </nuxt-link>
+                </li>
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/account/portfolio" >
+                        Portfolio
+                    </nuxt-link>
+                </li>
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/account" >
+                        Account
+                    </nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link to="/deposit" >
+                        Invest
                     </nuxt-link>
                 </li>
             </ul>
-        </nav>
-        <div class="notification"></div>
-        <nuxt-link to="/profile" v-on:click="toggleMenu">
+        </nav><!--
+        <div class="notification"></div>-->
+        <nuxt-link to="/account">
             <div class="my-profile-button"></div>
         </nuxt-link>
     </header>
