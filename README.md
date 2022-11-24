@@ -13,11 +13,12 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
   Nuxt
 </a>
 
+<br>
 <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="" width="15" height="15" />
   Supabase
 </a>
-
+<br>
 
 <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="15" height="15" />
