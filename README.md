@@ -1,3 +1,5 @@
+<img src="https://github.com/justchrister/kalt/master/public/images/frontpage.webp" alt="" width="100%" height="auto">
+
 # Kalt — Front-end
 
 Kalt is a startup building a vertically integrated fossil-free energy generator and exchange that lets anyone invest directly in fossil free energy generation, and earn direct dividends from it. 
@@ -72,6 +74,8 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
 ## Design
 
 The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where you create one design to fit every single screen. While this has its limitations, the limitations have an advantage: Good design, all the time. It requires some abstract thinking around the design, however, with the proper testing, you can achieve a beatiful design that works on all surfaces, for all users.
+
+<img src="https://github.com/justchrister/kalt/master/public/images/lobby_2.jpg" alt="" width="100%" height="auto">
 
 ## The team
 
