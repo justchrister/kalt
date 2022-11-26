@@ -3,6 +3,17 @@
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
   var errormsg = ref('');
+  
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+
 </script>
 <template>
   <div class="PageWrapper">

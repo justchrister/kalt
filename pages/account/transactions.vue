@@ -39,7 +39,7 @@ console.log(transactions)
     <Kaltmenu :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <kaltheader :first_name="first_name" :last_name="last_name" />
+        <kaltheader />
         <div class="block">
           <div v-if="transactions?.length > 0">
             <table>
