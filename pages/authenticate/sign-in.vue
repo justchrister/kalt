@@ -50,7 +50,7 @@
       <div class="section">
         <div class="block">
           <h2 class="title">
-            Welcome back!
+            Welcome back! 😃
           </h2>
         </div>
         <form @submit.prevent="() => (signIn())">

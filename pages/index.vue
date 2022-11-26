@@ -25,7 +25,7 @@
         </div>
         <div class="block">
           <h2 class="title">
-            Make money, make a difference!
+            Make money, make a difference!  😃
           </h2>
           <p>
             By investing your money in solar energy with Kalt, you can do both good and build residual income and wealth at the same time. Feel great, and let your money do something important. 

@@ -22,6 +22,9 @@ export default defineNuxtConfig({
         // <meta name="description" content="My amazing site">
         { name: 'description', content: 'Make money, make a difference!' }
       ],
+      script: [
+        { src: './omoji.js', defer: '' }
+      ],
     }
   }
 })
