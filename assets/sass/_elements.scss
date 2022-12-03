@@ -51,11 +51,11 @@ pre code {
 
 // <form>
 
-form input[type=date],
-form input[type=password],
-form input[type=number],
-form input[type=email],
-form input[type=text]{
+input[type=date],
+input[type=password],
+input[type=number],
+input[type=email],
+input[type=text]{
   background: transparent;
   width:100%;
   border-radius:0;
@@ -206,7 +206,7 @@ input:checked + .slider:before {
 .pills label{
   font-size:70%;
   padding:2px 8px;
-  border:1px solid $midnight;
+  border:$border;
   border-radius:3px;
   margin-right:10px;
 }
