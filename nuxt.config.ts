@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Make money, make a difference!' }
       ],
       script: [
-        { src: './omoji.js', defer: '' }
+        { src: '../omoji.js', defer: '' }
       ],
     }
   }

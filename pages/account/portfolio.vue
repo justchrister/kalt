@@ -27,7 +27,7 @@
             }
         })
     })
-
+/*
     const days = ref(90);
     const { data: portfoliovalues } = await useAsyncData('portfoliovalue', async () => {
         const { data } = await client.from('portfoliovalue').select('*').order('date').eq('user_id', user.value.id)
@@ -69,7 +69,7 @@
             ],
         })
     );
-
+*/
 console.log(days.value)
 </script>
 <template>
@@ -86,16 +86,16 @@ console.log(days.value)
         <div class="block">
             <div class="pills">
                 <label for="seven">Last week</label>
-                <input id="seven" type="radio" value="7" v-model="days" />
+                <input id="seven" type="radio" value="7" v-model="days" name="days"/>
 
                 <label for="thirty">Last month</label>
-                <input id="thirty" type="radio" value="30" v-model="days" />
+                <input id="thirty" type="radio" value="30" v-model="days" name="days" />
 
                 <label for="oneyear">Last year</label>
-                <input id="oneyear" type="radio" value="365" v-model="days" />
+                <input id="oneyear" type="radio" value="365" v-model="days" name="days" />
 
                 <label for="max">Total</label>
-                <input id="max" type="radio" value="420420420" v-model="days" />
+                <input id="max" type="radio" value="420420420" v-model="days" name="days" />
             </div>
         </div>
         <div class="block">

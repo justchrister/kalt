@@ -23,6 +23,7 @@ const birthdate = ref("");
 const country = ref("");
 const city = ref("");
 const postal_code = ref("");
+const auto_invest = ref("");
 const address_line_1 = ref("");
 const address_line_2 = ref("");
 
@@ -36,7 +37,6 @@ definePageMeta({
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      
       navigateTo('/authenticate/sign-in')
     }
   });
@@ -47,12 +47,13 @@ const { data: profile } = await useAsyncData("accounts", async () => {
   loading.value = true;
   const { data } = await client
     .from("accounts")
-    .select("first_name, last_name, username, birthdate, country, city, postal_code, address_line_1, address_line_2")
+    .select("first_name, last_name, username, birthdate, country, city, postal_code, address_line_1, address_line_2, auto_invest")
     .eq("user_id", user.value.id)
     .single();
   loading.value = false;
   return data;
 });
+
 
 if (profile.value.first_name) {
   first_name.value = profile.value.first_name;
@@ -82,6 +83,9 @@ if (profile.value.address_line_1) {
 if (profile.value.address_line_2) {
   address_line_2.value = profile.value.address_line_2;
 }
+if (profile.value.auto_invest) {
+  auto_invest.value = profile.value.auto_invest;
+}
 
 async function updateProfile() {
   try {
@@ -96,6 +100,7 @@ async function updateProfile() {
       postal_code: postal_code.value,
       address_line_1: address_line_1.value,
       address_line_2: address_line_2.value,
+      auto_invest: auto_invest.value,
       modified_at: new Date(),
     };
     const { error } = await client
@@ -109,7 +114,6 @@ async function updateProfile() {
     }
   } finally {
     loading.value = false;
-    console.log("good")
   }
 }
 
@@ -124,6 +128,7 @@ async function signOut() {
     loading.value = false;
   }
 }
+console.log(auto_invest.value)
 </script>
 <template>
   <div class="PageWrapper">
@@ -150,7 +155,7 @@ async function signOut() {
 <br/><br/>
             <label for="birthdate">Birthdate</label>
             <input id="birthdate" type="date" v-model="birthdate" />
-<br/><br/>
+<br/><br/>   <!-- https://bluzky.github.io/nice-select2/ -->
             <label for="country">Country</label>
             <input id="country" type="text" v-model="country" />
 
@@ -165,7 +170,15 @@ async function signOut() {
 
             <label for="address_line_2">Address line 2</label>
             <input id="address_line_2" type="text" v-model="address_line_2" />
-            
+
+            <label class="switch">
+              <input type="checkbox" id="auto_invest" v-model="auto_invest"  name="auto_invest" checked />
+              <span class="slider round"></span>
+            </label>
+            <label for="auto_invest">
+              Automatically invest available funds
+            </label>
+
             <input type="submit" value="update" />
 
             <button type="button" class="underbutton" @click="signOut">
@@ -178,3 +191,6 @@ async function signOut() {
     </div>
   </div>
 </template>
+<style scoped>
+
+</style>

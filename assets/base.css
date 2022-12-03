@@ -292,11 +292,11 @@ pre code:before {
   color: #202124;
 }
 
-form input[type=date],
-form input[type=password],
-form input[type=number],
-form input[type=email],
-form input[type=text] {
+input[type=date],
+input[type=password],
+input[type=number],
+input[type=email],
+input[type=text] {
   background: transparent;
   width: 100%;
   border-radius: 0;
@@ -313,11 +313,11 @@ form input[type=text] {
   box-sizing: border-box;
   padding: clamp(14px, 3.6vw, 26px) clamp(7px, 1.8vw, 13px);
 }
-form input[type=date]:focus,
-form input[type=password]:focus,
-form input[type=number]:focus,
-form input[type=email]:focus,
-form input[type=text]:focus {
+input[type=date]:focus,
+input[type=password]:focus,
+input[type=number]:focus,
+input[type=email]:focus,
+input[type=text]:focus {
   border-style: dashed;
 }
 
@@ -448,7 +448,7 @@ input:checked + .slider:before {
 .pills label {
   font-size: 70%;
   padding: 2px 8px;
-  border: 1px solid #202124;
+  border: 0.1px solid #202124;
   border-radius: 3px;
   margin-right: 10px;
 }

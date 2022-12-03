@@ -40,6 +40,7 @@ console.log(transactions)
     <div class="page">
       <div class="section">
         <kaltheader />
+        <FormsReoccuring />
         <div class="block">
           <div v-if="transactions?.length > 0">
             <table>

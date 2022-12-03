@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "chart.js": "^3.9.1",
+    "vue-chartjs": "^4.1.2",
     "stripe": "^11.1.0",
-    "vue-chartjs": "^4.1.2"
+    "express": "^4.17.1"
   }
 }

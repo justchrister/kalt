@@ -74,7 +74,7 @@
             Log in
           </button>
         </form>
-        <nuxt-link to="/account/sign-up">
+        <nuxt-link to="/authenticate/sign-up">
           <button class="underbutton">
             Create a new account
           </button>
