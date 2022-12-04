@@ -7,6 +7,16 @@ export default defineNuxtConfig({
   build: {
     transpile: ['chart.js'],
   },
+  serverMiddleware: [
+    // Will register file from project server-middleware directory to handle /api/* requests
+
+    // Exchange
+    { path: "/api/exchange", handler: "~/server-middleware/exchange/createOrder.ts" },
+    { path: "/api/exchange", handler: "~/server-middleware/exchange/getOrders.ts" },
+    { path: "/api/exchange", handler: "~/server-middleware/exchange/matchOrders.ts" },
+
+    // Portfolio
+  ],
   app: {
     head: {
       charset: 'utf-8',

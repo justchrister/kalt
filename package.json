@@ -10,12 +10,15 @@
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^0.1.25",
+    "@types/express": "^4.17.14",
     "nuxt": "3.0.0-rc.9"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "chart.js": "^3.9.1",
-    "vue-chartjs": "^4.1.2",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
     "stripe": "^11.1.0",
-    "express": "^4.17.1"
+    "vue-chartjs": "^4.1.2"
   }
 }
