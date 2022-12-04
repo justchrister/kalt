@@ -21,3 +21,7 @@ Defining the asset you are buying (DDGIF for global index, DDSIF for solar fund,
 - quantity
 - created_at
 - modified_at
+
+
+Useful links: 
+https://joi.dev/api/?v=17.7.0
