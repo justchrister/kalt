@@ -12,5 +12,5 @@ The services include:
 - pay
 - accountBalance
 - currencies
-- subscribe
+- subscriptions
 - portfolio
