@@ -27,7 +27,7 @@ onMounted(() => {
   })
 })
 
-const { data: transactions, pending, error, refresh } = await useFetch('http://localhost:3000/api/transactions/getTransactions?user_id='+user.value.id)
+const { data: transactions, pending, error, refresh } = await useFetch('/api/transactions/getTransactions?user_id='+user.value.id)
 </script>
 <template>
   <div class="PageWrapper">
