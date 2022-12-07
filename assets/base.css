@@ -485,7 +485,7 @@ canvas,
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-end;
-  align-content: start;
+  align-content: flex-start;
 }
 .frame div {
   width: 100%;
@@ -587,7 +587,7 @@ nav ol li .date {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: auto;
-  align-content: start;
+  align-content: flex-start;
   margin: auto;
 }
 .grid h1 {

@@ -29,11 +29,6 @@ const address_line_2 = ref("");
 
 //import charts = module('highcharts');
 
-// Redirect if user is not logged in
-definePageMeta({
-  title: "Articles",
-  middleware: ["auth"],
-});
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
@@ -58,7 +53,6 @@ const { data: profile } = await useAsyncData("accounts", async () => {
 if (profile.value.first_name) {
   first_name.value = profile.value.first_name;
 }
-
 if (profile.value.last_name) {
   last_name.value = profile.value.last_name;
 }

@@ -27,7 +27,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-end;
-  align-content: start;
+  align-content: flex-start;
   div {
     width:100%;
   }
@@ -131,7 +131,7 @@ nav{
   flex-wrap: wrap;
   flex-direction: row;
   align-items: auto;
-  align-content: start;
+  align-content: flex-start;
   margin: auto;
   h1{
     width:100%;

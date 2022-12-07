@@ -28,11 +28,6 @@
                         Account
                     </nuxt-link>
                 </li>
-                <li>
-                    <nuxt-link to="/deposit" >
-                        Invest
-                    </nuxt-link>
-                </li>
             </ul>
         </nav><!--
         <div class="notification"></div>-->

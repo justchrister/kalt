@@ -8,7 +8,9 @@ export default defineNuxtConfig({
     transpile: ['chart.js'],
   },
   serverMiddleware: [
-    // Will register file from project server-middleware directory to handle /api/* requests
+    // Transactions
+    { path: "/api/transactions", handler: "~/server-middleware/transactions/createTransaction.ts" },
+    { path: "/api/transactions", handler: "~/server-middleware/transactions/getTransactions.ts" },
 
     // Exchange
     { path: "/api/exchange", handler: "~/server-middleware/exchange/createOrder.ts" },
