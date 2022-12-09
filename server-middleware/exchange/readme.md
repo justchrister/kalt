@@ -25,3 +25,10 @@ Defining the asset you are buying (DDGIF for global index, DDSIF for solar fund,
 
 Useful links: 
 https://joi.dev/api/?v=17.7.0
+
+
+
+
+The difference between the transaction service and the exchange service is that the exchange is buying and selling the direct dividends, the transactions service keeps track of all transactions in and out of the user account.
+
+If a buy order is created, that means there is less in the accountBalance, if the subscription service triggers a new deposit, that is registered here as well.

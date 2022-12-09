@@ -10,11 +10,11 @@
         content: description
       }]
     })
-/*
+
 definePageMeta({
   middleware: ['auth']
 })
-*/
+
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 const loading = ref(null)
