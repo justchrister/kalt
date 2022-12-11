@@ -17,7 +17,8 @@ export default defineNuxtConfig({
     { path: "/api/exchange", handler: "~/server-middleware/exchange/getOrders.ts" },
     { path: "/api/exchange", handler: "~/server-middleware/exchange/matchOrders.ts" },
 
-    // Portfolio
+    // BFF
+    { path: "/api/bff", handler: "~/server-middleware/bff/calculatedPortfolioValue.ts" }
   ],
   app: {
     head: {

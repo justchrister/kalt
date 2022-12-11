@@ -200,12 +200,12 @@ header .menu ul li *:hover {
   position: fixed;
   top: 0.1px;
   right: 0.1px;
-  background-image: url("/images/happy.svg");
+  background-image: url("/images/omoji/happy.svg");
   background-size: contain;
   margin: clamp(12px, 3.24vw, 25px);
 }
 .my-profile-button:hover {
-  background-image: url("/images/suprised.svg");
+  background-image: url("/images/omoji/super-happy.svg");
 }
 
 .notification {

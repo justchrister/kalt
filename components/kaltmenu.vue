@@ -28,6 +28,11 @@
                         Account
                     </nuxt-link>
                 </li>
+                <li v-on:click="toggleMenu">
+                    <nuxt-link to="/invest" >
+                        Invest 
+                    </nuxt-link>
+                </li>
             </ul>
         </nav><!--
         <div class="notification"></div>-->

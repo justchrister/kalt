@@ -1,3 +1,6 @@
+
+
+
 # Exchange service and table
 Orders are either buy or sell, there is no buyer of a sell order nor is there a seller on a buy order. They are matched by a <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="" width="15" height="15" />  Supabase function 
 

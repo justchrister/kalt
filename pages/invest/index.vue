@@ -123,12 +123,7 @@ console.log(deposit.value)
           </div>
         </div>
         <div class="block">
-          <form action="https://payment.v1.kalt.co/once" method="POST">
-
-            <input type="hidden" name="lookup_key" value="DDF_Global_Monthly" />
-            <input type="hidden" name="user_id" value="{{user.value.id}}" />
-
-
+          <form>
             <label for="deposit" >
             <span v-if="frequency"> Monthly deposit </span>
             <span v-else> Single deposit </span>
@@ -144,9 +139,13 @@ console.log(deposit.value)
                 Monthly</label>
             <br/>
             <br/>
-
-            <input type="submit" value="→" />
           </form>
+          <a v-if="frequency" :href="'/invest/reoccuring?amount='+deposit">
+            <button>next →</button>
+          </a>
+          <a v-else :href="'/invest/card?amount='+deposit">
+            <button>next →</button>
+          </a>
 
         </div>
       </div>
