@@ -31,8 +31,6 @@ The endpoint will return a JSON object with the calculated portfolio value for t
 This request will return the calculated portfolio value for the last 4 days.
 
 Example response:
-
-Copy code
 ```
 [
     {
