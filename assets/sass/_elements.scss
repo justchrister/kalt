@@ -48,9 +48,8 @@ pre code {
       color:$midnight;
     }
   }
-
 // <form>
-
+select,
 input[type=date],
 input[type=password],
 input[type=number],
@@ -70,6 +69,10 @@ input[type=text]{
   &:focus{
     border-style: dashed;
   }
+}
+
+select{
+  margin:0;
 }
 .section form input[type=radio]{
   width:$big-clamp-half;

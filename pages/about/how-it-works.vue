@@ -36,7 +36,7 @@ useHead({
       </div>
       <div class="section">
         <div class="frame">
-          <div class="image" style="background-image:url('/images/dall-e/Basquiat_solar.png');margin-left:0;background-color:transparent;"></div>
+          <div class="image" style="background-image:url('/images/dall-e/you_can_feel_good.png');background-size:contain;margin-left:0;background-color:transparent;"></div>
         </div>
         <div class="block">
           <h2> 3. We let anyone buy shares in the fund </h2>
@@ -45,7 +45,7 @@ useHead({
       </div>
       <div class="section">
         <div class="frame">
-          <div class="image" style="background-image:url('/images/dall-e/you_can_feel_good.png');background-size:contain;margin-left:0;background-color:transparent;"></div>
+          <div class="image" style="background-image:url('/images/dall-e/Basquiat_solar.png');margin-left:0;background-color:transparent;"></div>
         </div>
         <div class="block">
           <h2> 4. When we sell the fossil free energy to the markets, you earn money</h2>

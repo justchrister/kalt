@@ -292,6 +292,7 @@ pre code:before {
   color: #202124;
 }
 
+select,
 input[type=date],
 input[type=password],
 input[type=number],
@@ -313,12 +314,17 @@ input[type=text] {
   box-sizing: border-box;
   padding: clamp(14px, 3.6vw, 26px) clamp(7px, 1.8vw, 13px);
 }
+select:focus,
 input[type=date]:focus,
 input[type=password]:focus,
 input[type=number]:focus,
 input[type=email]:focus,
 input[type=text]:focus {
   border-style: dashed;
+}
+
+select {
+  margin: 0;
 }
 
 .section form input[type=radio] {

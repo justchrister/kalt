@@ -33,7 +33,8 @@ onMounted(() => {
     <div class="page">
       <div class="section">
         <div class="frame">
-          <div class="image" style="background-image:url('/images/dall-e/hockney_pool.png');background-size:contain;background-color:transparent;"></div>
+          <div class="image" style="background-image:url('/images/dall-e/hockney_pool.png');"></div>
+          <div class="image" style="background-image:url('/images/dall-e/basq2.png');"></div>
         </div>
         <div class="block">
           <h1> Congratulations on your first investment! </h1>

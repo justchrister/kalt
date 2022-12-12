@@ -17,7 +17,7 @@ app.get('/calculatedPortfolioValue', cors(corsOptions), async (req, res) => {
   const { data: input, error } = await supabase
     .from('exchange')
     .select('order_id, order_type, quantity, created_at')
-    .eq('user_id', req.headers.user_id)
+    .eq('user_id', req.query.user_id)
     .not('fulfilled_by_order_id', 'is', null );
     const today = new Date();
     const dates = [];

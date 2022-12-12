@@ -12,6 +12,15 @@
       },
     ],
   });
+onMounted(() => {
+  watchEffect(() => {
+    if (!user.value) {
+      navigateTo('/authenticate/sign-in')
+    }
+  });
+});
+// need error handling here
+
   
 const client = useSupabaseClient();
 const user = useSupabaseUser();
@@ -26,17 +35,6 @@ const postal_code = ref("");
 const auto_invest = ref("");
 const address_line_1 = ref("");
 const address_line_2 = ref("");
-
-//import charts = module('highcharts');
-
-onMounted(() => {
-  watchEffect(() => {
-    if (!user.value) {
-      navigateTo('/authenticate/sign-in')
-    }
-  });
-});
-// need error handling here
 
 const { data: profile } = await useAsyncData("accounts", async () => {
   loading.value = true;
@@ -122,7 +120,6 @@ async function signOut() {
     loading.value = false;
   }
 }
-console.log(auto_invest.value)
 </script>
 <template>
   <div class="PageWrapper">
