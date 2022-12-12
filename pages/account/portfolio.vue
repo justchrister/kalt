@@ -13,64 +13,61 @@
     ],
     });
 
-    definePageMeta({
-        middleware: ['auth']
-    })
 
     const client = useSupabaseClient()
     const user = useSupabaseUser()
     const loading = ref(null)
-    onMounted(() => {
-        watchEffect(() => {
-            if (!user.value) {
-                navigateTo('/authenticate/sign-in')
-            }
-        })
-    })
-/*
-    const days = ref(90);
-    const { data: portfoliovalues } = await useAsyncData('portfoliovalue', async () => {
-        const { data } = await client.from('portfoliovalue').select('*').order('date').eq('user_id', user.value.id)
-        return data
-    })
+    const days = ref(30)
 
-    const getData = (values, days) => {
+
+    const { data: portfolio } = await useFetch('../api/bff/calculatedPortfolioValue',{
+        query: {days: 365*5},
+        headers: {user_id: user.value.id},
+        server: false
+    })
+    console.log(portfolio.value)
+    const getData = (dataset) => {
+    if (dataset) {
         var dataArray = [];
-        for (let i = 0; i < values.value.length; i++) {
-            var row = values.value[i]
-            dataArray.push(row.value);
+        for (let i = 0; i < dataset.length; i++) {
+            var row = dataset[i];
+            dataArray.push(row.amount * 100);
         }
-        return dataArray.slice(-days);
+        return dataArray;
     }
-
-    const getLabels = (values, days) => {
+    return [];
+    };
+    const getLabels = (dataset) => {
+    if (dataset) {
         var dataArray = [];
-        for (let i = 0; i < values.value.length; i++) {
-            var row = values.value[i]
+        for (let i = 0; i < dataset.length; i++) {
+            var row = dataset[i];
             dataArray.push(row.date);
-
         }
-        
-        return dataArray.slice(-days);
+        //const tenthValues = dataArray.filter((number, index) => index % 30 === 0); to get every 30th day from the array
+        // could be used in combination with const monthNumber = date.getMonth(row.date); you can improve the chart drastrically
+        return dataArray;
     }
-
+    return [];
+    };
     // Data
+    const dataChart = computed(() => {
+    if (portfolio) {
+        return {
+        labels: getLabels(portfolio.value).slice(0, days.value).reverse(),
+        datasets: [
+            {
+            label: "DDS",
+            backgroundColor: "#1E96FC",
+            borderColor: "#1E96FC",
+            data: getData(portfolio.value).slice(0, days.value).reverse(),
+            },
+        ],
+        };
+    }
+    return {};
+    });
 
-    const dataChart = 
-        computed(() =>({
-            labels: getLabels(portfoliovalues, days.value),
-            datasets: [
-                {
-                    label: "what your investment will be worth",
-                    backgroundColor: "#1E96FC",
-                    borderColor: "#1E96FC",
-                    data: getData(portfoliovalues, days.value),
-                },
-            ],
-        })
-    );
-*/
-console.log(days.value)
 </script>
 <template>
   <div class="PageWrapper">
@@ -99,11 +96,8 @@ console.log(days.value)
             </div>
         </div>
         <div class="block">
-            <p> So far you've deposited 128398348</p>
-            <p> So far you've earned 128398348</p>
-            <p> Which makes your portfolio worth 128398348</p>
-            <p> This equates to 7 trips in a private jet around the world</p>
-            <p> This equates to eating 19475 avocadoes</p>
+            <p v-if="portfolio"> You own {{portfolio[0].amount}} direct dividend shares</p>
+            <p v-if="portfolio"> Your footprint has been decreased by {{portfolio[0].amount}} direct dividend shares</p>
 
         </div>
         <div class="block">
