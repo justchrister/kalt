@@ -35,19 +35,19 @@ Example response:
 [
     {
         "date": "2022-12-11",
-        "value": 250
+        "amount": 250
     },
     {
         "date": "2022-12-10",
-        "value": 200
+        "amount": 200
     },
     {
         "date": "2022-12-09",
-        "value": 300
+        "amount": 300
     },
     {
         "date": "2022-12-08",
-        "value": 300
+        "amount": 300
     }
 ]
 ```
