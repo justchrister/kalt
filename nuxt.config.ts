@@ -19,8 +19,8 @@ export default defineNuxtConfig({
     { path: "/api/exchange", handler: "~/server-middleware/exchange/matchOrders.ts" },
 
     // BFF
-    { path: "/api/bff", handler: "~/server-middleware/bff/calculatedPortfolioValue.ts" },
-    { path: "/api/bff", handler: "~/server-middleware/bff/calculatedAccountBalance.ts" },
+    { path: "/api/bff", handler: "~/server-middleware/bff/dailyCalculatedPortfolioValue.ts" },
+    { path: "/api/bff", handler: "~/server-middleware/bff/dailyCalculatedAccountBalance.ts" },
 
     // Cards
     { path: "/api/cards", handler: "~/server-middleware/cards/getCards.ts" }
