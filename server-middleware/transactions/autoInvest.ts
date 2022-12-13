@@ -32,7 +32,7 @@ app.post('/autoInvest', cors(corsOptions), async (req, res) => {
   }
   let buyAmount = Math.floor(sum/100); // divided by 100 since it is in NOK and each DDS is worth 100 NOK
   if (buyAmount>1){
-    // insert order object into supabase db
+    // insert order object into supabase d
     const {data: orderCreated} = await supabase.from('exchange').insert([
       {
         user_id: req.body.record.user_id,
