@@ -37,7 +37,7 @@ app.post('/autoInvest', cors(corsOptions), async (req, res) => {
     const {data: orderCreated} = await supabase.from('exchange').insert([
       {
         user_id: req.body.record.user_id,
-        order_type: 1,
+        order_type: 0, //0=buy, 1=sell
         ticker: "DDS_Global_Index",
         quantity: buyAmount,
         created_at: new Date
