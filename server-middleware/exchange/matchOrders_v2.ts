@@ -13,21 +13,20 @@ const corsOptions = {
 }
 
 app.post('/matchOrders', cors(corsOptions), async (req, res) => {
-  // Define ordertype
-  if(req.body.record.order_type===0) var order_type = 0; var fulfiller_type = 1;
-  if(req.body.record.order_type===1) var order_type = 1; var fulfiller_type = 0;
 
-  const getFulfillingOrder = async (fulfiller_type, quantity) => {
+  const getFulfillingOrder = async (fulfiller_type, req_order_user_id, req_order_order_id, req_order_quantity) => {
     const { data, error } = await supabase
       .from('exchange')
       .select('*')
       .is('fulfilled_by_order_id', null)
       .eq('order_type', fulfiller_type)
-      .neq('user_id', req.body.record.user_id)   //  Without these two rows, it will be matched with itself :)
-      .neq('order_id', req.body.record.order_id) //    ^
-      .gte('quantity', req.body.record.quantity)
+      .neq('user_id', req_order_user_id)   //  Without these two rows, it will be matched with itself :)
+      .neq('order_id', req_order_order_id) //    ^
+      .gte('quantity', req_order_quantity)
       .order('created_at', { ascending: true })
-    return data[0]
+      .limit(1)
+    if (data) return data
+    if (error) return error
   }
   
   const updateOrder = async (order, fulfiller) => {
@@ -45,19 +44,34 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
     ])
   }
 
-  let fulfiller  = await getFulfillingOrder(fulfiller_type)
+  let req_order          = req.body.record
+  let req_order_user_id  = req_order.user_id
+  let req_order_order_id = req_order.order_id
+  let req_order_quantity = req_order.quantity
 
-  if (fulfiller.quantity=req.body.record.quantity){
-    await updateOrder(fulfiller.order_id, req.body.record.order_id) // update the fulfilled order
+  let fulfiller_type     = 1
+  if(req.body.record.order_type===1) fulfiller_type = 0
+
+  let fulfiller  = await getFulfillingOrder(fulfiller_type, req_order_user_id, req_order_order_id, req_order_quantity)
+  let fulfiller_quantity = fulfiller[0].quantity
+  let fulfiller_order_id = fulfiller[0].order_id
+  let fulfiller_user_id  = fulfiller[0].user_id
+  // if we need to split it: 
+  let new_order_quantity = fulfiller_quantity - req_order_quantity;
+
+  if(req.body.record.order_type) fulfiller_type = 0
+
+  if (fulfiller_quantity=req_order_quantity){
+    await updateOrder(fulfiller_order_id, req_order_order_id)
     return res.json("order_matched")
   }
 
-  if(fulfiller.quantity>req.body.record.quantity){
-    let newOrderQuantity = fulfiller.quantity - req.body.record.quantity;
-    await createOrder(fulfiller.user_id, fulfiller_type, newOrderQuantity) // if the fulfiller quantity is bigger than the quantity, we need to split it, then match it (might only split it?)
-    await updateOrder(fulfiller.order_id, req.body.record.order_id) // update the fulfilled order
+  if(fulfiller_quantity>req_order_quantity){
+    await createOrder(fulfiller_user_id, fulfiller_type, new_order_quantity) 
+    await updateOrder(fulfiller_order_id, req_order_order_id)
     return res.json("order_matched")
   }
+  return res.json(fulfiller)
 })
 
 
