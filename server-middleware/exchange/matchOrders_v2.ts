@@ -20,7 +20,7 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
   const getFulfillingOrder = async (fulfiller_type, quantity) => {
     const { data, error } = await supabase
       .from('exchange')
-      .select('order_id')
+      .select('*')
       .is('fulfilled_by_order_id', null)
       .eq('order_type', fulfiller_type)
       .gte('quantity', quantity)
@@ -29,10 +29,8 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
   }
   
   const updateOrder = async (order, fulfiller) => {
-    const { } = await supabase
-      .from('exchange')
-      .update({ fulfilled_by_order_id: fulfiller })
-      .eq('order_id', order)
+    const { } = await supabase.from('exchange').update({ fulfilled_by_order_id: fulfiller }).eq('order_id', order)
+    const { } = await supabase.from('exchange').update({ fulfilled_by_order_id: order }).eq('order_id', fulfiller)
   }
   
   const createOrder = async (user_id, order_type, quantity) => {
@@ -40,9 +38,7 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
       {
         user_id: user_id,
         order_type: order_type,
-        ticker: "DDF_Global_Index",
-        quantity: quantity,
-        created_at: new Date
+        quantity: quantity
       },
     ])
   }
@@ -51,7 +47,6 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
 
   if (fulfiller.quantity=req.body.record.quantity){
     await updateOrder(fulfiller.order_id, req.body.record.order_id) // update the fulfilled order
-    await updateOrder(req.body.record.order_id, fulfiller.order_id) // update the new order
     return res.json("order_matched")
   }
 
@@ -59,7 +54,6 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
     let newOrderQuantity = fulfiller.quantity - req.body.record.quantity;
     await createOrder(fulfiller.user_id, fulfiller_type, newOrderQuantity) // if the fulfiller quantity is bigger than the quantity, we need to split it, then match it (might only split it?)
     await updateOrder(fulfiller.order_id, req.body.record.order_id) // update the fulfilled order
-    await updateOrder(req.body.record.order_id, fulfiller.order_id) // update the new order
     return res.json("order_matched")
   }
 })
