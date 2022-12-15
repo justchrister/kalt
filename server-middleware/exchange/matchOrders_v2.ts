@@ -23,6 +23,8 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
       .select('*')
       .is('fulfilled_by_order_id', null)
       .eq('order_type', fulfiller_type)
+      .neq('user_id', req.body.record.user_id)
+      .neq('order_id', req.body.record.order_id)
       .gte('quantity', quantity)
       .order('created_at', { ascending: true })
     return data[0]
