@@ -12,7 +12,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 }
 
-app.get('/calculatedPortfolioValue', cors(corsOptions), async (req, res) => {
+app.get('/dailyCalculatedPortfolioValue', cors(corsOptions), async (req, res) => {
   const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkzODQ0MjAsImV4cCI6MTk4NDk2MDQyMH0.l9JEhyEnQ8ILtdJ3mUrCYtWm_Sx6eXHUGNQ8FnSF0yw")
   const { data: input, error } = await supabase
     .from('exchange')
