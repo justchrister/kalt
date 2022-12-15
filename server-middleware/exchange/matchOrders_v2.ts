@@ -39,7 +39,9 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
       {
         user_id: user_id,
         order_type: order_type,
-        quantity: quantity
+        ticker: "DDF_Global_Index",
+        quantity: quantity,
+        created_at: new Date
       },
     ])
   }
@@ -53,25 +55,22 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
 
   let fulfiller  = await getFulfillingOrder(fulfiller_type, req_order_user_id, req_order_order_id, req_order_quantity)
   // if we need to split it: 
-
-  if(fulfiller[0]){
-    let fulfiller_quantity = fulfiller[0].quantity
-    let fulfiller_order_id = fulfiller[0].order_id
-    let fulfiller_user_id  = fulfiller[0].user_id
-    let new_order_quantity = fulfiller_quantity - req_order_quantity;
-    if (fulfiller_quantity=req_order_quantity){
-      await updateOrder(fulfiller_order_id, req_order_order_id)
-      return res.json("order_matched")
-    }
-    if(fulfiller_quantity>req_order_quantity){
-      await createOrder(fulfiller_user_id, fulfiller_type, new_order_quantity) 
-      await updateOrder(fulfiller_order_id, req_order_order_id)
-      return res.json("order_matched")
-    }
-  } else{
-    return res.json("no matches made")
-
+  
+  let fulfiller_quantity = fulfiller[0].quantity
+  let fulfiller_order_id = fulfiller[0].order_id
+  let fulfiller_user_id  = fulfiller[0].user_id
+  let new_order_quantity = fulfiller_quantity - req_order_quantity;
+  
+  if (fulfiller_quantity=req_order_quantity && fulfiller[0]){
+    await updateOrder(fulfiller_order_id, req_order_order_id)
+    return res.json("order matched")
   }
+  if(fulfiller_quantity>req_order_quantity && fulfiller[0]){
+    await createOrder(fulfiller_user_id, fulfiller_type, new_order_quantity) 
+    await updateOrder(fulfiller_order_id, req_order_order_id)
+    return res.json("order matched")
+  }
+  return res.json("no matches made")
 })
 
 export default app;
