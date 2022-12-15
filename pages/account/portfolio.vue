@@ -20,9 +20,11 @@
     const days = ref(30)
 
 
-    const { data: portfolio } = await useFetch('../api/bff/calculatedPortfolioValue',{
-        query: {days: 365*5},
-        headers: {user_id: user.value.id},
+    const { data: portfolio } = await useFetch('../api/bff/dailyCalculatedPortfolioValue',{
+        query: {
+            days: 365*5,
+            user_id: user.value.id
+        },
         server: false
     })
     console.log(portfolio.value)
