@@ -24,6 +24,7 @@ const validateTransactionchema = request => {
 }
 
 app.post('/autoInvest', cors(corsOptions), async (req, res) => {
+  console.log(req.body.record.user_id)
   const {data, error} = await supabase.from('transactions').select('*').eq('user_id', req.body.record.user_id) 
   let sum=0;
   for (let i = 0; i < data.length; i++) {
@@ -31,7 +32,7 @@ app.post('/autoInvest', cors(corsOptions), async (req, res) => {
     if(data[i].transaction_type===1) sum -= data[i].amount
   }
   let buyAmount = Math.floor(sum/100); // divided by 100 since it is in NOK and each DDS is worth 100 NOK
-  if (buyAmount>1){
+  if (buyAmount>=1){
     // insert order object into supabase d
     const {data: orderCreated} = await supabase.from('exchange').insert([
       {
