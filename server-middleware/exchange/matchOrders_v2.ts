@@ -48,31 +48,30 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
   let req_order_user_id  = req_order.user_id
   let req_order_order_id = req_order.order_id
   let req_order_quantity = req_order.quantity
-
   let fulfiller_type     = 1
   if(req.body.record.order_type===1) fulfiller_type = 0
 
   let fulfiller  = await getFulfillingOrder(fulfiller_type, req_order_user_id, req_order_order_id, req_order_quantity)
-  let fulfiller_quantity = fulfiller[0].quantity
-  let fulfiller_order_id = fulfiller[0].order_id
-  let fulfiller_user_id  = fulfiller[0].user_id
   // if we need to split it: 
-  let new_order_quantity = fulfiller_quantity - req_order_quantity;
 
-  if(req.body.record.order_type) fulfiller_type = 0
+  if(fulfiller[0]){
+    let fulfiller_quantity = fulfiller[0].quantity
+    let fulfiller_order_id = fulfiller[0].order_id
+    let fulfiller_user_id  = fulfiller[0].user_id
+    let new_order_quantity = fulfiller_quantity - req_order_quantity;
+    if (fulfiller_quantity=req_order_quantity){
+      await updateOrder(fulfiller_order_id, req_order_order_id)
+      return res.json("order_matched")
+    }
+    if(fulfiller_quantity>req_order_quantity){
+      await createOrder(fulfiller_user_id, fulfiller_type, new_order_quantity) 
+      await updateOrder(fulfiller_order_id, req_order_order_id)
+      return res.json("order_matched")
+    }
+  } else{
+    return res.json("no matches made")
 
-  if (fulfiller_quantity=req_order_quantity){
-    await updateOrder(fulfiller_order_id, req_order_order_id)
-    return res.json("order_matched")
   }
-
-  if(fulfiller_quantity>req_order_quantity){
-    await createOrder(fulfiller_user_id, fulfiller_type, new_order_quantity) 
-    await updateOrder(fulfiller_order_id, req_order_order_id)
-    return res.json("order_matched")
-  }
-  return res.json(fulfiller)
 })
-
 
 export default app;
