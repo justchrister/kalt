@@ -23,9 +23,9 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
       .select('*')
       .is('fulfilled_by_order_id', null)
       .eq('order_type', fulfiller_type)
-      .neq('user_id', req.body.record.user_id)
-      .neq('order_id', req.body.record.order_id)
-      .gte('quantity', quantity)
+      .neq('user_id', req.body.record.user_id)   //  Without these two rows, it will be matched with itself :)
+      .neq('order_id', req.body.record.order_id) //    ^
+      .gte('quantity', req.body.record.quantity)
       .order('created_at', { ascending: true })
     return data[0]
   }
@@ -45,7 +45,7 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
     ])
   }
 
-  let fulfiller  = await getFulfillingOrder(fulfiller_type, req.body.record.quantity)
+  let fulfiller  = await getFulfillingOrder(fulfiller_type)
 
   if (fulfiller.quantity=req.body.record.quantity){
     await updateOrder(fulfiller.order_id, req.body.record.order_id) // update the fulfilled order
