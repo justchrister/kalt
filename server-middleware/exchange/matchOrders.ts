@@ -12,7 +12,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 }
 
-app.put('/matchOrders', cors(corsOptions), async (req, res) => {
+app.post('/matchOrders', cors(corsOptions), async (req, res) => {
 
   const getOrder = async (type) => {
     const { data, error } = await supabase
