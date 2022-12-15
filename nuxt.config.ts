@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     // Exchange
     { path: "/api/exchange", handler: "~/server-middleware/exchange/createOrder.ts" },
     { path: "/api/exchange", handler: "~/server-middleware/exchange/getOrders.ts" },
-    { path: "/api/exchange", handler: "~/server-middleware/exchange/matchOrders.ts" },
+    { path: "/api/exchange", handler: "~/server-middleware/exchange/matchOrders_v2.ts" },
 
     // BFF
     { path: "/api/bff", handler: "~/server-middleware/bff/dailyCalculatedPortfolioValue.ts" },
