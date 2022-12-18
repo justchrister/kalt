@@ -28,16 +28,17 @@ app.post('/autoInvest', cors(corsOptions), async (req, res) => {
   const {data, error} = await supabase.from('transactions').select('*').eq('user_id', req.body.record.user_id) 
   let sum=0;
   for (let i = 0; i < data.length; i++) {
-    if(data[i].transaction_type===0) sum += data[i].amount
-    if(data[i].transaction_type===1) sum -= data[i].amount
+    if(data[i].transaction_type===0 || data[i].transaction_type===2) sum += data[i].amount // deposits & dividends
+    if(data[i].transaction_type===1 || data[i].transaction_type===3) sum -= data[i].amount // withdraws & auto invest
   }
+
   let buyAmount = Math.floor(sum/100); // divided by 100 since it is in NOK and each DDS is worth 100 NOK
   if (buyAmount>=1){
     // insert order object into supabase d
     const {data: orderCreated} = await supabase.from('exchange').insert([
       {
         user_id: req.body.record.user_id,
-        order_type: 0, //0=buy, 1=sell
+        order_type: 0, //0=invest, 1=devest
         ticker: "DDS_Global_Index",
         quantity: buyAmount,
         created_at: new Date
@@ -45,22 +46,16 @@ app.post('/autoInvest', cors(corsOptions), async (req, res) => {
     ])
 
     // insert order object into supabase db
-    const {data: transactionCreated} = await supabase.from('transactions').insert([
-      {
-        user_id: req.body.record.user_id,
-        transaction_type: 1,
-        amount: buyAmount*100,
-        currency: "NOK",
-        created_at: new Date
-      },
-    ])
-    console.log(orderCreated)
-    console.log(transactionCreated)
-    
+    const {data: transactionCreated} = await supabase.from('transactions').insert([{
+      user_id: req.body.record.user_id,
+      transaction_type: 3, // autoinvest
+      amount: buyAmount*100,
+      currency: "NOK",
+      created_at: new Date
+    }])
   }
   if (error) return res.status(400).json({message: 'Error getting transactions'})
   if (data) return res.json(sum)
 })
-
 
 export default app;
