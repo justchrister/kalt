@@ -7,6 +7,14 @@ export default defineNuxtConfig({
   build: {
     transpile: ['chart.js'],
   },
+  components: {
+    dirs: [
+      '~/components',
+      '~/design-system/atoms',
+      '~/design-system/elements',
+      '~/design-system/components'
+    ]
+  },
   serverMiddleware: [
     // Transactions
     { path: "/api/transactions", handler: "~/server-middleware/transactions/createTransaction.ts" },
