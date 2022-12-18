@@ -21,23 +21,19 @@
 
 
     const { data: portfolio } = await useFetch('../api/bff/dailyCalculatedPortfolioValue',{
-        query: {
-            days: 365*5,
-            user_id: user.value.id
-        },
+        query: { days: 365*5, user_id: user.value.id },
         server: false
     })
-    console.log(portfolio.value)
     const getData = (dataset) => {
-    if (dataset) {
-        var dataArray = [];
-        for (let i = 0; i < dataset.length; i++) {
-            var row = dataset[i];
-            dataArray.push(row.amount * 100);
+        if (dataset) {
+            var dataArray = [];
+            for (let i = 0; i < dataset.length; i++) {
+                var row = dataset[i];
+                dataArray.push(row.amount * 100);
+            }
+            return dataArray;
         }
-        return dataArray;
-    }
-    return [];
+        return [];
     };
     const getLabels = (dataset) => {
     if (dataset) {
