@@ -126,27 +126,25 @@ async function signOut() {
     <Kaltmenu :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <kaltheader :first_name="first_name" :last_name="last_name" />
+        <kaltheader/>
         <div class="block">
           <form @submit.prevent="updateProfile">
-
             <label for="email">Email</label>
             <input id="email" type="text" :value="user.email" disabled />
 
             <label for="username">Username</label>
             <input id="username" type="text" v-model="username" />
-<br/><br/>
-            <label for="first-name">First name</label>
-            <input id="first-name" type="text" v-model="first_name" />
 
-            <label for="first-name">Last name</label>
-            <input id="first-name" type="text" v-model="last_name" />
-<br/><br/>
+
+
+            <inputName :value="[first_name, last_name]" />
+
+
+
+
             <button> verify your identity </button>
-<br/><br/>
             <label for="birthdate">Birthdate</label>
             <input id="birthdate" type="date" v-model="birthdate" />
-<br/><br/>   <!-- https://bluzky.github.io/nice-select2/ -->
             <label for="country">Country</label>
             <input id="country" type="text" v-model="country" />
 

@@ -17,6 +17,7 @@ const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhb
 
 app.get('/getTransactions', cors(corsOptions), async (req, res) => {
   const {data, error} = await supabase.from('transactions').select('*').eq('user_id', req.query.user_id)
+  .order('created_at', { ascending: false })
   if (error) return res.status(400).json({message: 'Error getting transactions'})
   if (data) return res.json(data)
 });

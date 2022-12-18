@@ -28,17 +28,6 @@
         </div>
 </div>
 </template>
-<script>
-export default{
-    name: 'Kaltmenu',
-    props: ['first_name', 'last_name'],
-    methods: {
-        toggleMenu(){
-            document.getElementsByTagName('body')[0].classList.toggle("show-menu");
-        }
-    },
-}
-</script>
 <style scoped>
   nav{
     width:100%;
