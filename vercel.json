@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "https://kalt.co/api/", "destination": "https://ka.lt/api" }
+  ],
+  "trailingSlash": false,
+  "installCommand": "npm install"
+}

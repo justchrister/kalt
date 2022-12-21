@@ -1,31 +1,31 @@
 <template>
 <div>
-        <div class="block">
-          <nav>
-            <ul>
-              <li>
-                <nuxt-link to="/account/portfolio" >
-                  Portfolio
-                </nuxt-link>
-              </li>
-              <li>
-                <nuxt-link to="/account" >
-                    Account
-                </nuxt-link>
-              </li>
-              <li>
-                <nuxt-link to="/account/transactions" >
-                    Transactions
-                </nuxt-link>
-              </li>
-              <li>
-                <nuxt-link to="/account/notifications" >
-                    Notifications
-                </nuxt-link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+  <div class="block">
+    <nav>
+      <ul>
+        <li>
+          <nuxt-link to="/account/portfolio" >
+            Portfolio
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/account" >
+              Account
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/account/transactions" >
+              Transactions
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/account/notifications" >
+              Notifications
+          </nuxt-link>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 </template>
 <style scoped>

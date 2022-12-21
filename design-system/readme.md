@@ -1,5 +1,5 @@
 # The design system
-
+### Dynamic, deductive, design three ds
 The hierachical design system consists of;
 1. pages and layouts, made up of
 2. components, made up of

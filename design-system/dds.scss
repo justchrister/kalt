@@ -26,25 +26,3 @@
 
 
 // Global SCSS
-
-
-// Toggling the menu
-.show-menu{
-  .page{
-    opacity:0;
-    pointer-events : none;
-  }
-  .menu{
-    button{
-      &:before{
-        content:"close  ";
-        display:inline-block;
-      }
-    }
-    ul {
-      display:block;
-      opacity:1;
-      pointer-events : all;
-    }
-  }
-} 

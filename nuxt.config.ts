@@ -10,9 +10,9 @@ export default defineNuxtConfig({
   components: {
     dirs: [
       '~/components',
-      '~/design-system/atoms',
+      '~/design-system/components',
       '~/design-system/elements',
-      '~/design-system/components'
+      '~/design-system/atoms'
     ]
   },
   serverMiddleware: [

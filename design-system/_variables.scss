@@ -75,8 +75,8 @@ $monospace:
     Monospace;
 
 
-$sitewidth: 86vw;
-$maxsitewidth: 720px;
+$sitewidth: $unit-val * 47;
+$maxsitewidth: $unit-max * 47;
 
 // Site sections
 $sectionpadding: clamp(75px, 15vh, 175px);
@@ -98,4 +98,4 @@ $medium-clamp-half: clamp($unit-min, $unit-val, $unit-max);
 
 $medium-clamp-negative: clamp($unit-min - $unit-min*2, $unit-val - $unit-val*2, $unit-max - $unit-max*2);
 
-$border-radius: $unit-min / 2;
+$border-radius: math.div($unit-min, 2);

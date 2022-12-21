@@ -1,13 +1,13 @@
 <template>
     <header>
-        <a href="/">
-            <button class="logo" id="logo">
-                <span>Kalt</span> — {{ pageTitle }}
-            </button>
-        </a>
         <nav class="menu" v-on:click="toggleMenu">
-            <button id="menu"> menu</button>
             <ul id="menu_items">
+                <li class="logomark">
+                    <nuxt-link to="/" >
+                        <span>Kalt — </span>
+                        {{ pageTitle }}
+                    </nuxt-link>
+                </li>
                 <li>
                     <nuxt-link to="/about" >
                         <span>Kalt — </span>
@@ -39,10 +39,10 @@
                     </nuxt-link>
                 </li>
             </ul>
-        </nav><!--
-        <div class="notification"></div>-->
+        </nav>
+        <button class="menu-toggle" v-on:click="toggleMenu"> menu</button>
         <nuxt-link to="/account">
-            <div class="my-profile-button"></div>
+            <div class="my-account-button"></div>
         </nuxt-link>
     </header>
 </template>

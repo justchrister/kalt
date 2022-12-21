@@ -3,26 +3,17 @@
 //  Header (logo + cart)
 
 header {
-  button.logo {
-    left: $border-width;
-    span{
-      font-weight: 500;
-    }
-  }
-  button#menu {
+  button.menu-toggle {
     right: $big-clamp;
-  }
-	button#menu:active,
-	button#menu:focus{
-		background-color: transparent;
-	}
-
-  button {
+    position: fixed;
     font-size: $medium-clamp;
 		line-height: $medium-clamp;
-    position: fixed;
     top: $border-width;
     border: 0;
+    &:active,
+    &:focus{
+      background-color: transparent;
+    }
     &:hover{
       text-decoration: underline;
       &:before{
@@ -31,35 +22,59 @@ header {
       }
     }
   }
-
   .menu {
-    button{
-      z-index: 3;
-    }
     ul {
-      opacity:0;
-      pointer-events : none;
       position: fixed;
       z-index: 3;
       margin: 0;
-      padding: 0 0 0 $big-clamp-half;
-      //Proprietary clamps for the menu
-	    top: clamp(28px, 6.4vw, 60px); // to ensure the menu is under the logo
-      left: clamp(48px, 12vw, 86px);
+      padding: $big-clamp-half 0 0 $big-clamp-half;
       li {
+        opacity:0;
+        pointer-events : none;
         line-height: 1;
-        * {
-          @include font-body;
-          padding: 0;
+        @include font-body;
+        font-size:clamp($unit-min*2, $unit-val*2, $unit-max*2);
+        padding: 0;
+        a{
+          text-decoration: none;
           &:hover{
-            cursor: pointer;
+            text-decoration:underline;
           }
+        }
+        span{
+          font-weight:500;
+          opacity:0;
+        }
+        &:first-child span{
+          opacity:1;
+        }
+        &.logomark{
+          opacity:1;
+          pointer-events : all;
         }
       }
     }
   }
 }
 
+// Toggling the menu
+.show-menu{
+  .page{
+    opacity:0;
+    pointer-events : none;
+  }
+  .menu ul li{
+    opacity:1;
+    pointer-events : all;
+  }
+} 
+.show-menu button.menu-toggle{
+  &:before{
+    content:"close  ";
+    display:inline-block;
+    opacity:1;
+  }
+}
 .my-account-button{
   width:$medium-clamp;
   height:$medium-clamp;

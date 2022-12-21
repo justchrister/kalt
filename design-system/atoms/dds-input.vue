@@ -7,9 +7,11 @@
     emits: ['value'],
     methods:{
       callEvent(){
-        console.log(this.value)
+        if (supabaseTable){
+          console.log(this.value)
+        }
       }
     }
-    }
+  }
 // https://stackoverflow.com/questions/66269080/detect-change-to-modelvalue-in-vue-3
 </script>
