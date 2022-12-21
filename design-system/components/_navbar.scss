@@ -60,32 +60,7 @@ header {
   }
 }
 
-
-
-
-
-// Toggling the menu
-.show-menu{
-  .page{
-    opacity:0;
-    pointer-events : none;
-  }
-  .menu{
-    button{
-      &:before{
-        content:"close  ";
-        display:inline-block;
-      }
-    }
-    ul {
-      display:block;
-      opacity:1;
-      pointer-events : all;
-    }
-  }
-} 
-
-.my-profile-button{
+.my-account-button{
   width:$medium-clamp;
   height:$medium-clamp;
   display:block; 
@@ -101,13 +76,13 @@ header {
   }
 }
 
-.notification{
-  min-width: calc($__BU__MIN / 2);
-  width:     calc($__BU__VAL / 2);
-  max-width: calc($__BU__MAX / 2);
-  min-height: calc($__BU__MIN / 2);
-  height:     calc($__BU__VAL / 2);
-  max-height: calc($__BU__MAX / 2);
+.notification-dot{
+  min-width:  calc($unit-min / 2);
+  width:      calc($unit-val / 2);
+  max-width:  calc($unit-max / 2);
+  min-height: calc($unit-min / 2);
+  height:     calc($unit-val / 2);
+  max-height: calc($unit-max / 2);
   top:$border-width;
   right:$border-width;
   margin: clamp(12px, 3.24vw, 25px);
@@ -115,21 +90,4 @@ header {
   display:block;
   border-radius:50%;
   background-color:rgba(red,0.2);
-}
-
-.notifications-box{
-  font-size: clamp(14px, 3.6vw, 26px);
-  line-height: clamp(14px, 3.6vw, 26px);
-  position: fixed;
-  display:block;
-  top: $big-clamp;
-  margin: $medium-clamp;
-  border: 0;
-  padding: $medium-clamp-half $medium-clamp;
-  &.error{
-    background: $amsterdam-40;
-  }
-  &.success{
-    background: $botanic-40;
-  }
 }

@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu :pageTitle='pagename' />
+    <navbar :pageTitle='pagename' />
     <div class="page">
       <div class="section">
         <div class="frame">

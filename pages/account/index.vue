@@ -120,61 +120,27 @@ async function signOut() {
     loading.value = false;
   }
 }
+console.log(first_name)
 </script>
 <template>
   <div class="PageWrapper">
-    <Kaltmenu :pageTitle="pagename" />
+    <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
         <kaltheader/>
         <div class="block">
           <form @submit.prevent="updateProfile">
-            <label for="email">Email</label>
-            <input id="email" type="text" :value="user.email" disabled />
-
-            <label for="username">Username</label>
-            <input id="username" type="text" v-model="username" />
-
-
-
-            <inputName :value="[first_name, last_name]" />
-
-
-
-
-            <button> verify your identity </button>
-            <label for="birthdate">Birthdate</label>
-            <input id="birthdate" type="date" v-model="birthdate" />
-            <label for="country">Country</label>
-            <input id="country" type="text" v-model="country" />
-
-            <label for="city">City</label>
-            <input id="city" type="text" v-model="city" />
-
-            <label for="postal_code">Postal code</label>
-            <input id="postal_code" type="number" v-model="postal_code" />
-
-            <label for="address_line_1">Address line 1</label>
-            <input id="address_line_1" type="text" v-model="address_line_1" />
-
-            <label for="address_line_2">Address line 2</label>
-            <input id="address_line_2" type="text" v-model="address_line_2" />
-
-            <label class="switch">
-              <input type="checkbox" id="auto_invest" v-model="auto_invest"  name="auto_invest" checked />
-              <span class="slider round"></span>
-            </label>
-            <label for="auto_invest">
-              Automatically invest available funds
-            </label>
-
-            <input type="submit" value="update" />
-
-            <button type="button" class="underbutton" @click="signOut">
-              sign out 👋
-            </button>
-
+            <Email      :value="user.email" />
+            <Username   :value="username" />
+            <Name       :value="[first_name, last_name]" />
+            <!--<Birthdate  :value="birthdate" />-->
+            <Address    :value="[country, city, postal_code, address_line_1, address_line_2]" />
+            <!--<AutoInvest :value="auto_invest" />-->
+            <!--<Submit />-->
           </form>
+          <button type="button" class="underbutton" @click="signOut">
+            sign out 👋
+          </button>
         </div>
       </div>
     </div>

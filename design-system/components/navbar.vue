@@ -5,31 +5,36 @@
                 <span>Kalt</span> — {{ pageTitle }}
             </button>
         </a>
-        <nav class="menu">
-            <button id="menu" v-on:click="toggleMenu"> menu</button>
+        <nav class="menu" v-on:click="toggleMenu">
+            <button id="menu"> menu</button>
             <ul id="menu_items">
-                <li v-on:click="toggleMenu">
+                <li>
                     <nuxt-link to="/about" >
+                        <span>Kalt — </span>
                         About
                     </nuxt-link>
                 </li>
-                <li v-on:click="toggleMenu">
+                <li>
                     <nuxt-link to="/about/how-it-works" >
+                        <span>Kalt — </span>
                         How it works
                     </nuxt-link>
                 </li>
-                <li v-on:click="toggleMenu">
+                <li>
                     <nuxt-link to="/account/portfolio" >
+                        <span>Kalt — </span>
                         Portfolio
                     </nuxt-link>
                 </li>
-                <li v-on:click="toggleMenu">
+                <li>
                     <nuxt-link to="/account" >
+                        <span>Kalt — </span>
                         Account
                     </nuxt-link>
                 </li>
-                <li v-on:click="toggleMenu">
+                <li>
                     <nuxt-link to="/invest" >
+                        <span>Kalt — </span>
                         Invest 
                     </nuxt-link>
                 </li>
@@ -44,7 +49,7 @@
 
 <script>
 export default{
-    name: 'Kaltmenu',
+    name: 'navbar',
     props: ['pageTitle'],
     methods: {
         toggleMenu(){
