@@ -34,7 +34,9 @@
             <nuxt-link to="/about/how-it-works">How it works</nuxt-link> <span style="margin-right:30px;"></span><nuxt-link to="/about">About us</nuxt-link>
           </p>
         </div>
+        <div class="block">
         <Cta />
+        </div>
       </div>
     </div>
   </div>

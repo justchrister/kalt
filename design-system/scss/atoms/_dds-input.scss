@@ -1,0 +1,17 @@
+input{
+  width:100%;
+  display:inline-block;
+  padding:clamp($unit-min/2, $unit/2, $unit-max/2) 
+          clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
+  border: $border;
+  border-radius: $border-radius;
+  @include font-body;
+  box-sizing:border-box;
+}
+
+input:focus{
+  background-color:#fff;
+}
+input:active{
+  background-color:#fff;
+}

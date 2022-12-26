@@ -1,0 +1,100 @@
+// Defining the units that define all the clamps to ensure they 
+// all are defined the same way.
+
+$unit-min: 7px;
+$unit: 1.8vw;
+$unit-max: 13px;
+
+// Colors
+$noon: #FCF9F2;
+$midnight: #202124;
+$tuscany: #1E96FC;
+$bliss: #F7B538;
+$botanic: #0CF574;
+$amsterdam: #F4442E;
+$merlot: #624CAB;
+$kobi: #F991CC;
+
+// Color variations
+$tuscany-80: mix($tuscany, $noon, 80%);
+$tuscany-60: mix($tuscany, $noon, 60%);
+$tuscany-40: mix($tuscany, $noon, 40%);
+$tuscany-20: mix($tuscany, $noon, 20%);
+
+$bliss-80: mix($bliss, $noon, 80%);
+$bliss-60: mix($bliss, $noon, 60%);
+$bliss-40: mix($bliss, $noon, 40%);
+$bliss-20: mix($bliss, $noon, 20%);
+
+$botanic-80: mix($botanic, $noon, 80%);
+$botanic-60: mix($botanic, $noon, 60%);
+$botanic-40: mix($botanic, $noon, 40%);
+$botanic-20: mix($botanic, $noon, 20%);
+
+$amsterdam-80: mix($amsterdam, $noon, 80%);
+$amsterdam-60: mix($amsterdam, $noon, 60%);
+$amsterdam-40: mix($amsterdam, $noon, 40%);
+$amsterdam-20: mix($amsterdam, $noon, 20%);
+
+$merlot-80: mix($merlot, $noon, 80%);
+$merlot-60: mix($merlot, $noon, 60%);
+$merlot-40: mix($merlot, $noon, 40%);
+$merlot-20: mix($merlot, $noon, 20%);
+
+$kobi-80: mix($kobi, $noon, 80%);
+$kobi-60: mix($kobi, $noon, 60%);
+$kobi-40: mix($kobi, $noon, 40%);
+$kobi-20: mix($kobi, $noon, 20%);
+
+// Gradients
+$tuscany-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $tuscany 0%, $tuscany-60, $noon);
+$bliss-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $bliss 0%, $kobi-60, $noon);
+$botanic-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $botanic 0%, $botanic-60, $noon);
+$amsterdam-gradient: url('images/gradient.webp'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $amsterdam 0%, $amsterdam-60, $noon);
+$merlot-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $merlot 0%, $merlot-60, $noon);
+$kobi-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $kobi 0%, $kobi-60, $noon);
+
+// Fonts 
+
+$serif : 
+    "Kalt Display",
+    "STIXGeneral Regular",
+    "Times New Roman",
+    Serif;
+
+$sans-serif: 
+    "Helvetica",
+    "Raleway",
+    "Arial",
+    "Roboto",
+    Sans-Serif;
+
+$monospace:
+    "Kalt Monospace",
+    "Courier New",
+    Monospace;
+
+
+$sitewidth: 86vw;
+$maxsitewidth: 720px;
+// Site sections
+$sectionpadding: clamp(75px, 15vh, 175px);
+$sectionpadding-double: clamp(150px, 30vh, 350px);
+
+// Borders
+$border-width: .1px;
+$border: $border-width solid $midnight;
+
+//clamps
+$column-divider: 2.4; // % of sitewidth
+$big-clamp: clamp($unit-min*3.5, $unit*3.5, $unit-max*3.5);
+$medium-clamp: clamp($unit-min*2, $unit*2, $unit-max*2);
+
+/* The following clamps are half of their counterpart.
+Example: $big-clamp-half is half of $big-clamp. */
+$big-clamp-half: clamp(12px, 3.24vw, 25px);
+$medium-clamp-half: clamp($unit-min, $unit, $unit-max);
+
+$medium-clamp-negative: clamp($unit-min - $unit-min*2, $unit - $unit*2, $unit-max - $unit-max*2);
+
+$border-radius: calc($unit-min / 2);

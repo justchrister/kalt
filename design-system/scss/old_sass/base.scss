@@ -1,0 +1,52 @@
+
+
+// Page wrapper
+
+.page{
+  padding: clamp(48px, 10.8vw, 78px) 0 $sectionpadding 0;
+}
+
+
+//  Sections
+
+.section {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  padding: $sectionpadding 0;
+  margin: auto;
+  margin:0 auto;
+}
+.block {
+  margin: 40px 0;
+  h3{
+    font-size: 110%;
+    font-weight: 400;
+  }
+  h4{
+    text-decoration: underline;
+  }
+  h3, h4{
+    margin:$medium-clamp 0 $medium-clamp-half 0;
+  }
+  p{
+    margin: $medium-clamp-half 0;
+  }
+  ol{
+    list-style: decimal;
+    margin-left: clamp(33.6px, 8.64vw, 62.4px);
+  }
+  ul{
+    margin-left: clamp(33.6px, 8.64vw, 62.4px);
+  }
+  ul > li {
+    margin-bottom:$medium-clamp-half;
+  }
+  ul > li:before {
+    position: relative;
+    margin-left: -7%;
+    margin-right: 3.3%;
+    content: "\2192";
+  }
+}
+
+@import 'darkmode';

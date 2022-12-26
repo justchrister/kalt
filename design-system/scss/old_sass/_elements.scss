@@ -1,0 +1,135 @@
+// <table>
+
+table{
+    width: 100%;
+}
+tr {
+    th,
+    td{
+        text-align:left;
+        border-bottom: $border;
+        font-size:80%;
+    }
+}
+// <code>
+
+pre code {
+    display: block;
+    overflow-x: auto;
+    padding: $medium-clamp;
+    margin: $medium-clamp 0;
+    @include font-monospace;
+    font-size:80%;
+    background-color: $tuscany-20;
+    line-height:1.2;
+    height: $medium-clamp;
+    color: transparent;
+      overflow:hidden;
+    &:hover{
+      cursor: pointer;
+    }
+    &.show-code{
+      color: $midnight;
+      height: auto;
+      padding: $medium-clamp;
+      &:before{
+        display: block;
+        content: '';
+        color:transparent;
+      }
+      &:hover{
+        cursor: auto;
+      }
+    }
+    &:before{
+      position: absolute;
+      display: block;
+      content: '> show code';
+      color:$midnight;
+    }
+  }
+// <form>
+input[type=password]{
+  background: transparent;
+  width:100%;
+  border-radius:0;
+  @include font-body;
+  border-radius: 0%;
+  border: $border;
+  max-width: 100%;
+  height:$medium-clamp;
+  margin: $medium-clamp-half  0 $medium-clamp 0;
+  box-sizing: border-box;
+  padding: $medium-clamp $medium-clamp-half;
+  &:focus{
+    border-style: dashed;
+  }
+}
+
+select{
+  margin:0;
+}
+.section form input[type=submit],
+.section button {
+  width: 100%;
+  padding: 2% 0;
+  @include font-body;
+  border-radius:100%;
+  border:$border;
+  background:$noon;
+}
+
+
+
+form input[type=submit]:focus,
+a:focus button{
+	background:$tuscany-20;
+}
+
+form input[type=submit],
+a:focus button,
+a:hover button{
+  border-radius: 0%;
+  cursor: pointer;
+}
+
+
+// this should probably be removed
+del{
+	pointer-events: none;
+	background: #000;
+	opacity:.8;
+	border-radius: 3% 1% .5% 1%;
+  user-select: none;
+	transform:rotate(25deg);
+	&:hover{
+		cursor: not-allowed;
+	}
+}
+
+
+// used under sign in form and at the bottom of the profile page
+
+
+.section .underbutton{
+  border:none;
+  font-size:70%;
+  text-decoration: underline;
+}
+.section .underbutton:focus,
+.section .underbutton:active{
+  background:transparent;
+}
+
+// PILLS
+
+.pills input{
+  display:none; 
+}
+.pills label{
+  font-size:70%;
+  padding:2px 8px;
+  border:$border;
+  border-radius:3px;
+  margin-right:10px;
+}

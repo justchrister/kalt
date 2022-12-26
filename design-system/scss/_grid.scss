@@ -1,0 +1,69 @@
+
+$col:    calc($sitewidth / 12);     // making widths multipliable by twelve
+$col-max: calc($maxsitewidth / 12);
+
+.col-2,
+.col-3,
+.col-4{
+  display:inline-block;
+}
+
+/*
+
+The site is divided into 12 columns, represented her eby $col and $col-max
+the objects however can only be distributed in a 2, 3 or 4 column layout
+with a defined gutter between them. To make them the correct width while 
+taking into account the gutters, we have to do some calculations
+
+Lets use .col-4 as an example, and only focus on the width parameter, and
+say the sitewidth is set to 120:
+
+1. First we would multiply the $col value by 3, which makes the .col-4 30px
+wide. 
+.col-4{ width: $col*3 }
+
+2. To add the space (gutter) between the boxes, we have to first multiply 
+the number of columns by two 4*2=8 and reduce it by 2, 8-2 = 6. This is how
+many sides each of the columns have towards eachother. (without the ones at
+the edge of the page. 
+  ($unit*6)
+
+3. Then we divide it by how many columns there are: 
+  (($unit*6)/4)
+
+4. The result:
+
+.col-4{
+  width:($col*3)-($unit*6/4);
+}
+*/
+
+.col-2{
+  width:($col*6)-$unit;
+  max-width:($col-max*6)-$unit-max;
+}
+.col-3{
+  width:($col*4) - calc(($unit*4)/3);
+  max-width:($col-max*4) - calc(($unit-max*4)/3);
+}
+.col-4{
+  width:($col*3) - calc(($unit*6)/4);
+  max-width:($col-max*3) - calc(($unit-max*6)/4);
+}
+
+.gutter-horizontal,
+.gutter-right{
+  margin-right:clamp(
+    1px, 
+    $unit, 
+    $unit-max
+  );
+}
+.gutter-horizontal,
+.gutter-left{
+  margin-left:clamp(
+    1px, 
+    $unit, 
+    $unit-max
+  );
+}

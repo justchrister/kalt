@@ -1,0 +1,44 @@
+
+.frame {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-end;
+  align-content: flex-start;
+  div {
+    width:100%;
+  }
+  canvas{
+    height: 50vw;
+    max-height: 418px;
+
+  }
+  .image {
+    height: 32vw;
+    max-height: 268px;
+    display: inline-block;
+    flex-grow: 1;
+    flex-basis: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color:$tuscany-20;
+    border-radius:2px;
+    &.contain{
+      background-size: contain;
+      background-color:transparent;
+    }
+    &:first-child {
+      height: 50vw;
+      max-height: 418px;
+    }
+    &:last-child{
+      margin-left: $medium-clamp;
+    }
+  }
+  &:after {
+    display: block;
+    margin: 0px;
+    flex: 999 999 auto;
+  }
+}
