@@ -2,6 +2,7 @@
   <dds-language-select 
     label="Default language:"
     uid="select-language" 
+    :selected="props.data.language"
     v-model="props.data.language"/>
 </template>
 

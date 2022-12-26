@@ -1,6 +1,5 @@
 <template>
-  <div class="block">
-    <nav :class="'tabs ' + pagename">
+    <nav class="tabs">
       <ul>
         <li>
           <nuxt-link to="/account/portfolio" >
@@ -24,12 +23,4 @@
         </li>
       </ul>
     </nav>
-  </div>
-
 </template>
-
-<script>
-  export default{ 
-    props: ['pagename']
-} 
-</script>

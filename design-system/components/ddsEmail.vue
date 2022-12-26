@@ -1,13 +1,11 @@
 <template>
   <div class="email">
-    <div class="col-2 gutter-right">
     <dds-email-input
-      uid="first-name"
-      placeholder="First name"
-      label="First name:"
-      v-model="props.data.first_name"
+      uid="email"
+      placeholder="E-mail"
+      label="E-mail:"
+      v-model="props.data.email"
     />
-    </div>
   </div>
 </template>
 

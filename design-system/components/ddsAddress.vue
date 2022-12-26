@@ -4,6 +4,7 @@
     <dds-country-select
       uid="country"
       label="Country:"
+    :selected="props.data.country"
       v-model="props.data.country"
     />
       </div>

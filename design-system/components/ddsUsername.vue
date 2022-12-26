@@ -1,5 +1,5 @@
 <template>
-  <div class="name">
+  <div class="username">
     <div>
       <dds-text-input
         uid="username"

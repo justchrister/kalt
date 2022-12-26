@@ -1,11 +1,16 @@
 select{
   width:100%;
   display:inline-block;
-  padding:clamp($unit-min/2, $unit/2, $unit-max/2) 
+  padding:clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
+          clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5)
+          clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
           clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   border: $border;
   border-radius: $border-radius;
   @include font-body;
   box-sizing:border-box;
   background-color:transparent;
+}
+select:focus{
+  background-color:white;
 }

@@ -4,6 +4,7 @@
     <dds-select
       :id="props.uid"
       :choices="choices"
+      :selected="selected"
       v-model="props.modelValue"
       @input="emit('update:modelValue', $event.target.value)"
     />
@@ -19,6 +20,7 @@ const supabase = createClient(runtimeConfig.supabaseUrl, runtimeConfig.supabaseS
 const props = defineProps<{
   modelValue: string;
   uid: string;
+  selected: string;
   label: string;
 }>();
 //fallback array

@@ -2,6 +2,7 @@
   <dds-currency-select 
     label="Default currency:"
     uid="select-currency" 
+    :selected="props.data.currency"
     v-model="props.data.currency"/>
 </template>
 

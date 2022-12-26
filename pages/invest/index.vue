@@ -1,3 +1,42 @@
+
+<template>
+  <div class="PageWrapper">
+    <navbar :pageTitle='pagename' />
+    <div class="page">
+      <div class="section">
+        <div class="block">
+          <h1> See how much you could make:</h1>
+          <div class="frame">
+          <LineChart :chartData="dataChartMonthly" v-if="reoccuring"/>
+          <LineChart :chartData="dataChartOnce" v-else/>
+          </div>
+        </div>
+        <div class="block">
+          <form @submit.prevent="updateCache">
+            <dds-currency-amount />
+            <label for="deposit" >
+            <span v-if="reoccuring"> Monthly deposit </span>
+            <span v-else> Single deposit </span>
+            </label>
+            <input id="deposit" type="number" v-model="amount"/>
+
+            <br/>
+            <label class="switch">
+                <input type="checkbox" id="monthly" v-model="reoccuring" name="reoccuring" checked />
+                <span class="slider round"></span>
+            </label>
+            <label for="monthly">
+                Monthly</label>
+            <br/>
+            <br/>
+          <input type="submit" value="next →">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 const pagename = 'Deposit';
 const title = 'Kalt — ' + pagename;
@@ -160,42 +199,6 @@ const dataChartOnce = computed(() => ({
             }));
 
 </script>
-<template>
-  <div class="PageWrapper">
-    <navbar :pageTitle='pagename' />
-    <div class="page">
-      <div class="section">
-        <div class="block">
-          <h1> See how much you could make:</h1>
-          <div class="frame">
-          <LineChart :chartData="dataChartMonthly" v-if="reoccuring"/>
-          <LineChart :chartData="dataChartOnce" v-else/>
-          </div>
-        </div>
-        <div class="block">
-          <form @submit.prevent="updateCache">
-            <label for="deposit" >
-            <span v-if="reoccuring"> Monthly deposit </span>
-            <span v-else> Single deposit </span>
-            </label>
-            <input id="deposit" type="number" v-model="amount"/>
-
-            <br/>
-            <label class="switch">
-                <input type="checkbox" id="monthly" v-model="reoccuring" name="reoccuring" checked />
-                <span class="slider round"></span>
-            </label>
-            <label for="monthly">
-                Monthly</label>
-            <br/>
-            <br/>
-          <input type="submit" value="next →">
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
 <style scoped>
 
 .frame div{
