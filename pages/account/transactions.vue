@@ -61,7 +61,7 @@ console.log(transactions)
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <kaltheader />
+        <tabs />
         <div class="block">
           <table>
             <tr>

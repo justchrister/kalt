@@ -15,3 +15,10 @@ input:focus{
 input:active{
   background-color:#fff;
 }
+input.success{
+  background-image:url("/images/omoji/happy.svg");
+  background-size: auto 50%;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+}

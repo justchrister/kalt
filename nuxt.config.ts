@@ -3,17 +3,9 @@ import { defineNuxtConfig } from 'nuxt'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase'],
-  css: ['@/assets/base.css'],
+  css: ['@/assets/stylesheet.css'],
   build: {
     transpile: ['chart.js'],
-  },
-  components: {
-    dirs: [
-      '~/components',
-      '~/design-system/components',
-      '~/design-system/elements',
-      '~/design-system/atoms'
-    ]
   },
   serverMiddleware: [
     // Transactions

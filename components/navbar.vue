@@ -1,6 +1,6 @@
 <template>
     <header>
-        <nav class="menu" v-on:click="toggleMenu">
+        <nav class="menu">
             <ul id="menu_items">
             <li class="logomark">
                 <nuxt-link to="/">
@@ -10,23 +10,23 @@
             </li>
             <li>
                 <span>Kalt — </span>
-                <nuxt-link to="/about"> About </nuxt-link>
+                <nuxt-link to="/about" v-on:click="toggleMenu"> About </nuxt-link>
             </li>
             <li>
                 <span>Kalt — </span>
-                <nuxt-link to="/about/how-it-works"> How it works </nuxt-link>
+                <nuxt-link to="/about/how-it-works" v-on:click="toggleMenu"> How it works </nuxt-link>
             </li>
             <li>
                 <span>Kalt — </span>
-                <nuxt-link to="/account/portfolio"> Portfolio </nuxt-link>
+                <nuxt-link to="/account/portfolio" v-on:click="toggleMenu"> Portfolio </nuxt-link>
             </li>
             <li>
                 <span>Kalt — </span>
-                <nuxt-link to="/account"> Account </nuxt-link>
+                <nuxt-link to="/account" v-on:click="toggleMenu"> Account </nuxt-link>
             </li>
             <li>
                 <span>Kalt — </span>
-                <nuxt-link to="/invest"> Invest </nuxt-link>
+                <nuxt-link to="/invest" v-on:click="toggleMenu"> Invest </nuxt-link>
             </li>
             </ul>
         </nav>

@@ -1,3 +1,41 @@
+<template>
+  <div class="PageWrapper">
+    <navbar :pageTitle="pagename" />
+    <div class="page">
+      <div class="section">
+        <tabs/>
+        <div class="block">
+            <div class="frame">
+                <LineChart :chartData="dataChart"/>
+            </div>
+        </div>
+        <div class="block">
+            <div class="pills">
+                <label for="seven">Last week</label>
+                <input id="seven" type="radio" value="7" v-model="days" name="days"/>
+
+                <label for="thirty">Last month</label>
+                <input id="thirty" type="radio" value="30" v-model="days" name="days" />
+
+                <label for="oneyear">Last year</label>
+                <input id="oneyear" type="radio" value="365" v-model="days" name="days" />
+
+                <label for="max">Total</label>
+                <input id="max" type="radio" value="420420420" v-model="days" name="days" />
+            </div>
+        </div>
+        <div class="block">
+            <p v-if="portfolio"> You own {{portfolio[0].amount}} direct dividend shares</p>
+            <p v-if="portfolio"> Your footprint has been decreased by {{portfolio[0].amount}} direct dividend shares</p>
+
+        </div>
+        <div class="block">
+            <Cta />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 <script setup lang="ts">
     const pagename = 'Portfolio';
     const title = 'Kalt — ' + pagename;
@@ -67,41 +105,3 @@
     });
 
 </script>
-<template>
-  <div class="PageWrapper">
-    <navbar :pageTitle="pagename" />
-    <div class="page">
-      <div class="section">
-        <kaltheader/>
-        <div class="block">
-            <div class="frame">
-                <LineChart :chartData="dataChart"/>
-            </div>
-        </div>
-        <div class="block">
-            <div class="pills">
-                <label for="seven">Last week</label>
-                <input id="seven" type="radio" value="7" v-model="days" name="days"/>
-
-                <label for="thirty">Last month</label>
-                <input id="thirty" type="radio" value="30" v-model="days" name="days" />
-
-                <label for="oneyear">Last year</label>
-                <input id="oneyear" type="radio" value="365" v-model="days" name="days" />
-
-                <label for="max">Total</label>
-                <input id="max" type="radio" value="420420420" v-model="days" name="days" />
-            </div>
-        </div>
-        <div class="block">
-            <p v-if="portfolio"> You own {{portfolio[0].amount}} direct dividend shares</p>
-            <p v-if="portfolio"> Your footprint has been decreased by {{portfolio[0].amount}} direct dividend shares</p>
-
-        </div>
-        <div class="block">
-            <Cta />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>

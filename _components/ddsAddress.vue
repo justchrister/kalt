@@ -4,7 +4,7 @@
     <dds-country-select
       uid="country"
       label="Country:"
-    :selected="props.data.country"
+      :selected="selected"
       v-model="props.data.country"
     />
       </div>
@@ -45,4 +45,6 @@ const props = defineProps<{
     postal_code: number;
   };
 }>();
+let selected = props.data.country;
+
 </script>
