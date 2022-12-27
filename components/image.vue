@@ -1,8 +1,8 @@
 <template>
   <div class="frame">
-    <div v-for="v in images" :key="v.value" 
+    <div v-for="image in images" :key="v.value" 
       :class="'image '+type" 
-      :style="'background-image:url('+v+');'"></div>
+      :style="'background-image:url('+image+');'"></div>
   </div>
 </template>
 <script>
