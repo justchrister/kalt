@@ -4,131 +4,6 @@
 /* The following clamps are half of their counterpart.
 Example: $big-clamp-half is half of $big-clamp. */
 /*   variables                              ka.lt/docs/scss/variables             */
-/*   mixins                                 ka.lt/docs/scss/mixins                */
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  background: #FCF9F2;
-  touch-action: manipulation;
-  overflow-x: hidden;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: "";
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-a {
-  color: #202124;
-  text-decoration: underline;
-}
-
-*:before, *:after {
-  box-sizing: border-box;
-}
-*:focus {
-  outline: none;
-}
-*::selection {
-  background-color: #d0e5f4;
-}
-
-h1, h2 {
-  font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
-  font-size: clamp(24.5px, 6.3vw, 45.5px);
-  line-height: 150%;
-  margin-bottom: clamp(12px, 3.24vw, 25px);
-  font-display: optional;
-}
-h1 a, h2 a {
-  text-decoration: none;
-}
-h1 a:hover, h2 a:hover {
-  text-decoration: underline;
-}
-
-h3 {
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-}
-
-a:focus {
-  border: none;
-  box-shadow: none;
-}
-
-button {
-  border-radius: 50%;
-  border: 0.1px solid #202124;
-  padding: clamp(12px, 3.24vw, 25px);
-  background: transparent;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-}
-button:focus, button:hover {
-  cursor: pointer;
-  border-radius: 0%;
-}
-
-input {
-  background: transparent;
-}
-
-/*   scss-reset                             ka.lt/docs/scss/reset                 */
 @font-face {
   font-family: "Kalt Display";
   src: url("/fonts/display/ogg-regular-kalt.eot");
@@ -296,84 +171,413 @@ the edge of the page.
 }
 
 /*   grid                                   ka.lt/docs/scss/grid                  */
-/*      Atoms                         /*                                                                                */
+.page {
+  padding: clamp(35px, 9vw, 65px) 0 clamp(75px, 15vh, 175px) 0;
+}
+
+.section {
+  width: 86vw;
+  max-width: 720px;
+  padding: clamp(75px, 15vh, 175px) 0;
+  margin: 0 auto;
+}
+
+.block {
+  margin: clamp(35px, 9vw, 65px) 0;
+}
+
+/*   layouts                                ka.lt/docs/scss/layouts               */
+/*   mixins                                 ka.lt/docs/scss/mixins                */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  background: #FCF9F2;
+  touch-action: manipulation;
+  overflow-x: hidden;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: #202124;
+  text-decoration: underline;
+}
+
+*:before, *:after {
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+*::selection {
+  background-color: #d0e5f4;
+}
+
+h1, h2 {
+  font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
+  font-size: clamp(24.5px, 6.3vw, 45.5px);
+  line-height: 150%;
+  margin-bottom: clamp(12px, 3.24vw, 25px);
+  font-display: optional;
+}
+h1 a, h2 a {
+  text-decoration: none;
+}
+h1 a:hover, h2 a:hover {
+  text-decoration: underline;
+}
+
+h3 {
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+}
+
+a:focus {
+  border: none;
+  box-shadow: none;
+}
+
 input {
-  width: 100%;
-  display: inline-block;
-  padding: clamp(3.5px, 0.9vw, 6.5px) clamp(8.4px, 2.16vw, 15.6px);
-  border: 0.1px solid #202124;
-  border-radius: 3.5px;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
+  background: transparent;
+}
+
+/*   scss-reset                             ka.lt/docs/scss/reset                 */
+/*      components                    /*                                                                                */
+.chart {
+  background: #FFF;
+  padding: clamp(24.5px, 6.3vw, 45.5px) 0;
+  border-right: #fff solid clamp(14px, 3.6vw, 26px);
+  border-left: #fff solid clamp(14px, 3.6vw, 26px);
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
-input:focus {
-  background-color: #fff;
+.chart,
+canvas,
+.chartjs {
+  width: 100%;
 }
 
-input:active {
-  background-color: #fff;
+/*                                          ka.lt/docs/components/charts          */
+.dds-currencyAmount {
+  width: 100%;
 }
 
-input.success {
-  background-image: url("/images/omoji/happy.svg");
-  background-size: auto 50%;
+.dds-currencyAmount .wrap-amount {
+  width: 85%;
+}
+
+.dds-currencyAmount .wrap-currency {
+  width: 15%;
+}
+
+.dds-currencyAmount .wrap-amount input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dds-currencyAmount .wrap-currency select {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+  text-align: right;
+}
+
+.dds-currencyAmount .wrap-amount,
+.dds-currencyAmount .wrap-currency {
+  display: inline-block;
+}
+
+/*                                          ka.lt/docs/components/currencyAmount  */
+.frame {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-end;
+  align-content: flex-start;
+}
+.frame div {
+  width: 100%;
+}
+.frame canvas {
+  height: 50vw;
+  max-height: 418px;
+}
+.frame .image {
+  height: 32vw;
+  max-height: 268px;
+  display: inline-block;
+  flex-grow: 1;
+  flex-basis: 0;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: center;
+  background-color: #d0e5f4;
+  border-radius: 2px;
 }
-
-/*   <input>                                ka.lt/docs/atoms/input                */
-label {
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-  font-size: clamp(8.4px, 2.16vw, 15.6px);
-}
-
-/*   <label>                                ka.lt/docs/atoms/label                */
-select {
-  width: 100%;
-  display: inline-block;
-  padding: clamp(4.6666666667px, 1.2vw, 8.6666666667px) clamp(10.5px, 2.7vw, 19.5px) clamp(4.6666666667px, 1.2vw, 8.6666666667px) clamp(8.4px, 2.16vw, 15.6px);
-  border: 0.1px solid #202124;
-  border-radius: 3.5px;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-  box-sizing: border-box;
+.frame .image.contain {
+  background-size: contain;
   background-color: transparent;
 }
-
-select:focus {
-  background-color: white;
+.frame .image:first-child {
+  height: 50vw;
+  max-height: 418px;
+}
+.frame .image:last-child {
+  margin-left: clamp(14px, 3.6vw, 26px);
+}
+.frame:after {
+  display: block;
+  margin: 0px;
+  flex: 999 999 auto;
 }
 
-/*   <select>                               ka.lt/docs/atoms/select               */
+/*   navbar used in accounts page           ka.lt/docs/components/tabs            */
+header .menu ul {
+  position: fixed;
+  z-index: 3;
+  margin: 0;
+  max-height: 7.1666666667vw;
+  overflow: hidden;
+  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+}
+header .menu ul li.logomark,
+header .menu ul li.logomark span {
+  opacity: 1;
+  pointer-events: all;
+}
+header .menu ul li {
+  opacity: 0;
+  pointer-events: none;
+  line-height: 1;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  font-size: clamp(14px, 3.6vw, 26px);
+  padding: 0;
+  margin-bottom: 0;
+}
+header .menu ul li a {
+  text-decoration: none;
+}
+header .menu ul li a:hover {
+  text-decoration: underline;
+}
+header .menu ul li span {
+  font-weight: 500;
+  opacity: 0;
+}
+header .menu ul li:before {
+  display: none;
+}
+
+header .menu-toggle {
+  padding: clamp(12px, 3.24vw, 25px);
+  right: clamp(24.5px, 6.3vw, 45.5px);
+  position: fixed;
+  font-size: clamp(14px, 3.6vw, 26px);
+  line-height: clamp(14px, 3.6vw, 26px);
+  top: 0.1px;
+  width: auto;
+  border: 0;
+}
+header .menu-toggle:hover, header .menu-toggle:hover:before {
+  text-decoration: underline;
+}
+
+header .my-account-button {
+  width: clamp(14px, 3.6vw, 26px);
+  height: clamp(14px, 3.6vw, 26px);
+  display: block;
+  border-radius: 50%;
+  position: fixed;
+  top: 0.1px;
+  right: 0.1px;
+  background-image: url("/images/omoji/happy.svg");
+  background-size: contain;
+  margin: clamp(12px, 3.24vw, 25px);
+}
+header .my-account-button:hover {
+  background-image: url("/images/omoji/super-happy.svg");
+}
+
+.notification-dot {
+  min-width: 3.5px;
+  width: 0.9vw;
+  max-width: 6.5px;
+  min-height: 3.5px;
+  height: 0.9vw;
+  max-height: 6.5px;
+  top: 0.1px;
+  right: 0.1px;
+  margin: clamp(12px, 3.24vw, 25px);
+  position: fixed;
+  display: block;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.show-menu .page {
+  opacity: 0;
+  pointer-events: none;
+}
+.show-menu .menu ul {
+  overflow: visible;
+}
+.show-menu .menu ul li {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.show-menu button.menu-toggle:before {
+  content: "close ";
+  display: inline-block;
+  opacity: 1;
+}
+
+/*   the menu used in all pages             ka.lt/docs/components/navbar          */
+.tabs nav {
+  width: 100%;
+  font-size: 70%;
+  display: inline-block;
+}
+.tabs ul {
+  margin-left: 0;
+}
+.tabs ul li {
+  display: inline-block;
+  margin-left: 5%;
+  padding: 0 2px;
+  line-height: 1.5;
+  border-bottom: 2px solid black;
+}
+.tabs ul li:first-child {
+  margin-left: 0;
+}
+.tabs ul li:before {
+  display: none;
+  content: "";
+}
+.tabs ul li a {
+  text-decoration: none;
+}
+
+/*   navbar used in accounts page           ka.lt/docs/components/tabs            */
+/*   <input type="text">                    ka.lt/docs/components/username        */
 /*      elements                      /*                                                                                */
-.dds-textInput {
-  padding: 0 0 clamp(7px, 1.8vw, 13px) 0;
+.element.input.text {
+  margin-top: clamp(7px, 1.8vw, 13px);
 }
 
-/*   <input type="text">                    ka.lt/docs/elements/textInput         */
+/*   <input type="text">                    ka.lt/docs/elements/text              */
+.element.input.password {
+  margin-top: clamp(7px, 1.8vw, 13px);
+}
+
+/*   <input type="password">                ka.lt/docs/elements/password          */
+input[type=submit].atom {
+  border-radius: 50%;
+  margin-top: clamp(21px, 5.4vw, 39px);
+  text-transform: lowercase;
+}
+
+input[type=submit].atom:hover {
+  cursor: pointer;
+  background: white;
+  border-radius: 3px;
+}
+
+/*   <input type="submit">                  ka.lt/docs/elements/textInput         */
 .dds-numberInput {
   padding: 0 0 clamp(7px, 1.8vw, 13px) 0;
 }
 
-/*   <input type="number">                  ka.lt/docs/elements/numberInput       */
+/*   <input type="number">                  ka.lt/docs/elements/number            */
 .dds-emailInput {
   padding: 0 0 clamp(7px, 1.8vw, 13px) 0;
 }
 
-/*   <input type="email">                   ka.lt/docs/elements/emailInput        */
+/*   <input type="email">                   ka.lt/docs/elements/email             */
+.select-date input {
+  display: none;
+}
+
+.select-date label {
+  font-size: 70%;
+  padding: 2px 8px;
+  border: 0.1px solid #202124;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+/*   <input type="email">                   ka.lt/docs/elements/email             */
+.link-group {
+  width: 100%;
+  margin: clamp(7px, 1.8vw, 13px);
+  text-align: center;
+}
+
+.link-group a {
+  margin: clamp(7px, 1.8vw, 13px);
+}
+
+/*   <div class="link-group"> <a>           ka.lt/docs/elements/link-group        */
 /*
 
 
@@ -445,209 +649,126 @@ input:checked + .slider:before {
 }
 
 /*   <input type="radio"> styled as toggle  ka.lt/docs/elements/toggleSwitch      */
-/*      components                    /*                                                                                */
-/*   <input type="text"> x2                 ka.lt/docs/components/name            */
-/*   <input type="text">                    ka.lt/docs/components/username        */
-header .menu ul {
-  position: fixed;
-  z-index: 3;
-  margin: 0;
-  max-height: 7.1666666667vw;
-  overflow: hidden;
-  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+button.square {
+  border-radius: 3px;
 }
-header .menu ul li.logomark,
-header .menu ul li.logomark span {
-  opacity: 1;
-  pointer-events: all;
+button.square:hover {
+  background: white;
 }
-header .menu ul li {
-  opacity: 0;
-  pointer-events: none;
-  line-height: 1;
+
+/*   <button class="square">                ka.lt/docs/elements/buttons           */
+/*      Atoms                         /*                                                                                */
+a:focus button {
+  background-color: white;
+}
+
+a:focus button,
+a:hover button {
+  border-radius: 0%;
+  cursor: pointer;
+}
+
+button {
+  margin-bottom: clamp(7px, 1.8vw, 13px);
+  width: 100%;
+  padding: 2% 0;
+  background: transparent;
+  border-radius: 50%;
+  border: 0.1px solid #202124;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(10.5px, 2.7vw, 19.5px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
-  font-size: clamp(14px, 3.6vw, 26px);
-  padding: 0;
 }
-header .menu ul li a {
-  text-decoration: none;
-}
-header .menu ul li a:hover {
-  text-decoration: underline;
-}
-header .menu ul li span {
-  font-weight: 500;
-  opacity: 0;
+button.square, button:focus, button:hover {
+  cursor: pointer;
+  border-radius: 0%;
 }
 
-header .menu-toggle {
-  right: clamp(24.5px, 6.3vw, 45.5px);
-  position: fixed;
-  font-size: clamp(14px, 3.6vw, 26px);
-  line-height: clamp(14px, 3.6vw, 26px);
-  top: 0.1px;
-  border: 0;
-}
-header .menu-toggle:hover, header .menu-toggle:hover:before {
-  text-decoration: underline;
+/*   <button>                               ka.lt/docs/atoms/button               */
+input {
+  width: 100%;
+  display: inline-block;
+  padding: clamp(3.5px, 0.9vw, 6.5px) clamp(8.4px, 2.16vw, 15.6px);
+  border: 0.1px solid #202124;
+  border-radius: 3.5px;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  box-sizing: border-box;
 }
 
-.my-account-button {
-  width: clamp(14px, 3.6vw, 26px);
-  height: clamp(14px, 3.6vw, 26px);
-  display: block;
-  border-radius: 50%;
-  position: fixed;
-  top: 0.1px;
-  right: 0.1px;
+input:focus {
+  background-color: #fff;
+}
+
+input:active {
+  background-color: #fff;
+}
+
+input.success {
   background-image: url("/images/omoji/happy.svg");
-  background-size: contain;
-  margin: clamp(12px, 3.24vw, 25px);
-}
-.my-account-button:hover {
-  background-image: url("/images/omoji/super-happy.svg");
-}
-
-.notification-dot {
-  min-width: 3.5px;
-  width: 0.9vw;
-  max-width: 6.5px;
-  min-height: 3.5px;
-  height: 0.9vw;
-  max-height: 6.5px;
-  top: 0.1px;
-  right: 0.1px;
-  margin: clamp(12px, 3.24vw, 25px);
-  position: fixed;
-  display: block;
-  border-radius: 50%;
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-.show-menu .page {
-  opacity: 0;
-  pointer-events: none;
-}
-.show-menu .menu ul {
-  overflow: visible;
-}
-.show-menu .menu ul li {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.show-menu button.menu-toggle:before {
-  content: "close ";
-  display: inline-block;
-  opacity: 1;
-}
-
-/*   the menu used in all pages             ka.lt/docs/components/navbar          */
-.tabs nav {
-  width: 100%;
-  font-size: 70%;
-  display: inline-block;
-}
-.tabs ul {
-  margin-left: 0;
-}
-.tabs ul li {
-  display: inline-block;
-  margin-left: 5%;
-  padding: 0 2px;
-  line-height: 1.5;
-  border-bottom: 2px solid black;
-}
-.tabs ul li:first-child {
-  margin-left: 0;
-}
-.tabs ul li:before {
-  display: none;
-  content: "";
-}
-.tabs ul li a {
-  text-decoration: none;
-}
-
-/*   navbar used in accounts page           ka.lt/docs/components/tabs            */
-.frame {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-end;
-  align-content: flex-start;
-}
-.frame div {
-  width: 100%;
-}
-.frame canvas {
-  height: 50vw;
-  max-height: 418px;
-}
-.frame .image {
-  height: 32vw;
-  max-height: 268px;
-  display: inline-block;
-  flex-grow: 1;
-  flex-basis: 0;
-  background-size: cover;
-  background-position: center center;
+  background-size: auto 50%;
   background-repeat: no-repeat;
-  background-color: #d0e5f4;
-  border-radius: 2px;
+  background-position-x: right;
+  background-position-y: center;
 }
-.frame .image.contain {
-  background-size: contain;
+
+/*   <input>                                ka.lt/docs/atoms/input                */
+label {
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  font-size: clamp(8.4px, 2.16vw, 15.6px);
+}
+
+/*   <label>                                ka.lt/docs/atoms/label                */
+ol {
+  list-style: decimal;
+  margin-left: clamp(33.6px, 8.64vw, 62.4px);
+}
+
+ul {
+  margin-left: clamp(33.6px, 8.64vw, 62.4px);
+}
+
+ul > li {
+  margin-bottom: clamp(7px, 1.8vw, 13px);
+}
+
+ul > li:before {
+  position: relative;
+  margin-left: -7%;
+  margin-right: 3.3%;
+  content: "→";
+}
+
+/*   <ol> <ul>                              ka.lt/docs/atoms/lists                */
+select {
+  width: 100%;
+  display: inline-block;
+  padding: clamp(4.6666666667px, 1.2vw, 8.6666666667px) clamp(10.5px, 2.7vw, 19.5px) clamp(4.6666666667px, 1.2vw, 8.6666666667px) clamp(8.4px, 2.16vw, 15.6px);
+  border: 0.1px solid #202124;
+  border-radius: 3.5px;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  box-sizing: border-box;
   background-color: transparent;
 }
-.frame .image:first-child {
-  height: 50vw;
-  max-height: 418px;
-}
-.frame .image:last-child {
-  margin-left: clamp(14px, 3.6vw, 26px);
-}
-.frame:after {
-  display: block;
-  margin: 0px;
-  flex: 999 999 auto;
+
+select:focus {
+  background-color: white;
 }
 
-/*   navbar used in accounts page           ka.lt/docs/components/tabs            */
-.dds-currencyAmount {
-  width: 100%;
-}
-
-.dds-currencyAmount .wrap-amount {
-  width: 85%;
-}
-
-.dds-currencyAmount .wrap-currency {
-  width: 15%;
-}
-
-.dds-currencyAmount .wrap-amount input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.dds-currencyAmount .wrap-currency select {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left: 0;
-  text-align: right;
-}
-
-.dds-currencyAmount .wrap-amount,
-.dds-currencyAmount .wrap-currency {
-  display: inline-block;
-}
-
-/*                                          ka.lt/docs/components/currencyAmount  */
+/*   <select>                               ka.lt/docs/atoms/select               */
 table {
   width: 100%;
 }
@@ -659,223 +780,4 @@ tr td {
   font-size: 80%;
 }
 
-pre code {
-  display: block;
-  overflow-x: auto;
-  padding: clamp(14px, 3.6vw, 26px);
-  margin: clamp(14px, 3.6vw, 26px) 0;
-  font-family: "Kalt Monospace", "Courier New", Monospace;
-  font-size: clamp(14px, 3.6vw, 26px);
-  font-weight: normal;
-  line-height: 100%;
-  font-display: optional;
-  font-size: 80%;
-  background-color: #d0e5f4;
-  line-height: 1.2;
-  height: clamp(14px, 3.6vw, 26px);
-  color: transparent;
-  overflow: hidden;
-}
-pre code:hover {
-  cursor: pointer;
-}
-pre code.show-code {
-  color: #202124;
-  height: auto;
-  padding: clamp(14px, 3.6vw, 26px);
-}
-pre code.show-code:before {
-  display: block;
-  content: "";
-  color: transparent;
-}
-pre code.show-code:hover {
-  cursor: auto;
-}
-pre code:before {
-  position: absolute;
-  display: block;
-  content: "> show code";
-  color: #202124;
-}
-
-input[type=password] {
-  background: transparent;
-  width: 100%;
-  border-radius: 0;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-  border-radius: 0%;
-  border: 0.1px solid #202124;
-  max-width: 100%;
-  height: clamp(14px, 3.6vw, 26px);
-  margin: clamp(7px, 1.8vw, 13px) 0 clamp(14px, 3.6vw, 26px) 0;
-  box-sizing: border-box;
-  padding: clamp(14px, 3.6vw, 26px) clamp(7px, 1.8vw, 13px);
-}
-input[type=password]:focus {
-  border-style: dashed;
-}
-
-select {
-  margin: 0;
-}
-
-.section form input[type=submit],
-.section button {
-  width: 100%;
-  padding: 2% 0;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(10.5px, 2.7vw, 19.5px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-  border-radius: 100%;
-  border: 0.1px solid #202124;
-  background: #FCF9F2;
-}
-
-form input[type=submit]:focus,
-a:focus button {
-  background: #d0e5f4;
-}
-
-form input[type=submit],
-a:focus button,
-a:hover button {
-  border-radius: 0%;
-  cursor: pointer;
-}
-
-del {
-  pointer-events: none;
-  background: #000;
-  opacity: 0.8;
-  border-radius: 3% 1% 0.5% 1%;
-  user-select: none;
-  transform: rotate(25deg);
-}
-del:hover {
-  cursor: not-allowed;
-}
-
-.section .underbutton {
-  border: none;
-  font-size: 70%;
-  text-decoration: underline;
-}
-
-.section .underbutton:focus,
-.section .underbutton:active {
-  background: transparent;
-}
-
-.pills input {
-  display: none;
-}
-
-.pills label {
-  font-size: 70%;
-  padding: 2px 8px;
-  border: 0.1px solid #202124;
-  border-radius: 3px;
-  margin-right: 10px;
-}
-
-/*/ forms, anchors, headers etc /*/
-.chart {
-  background: #FFF;
-  padding: clamp(24.5px, 6.3vw, 45.5px) 0;
-  border-right: #fff solid clamp(14px, 3.6vw, 26px);
-  border-left: #fff solid clamp(14px, 3.6vw, 26px);
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-
-.chart,
-canvas,
-.chartjs {
-  width: 100%;
-}
-
-/*/ forms, anchors, headers etc /*/
-.page {
-  padding: clamp(48px, 10.8vw, 78px) 0 clamp(75px, 15vh, 175px) 0;
-}
-
-.section {
-  width: 86vw;
-  max-width: 720px;
-  padding: clamp(75px, 15vh, 175px) 0;
-  margin: auto;
-  margin: 0 auto;
-}
-
-.block {
-  margin: 40px 0;
-}
-.block h3 {
-  font-size: 110%;
-  font-weight: 400;
-}
-.block h4 {
-  text-decoration: underline;
-}
-.block h3, .block h4 {
-  margin: clamp(14px, 3.6vw, 26px) 0 clamp(7px, 1.8vw, 13px) 0;
-}
-.block p {
-  margin: clamp(7px, 1.8vw, 13px) 0;
-}
-.block ol {
-  list-style: decimal;
-  margin-left: clamp(33.6px, 8.64vw, 62.4px);
-}
-.block ul {
-  margin-left: clamp(33.6px, 8.64vw, 62.4px);
-}
-.block ul > li {
-  margin-bottom: clamp(7px, 1.8vw, 13px);
-}
-.block ul > li:before {
-  position: relative;
-  margin-left: -7%;
-  margin-right: 3.3%;
-  content: "→";
-}
-
-/*
-@media (prefers-color-scheme: dark) {
-
-	a:focus button,
-	*::selection,
-	body {
-		background-color: $midnight !important;
-		color: $noon;
-	}
-	.image{
-		filter:grayscale(1);
-	}
-	button{
-		color: $noon;
-		border-color:$noon;
-	}
-	.insignia {
-		stroke:$noon;
-	}
-	pre code{
-		&:before,
-		&.show-code{
-			color: $noon;
-		}
-	}
-	.menu,
-	a{
-		color: $noon;
-	}
-}
-*/
-/*/ forms, anchors, headers etc /*/
+/*   <table>                                ka.lt/docs/atoms/table                */
