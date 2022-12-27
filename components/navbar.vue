@@ -5,7 +5,7 @@
             <li class="logomark">
                 <nuxt-link to="/">
                 <span>Kalt — </span>
-                {{ pageTitle }}
+                {{ pageTitle || currentRouteName }}
                 </nuxt-link>
             </li>
             <li>
@@ -46,5 +46,11 @@ export default {
       document.getElementsByTagName("body")[0].classList.toggle("show-menu");
     },
   },
+
+    computed: {
+        currentRouteName() {
+            return this.$route.name;
+        }
+    },
 };
 </script>
