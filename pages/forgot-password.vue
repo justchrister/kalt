@@ -10,6 +10,15 @@
           </h2>
         </div>
         <form @submit.prevent="() => (signIn())">
+          <label class="atom" for="email">
+            E-mail:
+          </label>
+          <input class="atom" type="email" id="email">
+          <label class="atom" for="password">
+            Password:
+          </label>
+          <input class="password" type="password" id="password">
+
           <input type="submit" value="Log in" />
         </form>
       </div>
@@ -28,18 +37,13 @@
     title,
   });
 
+  const form = reactive({
+    data: {
+      email: '',
+      password: '',
+    },
+  });
 
-  definePageMeta({
-    middleware: ['auth']
-  })
-
-  onMounted(() => {
-    watchEffect(() => {
-      if (user.value) {
-        navigateTo('/account/portfolio')
-      }
-    })
-  })
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: form.data.email,
