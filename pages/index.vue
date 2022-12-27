@@ -12,7 +12,17 @@
       },
     ],
   });
+  definePageMeta({
+    middleware: ['auth']
+  })
 
+  onMounted(() => {
+    watchEffect(() => {
+      if (user.value) {
+        navigateTo('/account/portfolio')
+      }
+    })
+  })
 </script>
 <template>
   <div class="PageWrapper">
