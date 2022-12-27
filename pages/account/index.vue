@@ -49,4 +49,18 @@
   useHead({
     title,
   });
+
+  const client = useSupabaseClient()
+  const user = useSupabaseUser()
+  definePageMeta({
+    middleware: ['auth']
+  })
+
+  onMounted(() => {
+    watchEffect(() => {
+      if (!user.value) {
+        navigateTo('/sign-up-in')
+      }
+    })
+  })
 </script>

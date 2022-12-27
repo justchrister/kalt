@@ -51,9 +51,20 @@
     ],
     });
 
-
     const client = useSupabaseClient()
     const user = useSupabaseUser()
+    definePageMeta({
+      middleware: ['auth']
+    })
+
+    onMounted(() => {
+      watchEffect(() => {
+        if (!user.value) {
+          navigateTo('/sign-up-in')
+        }
+      })
+    })
+
     const loading = ref(null)
     const days = ref(30)
 

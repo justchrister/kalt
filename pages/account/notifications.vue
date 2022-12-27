@@ -43,22 +43,23 @@
       },
     ],
   });
-definePageMeta({
-  middleware: ['auth']
-})
+  
+  const client = useSupabaseClient()
+  const user = useSupabaseUser()
+  definePageMeta({
+    middleware: ['auth']
+  })
 
-const client = useSupabaseClient()
-const user = useSupabaseUser()
+  onMounted(() => {
+    watchEffect(() => {
+      if (!user.value) {
+        navigateTo('/sign-up-in')
+      }
+    })
+  })
+
 const loading = ref(null)
 
-onMounted(() => {
-  watchEffect(() => {
-    if (!user.value) {
-      
-      navigateTo('/authenticate/sign-in')
-    }
-  })
-})
 
 const { data: transactions } = await useAsyncData('transactions', async () => {
   const { data } = await client.from('transactions').select('id, currency, amount, type,completed, initiated').order('initiated')
