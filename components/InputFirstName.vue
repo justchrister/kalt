@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <label for="first-name"> 
+  <div class="element input text">
+    <label 
+      class="atom"
+      for="first-name"> 
       First name: 
     </label>
     <input
+      class="atom"
       type="text"
       v-model="first_name"
       placeholder="First name"
       id="first-name"
-      class="atom first-name"
       @input="updateProfile()"
     />
   </div>
