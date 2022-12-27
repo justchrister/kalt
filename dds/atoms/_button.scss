@@ -1,0 +1,25 @@
+
+a:focus button{
+  background-color:white;
+}
+
+a:focus button,
+a:hover button{
+  border-radius: 0%;
+  cursor: pointer;
+}
+button {
+  margin-bottom:clamp($unit-min, $unit, $unit-max);
+  width: 100%;
+  padding: 2% 0;
+  background:transparent;
+  border-radius: 50%;
+  border: $border;
+  @include font-body;
+  &.square,
+	&:focus,
+  &:hover {
+    cursor: pointer;
+    border-radius: 0%;
+  }
+}

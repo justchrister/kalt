@@ -16,23 +16,20 @@
             v-model="email"
             id='email'
           />
-          <label for='password'> Password </label>
-          <input
-            type="password"
-            placeholder="Password"
-            v-model="password"
-            id='password'
-          />
-          <button type="submit">Sign up
-          </button>
+          <div class="element input password">
+            <label class="atom" for='password'> Password </label>
+            <input class="atom" 
+              type="password"
+              placeholder="Password"
+              v-model="password"
+              id='password'
+            />
+          </div>
+          <input type="submit" value="Sign up" class="atom">
         </form>
         <div class="element link-group">
-          <nuxt-link to="/sign-in">
-            sign in
-          </nuxt-link>
-          <nuxt-link to="/forgot-password">
-            forgot password
-          </nuxt-link>
+          <nuxt-link to="/sign-in">Sign in</nuxt-link>
+          <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
         </div>
       </div>
     </div>
@@ -55,7 +52,8 @@
     ],
   });
 
-/*
+  const client = useSupabaseClient()
+  const user = useSupabaseUser()
   definePageMeta({
     middleware: ['auth']
   })
@@ -67,9 +65,6 @@
       }
     })
   })
-*/
-  const user = useSupabaseUser()
-  const client = useSupabaseClient()
 
   const email = ref('')
   const password = ref('')

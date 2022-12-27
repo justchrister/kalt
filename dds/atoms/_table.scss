@@ -1,0 +1,9 @@
+table{
+  width: 100%;
+}
+tr th,
+tr td{
+  text-align:left;
+  border-bottom: $border;
+  font-size:80%;
+}

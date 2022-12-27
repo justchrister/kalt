@@ -1,0 +1,15 @@
+// Page wrapper
+.page{
+  padding: clamp($unit-min*5, $unit*5, $unit-max*5) 0 $sectionpadding 0;
+}
+
+//  Sections
+.section {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  padding: $sectionpadding 0;
+  margin:0 auto;
+}
+.block {
+  margin: clamp($unit-min*5, $unit*5, $unit-max*5) 0;
+}

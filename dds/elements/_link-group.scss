@@ -1,0 +1,8 @@
+.link-group{
+  width:100%;
+  margin: clamp($unit-min, $unit, $unit-max);
+  text-align:center;
+}
+.link-group a{
+  margin: clamp($unit-min, $unit, $unit-max);
+}

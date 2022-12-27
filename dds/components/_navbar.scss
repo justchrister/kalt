@@ -15,6 +15,7 @@ header .menu ul{
     pointer-events : all;
   }
   // list, hidden when not in toggled
+
   li {
     opacity:0;
     pointer-events : none;
@@ -22,6 +23,7 @@ header .menu ul{
     @include font-body;
     font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
     padding: 0;
+    margin-bottom:0;
     a{
       text-decoration: none;
       &:hover{
@@ -32,18 +34,23 @@ header .menu ul{
       font-weight:500;
       opacity:0;
     }
+    &:before{
+      display:none;
+    }
   }
 }
 
 // menu / close menu
 
-header 
-.menu-toggle {
+header .menu-toggle {
+
+  padding: $big-clamp-half;
   right: $big-clamp;
   position: fixed;
   font-size: $medium-clamp;
   line-height: $medium-clamp;
   top: $border-width;
+  width: auto;
   border: 0;
   &:hover,
   &:hover:before{
@@ -51,7 +58,7 @@ header
   }
 }
 // 😊 
-.my-account-button{
+header .my-account-button{
   width:$medium-clamp;
   height:$medium-clamp;
   display:block; 

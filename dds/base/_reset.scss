@@ -87,18 +87,6 @@ a:focus {
   border: none;
   box-shadow: none;
 }
-button {
-  border-radius: 50%;
-  border: $border;
-  padding: $big-clamp-half;
-  background: transparent;
-  @include font-body;
-	&:focus,
-  &:hover {
-    cursor: pointer;
-    border-radius: 0%;
-  }
-}
 input{
   background:transparent;
 }

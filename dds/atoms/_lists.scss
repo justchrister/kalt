@@ -1,0 +1,17 @@
+
+  ol{
+    list-style: decimal;
+    margin-left: clamp(33.6px, 8.64vw, 62.4px);
+  }
+  ul{
+    margin-left: clamp(33.6px, 8.64vw, 62.4px);
+  }
+  ul > li {
+    margin-bottom:$medium-clamp-half;
+  }
+  ul > li:before {
+    position: relative;
+    margin-left: -7%;
+    margin-right: 3.3%;
+    content: "\2192";
+  }

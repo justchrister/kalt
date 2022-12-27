@@ -10,24 +10,50 @@
           </h2>
         </div>
         <form @submit.prevent="() => (signIn())">
-          <input type="submit" value="Log in" />
+          <label  for='email'> E-mail</label>
+          <input
+            type="email"
+            placeholder="Email"
+            v-model="email"
+            id='email'
+          />
+          <div class="element input password">
+            <label class="atom" for='password'> Password </label>
+            <input class="atom" 
+              type="password"
+              placeholder="Password"
+              v-model="password"
+              id='password'
+            />
+          </div>
+          <input type="submit" value="Sign in" class="atom">
         </form>
+        <div class="element link-group">
+          <nuxt-link to="/sign-up">Sign up</nuxt-link>
+          <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { createClient } from '@supabase/supabase-js'
-  const runtimeConfig = useRuntimeConfig()
-  const supabase = createClient(runtimeConfig.supabaseUrl, runtimeConfig.supabaseSecret)
-  
-  const pagename = 'Sign in';
+  const pagename = 'Sign up';
   const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+
   useHead({
     title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
   });
-
 
   definePageMeta({
     middleware: ['auth']
@@ -40,15 +66,17 @@
       }
     })
   })
+
+  const email = ref('')
+  const password = ref('')
+
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: form.data.email,
-      password: form.data.password,
+      email: email.value,
+      password: password.value
     })
     if (error.status = 400){
       console.log('Please check login details')
-      console.log(form.data.email)
-      console.log(form.data.password)
     }
   }
 </script>
