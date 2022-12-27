@@ -1,0 +1,28 @@
+{
+	// Place your kalt workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"atom input": {
+		"prefix": ["/a i", "/atom input"],
+		"body": "<label for=\"$2\">$3:</label> <input \n type=\"$1\" \n v-model=\"$3\" \n placeholder=\"$3\" \n id=\"$2\" \n class=\"atom input-$2\" \n @input=\"update$1()\" />",
+		"description": "a snippet to create the <input> atom",
+	},
+	"atom label": {
+		"prefix": ["/a l", "/atom label"],
+		"body": "<label> $0 </label>",
+		"description": "a snippet to create the <input> atom",
+	},
+}

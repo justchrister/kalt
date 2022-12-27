@@ -2,9 +2,8 @@
 node_modules/
 .nuxt/
 .env
-.vscode/
 .DS_Store
-.vscode/
+*/.DS_Store
 package-lock.json
 /package-lock.json
 */package-lock.*
