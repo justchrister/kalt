@@ -1,29 +1,4 @@
-<script setup lang="ts">
-  const pagename = 'Homepage';
-  const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
 
-  useHead({
-    title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
-  });
-  definePageMeta({
-    middleware: ['auth']
-  })
-
-  onMounted(() => {
-    watchEffect(() => {
-      if (user.value) {
-        navigateTo('/account/portfolio')
-      }
-    })
-  })
-</script>
 <template>
   <div class="PageWrapper">
     <navbar :pageTitle="pagename" />
@@ -51,3 +26,21 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+  const pagename = 'Homepage';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+  
+</script>

@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt'
+import { defineNuxtConfig } from 'nuxt/config'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -39,9 +39,6 @@ export default defineNuxtConfig({
       meta: [
         // <meta name="description" content="My amazing site">
         { name: 'description', content: 'Make money, make a difference!' }
-      ],
-      script: [
-        { src: '../omoji.js', defer: '' }
       ],
     }
   }

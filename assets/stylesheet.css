@@ -386,7 +386,7 @@ canvas,
   flex: 999 999 auto;
 }
 
-/*   navbar used in accounts page           ka.lt/docs/components/tabs            */
+/*   navbar used in accounts page           ka.lt/docs/components/image           */
 header .menu ul {
   position: fixed;
   z-index: 3;
@@ -520,6 +520,94 @@ header .my-account-button:hover {
 
 /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
 /*   <input type="text">                    ka.lt/docs/components/username        */
+.card {
+  border: 0.1px solid #202124;
+  border-radius: 3px;
+  padding: clamp(7px, 1.8vw, 13px) clamp(14px, 3.6vw, 26px);
+  margin: clamp(7px, 1.8vw, 13px) 0;
+}
+
+.card:hover {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.card .logo {
+  width: clamp(28px, 7.2vw, 52px);
+  height: clamp(28px, 7.2vw, 52px);
+  background: transparent;
+  background-size: contain;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center left;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.card .logo.visa {
+  background-image: url("/images/logos/visa.svg");
+}
+
+.card .details {
+  width: clamp(252px, 64.8vw, 468px);
+  height: clamp(28px, 7.2vw, 52px);
+  line-height: clamp(28px, 7.2vw, 52px);
+  padding-left: clamp(14px, 3.6vw, 26px);
+  display: inline-block;
+  vertical-align: center;
+}
+
+.card .default {
+  width: clamp(56px, 14.4vw, 104px);
+  height: clamp(28px, 7.2vw, 52px);
+  line-height: clamp(28px, 7.2vw, 52px);
+  display: inline-block;
+  text-align: right;
+}
+
+.card:hover .not.default {
+  text-decoration: underline;
+}
+
+.expiry_year-group select,
+.expiry_month-group select,
+.cvc-group input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: transparent;
+}
+
+.card_number-group,
+.expiry_year-group,
+.expiry_month-group,
+.cvc-group {
+  display: inline-block;
+}
+
+.card_number-group input,
+.expiry_year-group select,
+.expiry_month-group select {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.add-card .card .card_number-group {
+  width: clamp(175px, 45vw, 325px);
+}
+
+.add-card .card .expiry_year-group {
+  width: clamp(56px, 14.4vw, 104px);
+}
+
+.add-card .card .expiry_month-group {
+  width: clamp(56px, 14.4vw, 104px);
+}
+
+.add-card .card .cvc-group {
+  width: clamp(56px, 14.4vw, 104px);
+}
+
+/*                                          ka.lt/docs/components/tabs            */
 /*      elements                      /*                                                                                */
 .element.input.text {
   margin-top: clamp(7px, 1.8vw, 13px);
@@ -535,6 +623,7 @@ input[type=submit].atom {
   border-radius: 50%;
   margin-top: clamp(21px, 5.4vw, 39px);
   text-transform: lowercase;
+  padding: 2% 0;
 }
 
 input[type=submit].atom:hover {

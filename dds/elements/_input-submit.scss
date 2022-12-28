@@ -2,6 +2,7 @@ input[type="submit"].atom{
   border-radius:50%;
   margin-top: clamp($unit-min*3, $unit*3, $unit-max*3);
   text-transform: lowercase;
+  padding: 2% 0;
 }
 input[type="submit"].atom:hover{
   cursor:pointer;

@@ -13,7 +13,6 @@
       },
     ],
   });
-
 </script>
 <template>
   <div class="PageWrapper">
@@ -32,7 +31,7 @@
           <h1>Major tom to ground control!</h1>
           <p>Before we complete your first deposit, please verify your email address by clicking the link in your email. If you've already done this, click the button below.</p>
           </div>
-          <nuxt-link to="/authenticate/sign-in" >
+          <nuxt-link to="/auth/sign-in" >
               <button tabindex="-1">lets invest</button>
           </nuxt-link>
       </div>

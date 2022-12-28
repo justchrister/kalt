@@ -1,3 +1,4 @@
+
 <template>
   <div class="PageWrapper">
     <navbar :pageTitle="pagename" />
@@ -5,10 +6,10 @@
       <div class="section">
         <div class="block">
           <h2 class="title">
-            Create an account today, earn money tomorrow!
+            Welcome back! 😃
           </h2>
         </div>
-        <form @submit.prevent="() => (signUp())">
+        <form @submit.prevent="() => (signIn())">
           <label  for='email'> E-mail</label>
           <input
             type="email"
@@ -25,10 +26,10 @@
               id='password'
             />
           </div>
-          <input type="submit" value="Sign up" class="atom">
+          <input type="submit" value="Sign in" class="atom">
         </form>
         <div class="element link-group">
-          <nuxt-link to="/sign-in">Sign in</nuxt-link>
+          <nuxt-link to="/sign-up">Sign up</nuxt-link>
           <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
         </div>
       </div>
@@ -37,10 +38,13 @@
 </template>
 
 <script setup lang="ts">
-  const pagename = 'Sign up';
+  const pagename = 'Sign in';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
-  var errormsg = ref('');
+
+  const user = useSupabaseUser()
+  const supabase = useSupabaseClient()
+  const router = useRouter()
 
   useHead({
     title,
@@ -52,32 +56,19 @@
     ],
   });
 
-  const client = useSupabaseClient()
-  const user = useSupabaseUser()
-  definePageMeta({
-    middleware: ['auth']
-  })
-
-  onMounted(() => {
-    watchEffect(() => {
-      if (user.value) {
-        navigateTo('/account/portfolio')
-      }
-    })
-  })
 
   const email = ref('')
   const password = ref('')
 
-  const signUp = async () => {
-    const { user, error } = await client.auth.signUp({
+  // Login method using providers
+  const signIn = async () => {
+    const { data, error } = await supabase.auth.signIn({ 
       email: email.value,
       password: password.value
-    }) 
-    if(!error){
-      navigateTo('/lobby')
-    } else {
-      console.log(error)
+     })
+    if (error) {
+      return alert('Something went wrong !')
     }
+    router.push('/account/portfolio')
   }
 </script>

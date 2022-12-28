@@ -56,6 +56,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    
     const chartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
@@ -121,5 +122,5 @@ export default defineComponent({
 })
 </script>
 <template>
-    
+
 </template>

@@ -1,3 +1,11 @@
+export default defineNuxtRouteMiddleware((to, _from) => {
+  const user = useSupabaseUser()
+  if (!user.value) {
+    return navigateTo('/auth')
+  }
+});
+/*
+
 export default defineNuxtRouteMiddleware((to) => {
 
   const client = useSupabaseClient()
@@ -23,3 +31,7 @@ export default defineNuxtRouteMiddleware((to) => {
   }
   
 })
+
+
+
+*/

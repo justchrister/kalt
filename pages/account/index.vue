@@ -21,14 +21,20 @@
             <div class="col-3 gutter-left">
               <input-postal-code/>
             </div>
-              <input-address-line/>
-              <input-birthdate/>
+            <input-address-line/>
+            <input-birthdate/>
+            <div class="col-2 gutter-right">
+              <select-preferred-currency/>
+            </div>
+            <div class="col-2 gutter-left">
+              <select-preferred-language/>
+            </div>
               <p> useful links: 
                 <a href="#"> manage subscriptions </a>
-                <a href="#" style="margin-left:15px;"> manage cards </a>
+                <nuxt-link to="/account/manage-cards" style="margin-left:15px;"> manage cards </nuxt-link>
                 <a href="#" style="margin-left:15px;"> change password </a>
                 <a href="#" style="margin-left:15px;"> change email </a>
-                <a href="#" style="margin-left:15px;"> sign out 👋 </a>
+                <nuxt-link to="/sign-out" style="margin-left:15px;"> sign out 👋 </nuxt-link>
               </p>
           </form>
         </div>
@@ -50,7 +56,7 @@
     title,
   });
 
-  const client = useSupabaseClient()
+  const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   definePageMeta({
     middleware: ['auth']
