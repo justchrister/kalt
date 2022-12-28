@@ -34,7 +34,7 @@
                 <nuxt-link to="/account/manage-cards" style="margin-left:15px;"> manage cards </nuxt-link>
                 <a href="#" style="margin-left:15px;"> change password </a>
                 <a href="#" style="margin-left:15px;"> change email </a>
-                <nuxt-link to="/sign-out" style="margin-left:15px;"> sign out 👋 </nuxt-link>
+                <nuxt-link to="/auth/sign-out" style="margin-left:15px;"> sign out 👋 </nuxt-link>
               </p>
           </form>
         </div>
