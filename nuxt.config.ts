@@ -7,24 +7,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['chart.js'],
   },
-  serverMiddleware: [
-    // Transactions
-    { path: "/api/transactions", handler: "~/server-middleware/transactions/createTransaction.ts" },
-    { path: "/api/transactions", handler: "~/server-middleware/transactions/getTransactions.ts" },
-    { path: "/api/transactions", handler: "~/server-middleware/transactions/autoInvest.ts" },
-
-    // Exchange
-    { path: "/api/exchange", handler: "~/server-middleware/exchange/createOrder.ts" },
-    { path: "/api/exchange", handler: "~/server-middleware/exchange/getOrders.ts" },
-    { path: "/api/exchange", handler: "~/server-middleware/exchange/matchOrders.ts" },
-
-    // BFF
-    { path: "/api/bff", handler: "~/server-middleware/bff/dailyCalculatedPortfolioValue.ts" },
-    { path: "/api/bff", handler: "~/server-middleware/bff/dailyCalculatedAccountBalance.ts" },
-
-    // Cards
-    { path: "/api/cards", handler: "~/server-middleware/cards/getCards.ts" }
-  ],
   app: {
     head: {
       charset: 'utf-8',
