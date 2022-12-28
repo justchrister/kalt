@@ -28,8 +28,8 @@
             <input type="submit" value="Sign in" class="atom">
           </form>
           <div class="element link-group">
-            <nuxt-link to="/sign-up">Sign up</nuxt-link>
-            <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
+            <nuxt-link to="/auth/sign-up">Sign up</nuxt-link>
+            <nuxt-link to="/">Forgot password</nuxt-link>
           </div>
         </div>
       </div>
@@ -45,6 +45,7 @@
   const user = useSupabaseUser()
   const supabase = useSupabaseClient()
   const router = useRouter()
+
 
   useHead({
     title,
@@ -62,7 +63,7 @@
 
   // Login method using providers
   const signIn = async () => {
-    const { data, error } = await supabase.auth.signIn({ 
+    const { data, error } = await supabase.auth.signInWithPassword({ 
       email: email.value,
       password: password.value
      })

@@ -4,10 +4,10 @@
     <div class='page'>
       <div class="section">
         <div class="block">
-          <button class="atom square" @click="navigateTo('/auth/sign-up')">
+          <button class="atom square" @click="navigateTo('auth/sign-up')">
             sign up →
           </button>
-          <button class="atom square" @click="navigateTo('/auth/sign-in')">
+          <button class="atom square" @click="navigateTo('auth/sign-in')">
             sign in →
           </button>
         </div>

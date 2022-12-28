@@ -53,7 +53,7 @@
   onMounted(() => {
     watchEffect(() => {
       if (!user.value) {
-        navigateTo('/sign-up-in')
+        navigateTo('/auth')
       }
     })
   })

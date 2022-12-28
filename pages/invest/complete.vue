@@ -22,7 +22,7 @@ const user = useSupabaseUser()
 onMounted(() => {
   watchEffect(() => {
     if (!user.value) {
-      navigateTo('/authenticate/sign-up')
+      navigateTo('/auth')
     }
   })
 })

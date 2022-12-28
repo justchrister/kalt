@@ -5,7 +5,11 @@
       <div class="section">
         <tabs/>
         <div class="block">
-            <div class="frame">
+            <div class="frame" v-if="portfolio='sorry'">
+              Sadly you are not invested yet, lets change that
+              <button> invest </button>
+            </div>
+            <div class="frame" v-else>
                 <LineChart :chartData="dataChart"/>
             </div>
         </div>
@@ -60,7 +64,7 @@
     onMounted(() => {
       watchEffect(() => {
         if (!user.value) {
-          navigateTo('/sign-up-in')
+          navigateTo('/auth')
         }
       })
     })
@@ -73,6 +77,7 @@
         query: { days: 365*5, user_id: user.value.id },
         server: false
     })
+    console.log(portfolio)
     const getData = (dataset) => {
         if (dataset) {
             var dataArray = [];
