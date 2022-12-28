@@ -3,8 +3,10 @@ Microservices is a good architecture because it allows for a more modular and fl
 ## A few guiding princeiples: 
 
 ### Keep it simple
-Keeping microservices simple is important for several reasons. First, simple microservices are easier to understand and work with, which makes them less error-prone and more maintainable. This is especially important when working in a team, where multiple developers may need to collaborate on a single service. Second, simple microservices are easier to test and deploy independently, which can help speed up the development process and reduce the risk of introducing bugs into the system. Finally, simple microservices are easier to scale and update, which can help ensure that the application can continue to meet the changing needs of users over time.
+Keeping microservices simple is important for several reasons. First, simple microservices are easier to understand and work with, which makes them less error-prone and more maintainable. This is especially important when working in a team, where multiple developers may need to collaborate on a single service. Second, simple microservices are easier to test and deploy independently, which can help speed up the development process and reduce the risk of introducing bugs into the system. Finally, simple microservices are easier to scale and update, which can help ensure that the application can continue to meet the changing needs of market over time.
 
+A few principles:
+1/ Achieve first, improve later.
 
 ## The services
 
