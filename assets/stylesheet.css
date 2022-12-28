@@ -619,6 +619,11 @@ header .my-account-button:hover {
 }
 
 /*   <input type="password">                ka.lt/docs/elements/password          */
+.element.input.date {
+  margin-top: clamp(7px, 1.8vw, 13px);
+}
+
+/*   <input type="date">                    ka.lt/docs/elements/date              */
 input[type=submit].atom {
   border-radius: 50%;
   margin-top: clamp(21px, 5.4vw, 39px);
@@ -633,13 +638,18 @@ input[type=submit].atom:hover {
 }
 
 /*   <input type="submit">                  ka.lt/docs/elements/textInput         */
-.dds-numberInput {
-  padding: 0 0 clamp(7px, 1.8vw, 13px) 0;
+.element.input.number {
+  margin-top: clamp(7px, 1.8vw, 13px);
 }
 
 /*   <input type="number">                  ka.lt/docs/elements/number            */
-.dds-emailInput {
-  padding: 0 0 clamp(7px, 1.8vw, 13px) 0;
+.element.input.email {
+  margin-top: clamp(7px, 1.8vw, 13px);
+}
+
+/*   <input type="email">                   ka.lt/docs/elements/email             */
+.element.select {
+  margin-top: clamp(7px, 1.8vw, 13px);
 }
 
 /*   <input type="email">                   ka.lt/docs/elements/email             */
@@ -855,6 +865,10 @@ select {
 
 select:focus {
   background-color: white;
+}
+
+select.loading {
+  background-color: red;
 }
 
 /*   <select>                               ka.lt/docs/atoms/select               */

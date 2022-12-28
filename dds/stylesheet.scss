@@ -20,9 +20,11 @@
 /*      elements                      /*                                                                                */
 @import 'elements/input-text';        /*   <input type="text">                    ka.lt/docs/elements/text              */
 @import 'elements/input-password';    /*   <input type="password">                ka.lt/docs/elements/password          */
+@import 'elements/input-date';        /*   <input type="date">                    ka.lt/docs/elements/date              */
 @import 'elements/input-submit';      /*   <input type="submit">                  ka.lt/docs/elements/textInput         */
 @import 'elements/input-number';      /*   <input type="number">                  ka.lt/docs/elements/number            */
 @import 'elements/input-email';       /*   <input type="email">                   ka.lt/docs/elements/email             */
+@import 'elements/select';            /*   <input type="email">                   ka.lt/docs/elements/email             */
 @import 'elements/select-date';       /*   <input type="email">                   ka.lt/docs/elements/email             */
 @import 'elements/link-group';        /*   <div class="link-group"> <a>           ka.lt/docs/elements/link-group        */
 @import 'elements/toggleSwitch';      /*   <input type="radio"> styled as toggle  ka.lt/docs/elements/toggleSwitch      */

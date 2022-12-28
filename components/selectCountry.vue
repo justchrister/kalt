@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="element select country">
     <label for="country"> 
       Country: 
     </label>

@@ -6,7 +6,6 @@
       <div class="section">
         <div class="block"  v-if="cards.length">
           <h3> Your cards: </h3>
-
           <div v-for="card of cards" :key="card.card_id" class="card">
             <div :class="checkBrand(card.card_number)"></div> 
             <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>

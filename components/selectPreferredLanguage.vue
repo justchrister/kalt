@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="element select language">
     <label for="preferred_language"> 
       Preferred language: 
     </label>
@@ -13,15 +13,16 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser();
-
   const preferred_language = ref('')
   const state = ref('normal')
 
   let { data } = await supabase.from('accounts').select('preferred_language').eq('user_id', user.value.id).single()
-  if (data) preferred_language.value = data.preferred_language
-
-  let { data: language } = await supabase.from('languages').select('iso6393,language_name').eq('available', true)
   
+  let { data: languages } = await supabase.from('languages').select('iso6393,name').eq('available', true)
+
+
+  if (data && languages) preferred_language.value = data.preferred_language
+
   const updateProfile = async () => {
     const { error } = await supabase.from('accounts').update({ preferred_language: preferred_language.value }).eq('user_id', user.value.id)
     if(error){

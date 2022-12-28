@@ -79,12 +79,7 @@ async function updateCache() {
       })
       .select()
   } catch (error) {
-    console.log(error)
   } finally {
-    /*
-    if (reoccuring.value) navigateTo('/invest/reoccuring')
-    if (reoccuring.value) navigateTo('/invest/payment')
-    */
     if (reoccuring.value===true) navigateTo('/invest/reoccuring')
     if (reoccuring.value==false) navigateTo('/invest/payment')
   }

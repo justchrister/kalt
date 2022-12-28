@@ -71,8 +71,6 @@
 
     const loading = ref(null)
     const days = ref(30)
-
-
     const { data: portfolio } = await useFetch('../api/bff/dailyCalculatedPortfolioValue',{
         query: { days: 365*5, user_id: user.value.id },
         server: false

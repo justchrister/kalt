@@ -14,3 +14,6 @@ select{
 select:focus{
   background-color:white;
 }
+select.loading{
+  background-color: red;
+}
