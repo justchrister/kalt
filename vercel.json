@@ -1,7 +1,4 @@
 {
-  "redirects": [
-    { "source": "https://poc.kalt.co/redirect", "destination": "https://ka.lt/api" }
-  ],
   "trailingSlash": false,
   "installCommand": "npm install"
 }
