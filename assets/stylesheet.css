@@ -349,6 +349,8 @@ canvas,
   flex-direction: row;
   align-items: flex-end;
   align-content: flex-start;
+  height: 50vw;
+  max-height: 418px;
 }
 .frame div {
   width: 100%;
@@ -492,6 +494,9 @@ header .my-account-button:hover {
 }
 
 /*   the menu used in all pages             ka.lt/docs/components/navbar          */
+.tabs {
+  margin-bottom: 0;
+}
 .tabs nav {
   width: 100%;
   font-size: 70%;
@@ -653,11 +658,11 @@ input[type=submit].atom:hover {
 }
 
 /*   <input type="email">                   ka.lt/docs/elements/email             */
-.select-date input {
+.pills input {
   display: none;
 }
 
-.select-date label {
+.pills label {
   font-size: 70%;
   padding: 2px 8px;
   border: 0.1px solid #202124;
@@ -884,3 +889,12 @@ tr td {
 }
 
 /*   <table>                                ka.lt/docs/atoms/table                */
+.sorry-text {
+  margin-top: clamp(20px, 20vw, 180px);
+  text-align: center;
+}
+
+.sorry-text button {
+  width: 50%;
+  margin: auto;
+}

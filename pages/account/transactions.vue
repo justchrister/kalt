@@ -4,9 +4,9 @@
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs />
-        <div class="block"  v-if="transactions" >
-          <table>
+        <div class="block">
+          <tabs />
+          <table   v-if="transactions" >
             <tr>
               <th></th>
               <th>Amount</th>
@@ -61,7 +61,10 @@
     onMounted(() => {
       watchEffect(() => {
         if (!user.value) {
-          navigateTo('/sign-up-in')
+          navigateTo('/auth')
+        }
+        if (!transactions[0]) {
+          navigateTo('about/how-it-works')
         }
       })
     })

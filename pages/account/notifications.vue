@@ -3,8 +3,8 @@
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs />
         <div class="block">
+        <tabs />
           <div v-if="transactions?.length > 0">
             <table>
               <tr>

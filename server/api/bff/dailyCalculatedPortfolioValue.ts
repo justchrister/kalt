@@ -75,7 +75,7 @@ export default defineEventHandler( async (event) => {
         return item;
     });
     // Reverse it, and choose the last X days based on the ?days= url parameter
-    let filtered = "sorry"
+    let filtered = 0
     if(input.length>0) filtered = sortedOutput.reverse().slice(0, query.days);
   return {
     api: filtered

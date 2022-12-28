@@ -37,3 +37,14 @@
 @import 'atoms/lists';                /*   <ol> <ul>                              ka.lt/docs/atoms/lists                */
 @import 'atoms/select';               /*   <select>                               ka.lt/docs/atoms/select               */
 @import 'atoms/table';                /*   <table>                                ka.lt/docs/atoms/table                */
+
+
+
+.sorry-text{
+  margin-top:clamp(20px, 20vw, 180px);
+  text-align: center;
+}
+.sorry-text button{
+  width:50%;
+  margin:auto;
+}

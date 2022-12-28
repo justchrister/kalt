@@ -2,14 +2,26 @@
   <div class="PageWrapper">
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section">
+      <div class="section" v-if="portfolio='0'">
+        <div class="block">
+          <div class="frame">
+            <div class="image" style="background-image:url(/images/homepage_01_min.jpg);">
+            </div>
+            <div class="image" style="background-image:url(/images/homepage_02_min.jpg);">
+            </div>
+          </div>
+        </div>
+        <div class="block">
+          <h1>We will move what is currently on /invest here!</h1>
+          <p>But first, we need to:
+            
+            .</p>
+        </div>
+      </div>
+      <div class="section" v-else>
         <tabs/>
         <div class="block">
-            <div class="frame" v-if="portfolio='sorry'">
-              Sadly you are not invested yet, lets change that
-              <button> invest </button>
-            </div>
-            <div class="frame" v-else>
+            <div class="frame">
                 <LineChart :chartData="dataChart"/>
             </div>
         </div>
@@ -71,10 +83,13 @@
 
     const loading = ref(null)
     const days = ref(30)
+
+
     const { data: portfolio } = await useFetch('../api/bff/dailyCalculatedPortfolioValue',{
         query: { days: 365*5, user_id: user.value.id },
         server: false
     })
+    console.log(portfolio)
     const getData = (dataset) => {
         if (dataset) {
             var dataArray = [];
