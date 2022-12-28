@@ -28,11 +28,11 @@
         </div>
         </div>
         <div class="block">
-          <h1>Major tom to ground control!</h1>
-          <p>Before we complete your first deposit, please verify your email address by clicking the link in your email. If you've already done this, click the button below.</p>
+          <h1>Check your inbox for an e-mail verification!</h1>
+          <p>As I sat in the dentist's lobby, the silence was almost deafening. I couldn't shake the feeling of anxiousness as I stared at my phone, willing the e-mail verification to appear. Time seemed to crawl by as I waited, and I couldn't help but feel like I was trapped in some sort of purgatory. The only sound in the room was the occasional typing of the receptionist, a constant reminder of the passing time. I tried to distract myself, but it was no use. The e-mail was all I could think about. And then, finally, it arrived. The notification lit up my screen, and I let out a sigh of relief. The waiting was over, and I could finally escape this hellish limbo.<br> — Hemmingway, GPT-3</p>
           </div>
           <nuxt-link to="/auth/sign-in" >
-              <button tabindex="-1">lets invest</button>
+              <button tabindex="-1">sign in</button>
           </nuxt-link>
       </div>
     </div>
