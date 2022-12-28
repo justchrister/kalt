@@ -8,29 +8,29 @@
           <h2 class="title">
             Welcome back! 😃
           </h2>
-        </div>
-        <form @submit.prevent="() => (signIn())">
-          <label  for='email'> E-mail</label>
-          <input
-            type="email"
-            placeholder="Email"
-            v-model="email"
-            id='email'
-          />
-          <div class="element input password">
-            <label class="atom" for='password'> Password </label>
-            <input class="atom" 
-              type="password"
-              placeholder="Password"
-              v-model="password"
-              id='password'
+          <form @submit.prevent="() => (signIn())">
+            <label  for='email'> E-mail</label>
+            <input
+              type="email"
+              placeholder="Email"
+              v-model="email"
+              id='email'
             />
+            <div class="element input password">
+              <label class="atom" for='password'> Password </label>
+              <input class="atom" 
+                type="password"
+                placeholder="Password"
+                v-model="password"
+                id='password'
+              />
+            </div>
+            <input type="submit" value="Sign in" class="atom">
+          </form>
+          <div class="element link-group">
+            <nuxt-link to="/sign-up">Sign up</nuxt-link>
+            <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
           </div>
-          <input type="submit" value="Sign in" class="atom">
-        </form>
-        <div class="element link-group">
-          <nuxt-link to="/sign-up">Sign up</nuxt-link>
-          <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
         </div>
       </div>
     </div>
