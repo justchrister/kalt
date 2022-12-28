@@ -48,7 +48,6 @@
         })
         .select()
     } catch (error) {
-      console.log(error)
     } finally {
       navigateTo('/invest/complete')
     }

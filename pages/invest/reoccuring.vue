@@ -56,7 +56,6 @@ async function updateCache() {
       })
       .select()
   } catch (error) {
-    console.log(error)
   } finally {
     navigateTo('/invest/payment')
   }
