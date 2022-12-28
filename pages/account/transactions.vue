@@ -68,11 +68,8 @@
 
 const loading = ref(null)
 
-
-const { data: transactions, pending, error, refresh } = await useFetch('/api/transactions/getTransactions',{
-    query: { user_id: user.value.id },
-    server: false
-})
+const {data: transactions, error} = await supabase.from('transactions').select('*').eq('user_id', user.value.id)
+  .order('created_at', { ascending: false })
 
 // https://www.arrowsymbol.com/
 function getTransactionType(x){ 
