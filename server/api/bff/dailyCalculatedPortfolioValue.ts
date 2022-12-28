@@ -1,26 +1,19 @@
 import dotenv from 'dotenv'
-import {default as cors, default as express} from 'express'
 import Joi from 'joi'
 import { createClient } from '@supabase/supabase-js'
-const devPort = 443
-const app = express()
-app.use(cors())
-app.use(express.json())
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,PUT,PATCH,POST,DELETE',
-  optionsSuccessStatus: 200,
-}
 
-app.get('/dailyCalculatedPortfolioValue', cors(corsOptions), async (req, res) => {
+export default defineEventHandler( async (event) => {
+  const query = getQuery(event)
+
   const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkzODQ0MjAsImV4cCI6MTk4NDk2MDQyMH0.l9JEhyEnQ8ILtdJ3mUrCYtWm_Sx6eXHUGNQ8FnSF0yw")
   const { data: input, error } = await supabase
     .from('exchange')
     .select('order_id, order_type, quantity, created_at')
-    .eq('user_id', req.query.user_id)
+    .eq('user_id', query.user_id)
     .not('fulfilled_by_order_id', 'is', null );
     const today = new Date();
     const dates = [];
+    console.log(input)
 
     // Create n dates backwards from today
     const n = 365*6;
@@ -83,9 +76,9 @@ app.get('/dailyCalculatedPortfolioValue', cors(corsOptions), async (req, res) =>
         return item;
     });
     // Reverse it, and choose the last X days based on the ?days= url parameter
-    const filtered = sortedOutput.reverse().slice(0, req.query.days);
-    if(req.query.days) return res.json(filtered)
-    if (error) return res.status(400).json({message: 'Error calculating the portfolio value'})
-});
-
-export default app;
+    let filtered = "sorry"
+    if(input.length>0) filtered = sortedOutput.reverse().slice(0, query.days);
+  return {
+    api: filtered
+  }
+})
