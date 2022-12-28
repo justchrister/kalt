@@ -32,7 +32,6 @@ const { data: exists, error } = await client
   .from('cache_invest')
   .select('invest_id, day')
   .eq('user_id', user.value.id)
-if(error) console.log(error)
 
 
 if(exists[0]){

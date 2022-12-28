@@ -66,7 +66,6 @@
     if(!error){
       navigateTo('/auth/lobby')
     } else {
-      console.log(error)
     }
   }
 </script>

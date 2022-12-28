@@ -31,7 +31,6 @@
   })
 
   const { data: exists, error } = await client.from('cache_invest').select('invest_id, card_id').eq('user_id', user.value.id)
-  if(error) console.log(error)
 
   if(exists[0]){
     if(exists[0].invest_id) invest_id.value = exists[0].invest_id
@@ -70,7 +69,6 @@
           cvc: cvc.value
         })
     } catch (error) {
-      console.log(error)
     } finally {
       navigateTo('/invest/complete')
     }

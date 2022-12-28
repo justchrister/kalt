@@ -111,7 +111,6 @@
 
   const checkBrand = (brand_id) => {
     let first_digit = brand_id.toString().slice(0,  1);
-    console.log(first_digit)
     if(first_digit==='2') return "logo mastercard"
     if(first_digit==='3') return "logo amex"
     if(first_digit==='5') return "logo mastercard"

@@ -24,7 +24,6 @@ const validateTransactionchema = request => {
 }
 
 app.post('/autoInvest', cors(corsOptions), async (req, res) => {
-  console.log(req.body.record.user_id)
   const {data, error} = await supabase.from('transactions').select('*').eq('user_id', req.body.record.user_id) 
   let sum=0;
   for (let i = 0; i < data.length; i++) {

@@ -60,9 +60,7 @@ const { data: exists, error } = await client
   .from('cache_invest')
   .select('invest_id, amount, reoccuring')
   .eq('user_id', user.value.id)
-if(error) console.log(error)
 
-console.log(exists)
 if(exists[0]){
   if(exists[0].invest_id) store_invest_id.value = exists[0].invest_id
   if(exists[0].amount) amount.value = exists[0].amount
@@ -87,7 +85,6 @@ async function updateCache() {
     if (reoccuring.value) navigateTo('/invest/reoccuring')
     if (reoccuring.value) navigateTo('/invest/payment')
     */
-    console.log(reoccuring.value)
     if (reoccuring.value===true) navigateTo('/invest/reoccuring')
     if (reoccuring.value==false) navigateTo('/invest/payment')
   }

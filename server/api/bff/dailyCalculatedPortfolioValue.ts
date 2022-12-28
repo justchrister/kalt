@@ -13,7 +13,6 @@ export default defineEventHandler( async (event) => {
     .not('fulfilled_by_order_id', 'is', null );
     const today = new Date();
     const dates = [];
-    console.log(input)
 
     // Create n dates backwards from today
     const n = 365*6;
