@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   const supabase = useSupabaseClient()
+  const router = useRouter()
   const { error } = await supabase.auth.signOut()
-  console.log(error)
+  if(!error){
+    router.push('/')
+  }
 </script>
-<template>
-  <h1> {{error}} </h1>
-</template>

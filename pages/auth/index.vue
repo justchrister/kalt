@@ -20,6 +20,7 @@
           </button>
         </div>
       </div>
+      <bottom-navbar />
     </div>
   </div>
 </template>

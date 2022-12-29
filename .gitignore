@@ -1,5 +1,6 @@
 
 node_modules/
+public/sw.js
 .nuxt/
 .env
 .DS_Store

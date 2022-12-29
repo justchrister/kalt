@@ -1,6 +1,6 @@
 // Page wrapper
 .page{
-  padding: clamp($unit-min*5, $unit*5, $unit-max*5) 0 $sectionpadding 0;
+  padding: clamp($unit-min*5, $unit*5, $unit-max*5) 0 0 0;
 }
 
 //  Sections
@@ -12,4 +12,7 @@
 }
 .block {
   margin: clamp($unit-min*5, $unit*5, $unit-max*5) 0;
+}
+.block:last-child{
+  margin-bottom:0;
 }

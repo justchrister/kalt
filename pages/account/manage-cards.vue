@@ -6,11 +6,10 @@
       <div class="section">
         <div class="block"  v-if="cards.length">
           <h3> Your cards: </h3>
-          <div v-for="card of cards" :key="card.card_id" class="card">
+          <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
             <div :class="checkBrand(card.card_number)"></div> 
             <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
-            <div v-if="card.default" class="default">  default  </div>
-            <div v-else="card.default" class="not default">  set default  </div>
+            <div class="not default"> <span class="set" v-if="!card.default"> set </span> default  </div>
           </div>
         </div>
         <div class="block add-card">
@@ -101,12 +100,12 @@
       }
     });
   });
-
+  
   let { data: cards } = await supabase
     .from('cards')
     .select()
     .eq('user_id', user.value.id)
-    .order('default', { ascending: false })
+    .order('modified_at', { ascending: false })
 
   const checkBrand = (brand_id) => {
     let first_digit = brand_id.toString().slice(0,  1);
@@ -117,11 +116,19 @@
     if(first_digit==='6') return "logo discovery"
     return "ehm what?"
   }
+
+  const resetDefaultCard = async () => {
+    const { error: remove } = await supabase
+      .from('cards')
+      .update({ default: false })
+      .eq('user_id', user.value.id)
+  }
   const card_number = ref('');
   const expiry_month = ref('');
   const expiry_year = ref('');
   const cvc = ref('');
   const addCard = async () => {
+    await resetDefaultCard();
     const { error } = await supabase
     .from('cards')
     .insert({ 
@@ -131,8 +138,21 @@
       expiration_month: expiry_month.value,
       expiration_year: expiry_year.value,
       default: true,
-      cvc: cvc.value })
-    refreshNuxtData('cards')
+      cvc: cvc.value
+    })
   }
+  
+  // push data to cards array
 
+  const setDefault = async (id) => {
+    await resetDefaultCard();
+    const { error } = await supabase
+      .from('cards')
+      .update({ default: true })
+      .eq('card_id', id)
+      .select()
+    let bew = {stuff: stuff}
+    cards.push(bew)
+    console.log(cards)
+  }
 </script>

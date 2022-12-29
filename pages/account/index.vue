@@ -4,7 +4,7 @@
     <div class="page">
       <div class="section">
         <div class="block">
-      <tabs />
+        <tabs />
           <form @submit.prevent="updateProfile">
             <div class="col-2 gutter-right">
               <input-first-name/>
@@ -31,15 +31,6 @@
             </div>
           </form>
         </div>
-        <div class="block">
-          <p> useful links: 
-            <a href="#"> manage subscriptions </a>
-            <nuxt-link to="/account/manage-cards" style="margin-left:15px;"> manage cards </nuxt-link>
-            <a href="#" style="margin-left:15px;"> change password </a>
-            <a href="#" style="margin-left:15px;"> change email </a>
-            <nuxt-link to="/auth/sign-out" style="margin-left:15px;"> sign out 👋 </nuxt-link>
-          </p>
-        </div>
       </div>
     </div>
   </div>
@@ -52,6 +43,7 @@
 </script>
 
 <script lang="ts" setup>
+
   const pagename = 'Account';
   const title = 'Kalt — ' + pagename;
   useHead({

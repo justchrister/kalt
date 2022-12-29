@@ -172,7 +172,7 @@ the edge of the page.
 
 /*   grid                                   ka.lt/docs/scss/grid                  */
 .page {
-  padding: clamp(35px, 9vw, 65px) 0 clamp(75px, 15vh, 175px) 0;
+  padding: clamp(35px, 9vw, 65px) 0 0 0;
 }
 
 .section {
@@ -184,6 +184,10 @@ the edge of the page.
 
 .block {
   margin: clamp(35px, 9vw, 65px) 0;
+}
+
+.block:last-child {
+  margin-bottom: 0;
 }
 
 /*   layouts                                ka.lt/docs/scss/layouts               */
@@ -491,6 +495,14 @@ header .my-account-button:hover {
   content: "close ";
   display: inline-block;
   opacity: 1;
+}
+
+/*   the menu used in all pages             ka.lt/docs/components/navbar          */
+.bottom-navbar {
+  padding-bottom: clamp(75px, 15vh, 175px);
+  width: 86vw;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 /*   the menu used in all pages             ka.lt/docs/components/navbar          */

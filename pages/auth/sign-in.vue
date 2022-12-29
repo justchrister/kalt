@@ -70,6 +70,9 @@
     if (error) {
       return alert('Something went wrong !')
     }
-    router.push('/account/portfolio')
+
+    if(data){
+      router.push('/account/portfolio')
+    }
   }
 </script>
