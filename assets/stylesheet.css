@@ -455,12 +455,12 @@ header .my-account-button {
   position: fixed;
   top: 0.1px;
   right: 0.1px;
-  background-image: url("/images/omoji/happy.svg");
+  background-image: url("/omoji/Happy.svg");
   background-size: contain;
   margin: clamp(12px, 3.24vw, 25px);
 }
 header .my-account-button:hover {
-  background-image: url("/images/omoji/super-happy.svg");
+  background-image: url("/omoji/Super-happy.svg");
 }
 
 .notification-dot {
@@ -498,6 +498,87 @@ header .my-account-button:hover {
 }
 
 /*   the menu used in all pages             ka.lt/docs/components/navbar          */
+/* Happy */
+span.😊 {
+  background-image: url("../omoji/Happy.svg");
+}
+
+span.🙂 {
+  background-image: url("../omoji/Happy.svg");
+}
+
+/* Super Happy */
+span.😃 {
+  background-image: url("../omoji/Super-Happy.svg");
+}
+
+span.😄 {
+  background-image: url("../omoji/Super-Happy.svg");
+}
+
+span.😁 {
+  background-image: url("../omoji/Super-Happy.svg");
+}
+
+span.😆 {
+  background-image: url("../omoji/Super-Happy.svg");
+}
+
+span.😀 {
+  background-image: url("../omoji/Super-Happy.svg");
+}
+
+/* Sad */
+span.☹️ {
+  background-image: url("../omoji/Sad.svg");
+}
+
+span.🙁 {
+  background-image: url("../omoji/Sad.svg");
+}
+
+span.😟 {
+  background-image: url("../omoji/Sad.svg");
+}
+
+span.😒 {
+  background-image: url("../omoji/Sad.svg");
+}
+
+span.😞 {
+  background-image: url("../omoji/Sad.svg");
+}
+
+span.😔 {
+  background-image: url("../omoji/Sad.svg");
+}
+
+/* Ambivalent */
+span.🙃 {
+  background-image: url("../omoji/Ambivalent.svg");
+}
+
+/* Suprised */
+span.😯 {
+  background-image: url("../omoji/Suprised.svg");
+}
+
+span.😮 {
+  background-image: url("../omoji/Suprised.svg");
+}
+
+span.😲 {
+  background-image: url("../omoji/Suprised.svg");
+}
+
+/* Scared or very sad*/
+span.😦 {
+  background-image: url("../omoji/Scared.svg");
+}
+
+/* wink */
+/* laughing */
+/*   omoji                                  ka.lt/docs/scss/layouts               */
 .bottom-navbar {
   padding-bottom: clamp(75px, 15vh, 175px);
   width: 86vw;

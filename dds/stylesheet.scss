@@ -5,7 +5,6 @@
 @import 'base/fonts';                 /*   fonts                                  ka.lt/docs/scss/fonts                 */
 @import 'base/grid';                  /*   grid                                   ka.lt/docs/scss/grid                  */
 @import 'base/layouts';               /*   layouts                                ka.lt/docs/scss/layouts               */
-@import 'base/omoji';                 /*   omoji                                  ka.lt/docs/scss/layouts               */
 @import 'base/mixins';                /*   mixins                                 ka.lt/docs/scss/mixins                */
 @import 'base/reset';                 /*   scss-reset                             ka.lt/docs/scss/reset                 */
 
@@ -14,6 +13,7 @@
 @import 'components/currencyamount';  /*                                          ka.lt/docs/components/currencyAmount  */
 @import 'components/image';           /*   navbar used in accounts page           ka.lt/docs/components/image           */
 @import 'components/navbar';          /*   the menu used in all pages             ka.lt/docs/components/navbar          */
+@import 'components/omoji';           /*   omoji                                  ka.lt/docs/scss/layouts               */
 @import 'components/bottom-navbar';   /*   the menu used in all pages             ka.lt/docs/components/navbar          */
 @import 'components/tabs';            /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
 @import 'components/username';        /*   <input type="text">                    ka.lt/docs/components/username        */

@@ -66,11 +66,11 @@ header .my-account-button{
   position:fixed;
   top:$border-width;
   right:$border-width;
-  background-image: url("/images/omoji/happy.svg");
+  background-image: url("/omoji/Happy.svg");
   background-size:contain;
   margin: $big-clamp-half;
   &:hover{
-    background-image: url("/images/omoji/super-happy.svg");
+    background-image: url("/omoji/Super-happy.svg");
   }
 }
 
