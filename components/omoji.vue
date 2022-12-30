@@ -10,5 +10,11 @@ const props = defineProps({
 })
 </script>
 <style scoped>
-span { background-size:contain;color:transparent;background-repeat:no-repeat;pointer-events:none;}
+span { 
+  background-size:contain;
+  color:transparent;
+  background-repeat:no-repeat;
+  pointer-events:none;
+  background-position:center;
+}
 </style>

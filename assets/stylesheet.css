@@ -578,6 +578,47 @@ span.😦 {
 
 /* wink */
 /* laughing */
+/* arrows */
+span.↑ {
+  background-image: url("../omoji/arrow-up.svg");
+}
+
+span.↗ {
+  background-image: url("../omoji/arrow-up-right.svg");
+}
+
+span.→ {
+  background-image: url("../omoji/arrow-right.svg");
+}
+
+span.↘ {
+  background-image: url("../omoji/arrow-down-right.svg");
+}
+
+span.↓ {
+  background-image: url("../omoji/arrow-down.svg");
+}
+
+span.↙ {
+  background-image: url("../omoji/arrow-down-left.svg");
+}
+
+span.← {
+  background-image: url("../omoji/arrow-left.svg");
+}
+
+span.↖ {
+  background-image: url("../omoji/arrow-up-left.svg");
+}
+
+span.↻ {
+  background-image: url("../omoji/arrow-clockwise.svg");
+}
+
+span.↺ {
+  background-image: url("../omoji/arrow-anti-clockwise.svg");
+}
+
 /*   omoji                                  ka.lt/docs/scss/layouts               */
 .bottom-navbar {
   padding-bottom: clamp(75px, 15vh, 175px);
@@ -592,7 +633,6 @@ span.😦 {
 }
 .tabs nav {
   width: 100%;
-  font-size: 70%;
   display: inline-block;
 }
 .tabs ul {
@@ -603,7 +643,6 @@ span.😦 {
   margin-left: 5%;
   padding: 0 2px;
   line-height: 1.5;
-  border-bottom: 2px solid black;
 }
 .tabs ul li:first-child {
   margin-left: 0;
@@ -611,9 +650,6 @@ span.😦 {
 .tabs ul li:before {
   display: none;
   content: "";
-}
-.tabs ul li a {
-  text-decoration: none;
 }
 
 /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
@@ -646,6 +682,14 @@ span.😦 {
   background-image: url("/images/logos/visa.svg");
 }
 
+.card .logo.mastercard {
+  background-image: url("/images/logos/mastercard.svg");
+}
+
+.card .logo.amex {
+  background-image: url("/images/logos/amex.svg");
+}
+
 .card .details {
   width: clamp(252px, 64.8vw, 468px);
   height: clamp(28px, 7.2vw, 52px);
@@ -663,46 +707,33 @@ span.😦 {
   text-align: right;
 }
 
-.card:hover .not.default {
+.card .default.true span {
+  display: none;
+}
+
+.card:hover .default.false {
   text-decoration: underline;
 }
 
-.expiry_year-group select,
-.expiry_month-group select,
-.cvc-group input {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left: transparent;
-}
-
-.card_number-group,
-.expiry_year-group,
-.expiry_month-group,
-.cvc-group {
+.add-card .expiry_year-group,
+.add-card .expiry_month-group {
+  width: 50%;
   display: inline-block;
 }
 
-.card_number-group input,
-.expiry_year-group select,
-.expiry_month-group select {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.add-card .expiry_month-group select {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
-.add-card .card .card_number-group {
-  width: clamp(175px, 45vw, 325px);
+.add-card .expiry_year-group select {
+  border-left-width: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
-.add-card .card .expiry_year-group {
-  width: clamp(56px, 14.4vw, 104px);
-}
-
-.add-card .card .expiry_month-group {
-  width: clamp(56px, 14.4vw, 104px);
-}
-
-.add-card .card .cvc-group {
-  width: clamp(56px, 14.4vw, 104px);
+.add-card .expiry_year-group select {
+  border-left-width: 0px;
 }
 
 /*                                          ka.lt/docs/components/tabs            */
@@ -979,6 +1010,15 @@ tr td {
   text-align: left;
   border-bottom: 0.1px solid #202124;
   font-size: 80%;
+}
+
+table:hover tr {
+  opacity: 0.5;
+}
+
+table:hover tr:first-child,
+table:hover tr:hover {
+  opacity: 1;
 }
 
 /*   <table>                                ka.lt/docs/atoms/table                */
