@@ -455,12 +455,12 @@ header .my-account-button {
   position: fixed;
   top: 0.1px;
   right: 0.1px;
-  background-image: url("/omoji/Happy.svg");
+  background-image: url("/omoji/happy.svg");
   background-size: contain;
   margin: clamp(12px, 3.24vw, 25px);
 }
 header .my-account-button:hover {
-  background-image: url("/omoji/Super-happy.svg");
+  background-image: url("/omoji/super-happy.svg");
 }
 
 .notification-dot {
@@ -498,82 +498,46 @@ header .my-account-button:hover {
 }
 
 /*   the menu used in all pages             ka.lt/docs/components/navbar          */
-/* Happy */
-span.😊 {
-  background-image: url("../omoji/Happy.svg");
-}
-
+/* happy */
+span.😊,
 span.🙂 {
-  background-image: url("../omoji/Happy.svg");
+  background-image: url("../omoji/happy.svg");
 }
 
-/* Super Happy */
-span.😃 {
-  background-image: url("../omoji/Super-Happy.svg");
-}
-
-span.😄 {
-  background-image: url("../omoji/Super-Happy.svg");
-}
-
-span.😁 {
-  background-image: url("../omoji/Super-Happy.svg");
-}
-
-span.😆 {
-  background-image: url("../omoji/Super-Happy.svg");
-}
-
+/* Super happy */
+span.😃,
+span.😄,
+span.😁,
+span.😆,
 span.😀 {
-  background-image: url("../omoji/Super-Happy.svg");
+  background-image: url("../omoji/super-happy.svg");
 }
 
 /* Sad */
-span.☹️ {
-  background-image: url("../omoji/Sad.svg");
-}
-
-span.🙁 {
-  background-image: url("../omoji/Sad.svg");
-}
-
-span.😟 {
-  background-image: url("../omoji/Sad.svg");
-}
-
-span.😒 {
-  background-image: url("../omoji/Sad.svg");
-}
-
-span.😞 {
-  background-image: url("../omoji/Sad.svg");
-}
-
+span.☹️,
+span.🙁,
+span.😟,
+span.😒,
+span.😞,
 span.😔 {
-  background-image: url("../omoji/Sad.svg");
+  background-image: url("../omoji/sad.svg");
 }
 
-/* Ambivalent */
+/* ambivalent */
 span.🙃 {
-  background-image: url("../omoji/Ambivalent.svg");
+  background-image: url("../omoji/ambivalent.svg");
 }
 
 /* Suprised */
-span.😯 {
-  background-image: url("../omoji/Suprised.svg");
-}
-
-span.😮 {
-  background-image: url("../omoji/Suprised.svg");
-}
-
+span.😯,
+span.😮,
 span.😲 {
-  background-image: url("../omoji/Suprised.svg");
+  background-image: url("../omoji/suprised.svg");
 }
 
 /* Scared or very sad*/
 span.😦 {
-  background-image: url("../omoji/Scared.svg");
+  background-image: url("../omoji/scared.svg");
 }
 
 /* wink */
@@ -617,10 +581,12 @@ span.↖ {
 }
 
 span.↻ {
+  font-size: 138%;
   background-image: url("../omoji/arrow-clockwise.svg");
 }
 
 span.↺ {
+  font-size: 138%;
   background-image: url("../omoji/arrow-anti-clockwise.svg");
 }
 

@@ -1,66 +1,80 @@
 
-  /* Happy */
- span.😊 { background-image:url('../omoji/Happy.svg');}
- span.🙂 { background-image:url('../omoji/Happy.svg');}
-  /* Super Happy */
- span.😃 { background-image:url('../omoji/Super-Happy.svg');}
- span.😄 { background-image:url('../omoji/Super-Happy.svg');}
- span.😁 { background-image:url('../omoji/Super-Happy.svg');}
- span.😆 { background-image:url('../omoji/Super-Happy.svg');}
- span.😀 { background-image:url('../omoji/Super-Happy.svg');}
-  /* Sad */
- span.☹️  { background-image:url('../omoji/Sad.svg');}
- span.🙁 { background-image:url('../omoji/Sad.svg');}
- span.😟 { background-image:url('../omoji/Sad.svg');}
- span.😒 { background-image:url('../omoji/Sad.svg');}
- span.😞 { background-image:url('../omoji/Sad.svg');}
- span.😔 { background-image:url('../omoji/Sad.svg');}
+/* happy */
+span.😊 ,
+span.🙂 { 
+  background-image:url('../omoji/happy.svg');
+}
+/* Super happy */
+span.😃,
+span.😄,
+span.😁,
+span.😆,
+span.😀 { 
+  background-image:url('../omoji/super-happy.svg');
+}
+/* Sad */
+span.☹️,
+span.🙁,
+span.😟,
+span.😒,
+span.😞,
+span.😔 { background-image:url('../omoji/sad.svg');}
 
-  /* Ambivalent */
- span.🙃 { background-image:url('../omoji/Ambivalent.svg');}
+/* ambivalent */
+span.🙃 {
+  background-image:url('../omoji/ambivalent.svg');
+}
 
-  /* Suprised */
- span.😯 { background-image:url('../omoji/Suprised.svg');}
- span.😮 { background-image:url('../omoji/Suprised.svg');}
- span.😲 { background-image:url('../omoji/Suprised.svg');}
- 
-  /* Scared or very sad*/
- span.😦 { background-image:url('../omoji/Scared.svg');}
-  /* wink */
- 
-  /* laughing */
-  /* other */
+/* Suprised */
+span.😯,
+span.😮,
+span.😲 {
+  background-image:url('../omoji/suprised.svg');
+}
 
-  span.☀️{ background-image:url('../omoji/sun.svg');}
-  /* arrows */
+/* Scared or very sad*/
+span.😦 {
+  background-image:url('../omoji/scared.svg');
+}
+/* wink */
 
-  span.↑{
-    background-image:url('../omoji/arrow-up.svg');
-  }
-  span.↗{
-    background-image:url('../omoji/arrow-up-right.svg');
-  }
-  span.→{
-    background-image:url('../omoji/arrow-right.svg');
-  }
-  span.↘{
-    background-image:url('../omoji/arrow-down-right.svg');
-  }
-  span.↓{
-    background-image:url('../omoji/arrow-down.svg');
-  }
-  span.↙{
-    background-image:url('../omoji/arrow-down-left.svg');
-  }
-  span.←{
-    background-image:url('../omoji/arrow-left.svg');
-  }
-  span.↖{
-    background-image:url('../omoji/arrow-up-left.svg');
-  }
-  span.↻{
-    background-image:url('../omoji/arrow-clockwise.svg');
-  }
-  span.↺{
-    background-image:url('../omoji/arrow-anti-clockwise.svg');
-  }
+/* laughing */
+/* other */
+
+span.☀️{ 
+  background-image:url('../omoji/sun.svg');
+}
+/* arrows */
+
+span.↑{
+  background-image:url('../omoji/arrow-up.svg');
+}
+span.↗{
+  background-image:url('../omoji/arrow-up-right.svg');
+}
+span.→{
+  background-image:url('../omoji/arrow-right.svg');
+}
+span.↘{
+  background-image:url('../omoji/arrow-down-right.svg');
+}
+span.↓{
+  background-image:url('../omoji/arrow-down.svg');
+}
+span.↙{
+  background-image:url('../omoji/arrow-down-left.svg');
+}
+span.←{
+  background-image:url('../omoji/arrow-left.svg');
+}
+span.↖{
+  background-image:url('../omoji/arrow-up-left.svg');
+}
+span.↻{
+  font-size: 138%;
+  background-image:url('../omoji/arrow-clockwise.svg');
+}
+span.↺{
+  font-size: 138%;
+  background-image:url('../omoji/arrow-anti-clockwise.svg');
+}
