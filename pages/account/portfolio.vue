@@ -1,73 +1,58 @@
+
 <template>
   <div class="PageWrapper">
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section" v-if="portfolio='0'">
+      <div class="section">
         <div class="block">
-          <div class="frame">
-            <div class="image" style="background-image:url(/images/homepage_01_min.jpg);">
-            </div>
-            <div class="image" style="background-image:url(/images/homepage_02_min.jpg);">
-            </div>
-          </div>
+          <tabs />
+          <table   v-if="transactions" >
+            <tr>
+              <th id="type"></th>
+              <th id="amount">Amount</th>
+              <th id="date">Date</th>
+              <th id="time">Time</th>
+            </tr>
+            <tr v-for="transaction of transactions" :key="transaction.transaction_id" :class="getTransactionTypeClass(transaction.transaction_type)">
+              <td> <omoji :emoji="getTransactionType(transaction.transaction_type)" /></td>
+              <td>{{ transaction.amount }} {{ transaction.currency }}</td>
+              <td>
+                {{new Date(transaction.created_at).getDate()}}/{{new Date(transaction.created_at).getMonth()+1}}/{{new Date(transaction.created_at).getFullYear()}} 
+              </td>
+              <td>
+                {{addZero(new Date(transaction.created_at).getHours()) }}:{{addZero(new Date(transaction.created_at).getMinutes())}}
+              </td>
+            </tr>
+          </table>
         </div>
-        <div class="block">
-          <h1>We will move what is currently on /invest here!</h1>
-          <p>But first, we need to:
-            
-            .</p>
-        </div>
-      </div>
-      <div class="section" v-else>
-        <tabs/>
-        <div class="block">
-            <div class="frame">
-                <LineChart :chartData="dataChart"/>
-            </div>
-        </div>
-        <div class="block">
-            <div class="pills">
-                <label for="seven">Last week</label>
-                <input id="seven" type="radio" value="7" v-model="days" name="days"/>
-
-                <label for="thirty">Last month</label>
-                <input id="thirty" type="radio" value="30" v-model="days" name="days" />
-
-                <label for="oneyear">Last year</label>
-                <input id="oneyear" type="radio" value="365" v-model="days" name="days" />
-
-                <label for="max">Total</label>
-                <input id="max" type="radio" value="420420420" v-model="days" name="days" />
-            </div>
-        </div>
-        <div class="block">
-            <p v-if="portfolio"> You own {{portfolio[0].amount}} direct dividend shares</p>
-            <p v-if="portfolio"> Your footprint has been decreased by {{portfolio[0].amount}} direct dividend shares</p>
-
-        </div>
-        <div class="block">
-            <Cta />
+        <!-- make these ones filters at a later point -->
+        <div class="block"  v-if="transactions" >
+          <p style="font-size:70%;">
+            <span class="pill"> <omoji emoji="→" /> deposit </span> 
+            <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
+            <span class="pill"> <omoji emoji="↗" /> dividend  </span>
+            <span class="pill"> <omoji emoji="↻" /> auto-invested </span>
+          </p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-    const pagename = 'Portfolio';
+    const pagename = 'Transactions';
     const title = 'Kalt — ' + pagename;
     const description = ref('My App Description')
 
     useHead({
-    title,
-    meta: [
-        {
-        name: "description",
-        content: description,
-        },
-    ],
-    });
+      title,
+      meta: [{
+        name: 'description',
+        content: description
+      }]
+    })
 
-    const client = useSupabaseClient()
+
+    const supabase = useSupabaseClient()
     const user = useSupabaseUser()
     definePageMeta({
       middleware: ['auth']
@@ -78,58 +63,57 @@
         if (!user.value) {
           navigateTo('/auth')
         }
+        if (!transactions[0]) {
+          navigateTo('about/how-it-works')
+        }
       })
     })
 
-    const loading = ref(null)
-    const days = ref(30)
+const loading = ref(null)
 
+const {data: transactions, error} = await supabase.from('transactions').select('*').eq('user_id', user.value.id)
+  .order('created_at', { ascending: false })
 
-    const { data: portfolio } = await useFetch('../api/bff/dailyCalculatedPortfolioValue',{
-        query: { days: 365*5, user_id: user.value.id },
-        server: false
-    })
-    console.log(portfolio)
-    const getData = (dataset) => {
-        if (dataset) {
-            var dataArray = [];
-            for (let i = 0; i < dataset.length; i++) {
-                var row = dataset[i];
-                dataArray.push(row.amount * 100);
-            }
-            return dataArray;
-        }
-        return [];
-    };
-    const getLabels = (dataset) => {
-    if (dataset) {
-        var dataArray = [];
-        for (let i = 0; i < dataset.length; i++) {
-            var row = dataset[i];
-            dataArray.push(row.date);
-        }
-        //const tenthValues = dataArray.filter((number, index) => index % 30 === 0); to get every 30th day from the array
-        // could be used in combination with const monthNumber = date.getMonth(row.date); you can improve the chart drastrically
-        return dataArray;
-    }
-    return [];
-    };
-    // Data
-    const dataChart = computed(() => {
-    if (portfolio) {
-        return {
-        labels: getLabels(portfolio.value).slice(0, days.value).reverse(),
-        datasets: [
-            {
-            label: "DDS",
-            backgroundColor: "#1E96FC",
-            borderColor: "#1E96FC",
-            data: getData(portfolio.value).slice(0, days.value).reverse(),
-            },
-        ],
-        };
-    }
-    return {};
-    });
+// https://www.arrowsymbol.com/
+function getTransactionType(x){ 
+  if (x===0) return "→" // deposit
+  if (x===1) return "←" // withdraw
+  if (x===2) return "↗" // dividend
+  if (x===3) return "↻" // auto-invest
+}
+function getTransactionTypeClass(x){ 
+  if (x===0) return "deposit" // deposit
+  if (x===1) return "withdrawal" // withdraw
+  if (x===2) return "dividend" // dividend
+  if (x===3) return "auto-invest" // auto-invest
+}
+function getTransactionStatusClass(x){ 
+  if (x===0) return "green" // deposit
+  if (x===1) return "red" // withdraw
+}
 
+function addZero(i) {
+  if (i < 10) {i = "0" + i}
+  return i;
+}
 </script>
+<style scoped>
+.green{ color:green; }
+.red{ color:red; }
+span.pill{
+  margin-right:5px;
+  padding:5px 10px;
+  border: 1px solid black; 
+  border-radius: 3px;
+}
+#type{
+  text-align:center;
+  width:4%;
+}
+#date{
+  width:15%;
+}
+#time{
+  width:8%;
+}
+</style>

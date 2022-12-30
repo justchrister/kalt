@@ -17,4 +17,8 @@ span {
   pointer-events:none;
   background-position:center;
 }
+span:selected{
+  color:black;
+  pointer-events:all;
+}
 </style>

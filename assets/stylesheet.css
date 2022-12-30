@@ -578,6 +578,11 @@ span.😦 {
 
 /* wink */
 /* laughing */
+/* other */
+span.☀️ {
+  background-image: url("../omoji/sun.svg");
+}
+
 /* arrows */
 span.↑ {
   background-image: url("../omoji/arrow-up.svg");
@@ -1012,13 +1017,8 @@ tr td {
   font-size: 80%;
 }
 
-table:hover tr {
-  opacity: 0.5;
-}
-
-table:hover tr:first-child,
 table:hover tr:hover {
-  opacity: 1;
+  background: white;
 }
 
 /*   <table>                                ka.lt/docs/atoms/table                */

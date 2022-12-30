@@ -23,6 +23,12 @@
 .card .logo.visa{ 
   background-image: url('/images/logos/visa.svg');
 }
+.card .logo.mastercard{ 
+  background-image: url('/images/logos/mastercard.svg');
+}
+.card .logo.amex{ 
+  background-image: url('/images/logos/amex.svg');
+}
 
 .card .details{
   width:clamp($unit-min*36, $unit*36, $unit-max*36);
@@ -39,39 +45,27 @@
   display:inline-block;
   text-align:right;
 }
-.card:hover .not.default{
+.card .default.true span{
+  display:none;
+}
+.card:hover .default.false{
   text-decoration:underline;
 }
-.expiry_year-group select, 
-.expiry_month-group select, 
-.cvc-group input{
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left:transparent;
+.add-card .expiry_year-group,
+.add-card .expiry_month-group{
+  width:50%;
+  display: inline-block;
 }
 
-.card_number-group, 
-.expiry_year-group, 
-.expiry_month-group, 
-.cvc-group{
-  display:inline-block;
+.add-card .expiry_month-group select{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
-.card_number-group input, 
-.expiry_year-group select, 
-.expiry_month-group select{
-
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.add-card .expiry_year-group select{
+  border-left-width:0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
-.add-card .card .card_number-group{
-  width:clamp($unit-min*25, $unit*25, $unit-max*25);
-}
-.add-card .card .expiry_year-group{
-  width:clamp($unit-min*8, $unit*8, $unit-max*8);
-}
-.add-card .card .expiry_month-group{
-  width:clamp($unit-min*8, $unit*8, $unit-max*8);
-}
-.add-card .card .cvc-group{
-  width:clamp($unit-min*8, $unit*8, $unit-max*8);
+.add-card .expiry_year-group select{
+  border-left-width:0px;
 }

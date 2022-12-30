@@ -1,18 +1,11 @@
-import {default as cors, default as express} from 'express'
-import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkzODQ0MjAsImV4cCI6MTk4NDk2MDQyMH0.l9JEhyEnQ8ILtdJ3mUrCYtWm_Sx6eXHUGNQ8FnSF0yw");
+  import { createClient } from '@supabase/supabase-js'
+export default defineEventHandler( async (event) => {
+  const query = getQuery(event)
+  const body = await readBody(event)
+  let response;
+  const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkzODQ0MjAsImV4cCI6MTk4NDk2MDQyMH0.l9JEhyEnQ8ILtdJ3mUrCYtWm_Sx6eXHUGNQ8FnSF0yw")
 
-const app = express()
-app.use(cors())
-app.use(express.json())
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,PUT,PATCH,POST,DELETE',
-  optionsSuccessStatus: 200,
-}
-
-app.post('/matchOrders', cors(corsOptions), async (req, res) => {
 
   const getFulfillingOrder = async (fulfiller_type, req_order_user_id, req_order_order_id, req_order_quantity) => {
     const { data } = await supabase
@@ -40,9 +33,9 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
     ])
   }
 
-  let req_order = req.body.record
+  let req_order = body.record
   let fulfiller_type = 1
-  if(req.body.record.order_type===1) fulfiller_type = 0
+  if(body.record.order_type===1) fulfiller_type = 0
   let fulfiller  = await getFulfillingOrder(fulfiller_type, req_order.user_id, req_order.order_id, req_order.quantity)
   // if we need to split it: 
   
@@ -54,9 +47,13 @@ app.post('/matchOrders', cors(corsOptions), async (req, res) => {
     if(new_order_quantity!=0) await createOrder(fulfiller[0].user_id, fulfiller_type, new_order_quantity) 
     // here we need to also update the quantity of the original order, and probably add a split into column for tracability (?)
 
-    return res.json("order matched")
+    response = "order matched";
   }
-  return res.json("no matches made")
-})
+  response = "no matches made";
 
-export default app;
+
+
+  return {
+    api: response
+  }
+});

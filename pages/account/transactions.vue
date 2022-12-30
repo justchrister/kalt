@@ -8,13 +8,13 @@
           <tabs />
           <table   v-if="transactions" >
             <tr>
-              <th></th>
-              <th>Amount</th>
-              <th>Date</th>
-              <th>Time</th>
+              <th id="type"></th>
+              <th id="amount">Amount</th>
+              <th id="date">Date</th>
+              <th id="time">Time</th>
             </tr>
             <tr v-for="transaction of transactions" :key="transaction.transaction_id" :class="getTransactionTypeClass(transaction.transaction_type)">
-              <td>{{ getTransactionType(transaction.transaction_type) }}</td>
+              <td> <omoji :emoji="getTransactionType(transaction.transaction_type)" /></td>
               <td>{{ transaction.amount }} {{ transaction.currency }}</td>
               <td>
                 {{new Date(transaction.created_at).getDate()}}/{{new Date(transaction.created_at).getMonth()+1}}/{{new Date(transaction.created_at).getFullYear()}} 
@@ -28,10 +28,10 @@
         <!-- make these ones filters at a later point -->
         <div class="block"  v-if="transactions" >
           <p style="font-size:70%;">
-            <span> → deposit </span> 
-            <span> ← withdrawal  </span>
-            <span> ↗ dividend  </span>
-            <span> ↻ auto-invested </span>
+            <span class="pill"> <omoji emoji="→" /> deposit </span> 
+            <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
+            <span class="pill"> <omoji emoji="↗" /> dividend  </span>
+            <span class="pill"> <omoji emoji="↻" /> auto-invested </span>
           </p>
         </div>
       </div>
@@ -100,11 +100,20 @@ function addZero(i) {
 <style scoped>
 .green{ color:green; }
 .red{ color:red; }
-tr td:first-child{ text-align:center;}
-span{
+span.pill{
   margin-right:5px;
   padding:5px 10px;
   border: 1px solid black; 
   border-radius: 3px;
+}
+#type{
+  text-align:center;
+  width:4%;
+}
+#date{
+  width:15%;
+}
+#time{
+  width:8%;
 }
 </style>

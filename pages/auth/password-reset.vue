@@ -9,20 +9,22 @@
             Welcome back! <omoji emoji="😃" /> <omoji emoji="☀️" />
           </h2>
           <form @submit.prevent="() => (signIn())">
-            <label  for='email'> E-mail</label>
+            <div class="element input email">
+            <label for='email'> Old e-mail:</label>
             <input
               type="email"
               placeholder="Email"
-              v-model="email"
+              v-model="old_email"
               id='email'
             />
-            <div class="element input password">
-              <label class="atom" for='password'> Password </label>
-              <input class="atom" 
-                type="password"
-                placeholder="Password"
-                v-model="password"
-                id='password'
+            </div>
+            <div class="element input email">
+              <label for='email'> New e-mail:</label>
+              <input
+                type="email"
+                placeholder="Email"
+                v-model="new_email"
+                id='email'
               />
             </div>
             <input type="submit" value="Sign in" class="atom">
@@ -46,8 +48,8 @@
   const supabase = useSupabaseClient()
   const router = useRouter()
 
-  const email = ref('')
-  const password = ref('')
+  const old_email = ref('')
+  const new_email = ref('')
 
   useHead({
     title,
@@ -60,17 +62,9 @@
   });
 
   const signIn = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({ 
-      email: email.value,
-      password: password.value
-    })
-    
-    if (error) {
-      return alert('Something went wrong !')
-    }
-    
-    if(data.user.id){
-      router.push('/account/portfolio')
-    }
+  const { data: user, error } = await supabase.auth.admin.updateUserById(
+    user.value.id,
+    { email: new_email.value}
+  )
   }
 </script>
