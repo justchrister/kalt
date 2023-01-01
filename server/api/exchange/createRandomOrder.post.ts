@@ -1,10 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
 
 export default defineEventHandler( async (event) => {
+  const runtimeConfig = useRuntimeConfig()
+  const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
   const query = getQuery(event)
   const body = await readBody(event)
-
-  const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY2OTM4NDQyMCwiZXhwIjoxOTg0OTYwNDIwfQ.Ektf29cT8wufwIutky0xZ1naEc13uz0dVfPt94rTH8g");
 
   const user_ids = [
     'ab2b5dd7-d9a9-4b07-831c-f03c268b13cd',
@@ -32,6 +32,6 @@ export default defineEventHandler( async (event) => {
       quantity: quantity,
       created_at: new Date
     },
-  ]).select().single()
-  return {'order created': data.order_id }
+  ]).select('order_id,user_id,order_type,ticker,quantity').single()
+  return data
 });
