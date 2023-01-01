@@ -75,9 +75,9 @@ export default defineComponent({
     const chartOptions = {
       responsive: true,
       elements: {
-          point:{
-              radius: 0.1
-          }
+        point:{
+          radius: 0.1
+        }
       },
 
       animation: {
@@ -88,23 +88,20 @@ export default defineComponent({
       },
       maintainAspectRatio: false,
       tension: 0.5,
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        let label = context.dataset.label || '';
-
-                        if (label) {
-                            label += ': ';
-                        }
-                        if (context.parsed.y !== null) {
-                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'NOK' }).format(context.parsed.y);
-                        }
-                        return label;
-                    }
-                }
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              let label = context.dataset.label || '';
+              if (label) label += ': ';
+              if (context.parsed.y !== null) {
+                  label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'NOK' }).format(context.parsed.y);
+              }
+              return label;
             }
+          }
         }
+      }
     }
 
     return () =>
