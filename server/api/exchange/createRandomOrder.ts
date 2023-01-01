@@ -21,7 +21,8 @@ export default defineEventHandler( async (event) => {
   }
   let order_type = rndm(1, 2) - 1;
   let quantity = rndm(1, 6);
-  let user_id = user_ids[rndm(0, user_ids.length)]
+  let user_id_rndm = rndm(1, user_ids.length + 1)
+  let user_id = user_ids[user_id_rndm-1]
   
   // insert order object into supabase db
   const {data, error} = await supabase.from('exchange').insert([

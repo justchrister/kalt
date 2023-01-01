@@ -17,21 +17,21 @@ export default defineEventHandler( async (event) => {
       .is('fulfilled_by_order_id', null)
       .eq('order_type', fulfiller_type)
       .neq('user_id', req_order_user_id)   //  Without these two rows, it will match with itself :)
-      .neq('order_id', req_order_order_id) //    ^
+      .neq('order_id', req_order_order_id)
       .gte('quantity', req_order_quantity)
       .order('created_at', { ascending: true })
-      .limit(1)
+      .single()
     return data
   }
   
   const fulfillOrders = async (order, fulfiller) => {
     await supabase.from('exchange').update({ fulfilled_by_order_id: fulfiller }).eq('order_id', order)
-    await supabase.from('exchange').update({ fulfilled_by_order_id: order }).eq('order_id', fulfiller)
+    await supabase.from('exchange').update({ fulfilled_by_order_id: order, quantity: body.record.quantity }).eq('order_id', fulfiller)
   }
   
   const createOrder = async (user_id, order_type, quantity) => {
     await supabase.from('exchange').insert([
-      { user_id: user_id, order_type: order_type, ticker: "DDF_Global_Index", quantity: quantity,
+      { user_id: user_id, order_type: order_type, ticker: "DDFGI", quantity: quantity,
         created_at: new Date },
     ])
   }
@@ -45,10 +45,10 @@ export default defineEventHandler( async (event) => {
   console.log(fulfiller)
   
   if (fulfiller.length){
-    await fulfillOrders (fulfiller[0].order_id, req_order.order_id)
+    await fulfillOrders (fulfiller.order_id, req_order.order_id)
     // if the order initating this post request has a lower quantity than the one we want to be fulfilled by, we split the fulfilling order into two orders. 
-    let new_order_quantity = fulfiller[0].quantity - req_order.quantity
-    if(new_order_quantity!=0) await createOrder(fulfiller[0].user_id, fulfiller_type, new_order_quantity) 
+    let new_order_quantity = fulfiller.quantity - req_order.quantity
+    if(new_order_quantity!=0) await createOrder(fulfiller.user_id, fulfiller_type, new_order_quantity) 
     // here we need to also update the quantity of the original order, and probably add a split into column for tracability (?)
 
     return 'orders matched'
