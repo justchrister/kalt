@@ -624,6 +624,25 @@ span.↺ {
 }
 
 /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
+nav.pills button {
+  width: auto;
+  display: inline;
+  padding: clamp(2.1px, 0.54vw, 3.9px) clamp(3.5px, 0.9vw, 6.5px);
+  font-size: 70%;
+  border-radius: 3px;
+  margin-right: clamp(2.1px, 0.54vw, 3.9px);
+}
+
+nav.pills button:hover {
+  text-decoration: underline;
+  border-radius: 0;
+}
+
+nav.pills a {
+  text-decoration: none;
+}
+
+/*   */
 /*   <input type="text">                    ka.lt/docs/components/username        */
 .card {
   border: 0.1px solid #202124;

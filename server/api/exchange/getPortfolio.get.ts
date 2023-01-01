@@ -1,19 +1,16 @@
-import dotenv from 'dotenv'
-import Joi from 'joi'
 import { createClient } from '@supabase/supabase-js'
 
 export default defineEventHandler( async (event) => {
   const query = getQuery(event)
 
   const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkzODQ0MjAsImV4cCI6MTk4NDk2MDQyMH0.l9JEhyEnQ8ILtdJ3mUrCYtWm_Sx6eXHUGNQ8FnSF0yw")
-  const { data: input, error } = await supabase
-    .from('exchange')
-    .select('order_id, order_type, quantity, created_at')
-    .eq('user_id', query.user_id)
-    .not('fulfilled_by_order_id', 'is', null );
-    const today = new Date();
-    const dates = [];
-
+    const { data: input, error } = await supabase
+      .from('exchange')
+      .select('order_id, order_type, quantity, created_at')
+      .eq('user_id', query.user_id)
+      .not('fulfilled_by_order_id', 'is', null );
+      const today = new Date();
+      const dates = [];
     // Create n dates backwards from today
     const n = 365*6;
     for (let i = 0; i < n; i++) {
@@ -21,7 +18,7 @@ export default defineEventHandler( async (event) => {
       date.setDate(date.getDate() - i);
       dates.push(date.toISOString().split("T")[0]);
     }
-
+    if(!input===null) {
     // Create a dataset object with the dates and corresponding amounts
     const dataset = input.reduce((acc, curr) => {
       const date = curr.created_at.split("T")[0];
@@ -74,10 +71,10 @@ export default defineEventHandler( async (event) => {
         }
         return item;
     });
-    // Reverse it, and choose the last X days based on the ?days= url parameter
-    let filtered = 0
-    if(input.length>0) filtered = sortedOutput.reverse().slice(0, query.days);
-  return {
-    api: filtered
   }
+    // Reverse it, and choose the last X days based on the ?days= url parameter
+    let filtered = {'value': 0}
+    if (!query.user_id) filtered = {'error': 'user_id not defined'} 
+    if(!input===null) filtered = sortedOutput.reverse().slice(0, query.days);
+  return filtered
 })

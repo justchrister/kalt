@@ -1,0 +1,18 @@
+nav.pills button {
+  width:auto;
+  display:inline;
+  padding:
+    clamp($unit-min*0.3, $unit*0.3, $unit-max*0.3)
+    clamp($unit-min*0.5, $unit*0.5, $unit-max*0.5);
+  font-size:70%;
+  border-radius: 3px;
+  margin-right:
+  clamp($unit-min*0.3, $unit*0.3, $unit-max*0.3);
+}
+nav.pills button:hover{
+  text-decoration: underline;
+  border-radius:0;
+}
+nav.pills a{
+  text-decoration: none;
+}
