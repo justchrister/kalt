@@ -7,8 +7,7 @@
         <div class="block">
           <h1> See how much you could make:</h1>
           <div class="frame">
-          <LineChart :chartData="dataChartMonthly" v-if="reoccuring"/>
-          <LineChart :chartData="dataChartOnce" v-else/>
+          <LineChart :chartData="dataChartMonthly"/>
           </div>
         </div>
         <div class="block">
@@ -43,10 +42,7 @@ const title = 'Kalt — ' + pagename;
 const description = ref('My App Description')
 const client = useSupabaseClient()
 const user = useSupabaseUser()
-import { v4 as uuidv4 } from 'uuid';
-const reoccuring = ref(true);
 const amount = ref(2000);
-const store_invest_id = ref(uuidv4())
 
 useHead({
   title,
@@ -56,49 +52,10 @@ useHead({
   }]
 })
 
-const { data: exists, error } = await client
-  .from('cache_invest')
-  .select('invest_id, amount, reoccuring')
-  .eq('user_id', user.value.id)
-
-if(exists[0]){
-  if(exists[0].invest_id) store_invest_id.value = exists[0].invest_id
-  if(exists[0].amount) amount.value = exists[0].amount
-  if(exists[0].amount) reoccuring.value = exists[0].reoccuring
-}
-
-async function updateCache() {
-  try {
-    const { data, error } = await client
-      .from('cache_invest')
-      .upsert({
-        invest_id: store_invest_id.value, 
-        amount: amount.value,
-        reoccuring: reoccuring.value,
-        user_id: user.value.id
-      })
-      .select()
-  } catch (error) {
-  } finally {
-    if (reoccuring.value===true) navigateTo('/invest/reoccuring')
-    if (reoccuring.value==false) navigateTo('/invest/payment')
-  }
-}
-
-definePageMeta({
-  middleware: ['auth']
-})
-onMounted(() => {
-  watchEffect(() => {
-    if (!user.value) {
-      navigateTo('/authenticate/sign-up')
-    }
-  })
-})
 
 // Computes the compound interest for a given principal amount and monthly deposit
 // over a given number of years with a fixed interest rate of 8%
-const compounding = (principalAmount, monthlyDeposit, years) => {
+const compound = (principalAmount, monthlyDeposit, years) => {
   let calcedArr = [];
   // Interest rate per month (8 / 100 = 0.8 = 8% returns)
   const ratePerMonth = 8 / 100 / 12;
@@ -118,7 +75,7 @@ This function calculates the compound interest for a given principal amount, mon
 
 where rate is the annual interest rate, n is the number of times the interest is compounded per year, and t is the number of years. In this case, the interest rate is 8% per year, and it is compounded monthly, so n is 12. The function then adds the total amount of monthly deposits for each year to the compound interest to get the total balance for that year.
 */
-
+/*
 // Computed property that returns chart data for monthly deposits
 const dataChartMonthly = computed(() => ({
   labels: ['first year', '10 years', '20 years', '30 years', '40 years'],
@@ -130,11 +87,11 @@ const dataChartMonthly = computed(() => ({
       data: [
         amount.value,
         // Calculate compound interest for 10, 20, 30, and 40 years
-        // using the compounding function and the current deposit value
-        compounding(amount.value, amount.value, 10)[9],
-        compounding(amount.value, amount.value, 20)[19],
-        compounding(amount.value, amount.value, 30)[29],
-        compounding(amount.value, amount.value, 40)[39]
+        // using the compound function and the current deposit value
+        compound(amount.value, amount.value, 10)[9],
+        compound(amount.value, amount.value, 20)[19],
+        compound(amount.value, amount.value, 30)[29],
+        compound(amount.value, amount.value, 40)[39]
       ],
     },
     {
@@ -154,42 +111,32 @@ const dataChartMonthly = computed(() => ({
       ],
     },
   ],
-}));
+}));*/
 
-// Computed property that returns chart data for a one-time deposit
-const dataChartOnce = computed(() => ({
-  labels: ['first year', '10 years', '20 years', '30 years', '40 years'],
+
+
+const dataChartMonthly = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: "what your investment will be worth",
-      backgroundColor: "#1E96FC",
-      borderColor: "#1E96FC",
-      data: [
-        amount.value,
-        // Calculate compound interest for 10, 20, 30, and 40 years
-        // using the compounding function and a monthly deposit of 0
-        compounding(amount.value, 0, 10)[9],
-        compounding(amount.value, 0, 20)[19],
-        compounding(amount.value, 0, 30)[29],
-        compounding(amount.value, 0, 40)[39]
-      ],
-    },
-                    {
-                      // if its not monthly then this has to stay deposit.value 4
-                        label: "what you invest",
-                        backgroundColor: "#F7B538",
-                        borderColor: "#F7B538",
-                        fill: 1,
-                        data: [amount.value, 
-                               amount.value, 
-                               amount.value, 
-                               amount.value, 
-                               amount.value
-                              ],
-                    },
-                ],
-            }));
+      label: 'Data One',
+      backgroundColor: '#1E96FC',
+      borderColor: '#1E96FC',
+      pointBackgroundColor: '#1E96FC',
+      pointBorderWidth: 0,
+      pointBorderColor: '#1E96FC',
+      data: [40, 39, 10, 40, 39, 80, 40]
+    }
+  ]
+}
 
+
+
+
+
+
+
+console.log(dataChartMonthly.value)
 </script>
 <style scoped>
 
