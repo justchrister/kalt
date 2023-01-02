@@ -25,8 +25,8 @@ export default defineEventHandler( async (event) => {
   }
   
   const fulfillOrders = async (order, fulfiller) => {
-    await supabase.from('exchange').update({ fulfilled_by_order_id: fulfiller }).eq('order_id', order)
-    await supabase.from('exchange').update({ fulfilled_by_order_id: order, quantity: body.record.quantity }).eq('order_id', fulfiller)
+    const {data: org, error: org_err } = await supabase.from('exchange').update({ fulfilled_by_order_id: fulfiller }).eq('order_id', order)
+    const {data: full, error: full_err } = await supabase.from('exchange').update({ fulfilled_by_order_id: order, quantity: body.record.quantity }).eq('order_id', fulfiller)
   }
   
   const createOrder = async (user_id, order_type, quantity) => {
@@ -36,18 +36,17 @@ export default defineEventHandler( async (event) => {
     ])
   }
 
-  let req_order = body.record
   let fulfiller_type = 1
 
   if(body.record.order_type===1) fulfiller_type = 0
-  let fulfiller  = await getFulfillingOrder(fulfiller_type, req_order.user_id, req_order.order_id, req_order.quantity)
+  let fulfiller  = await getFulfillingOrder(fulfiller_type, body.record.user_id, body.record.order_id, body.record.quantity)
   // if we need to split it: 
-  console.log(fulfiller)
   
-  if (fulfiller.length){
-    await fulfillOrders (fulfiller.order_id, req_order.order_id)
+  if (fulfiller.order_id){
+    console.log("lol")
+    await fulfillOrders (fulfiller.order_id, body.record.order_id)
     // if the order initating this post request has a lower quantity than the one we want to be fulfilled by, we split the fulfilling order into two orders. 
-    let new_order_quantity = fulfiller.quantity - req_order.quantity
+    let new_order_quantity = fulfiller.quantity - body.record.quantity
     if(new_order_quantity!=0) await createOrder(fulfiller.user_id, fulfiller_type, new_order_quantity) 
     // here we need to also update the quantity of the original order, and probably add a split into column for tracability (?)
 
