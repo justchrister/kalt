@@ -8,7 +8,7 @@
       v-model="address_line"
       placeholder="Address line"
       id="address-line"
-      class="atom address-line"
+      :class="'atom address-line '+state"
       @input="updateProfile()"
     />
   </div>
@@ -17,17 +17,31 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-
   const user = useSupabaseUser()
+  const state = ref('loading')
 
   const address_line = ref('')
 
-  let { data } = await supabase.from('accounts').select('address_line').eq('user_id', user.value.id).single()
+  const { data } = await useAsyncData('address_line', async () => {
+    let { data } = await supabase
+      .from('accounts')
+      .select('address_line')
+      .eq('user_id', user.value.id)
+      .single()
+    return data
+  })
 
-  if (data) address_line.value = data.address_line
-  
+  if (data.value) address_line.value = data.value.address_line
+  state.value = ''
+
   const updateProfile = async () => {
+    state.value = 'loading'
     const { error } = await supabase.from('accounts').update({ address_line: address_line.value }).eq('user_id', user.value.id)
+    if(error){
+      state.value="error"
+    } else {
+      state.value="success"
+    }
   };
 
 </script>

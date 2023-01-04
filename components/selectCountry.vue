@@ -12,14 +12,22 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-
   const user = useSupabaseUser()
+  const state = ref('loading')
 
   const country = ref('')
-  const state = ref('normal')
 
-  let { data } = await supabase.from('accounts').select('country').eq('user_id', user.value.id).single()
-  if (data) country.value = data.country
+  const { data } = await useAsyncData('country', async () => {
+    let { data } = await supabase
+      .from('accounts')
+      .select('country')
+      .eq('user_id', user.value.id)
+      .single()
+    return data
+  })
+
+  if (data.value) country.value = data.value.country
+  state.value = ''
 
   let { data: countries } = await supabase.from('countries').select('iso2, name').eq('available', true)
   

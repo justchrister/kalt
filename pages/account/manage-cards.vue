@@ -105,7 +105,7 @@
     });
   });
   
-  const { data: cards } = await useAsyncData('tasks', async () => {
+  const { data: cards } = await useAsyncData('cards', async () => {
     let { data } = await supabase
       .from('cards')
       .select()

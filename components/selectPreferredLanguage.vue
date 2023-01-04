@@ -1,10 +1,10 @@
 <template>
-  <div class="element select language">
+  <div class="element select preferred_language">
     <label for="preferred_language"> 
-      Preferred language: 
+      Language: 
     </label>
     <select v-model="preferred_language" @change="updateProfile()" :class="state">
-      <option v-for="language of languages" :value="language.iso6393" :key="language.iso6393">{{language.name}}</option>
+      <option v-for="country of languages" :value="country.iso6393" :key="country.iso6393">{{country.name}}</option>
     </select>
   </div>
 </template>
@@ -12,20 +12,35 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-
   const user = useSupabaseUser()
+  const state = ref('loading')
+
   const preferred_language = ref('')
-  const state = ref('normal')
 
-  let { data } = await supabase.from('accounts').select('preferred_language').eq('user_id', user.value.id).single()
+  const { data } = await useAsyncData('preferred_language', async () => {
+    let { data } = await supabase
+      .from('accounts')
+      .select('preferred_language')
+      .eq('user_id', user.value.id)
+      .single()
+    return data
+  })
   
-  let { data: languages } = await supabase.from('languages').select('iso6393,name').eq('available', true)
+  if (data.value) preferred_language.value = data.value.preferred_language
+  state.value = ''
 
-
-  if (data && languages) preferred_language.value = data.preferred_language
-
+  let { data: languages } = await supabase
+    .from('languages')
+    .select('iso6393, name')
+    .eq('available', true)
+  
   const updateProfile = async () => {
-    const { error } = await supabase.from('accounts').update({ preferred_language: preferred_language.value }).eq('user_id', user.value.id)
+    const { data, error } = await supabase
+      .from('accounts')
+      .update({ preferred_language: preferred_language.value })
+      .eq('user_id', user.value.id)
+      .select()
+      .single()
     if(error){
       state.value="error"
     } else {
