@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="block">
-          <h1>We will move what is currently on /invest here!</h1>
+          <h1>We will move what is currently on  here!</h1>
           <p>But first, we need to:
             
             .</p>

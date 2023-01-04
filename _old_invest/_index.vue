@@ -66,25 +66,6 @@ if(exists[0]){
   if(exists[0].amount) amount.value = exists[0].amount
   if(exists[0].amount) reoccuring.value = exists[0].reoccuring
 }
-
-async function updateCache() {
-  try {
-    const { data, error } = await client
-      .from('cache_invest')
-      .upsert({
-        invest_id: store_invest_id.value, 
-        amount: amount.value,
-        reoccuring: reoccuring.value,
-        user_id: user.value.id
-      })
-      .select()
-  } catch (error) {
-  } finally {
-    if (reoccuring.value===true) navigateTo('/invest/reoccuring')
-    if (reoccuring.value==false) navigateTo('/invest/payment')
-  }
-}
-
 definePageMeta({
   middleware: ['auth']
 })

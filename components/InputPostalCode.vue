@@ -17,7 +17,8 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser();
+
+  const user = useSupabaseUser()
   const postal_code = ref('')
 
   let { data } = await supabase

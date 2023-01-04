@@ -19,8 +19,6 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser();
-
   const first_name = ref('')
 
   let { data } = await supabase.from('accounts').select('first_name').eq('user_id', user.value.id).single()

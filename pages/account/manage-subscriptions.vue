@@ -95,7 +95,8 @@
   });
   
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
+
+  const user = useSupabaseUser()
   const router = useRouter()
   onMounted(() => {
     watchEffect(() => {

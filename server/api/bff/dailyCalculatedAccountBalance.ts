@@ -56,7 +56,6 @@ app.get('/dailyCalculatedAccountBalance', cors(corsOptions), async (req, res) =>
         });
         return acc;
       }, []);
-  
       // Sort the array in ascending order by date
       const sortedInput = output.sort((a, b) => {
         // Parse the date strings into JavaScript Date objects

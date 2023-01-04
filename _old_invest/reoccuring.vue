@@ -34,32 +34,9 @@ const { data: exists, error } = await client
   .eq('user_id', user.value.id)
 
 
-if(exists[0]){
-  if(exists[0].invest_id) invest_id.value = exists[0].invest_id
-  if(exists[0].day) day.value = exists[0].day
-} else {
-    navigateTo('/invest')
-}
-
 // if we cannot find the investment in the cache, we need to revert the user back to the first page
 
 
-async function updateCache() {
-  try {
-    const { data, error } = await client
-      .from('cache_invest')
-      .upsert({
-        invest_id: invest_id.value, 
-        reoccuring: true,
-        day: day.value,
-        user_id: user.value.id
-      })
-      .select()
-  } catch (error) {
-  } finally {
-    navigateTo('/invest/payment')
-  }
-}
 </script>
 <template>
   <div class="PageWrapper">

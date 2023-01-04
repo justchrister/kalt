@@ -42,7 +42,6 @@
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
 
-  const user = useSupabaseUser()
   const supabase = useSupabaseClient()
   const router = useRouter()
 

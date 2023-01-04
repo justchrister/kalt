@@ -5,78 +5,41 @@ export default defineEventHandler( async (event) => {
   const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
   const query = getQuery(event)
 
-
   if (!query.user_id) return {'error': 'user_id not defined'} 
+  if (!query.days) return {'error': 'days not defined'} 
 
     const { data: input, error } = await supabase
       .from('exchange')
-      .select('order_id, order_type, quantity, created_at')
+      .select('order_id, order_type, quantity, created_at, modified_at')
       .eq('user_id', query.user_id)
       .not('fulfilled_by_order_id', 'is', null );
-      const today = new Date();
-      const dates = [];
+
     // Create n dates backwards from today
-    const n = 365*6;
+    const n = query.days;
+    const today = new Date();
+    const output = [];
     for (let i = 0; i < n; i++) {
       const date = new Date(today);
-      date.setDate(date.getDate() - i);
-      dates.push(date.toISOString().split("T")[0]);
+      date.setDate(date.getDate() - i)
+      const key = date.toISOString().split("T")[0]
+      let dateObject = { [key] : null}
+      output.push(dateObject)
+      //dates.push(date.toISOString().split("T")[0]);
     }
-    if(input) {
-      // Create a dataset object with the dates and corresponding amounts
-      const dataset = input.reduce((acc, curr) => {
-        const date = curr.created_at.split("T")[0];
-        if (!acc[date]) {
-          acc[date] = 0;
-        }
-        acc[date] += curr.order_type === 0 ? curr.quantity : -curr.quantity;
-        return acc;
-      }, {});
+    const keyval = input[0].modified_at.split("T")[0]
 
-      // Accumulate the amounts for each date
-      let accumulatedAmount = 0;
-      for (const date in dataset) {
-        accumulatedAmount += dataset[date];
-        dataset[date] = accumulatedAmount;
-      }
 
-      // Add empty days for the missing dates
-      const output = dates.reduce((acc, curr) => {
-        acc.push({
-          date: curr,
-          amount: dataset[curr] ? dataset[curr] : null
-        });
-        return acc;
-      }, []);
-      // Sort the array in ascending order by date
-      const sortedInput = output.sort((a, b) => {
-        // Parse the date strings into JavaScript Date objects
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
 
-        // Compare the dates and return the appropriate value
-        // according to the sort criteria
-        if (dateA < dateB) {
-            return -1;
-        } else if (dateA > dateB) {
-            return 1;
-        } else {
-            return 0;
+    input.forEach((item) => {
+      const key = item['modified_at'];
+      const value = item;
+      output.forEach((firstArrayItem) => {
+        if (firstArrayItem['date'] === key) {
+          firstArrayItem['amount'] = value;
         }
       });
-      // Sort the array by date    
-      let previousValue = null;
-      const sortedOutput = sortedInput.map(item => {
-          if (item.amount === null) {
-              item.amount = previousValue;
-          } else {
-              previousValue = item.amount;
-          }
-          return item;
-      });
-      console.log('sorted')
-      console.log(sortedOutput)
-      // Reverse it, and choose the last X days based on the ?days= url parameter
-      return sortedOutput.reverse().slice(0, query.days);
-    }
+    });
+    let output = input
+    // Reverse it, and choose the last X days based on the ?days= url parameter
+    return output;
 })

@@ -20,7 +20,7 @@ export default defineEventHandler( async (event) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
   const order_type = rndm(1, 2) - 1;
-  const quantity = rndm(1, 6);
+  const quantity = rndm(1, 60);
   const user_id = user_ids[Math.floor(Math.random() * user_ids.length)];
   // insert order object into supabase db
   const {data, error} = await supabase.from('exchange').insert([

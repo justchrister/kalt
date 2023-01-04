@@ -12,7 +12,8 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser();
+
+  const user = useSupabaseUser()
 
   const preferred_currency = ref('')
   const state = ref('normal')
