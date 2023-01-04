@@ -927,12 +927,25 @@ input:active {
   background-color: #fff;
 }
 
-input.success {
-  background-image: url("/images/omoji/happy.svg");
-  background-size: auto 50%;
+input.loading {
+  background-image: url("../loading-gif.gif");
+  background-size: 5%;
+  background-position: 95% center;
   background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: center;
+}
+
+/*
+input.success{
+  background-image:url("omoji/sun.svg");
+  background-size: 5%;
+  background-position:95% center;
+  background-repeat:no-repeat;
+}*/
+input.error {
+  background-image: url("omoji/suprised.svg");
+  background-size: 5%;
+  background-position: 95% center;
+  background-repeat: no-repeat;
 }
 
 /*   <input>                                ka.lt/docs/atoms/input                */

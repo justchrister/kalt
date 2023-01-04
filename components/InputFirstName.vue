@@ -6,7 +6,7 @@
       First name: 
     </label>
     <input
-      class="atom"
+      :class="'atom '+ state"
       type="text"
       v-model="first_name"
       placeholder="First name"
@@ -20,16 +20,26 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-
+  const state = ref('loading')
 
   const first_name = ref('')
 
-  let { data } = await supabase.from('accounts').select('first_name').eq('user_id', user.value.id).single()
+  const { data } = await supabase.from('accounts').select('first_name').eq('user_id', user.value.id).single()
 
-  if (data) first_name.value = data.first_name
+  if (data) {
+    first_name.value = data.first_name
+    state.value = ''
+  }
+
   
   const updateProfile = async () => {
-    const { error } = await supabase.from('accounts').update({ first_name: first_name.value }).eq('user_id', user.value.id)
+    state.value = 'loading'
+    const { data, error } = await supabase.from('accounts').update({ first_name: first_name.value }).eq('user_id', user.value.id).select().single()
+    if(error){
+      state.value="error"
+    } else {
+      state.value="success"
+    }
   };
 
 </script>

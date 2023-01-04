@@ -17,7 +17,6 @@
 <script setup>
 
   const supabase = useSupabaseClient()
-
   const user = useSupabaseUser()
 
   const last_name = ref('')
