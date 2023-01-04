@@ -39,7 +39,6 @@ export default defineEventHandler( async (event) => {
         }
       });
     });
-    let output = input
     // Reverse it, and choose the last X days based on the ?days= url parameter
     return output;
 })
