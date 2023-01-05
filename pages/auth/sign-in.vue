@@ -65,6 +65,7 @@
       email: email.value,
       password: password.value,
     })
-    router.push('/account')
+    console.log(data)
+    router.go(-1)
   }
 </script>

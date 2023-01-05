@@ -3,7 +3,7 @@
     <navbar :pageTitle='pagename' />
     <div class="page">
       <div class="section">
-        <div class="block"  v-if="cards.length">
+        <div class="block">
           <h3 @click="goBack()"><omoji emoji="←" /> back</h3>
           <h3> Your cards: </h3>
           <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
@@ -79,10 +79,11 @@
   </div>
 </template>
 <script setup lang="ts">
+  const supabase = useSupabaseClient()
+  const { data: {user} } = await supabase.auth.getUser()
   const pagename = "Payment";
   const title = "Kalt — " + pagename;
   const description = ref("My App Description");
-  
   import { v4 as uuidv4 } from 'uuid';
   const new_card_id = ref(uuidv4())
   useHead({
@@ -92,29 +93,15 @@
       content: description,
     },],
   });
-  
-  const supabase = useSupabaseClient();
-
-  const user = useSupabaseUser()
   const router = useRouter()
-  onMounted(() => {
-    watchEffect(() => {
-      if (!user.value) {
-        navigateTo('/authenticate/sign-in')
-      }
-    });
-  });
-  
   const { data: cards } = await useAsyncData('cards', async () => {
-    let { data } = await supabase
+    const { data } = await supabase
       .from('cards')
       .select()
-      .eq('user_id', user.value.id)
+      .eq('user_id', await user.id)
       .order('modified_at', { ascending: false })
     return data
   })
-
-
 
   const checkBrand = (brand_id) => {
     let first_digit = brand_id.toString().slice(0,  1);
@@ -130,7 +117,7 @@
     const { data: defaultCard, error: remove } = await supabase
       .from('cards')
       .update({ default: false })
-      .eq('user_id', user.value.id)
+      .eq('user_id', user.id)
       // for each loop
   }
 
@@ -144,7 +131,7 @@
     .from('cards')
     .insert({ 
       card_id: new_card_id.value,
-      user_id: user.value.id,
+      user_id: user.id,
       card_number: card_number.value,
       expiration_month: expiry_month.value,
       expiration_year: expiry_year.value,

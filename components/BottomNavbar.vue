@@ -18,5 +18,8 @@
       <div class="col-3 gutter-horizontal">
         <a href="#" > change email </a>
       </div>
+      <div class="col-3 gutter-right">
+        <nuxt-link to="/auth/sign-in" > sign in </nuxt-link>
+      </div>
     </div>
 </template>

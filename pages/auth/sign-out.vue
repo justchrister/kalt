@@ -3,6 +3,6 @@
   const router = useRouter()
   const { error } = await supabase.auth.signOut()
   if(!error){
-    router.push('/')
+    router.go(-1)
   }
 </script>

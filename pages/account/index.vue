@@ -43,6 +43,8 @@
 </script>
 
 <script lang="ts" setup>
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
 
   const pagename = 'Account';
   const title = 'Kalt — ' + pagename;
@@ -50,7 +52,5 @@
     title,
   });
 
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
   
 </script>
