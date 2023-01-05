@@ -42,7 +42,7 @@
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
 
-  const supabase = useSupabaseClient()
+  const supbase = useSupabaseClient()
   const router = useRouter()
 
   const email = ref('')
@@ -59,17 +59,9 @@
   });
 
   const signIn = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({ 
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: email.value,
-      password: password.value
+      password: password.value,
     })
-    
-    if (error) {
-      return alert('Something went wrong !')
-    }
-    
-    if(data.user.id){
-      router.push('/account/portfolio')
-    }
   }
 </script>
