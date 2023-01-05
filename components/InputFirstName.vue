@@ -15,33 +15,31 @@
 </template>
 
 <script setup>
-
+  const state = ref('loading')
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const state = ref('loading')
 
   const first_name = ref('')
 
-  const { data } = await useAsyncData('first_name', async () => {
-    let { data } = await supabase
-      .from('accounts')
-      .select('first_name')
-      .eq('user_id', user.value.id)
-      .single()
-    return data
-  })
+  const { data } = await supabase
+    .from('accounts')
+    .select('first_name')
+    .single()
 
-  if (data.value) first_name.value = data.value.first_name
+  if (data) first_name.value = data.first_name
+
   state.value = ''
 
   const updateProfile = async () => {
     state.value = 'loading'
-    const { error } = await supabase.from('accounts').update({ first_name: first_name.value }).eq('user_id', user.value.id)
+    const { error } = await supabase
+      .from('accounts')
+      .update({ first_name: first_name.value })
+      .eq('user_id', user.id)
     if(error){
       state.value="error"
     } else {
       state.value="success"
     }
   };
-
 </script>

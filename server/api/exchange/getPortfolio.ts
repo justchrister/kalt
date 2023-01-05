@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 
 export default defineEventHandler( async (event) => {
   const runtimeConfig = useRuntimeConfig()
-  const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
+  const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
   const query = getQuery(event)
 
   if (!query.user_id) return {'error': 'user_id not defined'} 

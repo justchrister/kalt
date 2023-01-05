@@ -10,34 +10,32 @@
 </template>
 
 <script setup>
-
+  const state = ref('loading')
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const state = ref('loading')
+  const { data: countries } = await supabase.from('countries').select('iso2, name').eq('available', true)
 
   const country = ref('')
 
-  const { data } = await useAsyncData('country', async () => {
-    let { data } = await supabase
-      .from('accounts')
-      .select('country')
-      .eq('user_id', user.value.id)
-      .single()
-    return data
-  })
+  const { data } = await supabase
+    .from('accounts')
+    .select('country')
+    .single()
 
-  if (data.value) country.value = data.value.country
+  if (data) country.value = data.country
+
   state.value = ''
 
-  let { data: countries } = await supabase.from('countries').select('iso2, name').eq('available', true)
-  
   const updateProfile = async () => {
-    const { error } = await supabase.from('accounts').update({ country: country.value }).eq('user_id', user.value.id)
+    state.value = 'loading'
+    const { error } = await supabase
+      .from('accounts')
+      .update({ country: country.value })
+      .eq('user_id', user.id)
     if(error){
       state.value="error"
     } else {
       state.value="success"
     }
   };
-
 </script>

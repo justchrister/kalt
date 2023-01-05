@@ -10,42 +10,32 @@
 </template>
 
 <script setup>
-
+  const state = ref('loading')
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const state = ref('loading')
+  const { data: currencies } = await supabase.from('currencies').select('iso, name').eq('available', true)
 
   const preferred_currency = ref('')
 
-  const { data } = await useAsyncData('preferred_currency', async () => {
-    let { data } = await supabase
-      .from('accounts')
-      .select('preferred_currency')
-      .eq('user_id', user.value.id)
-      .single()
-    return data
-  })
-  console.log(data.value)
-  if (data.value) preferred_currency.value = data.value.preferred_currency
+  const { data } = await supabase
+    .from('accounts')
+    .select('preferred_currency')
+    .single()
+
+  if (data) preferred_currency.value = data.preferred_currency
+
   state.value = ''
 
-  let { data: currencies } = await supabase
-    .from('currencies')
-    .select('iso, name')
-    .eq('available', true)
-  
   const updateProfile = async () => {
-    const { data, error } = await supabase
+    state.value = 'loading'
+    const { error } = await supabase
       .from('accounts')
       .update({ preferred_currency: preferred_currency.value })
-      .eq('user_id', user.value.id)
-      .select()
-      .single()
+      .eq('user_id', user.id)
     if(error){
       state.value="error"
     } else {
       state.value="success"
     }
   };
-
 </script>

@@ -10,42 +10,32 @@
 </template>
 
 <script setup>
-
+  const state = ref('loading')
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const state = ref('loading')
+  const { data: languages } = await supabase.from('languages').select('iso6393, name').eq('available', true)
 
   const preferred_language = ref('')
 
-  const { data } = await useAsyncData('preferred_language', async () => {
-    let { data } = await supabase
-      .from('accounts')
-      .select('preferred_language')
-      .eq('user_id', user.value.id)
-      .single()
-    return data
-  })
-  
-  if (data.value) preferred_language.value = data.value.preferred_language
+  const { data } = await supabase
+    .from('accounts')
+    .select('preferred_language')
+    .single()
+
+  if (data) preferred_language.value = data.preferred_language
+
   state.value = ''
 
-  let { data: languages } = await supabase
-    .from('languages')
-    .select('iso6393, name')
-    .eq('available', true)
-  
   const updateProfile = async () => {
-    const { data, error } = await supabase
+    state.value = 'loading'
+    const { error } = await supabase
       .from('accounts')
       .update({ preferred_language: preferred_language.value })
-      .eq('user_id', user.value.id)
-      .select()
-      .single()
+      .eq('user_id', user.id)
     if(error){
       state.value="error"
     } else {
       state.value="success"
     }
   };
-
 </script>
