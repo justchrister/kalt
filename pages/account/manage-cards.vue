@@ -96,15 +96,11 @@
   const router = useRouter()
 
   const { data: cards } = await useLazyAsyncData('cards', async () => {
-    console.log("asyncdata")
     const { data, error } = await supabase
       .from('cards')
       .select()
       .eq('user_id', user.id)
       .order('modified_at', { ascending: false })
-      console.log(data)
-      console.log(error)
-
     return data
   })
 
@@ -148,10 +144,11 @@
     })
     .select()
     .single()
-    console.log(newCard)
-    //cards.value.push(newCard)
     setDefault(newCard.card_id)
     new_card_id.value = uuidv4()
+    card_number.value = ''
+    expiry_month.value = ''
+    expiry_year.value = ''
   }
   
   // push data to cards array
