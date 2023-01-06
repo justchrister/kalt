@@ -78,7 +78,6 @@
         query: { days: 365*5, user_id: user.value.id },
         server: false
     })
-    console.log(portfolio)
     const getData = (dataset) => {
         if (dataset) {
             var dataArray = [];

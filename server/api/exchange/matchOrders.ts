@@ -20,8 +20,6 @@ export default defineEventHandler( async (event) => {
     .order('created_at', { ascending: true })
     .limit(1)
     .single()
-    if(fulfilling_order_error) console.log(fulfilling_order_error)
-    if(fulfilling_order) console.log(fulfilling_order)
   
   const fulfillOrders = async (order, f_order) => {
     const {data: org, error: org_err } = await supabase.from('exchange').update({ fulfilled_by_order_id: f_order }).eq('order_id', order).select().single()
@@ -34,7 +32,6 @@ export default defineEventHandler( async (event) => {
       { user_id: user_id, order_type: order_type, ticker: "DDFGI", quantity: quantity,
         created_at: new Date },
     ]).select().single()
-    console.log(error)
   }
   if(fulfilling_order.order_id){
     const fulfilling_order_id = fulfilling_order.order_id

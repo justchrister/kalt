@@ -25,4 +25,10 @@
 		"body": "<label> $0 </label>",
 		"description": "a snippet to create the <input> atom",
 	},
+	"arrow function label": {
+		"prefix": ["/arrow"],
+		"body": "const $1 = async () => { \n $0  \n  }",
+		"description": "a snippet to create a standard arrow function",
+	},
 }
+

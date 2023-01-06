@@ -120,5 +120,4 @@ if(props.data2){
   chartData2.datasets.data = props.data2;
   chartData.datasets.push(chartData2.datasets)
 }
-console.log(chartData)
 </script>

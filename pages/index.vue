@@ -30,9 +30,6 @@
   const pagename = 'Homepage';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  console.log(supabase)
   useHead({
     title,
     meta: [

@@ -155,7 +155,6 @@
     })
     .select()
     .single()
-    console.log(newCard)
     //cards.value.push(newCard)
     setDefault(newCard.card_id)
     new_card_id.value = uuidv4()

@@ -5,7 +5,7 @@
                 <li class="logomark">
                     <nuxt-link to="/">
                     <span>Kalt — </span>
-                    {{ pageTitle || currentRouteName }}
+                    {{ pageTitle }}
                     </nuxt-link>
                 </li>
                 <li>
@@ -24,6 +24,18 @@
                     <span>Kalt — </span>
                     <nuxt-link to="/account" v-on:click="toggleMenu"> Account </nuxt-link>
                 </li>
+                <li v-if="!signedIn">
+                    <span>Kalt — </span>
+                    <nuxt-link to="/auth/sign-up" v-on:click="toggleMenu"> Sign up </nuxt-link>
+                </li>
+                <li v-if="!signedIn">
+                    <span>Kalt — </span>
+                    <nuxt-link to="/auth/sign-in" v-on:click="toggleMenu"> Sign in </nuxt-link>
+                </li>
+                <li v-if="signedIn">
+                    <span>Kalt — </span>
+                    <a href="/auth/sign-out" v-on:click="toggleMenu"> Sign out </a>
+                </li>
             </ul>
         </nav>
         <button class="menu-toggle" v-on:click="toggleMenu"> menu</button>
@@ -33,20 +45,19 @@
     </header>
 </template>
 
-<script>
-export default {
-  name: "navbar",
-  props: ["pageTitle"],
-  methods: {
-    toggleMenu() {
-      document.getElementsByTagName("body")[0].classList.toggle("show-menu");
-    },
-  },
+<script setup>
+    let signedIn = false
+    const supabase = useSupabaseClient()
+    const {data: {user}} = await supabase.auth.getUser()
+    if(user) signedIn = true
+    const toggleMenu = async () => { 
+        document.getElementsByTagName("body")[0].classList.toggle("show-menu");
+    }
 
-    computed: {
-        currentRouteName() {
-            return this.$route.name;
+    const props = defineProps({
+        pageTitle: {
+            type: String,
+            required: false
         }
-    },
-};
+    })
 </script>

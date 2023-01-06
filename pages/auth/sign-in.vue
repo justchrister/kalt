@@ -65,7 +65,6 @@
       email: email.value,
       password: password.value,
     })
-    console.log(data)
     router.go(-1)
   }
 </script>

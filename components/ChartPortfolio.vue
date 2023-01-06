@@ -63,9 +63,7 @@ nav.pills.CTA button{
   const dataset = ref(raw_data)
 
 const updateData = (slicer) =>{
-  console.log("triggered")
   dataset.value = raw_data.slice(0,slicer)
-  console.log(dataset.value)
 }
 
 </script>

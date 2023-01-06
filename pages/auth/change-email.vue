@@ -56,9 +56,5 @@
           email: email.value
         }
       )
-
-    if (error) console.log(error)
-
-    if (data) console.log(user)
   }
 </script>
