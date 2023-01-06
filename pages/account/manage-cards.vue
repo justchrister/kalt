@@ -80,7 +80,7 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const { data: {user} } = await supabase.auth.getUser()
+  const {data: {user}} = await supabase.auth.getUser()
   const pagename = "Payment";
   const title = "Kalt — " + pagename;
   const description = ref("My App Description");
@@ -94,14 +94,21 @@
     },],
   });
   const router = useRouter()
-  const { data: cards } = await useAsyncData('cards', async () => {
-    const { data } = await supabase
+
+  const { data: cards } = await useLazyAsyncData('cards', async () => {
+    console.log("asyncdata")
+    const { data, error } = await supabase
       .from('cards')
       .select()
-      .eq('user_id', await user.id)
+      .eq('user_id', user.id)
       .order('modified_at', { ascending: false })
+      console.log(data)
+      console.log(error)
+
     return data
   })
+
+
 
   const checkBrand = (brand_id) => {
     let first_digit = brand_id.toString().slice(0,  1);
