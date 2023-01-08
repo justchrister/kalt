@@ -6,7 +6,7 @@
         <div class="block">
           Select the amount you want to invest: 
           <select-amount :uuid="transaction_id" />
-          select dfeault card: 
+          <label>Choose card to charge: </label>
           <nuxt-link to="/account/manage-cards">
             <default-card />
           </nuxt-link>
@@ -52,7 +52,7 @@
       .select('transaction_id')
       .single()
     if (!incomplete_order_exists) return data.transaction_id
-    if (incomplete_order_exists) return incomplete_order_exists[0].transaction_id
+    if ( incomplete_order_exists) return incomplete_order_exists[0].transaction_id
   })
 
   const completeTransaction = async () => {

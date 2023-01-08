@@ -54,48 +54,41 @@
 
     const supabase = useSupabaseClient()
     const {data: {user}} = await supabase.auth.getUser()
-    definePageMeta({
-      middleware: ['auth']
-    })
 
-    onMounted(() => {
-      watchEffect(() => {
-        if (!user.value) {
-          navigateTo('/auth')
-        }
-        if (!transactions[0]) {
-          navigateTo('about/how-it-works')
-        }
-      })
-    })
+  const loading = ref(null)
 
-const loading = ref(null)
+  const { data: transactions } = await useLazyAsyncData('cards', async () => {
+    const {data, error} = await supabase
+      .from('transactions')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('transaction_status', 1)
+      .order('created_at', { ascending: false })
+      .gte('amount', 1)
+    return data
+  })
+  // https://www.arrowsymbol.com/
+  function getTransactionType(x){ 
+    if (x===0) return "→" // deposit
+    if (x===1) return "←" // withdraw
+    if (x===2) return "↗" // dividend
+    if (x===3) return "↻" // auto-invest
+  }
+  function getTransactionTypeClass(x){ 
+    if (x===0) return "deposit" // deposit
+    if (x===1) return "withdrawal" // withdraw
+    if (x===2) return "dividend" // dividend
+    if (x===3) return "auto-invest" // auto-invest
+  }
+  function getTransactionStatusClass(x){ 
+    if (x===0) return "green" // deposit
+    if (x===1) return "red" // withdraw
+  }
 
-const {data: transactions, error} = await supabase.from('transactions').select('*').eq('user_id', user.value.id)
-  .order('created_at', { ascending: false })
-
-// https://www.arrowsymbol.com/
-function getTransactionType(x){ 
-  if (x===0) return "→" // deposit
-  if (x===1) return "←" // withdraw
-  if (x===2) return "↗" // dividend
-  if (x===3) return "↻" // auto-invest
-}
-function getTransactionTypeClass(x){ 
-  if (x===0) return "deposit" // deposit
-  if (x===1) return "withdrawal" // withdraw
-  if (x===2) return "dividend" // dividend
-  if (x===3) return "auto-invest" // auto-invest
-}
-function getTransactionStatusClass(x){ 
-  if (x===0) return "green" // deposit
-  if (x===1) return "red" // withdraw
-}
-
-function addZero(i) {
-  if (i < 10) {i = "0" + i}
-  return i;
-}
+  function addZero(i) {
+    if (i < 10) {i = "0" + i}
+    return i;
+  }
 </script>
 <style scoped>
 .green{ color:green; }
