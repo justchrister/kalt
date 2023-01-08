@@ -27,12 +27,12 @@
       </button>
     </nav>
     <nav class="pills CTA">
-      <nuxt-link to="account/sell">
+      <nuxt-link to="portfolio/sell">
         <button style="background-color:#F4442E;">
           SELL
         </button>
       </nuxt-link>
-      <nuxt-link to="account/buy">
+      <nuxt-link to="portfolio/buy">
         <button style="background-color:#0CF574;">
           BUY
         </button>

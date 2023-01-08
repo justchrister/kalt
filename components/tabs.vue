@@ -2,7 +2,7 @@
     <nav class="tabs">
       <ul>
         <li>
-          <nuxt-link to="/account/portfolio" >
+          <nuxt-link to="/portfolio" >
             Portfolio
           </nuxt-link>
         </li>

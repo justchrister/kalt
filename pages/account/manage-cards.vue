@@ -1,10 +1,8 @@
 <template>
   <div class="PageWrapper">
-    <navbar :pageTitle='pagename' />
     <div class="page">
       <div class="section">
         <div class="block">
-          <h3 @click="goBack()"><omoji emoji="←" /> back</h3>
           <h3> Your cards: </h3>
           <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
             <div :class="checkBrand(card.card_number)"></div> 
@@ -79,6 +77,10 @@
   </div>
 </template>
 <script setup lang="ts">
+
+  definePageMeta({
+    layout: "focused",
+  });
   const supabase = useSupabaseClient()
   const {data: {user}} = await supabase.auth.getUser()
   const pagename = "Payment";
@@ -93,7 +95,9 @@
       content: description,
     },],
   });
-  const router = useRouter()
+
+
+
 
   const { data: cards } = await useLazyAsyncData('cards', async () => {
     const { data, error } = await supabase

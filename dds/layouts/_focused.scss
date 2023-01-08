@@ -1,0 +1,11 @@
+.layout.focused .back-button{
+  padding: $big-clamp-half 0 0 $big-clamp-half;
+  @include font-body;
+  font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
+}
+.layout.focused .back-button:hover{
+  cursor:pointer;
+}
+.layout.focused .section{
+  padding-top:0px;
+}

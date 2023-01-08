@@ -8,6 +8,9 @@
 @import 'base/mixins';                /*   mixins                                 ka.lt/docs/scss/mixins                */
 @import 'base/reset';                 /*   scss-reset                             ka.lt/docs/scss/reset                 */
 
+/*      layouts                       /*                                                                                */
+@import 'layouts/focused';            /*   scss-reset                             ka.lt/docs/scss/reset                 */
+
 /*      components                    /*                                                                                */
 @import 'components/chart';           /*                                          ka.lt/docs/components/charts          */
 @import 'components/currencyamount';  /*                                          ka.lt/docs/components/currencyAmount  */

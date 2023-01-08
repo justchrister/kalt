@@ -300,6 +300,26 @@ input {
 }
 
 /*   scss-reset                             ka.lt/docs/scss/reset                 */
+/*      layouts                       /*                                                                                */
+.layout.focused .back-button {
+  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  font-size: clamp(14px, 3.6vw, 26px);
+}
+
+.layout.focused .back-button:hover {
+  cursor: pointer;
+}
+
+.layout.focused .section {
+  padding-top: 0px;
+}
+
+/*   scss-reset                             ka.lt/docs/scss/reset                 */
 /*      components                    /*                                                                                */
 .chart {
   background: #FFF;
@@ -314,9 +334,7 @@ input {
 canvas,
 .chartjs {
   width: 100%;
-}
-
-/*                                          ka.lt/docs/components/charts          */
+} /*                                          ka.lt/docs/components/charts          */
 .dds-currencyAmount {
   width: 100%;
 }
@@ -499,6 +517,7 @@ header .my-account-button:hover {
 
 /*   the menu used in all pages             ka.lt/docs/components/navbar          */
 /* happy */
+span.happy,
 span.😊,
 span.🙂 {
   background-image: url("../omoji/happy.svg");
