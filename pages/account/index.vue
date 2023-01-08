@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
 
   const pagename = 'Account';
   const title = 'Kalt — ' + pagename;

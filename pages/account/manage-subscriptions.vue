@@ -96,7 +96,7 @@
   
   const supabase = useSupabaseClient();
 
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
   const router = useRouter()
   onMounted(() => {
     watchEffect(() => {

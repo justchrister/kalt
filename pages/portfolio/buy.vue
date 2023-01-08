@@ -17,22 +17,6 @@
   </div>
 </template>
 <script setup lang="ts">
-
-/*
-
-
-1. Check if an incomplete one exists,
-2. If no, create new one by isnerting
-3. If yes, continue that one
-4. Create an order 
-
-then we need to change the create order to not accept number of ddf but with currency exchange rate conversion
-
-
-*/
-
-
-
   const pagename = 'Buy';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
@@ -55,17 +39,14 @@ then we need to change the create order to not accept number of ddf but with cur
 
   const { data: new_order_id } = await useLazyAsyncData('cards', async () => {
     const { data, error } = await supabase
-      .from('payments')
+      .from('transactions')
       .insert({
-        'user_id': user.id
+        'user_id': user.id,
+        'transaction_type': 0
       })
-      .select('pay_id')
+      .select('transaction_id')
       .single()
-    return data.pay_id
+    return data.transaction_id
   })
-  console.log(new_order_id)
-  const buyOrder = async () => { 
-
-  }
 
 </script>

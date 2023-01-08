@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
   const { data: countries } = await supabase.from('countries').select('iso2, name').eq('available', true)
 
   const country = ref('')

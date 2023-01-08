@@ -53,7 +53,7 @@
   });
 
   const client = useSupabaseClient()
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
 
   const email = ref('')
   const password = ref('')

@@ -20,7 +20,11 @@ export default defineNuxtConfig({
       ],
       meta: [
         // <meta name="description" content="My amazing site">
-        { name: 'description', content: 'Make money, make a difference!' }
+        { name: 'description', content: 'Make money, make a difference!' },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1"
+        }
       ],
     }
   },

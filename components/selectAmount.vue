@@ -52,12 +52,12 @@
 
   const updatePayment = async () => { 
     const { error } = await supabase
-      .from('payments')
+      .from('transactions')
       .update({
-        pay_id: props.uuid,
+        transaction_id: props.uuid,
         amount: amount.value,
+        currency: preferred_currency.value
       })
-      console.log(error)
   }
 </script>
 <style scoped>

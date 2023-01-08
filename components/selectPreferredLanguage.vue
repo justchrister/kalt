@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
   const { data: languages } = await supabase.from('languages').select('iso6393, name').eq('available', true)
 
   const preferred_language = ref('')

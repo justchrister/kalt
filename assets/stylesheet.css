@@ -497,6 +497,7 @@ header .my-account-button:hover {
   background-color: rgba(255, 0, 0, 0.2);
 }
 
+.show-menu .bottom-navbar,
 .show-menu .page {
   opacity: 0;
   pointer-events: none;
@@ -560,7 +561,19 @@ span.😦 {
 }
 
 /* wink */
+span.😉 {
+  background-image: url("../omoji/wink.svg");
+}
+
 /* laughing */
+/* tounge-out */
+span.😜,
+span.😛,
+span.😝,
+span.🤪 {
+  background-image: url("../omoji/tounge-out.svg");
+}
+
 /* other */
 span.☀️ {
   background-image: url("../omoji/sun.svg");

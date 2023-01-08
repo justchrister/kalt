@@ -18,7 +18,7 @@
                 </li>
                 <li>
                     <span>Kalt — </span>
-                    <nuxt-link to="/account/portfolio" v-on:click="toggleMenu"> Portfolio </nuxt-link>
+                    <nuxt-link to="/portfolio" v-on:click="toggleMenu"> Portfolio </nuxt-link>
                 </li>
                 <li>
                     <span>Kalt — </span>

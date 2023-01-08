@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
   const { data: currencies } = await supabase.from('currencies').select('iso, name').eq('available', true)
 
   const preferred_currency = ref('')

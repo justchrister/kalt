@@ -44,7 +44,7 @@
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
 
-  const user = useSupabaseUser()
+  const {data: {user}} = await supabase.auth.getUser()
   const supabase = useSupabaseClient()
   const router = useRouter()
 
