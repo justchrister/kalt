@@ -20,8 +20,7 @@
                   v-model="card_number" 
                   placeholder="card_number" 
                   id="card_number" 
-                  class="atom input-card_number"
-                  v-mask="'#### #### #### ####'" />
+                  class="atom input-card_number"/>
               </div>
               <div class="col-2 gutter-right">
                 <div class="expiry_month-group element select">
