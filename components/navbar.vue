@@ -39,7 +39,7 @@
             </ul>
         </nav>
         <button class="menu-toggle" v-on:click="toggleMenu"> menu</button>
-        <nuxt-link to="/account/portfolio">
+        <nuxt-link to="/portfolio">
             <div class="my-account-button"></div>
         </nuxt-link>
     </header>
