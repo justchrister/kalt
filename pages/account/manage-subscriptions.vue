@@ -5,7 +5,6 @@
     <div class="page">
       <div class="section">
         <div class="block"  v-if="cards.length">
-          <h3 @click="goBack()"><omoji emoji="←" /> back</h3>
           <h3> Your cards: </h3>
           <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
             <div :class="checkBrand(card.card_number)"></div> 
@@ -97,7 +96,7 @@
   const supabase = useSupabaseClient();
 
   const {data: {user}} = await supabase.auth.getUser()
-  const router = useRouter()
+
   onMounted(() => {
     watchEffect(() => {
       if (!user.value) {
@@ -169,8 +168,5 @@
       .eq('card_id', id)
       .select()
     refreshNuxtData()
-  }
-  const goBack = () => {
-    router.go(-1)
   }
 </script>

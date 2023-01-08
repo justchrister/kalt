@@ -5,12 +5,12 @@
       <div class="section" id="about">
         <div class="block">
           Select the amount you want to invest: 
-          <select-amount :uuid="new_order_id" />
+          <select-amount :uuid="transaction_id" />
           select dfeault card: 
           <nuxt-link to="/account/manage-cards">
             <default-card />
           </nuxt-link>
-          <button @click="buyOrder"> buy </button>
+          <button @click="completeTransaction"> buy </button>
         </div>
       </div>
     </div>
@@ -20,10 +20,14 @@
   const pagename = 'Buy';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
-
+  const router = useRouter()
   const supabase = useSupabaseClient()
   const {data: {user}} = await supabase.auth.getUser()
-  
+  const { data: incomplete_order_exists, error } = await supabase
+    .from('transactions')
+    .select()
+    .eq('transaction_status',0)
+
   useHead({
     title,
     meta: [
@@ -37,7 +41,8 @@
     layout: "focused",
   });
 
-  const { data: new_order_id } = await useLazyAsyncData('cards', async () => {
+
+  const { data: transaction_id } = await useLazyAsyncData('cards', async () => {
     const { data, error } = await supabase
       .from('transactions')
       .insert({
@@ -46,7 +51,18 @@
       })
       .select('transaction_id')
       .single()
-    return data.transaction_id
+    if (!incomplete_order_exists) return data.transaction_id
+    if (incomplete_order_exists) return incomplete_order_exists[0].transaction_id
   })
+
+  const completeTransaction = async () => {
+    const { error } = await supabase
+      .from('transactions')
+      .update({
+        transaction_id: transaction_id.value,
+        transaction_status: 1
+      })
+    router.go(-1)
+  }
 
 </script>
