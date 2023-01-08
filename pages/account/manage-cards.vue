@@ -96,9 +96,6 @@
     },],
   });
 
-
-
-
   const { data: cards } = await useLazyAsyncData('cards', async () => {
     const { data, error } = await supabase
       .from('cards')
@@ -164,8 +161,5 @@
       .eq('card_id', id)
       .select()
     refreshNuxtData()
-  }
-  const goBack = () => {
-    router.go(-1)
   }
 </script>
