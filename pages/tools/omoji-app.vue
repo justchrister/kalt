@@ -21,7 +21,7 @@
               id="omojiText" 
               class="atom input-omojiText"
               @input="calculateTextLeft"
-              maxlength="120" />
+              maxlength="50" />
               {{omojiTextLeft}}
             </div>
           </form>
@@ -62,9 +62,9 @@ onMounted(() => {
   const omojiText = ref('');
   const omojiChoice = ref('😊');
   const replyTo = ref('');
-  const omojiTextLeft = ref(120);
+  const omojiTextLeft = ref(50);
   const calculateTextLeft = async () => { 
-    omojiTextLeft.value = 120 - omojiText.value.length
+    omojiTextLeft.value = 50 - omojiText.value.length
   }
   const setReplyTo = async (replyId) => { 
      replyTo.value=replyId
