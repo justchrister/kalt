@@ -90,5 +90,5 @@ export default defineEventHandler( async (event) => {
     
     previousQuantity = combinedQuantity;
   }
-  return result.slice(4);
+  return result;
 })
