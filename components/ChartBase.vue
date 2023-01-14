@@ -31,24 +31,16 @@ ChartJS.register(
 
 const props = defineProps({
   data: {
-    type: Array<Number>,
+    type: Object,
     required: true
   },
-  data2: {
-    type: Array<Number>,
-    required: false
-  },
-  labels: {
-    type: Array<String>,
-    required: true
-  },
-  label:{
+  label: {
     type: String,
     required: true
   },
-  label2:{
+  currency: {
     type: String,
-    required: false
+    required: true
   }
 })
 const chartOptions = {
@@ -59,13 +51,13 @@ const chartOptions = {
     }
   },
   animation: {
-      duration: 0
+      duration: 1
   },
   interaction: {
       intersect: 0
   },
   maintainAspectRatio: true,
-  tension: 0.5,
+  tension: 0.2,
   plugins: {
     tooltip: {
       callbacks: {
@@ -73,7 +65,7 @@ const chartOptions = {
           let label = context.dataset.label || '';
           if (label) label += ': ';
           if (context.parsed.y !== null) {
-              label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'NOK' }).format(context.parsed.y);
+              label += new Intl.NumberFormat('en-US', { style: 'currency', currency: props.currency }).format(context.parsed.y);
           }
           return label;
         }
@@ -81,43 +73,35 @@ const chartOptions = {
     }
   }
 }
-const chartData = reactive({
-  labels: [],
+const labels = ref();
+const data = ref();
+const chartData = computed(() => ({
+  labels: labels.value,
   datasets: [
     {
-      label: '',
+      label: props.label,
       backgroundColor: '#1E96FC',
       borderColor: '#1E96FC',
       pointBackgroundColor: '#1E96FC',
       pointBorderWidth: 0,
       pointBorderColor: '#1E96FC',
-      data: []
+      data: data.value
     },
   ]
-})
-chartData.labels = props.labels;
-chartData.datasets[0].label = props.label;
-chartData.datasets[0].data = props.data;
+}))
 
-
-// if we have two lines
-
-const chartData2 = reactive({
-  datasets:
-    {
-      label: '',
-      backgroundColor: '#F7B538',
-      borderColor: '#F7B538',
-      pointBackgroundColor: '#F7B538',
-      pointBorderWidth: 0,
-      pointBorderColor: '#F7B538',
-      data: []
-    }
-})
-
-if(props.data2){
-  chartData2.datasets.label = props.label2;
-  chartData2.datasets.data = props.data2;
-  chartData.datasets.push(chartData2.datasets)
+const updateChart = async (dataset) => {
+  let temp_labels = []
+  let temp_data = []
+  for (let i = 0; i < props.data.length; i++) {
+    temp_labels.push(props.data[i].date)
+    temp_data.push(props.data[i].quantity)
+  }
+  labels.value= temp_labels
+  data.value= temp_data
 }
+watch(() => props.data, () => 
+    updateChart(props.data)
+, { deep: true })
+
 </script>

@@ -5,40 +5,91 @@ export default defineEventHandler( async (event) => {
   const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
   const query = getQuery(event)
 
+  // rudementary error handling
   if (!query.user_id) return {'error': 'user_id not defined'} 
   if (!query.days) return {'error': 'days not defined'} 
 
-    const { data: input, error } = await supabase
-      .from('exchange')
-      .select('order_id, order_type, quantity, created_at, modified_at')
-      .eq('user_id', query.user_id)
-      .not('fulfilled_by_order_id', 'is', null );
 
-    // Create n dates backwards from today
-    const n = query.days;
-    const today = new Date();
-    const output = [];
-    for (let i = 0; i < n; i++) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i)
-      const key = date.toISOString().split("T")[0]
-      let dateObject = { [key] : null}
-      output.push(dateObject)
-      //dates.push(date.toISOString().split("T")[0]);
+  // get all transactions 
+  const { data: order_flow, error } = await supabase
+    .from('exchange')
+    .select('order_id, order_type, quantity, created_at, modified_at')
+    .eq('user_id', query.user_id)
+    .not('fulfilled_by_order_id', 'is', null );
+  const output = [];
+
+  // Add empty date objects based on the query.days parameter
+  for (let i = 0; i < query.days; i++) {
+    const rawDate = new Date();
+    rawDate.setDate(rawDate.getDate() - i)
+    const date = rawDate.toISOString().split("T")[0]
+    output.push(
+      { 
+        "date": date,
+        "quantity": 0
+      }
+    )
+  }
+
+  // push the daily order-totals into the array
+  for (const element of order_flow) {
+    const rawDate = new Date(element.modified_at);
+    const date = rawDate.toISOString().split("T")[0];
+    let quantity;
+    if(element.order_type===0) quantity = element.quantity
+    if(element.order_type===1) quantity = -element.quantity
+    output.push(
+      { 
+        "date": date,
+        "quantity": quantity 
+      }
+    );
+  }
+
+  // sort the array based on date value
+  output.sort(function(a,b){
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  // combine duplicates in the array
+  let response = [];
+
+  for (let i = 0; i < output.length; i++) {
+    let date = output[i].date;
+    let quantity = output[i].quantity;
+
+    let found = false;
+    for (let j = 0; j < response.length; j++) {
+      if (response[j].date === date) {
+        response[j].quantity += quantity;
+        found = true;
+        break;
+      }
     }
-    const keyval = input[0].modified_at.split("T")[0]
 
-
-
-    input.forEach((item) => {
-      const key = item['modified_at'];
-      const value = item;
-      output.forEach((firstArrayItem) => {
-        if (firstArrayItem['date'] === key) {
-          firstArrayItem['amount'] = value;
-        }
+    if (!found) {
+      response.push({
+        "date": date,
+        "quantity": quantity
       });
+    }
+  }
+  response.reverse();
+  let result = [];
+  let previousQuantity = 0;
+
+  for (let i = 0; i < response.length; i++) {
+    let date = response[i].date;
+    let quantity = response[i].quantity;
+    let combinedQuantity = previousQuantity + quantity;
+
+    result.push({
+        "date": date,
+        "quantity": combinedQuantity
     });
-    // Reverse it, and choose the last X days based on the ?days= url parameter
-    return output;
+    
+    previousQuantity = combinedQuantity;
+  }
+  console.log(result.slice(4))
+  return result.slice(4);
 })

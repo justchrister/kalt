@@ -30,5 +30,10 @@
 		"body": "const $1 = async () => {\n$0\n}",
 		"description": "a snippet to create a standard arrow function",
 	},
+	"for (i)": {
+		"prefix": ["/for each"],
+		"body": "for (let i = 0; i < $1; i++) {\n$0\n}",
+		"description": "a snippet to create a standard arrow function",
+	},
 }
 
