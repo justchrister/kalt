@@ -107,7 +107,6 @@
 
   const expiry_date = ref('')
   const expiry_month_test = ref(expiry_date.value.slice(0,2))
-  console.log(expiry_month_test)
 
   const checkBrand = (brand_id) => {
     let first_digit = brand_id.toString().slice(0,  1);

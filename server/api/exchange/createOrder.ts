@@ -30,7 +30,6 @@ export default defineEventHandler( async (event) => {
         created_at: new Date
       },
     ]).select().single()
-    console.log(error)
     return data
   }
 

@@ -31,7 +31,6 @@
             <span class="pill"> <omoji emoji="→" /> deposit </span> 
             <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
             <span class="pill"> <omoji emoji="↗" /> dividend  </span>
-            <span class="pill"> <omoji emoji="↻" /> auto-invested </span>
           </p>
         </div>
       </div>
@@ -96,7 +95,7 @@
 span.pill{
   margin-right:5px;
   padding:5px 10px;
-  border: 1px solid black; 
+  border: .1px solid black; 
   border-radius: 3px;
 }
 #type{

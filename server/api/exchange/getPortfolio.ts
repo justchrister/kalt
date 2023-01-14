@@ -90,6 +90,5 @@ export default defineEventHandler( async (event) => {
     
     previousQuantity = combinedQuantity;
   }
-  console.log(result.slice(4))
   return result.slice(4);
 })
