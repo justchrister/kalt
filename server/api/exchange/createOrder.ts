@@ -10,13 +10,13 @@ export default defineEventHandler( async (event) => {
     .from('transactions')
     .select('*')
     .is('exchange_order', null)
-    .eq('transaction_id', body.transaction_id)
+    .eq('transaction_id', body.record.transaction_id)
     .eq('transaction_status', 1) // when we have stripe integration, this should be set to 2 when transaction is completed
     .single()
   const {data:exchange_rates } = await supabase
     .from('exchange_rates')
     .select('*')
-    .eq('iso', body.currency)
+    .eq('iso', body.record.currency)
     .single()
 
   // insert order object into supabase db
