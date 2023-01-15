@@ -1,14 +1,27 @@
 import { createClient } from '@supabase/supabase-js'
 
 export default defineEventHandler( async (event) => {
+  const oklog = (type, text) => {
+    let label = ""
+    if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m   "
+    if (type==="error") label   = " \x1b[41m ERROR \x1b[0m     "
+    if (type==="warn") label    = " \x1b[43m WARNING \x1b[0m   "
+    console.log(label + text)
+  }
   const runtimeConfig = useRuntimeConfig()
   const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
   const query = getQuery(event)
 
   // rudementary error handling
-  if (!query.user_id) return {'error': 'user_id not defined'} 
-  if (!query.days) return {'error': 'days not defined'} 
-
+  if (!query.user_id){
+    oklog('error', 'user_id not defined')
+    return {'error': 'user_id not defined'} 
+  } 
+  
+  if (!query.days) {
+    return {'error': 'days not defined'} 
+    oklog('error', 'days not defined')
+  }
 
   // get all transactions 
   const { data: order_flow, error } = await supabase
@@ -90,5 +103,6 @@ export default defineEventHandler( async (event) => {
     
     previousQuantity = combinedQuantity;
   }
+  oklog('success', 'getPortfolio for ' + query.user_id)
   return result;
 })

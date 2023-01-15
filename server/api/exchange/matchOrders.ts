@@ -1,4 +1,11 @@
 
+const oklog = (type, text) => {
+  let label = ""
+  if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m   "
+  if (type==="error") label   = " \x1b[41m ERROR \x1b[0m     "
+  if (type==="warn") label    = " \x1b[43m WARNING \x1b[0m   "
+  console.log(label + text)
+}
 import { createClient } from '@supabase/supabase-js'
 
 export default defineEventHandler( async (event) => {
@@ -32,16 +39,20 @@ export default defineEventHandler( async (event) => {
       { user_id: user_id, order_type: order_type, ticker: "DDFGI", quantity: quantity,
         created_at: new Date },
     ]).select().single()
+    oklog('success', 'created order: ' + data.order_id)
   }
   if(fulfilling_order.order_id){
     const fulfilling_order_id = fulfilling_order.order_id
     await fulfillOrders (body.record.order_id, fulfilling_order.order_id)
+    oklog('success', 'matched orders: ' + body.record.order_id + " with " + fulfilling_order.order_id)
     let new_order_quantity = fulfilling_order.quantity - body.record.quantity
-    if(new_order_quantity!=0) await createOrder(fulfilling_order.user_id, fulfilling_order_type, new_order_quantity) 
+    if(new_order_quantity!=0){
+      await createOrder(fulfilling_order.user_id, fulfilling_order_type, new_order_quantity) 
+    } 
+
+
+
     return 'orders matched'
   }
   return 'no matches found'
-
-
-
 });

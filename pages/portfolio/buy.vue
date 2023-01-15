@@ -17,6 +17,14 @@
   </div>
 </template>
 <script setup lang="ts">
+
+  const oklog = (type, text) => {
+    let label = ""
+    if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m   "
+    if (type==="error") label = " \x1b[41m ERROR \x1b[0m     "
+    if (type==="warn") label = " \x1b[43m WARNING \x1b[0m   "
+    console.log(label + text)
+  }
   const pagename = 'Buy';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
@@ -27,7 +35,8 @@
     .from('transactions')
     .select()
     .eq('transaction_status',0)
-
+    .single()
+  if(incomplete_order_exists) oklog('success', 'found incomplete transaction: '+incomplete_order_exists.transaction_id)
   useHead({
     title,
     meta: [
@@ -43,16 +52,24 @@
 
 
   const { data: transaction_id } = await useLazyAsyncData('cards', async () => {
-    const { data, error } = await supabase
-      .from('transactions')
-      .insert({
-        'user_id': user.id,
-        'transaction_type': 0
-      })
-      .select('transaction_id')
-      .single()
-    if (!incomplete_order_exists) return data.transaction_id
-    if ( incomplete_order_exists) return incomplete_order_exists[0].transaction_id
+    // if there is not an incomplete transaction, start new transaction
+    if (!incomplete_order_exists) {
+      const { data, error } = await supabase
+        .from('transactions')
+        .insert({
+          'user_id': user.id,
+          'transaction_type': 0
+        })
+        .select('transaction_id')
+        .single()
+      
+      if(error) oklog('error', 'could not create new transaction id')
+      if(!error) oklog('success', 'started new transaction: '+data.transaction_id)
+      return data.transaction_id
+    }
+    // if there is an incomplete order, return old id
+    oklog('success', 'setting transaction_id to incomplete transaction_id: '+incomplete_order_exists.transaction_id)
+    return incomplete_order_exists.transaction_id
   })
 
   const completeTransaction = async () => {
@@ -62,7 +79,15 @@
         transaction_id: transaction_id.value,
         transaction_status: 1
       })
-    router.go(-1)
+      .gte('amount',1)
+    if (error) {
+      // add error handling
+      oklog('error', 'could not complete transaction: '+transaction_id.value)
+    }
+    if(!error) {
+      oklog('success', 'completed transaction: '+transaction_id.value)
+      router.go(-1)
+    }
   }
 
 </script>
