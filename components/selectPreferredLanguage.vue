@@ -12,17 +12,21 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
   const { data: languages } = await supabase.from('languages').select('iso6393, name').eq('available', true)
 
   const preferred_language = ref('')
 
-  const { data } = await supabase
-    .from('accounts')
-    .select('preferred_language')
-    .single()
-
-  if (data) preferred_language.value = data.preferred_language
+  const props = defineProps({
+    initial: {
+      type: String,
+      required: false
+    },
+    user_id: {
+      type: String,
+      required: false
+    }
+  })
+  if(props.initial) preferred_language.value = props.initial
 
   state.value = ''
 
@@ -31,7 +35,7 @@
     const { error } = await supabase
       .from('accounts')
       .update({ preferred_language: preferred_language.value })
-      .eq('user_id', user.id)
+      .eq('user_id', props.user_id)
     if(error){
       state.value="error"
     } else {

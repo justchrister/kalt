@@ -17,15 +17,19 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
   const postal_code = ref('')
 
-  const { data } = await supabase
-    .from('accounts')
-    .select('postal_code')
-    .single()
-
-  if (data) postal_code.value = data.postal_code
+  const props = defineProps({
+    initial: {
+      type: String,
+      required: false
+    },
+    user_id: {
+      type: String,
+      required: false
+    }
+  })
+  if(props.initial) postal_code.value = props.initial
 
   state.value = ''
 
@@ -34,7 +38,7 @@
     const { error } = await supabase
       .from('accounts')
       .update({ postal_code: postal_code.value })
-      .eq('user_id', user.id)
+      .eq('user_id', props.user_id)
     if(error){
       state.value="error"
     } else {

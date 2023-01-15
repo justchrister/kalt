@@ -7,27 +7,27 @@
         <tabs />
           <form @submit.prevent="updateProfile">
             <div class="col-2 gutter-right">
-              <input-first-name/>
+              <input-first-name :initial="data.last_name" :user_id="user.id"/>
             </div>
             <div class="col-2 gutter-left">
-              <input-last-name/>
+              <input-last-name :initial="data.first_name" :user_id="user.id"/>
             </div>
             <div class="col-3 gutter-right">
-              <select-country/>
+              <select-country :initial="data.country" :user_id="user.id"/>
             </div>
             <div class="col-3 gutter-horizontal">
-              <input-city/>
+              <input-city :initial="data.city" :user_id="user.id"/>
             </div>
             <div class="col-3 gutter-left">
-              <input-postal-code/>
+              <input-postal-code :initial="data.postal_code" :user_id="user.id"/>
             </div>
-            <input-address-line/>
-            <input-birthdate/>
+            <input-address-line :initial="data.address_line" :user_id="user.id"/>
+            <input-birthdate :initial="data.birthdate" :user_id="user.id"/>
             <div class="col-2 gutter-right">
-              <select-preferred-currency/>
+              <select-preferred-currency :initial="data.preferred_currency" :user_id="user.id"/>
             </div>
             <div class="col-2 gutter-left">
-              <select-preferred-language/>
+              <select-preferred-language :initial="data.preferred_language" :user_id="user.id"/>
             </div>
           </form>
         </div>
@@ -52,5 +52,8 @@
     title,
   });
 
-  
+  const { data } = await supabase
+  .from('accounts')
+  .select()
+  .single()
 </script>

@@ -40,7 +40,9 @@
     .select('preferred_currency')
     .single()
   
-  const preferred_currency = ref(data.preferred_currency)
+  const preferred_currency = ref()
+  if (data) preferred_currency.value = data.preferred_currency
+  if (data) console.log(data)
   const amount =  ref('')
   
   const { data: currencies } = await supabase

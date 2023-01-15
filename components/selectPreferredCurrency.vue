@@ -12,17 +12,22 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
   const { data: currencies } = await supabase.from('currencies').select('iso, name').eq('available', true)
 
   const preferred_currency = ref('')
 
-  const { data } = await supabase
-    .from('accounts')
-    .select('preferred_currency')
-    .single()
+  const props = defineProps({
+    initial: {
+      type: String,
+      required: false
+    },
+    user_id: {
+      type: String,
+      required: false
+    }
+  })
 
-  if (data) preferred_currency.value = data.preferred_currency
+  if(props.initial) preferred_currency.value = props.initial
 
   state.value = ''
 
@@ -31,7 +36,7 @@
     const { error } = await supabase
       .from('accounts')
       .update({ preferred_currency: preferred_currency.value })
-      .eq('user_id', user.id)
+      .eq('user_id', props.user_id)
     if(error){
       state.value="error"
     } else {

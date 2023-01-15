@@ -17,15 +17,19 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
   const last_name = ref('')
 
-  const { data } = await supabase
-    .from('accounts')
-    .select('last_name')
-    .single()
-
-  if (data) last_name.value = data.last_name
+  const props = defineProps({
+    initial: {
+      type: String,
+      required: false
+    },
+    user_id: {
+      type: String,
+      required: false
+    }
+  })
+  if(props.initial) last_name.value = props.initial
 
   state.value = ''
 
@@ -34,7 +38,7 @@
     const { error } = await supabase
       .from('accounts')
       .update({ last_name: last_name.value })
-      .eq('user_id', user.id)
+      .eq('user_id', props.user_id)
     if(error){
       state.value="error"
     } else {
