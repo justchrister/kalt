@@ -93,3 +93,4 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 - Good developer tooling
 - Cool domain: ka.lt
 - Use any tool you would like
+- Be weird, be yourself, just perform.
