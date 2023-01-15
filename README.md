@@ -81,6 +81,9 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
   <img src="https://avatars.githubusercontent.com/u/42318403?s=48&v=4" alt="" width="15" height="15">@justchrister - CEO
 </a>
 
+## Coding practices
+- 100ms rule; Everything you do has to be completed in 100ms
+
 ### Stuff:
 - Free panini
 - Pet friendly offices
