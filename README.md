@@ -1,6 +1,6 @@
 <img src="https://poc.kalt.co/images/frontpage.webp" alt="" width="100%" height="auto">
 
-# Kalt — Front-end
+# Kalt — Make money, make a difference
 
 Kalt is a startup building a vertically integrated fossil-free energy generator and exchange that lets anyone invest directly in fossil free energy generation, and earn direct dividends from it. 
 
@@ -83,6 +83,7 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 
 ## Coding practices
 - 100ms rule; Everything you do has to be completed in 100ms
+- Do more, do better
 
 ### Stuff:
 - Free panini
