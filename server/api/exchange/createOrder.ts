@@ -29,10 +29,11 @@ export default defineEventHandler( async (event) => {
 
   const {data: transaction_incomplete, error: transaction_incomplete_error } = await supabase
     .from('transactions')
-    .select('*')
+    .update({ 'transaction_status': 3 })
     .is('exchange_order', null)
     .eq('transaction_id', body.record.transaction_id)
     .eq('transaction_status', 1) // when we have stripe integration, this should be set to 2 when transaction is completed
+    .select('*')
     .single()
   if (transaction_incomplete) oklog('success', 'found transaction: ' + transaction_incomplete.transaction_id)
   if (transaction_incomplete_error){
