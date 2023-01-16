@@ -1,13 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
+import { oklog } from '~/composables/oklog'
 
 export default defineEventHandler( async (event) => {
-  const oklog = (type, text) => {
-    let label = ""
-    if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m   "
-    if (type==="error") label   = " \x1b[41m ERROR \x1b[0m     "
-    if (type==="warn") label    = " \x1b[43m WARNING \x1b[0m   "
-    console.log(label + text)
-  }
+
   const runtimeConfig = useRuntimeConfig()
   const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
   const query = getQuery(event)

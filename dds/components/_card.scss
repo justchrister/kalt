@@ -1,8 +1,10 @@
 .card{
   border:$border;
   border-radius:3px;
-  padding:clamp($unit-min, $unit, $unit-max) clamp($unit-min*2, $unit*2, $unit-max*2);
+  padding:clamp($unit-min, $unit, $unit-max) 0 clamp($unit-min, $unit, $unit-max) clamp($unit-min*2, $unit*2, $unit-max*2);
   margin:clamp($unit-min, $unit, $unit-max) 0;
+  max-height:clamp($unit-min*4, $unit*4, $unit-max*4);
+  overflow:hidden;
 }
 .card:hover{
   background-color:#fff;
@@ -31,7 +33,7 @@
 }
 
 .card .details{
-  width:clamp($unit-min*36, $unit*36, $unit-max*36);
+  width:clamp($unit-min*15, $unit*15, $unit-max*15);
   height:clamp($unit-min*4, $unit*4, $unit-max*4);
   line-height:clamp($unit-min*4, $unit*4, $unit-max*4);
   padding-left:clamp($unit-min*2, $unit*2, $unit-max*2);
@@ -42,7 +44,9 @@
   width:clamp($unit-min*8, $unit*8, $unit-max*8);
   height:clamp($unit-min*4, $unit*4, $unit-max*4);
   line-height:clamp($unit-min*4, $unit*4, $unit-max*4);
-  display:inline-block;
+  display:block;
+  float:right;
+  padding-right:clamp($unit-min*2, $unit*2, $unit-max*2);
   text-align:right;
 }
 .card .default.true span{

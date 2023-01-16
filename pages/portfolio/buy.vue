@@ -5,7 +5,7 @@
       <div class="section" id="about">
         <div class="block">
           Select the amount you want to invest: 
-          <select-amount :uuid="transaction_id" />
+          <select-amount :uuid="transaction_id" v-if="transaction_id"/>
           <label>Choose card to charge: </label>
           <nuxt-link to="/account/manage-cards">
             <default-card />
@@ -20,9 +20,9 @@
 
   const oklog = (type, text) => {
     let label = ""
-    if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m   "
-    if (type==="error") label = " \x1b[41m ERROR \x1b[0m     "
-    if (type==="warn") label = " \x1b[43m WARNING \x1b[0m   "
+    if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m "
+    if (type==="error")   label = " \x1b[41m ERROR \x1b[0m   "
+    if (type==="warn")    label = " \x1b[43m WARNING \x1b[0m "
     console.log(label + text)
   }
   const pagename = 'Buy';
@@ -31,11 +31,13 @@
   const router = useRouter()
   const supabase = useSupabaseClient()
   const {data: {user}} = await supabase.auth.getUser()
+  // checking if an incomplete order exists
   const { data: incomplete_order_exists, error } = await supabase
     .from('transactions')
     .select()
     .eq('transaction_status',0)
     .single()
+
   if(incomplete_order_exists) oklog('success', 'found incomplete transaction: '+incomplete_order_exists.transaction_id)
   useHead({
     title,
@@ -79,7 +81,6 @@
         transaction_id: transaction_id.value,
         transaction_status: 1
       })
-      .gte('amount',1)
     if (error) {
       // add error handling
       oklog('error', 'could not complete transaction: '+transaction_id.value)

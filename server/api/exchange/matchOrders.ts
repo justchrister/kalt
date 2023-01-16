@@ -1,12 +1,6 @@
 
-const oklog = (type, text) => {
-  let label = ""
-  if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m   "
-  if (type==="error") label   = " \x1b[41m ERROR \x1b[0m     "
-  if (type==="warn") label    = " \x1b[43m WARNING \x1b[0m   "
-  console.log(label + text)
-}
 import { createClient } from '@supabase/supabase-js'
+import { oklog } from '~/composables/oklog'
 
 export default defineEventHandler( async (event) => {
   const runtimeConfig = useRuntimeConfig()
@@ -27,6 +21,13 @@ export default defineEventHandler( async (event) => {
     .order('created_at', { ascending: true })
     .limit(1)
     .single()
+  if(fulfilling_order) oklog('success', 'found fulfilling order: ' + fulfilling_order.order_id)
+  if(fulfilling_order_error) {
+    oklog('error', 'could not find fulfilling order')
+    return {
+      'error': 'could not find fulfilling order'
+    }
+  }
   
   const fulfillOrders = async (order, f_order) => {
     const {data: org, error: org_err } = await supabase.from('exchange').update({ fulfilled_by_order_id: f_order }).eq('order_id', order).select().single()
@@ -48,11 +49,16 @@ export default defineEventHandler( async (event) => {
     let new_order_quantity = fulfilling_order.quantity - body.record.quantity
     if(new_order_quantity!=0){
       await createOrder(fulfilling_order.user_id, fulfilling_order_type, new_order_quantity) 
-    } 
-
-
-
+    }
     return 'orders matched'
   }
   return 'no matches found'
 });
+
+/*
+
+The latest issue here is that it 
+somewhere along the way the order_type
+is set to null..
+
+*/
