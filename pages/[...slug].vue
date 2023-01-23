@@ -14,8 +14,3 @@
     layout: "focused",
   });
 </script>
-<style>
-  .layout.focused{
-    background-image: linear-gradient(#1E96FC, transparent);
-  }
-</style>

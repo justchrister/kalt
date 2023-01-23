@@ -32,6 +32,8 @@ useHead({
         <div class="block">
           <h2> ➁ Then we add all those sites to a big pool of sites</h2>
           <p> So that you dont just invest in a single solar panel, rather you buy shares in the fund that owns all the solar panels all over the world. Decreased risk for both us and you. </p>
+          <p>
+          <nuxt-link to="/questions/how-does-direct-dividend-funds-work">How does the energy funds work?</nuxt-link></p>
         </div>
       </div>
       <div class="section">
