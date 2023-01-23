@@ -18,6 +18,15 @@ export default defineEventHandler( async (event) => {
     oklog('error', 'days not defined')
   }
 
+  // get exchange rates 
+  const { data: exchange_rates, error: exchange_rates_error } = await supabase
+    .from('exchange_rates')
+    .select('*')
+    .eq('iso', query.currency)
+    .single()
+  if(exchange_rates) oklog('success', 'got exchange rate for ' + query.currency + ' = ' + exchange_rates.eq_ddfgi)
+  if(exchange_rates_error) oklog('error', 'could not get exchange rate for :'+ query.currency + exchange_rates_error)
+
   // get all transactions 
   const { data: order_flow, error } = await supabase
     .from('exchange')
@@ -38,14 +47,15 @@ export default defineEventHandler( async (event) => {
       }
     )
   }
-
+  const buy_order = 0;
+  const sell_order = 1;
   // push the daily order-totals into the array
   for (const element of order_flow) {
     const rawDate = new Date(element.modified_at);
     const date = rawDate.toISOString().split("T")[0];
     let quantity;
-    if(element.order_type===0) quantity = element.quantity
-    if(element.order_type===1) quantity = -element.quantity
+    if(element.order_type===buy_order) quantity = (element.quantity/exchange_rates.eq_ddfgi)
+    if(element.order_type===sell_order) quantity = -(element.quantity/exchange_rates.eq_ddfgi)
     output.push(
       { 
         "date": date,

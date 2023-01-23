@@ -1,7 +1,7 @@
 <template>
   <div class="chartWrap">
     <chart-base 
-      currency="NOK"
+      :currency="data.preferred_currency"
       :data="dataset"
       label="label"/>
   </div>
@@ -13,6 +13,10 @@ const props = defineProps({
   days: {
     type: Number,
     required: false
+  },
+  currency: {
+    type: String,
+    required: false
   }
 })
   const supabase = useSupabaseClient()
@@ -20,8 +24,12 @@ const props = defineProps({
   const labels = ['lol']
   const dataset = ref({})
   const days = ref(5)
+  const { data } = await supabase
+  .from('accounts')
+  .select('preferred_currency')
+  .single()
   const initateChart =  () => {
-    const { pending, data: tempdataset } = useFetch('/api/exchange/getPortfolio?days='+props.days+'&user_id='+user.id)
+    const { pending, data: tempdataset } = useFetch('/api/exchange/getPortfolio?days='+props.days+'&user_id='+user.id+'&currency='+data.preferred_currency)
     watch(tempdataset, (rawDataset) => {
       dataset.value = rawDataset
     })

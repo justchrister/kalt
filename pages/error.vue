@@ -1,20 +1,4 @@
-<script setup lang="ts">
-  const pagename = '404';
-  const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
-  var errormsg = ref('');
-  
-  useHead({
-    title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
-  });
 
-</script>
 <template>
   <div class="PageWrapper">
     <navbar :pageTitle="pagename" />
@@ -32,3 +16,20 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+  const pagename = '404';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+  var errormsg = ref('');
+  
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+
+</script>

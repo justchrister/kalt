@@ -6,7 +6,7 @@ export default defineEventHandler( async (event) => {
   const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
   const query = getQuery(event)
   const body = await readBody(event)
-  // error handling
+  
   if (!body.record.amount){
     oklog('error', 'amount is under 1')
     return {

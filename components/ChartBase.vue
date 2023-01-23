@@ -56,6 +56,13 @@ const chartOptions = {
   interaction: {
       intersect: 0
   },
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: true
+          }
+      }]
+  },
   maintainAspectRatio: true,
   tension: 0.2,
   plugins: {

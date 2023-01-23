@@ -9,6 +9,7 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@nuxt/content": "^2.3.0",
     "@nuxtjs/supabase": "^0.3.0",
     "@types/express": "^4.17.14"
   },
@@ -17,11 +18,8 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@supabase/supabase-js": "^2.2.3",
     "chart.js": "^4.1.1",
-    "express": "^4.18.2",
-    "joi": "^17.7.0",
     "nuxt": "^3.0.0",
     "uuid": "^9.0.0",
-    "vue-chartjs": "^5.1.0",
-    "vue-the-mask": "^0.11.1"
+    "vue-chartjs": "^5.1.0"
   }
 }
