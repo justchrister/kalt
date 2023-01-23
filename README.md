@@ -85,6 +85,7 @@ The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where yo
 - 100ms rule; Everything you do has to be completed in 100ms
 - 150px rule; the website should scale perfectly from 150px to 150 000px. 
 - Do more, do better
+- <a href="https://www.youtube.com/watch?v=Bf7vDBBOBUA">Don't Write Comments</a>
 
 ### Stuff:
 - Free panini
