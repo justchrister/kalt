@@ -1,0 +1,3 @@
+# How does compound interest work?
+
+Compound interest is a powerful financial concept that allows your money to grow exponentially over time. When you invest money, the interest earned on that investment is added to the original principal, creating a new, larger principal. This larger principal then earns interest in the next period, and so on. This process repeats itself, causing the interest earned to compound and grow at an increasing rate. The longer the investment is left to grow, the greater the impact of compound interest will be. It is a powerful tool for building wealth over time and should be taken into consideration when planning for <a href="why-you-should-start-saving-early">long-term financial goals</a>.
