@@ -22,43 +22,7 @@ export default defineEventHandler( async (event) => {
       'error' : 'currency missing from body'
     }
   }
-  if(node==="random"){
-    const random_uuid = uuidv4()
-
-    const {data: random, error: random_error} = await supabase
-      .from('nodes')
-      .select('node_id')
-      .gte('node_id', random_uuid)
-      .limit(1)
-    if(random){
-      oklog('success', 'got a random node_id: '+ random[0].node_id)
-    }
-    if(random_error){
-      oklog('error', 'could not get a random node_id: '+ random_error.message)
-      return {
-        "error": random_error.message
-      }
-    }
-    const {data: random_dividend, error: random_dividend_error} = await supabase
-      .from('dividends')
-      .insert({ 
-        'node_id': random[0].random_id,
-        'amount': earned,
-        'currency': currency,
-        'status': 0
-      })
-      .select()
-      .single()
-      
-    if(random_error){
-      oklog('error', 'could not get a random node_id: '+ random_error.message)
-      return {
-        "error": random_error.message
-      }
-    }
-    oklog('success', 'created a random dividend: '+ random_dividend.dividend_id)
-    return random_dividend
-  }
+  
   const {data, error} = await supabase
     .from('dividends')
     .insert({ 
