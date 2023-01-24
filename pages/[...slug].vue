@@ -11,6 +11,6 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    layout: "focused",
+    layout: "questions",
   });
 </script>
