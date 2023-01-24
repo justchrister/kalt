@@ -5,7 +5,8 @@ export default defineEventHandler( async (event) => {
   const runtimeConfig = useRuntimeConfig()
   const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
   const body = await readBody(event)
-  const currency = body.currency;
+  const currency = body.record.currency;
+  const node = body.record.node_id;
   
   if (!currency){
     oklog('error', 'currency missing from body')
@@ -13,6 +14,20 @@ export default defineEventHandler( async (event) => {
       'error' : 'currency missing from body'
     }
   }
-  oklog('success', 'dividend registered: ' + data.dividend_id)
+
+  
+/*
+
+Do this: 
+
+each time a new record is added to dividends
+you check that ones currency, 
+
+if that ones currency does not have more than 1000 entries in status 0, 
+then you dont do anything to it. 
+
+if it does, you change them to status 1 and calculate a payout
+
+*/
   return "data"
   });
