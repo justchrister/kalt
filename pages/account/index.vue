@@ -7,10 +7,10 @@
         <tabs />
           <form @submit.prevent="updateProfile">
             <div class="col-2 gutter-right">
-              <input-first-name :initial="data.last_name" :user_id="user.id"/>
+              <input-first-name :initial="data.first_name" :user_id="user.id"/>
             </div>
             <div class="col-2 gutter-left">
-              <input-last-name :initial="data.first_name" :user_id="user.id"/>
+              <input-last-name :initial="data.last_name" :user_id="user.id"/>
             </div>
             <div class="col-3 gutter-right">
               <select-country :initial="data.country" :user_id="user.id"/>
