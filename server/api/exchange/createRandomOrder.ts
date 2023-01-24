@@ -17,7 +17,7 @@ export default defineEventHandler( async (event) => {
     'a631c34d-f345-4c74-8e48-100a393849a9',
     'd0820190-da5a-43ad-919b-a22e61044be6'
   ]
-  function rndm(min, max) { // min and max included 
+  function rndm(min, max) { 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
   const order_type = rndm(1, 2) - 1;
