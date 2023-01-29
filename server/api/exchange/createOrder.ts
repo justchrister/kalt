@@ -54,7 +54,10 @@ export default defineEventHandler( async (event) => {
     return {
       'error': 'could not get exchange rates'
     }
-  } 
+  }
+  let order_type = 0
+  if (transaction_incomplete.transaction_type===1) order_type = 1
+  if (transaction_incomplete.transaction_type===2) order_type = 2
   // insert order object into supabase db
   const createOrder = async () => { 
     const {data, error} = await supabase.from('exchange').insert([
