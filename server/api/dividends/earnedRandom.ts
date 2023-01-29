@@ -56,10 +56,5 @@ export default defineEventHandler( async (event) => {
       oklog('success', 'dividend registered')
     }
   }
-
-  return {'created dividends' : count,
-          'results': {
-            result
-          }
-          }
+  return { 'created dividends' : count, result }
   });
