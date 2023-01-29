@@ -28,6 +28,7 @@ export default defineEventHandler( async (event) => {
     .eq('available', true)
 
   let node_id, currency, amount;
+  let result = []
   let count = 0;
   for (let i = 0; i < random(100,500); i++) {
     node_id = random_node[random(0, random_node.length-1)].node_id; 
@@ -35,21 +36,30 @@ export default defineEventHandler( async (event) => {
     amount = random(2, 200)
 
     const {data, error} = await supabase
-    .from('dividends')
-    .insert({ 
-      'node_id': node_id,
-      'amount': amount,
-      'currency': currency,
-      'status': 0
-    })
-    .select()
-    .single()
+      .from('dividends')
+      .insert({ 
+        'node_id': node_id,
+        'amount': amount,
+        'currency': currency,
+        'status': 0
+      })
+      .select()
+      .single()
+
     if (error) oklog('warn', 'failed to create dividend')
     if (data) {
+      result.push({
+        'dividend_id': data.dividend_id,
+        'amount': amount
+      })
       count = count + 1
       oklog('success', 'dividend registered')
     }
   }
 
-  return {"created dividends" : count}
+  return {'created dividends' : count,
+          'results': {
+            result
+          }
+          }
   });
