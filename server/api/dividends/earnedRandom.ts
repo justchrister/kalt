@@ -34,7 +34,7 @@ export default defineEventHandler( async (event) => {
     node_id = random_node[random(0, random_node.length-1)].node_id; 
     currency = currencies[random(0, currencies.length-1)].iso;
     amount = random(2, 200)
-
+    
     const {data, error} = await supabase
       .from('dividends')
       .insert({ 
