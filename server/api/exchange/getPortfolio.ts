@@ -6,37 +6,44 @@ export default defineEventHandler( async (event) => {
   const runtimeConfig = useRuntimeConfig()
   const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
   const query = getQuery(event)
-
+  const user_id = query.user_id
+  const days = query.days || 1
+  const currency = query.currency || "EUR"
   // rudementary error handling
-  if (!query.user_id){
+  if (!user_id){
     oklog('error', 'user_id not defined')
     return {'error': 'user_id not defined'} 
   } 
-  
-  if (!query.days) {
-    return {'error': 'days not defined'} 
+  if (!days) {
     oklog('error', 'days not defined')
+    return {'error': 'days not defined'}
+  }
+  if (!currency) {
+    oklog('', 'currency not defined')
+    return {'error': 'currency not defined'}
   }
 
   // get exchange rates 
   const { data: exchange_rates, error: exchange_rates_error } = await supabase
     .from('exchange_rates')
     .select('*')
-    .eq('iso', query.currency)
+    .eq('iso', currency)
     .single()
-  if(exchange_rates) oklog('success', 'got exchange rate for ' + query.currency + ' = ' + exchange_rates.eq_ddfgi)
-  if(exchange_rates_error) oklog('error', 'could not get exchange rate for :'+ query.currency + exchange_rates_error)
 
-  // get all transactions 
+  const exchange_rate = exchange_rates.eq_ddfgi;
+  if(exchange_rates_error){
+    oklog('error', 'could not get exchange rate for :'+ currency)
+  }
+
+  // get all orders 
   const { data: order_flow, error } = await supabase
     .from('exchange')
     .select('order_id, order_type, quantity, created_at, modified_at')
     .eq('user_id', query.user_id)
-    .not('fulfilled_by_order_id', 'is', null );
+//    .not('fulfilled_by_order_id', 'is', null );
   const output = [];
-
   // Add empty date objects based on the query.days parameter
-  for (let i = 0; i < query.days; i++) {
+  for (let i = 0; i < days; i++) {
     const rawDate = new Date();
     rawDate.setDate(rawDate.getDate() - i)
     const date = rawDate.toISOString().split("T")[0]
@@ -50,12 +57,18 @@ export default defineEventHandler( async (event) => {
   const buy_order = 0;
   const sell_order = 1;
   // push the daily order-totals into the array
-  for (const element of order_flow) {
-    const rawDate = new Date(element.modified_at);
-    const date = rawDate.toISOString().split("T")[0];
+  for (const order of order_flow) {
     let quantity;
-    if(element.order_type===buy_order) quantity = (element.quantity/exchange_rates.eq_ddfgi)
-    if(element.order_type===sell_order) quantity = -(element.quantity/exchange_rates.eq_ddfgi)
+
+    const rawDate = new Date(order.modified_at);
+    const date = rawDate.toISOString().split("T")[0];
+
+    if(order.order_type===buy_order) {
+      quantity = (order.quantity/exchange_rate)
+    }
+    if(order.order_type===sell_order) {
+      quantity = -(order.quantity/exchange_rate)
+    }
     output.push(
       { 
         "date": date,
@@ -109,5 +122,5 @@ export default defineEventHandler( async (event) => {
     previousQuantity = combinedQuantity;
   }
   oklog('success', 'getPortfolio for ' + query.user_id)
-  return result;
+  return result.slice(-days);
 })
