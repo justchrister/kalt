@@ -50,11 +50,12 @@ export default defineEventHandler( async (event) => {
     if (data) {
       result.push({
         'dividend_id': data.dividend_id,
-        'amount': amount
+        'amount': amount,
+        'currency': currency
       })
       count = count + 1
       oklog('success', 'dividend registered')
     }
   }
   return { 'created dividends' : count, result }
-  });
+});
