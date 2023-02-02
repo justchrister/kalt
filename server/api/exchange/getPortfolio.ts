@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 import { oklog } from '~/composables/oklog'
+const runtimeConfig = useRuntimeConfig()
+const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
 
 export default defineEventHandler( async (event) => {
-  const runtimeConfig = useRuntimeConfig()
-  const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_service_role)
   const query = getQuery(event)
   const user_id = query.user_id
   const days = query.days || 1
