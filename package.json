@@ -14,7 +14,6 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/supabase": "^0.3.0",
-    "@supabase/supabase-js": "^2.2.3",
     "chart.js": "^4.1.1",
     "nuxt": "^3.0.0",
     "uuid": "^9.0.0",
