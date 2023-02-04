@@ -1,10 +1,9 @@
-import { createClient } from '@supabase/supabase-js'
 import { oklog } from '~/composables/oklog'
-import { v4 as uuidv4 } from 'uuid';
+import { serverSupabaseServiceRole } from '#supabase/server'
+import { v4 as uuidv4 } from 'uuid'
 
 export default defineEventHandler( async (event) => {
-  const runtimeConfig = useRuntimeConfig()
-  const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
+  const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
   const earned = body.earned;
   const currency = body.currency;

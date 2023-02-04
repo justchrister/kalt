@@ -1,9 +1,7 @@
-import { createClient } from '@supabase/supabase-js'
 import { oklog } from '~/composables/oklog'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
-  const runtimeConfig = useRuntimeConfig()
   const supabase = serverSupabaseServiceRole(event)
   const query = getQuery(event)
   const user_id = query.user_id

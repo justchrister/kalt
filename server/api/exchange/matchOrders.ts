@@ -1,10 +1,8 @@
-
-import { createClient } from '@supabase/supabase-js'
 import { oklog } from '~/composables/oklog'
+import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
-  const runtimeConfig = useRuntimeConfig()
-  const supabase = createClient("https://urgitfsodtrsbtcbwnpv.supabase.co", runtimeConfig.supabase_service_role)
+  const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
   let fulfilling_order_type = 1
   if(body.record.order_type) fulfilling_order_type=0
