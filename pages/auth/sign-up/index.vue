@@ -52,14 +52,12 @@
     ],
   });
 
-  const client = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
-
+  const supabase = useSupabaseClient()
   const email = ref('')
   const password = ref('')
 
   const signUp = async () => {
-    const { user, error } = await client.auth.signUp({
+    const { user, error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value
     }) 
