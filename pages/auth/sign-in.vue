@@ -42,9 +42,7 @@
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
 
-  import { createClient } from '@supabase/supabase-js'
-  const runtimeConfig = useRuntimeConfig()
-  const supabase = createClient(runtimeConfig.supabase_url, runtimeConfig.supabase_key)
+  const supabase = useSupabaseClient()
   const router = useRouter()
 
   const email = ref('')
