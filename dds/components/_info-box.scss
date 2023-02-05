@@ -1,0 +1,17 @@
+.infobox{
+    border:1px solid $blue;
+    border-radius:4px;
+    padding:clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2))
+            clamp($unit-min, $unit, $unit-max);
+    background:$blue-20;
+    @include font-body;
+    font-size:80%;
+    margin: clamp($unit-min, $unit, $unit-max) 0 ;
+    span{
+        font-size:90%;
+    }
+}
+.infobox#warn{
+    border:1px solid $yellow;
+    background:$yellow-20;
+}

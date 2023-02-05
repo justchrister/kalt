@@ -6,53 +6,53 @@ $unit: 1.8vw;
 $unit-max: 13px;
 
 // Colors
-$noon: #FCF9F2;
-$midnight: #202124;
-$tuscany: #1E96FC;
-$bliss: #F7B538;
-$botanic: #0CF574;
-$amsterdam: #F4442E;
-$merlot: #624CAB;
-$kobi: #F991CC;
+$white: #FCF9F2;
+$black: #202124;
+$blue: #1E96FC;
+$yellow: #F7B538;
+$green: #0CF574;
+$red: #F4442E;
+$purple: #624CAB;
+$pink: #F991CC;
 
 // Color variations
-$tuscany-80: mix($tuscany, $noon, 80%);
-$tuscany-60: mix($tuscany, $noon, 60%);
-$tuscany-40: mix($tuscany, $noon, 40%);
-$tuscany-20: mix($tuscany, $noon, 20%);
+$blue-80: mix($blue, $white, 80%);
+$blue-60: mix($blue, $white, 60%);
+$blue-40: mix($blue, $white, 40%);
+$blue-20: mix($blue, $white, 20%);
 
-$bliss-80: mix($bliss, $noon, 80%);
-$bliss-60: mix($bliss, $noon, 60%);
-$bliss-40: mix($bliss, $noon, 40%);
-$bliss-20: mix($bliss, $noon, 20%);
+$yellow-80: mix($yellow, $white, 80%);
+$yellow-60: mix($yellow, $white, 60%);
+$yellow-40: mix($yellow, $white, 40%);
+$yellow-20: mix($yellow, $white, 20%);
 
-$botanic-80: mix($botanic, $noon, 80%);
-$botanic-60: mix($botanic, $noon, 60%);
-$botanic-40: mix($botanic, $noon, 40%);
-$botanic-20: mix($botanic, $noon, 20%);
+$green-80: mix($green, $white, 80%);
+$green-60: mix($green, $white, 60%);
+$green-40: mix($green, $white, 40%);
+$green-20: mix($green, $white, 20%);
 
-$amsterdam-80: mix($amsterdam, $noon, 80%);
-$amsterdam-60: mix($amsterdam, $noon, 60%);
-$amsterdam-40: mix($amsterdam, $noon, 40%);
-$amsterdam-20: mix($amsterdam, $noon, 20%);
+$red-80: mix($red, $white, 80%);
+$red-60: mix($red, $white, 60%);
+$red-40: mix($red, $white, 40%);
+$red-20: mix($red, $white, 20%);
 
-$merlot-80: mix($merlot, $noon, 80%);
-$merlot-60: mix($merlot, $noon, 60%);
-$merlot-40: mix($merlot, $noon, 40%);
-$merlot-20: mix($merlot, $noon, 20%);
+$purple-80: mix($purple, $white, 80%);
+$purple-60: mix($purple, $white, 60%);
+$purple-40: mix($purple, $white, 40%);
+$purple-20: mix($purple, $white, 20%);
 
-$kobi-80: mix($kobi, $noon, 80%);
-$kobi-60: mix($kobi, $noon, 60%);
-$kobi-40: mix($kobi, $noon, 40%);
-$kobi-20: mix($kobi, $noon, 20%);
+$pink-80: mix($pink, $white, 80%);
+$pink-60: mix($pink, $white, 60%);
+$pink-40: mix($pink, $white, 40%);
+$pink-20: mix($pink, $white, 20%);
 
 // Gradients
-$tuscany-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $tuscany 0%, $tuscany-60, $noon);
-$bliss-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $bliss 0%, $kobi-60, $noon);
-$botanic-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $botanic 0%, $botanic-60, $noon);
-$amsterdam-gradient: url('images/gradient.webp'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $amsterdam 0%, $amsterdam-60, $noon);
-$merlot-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $merlot 0%, $merlot-60, $noon);
-$kobi-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $kobi 0%, $kobi-60, $noon);
+$blue-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $blue 0%, $blue-60, $white);
+$yellow-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $yellow 0%, $pink-60, $white);
+$green-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $green 0%, $green-60, $white);
+$red-gradient: url('images/gradient.webp'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $red 0%, $red-60, $white);
+$purple-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $purple 0%, $purple-60, $white);
+$pink-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $pink 0%, $pink-60, $white);
 
 // Fonts 
 
@@ -70,7 +70,7 @@ $sans-serif:
     Sans-Serif;
 
 $monospace:
-    "Kalt Monospace",
+    "Source Code Pro",
     "Courier New",
     Monospace;
 
@@ -83,7 +83,7 @@ $sectionpadding-double: clamp(150px, 30vh, 350px);
 
 // Borders
 $border-width: .1px;
-$border: $border-width solid $midnight;
+$border: $border-width solid $black;
 
 //clamps
 $column-divider: 2.4; // % of sitewidth

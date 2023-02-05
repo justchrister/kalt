@@ -33,7 +33,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $tuscany-20;
+  background-color: $blue-20;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -45,17 +45,17 @@
   width: clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
   left: clamp($unit-min*0.1, $unit*0.1, $unit-max*0.1);
   bottom: clamp($unit-min*0.1, $unit*0.1, $unit-max*0.1);
-  background-color: $noon;
+  background-color: $white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: $tuscany;
+  background-color: $blue;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px $tuscany;
+  box-shadow: 0 0 1px $blue;
 }
 
 input:checked + .slider:before {

@@ -34,5 +34,15 @@
 		"body": "for (let i = 0; i < $1; i++) {\n$0\n}",
 		"description": "a snippet to create a standard arrow function",
 	},
+	"scaffold component": {
+		"prefix": ["/scaffold component"],
+		"body": "<template>\n\n</template>\n<script setup lang=\"ts\">\nconst props = defineProps({\n$0: {\ntype: String,\nrequired: true\n}\n})\n</script>",
+		"description": "a snippet to scaffold a component",
+	},
+	"add prop": {
+		"prefix": ["/add props"],
+		"body": "const props = defineProps({\n$0: {\ntype: String,\nrequired: true\n}\n})\n",
+		"description": "a snippet to scaffold a component",
+	},
 }
 

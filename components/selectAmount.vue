@@ -32,57 +32,65 @@
     uuid: {
       type: String,
       required: true
+    },
+    type: {
+      type: String, 
+      required: true
     }
   })
   
   const preferred_currency = ref()
 
-
-
-  const updatePaymentAmount = async () => { 
-    if(amount.value){
-      const { error } = await supabase
-        .from('transactions')
-        .update({
-          transaction_id: props.uuid,
-          amount: amount.value
-      })
-      if(error) oklog('error', 'could not update amount')
-      if(!error) oklog('success', 'updated amount')
+  if(type){
+    oklog("", "modifying subscription: ")
+  }
+  if(type="buy"){
+    const updatePaymentAmount = async () => { 
+      if(amount.value){
+        const { error } = await supabase
+          .from('transactions')
+          .update({
+            transaction_id: props.uuid,
+            amount: amount.value
+        })
+        if(error) oklog('error', 'could not update amount')
+        if(!error) oklog('success', 'updated amount')
+      }
     }
+    const updatePaymentCurrency = async () => {
+        const { error } = await supabase
+          .from('transactions')
+          .update({
+            transaction_id: props.uuid,
+            currency: preferred_currency.value
+        })
+        if(error) oklog('error', 'could not update currency')
+        if(!error) oklog('success', 'updated currency to: '+preferred_currency.value)
+    }
+
+
+    const { data } = await supabase
+      .from('accounts')
+      .select('preferred_currency')
+      .single()
+
+
+    if (data) {
+      oklog('success', 'found preferred currency: ' + data.preferred_currency)
+      preferred_currency.value = data.preferred_currency
+      updatePaymentCurrency()
+      oklog('success', 'set buy currency: ' + preferred_currency.value)
+    }
+    const amount =  ref('')
+    
+    const { data: currencies } = await supabase
+      .from('currencies')
+      .select('iso, name')
+      .eq('available', true)
+
+    state.value = ''
   }
-  const updatePaymentCurrency = async () => {
-      const { error } = await supabase
-        .from('transactions')
-        .update({
-          transaction_id: props.uuid,
-          currency: preferred_currency.value
-      })
-      if(error) oklog('error', 'could not update currency')
-      if(!error) oklog('success', 'updated currency to: '+preferred_currency.value)
-  }
 
-
-  const { data } = await supabase
-    .from('accounts')
-    .select('preferred_currency')
-    .single()
-
-
-  if (data) {
-    oklog('success', 'found preferred currency: ' + data.preferred_currency)
-    preferred_currency.value = data.preferred_currency
-    updatePaymentCurrency()
-    oklog('success', 'set buy currency: ' + preferred_currency.value)
-  }
-  const amount =  ref('')
-  
-  const { data: currencies } = await supabase
-    .from('currencies')
-    .select('iso, name')
-    .eq('available', true)
-
-  state.value = ''
 
 </script>
 <style scoped>

@@ -1,0 +1,32 @@
+.component.calendar{
+  input{
+    display:none;
+  }
+  label{
+  user-select: none;
+  }
+  label:hover{
+    background-image: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 100%);
+
+  }
+  input[type="checkbox"] + label{
+    border: $border;
+    display:inline-block;
+    border-radius:1px;
+    width:clamp(1px, $unit * 3, $unit-max * 3);
+    height:clamp($unit-min, $unit, $unit-max);
+    line-height:clamp($unit-min, $unit, $unit-max);
+    padding:clamp($unit-min * 1, $unit * 1, $unit-max * 1)
+            clamp($unit-min * 1, $unit * 1, $unit-max * 1)
+            clamp($unit-min * 2, $unit * 2, $unit-max * 2)
+            clamp($unit-min * 3, $unit * 3, $unit-max * 3);
+    text-align:right;
+    margin:clamp(calc($unit-min/4), calc($unit/4), calc($unit-max/4));
+  }
+  input[type="checkbox"]:checked + label {
+      text-decoration:underline;
+      border-radius:5px;
+      background-image: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 100%);
+      
+  }
+}

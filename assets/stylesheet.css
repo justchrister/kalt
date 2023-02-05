@@ -4,6 +4,9 @@
 /* The following clamps are half of their counterpart.
 Example: $big-clamp-half is half of $big-clamp. */
 /*   variables                              ka.lt/docs/scss/variables             */
+/* 
+ Display text
+*/
 @font-face {
   font-family: "Kalt Display";
   src: url("/fonts/display/ogg-regular-kalt.eot");
@@ -11,6 +14,9 @@ Example: $big-clamp-half is half of $big-clamp. */
   font-weight: normal;
   font-style: normal;
 }
+/*
+    Body text
+*/
 @font-face {
   font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/body/NeueHaasDisplay-Mediu.eot");
@@ -81,33 +87,15 @@ Example: $big-clamp-half is half of $big-clamp. */
   font-weight: 300;
   font-style: normal;
 }
+/* 
+    monospace
+*/
 @font-face {
-  font-family: "Neue Haas Grotesk Display Pro";
-  src: url("/fonts/body/NeueHaasDisplay-XXThin.eot");
-  src: local("NeueHaasDisplay-XXThin"), url("/fonts/body/NeueHaasDisplay-XXThin.eot?#iefix") format("embedded-opentype"), url("/fonts/body/NeueHaasDisplay-XXThin.woff2") format("woff2"), url("/fonts/body/NeueHaasDisplay-XXThin.woff") format("woff"), url("/fonts/body/NeueHaasDisplay-XXThin.ttf") format("truetype");
-  font-weight: 100;
+  font-family: "Source Code Pro";
+  src: url("/fonts/monospace/SourceCodePro-Regular.eot");
+  src: local("SourceCodePro Regular"), local("SourceCodePro-Regular"), url("/fonts/monospace/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("/fonts/monospace/SourceCodePro-Regular.woff2") format("woff2"), url("/fonts/monospace/SourceCodePro-Regular.woff") format("woff"), url("/fonts/monospace/SourceCodePro-Regular.ttf") format("truetype");
+  font-weight: normal;
   font-style: normal;
-}
-@font-face {
-  font-family: "Neue Haas Grotesk Display Pro";
-  src: url("/fonts/body/NeueHaasDisplay-XThinItalic.eot");
-  src: local("NeueHaasDisplay-XThinItalic"), url("/fonts/body/NeueHaasDisplay-XThinItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/body/NeueHaasDisplay-XThinItalic.woff2") format("woff2"), url("/fonts/body/NeueHaasDisplay-XThinItalic.woff") format("woff"), url("/fonts/body/NeueHaasDisplay-XThinItalic.ttf") format("truetype");
-  font-weight: 100;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Neue Haas Grotesk Display Pro";
-  src: url("/fonts/body/NeueHaasDisplay-XXThinItalic.eot");
-  src: local("NeueHaasDisplay-XXThinItalic"), url("/fonts/body/NeueHaasDisplay-XXThinItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/body/NeueHaasDisplay-XXThinItalic.woff2") format("woff2"), url("/fonts/body/NeueHaasDisplay-XXThinItalic.woff") format("woff"), url("/fonts/body/NeueHaasDisplay-XXThinItalic.ttf") format("truetype");
-  font-weight: 100;
-  font-style: italic;
-}
-@font-face {
-  font-family: "Neue Haas Grotesk Display Pro";
-  src: url("/fonts/body/NeueHaasDisplay-ThinItalic.eot");
-  src: local("NeueHaasDisplay-ThinItalic"), url("/fonts/body/NeueHaasDisplay-ThinItalic.eot?#iefix") format("embedded-opentype"), url("/fonts/body/NeueHaasDisplay-ThinItalic.woff2") format("woff2"), url("/fonts/body/NeueHaasDisplay-ThinItalic.woff") format("woff"), url("/fonts/body/NeueHaasDisplay-ThinItalic.ttf") format("truetype");
-  font-weight: 100;
-  font-style: italic;
 }
 /*   fonts                                  ka.lt/docs/scss/fonts                 */
 .col-2,
@@ -622,6 +610,34 @@ span.↺ {
   background-image: url("../omoji/arrow-anti-clockwise.svg");
 }
 
+span.ⓘ {
+  font-size: 138%;
+  background-image: url("../omoji/enclosed-text-i.svg");
+}
+
+/*   omoji                                  ka.lt/docs/scss/layouts               */
+.infobox {
+  border: 1px solid #1E96FC;
+  border-radius: 4px;
+  padding: clamp(3.5px, 0.9vw, 6.5px) clamp(7px, 1.8vw, 13px);
+  background: #d0e5f4;
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  font-size: 80%;
+  margin: clamp(7px, 1.8vw, 13px) 0;
+}
+.infobox span {
+  font-size: 90%;
+}
+
+.infobox#warn {
+  border: 1px solid #F7B538;
+  background: #fbebcd;
+}
+
 /*   omoji                                  ka.lt/docs/scss/layouts               */
 .bottom-navbar {
   padding-bottom: clamp(75px, 15vh, 175px);
@@ -653,6 +669,31 @@ span.↺ {
 .tabs ul li:before {
   display: none;
   content: "";
+} /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
+.component.calendar input {
+  display: none;
+}
+.component.calendar label {
+  user-select: none;
+}
+.component.calendar label:hover {
+  background-image: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 100%);
+}
+.component.calendar input[type=checkbox] + label {
+  border: 0.1px solid #202124;
+  display: inline-block;
+  border-radius: 1px;
+  width: clamp(1px, 5.4vw, 39px);
+  height: clamp(7px, 1.8vw, 13px);
+  line-height: clamp(7px, 1.8vw, 13px);
+  padding: clamp(7px, 1.8vw, 13px) clamp(7px, 1.8vw, 13px) clamp(14px, 3.6vw, 26px) clamp(21px, 5.4vw, 39px);
+  text-align: right;
+  margin: clamp(1.75px, 0.45vw, 3.25px);
+}
+.component.calendar input[type=checkbox]:checked + label {
+  text-decoration: underline;
+  border-radius: 5px;
+  background-image: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 100%);
 }
 
 /*   navbar used in accounts page           ka.lt/docs/components/tabs            */

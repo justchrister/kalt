@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-ExtraLight.eot');
+    src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'),
+        url('SourceCodePro-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-ExtraLight.woff2') format('woff2'),
+        url('SourceCodePro-ExtraLight.woff') format('woff'),
+        url('SourceCodePro-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-Light.eot');
+    src: local('Source Code Pro Light'), local('SourceCodePro-Light'),
+        url('SourceCodePro-Light.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-Light.woff2') format('woff2'),
+        url('SourceCodePro-Light.woff') format('woff'),
+        url('SourceCodePro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-Bold.eot');
+    src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'),
+        url('SourceCodePro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-Bold.woff2') format('woff2'),
+        url('SourceCodePro-Bold.woff') format('woff'),
+        url('SourceCodePro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-Medium.eot');
+    src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'),
+        url('SourceCodePro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-Medium.woff2') format('woff2'),
+        url('SourceCodePro-Medium.woff') format('woff'),
+        url('SourceCodePro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-Semibold.eot');
+    src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'),
+        url('SourceCodePro-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-Semibold.woff2') format('woff2'),
+        url('SourceCodePro-Semibold.woff') format('woff'),
+        url('SourceCodePro-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-Black.eot');
+    src: local('Source Code Pro Black'), local('SourceCodePro-Black'),
+        url('SourceCodePro-Black.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-Black.woff2') format('woff2'),
+        url('SourceCodePro-Black.woff') format('woff'),
+        url('SourceCodePro-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('SourceCodePro-Regular.eot');
+    src: local('Source Code Pro'), local('SourceCodePro-Regular'),
+        url('SourceCodePro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('SourceCodePro-Regular.woff2') format('woff2'),
+        url('SourceCodePro-Regular.woff') format('woff'),
+        url('SourceCodePro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

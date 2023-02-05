@@ -17,14 +17,6 @@
   </div>
 </template>
 <script setup lang="ts">
-
-  const oklog = (type, text) => {
-    let label = ""
-    if (type==="success") label = " \x1b[42m SUCCESS \x1b[0m "
-    if (type==="error")   label = " \x1b[41m ERROR \x1b[0m   "
-    if (type==="warn")    label = " \x1b[43m WARNING \x1b[0m "
-    console.log(label + text)
-  }
   const pagename = 'Buy';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')

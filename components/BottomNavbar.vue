@@ -13,7 +13,7 @@
         <nuxt-link to="/auth/sign-out" > sign out 👋 </nuxt-link>
       </div>
       <div class="col-3 gutter-right">
-        <a href="#"> manage subscriptions </a>
+        <nuxt-link to="/account/manage-subscriptions" > manage subscriptions </nuxt-link>
       </div>
       <div class="col-3 gutter-horizontal">
         <a href="#" > change email </a>
