@@ -5,7 +5,8 @@
       <div class="section">
         <h1>Manage subscription</h1>
         <div class="block">
-        <h3>Select amount you want to auto-invest</h3>
+          <h3>Select amount you want to auto-invest</h3>
+          <select-amount for="subscription" :uuid="uuid" />
         </div>
         <div class="block">
           <h3>Select which days you want to auto-invest</h3>
@@ -17,6 +18,12 @@
             <default-card />
           </nuxt-link>
           <info-box type="info" text="changing default card will change card being charged" />
+        </div>
+        <div class="block">
+          <button @click="toggleSubscription()">
+            <span v-if="enabled">pause subscription</span>
+            <span v-else>start subscription</span>
+          </button>
         </div>
       </div>
     </div>
@@ -46,6 +53,7 @@
   const days = ref([])
   const amount = ref('')
   const currency = ref('')
+  const enabled = ref(false)
 
   const getSubscription = async () => {
     const { data, error } = await supabase
@@ -61,11 +69,13 @@
     amount.value = data.amount
     currency.value = data.currency
     days.value = data.days
+    enabled.value = data.enabled
     if (error) oklog("error", "could not find subscription")
     if (data) oklog("success", "got subscription: " + uuid.value)
     if (data.amount) oklog("", "amount: " + amount.value)
-    if (data.currency) oklog("", "amount: " + currency.value)
-    if (data.days) oklog("", "amount: " + days.value)
+    if (data.currency) oklog("", "currency: " + currency.value)
+    if (data.days) oklog("", "days: " + days.value)
+    if (data.enabled) oklog("", "status: " + enabled.value)
   }
   const createSubscription = async () => {
     const { data, error } = await supabase
@@ -83,7 +93,25 @@
   const subscription = await getSubscription()
   if(subscription===null) await createSubscription()
   
-  const completeSubscription = async (uuid) => {
+  const toggleSubscription = async () => {
+    if(enabled.value){
+      enabled.value = false
+      console.log(enabled.value)
+    } 
+    if(enabled.value===false) enabled.value = true
+    const { data, error } = await supabase
+      .from('subscriptions')
+      .update({
+        enabled: enabled.value
+      })
+      .eq('subscription_id', uuid.value)
+      .select()
+      .single()
+    if(enabled.value){
+      oklog("success", "enabled subscription")
+      return
+    }
+    oklog("success", "disabled subscription")
   }
 
 </script>

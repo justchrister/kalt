@@ -305,6 +305,51 @@ input {
 
 .layout.focused .section {
   padding-top: 0px;
+} /*   scss-reset                             ka.lt/docs/scss/reset                 */
+.layout.questions .back-button {
+  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  font-size: clamp(14px, 3.6vw, 26px);
+  position: fixed;
+}
+
+.layout.questions .back-button:hover {
+  cursor: pointer;
+}
+
+.layout.questions .section {
+  padding-top: 0px;
+}
+
+.layout.questions p,
+.layout.questions h1 {
+  background-color: #fff;
+  padding: clamp(7px, 1.8vw, 13px) clamp(14px, 3.6vw, 26px);
+  border-radius: clamp(7px, 1.8vw, 13px);
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(10.5px, 2.7vw, 19.5px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  display: block;
+  width: auto;
+}
+
+.layout.questions h1 {
+  margin-left: clamp(42px, 10.8vw, 78px);
+  background: #77bef8;
+}
+
+.layout.questions p {
+  margin-top: clamp(7px, 1.8vw, 13px);
+  margin-right: clamp(42px, 10.8vw, 78px);
+  margin-bottom: clamp(14px, 3.6vw, 26px);
+  background: #6cf7a6;
+  position: relative;
 }
 
 /*   scss-reset                             ka.lt/docs/scss/reset                 */
@@ -322,7 +367,9 @@ input {
 canvas,
 .chartjs {
   width: 100%;
-} /*                                          ka.lt/docs/components/charts          */
+}
+
+/*                                          ka.lt/docs/components/charts          */
 .dds-currencyAmount {
   width: 100%;
 }
@@ -630,6 +677,7 @@ span.ⓘ {
   margin: clamp(7px, 1.8vw, 13px) 0;
 }
 .infobox span {
+  margin-right: clamp(3.5px, 0.9vw, 6.5px);
   font-size: 90%;
 }
 
@@ -669,7 +717,9 @@ span.ⓘ {
 .tabs ul li:before {
   display: none;
   content: "";
-} /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
+}
+
+/*   navbar used in accounts page           ka.lt/docs/components/tabs            */
 .component.calendar input {
   display: none;
 }
@@ -678,6 +728,7 @@ span.ⓘ {
 }
 .component.calendar label:hover {
   background-image: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 100%);
+  cursor: pointer;
 }
 .component.calendar input[type=checkbox] + label {
   border: 0.1px solid #202124;

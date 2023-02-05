@@ -110,4 +110,14 @@ span.pill{
 #time{
   width:8%;
 }
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/cursor */
+tr.deposit:hover{
+  cursor: e-resize;
+}
+tr.withdrawal:hover{
+  cursor: w-resize;
+}
+tr.dividend:hover{
+  cursor: ne-resize;
+}
 </style>

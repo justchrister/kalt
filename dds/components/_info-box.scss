@@ -8,6 +8,7 @@
     font-size:80%;
     margin: clamp($unit-min, $unit, $unit-max) 0 ;
     span{
+        margin-right: clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
         font-size:90%;
     }
 }

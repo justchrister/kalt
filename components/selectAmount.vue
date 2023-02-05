@@ -33,18 +33,21 @@
       type: String,
       required: true
     },
-    type: {
+    for: {
       type: String, 
       required: true
     }
   })
   
   const preferred_currency = ref()
-
-  if(type){
-    oklog("", "modifying subscription: ")
+  const { data: currencies } = await supabase
+    .from('currencies')
+    .select('iso, name')
+    .eq('available', true)
+  if(props.for){
+    oklog("", "modifying subscription: " + props.uuid)
   }
-  if(type="buy"){
+  if(props.for="buy"){
     const updatePaymentAmount = async () => { 
       if(amount.value){
         const { error } = await supabase
@@ -82,11 +85,6 @@
       oklog('success', 'set buy currency: ' + preferred_currency.value)
     }
     const amount =  ref('')
-    
-    const { data: currencies } = await supabase
-      .from('currencies')
-      .select('iso, name')
-      .eq('available', true)
 
     state.value = ''
   }

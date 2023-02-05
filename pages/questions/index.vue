@@ -1,6 +1,6 @@
 <template>
   <div class="PageWrapper">
-    <navbar pageTitle="stuff" />
+    <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
         <ContentList path="/questions" v-slot="{ list }">
@@ -12,6 +12,21 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+  const pagename = 'Questions';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+</script>
 <style scoped>
 a{
   display:block;
