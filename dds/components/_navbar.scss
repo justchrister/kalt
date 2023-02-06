@@ -51,6 +51,7 @@ header .menu-toggle {
   line-height: $medium-clamp;
   top: $border-width;
   width: auto;
+  color: $black;
   border: 0;
   &:hover,
   &:hover:before{

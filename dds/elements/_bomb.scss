@@ -1,0 +1,21 @@
+.element.bomb{
+  background-size:contain; 
+  background-repeat:no-repeat;
+  background-position: center right;
+  font-size: clamp($unit-min*2,$unit*2,$unit-max*2);
+  line-height:clamp($unit-min*3,$unit*3,$unit-max*3);
+  padding-right:clamp($unit-min*2,$unit*2,$unit-max*2);
+  margin-right:clamp($unit-min*0.5,$unit*0.5,$unit-max*0.5);
+  &#flower-01{
+    background-image:url('/media/stickers/flower-01.png')
+  }
+  &#flower-02{
+    background-image:url('/media/stickers/flower-02.png')
+  }
+  &#flower-01{
+    background-image:url('/media/stickers/flower-01.png')
+  }
+  &#flower-01{
+    background-image:url('/media/stickers/flower-01.png')
+  }
+}

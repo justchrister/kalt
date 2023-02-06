@@ -1,0 +1,9 @@
+.headline{
+  height:clamp(0px, 50vh, 30vw);
+  background:$black;
+  h1{ 
+    font-size: 15vw;
+    color:$white;
+    line-height:clamp(0px, 50vh, 30vw);
+  }
+}

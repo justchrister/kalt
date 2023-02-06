@@ -36,16 +36,13 @@
             </nuxt-link>
           </nav>
         </div>
-        <div class="block">
-          <div class="goal" style="background-image:url(media/gallery/david-hockney/pretty-flowers.png);">
-            2 398,- earned so far
-          </div>
-          <div class="goal" style="background-image:url(media/gallery/david-hockney/pretty-flowers-2.png);">
-            2 398,- earned so far
-          </div>
-          <div class="goal" style="background-image:url(media/gallery/david-hockney/pretty-flowers-2.png);">
-            2 398,- earned so far
-          </div>
+        <div class="bombs">
+          <bomb img="flower-02" text="250 smartphones" />
+          <bomb img="s" text="We've planted 9 000 trees" />
+          <bomb img="s" text="ss" />
+          <bomb img="s" text="ss" />
+          <bomb img="s" text="ss" />
+          <bomb img="s" text="ss" />
         </div>
       </div>
     </div>

@@ -494,6 +494,7 @@ header .menu-toggle {
   line-height: clamp(14px, 3.6vw, 26px);
   top: 0.1px;
   width: auto;
+  color: #202124;
   border: 0;
 }
 header .menu-toggle:hover, header .menu-toggle:hover:before {
@@ -692,6 +693,17 @@ span.ⓘ {
   width: 86vw;
   max-width: 720px;
   margin: 0 auto;
+}
+
+/*   the menu used in all pages             ka.lt/docs/components/navbar          */
+.headline {
+  height: clamp(0px, 50vh, 30vw);
+  background: #202124;
+}
+.headline h1 {
+  font-size: 15vw;
+  color: #FCF9F2;
+  line-height: clamp(0px, 50vh, 30vw);
 }
 
 /*   the menu used in all pages             ka.lt/docs/components/navbar          */
@@ -897,6 +909,29 @@ input[type=submit].atom:hover {
 /*   <input type="email">                   ka.lt/docs/elements/email             */
 .element.select {
   margin-top: clamp(7px, 1.8vw, 13px);
+}
+
+/*   <input type="email">                   ka.lt/docs/elements/email             */
+.element.bomb {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+  font-size: clamp(14px, 3.6vw, 26px);
+  line-height: clamp(21px, 5.4vw, 39px);
+  padding-right: clamp(14px, 3.6vw, 26px);
+  margin-right: clamp(3.5px, 0.9vw, 6.5px);
+}
+.element.bomb#flower-01 {
+  background-image: url("/media/stickers/flower-01.png");
+}
+.element.bomb#flower-02 {
+  background-image: url("/media/stickers/flower-02.png");
+}
+.element.bomb#flower-01 {
+  background-image: url("/media/stickers/flower-01.png");
+}
+.element.bomb#flower-01 {
+  background-image: url("/media/stickers/flower-01.png");
 }
 
 /*   <input type="email">                   ka.lt/docs/elements/email             */
