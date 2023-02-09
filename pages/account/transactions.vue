@@ -6,7 +6,7 @@
       <div class="section">
         <div class="block">
           <tabs />
-          <table   v-if="transactions" >
+          <table v-if="transactions" >
             <tr>
               <th id="type"></th>
               <th id="amount">Amount</th>
@@ -55,7 +55,7 @@
 
   const loading = ref(null)
 
-  const { data: transactions } = await useLazyAsyncData('cards', async () => {
+  const { data: transactions } = await useLazyAsyncData('transactions', async () => {
     const {data, error} = await supabase
       .from('transactions')
       .select('*')
