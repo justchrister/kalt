@@ -42,5 +42,5 @@
   });
 
   const client = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
+  const user = useSupabaseUser()
 </script>
