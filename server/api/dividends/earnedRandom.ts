@@ -11,14 +11,14 @@ export default defineEventHandler( async (event) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
-  const {data: random_node, error: random_node_error} = await supabase
+  const {data: random_nodes, error: random_nodes_error} = await supabase
     .from('nodes')
     .select('node_id')
     .gte('node_id', random_uuid)
-  if(random_node_error){
+  if(random_nodes_error){
     oklog('error', 'could not get a random node_id: '+ random_error.message)
     return {
-      "error": random_node_error.message
+      "error": random_nodes_error.message
     }
   }
   const {data: currencies, error: currencies_error} = await supabase
@@ -29,8 +29,10 @@ export default defineEventHandler( async (event) => {
   let node_id, currency, amount;
   let result = []
   let count = 0;
-  for (let i = 0; i < random(100,500); i++) {
-    node_id = random_node[random(0, random_node.length-1)].node_id; 
+  const minRandomDividend = 15;
+  const maxRandomDividend = 150;
+  for (let i = 0; i < random(minRandomDividend,maxRandomDividend); i++) {
+    node_id = random_nodes[random(0, random_nodes.length-1)].node_id; 
     currency = currencies[random(0, currencies.length-1)].iso;
     amount = random(2, 200)
     
