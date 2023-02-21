@@ -1,6 +1,5 @@
 import { oklog } from '~/composables/oklog'
 import { serverSupabaseServiceRole } from '#supabase/server'
-import { v4 as uuidv4 } from 'uuid'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
