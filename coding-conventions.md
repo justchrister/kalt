@@ -23,11 +23,22 @@ Tha means that accessing the ```profiles``` table would look something like this
 
 
 ## Comments
-Comments should be  
 
-This is bad code, it does not show any information regarding what the ```x``` variable stands for, nor does it tell you what x===0,1 or 3 stands for:
-Since the x===0,1 and 3 are defined in the function above, it might seem good enough, but you still ahve to know that x in ```getTransactionTypeClass``` is the same as in ```getTransactionType```:
+We strive to keep code comments at a bare minimum because when code is written in a clear, concise manner with meaningful variable and function names, comments are often unnecessary. Comments can even become a liability if they are not kept up-to-date with changes to the code. Additionally, over-reliance on comments can lead to "comment rot" where the comments are no longer accurate or relevant. Instead, we aim to write code that is self-explanatory and easy to understand without the need for extensive comments. When comments are necessary, we make sure they are concise, accurate, and maintained over time.
+
+Beneath is an example where comments are used to compensate for poorly written code. 
+1. It does not show any information regarding what the ```x``` variable stands for
+2. It does not tell you what ```x===0```, ```x===1```, or ```x===3``` means
+3. It does not tell you if x is the same in the ```getTransactionTypeClass``` and ```getTransactionType``` context:
+
 ```
+// the functions below translate the transaction type id to
+// either a name or a symbol. 
+// 0=a deposit
+// 1=a withdrawal
+// 3=a dividend
+// the arrows can be found at https://arrowsymbol.com/
+
   function getTransactionTypeClass(x){ 
     if (x===0) return "deposit"
     if (x===1) return "withdrawal"
@@ -40,19 +51,24 @@ Since the x===0,1 and 3 are defined in the function above, it might seem good en
   }
 ```
 
+Beneath is an improved version
+1. Declared variables clearly show which number equals which type of transaction
+2. Function names tell you what you are getting; icon or name
+3. ```x``` has been changed to ```type``` 
 
 ```
   const deposit = 0;
   const withdraw = 1;
   const dividend = 2;
-  function getTransactionTypeIcon(typeId){ 
-    if (typeId===deposit) return "→"
-    if (typeId===withdraw) return "←"
-    if (typeId===dividend) return "↗"
+  
+  function getTransactionTypeIcon(type){ 
+    if (type===deposit) return "→"
+    if (type===withdraw) return "←"
+    if (type===dividend) return "↗"
   }
-  function getTransactionTypeName(typeId){ 
-    if (typeId===deposit) return "deposit"
-    if (typeId===withdraw) return "withdrawal"
-    if (typeId===dividend) return "dividend"
+  function getTransactionTypeName(type){ 
+    if (type===deposit) return "deposit"
+    if (type===withdraw) return "withdrawal"
+    if (type===dividend) return "dividend"
   }
 ```
