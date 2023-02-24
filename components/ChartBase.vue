@@ -45,27 +45,39 @@ const props = defineProps({
 })
 const chartOptions = {
   responsive: true,
+  maintainAspectRatio: false,
+  legend: {
+    display: false
+  },
   elements: {
     point:{
-      radius: 0.1
+      radius: 2
     }
   },
   animation: {
-      duration: 1
+    duration: 1
   },
   interaction: {
-      intersect: 0
+    intersect: 0
   },
   scales: {
-      yAxes: [{
-          ticks: {
-              beginAtZero: true
-          }
-      }]
+    y: {
+      beginAtZero: true
+    },
+    x:{
+      ticks: {
+        autoSkip: true,
+        maxRotation: 0,
+        minRotation: 0
+      }
+    }
   },
-  maintainAspectRatio: true,
   tension: 0.2,
   plugins: {
+    legend: {
+      position: 'top' as const,
+      display: false,
+    },
     tooltip: {
       callbacks: {
         label: function(context) {
