@@ -3,7 +3,7 @@
     <div class="page">
       <div class="section">
         <div class="block">
-          <h3> Your cards: </h3>
+          <p> Your cards: </p>
           <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
             <div :class="checkBrand(card.card_number)"></div> 
             <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
@@ -11,14 +11,14 @@
           </div>
         </div>
         <div class="block add-card">
-          <h3> Add a new card: </h3>
+          <p> Add a new card: </p>
             <form @submit.prevent="addCard">
               <div class="card_number-group element input number">
-                <label for="card_number">card_number:</label> 
+                <label for="card_number">Card number:</label> 
                 <input 
                   type="text" 
                   v-model="card_number" 
-                  placeholder="card_number" 
+                  placeholder="•••• •••• •••• 4242" 
                   id="card_number" 
                   class="atom input-card_number"/>
               </div>
@@ -80,6 +80,7 @@
 
   definePageMeta({
     layout: "focused",
+    middleware: 'auth'
   });
   const supabase = useSupabaseClient()
   const {data: {user}} = await supabase.auth.getUser()
