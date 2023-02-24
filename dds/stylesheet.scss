@@ -1,53 +1,50 @@
+@import 'base/variables';
+@import 'base/fonts';
+@import 'base/grid';
+@import 'base/layouts';
+@import 'base/mixins';
+@import 'base/reset';
 
-/*      partials                      /*   Short description                      documentation                         */
-/*      globals                       /*                                                                                */
-@import 'base/variables';             /*   variables                              ka.lt/docs/scss/variables             */
-@import 'base/fonts';                 /*   fonts                                  ka.lt/docs/scss/fonts                 */
-@import 'base/grid';                  /*   grid                                   ka.lt/docs/scss/grid                  */
-@import 'base/layouts';               /*   layouts                                ka.lt/docs/scss/layouts               */
-@import 'base/mixins';                /*   mixins                                 ka.lt/docs/scss/mixins                */
-@import 'base/reset';                 /*   scss-reset                             ka.lt/docs/scss/reset                 */
+@import 'layouts/focused';
+@import 'layouts/questions';
+@import 'layouts/impact';
 
-/*      layouts                       /*                                                                                */
-@import 'layouts/focused';            /*   scss-reset                             ka.lt/docs/scss/reset                 */
-@import 'layouts/questions';            /*   scss-reset                             ka.lt/docs/scss/reset                 */
+@import 'components/chart';
+@import 'components/currencyamount';
+@import 'components/image';
+@import 'components/navbar';
+@import 'components/omoji';
+@import 'components/info-box';
+@import 'components/bottom-navbar';
+@import 'components/headline';
+@import 'components/tabs';
+@import 'components/calendar';
+@import 'components/pills';
+@import 'components/username';
+@import 'components/card';
+@import 'components/notification';
 
-/*      components                    /*                                                                                */
-@import 'components/chart';           /*                                          ka.lt/docs/components/charts          */
-@import 'components/currencyamount';  /*                                          ka.lt/docs/components/currencyAmount  */
-@import 'components/image';           /*   navbar used in accounts page           ka.lt/docs/components/image           */
-@import 'components/navbar';          /*   the menu used in all pages             ka.lt/docs/components/navbar          */
-@import 'components/omoji';           /*   omoji                                  ka.lt/docs/scss/layouts               */
-@import 'components/info-box';           /*   omoji                                  ka.lt/docs/scss/layouts               */
-@import 'components/bottom-navbar';   /*   the menu used in all pages             ka.lt/docs/components/navbar          */
-@import 'components/headline';   /*   the menu used in all pages             ka.lt/docs/components/navbar          */
-@import 'components/tabs';            /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
-@import 'components/calendar';            /*   navbar used in accounts page           ka.lt/docs/components/tabs            */
-@import 'components/pills';            /*   */
-@import 'components/username';        /*   <input type="text">                    ka.lt/docs/components/username        */
-@import 'components/card';            /*                                          ka.lt/docs/components/tabs            */
+@import 'elements/input-text';
+@import 'elements/input-password';
+@import 'elements/input-date';
+@import 'elements/input-submit';
+@import 'elements/pill';
+@import 'elements/input-number';
+@import 'elements/input-email';
+@import 'elements/select';
+@import 'elements/bomb';
+@import 'elements/select-date';
+@import 'elements/link-group';
+@import 'elements/toggleSwitch';
+@import 'elements/button-square';
 
-/*      elements                      /*                                                                                */
-@import 'elements/input-text';        /*   <input type="text">                    ka.lt/docs/elements/text              */
-@import 'elements/input-password';    /*   <input type="password">                ka.lt/docs/elements/password          */
-@import 'elements/input-date';        /*   <input type="date">                    ka.lt/docs/elements/date              */
-@import 'elements/input-submit';      /*   <input type="submit">                  ka.lt/docs/elements/textInput         */
-@import 'elements/input-number';      /*   <input type="number">                  ka.lt/docs/elements/number            */
-@import 'elements/input-email';       /*   <input type="email">                   ka.lt/docs/elements/email             */
-@import 'elements/select';            /*   <input type="email">                   ka.lt/docs/elements/email             */
-@import 'elements/bomb';            /*   <input type="email">                   ka.lt/docs/elements/email             */
-@import 'elements/select-date';       /*   <input type="email">                   ka.lt/docs/elements/email             */
-@import 'elements/link-group';        /*   <div class="link-group"> <a>           ka.lt/docs/elements/link-group        */
-@import 'elements/toggleSwitch';      /*   <input type="radio"> styled as toggle  ka.lt/docs/elements/toggleSwitch      */
-@import 'elements/button-square';     /*   <button class="square">                ka.lt/docs/elements/buttons           */
-
-/*      Atoms                         /*                                                                                */
-@import 'atoms/button';               /*   <button>                               ka.lt/docs/atoms/button               */
-@import 'atoms/input';                /*   <input>                                ka.lt/docs/atoms/input                */
-@import 'atoms/label';                /*   <label>                                ka.lt/docs/atoms/label                */
-@import 'atoms/lists';                /*   <ol> <ul>                              ka.lt/docs/atoms/lists                */
-@import 'atoms/select';               /*   <select>                               ka.lt/docs/atoms/select               */
-@import 'atoms/table';                /*   <table>                                ka.lt/docs/atoms/table                */
+@import 'atoms/button';
+@import 'atoms/input';
+@import 'atoms/label';
+@import 'atoms/lists';
+@import 'atoms/select';
+@import 'atoms/table';
+@import 'atoms/headings';
 
 
 
