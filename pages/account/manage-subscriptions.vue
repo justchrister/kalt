@@ -5,11 +5,11 @@
       <div class="section">
         <h1>Manage subscription</h1>
         <div class="block">
-          <h3>Select amount you want to auto-invest</h3>
+          <p>Select amount you want to auto-invest</p>
           <select-amount for="subscription" :uuid="uuid" />
         </div>
         <div class="block">
-          <h3>Select which days you want to auto-invest</h3>
+          <p>Select which days you want to auto-invest</p>
           <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
         </div>
         <div class="block">
@@ -47,6 +47,7 @@
   });
   definePageMeta({
     layout: "focused",
+    middleware: 'auth'
   });
 
   const uuid = ref()
