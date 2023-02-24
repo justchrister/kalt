@@ -1,6 +1,5 @@
 <template>
   <div class="PageWrapper">
-    <navbar :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
         <div class="block">
@@ -27,8 +26,8 @@
             <input type="submit" value="Sign up" class="atom">
           </form>
           <div class="element link-group">
-            <nuxt-link to="/sign-in">Sign in</nuxt-link>
-            <nuxt-link to="/forgot-password">Forgot password</nuxt-link>
+            <nuxt-link to="/auth/sign-in">Sign in</nuxt-link>
+            <nuxt-link to="/auth/forgot-password">Forgot password</nuxt-link>
           </div>
         </div>
       </div>
@@ -52,6 +51,9 @@
     ],
   });
 
+  definePageMeta({
+    layout: "focused"
+  });
   const supabase = useSupabaseClient()
   const email = ref('')
   const password = ref('')

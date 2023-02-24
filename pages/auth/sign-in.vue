@@ -1,13 +1,12 @@
 
 <template>
   <div class="PageWrapper">
-    <navbar :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
         <div class="block">
-          <h2 class="title">
-            Welcome back! <omoji emoji="😃" /> <omoji emoji="☀️" />
-          </h2>
+          <h3 class="title">
+            Welcome back! <omoji emoji="😃" />
+          </h3>
           <form @submit.prevent="() => (signIn())">
             <label  for='email'> E-mail</label>
             <input
@@ -29,7 +28,7 @@
           </form>
           <div class="element link-group">
             <nuxt-link to="/auth/sign-up">Sign up</nuxt-link>
-            <nuxt-link to="/">Forgot password</nuxt-link>
+            <nuxt-link to="/auth/forgot-password">Forgot password</nuxt-link>
           </div>
         </div>
       </div>
@@ -58,6 +57,9 @@
     ],
   });
 
+  definePageMeta({
+    layout: "focused"
+  });
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email.value,

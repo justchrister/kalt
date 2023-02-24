@@ -3,10 +3,10 @@
   <div class="PageWrapper">
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section">
+      <div class="section" v-if="transactions.length">
         <div class="block">
           <tabs />
-          <table v-if="transactions" >
+          <table>
             <tr>
               <th id="type"></th>
               <th id="amount">Amount</th>
@@ -26,12 +26,21 @@
           </table>
         </div>
         <!-- make these ones filters at a later point -->
-        <div class="block"  v-if="transactions" >
+        <div class="block">
           <p style="font-size:70%;">
             <span class="pill"> <omoji emoji="→" /> deposit </span> 
             <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
             <span class="pill"> <omoji emoji="↗" /> dividend  </span>
           </p>
+        </div>
+      </div>
+      <div class="section" v-else>
+        <tabs />
+        <div class="block">
+          <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
+        </div>
+        <div class="block">
+          <cta />
         </div>
       </div>
     </div>
@@ -41,7 +50,9 @@
   const pagename = 'Transactions';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
-
+  definePageMeta({
+    middleware: 'auth'
+  })
   useHead({
     title,
     meta: [{
@@ -67,6 +78,7 @@
     if (error) oklog('error', 'could not get transactions for '+user.id)
     return data
   })
+
   // https://www.arrowsymbol.com/
   const deposit = 0;
   const withdraw = 1;

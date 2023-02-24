@@ -3,4 +3,14 @@
   width: $sitewidth;
   max-width: $maxsitewidth;
   margin:0 auto;
+  color:$light;
+  padding-top:$sectionpadding;
+  a{
+    color:$light;
+
+  }
+}
+.bottom-navbar-wrapper{
+  background:$dark;
+
 }

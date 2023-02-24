@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background:$white;
+	background:$light;
   // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
 	touch-action: manipulation; 
 	overflow-x: hidden;
@@ -54,7 +54,7 @@ table {
 }
 
 a{
-  color: $black;
+  color: $dark;
   text-decoration: underline;
 }
 * {

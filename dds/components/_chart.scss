@@ -1,11 +1,8 @@
 
 .chart{
     background:#FFF;
-    padding:$big-clamp 0;
-    border-right:#fff solid  $medium-clamp;
-    border-left:#fff solid  $medium-clamp;
     box-sizing: border-box;
-    border-radius:4px;
+    margin-top:clamp($unit-min, $unit, $unit-max);
 }
 
 .chart,

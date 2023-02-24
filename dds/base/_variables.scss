@@ -6,8 +6,8 @@ $unit: 1.8vw;
 $unit-max: 13px;
 
 // Colors
-$white: #FCF9F2;
-$black: #202124;
+$light: #FCF9F2;
+$dark: #202124;
 $blue: #1E96FC;
 $yellow: #F7B538;
 $green: #0CF574;
@@ -16,43 +16,43 @@ $purple: #624CAB;
 $pink: #F991CC;
 
 // Color variations
-$blue-80: mix($blue, $white, 80%);
-$blue-60: mix($blue, $white, 60%);
-$blue-40: mix($blue, $white, 40%);
-$blue-20: mix($blue, $white, 20%);
+$blue-80: mix($blue, $light, 80%);
+$blue-60: mix($blue, $light, 60%);
+$blue-40: mix($blue, $light, 40%);
+$blue-20: mix($blue, $light, 20%);
 
-$yellow-80: mix($yellow, $white, 80%);
-$yellow-60: mix($yellow, $white, 60%);
-$yellow-40: mix($yellow, $white, 40%);
-$yellow-20: mix($yellow, $white, 20%);
+$yellow-80: mix($yellow, $light, 80%);
+$yellow-60: mix($yellow, $light, 60%);
+$yellow-40: mix($yellow, $light, 40%);
+$yellow-20: mix($yellow, $light, 20%);
 
-$green-80: mix($green, $white, 80%);
-$green-60: mix($green, $white, 60%);
-$green-40: mix($green, $white, 40%);
-$green-20: mix($green, $white, 20%);
+$green-80: mix($green, $light, 80%);
+$green-60: mix($green, $light, 60%);
+$green-40: mix($green, $light, 40%);
+$green-20: mix($green, $light, 20%);
 
-$red-80: mix($red, $white, 80%);
-$red-60: mix($red, $white, 60%);
-$red-40: mix($red, $white, 40%);
-$red-20: mix($red, $white, 20%);
+$red-80: mix($red, $light, 80%);
+$red-60: mix($red, $light, 60%);
+$red-40: mix($red, $light, 40%);
+$red-20: mix($red, $light, 20%);
 
-$purple-80: mix($purple, $white, 80%);
-$purple-60: mix($purple, $white, 60%);
-$purple-40: mix($purple, $white, 40%);
-$purple-20: mix($purple, $white, 20%);
+$purple-80: mix($purple, $light, 80%);
+$purple-60: mix($purple, $light, 60%);
+$purple-40: mix($purple, $light, 40%);
+$purple-20: mix($purple, $light, 20%);
 
-$pink-80: mix($pink, $white, 80%);
-$pink-60: mix($pink, $white, 60%);
-$pink-40: mix($pink, $white, 40%);
-$pink-20: mix($pink, $white, 20%);
+$pink-80: mix($pink, $light, 80%);
+$pink-60: mix($pink, $light, 60%);
+$pink-40: mix($pink, $light, 40%);
+$pink-20: mix($pink, $light, 20%);
 
 // Gradients
-$blue-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $blue 0%, $blue-60, $white);
-$yellow-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $yellow 0%, $pink-60, $white);
-$green-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $green 0%, $green-60, $white);
-$red-gradient: url('images/gradient.webp'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $red 0%, $red-60, $white);
-$purple-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $purple 0%, $purple-60, $white);
-$pink-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $pink 0%, $pink-60, $white);
+$blue-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $blue 0%, $blue-60, $light);
+$yellow-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $yellow 0%, $pink-60, $light);
+$green-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $green 0%, $green-60, $light);
+$red-gradient: url('images/gradient.webp'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $red 0%, $red-60, $light);
+$purple-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $purple 0%, $purple-60, $light);
+$pink-gradient: url('images/gradient.png'), radial-gradient(71.84% 71.84% at 82.76% 87.64%, $pink 0%, $pink-60, $light);
 
 // Fonts 
 
@@ -83,7 +83,7 @@ $sectionpadding-double: clamp(150px, 30vh, 350px);
 
 // Borders
 $border-width: .1px;
-$border: $border-width solid $black;
+$border: $border-width solid $dark;
 
 //clamps
 $column-divider: 2.4; // % of sitewidth

@@ -14,15 +14,19 @@
                 </li>
                 <li>
                     <span>Kalt — </span>
-                    <nuxt-link to="/about/how-it-works" v-on:click="toggleMenu"> How it works </nuxt-link>
+                    <nuxt-link to="/questions/how-does-it-work" v-on:click="toggleMenu"> How it works </nuxt-link>
                 </li>
-                <li>
+                <li v-if="signedIn">
                     <span>Kalt — </span>
                     <nuxt-link to="/portfolio" v-on:click="toggleMenu"> Portfolio </nuxt-link>
                 </li>
-                <li>
+                <li v-if="signedIn">
                     <span>Kalt — </span>
                     <nuxt-link to="/account" v-on:click="toggleMenu"> Account </nuxt-link>
+                </li>
+                <li v-if="signedIn">
+                    <span>Kalt — </span>
+                    <nuxt-link to="/account/notifications" v-on:click="toggleMenu"> Notifications </nuxt-link>
                 </li>
                 <li v-if="!signedIn">
                     <span>Kalt — </span>

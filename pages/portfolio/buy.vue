@@ -4,12 +4,14 @@
     <div class='page'>
       <div class="section" id="about">
         <div class="block">
-          Select the amount you want to invest: 
+          <h3>Let's invest!  <omoji emoji="☀️" /></h3>
           <select-amount :uuid="transaction_id" v-if="transaction_id"/>
+          <br/>
           <label>Choose card to charge: </label>
           <nuxt-link to="/account/manage-cards">
             <default-card />
           </nuxt-link>
+          <br/>
           <button @click="completeTransaction"> buy </button>
         </div>
       </div>

@@ -25,30 +25,11 @@ useHead({
         </div>
         <div class="block">
           <h2 class="title">
-            It is time for us to make a change!
+            Lets make change happen!
           </h2>
           <p>
-            Through practical solutions — rather than theoretical — we are working to make everywhere more inclusive and interesting. We make our decisions based on a set of politially agnostic values, and are doing our best to have a positive impact on everyone.
+            We let anyone be a part of solving the impending energy crisis by developing, depoloying, and letting you invest in fossil-free energy alternatives. A practical solution that works for the wallet, and the world. <br> <br><nuxt-link to="about/how-it-works">Read how it works</nuxt-link> or <nuxt-link to="auth/sign-up">sign up now</nuxt-link>
           </p>
-          <p>
-            Sociatal mission:
-          </p>
-          <nav>
-            <ul>
-              <li>
-                More democracy
-              </li>
-              <li>
-                More stability
-              </li>
-              <li>
-                More sovergnty
-              </li>
-              <li>
-                More security
-              </li>
-            </ul>
-          </nav>
         </div>
         <Cta />
       </div>

@@ -45,7 +45,7 @@
   width: clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
   left: clamp($unit-min*0.1, $unit*0.1, $unit-max*0.1);
   bottom: clamp($unit-min*0.1, $unit*0.1, $unit-max*0.1);
-  background-color: $white;
+  background-color: $light;
   -webkit-transition: .4s;
   transition: .4s;
 }

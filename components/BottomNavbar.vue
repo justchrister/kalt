@@ -1,4 +1,5 @@
 <template>
+<div class="bottom-navbar-wrapper">
     <div class="bottom-navbar">
       <div>
         Useful links:
@@ -27,5 +28,6 @@
       <div class="col-3 gutter-right">
         <nuxt-link to="/questions" > questions? </nuxt-link>
       </div>
+    </div>
     </div>
 </template>

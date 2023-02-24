@@ -1,6 +1,5 @@
 <template>
   <div class="PageWrapper">
-    <navbar :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
         <div class="block">
@@ -20,7 +19,6 @@
           </button>
         </div>
       </div>
-      <bottom-navbar />
     </div>
   </div>
 </template>
@@ -31,6 +29,9 @@
   const description = ref('My App Description')
   var errormsg = ref('');
 
+  definePageMeta({
+    layout: "focused"
+  });
   useHead({
     title,
     meta: [
