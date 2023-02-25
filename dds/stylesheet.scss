@@ -2,6 +2,7 @@
 @import 'base/fonts';
 @import 'base/grid';
 @import 'base/layouts';
+@import 'base/helpers';
 @import 'base/mixins';
 @import 'base/reset';
 
@@ -9,17 +10,14 @@
 @import 'layouts/questions';
 
 @import 'components/impact';
-@import 'components/chart';
 @import 'components/currencyamount';
 @import 'components/image';
 @import 'components/navbar';
 @import 'components/omoji';
 @import 'components/info-box';
 @import 'components/bottom-navbar';
-@import 'components/headline';
 @import 'components/tabs';
 @import 'components/calendar';
-@import 'components/pills';
 @import 'components/username';
 @import 'components/card';
 @import 'components/notification';

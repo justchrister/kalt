@@ -1,35 +1,34 @@
-.impact{
-  padding:clamp($unit-min, $unit, $unit-max) 0 clamp($unit-min, $unit, $unit-max) clamp($unit-min*5, $unit*5, $unit-max*5);
+.impacts{
+  margin-top:$big-clamp;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 2% 2%;
+  grid-auto-flow: row;
+}
+.impacts .impact{
+  padding:clamp($unit-min, $unit, $unit-max) 0;
   border-top:$border;
-  display:inline-block;  vertical-align: top;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  grid-template-rows: 1fr;
+  gap: 3% 2%;
+  grid-auto-flow: row;
+  font-size:120%;
+}
+
+.impacts .impact .image{
+  height: 100%;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: center left;
+  background-size:contain;
 }
-code{
-  display:inline-block;
-  font-size:80%;
-  padding:0 clamp($unit-min*1, $unit*1, $unit-max*1);
-  border-radius:50%;
-  border:$border;
+.impacts .impact .image#car{
+  background-image:url('/illustrations/car.svg');
 }
-code.green{
-  background:$green;
-  background: url('/grain-30.png'), linear-gradient(137deg, $green 0%, $green-20 100%), $light;
-  background-repeat:repeat;
+.impacts .impact .image#house{
+  background-image:url('/illustrations/house.svg');
 }
-code.pink{
-  background:$pink;
-  background: url('/grain-30.png'), linear-gradient(137deg, $pink 0%, $pink-20 100%), $light;
-  background-repeat:repeat;
-}
-code.yellow{
-  background:$yellow;
-  background: url('/grain-30.png'), linear-gradient(137deg, $yellow 0%, $yellow-20 100%), $light;
-  background-repeat:repeat;
-}
-code.blue{
-  background:$blue;
-  background: url('/grain-30.png'), linear-gradient(137deg, $blue 0%, $blue-20 100%), $light;
-  background-repeat:repeat;
+.impacts .impact .image#plane{
+  background-image:url('/illustrations/plane.svg');
 }

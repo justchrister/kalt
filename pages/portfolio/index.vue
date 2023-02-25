@@ -24,16 +24,19 @@
             max
           </button>
         </nav>
-        <cta /> 
-        <nuxt-link to="portfolio/sell">or sell</nuxt-link>
-      </div>
-      <div class="section impacts">
-        <h3>Our impact <omoji emoji="😮"/></h3>
-        <div class="impact"  style="background-image:url('/Plant.svg');">
-          You and your investments have lowered the impact equals to planting <code class="green">2 000</code> trees, and together we've planted <code>3 000 000</code>
+        <div class="block center-text">
+          <cta />
+          <nuxt-link to="portfolio/sell">or sell</nuxt-link>
         </div>
-        <div class="impact" style="background-image:url('/hug.svg');">
-          It's also given electricity a whole day of electricity to <code class="yellow">130</code> families, and together we've <code>3 000 000</code>
+        <div class="block">
+          <h3>Our impact in numbers <omoji emoji="😮"/></h3>
+          <p> Your investments has helped decrease the emissions in the worls as much as </p>
+          <div class="impacts">
+            <impact type="car" title="Driving 1 000 km in a Fiat Panda" />
+            <impact type="house" title="Construction of a 200 m2 house" />
+            <impact type="plane" title="Flying 1.4 times to Paris from Tokyo" />
+            <impact type="computer" title="Building and selling 10 computers" />
+          </div>
         </div>
       </div>
     </div>
