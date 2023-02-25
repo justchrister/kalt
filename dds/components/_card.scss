@@ -1,6 +1,6 @@
 .card{
   border:$border;
-  border-radius:3px;
+  border-radius:$border-radius;
   padding:clamp($unit-min, $unit, $unit-max) 0 clamp($unit-min, $unit, $unit-max) clamp($unit-min*2, $unit*2, $unit-max*2);
   margin:clamp($unit-min, $unit, $unit-max) 0;
   max-height:clamp($unit-min*4, $unit*4, $unit-max*4);

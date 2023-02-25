@@ -4,7 +4,7 @@
   padding:0;
   font-size:85%;
   margin-right: clamp($unit-min*1, $unit*1, $unit-max*1);
-  border-radius:2px;
+  border-radius:$border-radius;
 }
 .pill:hover{
   border-radius:50%;

@@ -13,7 +13,7 @@
   input[type="checkbox"] + label{
     border: $border;
     display:inline-block;
-    border-radius:1px;
+    border-radius:$border-radius;
     width:clamp(1px, $unit * 3, $unit-max * 3);
     height:clamp($unit-min, $unit, $unit-max);
     line-height:clamp($unit-min, $unit, $unit-max);
@@ -26,8 +26,7 @@
   }
   input[type="checkbox"]:checked + label {
       text-decoration:underline;
-      border-radius:5px;
-      background-image: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 100%);
+      background: url('/grain-30.png'), linear-gradient(137deg, $pink 0%, $pink-20 100%), $light;
       
   }
 }

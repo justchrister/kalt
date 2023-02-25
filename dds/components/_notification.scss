@@ -3,7 +3,7 @@
   padding:clamp($unit-min, $unit, $unit-max);
   padding-right:none;
   border:1px solid $dark;
-  border-radius:3px;
+  border-radius:$border-radius;
   margin:clamp($unit-min, $unit, $unit-max) 0px;
   height:clamp($unit-min*4, $unit*4, $unit-max*4);
   &:hover{

@@ -1,6 +1,6 @@
 .infobox{
     border:1px solid $blue;
-    border-radius:4px;
+    border-radius:$border-radius;
     padding:clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2))
             clamp($unit-min, $unit, $unit-max);
     background:$blue-20;

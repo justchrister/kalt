@@ -460,7 +460,7 @@ canvas,
   background-position: center center;
   background-repeat: no-repeat;
   background-color: #d0e5f4;
-  border-radius: 2px;
+  border-radius: 3.5px;
 }
 .frame .image.contain {
   background-size: contain;
@@ -697,7 +697,7 @@ span.ⓘ {
 
 .infobox {
   border: 1px solid #1E96FC;
-  border-radius: 4px;
+  border-radius: 3.5px;
   padding: clamp(3.5px, 0.9vw, 6.5px) clamp(7px, 1.8vw, 13px);
   background: #d0e5f4;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
@@ -797,7 +797,7 @@ span.ⓘ {
 .component.calendar input[type=checkbox] + label {
   border: 0.1px solid #202124;
   display: inline-block;
-  border-radius: 1px;
+  border-radius: 3.5px;
   width: clamp(1px, 5.4vw, 39px);
   height: clamp(7px, 1.8vw, 13px);
   line-height: clamp(7px, 1.8vw, 13px);
@@ -807,13 +807,12 @@ span.ⓘ {
 }
 .component.calendar input[type=checkbox]:checked + label {
   text-decoration: underline;
-  border-radius: 5px;
-  background-image: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 100%);
+  background: url("/grain-30.png"), linear-gradient(137deg, #F991CC 0%, #fbe4ea 100%), #FCF9F2;
 }
 
 .card {
   border: 0.1px solid #202124;
-  border-radius: 3px;
+  border-radius: 3.5px;
   padding: clamp(7px, 1.8vw, 13px) 0 clamp(7px, 1.8vw, 13px) clamp(14px, 3.6vw, 26px);
   margin: clamp(7px, 1.8vw, 13px) 0;
   max-height: clamp(28px, 7.2vw, 52px);
@@ -901,7 +900,7 @@ span.ⓘ {
   padding: clamp(7px, 1.8vw, 13px);
   padding-right: none;
   border: 1px solid #202124;
-  border-radius: 3px;
+  border-radius: 3.5px;
   margin: clamp(7px, 1.8vw, 13px) 0px;
   height: clamp(28px, 7.2vw, 52px);
 }
@@ -966,8 +965,8 @@ input[type=submit].atom {
 
 input[type=submit].atom:hover {
   cursor: pointer;
-  background: white;
-  border-radius: 3px;
+  background: #ffffff;
+  border-radius: 3.5px;
 }
 
 .pill {
@@ -976,7 +975,7 @@ input[type=submit].atom:hover {
   padding: 0;
   font-size: 85%;
   margin-right: clamp(7px, 1.8vw, 13px);
-  border-radius: 2px;
+  border-radius: 3.5px;
 }
 
 .pill:hover {
@@ -1026,7 +1025,7 @@ input[type=submit].atom:hover {
   font-size: 70%;
   padding: 2px 8px;
   border: 0.1px solid #202124;
-  border-radius: 3px;
+  border-radius: 3.5px;
   margin-right: 10px;
 }
 
@@ -1111,7 +1110,7 @@ input:checked + .slider:before {
 }
 
 button.square {
-  border-radius: 3px;
+  border-radius: 3.5px;
 }
 button.square:hover {
   background: white;

@@ -6,6 +6,6 @@ input[type="submit"].atom{
 }
 input[type="submit"].atom:hover{
   cursor:pointer;
-  background:white;
-  border-radius:3px;
+  background:#ffffff;
+  border-radius:$border-radius;
 }
