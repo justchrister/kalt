@@ -9,9 +9,10 @@
   }
   ul li{
     display:inline-block;
-    margin-left: 5%;
-    padding: 0 2px;
+    margin-left: clamp($unit-min*2, $unit*2, $unit-max*2);
+    padding: 0;
     line-height:1.5;
+    margin-right:0;
   }
   ul li:first-child{
     margin-left:0;

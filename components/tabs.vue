@@ -21,6 +21,16 @@
               Notifications
           </nuxt-link>
         </li>
+        <li>
+          <nuxt-link to="/account/manage-cards" >
+              Cards
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/account/manage-subscription" >
+              Subscription
+          </nuxt-link>
+        </li>
       </ul>
     </nav>
 </template>
