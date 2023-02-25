@@ -28,6 +28,7 @@
       <div class="col-3 gutter-right">
         <nuxt-link to="/questions" > questions? </nuxt-link>
       </div>
+      <div class="insignia">Make money, make a difference</div>
     </div>
     </div>
 </template>
