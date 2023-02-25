@@ -10,10 +10,6 @@
   div {
     width:100%;
   }
-  canvas{
-    height: 50vw;
-    max-height: 418px;
-  }
   .image {
     height: 32vw;
     max-height: 268px;
@@ -42,4 +38,18 @@
     margin: 0px;
     flex: 999 999 auto;
   }
+}
+
+.chart{
+  box-sizing: border-box;
+}
+.frame:has(.chart){
+  height: 45vw;
+  max-height: 376px;
+  margin:clamp($unit-min*2, $unit*2, $unit-max*2) 0 0 0;
+}
+.chart,
+canvas,
+.chartjs{
+  width:100%;
 }
