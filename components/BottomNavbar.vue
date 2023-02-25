@@ -1,34 +1,23 @@
 <template>
-<div class="bottom-navbar-wrapper">
+<div class="page bottom-navbar-wrapper">
     <div class="bottom-navbar">
-      <div>
-        Useful links:
-      </div>
-      <div class="col-3 gutter-right">
-        <nuxt-link to="/account/manage-cards" > manage cards </nuxt-link>
-      </div>
-      <div class="col-3 gutter-horizontal">
-        <a href="#" > change password </a>
-      </div>
-      <div class="col-3 gutter-left">
-        <nuxt-link to="/auth/sign-out" > sign out 👋 </nuxt-link>
-      </div>
-      <div class="col-3 gutter-right">
-        <nuxt-link to="/account/manage-subscriptions" > manage subscriptions </nuxt-link>
-      </div>
-      <div class="col-3 gutter-horizontal">
-        <a href="#" > change email </a>
-      </div>
-      <div class="col-3 gutter-left">
+        <h4>Account:</h4>
+        <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
+        <nuxt-link to="/account" > Account </nuxt-link>
+        <nuxt-link to="/account/notifications" > Notifications </nuxt-link>
+        <nuxt-link to="/account/transactions" > Transactions </nuxt-link>
+        <nuxt-link to="/account/manage-cards" > Cards </nuxt-link>
+        <nuxt-link to="/account/manage-subscriptions" > Subscription </nuxt-link>
+        <nuxt-link to="/auth/sign-up" > sign up </nuxt-link>
         <nuxt-link to="/auth/sign-in" > sign in </nuxt-link>
-      </div>
-      <div class="col-3"></div>
-      <div class="col-3"></div>
-      <div class="col-3"></div>
-      <div class="col-3 gutter-right">
-        <nuxt-link to="/questions" > questions? </nuxt-link>
-      </div>
-      <div class="insignia">Make money, make a difference</div>
+        <nuxt-link to="/auth/sign-out" > sign out 👋 </nuxt-link>
+        <h4>Content:</h4>
+        <nuxt-link to="/about" > about us </nuxt-link>
+        <nuxt-link to="/about/values" > our values </nuxt-link>
+        <nuxt-link to="/questions" > Q&A </nuxt-link>
+        <nuxt-link to="/questions/how-does-it-work" > how it works </nuxt-link>
+        <nuxt-link to="/questions/how-do-you-make-money" > how we make money </nuxt-link>
+      <div class="insignia">Make money, make a difference.</div>
     </div>
     </div>
 </template>

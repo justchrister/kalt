@@ -1,19 +1,28 @@
 .bottom-navbar{
-  padding-bottom:$sectionpadding;
   width: $sitewidth;
   max-width: $maxsitewidth;
+  padding:clamp($unit-min*2, $unit*2, $unit-max*2) 0;
   margin:0 auto;
   color:$light;
-  padding-top:$sectionpadding;
   a{
     color:$light;
+    width:33%;
+    display:inline-block;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
 
+    }
+  }
+  h4{
+    font-weight:bold;
+    margin-top:clamp($unit-min*2, $unit*2, $unit-max*2);
   }
   .insignia{
-    background-image:url('/insignia-light.svg');
+    background-image:url('/media/insignia/insignia-light.svg');
     background-size:contain;
     background-repeat:no-repeat;
-    margin-top:clamp($unit-min*5, $unit*5, $unit-max*5);
+    margin-top:clamp($unit-min*4, $unit*4, $unit-max*4);
     background-position: center center;
     width:100%;
     @include font-display;
