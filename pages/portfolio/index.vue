@@ -24,18 +24,8 @@
             max
           </button>
         </nav>
-        <nav class="pills">
-          <nuxt-link to="portfolio/sell">
-            <button class="pill sell">
-              SELL
-            </button>
-          </nuxt-link>
-          <nuxt-link to="portfolio/buy">
-            <button class="pill buy">
-              BUY
-            </button>
-          </nuxt-link>
-        </nav>
+        <cta /> 
+        <nuxt-link to="portfolio/sell">or sell</nuxt-link>
       </div>
       <div class="section impacts">
         <h3>Our impact <omoji emoji="😮"/></h3>

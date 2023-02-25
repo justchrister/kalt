@@ -1,5 +1,5 @@
 <template>
-  <div class="PageWrapper">
+  <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
@@ -31,7 +31,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">

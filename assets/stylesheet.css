@@ -719,21 +719,30 @@ span.ⓘ {
 }
 
 .bottom-navbar {
-  padding-bottom: clamp(75px, 15vh, 175px);
   width: 86vw;
   max-width: 720px;
+  padding: clamp(14px, 3.6vw, 26px) 0;
   margin: 0 auto;
   color: #FCF9F2;
-  padding-top: clamp(75px, 15vh, 175px);
 }
 .bottom-navbar a {
   color: #FCF9F2;
+  width: 33%;
+  display: inline-block;
+  text-decoration: none;
+}
+.bottom-navbar a:hover {
+  text-decoration: underline;
+}
+.bottom-navbar h4 {
+  font-weight: bold;
+  margin-top: clamp(14px, 3.6vw, 26px);
 }
 .bottom-navbar .insignia {
-  background-image: url("/insignia-light.svg");
+  background-image: url("/media/insignia/insignia-light.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: clamp(35px, 9vw, 65px);
+  margin-top: clamp(28px, 7.2vw, 52px);
   background-position: center center;
   width: 100%;
   font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
@@ -772,9 +781,10 @@ span.ⓘ {
 }
 .tabs ul li {
   display: inline-block;
-  margin-left: 5%;
-  padding: 0 2px;
+  margin-left: clamp(14px, 3.6vw, 26px);
+  padding: 0;
   line-height: 1.5;
+  margin-right: 0;
 }
 .tabs ul li:first-child {
   margin-left: 0;
@@ -807,7 +817,8 @@ span.ⓘ {
 }
 .component.calendar input[type=checkbox]:checked + label {
   text-decoration: underline;
-  background: url("/grain-30.png"), linear-gradient(137deg, #F991CC 0%, #fbe4ea 100%), #FCF9F2;
+  border-radius: 3.5px;
+  background: #ccf8d9;
 }
 
 .card {
@@ -837,15 +848,15 @@ span.ⓘ {
 }
 
 .card .logo.visa {
-  background-image: url("/images/logos/visa.svg");
+  background-image: url("/media/images/logos/visa.svg");
 }
 
 .card .logo.mastercard {
-  background-image: url("/images/logos/mastercard.svg");
+  background-image: url("/media/images/logos/mastercard.svg");
 }
 
 .card .logo.amex {
-  background-image: url("/images/logos/amex.svg");
+  background-image: url("/media/images/logos/amex.svg");
 }
 
 .card .details {

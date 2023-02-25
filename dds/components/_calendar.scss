@@ -26,7 +26,8 @@
   }
   input[type="checkbox"]:checked + label {
       text-decoration:underline;
-      background: url('/grain-30.png'), linear-gradient(137deg, $pink 0%, $pink-20 100%), $light;
+      border-radius:$border-radius;
+      background: $green-20;
       
   }
 }

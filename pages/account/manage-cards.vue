@@ -1,14 +1,14 @@
 <template>
-  <div class="PageWrapper">
+  <main>
+    <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <div class="block">
-          <p> Your cards: </p>
-          <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
-            <div :class="checkBrand(card.card_number)"></div> 
-            <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
-            <div :class="'default '+card.default"> <span class="set"> set </span> default  </div>
-          </div>
+        <tabs />
+        <p> Your cards: </p>
+        <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
+          <div :class="checkBrand(card.card_number)"></div> 
+          <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
+          <div :class="'default '+card.default"> <span class="set"> set </span> default  </div>
         </div>
         <div class="block add-card">
           <p> Add a new card: </p>
@@ -74,12 +74,11 @@
           </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script setup lang="ts">
 
   definePageMeta({
-    layout: "focused",
     middleware: 'auth'
   });
   const supabase = useSupabaseClient()

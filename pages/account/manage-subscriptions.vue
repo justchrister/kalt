@@ -3,7 +3,7 @@
   <div class="PageWrapper">
     <div class="page">
       <div class="section">
-        <h1>Manage subscription</h1>
+        <tabs />
         <div class="block">
           <p>Select amount you want to auto-invest</p>
           <select-amount for="subscription" :uuid="uuid" />
@@ -46,7 +46,6 @@
     ],
   });
   definePageMeta({
-    layout: "focused",
     middleware: 'auth'
   });
 

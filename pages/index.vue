@@ -5,7 +5,7 @@
     <div class='page'>
       <div class="section" id="about">
         <div class="frame">
-          <div class="image" style="background-image:url(/images/frontpage.webp); margin-left:0;">
+          <div class="image" style="background-image:url(/media/images/frontpage.webp); margin-left:0;">
           </div>
         </div>
         <div class="block">

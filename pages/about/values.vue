@@ -1,5 +1,5 @@
 <template>
-  <div class="PageWrapper values">
+  <main class="values">
     <navbar :pageTitle="pagename" />
     <div class="headline">
       <h1>Our Values —</h1>
@@ -13,7 +13,7 @@
         <Cta />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script setup lang="ts">
 const pagename = 'Values';
