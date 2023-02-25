@@ -158,7 +158,7 @@ the edge of the page.
   padding: clamp(35px, 9vw, 65px) 0 0 0;
 }
 
-.PageWrapper {
+main {
   min-height: 100vh;
 }
 

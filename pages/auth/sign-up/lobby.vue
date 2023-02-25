@@ -1,21 +1,6 @@
-<script setup lang="ts">
-  const pagename = 'Lobby';
-  const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
-  var errormsg = ref('');
-  
-  useHead({
-    title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
-  });
-</script>
+
 <template>
-  <div class="PageWrapper">
+  <main>
     <navbar :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
@@ -36,5 +21,21 @@
           </nuxt-link>
       </div>
     </div>
-  </div>
+  </main>
 </template>
+<script setup lang="ts">
+  const pagename = 'Lobby';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
+  var errormsg = ref('');
+  
+  useHead({
+    title,
+    meta: [
+      {
+        name: "description",
+        content: description,
+      },
+    ],
+  });
+</script>

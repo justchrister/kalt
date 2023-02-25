@@ -1,6 +1,6 @@
 
 <template>
-  <div class="PageWrapper">
+  <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
@@ -12,7 +12,7 @@
           emoji="☀️"/>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script setup lang="ts">
     const pagename = 'Transactions';

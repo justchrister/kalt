@@ -1,6 +1,6 @@
 
 <template>
-  <div class="PageWrapper">
+  <main>
     <div class="page">
       <div class="section">
         <tabs />
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script setup lang="ts">
   const pagename = 'Buy';

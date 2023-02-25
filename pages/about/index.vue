@@ -13,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <div class="PageWrapper">
+  <main>
     <navbar :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
@@ -34,5 +34,5 @@ useHead({
         <Cta />
       </div>
     </div>
-  </div>
+  </main>
 </template>

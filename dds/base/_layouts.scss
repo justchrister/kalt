@@ -2,7 +2,7 @@
 .page{
   padding: clamp($unit-min*5, $unit*5, $unit-max*5) 0 0 0;
 }
-.PageWrapper{
+main{
   min-height:100vh;
 }
 //  Sections

@@ -1,5 +1,5 @@
 <template>
-  <div class="PageWrapper">
+  <main>
     <div class='page'>
       <div class="section">
         <div class="block">
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
