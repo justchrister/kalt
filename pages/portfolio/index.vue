@@ -37,10 +37,14 @@
           </nuxt-link>
         </nav>
       </div>
-    </div>
-    <div class="page impact green">
-      <div class="section" style=";padding:0;">
-          <h3> You've lowered the emissions like planting <code>2 000</code> trees. </h3>
+      <div class="section impacts">
+        <h3>Our impact <omoji emoji="😮"/></h3>
+        <div class="impact"  style="background-image:url('/Plant.svg');">
+          You and your investments have lowered the impact equals to planting <code class="green">2 000</code> trees, and together we've planted <code>3 000 000</code>
+        </div>
+        <div class="impact" style="background-image:url('/hug.svg');">
+          It's also given electricity a whole day of electricity to <code class="yellow">130</code> families, and together we've <code>3 000 000</code>
+        </div>
       </div>
     </div>
   </div>
