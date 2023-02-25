@@ -44,5 +44,11 @@
 		"body": "const props = defineProps({\n$0: {\ntype: String,\nrequired: true\n}\n})\n",
 		"description": "a snippet to scaffold a component",
 	},
+	"css clamp": {
+		"prefix": ["/clamp"],
+		"body": "clamp($unit-min*$0, $unit*$0, $unit-max*$0)",
+		"description": "the clamp",
+	},
+	
 }
 

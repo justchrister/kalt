@@ -16,6 +16,7 @@
     "@nuxtjs/supabase": "^0.3.0",
     "chart.js": "^4.1.1",
     "nuxt": "^3.0.0",
+    "plyr": "^3.7.3",
     "uuid": "^9.0.0",
     "vue-chartjs": "^5.1.0"
   }

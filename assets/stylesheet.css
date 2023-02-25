@@ -352,21 +352,45 @@ input {
 }
 
 .impact {
-  padding: clamp(70px, 18vw, 130px);
+  padding: clamp(7px, 1.8vw, 13px) 0 clamp(7px, 1.8vw, 13px) clamp(35px, 9vw, 65px);
+  border-top: 0.1px solid #202124;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
-.impact.green {
+code {
+  display: inline-block;
+  font-size: 80%;
+  padding: 0 clamp(7px, 1.8vw, 13px);
+  border-radius: 50%;
+  border: 0.1px solid #202124;
+}
+
+code.green {
   background: #0CF574;
-  background: url("/grain-30.png"), radial-gradient(71.84% 71.84% at 82.76% 87.64%, #0CF574 0%, #6cf7a6 100%), #FCF9F2;
+  background: url("/grain-30.png"), linear-gradient(137deg, #0CF574 0%, #ccf8d9 100%), #FCF9F2;
   background-repeat: repeat;
 }
 
-.impact.red {
-  background: #F4442E;
+code.pink {
+  background: #F991CC;
+  background: url("/grain-30.png"), linear-gradient(137deg, #F991CC 0%, #fbe4ea 100%), #FCF9F2;
+  background-repeat: repeat;
 }
 
-.impact.pink {
-  background: #F991CC;
+code.yellow {
+  background: #F7B538;
+  background: url("/grain-30.png"), linear-gradient(137deg, #F7B538 0%, #fbebcd 100%), #FCF9F2;
+  background-repeat: repeat;
+}
+
+code.blue {
+  background: #1E96FC;
+  background: url("/grain-30.png"), linear-gradient(137deg, #1E96FC 0%, #d0e5f4 100%), #FCF9F2;
+  background-repeat: repeat;
 }
 
 .chart {
@@ -704,6 +728,22 @@ span.ⓘ {
 }
 .bottom-navbar a {
   color: #FCF9F2;
+}
+.bottom-navbar .insignia {
+  background-image: url("/insignia-light.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: clamp(35px, 9vw, 65px);
+  background-position: center center;
+  width: 100%;
+  font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
+  font-size: clamp(24.5px, 6.3vw, 45.5px);
+  line-height: 150%;
+  margin-bottom: clamp(12px, 3.24vw, 25px);
+  font-display: optional;
+  height: clamp(140px, 36vw, 260px);
+  line-height: clamp(140px, 36vw, 260px);
+  text-align: center;
 }
 
 .bottom-navbar-wrapper {
