@@ -1,0 +1,35 @@
+.impact{
+  padding:clamp($unit-min, $unit, $unit-max) 0 clamp($unit-min, $unit, $unit-max) clamp($unit-min*5, $unit*5, $unit-max*5);
+  border-top:$border;
+  display:inline-block;  vertical-align: top;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+code{
+  display:inline-block;
+  font-size:80%;
+  padding:0 clamp($unit-min*1, $unit*1, $unit-max*1);
+  border-radius:50%;
+  border:$border;
+}
+code.green{
+  background:$green;
+  background: url('/grain-30.png'), linear-gradient(137deg, $green 0%, $green-20 100%), $light;
+  background-repeat:repeat;
+}
+code.pink{
+  background:$pink;
+  background: url('/grain-30.png'), linear-gradient(137deg, $pink 0%, $pink-20 100%), $light;
+  background-repeat:repeat;
+}
+code.yellow{
+  background:$yellow;
+  background: url('/grain-30.png'), linear-gradient(137deg, $yellow 0%, $yellow-20 100%), $light;
+  background-repeat:repeat;
+}
+code.blue{
+  background:$blue;
+  background: url('/grain-30.png'), linear-gradient(137deg, $blue 0%, $blue-20 100%), $light;
+  background-repeat:repeat;
+}

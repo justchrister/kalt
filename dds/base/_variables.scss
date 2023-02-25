@@ -16,6 +16,11 @@ $purple: #624CAB;
 $pink: #F991CC;
 
 // Color variations
+$dark-80: mix($dark, $light, 80%);
+$dark-60: mix($dark, $light, 60%);
+$dark-40: mix($dark, $light, 40%);
+$dark-20: mix($dark, $light, 20%);
+
 $blue-80: mix($blue, $light, 80%);
 $blue-60: mix($blue, $light, 60%);
 $blue-40: mix($blue, $light, 40%);
