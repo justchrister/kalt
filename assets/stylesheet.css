@@ -177,7 +177,9 @@ the edge of the page.
   margin-bottom: 0;
 }
 
-/* http://meyerweb.com/eric/tools/css/reset/
+.center-text {
+  text-align: center;
+} /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -351,58 +353,43 @@ input {
   position: relative;
 }
 
-.impact {
-  padding: clamp(7px, 1.8vw, 13px) 0 clamp(7px, 1.8vw, 13px) clamp(35px, 9vw, 65px);
+.impacts {
+  margin-top: clamp(24.5px, 6.3vw, 45.5px);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 2% 2%;
+  grid-auto-flow: row;
+}
+
+.impacts .impact {
+  padding: clamp(7px, 1.8vw, 13px) 0;
   border-top: 0.1px solid #202124;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  grid-template-rows: 1fr;
+  gap: 3% 2%;
+  grid-auto-flow: row;
+  font-size: 120%;
+}
+
+.impacts .impact .image {
+  height: 100%;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: center left;
+  background-size: contain;
 }
 
-code {
-  display: inline-block;
-  font-size: 80%;
-  padding: 0 clamp(7px, 1.8vw, 13px);
-  border-radius: 50%;
-  border: 0.1px solid #202124;
+.impacts .impact .image#car {
+  background-image: url("/illustrations/car.svg");
 }
 
-code.green {
-  background: #0CF574;
-  background: url("/grain-30.png"), linear-gradient(137deg, #0CF574 0%, #ccf8d9 100%), #FCF9F2;
-  background-repeat: repeat;
+.impacts .impact .image#house {
+  background-image: url("/illustrations/house.svg");
 }
 
-code.pink {
-  background: #F991CC;
-  background: url("/grain-30.png"), linear-gradient(137deg, #F991CC 0%, #fbe4ea 100%), #FCF9F2;
-  background-repeat: repeat;
-}
-
-code.yellow {
-  background: #F7B538;
-  background: url("/grain-30.png"), linear-gradient(137deg, #F7B538 0%, #fbebcd 100%), #FCF9F2;
-  background-repeat: repeat;
-}
-
-code.blue {
-  background: #1E96FC;
-  background: url("/grain-30.png"), linear-gradient(137deg, #1E96FC 0%, #d0e5f4 100%), #FCF9F2;
-  background-repeat: repeat;
-}
-
-.chart {
-  background: #FFF;
-  box-sizing: border-box;
-  margin-top: clamp(7px, 1.8vw, 13px);
-}
-
-.chart,
-canvas,
-.chartjs {
-  width: 100%;
+.impacts .impact .image#plane {
+  background-image: url("/illustrations/plane.svg");
 }
 
 .dds-currencyAmount {
@@ -446,10 +433,6 @@ canvas,
 .frame div {
   width: 100%;
 }
-.frame canvas {
-  height: 50vw;
-  max-height: 418px;
-}
 .frame .image {
   height: 32vw;
   max-height: 268px;
@@ -477,6 +460,22 @@ canvas,
   display: block;
   margin: 0px;
   flex: 999 999 auto;
+}
+
+.chart {
+  box-sizing: border-box;
+}
+
+.frame:has(.chart) {
+  height: 45vw;
+  max-height: 376px;
+  margin: clamp(14px, 3.6vw, 26px) 0 0 0;
+}
+
+.chart,
+canvas,
+.chartjs {
+  width: 100%;
 }
 
 header .menu ul {
@@ -735,7 +734,7 @@ span.ⓘ {
   text-decoration: underline;
 }
 .bottom-navbar h4 {
-  font-weight: bold;
+  font-weight: 500;
   margin-top: clamp(14px, 3.6vw, 26px);
 }
 .bottom-navbar .insignia {
@@ -757,16 +756,6 @@ span.ⓘ {
 
 .bottom-navbar-wrapper {
   background: #202124;
-}
-
-.headline {
-  height: clamp(0px, 50vh, 30vw);
-  background: #202124;
-}
-.headline h1 {
-  font-size: 15vw;
-  color: #202124;
-  line-height: clamp(0px, 50vh, 30vw);
 }
 
 .tabs {
