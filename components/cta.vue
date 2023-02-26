@@ -1,6 +1,6 @@
 <template>
   <div class="cta">
-    <nuxt-link to="/portfolio/buy">
+    <nuxt-link to="/portfolio/invest">
       <button  :class="animatedClass" tabindex="-1">lets invest</button>
     </nuxt-link>
     <nuxt-link v-if="props.showDivest" to="portfolio/divest">or divest</nuxt-link>
