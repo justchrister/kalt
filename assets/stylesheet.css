@@ -593,8 +593,6 @@ header .my-account-button:hover {
 }
 .bottom-navbar a {
   color: #FCF9F2;
-  width: 33%;
-  display: inline-block;
   text-decoration: none;
 }
 .bottom-navbar a:hover {
