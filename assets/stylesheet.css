@@ -179,7 +179,13 @@ main {
 
 .center-text {
   text-align: center;
-} /* http://meyerweb.com/eric/tools/css/reset/
+}
+
+p.links a:first-child {
+  margin-right: clamp(20px, 3.1272727273vw, 26.1818181818px);
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */

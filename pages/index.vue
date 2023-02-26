@@ -13,10 +13,11 @@
             Make money, make a difference! <omoji emoji="😃" />
           </h2>
           <p>
-            By investing your money in solar energy with Kalt, you can do both good and build residual income and wealth at the same time. Feel great, and let your money do something important. 
+            Make your money work for you and the world. By investing in solar energy with us, you can do good and build residual income at the same time. 
           </p>
-          <p>
-            <nuxt-link to="/about/how-it-works">How it works</nuxt-link> <span style="margin-right:30px;"></span><nuxt-link to="/about">About us</nuxt-link>
+          <p class="links">
+            <nuxt-link to="/about/how-it-works">How it works</nuxt-link>
+            <nuxt-link to="/about">About us</nuxt-link>
           </p>
         </div>
         <div class="block">

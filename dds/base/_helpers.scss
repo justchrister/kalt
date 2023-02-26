@@ -1,3 +1,11 @@
+// things i dont know where to put yet..
+
 .center-text{
   text-align: center;
+}
+
+p.links{
+  a:first-child{
+    margin-right:clamp($unit-min*2, $unit*2, $unit-max*2)
+  }
 }
