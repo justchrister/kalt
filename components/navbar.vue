@@ -30,11 +30,11 @@
                 </li>
                 <li v-if="!signedIn">
                     <span>Kalt — </span>
-                    <nuxt-link to="/auth/sign-up" v-on:click="toggleMenu"> Sign up </nuxt-link>
+                    <nuxt-link to="/auth/" v-on:click="toggleMenu"> Sign up </nuxt-link>
                 </li>
                 <li v-if="!signedIn">
                     <span>Kalt — </span>
-                    <nuxt-link to="/auth/sign-in" v-on:click="toggleMenu"> Sign in </nuxt-link>
+                    <nuxt-link to="/auth/" v-on:click="toggleMenu"> Sign in </nuxt-link>
                 </li>
                 <li v-if="signedIn">
                     <span>Kalt — </span>

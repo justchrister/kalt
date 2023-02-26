@@ -12,11 +12,6 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account/transactions" >
-              Transactions
-          </nuxt-link>
-        </li>
-        <li>
           <nuxt-link to="/account/notifications" >
               Notifications
           </nuxt-link>
