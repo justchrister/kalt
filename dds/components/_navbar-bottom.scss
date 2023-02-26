@@ -24,6 +24,7 @@
     background-position: center center;
     width:100%;
     @include font-display;
+    font-size: 150%;
     height:clamp($unit-min*8, $unit*8, $unit-max*8);
     line-height:clamp($unit-min*8, $unit*8, $unit-max*8);
     text-align:center;
