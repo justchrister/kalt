@@ -155,7 +155,7 @@ the edge of the page.
 }
 
 .page {
-  padding: clamp(50px, 7.8181818182vw, 65.4545454545px) 0 0 0;
+  padding: clamp(40px, 7.8181818182vw, 65.4545454545px) 0 0 0;
 }
 
 main {
@@ -170,7 +170,7 @@ main {
 }
 
 .block {
-  margin: clamp(50px, 7.8181818182vw, 65.4545454545px) 0;
+  margin: clamp(40px, 7.8181818182vw, 65.4545454545px) 0;
 }
 
 .block:last-child {
@@ -182,7 +182,7 @@ main {
 }
 
 p.links a:first-child {
-  margin-right: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  margin-right: clamp(16px, 3.1272727273vw, 26.1818181818px);
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -221,7 +221,7 @@ body {
   touch-action: manipulation;
   overflow-x: hidden;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
@@ -263,7 +263,7 @@ a {
 
 h1, h2 {
   font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
-  font-size: clamp(35px, 5.4727272727vw, 45.8181818182px);
+  font-size: clamp(28px, 5.4727272727vw, 45.8181818182px);
   line-height: 150%;
   margin-bottom: clamp(12px, 3.24vw, 25px);
   font-display: optional;
@@ -277,7 +277,7 @@ h1 a:hover, h2 a:hover {
 
 h3 {
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
@@ -295,11 +295,11 @@ input {
 .layout.focused .back-button {
   padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
-  font-size: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
   position: fixed;
 }
 
@@ -314,11 +314,11 @@ input {
 .layout.questions .back-button {
   padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
-  font-size: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
   position: fixed;
 }
 
@@ -333,10 +333,10 @@ input {
 .layout.questions p,
 .layout.questions h1 {
   background-color: #fff;
-  padding: clamp(10px, 1.5636363636vw, 13.0909090909px) clamp(20px, 3.1272727273vw, 26.1818181818px);
-  border-radius: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  padding: clamp(8px, 1.5636363636vw, 13.0909090909px) clamp(16px, 3.1272727273vw, 26.1818181818px);
+  border-radius: clamp(8px, 1.5636363636vw, 13.0909090909px);
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
@@ -346,21 +346,21 @@ input {
 }
 
 .layout.questions h1 {
-  margin-left: clamp(60px, 9.3818181818vw, 78.5454545455px);
+  margin-left: clamp(48px, 9.3818181818vw, 78.5454545455px);
   float: right;
   background: #77bef8;
 }
 
 .layout.questions p {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
-  margin-right: clamp(60px, 9.3818181818vw, 78.5454545455px);
-  margin-bottom: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
+  margin-right: clamp(48px, 9.3818181818vw, 78.5454545455px);
+  margin-bottom: clamp(8px, 1.5636363636vw, 13.0909090909px);
   background: #6cf7a6;
   position: relative;
 }
 
 .impacts {
-  margin-top: clamp(35px, 5.4727272727vw, 45.8181818182px);
+  margin-top: clamp(28px, 5.4727272727vw, 45.8181818182px);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -369,7 +369,7 @@ input {
 }
 
 .impacts .impact {
-  padding: clamp(10px, 1.5636363636vw, 13.0909090909px) 0;
+  padding: clamp(8px, 1.5636363636vw, 13.0909090909px) 0;
   border-top: 0.1px solid #202124;
   display: grid;
   grid-template-columns: 1fr 9fr;
@@ -460,7 +460,7 @@ input {
   max-height: 418px;
 }
 .frame .image:last-child {
-  margin-left: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  margin-left: clamp(16px, 3.1272727273vw, 26.1818181818px);
 }
 .frame:after {
   display: block;
@@ -475,7 +475,7 @@ input {
 .frame:has(.chart) {
   height: 45vw;
   max-height: 376px;
-  margin: clamp(20px, 3.1272727273vw, 26.1818181818px) 0 0 0;
+  margin: clamp(16px, 3.1272727273vw, 26.1818181818px) 0 0 0;
 }
 
 .chart,
@@ -502,11 +502,11 @@ header .menu ul li {
   pointer-events: none;
   line-height: 1;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
-  font-size: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
   padding: 0;
   margin-bottom: 0;
 }
@@ -526,10 +526,10 @@ header .menu ul li:before {
 
 header .menu-toggle {
   padding: clamp(12px, 3.24vw, 25px);
-  right: clamp(35px, 5.4727272727vw, 45.8181818182px);
+  right: clamp(28px, 5.4727272727vw, 45.8181818182px);
   position: fixed;
-  font-size: clamp(20px, 3.1272727273vw, 26.1818181818px);
-  line-height: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
+  line-height: clamp(16px, 3.1272727273vw, 26.1818181818px);
   top: 0.1px;
   width: auto;
   color: #202124;
@@ -540,8 +540,8 @@ header .menu-toggle:hover, header .menu-toggle:hover:before {
 }
 
 header .my-account-button {
-  width: clamp(20px, 3.1272727273vw, 26.1818181818px);
-  height: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  width: clamp(16px, 3.1272727273vw, 26.1818181818px);
+  height: clamp(16px, 3.1272727273vw, 26.1818181818px);
   display: block;
   border-radius: 50%;
   position: fixed;
@@ -556,10 +556,10 @@ header .my-account-button:hover {
 }
 
 .notification-dot {
-  min-width: 5px;
+  min-width: 4px;
   width: 0.7818181818vw;
   max-width: 6.5454545455px;
-  min-height: 5px;
+  min-height: 4px;
   height: 0.7818181818vw;
   max-height: 6.5454545455px;
   top: 0.1px;
@@ -593,7 +593,7 @@ header .my-account-button:hover {
 .bottom-navbar {
   width: 86vw;
   max-width: 720px;
-  padding: clamp(20px, 3.1272727273vw, 26.1818181818px) 0;
+  padding: clamp(16px, 3.1272727273vw, 26.1818181818px) 0;
   margin: 0 auto;
   color: #FCF9F2;
 }
@@ -606,22 +606,22 @@ header .my-account-button:hover {
 }
 .bottom-navbar h4 {
   font-weight: 500;
-  margin-top: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  margin-top: clamp(16px, 3.1272727273vw, 26.1818181818px);
 }
 .bottom-navbar .insignia {
   background-image: url("/media/insignia/insignia-light.svg");
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: clamp(50px, 7.8181818182vw, 65.4545454545px);
+  margin-top: clamp(40px, 7.8181818182vw, 65.4545454545px);
   background-position: center center;
   width: 100%;
   font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
-  font-size: clamp(35px, 5.4727272727vw, 45.8181818182px);
+  font-size: clamp(28px, 5.4727272727vw, 45.8181818182px);
   line-height: 150%;
   margin-bottom: clamp(12px, 3.24vw, 25px);
   font-display: optional;
-  height: clamp(80px, 12.5090909091vw, 104.7272727273px);
-  line-height: clamp(80px, 12.5090909091vw, 104.7272727273px);
+  height: clamp(64px, 12.5090909091vw, 104.7272727273px);
+  line-height: clamp(64px, 12.5090909091vw, 104.7272727273px);
   text-align: center;
 }
 
@@ -641,7 +641,7 @@ header .my-account-button:hover {
 }
 .tabs ul li {
   display: inline-block;
-  margin-left: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  margin-left: clamp(16px, 3.1272727273vw, 26.1818181818px);
   padding: 0;
   line-height: 1.5;
   margin-right: 0;
@@ -767,18 +767,18 @@ span.ⓘ {
 .infobox {
   border: 1px solid #1E96FC;
   border-radius: 0;
-  padding: clamp(5px, 0.7818181818vw, 6.5454545455px) clamp(10px, 1.5636363636vw, 13.0909090909px);
+  padding: clamp(4px, 0.7818181818vw, 6.5454545455px) clamp(8px, 1.5636363636vw, 13.0909090909px);
   background: #d0e5f4;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
   font-size: 80%;
-  margin: clamp(10px, 1.5636363636vw, 13.0909090909px) 0;
+  margin: clamp(8px, 1.5636363636vw, 13.0909090909px) 0;
 }
 .infobox span {
-  margin-right: clamp(5px, 0.7818181818vw, 6.5454545455px);
+  margin-right: clamp(4px, 0.7818181818vw, 6.5454545455px);
   font-size: 90%;
 }
 
@@ -802,11 +802,11 @@ span.ⓘ {
   display: inline-block;
   border-radius: 0;
   width: clamp(1px, 4.6909090909vw, 39.2727272727px);
-  height: clamp(10px, 1.5636363636vw, 13.0909090909px);
-  line-height: clamp(10px, 1.5636363636vw, 13.0909090909px);
-  padding: clamp(10px, 1.5636363636vw, 13.0909090909px) clamp(10px, 1.5636363636vw, 13.0909090909px) clamp(20px, 3.1272727273vw, 26.1818181818px) clamp(30px, 4.6909090909vw, 39.2727272727px);
+  height: clamp(8px, 1.5636363636vw, 13.0909090909px);
+  line-height: clamp(8px, 1.5636363636vw, 13.0909090909px);
+  padding: clamp(8px, 1.5636363636vw, 13.0909090909px) clamp(8px, 1.5636363636vw, 13.0909090909px) clamp(16px, 3.1272727273vw, 26.1818181818px) clamp(24px, 4.6909090909vw, 39.2727272727px);
   text-align: right;
-  margin: clamp(2.5px, 0.3909090909vw, 3.2727272727px);
+  margin: clamp(2px, 0.3909090909vw, 3.2727272727px);
 }
 .component.calendar input[type=checkbox]:checked + label {
   text-decoration: underline;
@@ -817,9 +817,9 @@ span.ⓘ {
 .card {
   border: 0.1px solid #202124;
   border-radius: 0;
-  padding: clamp(10px, 1.5636363636vw, 13.0909090909px) 0 clamp(10px, 1.5636363636vw, 13.0909090909px) clamp(20px, 3.1272727273vw, 26.1818181818px);
-  margin: clamp(10px, 1.5636363636vw, 13.0909090909px) 0;
-  max-height: clamp(40px, 6.2545454545vw, 52.3636363636px);
+  padding: clamp(8px, 1.5636363636vw, 13.0909090909px) 0 clamp(8px, 1.5636363636vw, 13.0909090909px) clamp(16px, 3.1272727273vw, 26.1818181818px);
+  margin: clamp(8px, 1.5636363636vw, 13.0909090909px) 0;
+  max-height: clamp(32px, 6.2545454545vw, 52.3636363636px);
   overflow: hidden;
 }
 
@@ -829,8 +829,8 @@ span.ⓘ {
 }
 
 .card .logo {
-  width: clamp(40px, 6.2545454545vw, 52.3636363636px);
-  height: clamp(40px, 6.2545454545vw, 52.3636363636px);
+  width: clamp(32px, 6.2545454545vw, 52.3636363636px);
+  height: clamp(32px, 6.2545454545vw, 52.3636363636px);
   background: transparent;
   background-size: contain;
   display: inline-block;
@@ -853,21 +853,21 @@ span.ⓘ {
 }
 
 .card .details {
-  width: clamp(150px, 23.4545454545vw, 196.3636363636px);
-  height: clamp(40px, 6.2545454545vw, 52.3636363636px);
-  line-height: clamp(40px, 6.2545454545vw, 52.3636363636px);
-  padding-left: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  width: clamp(120px, 23.4545454545vw, 196.3636363636px);
+  height: clamp(32px, 6.2545454545vw, 52.3636363636px);
+  line-height: clamp(32px, 6.2545454545vw, 52.3636363636px);
+  padding-left: clamp(16px, 3.1272727273vw, 26.1818181818px);
   display: inline-block;
   vertical-align: center;
 }
 
 .card .default {
-  width: clamp(80px, 12.5090909091vw, 104.7272727273px);
-  height: clamp(40px, 6.2545454545vw, 52.3636363636px);
-  line-height: clamp(40px, 6.2545454545vw, 52.3636363636px);
+  width: clamp(64px, 12.5090909091vw, 104.7272727273px);
+  height: clamp(32px, 6.2545454545vw, 52.3636363636px);
+  line-height: clamp(32px, 6.2545454545vw, 52.3636363636px);
   display: block;
   float: right;
-  padding-right: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  padding-right: clamp(16px, 3.1272727273vw, 26.1818181818px);
   text-align: right;
 }
 
@@ -901,12 +901,12 @@ span.ⓘ {
 }
 
 .notification {
-  padding: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  padding: clamp(8px, 1.5636363636vw, 13.0909090909px);
   padding-right: none;
   border: 1px solid #202124;
   border-radius: 0;
-  margin: clamp(10px, 1.5636363636vw, 13.0909090909px) 0px;
-  height: clamp(40px, 6.2545454545vw, 52.3636363636px);
+  margin: clamp(8px, 1.5636363636vw, 13.0909090909px) 0px;
+  height: clamp(32px, 6.2545454545vw, 52.3636363636px);
 }
 .notification:hover {
   background: white;
@@ -916,8 +916,8 @@ span.ⓘ {
   text-decoration: underline;
 }
 .notification .profile-picture {
-  width: clamp(40px, 6.2545454545vw, 52.3636363636px);
-  height: clamp(40px, 6.2545454545vw, 52.3636363636px);
+  width: clamp(32px, 6.2545454545vw, 52.3636363636px);
+  height: clamp(32px, 6.2545454545vw, 52.3636363636px);
   display: inline-block;
   background-size: contain;
   border-radius: 50%;
@@ -927,10 +927,10 @@ span.ⓘ {
 }
 .notification .summary {
   width: 85%;
-  margin-left: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-left: clamp(8px, 1.5636363636vw, 13.0909090909px);
   display: inline-block;
   position: relative;
-  height: clamp(40px, 6.2545454545vw, 52.3636363636px);
+  height: clamp(32px, 6.2545454545vw, 52.3636363636px);
   overflow: hidden;
 }
 .notification .date,
@@ -949,20 +949,20 @@ span.ⓘ {
 }
 
 .element.input.text {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 .element.input.password {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 .element.input.date {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 input[type=submit].atom {
   border-radius: 50%;
-  margin-top: clamp(30px, 4.6909090909vw, 39.2727272727px);
+  margin-top: clamp(24px, 4.6909090909vw, 39.2727272727px);
   text-transform: lowercase;
   padding: 2% 0;
 }
@@ -975,10 +975,10 @@ input[type=submit].atom:hover {
 
 .pill {
   display: inline-block;
-  width: clamp(75px, 11.7272727273vw, 98.1818181818px);
+  width: clamp(60px, 11.7272727273vw, 98.1818181818px);
   padding: 0;
   font-size: 85%;
-  margin-right: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-right: clamp(8px, 1.5636363636vw, 13.0909090909px);
   border-radius: 0;
 }
 
@@ -988,25 +988,25 @@ input[type=submit].atom:hover {
 }
 
 .element.input.number {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 .element.input.email {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 .element.select {
-  margin-top: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 .element.bomb {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center right;
-  font-size: clamp(20px, 3.1272727273vw, 26.1818181818px);
-  line-height: clamp(30px, 4.6909090909vw, 39.2727272727px);
-  padding-right: clamp(20px, 3.1272727273vw, 26.1818181818px);
-  margin-right: clamp(5px, 0.7818181818vw, 6.5454545455px);
+  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
+  line-height: clamp(24px, 4.6909090909vw, 39.2727272727px);
+  padding-right: clamp(16px, 3.1272727273vw, 26.1818181818px);
+  margin-right: clamp(4px, 0.7818181818vw, 6.5454545455px);
 }
 .element.bomb#flower-01 {
   background-image: url("/media/stickers/flower-01.png");
@@ -1051,12 +1051,12 @@ input[type=submit].atom:hover {
 
 .link-group {
   width: 100%;
-  margin: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin: clamp(8px, 1.5636363636vw, 13.0909090909px);
   text-align: center;
 }
 
 .link-group a {
-  margin: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 /*
@@ -1071,9 +1071,9 @@ input[type=submit].atom:hover {
 .switch {
   position: relative;
   display: inline-block;
-  top: clamp(5px, 0.7818181818vw, 6.5454545455px);
-  width: clamp(35px, 5.4727272727vw, 45.8181818182px);
-  height: clamp(20px, 3.1272727273vw, 26.1818181818px);
+  top: clamp(4px, 0.7818181818vw, 6.5454545455px);
+  width: clamp(28px, 5.4727272727vw, 45.8181818182px);
+  height: clamp(16px, 3.1272727273vw, 26.1818181818px);
 }
 
 /* Hide default HTML checkbox */
@@ -1099,10 +1099,10 @@ input[type=submit].atom:hover {
 .slider:before {
   position: absolute;
   content: "";
-  height: clamp(18px, 2.8145454545vw, 23.5636363636px);
-  width: clamp(18px, 2.8145454545vw, 23.5636363636px);
-  left: clamp(1px, 0.1563636364vw, 1.3090909091px);
-  bottom: clamp(1px, 0.1563636364vw, 1.3090909091px);
+  height: clamp(14.4px, 2.8145454545vw, 23.5636363636px);
+  width: clamp(14.4px, 2.8145454545vw, 23.5636363636px);
+  left: clamp(0.8px, 0.1563636364vw, 1.3090909091px);
+  bottom: clamp(0.8px, 0.1563636364vw, 1.3090909091px);
   background-color: #FCF9F2;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -1117,12 +1117,12 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(clamp(14px, 2.1890909091vw, 18.3272727273px));
+  transform: translateX(clamp(11.2px, 2.1890909091vw, 18.3272727273px));
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: clamp(19px, 2.9709090909vw, 24.8727272727px);
+  border-radius: clamp(15.2px, 2.9709090909vw, 24.8727272727px);
 }
 
 .slider.round:before {
@@ -1147,7 +1147,7 @@ a:hover button {
 }
 
 button {
-  margin-bottom: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-bottom: clamp(8px, 1.5636363636vw, 13.0909090909px);
   width: 100%;
   padding: 2% 0;
   background: transparent;
@@ -1155,7 +1155,7 @@ button {
   border-radius: 50%;
   border: 0.1px solid #202124;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
@@ -1168,11 +1168,11 @@ button.square, button:focus, button:hover {
 input {
   width: 100%;
   display: inline-block;
-  padding: clamp(5px, 0.7818181818vw, 6.5454545455px) clamp(12px, 1.8763636364vw, 15.7090909091px);
+  padding: clamp(4px, 0.7818181818vw, 6.5454545455px) clamp(9.6px, 1.8763636364vw, 15.7090909091px);
   border: 0.1px solid #202124;
   border-radius: 0;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
@@ -1189,32 +1189,32 @@ input:active {
 
 input.loading {
   background-image: url("../loading-gif.gif");
-  background-size: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  background-size: clamp(8px, 1.5636363636vw, 13.0909090909px);
   background-position: 95% center;
   background-repeat: no-repeat;
 }
 
 input.success {
   background-image: url("omoji/super-happy.svg");
-  background-size: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  background-size: clamp(8px, 1.5636363636vw, 13.0909090909px);
   background-position: 95% center;
   background-repeat: no-repeat;
 }
 
 input.error {
   background-image: url("omoji/suprised.svg");
-  background-size: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  background-size: clamp(8px, 1.5636363636vw, 13.0909090909px);
   background-position: 95% center;
   background-repeat: no-repeat;
 }
 
 label {
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
-  font-size: clamp(12px, 1.8763636364vw, 15.7090909091px);
+  font-size: clamp(9.6px, 1.8763636364vw, 15.7090909091px);
 }
 
 ol {
@@ -1227,7 +1227,7 @@ ul {
 }
 
 ul > li {
-  margin-bottom: clamp(10px, 1.5636363636vw, 13.0909090909px);
+  margin-bottom: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 ul > li:before {
@@ -1240,11 +1240,11 @@ ul > li:before {
 select {
   width: 100%;
   display: inline-block;
-  padding: clamp(6.6666666667px, 1.0424242424vw, 8.7272727273px) clamp(15px, 2.3454545455vw, 19.6363636364px) clamp(6.6666666667px, 1.0424242424vw, 8.7272727273px) clamp(12px, 1.8763636364vw, 15.7090909091px);
+  padding: clamp(5.3333333333px, 1.0424242424vw, 8.7272727273px) clamp(12px, 2.3454545455vw, 19.6363636364px) clamp(5.3333333333px, 1.0424242424vw, 8.7272727273px) clamp(9.6px, 1.8763636364vw, 15.7090909091px);
   border: 0.1px solid #202124;
   border-radius: 0;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(15px, 2.3454545455vw, 19.6363636364px);
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
   line-height: 150%;
   font-display: optional;
@@ -1276,7 +1276,7 @@ table:hover tr:hover {
 }
 
 h3 {
-  font-size: clamp(30px, 4.6909090909vw, 39.2727272727px);
+  font-size: clamp(24px, 4.6909090909vw, 39.2727272727px);
   line-height: 150%;
 }
 
