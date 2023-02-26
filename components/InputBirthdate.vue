@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="element select birthdate">
     <label for="birthdate"> 
       Birthdate: 
     </label>

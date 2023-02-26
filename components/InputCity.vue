@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="element input text">
     <label for="city"> 
       City: 
     </label>

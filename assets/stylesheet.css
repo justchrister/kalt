@@ -1017,6 +1017,22 @@ input[type=submit].atom:hover {
   background-image: url("/media/stickers/flower-01.png");
 }
 
+.grid-col-3,
+.grid-col-2 {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 2% 2%;
+  grid-auto-flow: row;
+}
+
+.grid-col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .pills input {
   display: none;
 }
