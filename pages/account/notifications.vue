@@ -15,17 +15,17 @@
   </main>
 </template>
 <script setup lang="ts">
-    const pagename = 'Transactions';
-    const title = 'Kalt — ' + pagename;
-    const description = ref('My App Description')
+  const pagename = 'Transactions';
+  const title = 'Kalt — ' + pagename;
+  const description = ref('My App Description')
 
-    useHead({
-      title,
-      meta: [{
-        name: 'description',
-        content: description
-      }]
-    })
+  useHead({
+    title,
+    meta: [{
+      name: 'description',
+      content: description
+    }]
+  })
   definePageMeta({
     middleware: 'auth'
   })

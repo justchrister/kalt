@@ -109,8 +109,7 @@
 span.pill{
   margin-right:5px;
   padding:5px 10px;
-  border: .1px solid black; 
-  border-radius: 3px;
+  border: .1px solid black;
 }
 #type{
   text-align:center;

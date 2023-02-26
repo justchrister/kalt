@@ -16,15 +16,13 @@
   </main>
 </template>
 <script setup lang="ts">
-const pagename = 'Values';
-const title = 'Kalt — ' + pagename;
-const description = ref('My App Description')
-
-useHead({
-  title,
-  meta: [{
-    name: 'description',
-    content: description
-  }]
-})
+  const pagename = "Our values";
+  const title = "Kalt — " + pagename;
+  useHead({
+    title,
+    meta: [{
+      name: "description",
+      content: "Our values",
+    }]
+  });
 </script>

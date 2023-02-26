@@ -1,17 +1,3 @@
-<script setup lang="ts">
-const pagename = 'About us';
-const title = 'Kalt — ' + pagename;
-const description = ref('My App Description')
-
-useHead({
-  title,
-  meta: [{
-    name: 'description',
-    content: description
-  }]
-})
-</script>
-
 <template>
   <main>
     <navbar :pageTitle="pagename" />
@@ -36,3 +22,17 @@ useHead({
     </div>
   </main>
 </template>
+<script setup lang="ts">
+  const pagename = "About us";
+  const title = "Kalt — " + pagename;
+  useHead({
+    title,
+    meta: [{
+      name: "description",
+      content: "About Kalt",
+    }]
+  })
+  
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+</script>

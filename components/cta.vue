@@ -1,17 +1,37 @@
 <template>
-  <nuxt-link to="/portfolio/buy" >
-    <button tabindex="-1">lets invest</button>
-  </nuxt-link>
+  <div class="cta">
+    <nuxt-link to="/portfolio/buy">
+      <button  :class="animatedClass" tabindex="-1">lets invest</button>
+    </nuxt-link>
+    <nuxt-link v-if="props.showDivest" to="portfolio/divest">or divest</nuxt-link>
+  </div>
 </template>
 
 <script setup lang="ts">
-const supabase = useSupabaseClient()
+const props = defineProps({
+  showDivest: {
+    default: false,
+    type: Boolean,
+    required: false
+  },
+  animated: {
+    default: true,
+    type: Boolean,
+    required: false
+  }
+})
+let animatedClass
+if(props.animated){
+  animatedClass = "green-gradient"
+}
+console.log(props.animated)
+  const supabase = useSupabaseClient()
 
-const { data, error } = await supabase
-  .from('cards')
-  .select()
-  .eq('default', true)
-  .order('modified_at', { ascending: false })
-  .single()
-console.log(data)
+  const { data, error } = await supabase
+    .from('cards')
+    .select()
+    .eq('default', true)
+    .order('modified_at', { ascending: false })
+    .single()
+  console.log(data)
 </script>

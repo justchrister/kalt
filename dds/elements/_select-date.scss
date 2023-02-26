@@ -5,8 +5,8 @@
 }
 .pills label{
   font-size:70%;
-  padding:2px 8px;
+  padding:2px clamp($unit-min, $unit, $unit-max);
   border:$border;
   border-radius:$border-radius;
-  margin-right:10px;
+  margin-right:clamp($unit-min, $unit, $unit-max);
 }

@@ -94,64 +94,20 @@ Example: $big-clamp-half is half of $big-clamp. */
   font-weight: normal;
   font-style: normal;
 }
-.col-2,
-.col-3,
-.col-4 {
-  display: inline-block;
+.grid-col-3,
+.grid-col-2 {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 2% 2%;
+  grid-auto-flow: row;
 }
 
-/*
-
-The site is divided into 12 columns, represented her eby $col and $col-max
-the objects however can only be distributed in a 2, 3 or 4 column layout
-with a defined gutter between them. To make them the correct width while 
-taking into account the gutters, we have to do some calculations
-
-Lets use .col-4 as an example, and only focus on the width parameter, and
-say the sitewidth is set to 120:
-
-1. First we would multiply the $col value by 3, which makes the .col-4 30px
-wide. 
-.col-4{ width: $col*3 }
-
-2. To add the space (gutter) between the boxes, we have to first multiply 
-the number of columns by two 4*2=8 and reduce it by 2, 8-2 = 6. This is how
-many sides each of the columns have towards eachother. (without the ones at
-the edge of the page. 
-  ($unit*6)
-
-3. Then we divide it by how many columns there are: 
-  (($unit*6)/4)
-
-4. The result:
-
-.col-4{
-  width:($col*3)-($unit*6/4);
-}
-*/
-.col-2 {
-  width: 41.4363636364vw;
-  max-width: 346.9090909091px;
+.grid-col-2 {
+  grid-template-columns: 1fr 1fr;
 }
 
-.col-3 {
-  width: 26.5818181818vw;
-  max-width: 222.5454545455px;
-}
-
-.col-4 {
-  width: 19.1545454545vw;
-  max-width: 160.3636363636px;
-}
-
-.gutter-horizontal,
-.gutter-right {
-  margin-right: clamp(1px, 1.5636363636vw, 13.0909090909px);
-}
-
-.gutter-horizontal,
-.gutter-left {
-  margin-left: clamp(1px, 1.5636363636vw, 13.0909090909px);
+.grid-col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .page {
@@ -165,7 +121,7 @@ main {
 .section {
   width: 86vw;
   max-width: 720px;
-  padding: clamp(75px, 15vh, 175px) 0;
+  padding: clamp(56px, 10.9454545455vw, 91.6363636364px) 0;
   margin: 0 auto;
 }
 
@@ -308,7 +264,7 @@ input {
 }
 
 .layout.focused .section {
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .layout.questions .back-button {
@@ -327,7 +283,7 @@ input {
 }
 
 .layout.questions .section {
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .layout.questions p,
@@ -464,7 +420,7 @@ input {
 }
 .frame:after {
   display: block;
-  margin: 0px;
+  margin: 0;
   flex: 999 999 auto;
 }
 
@@ -488,7 +444,6 @@ header .menu ul {
   position: fixed;
   z-index: 3;
   margin: 0;
-  max-height: 7.1666666667vw;
   overflow: hidden;
   padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
 }
@@ -765,6 +720,53 @@ span.ⓘ {
   background-image: url("../omoji/enclosed-text-i.svg");
 }
 
+.cta {
+  text-align: center;
+}
+.cta .green-gradient {
+  background: linear-gradient(318deg, #FCF9F2, #FCF9F2, #d0e5f4, #FCF9F2, #FCF9F2);
+  background-size: 1200% 1200%;
+  -webkit-animation: gradient 9s ease infinite;
+  -moz-animation: gradient 9s ease infinite;
+  animation: gradient 9s ease infinite;
+}
+.cta a {
+  text-decoration: none;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 10%;
+  }
+  50% {
+    background-position: 100% 91%;
+  }
+  100% {
+    background-position: 0% 10%;
+  }
+}
+@-moz-keyframes gradient {
+  0% {
+    background-position: 0% 10%;
+  }
+  50% {
+    background-position: 100% 91%;
+  }
+  100% {
+    background-position: 0% 10%;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 10%;
+  }
+  50% {
+    background-position: 100% 91%;
+  }
+  100% {
+    background-position: 0% 10%;
+  }
+}
 .infobox {
   border: 1px solid #1E96FC;
   border-radius: 0;
@@ -906,7 +908,7 @@ span.ⓘ {
   padding-right: none;
   border: 1px solid #202124;
   border-radius: 0;
-  margin: clamp(8px, 1.5636363636vw, 13.0909090909px) 0px;
+  margin: clamp(8px, 1.5636363636vw, 13.0909090909px) 0;
   height: clamp(32px, 6.2545454545vw, 52.3636363636px);
 }
 .notification:hover {
@@ -1022,32 +1024,16 @@ input[type=submit].atom:hover {
   background-image: url("/media/stickers/flower-01.png");
 }
 
-.grid-col-3,
-.grid-col-2 {
-  display: grid;
-  grid-template-rows: 1fr;
-  gap: 2% 2%;
-  grid-auto-flow: row;
-}
-
-.grid-col-2 {
-  grid-template-columns: 1fr 1fr;
-}
-
-.grid-col-3 {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
 .pills input {
   display: none;
 }
 
 .pills label {
   font-size: 70%;
-  padding: 2px 8px;
+  padding: 2px clamp(8px, 1.5636363636vw, 13.0909090909px);
   border: 0.1px solid #202124;
   border-radius: 0;
-  margin-right: 10px;
+  margin-right: clamp(8px, 1.5636363636vw, 13.0909090909px);
 }
 
 .link-group {

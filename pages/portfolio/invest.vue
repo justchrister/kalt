@@ -19,7 +19,7 @@
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = 'Buy';
+  const pagename = 'Invest';
   const title = 'Kalt — ' + pagename;
   const description = ref('My App Description')
   const router = useRouter()

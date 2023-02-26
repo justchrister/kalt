@@ -28,20 +28,25 @@
 </template>
 
 <script lang="ts" setup>
-  const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
-
-  const pagename = 'Account';
-  const title = 'Kalt — ' + pagename;
+  const pagename = "Account";
+  const title = "Kalt — " + pagename;
   useHead({
     title,
+    meta: [{
+      name: "description",
+      content: "Your account",
+    }]
   });
   definePageMeta({
     middleware: 'auth'
-  });
+  })
 
-  const { data } = await supabase
-  .from('accounts')
-  .select()
-  .single()
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+
+  const { data, error } = await supabase
+    .from('accounts')
+    .select()
+    .single()
+  if(error) oklog("error", "Could not get user account")
 </script>

@@ -25,8 +25,7 @@
           </button>
         </nav>
         <div class="block center-text">
-          <cta />
-          <nuxt-link to="portfolio/sell">or sell</nuxt-link>
+          <cta showDivest="true"/>
         </div>
         <div class="block">
           <h3>Our impact in numbers <omoji emoji="😮"/></h3>

@@ -9,7 +9,7 @@ main{
 .section {
   width: $sitewidth;
   max-width: $maxsitewidth;
-  padding: $sectionpadding 0;
+  padding: clamp($unit-min*7, $unit*7, $unit-max*7) 0;
   margin:0 auto;
 }
 .block {
