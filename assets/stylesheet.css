@@ -1145,6 +1145,7 @@ button {
   width: 100%;
   padding: 2% 0;
   background: transparent;
+  color: #202124;
   border-radius: 50%;
   border: 0.1px solid #202124;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
