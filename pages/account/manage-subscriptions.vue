@@ -1,9 +1,10 @@
 
 <template>
   <main>
+    <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs />
+        <navbar-tabs />
         <div class="block">
           <p>Select amount you want to auto-invest</p>
           <select-amount for="subscription" :uuid="uuid" />

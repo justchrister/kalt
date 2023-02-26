@@ -443,7 +443,7 @@ input {
   background-position: center center;
   background-repeat: no-repeat;
   background-color: #d0e5f4;
-  border-radius: 3.5px;
+  border-radius: 0;
 }
 .frame .image.contain {
   background-size: contain;
@@ -584,6 +584,72 @@ header .my-account-button:hover {
   opacity: 1;
 }
 
+.bottom-navbar {
+  width: 86vw;
+  max-width: 720px;
+  padding: clamp(14px, 3.6vw, 26px) 0;
+  margin: 0 auto;
+  color: #FCF9F2;
+}
+.bottom-navbar a {
+  color: #FCF9F2;
+  width: 33%;
+  display: inline-block;
+  text-decoration: none;
+}
+.bottom-navbar a:hover {
+  text-decoration: underline;
+}
+.bottom-navbar h4 {
+  font-weight: 500;
+  margin-top: clamp(14px, 3.6vw, 26px);
+}
+.bottom-navbar .insignia {
+  background-image: url("/media/insignia/insignia-light.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: clamp(35px, 9vw, 65px);
+  background-position: center center;
+  width: 100%;
+  font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
+  font-size: clamp(24.5px, 6.3vw, 45.5px);
+  line-height: 150%;
+  margin-bottom: clamp(12px, 3.24vw, 25px);
+  font-display: optional;
+  height: clamp(56px, 14.4vw, 104px);
+  line-height: clamp(56px, 14.4vw, 104px);
+  text-align: center;
+}
+
+.bottom-navbar-wrapper {
+  background: #202124;
+}
+
+.tabs {
+  margin-bottom: 0;
+}
+.tabs nav {
+  width: 100%;
+  display: inline-block;
+}
+.tabs ul {
+  margin-left: 0;
+}
+.tabs ul li {
+  display: inline-block;
+  margin-left: clamp(14px, 3.6vw, 26px);
+  padding: 0;
+  line-height: 1.5;
+  margin-right: 0;
+}
+.tabs ul li:first-child {
+  margin-left: 0;
+}
+.tabs ul li:before {
+  display: none;
+  content: "";
+}
+
 /* happy */
 span.happy,
 span.😊,
@@ -696,7 +762,7 @@ span.ⓘ {
 
 .infobox {
   border: 1px solid #1E96FC;
-  border-radius: 3.5px;
+  border-radius: 0;
   padding: clamp(3.5px, 0.9vw, 6.5px) clamp(7px, 1.8vw, 13px);
   background: #d0e5f4;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
@@ -717,72 +783,6 @@ span.ⓘ {
   background: #fbebcd;
 }
 
-.bottom-navbar {
-  width: 86vw;
-  max-width: 720px;
-  padding: clamp(14px, 3.6vw, 26px) 0;
-  margin: 0 auto;
-  color: #FCF9F2;
-}
-.bottom-navbar a {
-  color: #FCF9F2;
-  width: 33%;
-  display: inline-block;
-  text-decoration: none;
-}
-.bottom-navbar a:hover {
-  text-decoration: underline;
-}
-.bottom-navbar h4 {
-  font-weight: 500;
-  margin-top: clamp(14px, 3.6vw, 26px);
-}
-.bottom-navbar .insignia {
-  background-image: url("/media/insignia/insignia-light.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-top: clamp(28px, 7.2vw, 52px);
-  background-position: center center;
-  width: 100%;
-  font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
-  font-size: clamp(24.5px, 6.3vw, 45.5px);
-  line-height: 150%;
-  margin-bottom: clamp(12px, 3.24vw, 25px);
-  font-display: optional;
-  height: clamp(140px, 36vw, 260px);
-  line-height: clamp(140px, 36vw, 260px);
-  text-align: center;
-}
-
-.bottom-navbar-wrapper {
-  background: #202124;
-}
-
-.tabs {
-  margin-bottom: 0;
-}
-.tabs nav {
-  width: 100%;
-  display: inline-block;
-}
-.tabs ul {
-  margin-left: 0;
-}
-.tabs ul li {
-  display: inline-block;
-  margin-left: clamp(14px, 3.6vw, 26px);
-  padding: 0;
-  line-height: 1.5;
-  margin-right: 0;
-}
-.tabs ul li:first-child {
-  margin-left: 0;
-}
-.tabs ul li:before {
-  display: none;
-  content: "";
-}
-
 .component.calendar input {
   display: none;
 }
@@ -796,7 +796,7 @@ span.ⓘ {
 .component.calendar input[type=checkbox] + label {
   border: 0.1px solid #202124;
   display: inline-block;
-  border-radius: 3.5px;
+  border-radius: 0;
   width: clamp(1px, 5.4vw, 39px);
   height: clamp(7px, 1.8vw, 13px);
   line-height: clamp(7px, 1.8vw, 13px);
@@ -806,13 +806,13 @@ span.ⓘ {
 }
 .component.calendar input[type=checkbox]:checked + label {
   text-decoration: underline;
-  border-radius: 3.5px;
+  border-radius: 0;
   background: #ccf8d9;
 }
 
 .card {
   border: 0.1px solid #202124;
-  border-radius: 3.5px;
+  border-radius: 0;
   padding: clamp(7px, 1.8vw, 13px) 0 clamp(7px, 1.8vw, 13px) clamp(14px, 3.6vw, 26px);
   margin: clamp(7px, 1.8vw, 13px) 0;
   max-height: clamp(28px, 7.2vw, 52px);
@@ -900,7 +900,7 @@ span.ⓘ {
   padding: clamp(7px, 1.8vw, 13px);
   padding-right: none;
   border: 1px solid #202124;
-  border-radius: 3.5px;
+  border-radius: 0;
   margin: clamp(7px, 1.8vw, 13px) 0px;
   height: clamp(28px, 7.2vw, 52px);
 }
@@ -966,7 +966,7 @@ input[type=submit].atom {
 input[type=submit].atom:hover {
   cursor: pointer;
   background: #ffffff;
-  border-radius: 3.5px;
+  border-radius: 0;
 }
 
 .pill {
@@ -975,7 +975,7 @@ input[type=submit].atom:hover {
   padding: 0;
   font-size: 85%;
   margin-right: clamp(7px, 1.8vw, 13px);
-  border-radius: 3.5px;
+  border-radius: 0;
 }
 
 .pill:hover {
@@ -1025,7 +1025,7 @@ input[type=submit].atom:hover {
   font-size: 70%;
   padding: 2px 8px;
   border: 0.1px solid #202124;
-  border-radius: 3.5px;
+  border-radius: 0;
   margin-right: 10px;
 }
 
@@ -1110,7 +1110,7 @@ input:checked + .slider:before {
 }
 
 button.square {
-  border-radius: 3.5px;
+  border-radius: 0;
 }
 button.square:hover {
   background: white;
@@ -1149,7 +1149,7 @@ input {
   display: inline-block;
   padding: clamp(3.5px, 0.9vw, 6.5px) clamp(8.4px, 2.16vw, 15.6px);
   border: 0.1px solid #202124;
-  border-radius: 3.5px;
+  border-radius: 0;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(10.5px, 2.7vw, 19.5px);
   font-weight: 300;
@@ -1221,7 +1221,7 @@ select {
   display: inline-block;
   padding: clamp(4.6666666667px, 1.2vw, 8.6666666667px) clamp(10.5px, 2.7vw, 19.5px) clamp(4.6666666667px, 1.2vw, 8.6666666667px) clamp(8.4px, 2.16vw, 15.6px);
   border: 0.1px solid #202124;
-  border-radius: 3.5px;
+  border-radius: 0;
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(10.5px, 2.7vw, 19.5px);
   font-weight: 300;

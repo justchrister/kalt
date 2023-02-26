@@ -22,12 +22,12 @@
     background-image:url('/media/insignia/insignia-light.svg');
     background-size:contain;
     background-repeat:no-repeat;
-    margin-top:clamp($unit-min*4, $unit*4, $unit-max*4);
+    margin-top:clamp($unit-min*5, $unit*5, $unit-max*5);
     background-position: center center;
     width:100%;
     @include font-display;
-    height:clamp($unit-min*20, $unit*20, $unit-max*20);
-    line-height:clamp($unit-min*20, $unit*20, $unit-max*20);
+    height:clamp($unit-min*8, $unit*8, $unit-max*8);
+    line-height:clamp($unit-min*8, $unit*8, $unit-max*8);
     text-align:center;
   }
 }

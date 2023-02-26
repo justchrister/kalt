@@ -3,7 +3,7 @@
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs />
+        <navbar-tabs />
         <form @submit.prevent="updateProfile">
           <div class="col-2 gutter-right">
             <input-first-name :initial="data.first_name" :user_id="user.id"/>

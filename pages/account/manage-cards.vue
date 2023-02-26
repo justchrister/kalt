@@ -3,8 +3,7 @@
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs />
-        <p> Your cards: </p>
+        <navbar-tabs />
         <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
           <div :class="checkBrand(card.card_number)"></div> 
           <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>

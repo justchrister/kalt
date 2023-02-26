@@ -17,7 +17,7 @@
         <nuxt-link to="/questions" > Q&A </nuxt-link>
         <nuxt-link to="/questions/how-does-it-work" > how it works </nuxt-link>
         <nuxt-link to="/questions/how-do-you-make-money" > how we make money </nuxt-link>
-      <div class="insignia">Make money, make a difference.</div>
+        <div class="insignia">Make money, make a difference.</div>
     </div>
-    </div>
+  </div>
 </template>

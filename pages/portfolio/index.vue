@@ -4,7 +4,7 @@
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs />
+        <navbar-tabs />
         <div class="frame">
           <div class="chart">
             <chart-portfolio :days="days" />

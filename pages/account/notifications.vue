@@ -4,7 +4,7 @@
     <navbar :pageTitle="pagename" />
     <div class="page">
       <div class="section">
-        <tabs/>
+        <navbar-tabs/>
         <notification 
           from="Christer — CEO and Founder @ Kalt" 
           date="11.12.2022"

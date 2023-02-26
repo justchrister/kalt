@@ -27,7 +27,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account/manage-subscription" >
+          <nuxt-link to="/account/manage-subscriptions" >
               Subscription
           </nuxt-link>
         </li>

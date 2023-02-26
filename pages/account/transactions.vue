@@ -5,7 +5,7 @@
     <div class="page">
       <div class="section" v-if="transactions.length">
         <div class="block">
-          <tabs />
+          <navbar-tabs />
           <table>
             <tr>
               <th id="type"></th>
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="section" v-else>
-        <tabs />
+        <navbar-tabs />
         <div class="block">
           <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
         </div>
