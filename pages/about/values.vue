@@ -22,7 +22,7 @@
     title,
     meta: [{
       name: "description",
-      content: "Our values",
+      content: "Make money, make a difference."
     }]
   });
 </script>

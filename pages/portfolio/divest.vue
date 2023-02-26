@@ -19,7 +19,6 @@
 <script setup lang="ts">
   const pagename = 'Buy';
   const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
   const router = useRouter()
   const supabase = useSupabaseClient()
   const {data: {user}} = await supabase.auth.getUser()
@@ -30,12 +29,10 @@
 
   useHead({
     title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
+    meta: [{
+      name: "description",
+      content: "Make money, make a difference."
+    }]
   });
   definePageMeta({
     layout: "focused",

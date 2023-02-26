@@ -34,7 +34,7 @@
     title,
     meta: [{
       name: "description",
-      content: "Your account",
+      content: "Make money, make a difference."
     }]
   });
   definePageMeta({

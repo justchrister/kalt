@@ -42,7 +42,6 @@
 <script setup lang="ts">
   const pagename = 'Sign in/sign up';
   const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
 
   const supabase = useSupabaseClient()
 
@@ -53,7 +52,7 @@
     title,
     meta: [{
       name: "description",
-      content: description,
+      content: "Make money, make a difference."
     }]
   });
   const signIn = async () => {

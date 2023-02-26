@@ -15,16 +15,13 @@
 <script setup lang="ts">
   const pagename = 'Questions';
   const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
 
   useHead({
     title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
+    meta: [{
+      name: "description",
+      content: "Make money, make a difference."
+    }]
   });
 </script>
 <style scoped>

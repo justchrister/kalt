@@ -35,12 +35,10 @@
   if(incomplete_order_exists) oklog('success', 'found incomplete transaction: '+incomplete_order_exists.transaction_id)
   useHead({
     title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
+    meta: [{
+      name: "description",
+      content: "Make money, make a difference."
+    }]
   });
   definePageMeta({
     layout: "focused",

@@ -29,7 +29,7 @@
     title,
     meta: [{
       name: "description",
-      content: "About Kalt",
+      content: "Make money, make a difference.",
     }]
   })
   

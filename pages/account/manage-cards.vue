@@ -82,7 +82,7 @@
     title,
     meta: [{
       name: "description",
-      content: "Manage your cards",
+      content: "Make money, make a difference."
     }]
   });
   definePageMeta({

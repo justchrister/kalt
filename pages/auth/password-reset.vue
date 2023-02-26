@@ -42,23 +42,17 @@
 <script setup lang="ts">
   const pagename = 'Sign in';
   const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
 
   const {data: {user}} = await supabase.auth.getUser()
   const supabase = useSupabaseClient()
   const router = useRouter()
 
-  const old_email = ref('')
-  const new_email = ref('')
-
   useHead({
     title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
+    meta: [{
+      name: "description",
+      content: "Make money, make a difference."
+    }]
   });
 
   const signIn = async () => {

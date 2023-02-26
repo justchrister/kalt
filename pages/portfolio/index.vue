@@ -44,12 +44,11 @@
 <script setup lang="ts">
   const pagename = 'Portfolio';
   const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
   useHead({
     title,
     meta: [{
       name: "description",
-      content: description,
+      content: "Make money, make a difference."
     }]
   });
   definePageMeta({

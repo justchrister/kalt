@@ -26,16 +26,13 @@
 <script setup lang="ts">
   const pagename = 'Lobby';
   const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
   var errormsg = ref('');
   
   useHead({
     title,
-    meta: [
-      {
-        name: "description",
-        content: description,
-      },
-    ],
+    meta: [{
+      name: "description",
+      content: "Make money, make a difference."
+    }]
   });
 </script>
