@@ -790,6 +790,13 @@ span.ⓘ {
   background: #fbebcd;
 }
 
+.component.calendar {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1% 1%;
+  grid-auto-flow: row;
+}
 .component.calendar input {
   display: none;
 }
@@ -797,7 +804,7 @@ span.ⓘ {
   user-select: none;
 }
 .component.calendar label:hover {
-  background-image: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 100%);
+  background: white;
   cursor: pointer;
 }
 .component.calendar input[type=checkbox] + label {
@@ -809,7 +816,7 @@ span.ⓘ {
   line-height: clamp(8px, 1.5636363636vw, 13.0909090909px);
   padding: clamp(8px, 1.5636363636vw, 13.0909090909px) clamp(8px, 1.5636363636vw, 13.0909090909px) clamp(16px, 3.1272727273vw, 26.1818181818px) clamp(24px, 4.6909090909vw, 39.2727272727px);
   text-align: right;
-  margin: clamp(2px, 0.3909090909vw, 3.2727272727px);
+  margin: clamp(2.6666666667px, 0.5212121212vw, 4.3636363636px) 0;
 }
 .component.calendar input[type=checkbox]:checked + label {
   text-decoration: underline;

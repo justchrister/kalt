@@ -6,15 +6,14 @@
       <div class="section">
         <navbar-tabs />
         <div class="block">
-          <p>Select amount you want to auto-invest</p>
           <select-amount for="subscription" :uuid="uuid" />
         </div>
         <div class="block">
-          <p>Select which days you want to auto-invest</p>
+          <label>Select which days you want to auto-invest</label>
           <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
         </div>
         <div class="block">
-          Select card you want to withdraw: 
+          <label>Select card you want to withdraw:</label>
           <nuxt-link to="/account/manage-cards">
             <default-card />
           </nuxt-link>
@@ -73,10 +72,6 @@
     enabled.value = data.enabled
     if (error) oklog("error", "could not find subscription")
     if (data) oklog("success", "got subscription: " + uuid.value)
-    if (data.amount) oklog("", "amount: " + amount.value)
-    if (data.currency) oklog("", "currency: " + currency.value)
-    if (data.days) oklog("", "days: " + days.value)
-    if (data.enabled) oklog("", "status: " + enabled.value)
   }
   const createSubscription = async () => {
     const { data, error } = await supabase
@@ -93,26 +88,19 @@
 
   const subscription = await getSubscription()
   if(subscription===null) await createSubscription()
-  
+  let tempEnabled
   const toggleSubscription = async () => {
-    if(enabled.value){
-      enabled.value = false
-      console.log(enabled.value)
-    } 
-    if(enabled.value===false) enabled.value = true
+    if(enabled.value===true) tempEnabled=false
+    if(enabled.value===false) tempEnabled=true
     const { data, error } = await supabase
       .from('subscriptions')
       .update({
-        enabled: enabled.value
+        enabled: tempEnabled
       })
       .eq('subscription_id', uuid.value)
       .select()
       .single()
-    if(enabled.value){
-      oklog("success", "enabled subscription")
-      return
-    }
-    oklog("success", "disabled subscription")
+    enabled.value=data.enabled
   }
 
 </script>

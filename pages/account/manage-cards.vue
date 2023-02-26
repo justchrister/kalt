@@ -76,24 +76,24 @@
   </main>
 </template>
 <script setup lang="ts">
-
-  definePageMeta({
-    middleware: 'auth'
-  });
-  const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
-  const pagename = "Payment";
+  const pagename = "Cards";
   const title = "Kalt — " + pagename;
-  const description = ref("My App Description");
-  import { v4 as uuidv4 } from 'uuid';
-  const new_card_id = ref(uuidv4())
   useHead({
     title,
     meta: [{
       name: "description",
-      content: description,
-    },],
+      content: "Manage your cards",
+    }]
   });
+  definePageMeta({
+    middleware: 'auth'
+  });
+
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+
+  import { v4 as uuidv4 } from 'uuid';
+  const new_card_id = ref(uuidv4())
 
   const { data: cards } = await useLazyAsyncData('cards', async () => {
     const { data, error } = await supabase

@@ -1,14 +1,18 @@
 .component.calendar{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1% 1%;
+    grid-auto-flow: row;
   input{
     display:none;
   }
   label{
-  user-select: none;
+    user-select: none;
   }
   label:hover{
-    background-image: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 100%);
+    background: white;
     cursor: pointer;
-
   }
   input[type="checkbox"] + label{
     border: $border;
@@ -22,12 +26,11 @@
             clamp($unit-min * 2, $unit * 2, $unit-max * 2)
             clamp($unit-min * 3, $unit * 3, $unit-max * 3);
     text-align:right;
-    margin:clamp(calc($unit-min/4), calc($unit/4), calc($unit-max/4));
+    margin: clamp(calc($unit-min/3), calc($unit/3), calc($unit-max/3)) 0;
   }
   input[type="checkbox"]:checked + label {
       text-decoration:underline;
       border-radius:$border-radius;
       background: $green-20;
-      
   }
 }
