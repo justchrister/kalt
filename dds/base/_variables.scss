@@ -1,10 +1,13 @@
 // Defining the units that define all the clamps to ensure they 
 // all are defined the same way.
 
-$unit-min: 7px;
-$unit: 1.8vw;
-$unit-max: 13px;
 
+$sitewidth: 86vw;
+$maxsitewidth: 720px;
+
+$unit-min: 10px;
+$unit: calc($sitewidth/55);
+$unit-max: calc($maxsitewidth/55);
 // Colors
 $light: #FCF9F2;
 $dark: #202124;
@@ -72,8 +75,6 @@ $monospace:
     Monospace;
 
 
-$sitewidth: 86vw;
-$maxsitewidth: 720px;
 // Site sections
 $sectionpadding: clamp(75px, 15vh, 175px);
 $sectionpadding-double: clamp(150px, 30vh, 350px);
