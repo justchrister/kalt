@@ -27,12 +27,6 @@
   </main>
 </template>
 
-<script lang="ts">
-  export default {
-    name: 'PageHomepage',
-  };
-</script>
-
 <script lang="ts" setup>
   const supabase = useSupabaseClient()
   const {data: {user}} = await supabase.auth.getUser()
