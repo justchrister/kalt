@@ -14,6 +14,7 @@
         <h4>Content:</h4>
         <nuxt-link to="/about" > about us </nuxt-link>
         <nuxt-link to="/about/values" > our values </nuxt-link>
+        <nuxt-link to="/about/mission" > our mission </nuxt-link>
         <nuxt-link to="/questions" > Q&A </nuxt-link>
         <nuxt-link to="/questions/how-does-it-work" > how it works </nuxt-link>
         <nuxt-link to="/questions/how-do-you-make-money" > how we make money </nuxt-link>

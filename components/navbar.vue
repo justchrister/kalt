@@ -24,10 +24,6 @@
                     <span>Kalt — </span>
                     <nuxt-link to="/account" v-on:click="toggleMenu"> Account </nuxt-link>
                 </li>
-                <li v-if="signedIn">
-                    <span>Kalt — </span>
-                    <nuxt-link to="/account/notifications" v-on:click="toggleMenu"> Notifications </nuxt-link>
-                </li>
                 <li v-if="!signedIn">
                     <span>Kalt — </span>
                     <nuxt-link to="/auth/" v-on:click="toggleMenu"> Sign up </nuxt-link>
