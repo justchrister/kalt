@@ -62,13 +62,20 @@ const chartOptions = {
   },
   scales: {
     y: {
+      grid: {
+        display: false
+      },
       beginAtZero: true
     },
     x:{
+      grid: {
+        display: false
+      },
       ticks: {
         autoSkip: true,
         maxRotation: 0,
-        minRotation: 0
+        minRotation: 0,
+        display: false
       }
     }
   },
