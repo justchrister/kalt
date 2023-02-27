@@ -20,7 +20,12 @@
             <select-preferred-currency :initial="data.preferred_currency" :user_id="user.id"/>
             <select-preferred-language :initial="data.preferred_language" :user_id="user.id"/>
           </div>
-          <input-terms-of-service value="1" />
+          <div class="input-wrap checkbox">
+            <input-terms-of-service value="1" />
+          </div>
+          <div class="input-wrap checkbox">
+            <input-accept-marketing value="1" />
+          </div>
         </form>
       </div>
     </div>
