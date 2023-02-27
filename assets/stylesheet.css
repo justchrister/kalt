@@ -221,7 +221,7 @@ h1, h2 {
   font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
   font-size: clamp(28px, 5.4727272727vw, 45.8181818182px);
   line-height: 150%;
-  margin-bottom: clamp(12px, 3.24vw, 25px);
+  margin-bottom: clamp(16px, 3.1272727273vw, 26.1818181818px);
   font-display: optional;
 }
 h1 a, h2 a {
@@ -249,7 +249,7 @@ input {
 }
 
 .layout.focused .back-button {
-  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+  padding: clamp(16px, 3.1272727273vw, 26.1818181818px) 0 0 clamp(16px, 3.1272727273vw, 26.1818181818px);
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
@@ -268,7 +268,7 @@ input {
 }
 
 .layout.questions .back-button {
-  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+  padding: clamp(16px, 3.1272727273vw, 26.1818181818px) 0 0 clamp(16px, 3.1272727273vw, 26.1818181818px);
   font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
   font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
   font-weight: 300;
@@ -445,7 +445,7 @@ header .menu ul {
   z-index: 3;
   margin: 0;
   overflow: hidden;
-  padding: clamp(12px, 3.24vw, 25px) 0 0 clamp(12px, 3.24vw, 25px);
+  padding: clamp(16px, 3.1272727273vw, 26.1818181818px) 0 0 clamp(16px, 3.1272727273vw, 26.1818181818px);
 }
 header .menu ul li.logomark,
 header .menu ul li.logomark span {
@@ -455,13 +455,6 @@ header .menu ul li.logomark span {
 header .menu ul li {
   opacity: 0;
   pointer-events: none;
-  line-height: 1;
-  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
-  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
-  font-weight: 300;
-  line-height: 150%;
-  font-display: optional;
-  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
   padding: 0;
   margin-bottom: 0;
 }
@@ -479,12 +472,20 @@ header .menu ul li:before {
   display: none;
 }
 
+header .menu-toggle,
+header .menu ul li {
+  font-family: "Helvetica", "Raleway", "Arial", "Roboto", Sans-Serif;
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
+  font-weight: 300;
+  line-height: 150%;
+  font-display: optional;
+  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
+}
+
 header .menu-toggle {
-  padding: clamp(12px, 3.24vw, 25px);
+  padding: clamp(16px, 3.1272727273vw, 26.1818181818px);
   right: clamp(28px, 5.4727272727vw, 45.8181818182px);
   position: fixed;
-  font-size: clamp(16px, 3.1272727273vw, 26.1818181818px);
-  line-height: clamp(16px, 3.1272727273vw, 26.1818181818px);
   top: 0.1px;
   width: auto;
   color: #202124;
@@ -498,13 +499,15 @@ header .my-account-button {
   width: clamp(16px, 3.1272727273vw, 26.1818181818px);
   height: clamp(16px, 3.1272727273vw, 26.1818181818px);
   display: block;
-  border-radius: 50%;
   position: fixed;
   top: 0.1px;
   right: 0.1px;
   background-image: url("/omoji/happy.svg");
   background-size: contain;
-  margin: clamp(12px, 3.24vw, 25px);
+  background-position: center;
+  box-sizing: border-box;
+  margin: clamp(16px, 3.1272727273vw, 26.1818181818px);
+  margin-top: clamp(20px, 3.9090909091vw, 32.7272727273px);
 }
 header .my-account-button:hover {
   background-image: url("/omoji/super-happy.svg");
@@ -573,7 +576,7 @@ header .my-account-button:hover {
   font-family: "Kalt Display", "STIXGeneral Regular", "Times New Roman", Serif;
   font-size: clamp(28px, 5.4727272727vw, 45.8181818182px);
   line-height: 150%;
-  margin-bottom: clamp(12px, 3.24vw, 25px);
+  margin-bottom: clamp(16px, 3.1272727273vw, 26.1818181818px);
   font-display: optional;
   font-size: 150%;
   height: clamp(64px, 12.5090909091vw, 104.7272727273px);
@@ -968,6 +971,18 @@ span.ⓘ {
 
 .element.input.date {
   margin-top: clamp(8px, 1.5636363636vw, 13.0909090909px);
+}
+
+.input-wrap.checkbox {
+  padding-top: clamp(16px, 3.1272727273vw, 26.1818181818px);
+}
+
+input[type=checkbox i] {
+  width: auto;
+}
+
+input[type=checkbox i] + label {
+  font-size: clamp(12px, 2.3454545455vw, 19.6363636364px);
 }
 
 input[type=submit].atom {

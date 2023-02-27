@@ -1,18 +1,18 @@
 <template>
   <div class="component select amount">
-  <div class="element input text">
-    <label for="amount"> 
-      Amount: 
-    </label>
-    <input
-      type="text"
-      placeholder="Amount"
-      id="amount"
-      class="atom amount"
-      v-model="amount"
-      @input="updatePaymentAmount"
-    />
-  </div>
+    <div class="element input text">
+      <label for="amount"> 
+        Amount: 
+      </label>
+      <input
+        type="text"
+        placeholder="Amount"
+        id="amount"
+        class="atom amount"
+        v-model="amount"
+        @input="updatePaymentAmount"
+      />
+    </div>
     <div class="element select preferred_currency">
       <label for="preferred_currency"> 
       </label>

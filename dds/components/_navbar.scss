@@ -18,9 +18,6 @@ header .menu ul{
   li {
     opacity:0;
     pointer-events : none;
-    line-height: 1;
-    @include font-body;
-    font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
     padding: 0;
     margin-bottom:0;
     a{
@@ -39,15 +36,17 @@ header .menu ul{
   }
 }
 
+header .menu-toggle,
+header .menu ul li {
+  @include font-body;
+  font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
+}
 // menu / close menu
 
 header .menu-toggle {
-
   padding: $big-clamp-half;
   right: $big-clamp;
   position: fixed;
-  font-size: $medium-clamp;
-  line-height: $medium-clamp;
   top: $border-width;
   width: auto;
   color: $dark;
@@ -61,14 +60,16 @@ header .menu-toggle {
 header .my-account-button{
   width:$medium-clamp;
   height:$medium-clamp;
-  display:block; 
-  border-radius:50%;
+  display:block;
   position:fixed;
   top:$border-width;
   right:$border-width;
   background-image: url("/omoji/happy.svg");
   background-size:contain;
+  background-position:center;
+  box-sizing: border-box;
   margin: $big-clamp-half;
+  margin-top:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
   &:hover{
     background-image: url("/omoji/super-happy.svg");
   }

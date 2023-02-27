@@ -86,7 +86,7 @@ $medium-clamp: clamp($unit-min*2, $unit*2, $unit-max*2);
 
 /* The following clamps are half of their counterpart.
 Example: $big-clamp-half is half of $big-clamp. */
-$big-clamp-half: clamp(12px, 3.24vw, 25px);
+$big-clamp-half: clamp($unit-min*2, $unit*2, $unit-max*2); //FUCK! this is not good... need to move it to unit, min, max...
 $medium-clamp-half: clamp($unit-min, $unit, $unit-max);
 
 $medium-clamp-negative: clamp($unit-min - $unit-min*2, $unit - $unit*2, $unit-max - $unit-max*2);
