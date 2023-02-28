@@ -1,0 +1,24 @@
+nav.component.pills.filters{
+  height:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
+  overflow:scroll;
+
+  .overflow-wrap{
+
+    position: relative;
+    width:clamp($unit-min*70, $unit*70, $unit-max*70);
+  }
+  ul{
+    position: absolute;
+    margin-left:0;
+    width:auto;
+    li{
+      display:inline-block;
+      &:before{
+        display: none;
+      }
+    }
+  }
+  .pill{
+    position:relative;
+  }
+}

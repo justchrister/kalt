@@ -9,7 +9,6 @@
 @import 'layouts/focused';
 @import 'layouts/questions';
 
-@import 'components/impact';
 @import 'components/currencyamount';
 @import 'components/image';
 @import 'components/navbar';
@@ -21,14 +20,15 @@
 @import 'components/calendar';
 @import 'components/username';
 @import 'components/card';
+@import 'components/impact';
 @import 'components/notification';
+@import 'components/pills';
 
 @import 'elements/input-text';
 @import 'elements/input-password';
 @import 'elements/input-date';
 @import 'elements/input-checkbox';
 @import 'elements/input-submit';
-@import 'elements/pill';
 @import 'elements/input-number';
 @import 'elements/input-email';
 @import 'elements/select';
@@ -37,6 +37,7 @@
 @import 'elements/link-group';
 @import 'elements/toggleSwitch';
 @import 'elements/button-square';
+@import 'elements/pill';
 
 @import 'atoms/button';
 @import 'atoms/input';
