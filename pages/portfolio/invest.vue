@@ -24,7 +24,8 @@
   const description = ref('My App Description')
   const router = useRouter()
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
+  const user = useSupabaseUser()
+
   // checking if an incomplete order exists
   const { data: incomplete_order_exists, error } = await supabase
     .from('transactions')

@@ -14,9 +14,12 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/supabase": "^0.3.0",
+    "autoprefixer": "^10.4.13",
     "chart.js": "^4.1.1",
     "nuxt": "^3.0.0",
     "plyr": "^3.7.3",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
     "uuid": "^9.0.0",
     "vue-chartjs": "^5.1.0"
   }

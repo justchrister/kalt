@@ -19,7 +19,8 @@ const props = defineProps({
   }
 })
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
+  const user = useSupabaseUser()
+
   const dataset = ref({})
   const days = ref(5)
   const { data } = await supabase

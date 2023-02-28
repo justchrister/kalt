@@ -2,10 +2,16 @@ nav.component.pills.filters{
   height:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
   overflow:scroll;
 
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
   .overflow-wrap{
-
     position: relative;
     width:clamp($unit-min*70, $unit*70, $unit-max*70);
+  }
+  .live-bullet{
+    color:$red;
   }
   ul{
     position: absolute;

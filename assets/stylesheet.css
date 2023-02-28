@@ -965,9 +965,16 @@ nav.component.pills.filters {
   height: clamp(20px, 3.9090909091vw, 32.7272727273px);
   overflow: scroll;
 }
+nav.component.pills.filters ::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 nav.component.pills.filters .overflow-wrap {
   position: relative;
   width: clamp(560px, 109.4545454545vw, 916.3636363636px);
+}
+nav.component.pills.filters .live-bullet {
+  color: #F4442E;
 }
 nav.component.pills.filters ul {
   position: absolute;

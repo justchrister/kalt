@@ -43,8 +43,8 @@
   const pagename = 'Sign in';
   const title = 'Kalt — ' + pagename;
 
-  const {data: {user}} = await supabase.auth.getUser()
   const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   const router = useRouter()
 
   useHead({

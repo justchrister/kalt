@@ -61,7 +61,8 @@
   })
 
   const supabase = useSupabaseClient()
-  const {data: {user}} = await supabase.auth.getUser()
+  const user = useSupabaseUser()
+
 
   const loading = ref(null)
 

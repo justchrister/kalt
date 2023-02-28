@@ -15,6 +15,7 @@
             <ul>
               <li>
                 <button @click="setDays(1)" class="element pill">
+                <span class="live-bullet">•</span>
                   live
                 </button>
               </li>
