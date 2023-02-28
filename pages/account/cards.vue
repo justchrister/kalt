@@ -22,53 +22,53 @@
                   class="atom input-card_number"/>
               </div>
               <div class="grid-col-2">
-              <div>
-                <div class="expiry_month-group element select">
-                  <label for="expiry_month">Expiry date:</label>
-                  <select v-model="expiry_month" id="expiry_month" placeholder="12">
-                    <option value="MM">MM</option>
-                    <option value="1">01</option>
-                    <option value="2">02</option>
-                    <option value="3">03</option>
-                    <option value="4">04</option>
-                    <option value="5">05</option>
-                    <option value="6">06</option>
-                    <option value="7">07</option>
-                    <option value="8">08</option>
-                    <option value="9">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
+                <div>
+                  <div class="expiry_month-group element select">
+                    <label for="expiry_month">Expiry date:</label>
+                    <select v-model="expiry_month" id="expiry_month" placeholder="12">
+                      <option value="MM">MM</option>
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="6">06</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                  </div>
+                  <div class="expiry_year-group element select">
+                    <label for="expiry_year"></label>
+                    <select v-model="expiry_year" id="expiry_year">
+                      <option value="YY">YY</option>
+                      <option value="23">2023</option>
+                      <option value="24">2024</option>
+                      <option value="25">2025</option>
+                      <option value="26">2026</option>
+                      <option value="27">2027</option>
+                      <option value="28">2028</option>
+                      <option value="29">2029</option>
+                      <option value="30">2030</option>
+                      <option value="31">2031</option>
+                      <option value="32">2032</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="expiry_year-group element select">
-                  <label for="expiry_year"></label>
-                  <select v-model="expiry_year" id="expiry_year">
-                    <option value="YY">YY</option>
-                    <option value="23">2023</option>
-                    <option value="24">2024</option>
-                    <option value="25">2025</option>
-                    <option value="26">2026</option>
-                    <option value="27">2027</option>
-                    <option value="28">2028</option>
-                    <option value="29">2029</option>
-                    <option value="30">2030</option>
-                    <option value="31">2031</option>
-                    <option value="32">2032</option>
-                  </select>
+                <div>
+                  <div class="element input number">
+                    <label for="cvc">CVC:</label> 
+                    <input 
+                        type="number" 
+                        v-model="cvc" 
+                        placeholder="424" 
+                        id="cvc"
+                        class="atom input-cvc" />
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div class="element input number">
-                <label for="cvc">CVC:</label> 
-                <input 
-                    type="number" 
-                    v-model="cvc" 
-                    placeholder="424" 
-                    id="cvc"
-                    class="atom input-cvc" />
-              </div>
-              </div>
               </div>
               <input type="submit" value="add card and set as default" class="atom square">
             </form>
