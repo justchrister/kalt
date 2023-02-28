@@ -99,11 +99,10 @@
     const { data, error } = await supabase
       .from('cards')
       .select()
-      .eq('user_id', user.id)
+      .eq('user_id', user.value)
       .order('modified_at', { ascending: false })
     return data
   })
-
   const expiry_date = ref('')
   const expiry_month_test = ref(expiry_date.value.slice(0,2))
 
@@ -121,7 +120,7 @@
     const { data: defaultCard, error: remove } = await supabase
       .from('cards')
       .update({ default: false })
-      .eq('user_id', user.id)
+      .eq('user_id', user.value)
       // for each loop
   }
 
@@ -129,13 +128,14 @@
   const expiry_month = ref('MM');
   const expiry_year = ref('YY');
   const cvc = ref('');
+
   const addCard = async () => {
     await resetDefaultCard();
     const { data: newCard, error } = await supabase
     .from('cards')
     .insert({ 
       card_id: new_card_id.value,
-      user_id: user.id,
+      user_id: user.value,
       card_number: card_number.value,
       expiration_month: expiry_month.value,
       expiration_year: expiry_year.value,

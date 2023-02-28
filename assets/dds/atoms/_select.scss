@@ -10,6 +10,8 @@ select{
   @include font-body;
   box-sizing:border-box;
   background-color:transparent;
+  -webkit-appearance: none;
+
 }
 select:focus{
   background-color:white;

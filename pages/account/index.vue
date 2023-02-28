@@ -21,10 +21,10 @@
             <select-preferred-language :initial="data.preferred_language" :user_id="user.id"/>
           </div>
           <div class="input-wrap checkbox">
-            <input-terms-of-service value="1" />
+            <input-terms-of-service value="true" />
           </div>
           <div class="input-wrap checkbox">
-            <input-accept-marketing value="1" />
+            <input-accept-marketing value="true" />
           </div>
         </form>
       </div>
