@@ -4,6 +4,7 @@ header .menu ul{
   position: fixed;
   z-index: 3;
   margin: 0;
+  height: clamp($unit-min*4, $unit*4, $unit-max*4);
   overflow:hidden;
   padding: $big-clamp-half 0 0 $big-clamp-half;
 
