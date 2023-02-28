@@ -8,7 +8,7 @@
           <nuxt-link to="/account/notifications" > Notifications </nuxt-link>
           <nuxt-link to="/account/transactions" > Transactions </nuxt-link>
           <nuxt-link to="/account/manage-cards" > Cards </nuxt-link>
-          <nuxt-link to="/account/manage-subscriptions" > Subscription </nuxt-link>
+          <nuxt-link to="/subscriptions" > Subscription </nuxt-link>
           <nuxt-link to="/auth/" > sign up </nuxt-link>
           <nuxt-link to="/auth/" > sign in </nuxt-link>
           <nuxt-link to="/auth/sign-out" > sign out 👋 </nuxt-link>

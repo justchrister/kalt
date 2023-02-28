@@ -17,12 +17,12 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account/manage-cards" >
+          <nuxt-link to="/account/cards" >
               Cards
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account/manage-subscriptions" >
+          <nuxt-link to="/subscriptions" >
               Subscription
           </nuxt-link>
         </li>
