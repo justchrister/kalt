@@ -22,7 +22,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/subscriptions" >
+          <nuxt-link to="/subscription" >
               Subscription
           </nuxt-link>
         </li>
