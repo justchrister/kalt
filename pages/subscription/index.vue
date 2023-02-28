@@ -6,7 +6,7 @@
       <div class="section">
         <navbar-tabs />
         <div class="block">
-          <select-amount for="subscription" :uuid="uuid" />
+          <select-subscription-amount :uuid="uuid" />
         </div>
         <div class="block">
           <label>Select which days you want to auto-invest</label>
