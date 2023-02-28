@@ -4,7 +4,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase', '@nuxt/content'],
   content: {},
-  css: ['@/assets/stylesheet.css', '@/assets/autoprefixed/stylesheet.css'],
+  css: ['@/assets/dds/stylesheet.scss'],
   build: {
     transpile: ['chart.js'],
   },

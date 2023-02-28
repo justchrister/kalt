@@ -9,7 +9,8 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.3.0"
+    "@nuxt/content": "^2.3.0",
+    "sass": "^1.58.3"
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
