@@ -17,7 +17,7 @@ input:active{
   background-color:#fff;
 }
 input.loading{
-  background-image:url("../loading-gif.gif");
+  background-image:url("/loading.gif");
   background-size: clamp($unit-min, $unit, $unit-max);
   background-position:95% center;
   background-repeat:no-repeat;

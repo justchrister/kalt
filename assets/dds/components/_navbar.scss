@@ -75,23 +75,6 @@ header .my-account-button{
   }
 }
 
-// round dot on notification when you have an unread notification has arrived
-.notification-dot{
-  min-width:  calc($unit-min / 2);
-  width:      calc($unit / 2);
-  max-width:  calc($unit-max / 2);
-  min-height: calc($unit-min / 2);
-  height:     calc($unit / 2);
-  max-height: calc($unit-max / 2);
-  top:$border-width;
-  right:$border-width;
-  margin: clamp(12px, 3.24vw, 25px);
-  position: fixed;
-  display:block;
-  border-radius:50%;
-  background-color:rgba(red,0.2);
-}
-
 // After the menu has been toggled 
 .show-menu{
   .bottom-navbar,

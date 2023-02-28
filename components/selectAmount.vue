@@ -15,6 +15,7 @@
     </div>
     <div class="element select preferred_currency">
       <label for="preferred_currency"> 
+        Currency
       </label>
       <select v-model="preferred_currency" :class="state" 
       @change="updatePaymentCurrency">
@@ -32,10 +33,6 @@
     uuid: {
       type: String,
       required: true
-    },
-    for: {
-      type: String, 
-      required: true
     }
   })
   
@@ -44,10 +41,7 @@
     .from('currencies')
     .select('iso, name')
     .eq('available', true)
-  if(props.for){
-    oklog("", "modifying subscription: " + props.uuid)
-  }
-  if(props.for="buy"){
+
     const updatePaymentAmount = async () => { 
       if(amount.value){
         const { error } = await supabase
@@ -87,7 +81,6 @@
     const amount =  ref('')
 
     state.value = ''
-  }
 
 
 </script>
