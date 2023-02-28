@@ -1,8 +1,10 @@
 .input-wrap.checkbox{
-  padding-top:clamp($unit-min*2, $unit*2, $unit-max*2);
+  padding-top:clamp($unit-min, $unit, $unit-max);
+
 }
 input[type="checkbox" i]  {
   width:auto;
+  height:auto;
 }
 input[type="checkbox" i] + label{
   font-size:clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5);
