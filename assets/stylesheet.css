@@ -974,7 +974,7 @@ nav.component.pills.filters .overflow-wrap {
   width: clamp(560px, 109.4545454545vw, 916.3636363636px);
 }
 nav.component.pills.filters .live-bullet {
-  color: #F4442E;
+  color: #0CF574;
 }
 nav.component.pills.filters ul {
   position: absolute;

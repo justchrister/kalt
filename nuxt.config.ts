@@ -3,10 +3,8 @@ import { defineNuxtConfig } from 'nuxt/config'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase', '@nuxt/content'],
-  content: {
-    // https://content.nuxtjs.org/api/configuration
-  },
-  css: ['@/assets/stylesheet.css'],
+  content: {},
+  css: ['@/assets/stylesheet.css', '@/assets/autoprefixed/stylesheet.css'],
   build: {
     transpile: ['chart.js'],
   },
