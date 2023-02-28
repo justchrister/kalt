@@ -53,7 +53,7 @@
     let signedIn = false
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
-    if(user) signedIn = true
+    if(user.value) signedIn = true
     const toggleMenu = async () => { 
         document.getElementsByTagName("body")[0].classList.toggle("show-menu");
     }
