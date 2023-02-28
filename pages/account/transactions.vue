@@ -70,12 +70,12 @@
     const {data, error} = await supabase
       .from('transactions')
       .select('*')
-      .eq('user_id', user.id)
+      .eq('user_id', user.value.id)
       .eq('transaction_status', 3)
       .order('created_at', { ascending: false })
       .gte('amount', 1)
-    if (data) oklog('success', 'got transactions for '+user.id)
-    if (error) oklog('error', 'could not get transactions for '+user.id)
+    if (data) oklog('success', 'got transactions for '+user.value.id)
+    if (error) oklog('error', 'could not get transactions for '+user.value.id)
     return data
   })
 

@@ -57,7 +57,7 @@
     const { data, error } = await supabase
       .from('subscriptions')
       .select()
-      .eq('user_id', user.id)
+      .eq('user_id', user.value.id)
       .limit(1)
       .single()
     console.log(error)
@@ -75,7 +75,7 @@
     const { data, error } = await supabase
       .from('subscriptions')
       .insert({
-        user_id: user.id
+        user_id: user.value.id
       })
       .select()
       .single()

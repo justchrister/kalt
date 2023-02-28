@@ -91,7 +91,6 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-
   import { v4 as uuidv4 } from 'uuid';
   const new_card_id = ref(uuidv4())
 
@@ -99,7 +98,7 @@
     const { data, error } = await supabase
       .from('cards')
       .select()
-      .eq('user_id', user.value)
+      .eq('user_id', user.value.id)
       .order('modified_at', { ascending: false })
     return data
   })
@@ -120,7 +119,7 @@
     const { data: defaultCard, error: remove } = await supabase
       .from('cards')
       .update({ default: false })
-      .eq('user_id', user.value)
+      .eq('user_id', user.value.id)
       // for each loop
   }
 
@@ -135,7 +134,7 @@
     .from('cards')
     .insert({ 
       card_id: new_card_id.value,
-      user_id: user.value,
+      user_id: user.value.id,
       card_number: card_number.value,
       expiration_month: expiry_month.value,
       expiration_year: expiry_year.value,

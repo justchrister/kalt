@@ -52,7 +52,7 @@
       const { data, error } = await supabase
         .from('transactions')
         .insert({
-          'user_id': user.id,
+          'user_id': user.value.id,
           'transaction_type': 0
         })
         .select('transaction_id')
