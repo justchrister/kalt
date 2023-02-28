@@ -21,7 +21,8 @@
                   id="card_number" 
                   class="atom input-card_number"/>
               </div>
-              <div class="col-2 gutter-right">
+              <div class="grid-col-2">
+              <div>
                 <div class="expiry_month-group element select">
                   <label for="expiry_month">Expiry date:</label>
                   <select v-model="expiry_month" id="expiry_month" placeholder="12">
@@ -57,7 +58,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-2 gutter-left">
+              <div>
                 <div class="element input number">
                 <label for="cvc">CVC:</label> 
                 <input 
@@ -66,6 +67,7 @@
                     placeholder="424" 
                     id="cvc"
                     class="atom input-cvc" />
+              </div>
               </div>
               </div>
               <input type="submit" value="add card and set as default" class="atom square">
