@@ -27,7 +27,7 @@
                 id='password'
               />
             </div>
-            <input type="submit" value="Next" class="atom">
+            <input type="submit" value="Next" class="atom" />
           </form>
           <br>
           <div class="center-text">
@@ -40,10 +40,10 @@
 </template>
 
 <script setup lang="ts">
-  const pagename = 'Sign in/sign up';
+  const pagename = 'Authentication';
   const title = 'Kalt — ' + pagename;
 
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseAuthClient()
 
   const email = ref('')
   const password = ref('')
@@ -60,10 +60,11 @@
       email: email.value,
       password: password.value,
     })
-    if(error){
+    if(data){
+      navigateTo('/portfolio')
+    } else{
       signUp()
     }
-    navigateTo('/portfolio')
   }
 
   const signUp = async () => {
