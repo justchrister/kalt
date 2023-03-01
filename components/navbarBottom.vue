@@ -1,13 +1,13 @@
 <template>
-<div class="page bottom-navbar-wrapper">
+  <footer class="page bottom-navbar-wrapper">
     <div class="bottom-navbar">
-        <h4>Account:</h4>
-        <div class="grid-col-3">
-          <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
-          <nuxt-link to="/account" > Account </nuxt-link>
-          <nuxt-link to="/account/notifications" > Notifications </nuxt-link>
-          <nuxt-link to="/account/transactions" > Transactions </nuxt-link>
-          <nuxt-link to="/account/cards" > Cards </nuxt-link>
+      <h4>Account:</h4>
+      <div class="grid-col-3">
+        <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
+        <nuxt-link to="/account" > Account </nuxt-link>
+        <nuxt-link to="/account/notifications" > Notifications </nuxt-link>
+        <nuxt-link to="/account/transactions" > Transactions </nuxt-link>
+        <nuxt-link to="/account/cards" > Cards </nuxt-link>
           <nuxt-link to="/subscription" > Subscription </nuxt-link>
           <nuxt-link to="/auth/" > Sign up </nuxt-link>
           <nuxt-link to="/auth/" > Sign in </nuxt-link>
@@ -24,5 +24,5 @@
         </div>
         <div class="insignia">Make money, make a difference.</div>
     </div>
-  </div>
+  </footer>
 </template>
