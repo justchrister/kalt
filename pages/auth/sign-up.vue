@@ -6,10 +6,10 @@
       <div class="section">
         <div class="block">
           <h3 class="title">
-            Welcome back! <omoji emoji="😃" />
+            Welcome to the club! <omoji emoji="😃" />
           </h3>
           <br>
-          <form @submit.prevent="() => (signIn())">
+          <form @submit.prevent="() => (signUp())">
             <label for='email'> E-mail</label>
             <input
               type="email"
@@ -30,7 +30,7 @@
           </form>
           <br>
           <div class="center-text link-group">
-            <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
+            <nuxt-link to="/auth">sign in</nuxt-link>
             <nuxt-link to="/auth/forgot-password">forgot password</nuxt-link>
           </div>
         </div>
@@ -57,11 +57,12 @@
       content: "Make money, make a difference."
     }]
   });
-  const signIn = async () => {
-    const { data, error } = await client.auth.signInWithPassword({
+
+  const signUp = async () => {
+    const { user, error } = await client.auth.signUp({
       email: email.value,
-      password: password.value,
-    })
-    router.push('/portfolio')
+      password: password.value
+    }) 
+    router.push('/auth/lobby')
   }
 </script>

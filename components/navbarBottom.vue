@@ -9,8 +9,8 @@
         <nuxt-link to="/account/transactions" > Transactions </nuxt-link>
         <nuxt-link to="/account/cards" > Cards </nuxt-link>
         <nuxt-link to="/subscription" > Subscription </nuxt-link>
-        <nuxt-link to="/auth/" > Sign up </nuxt-link>
-        <nuxt-link to="/auth/" > Sign in </nuxt-link>
+        <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link>
+        <nuxt-link to="/auth" > Sign in </nuxt-link>
         <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
       </div>
       <h4>Content:</h4>

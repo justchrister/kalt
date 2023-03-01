@@ -13,10 +13,12 @@
         </div>
         </div>
         <div class="block">
-          <h1>Check your inbox for an e-mail verification!</h1>
-          <p>As I sat in the dentist's lobby, the silence was almost deafening. I couldn't shake the feeling of anxiousness as I stared at my phone, willing the e-mail verification to appear. Time seemed to crawl by as I waited, and I couldn't help but feel like I was trapped in some sort of purgatory. The only sound in the room was the occasional typing of the receptionist, a constant reminder of the passing time. I tried to distract myself, but it was no use. The e-mail was all I could think about. And then, finally, it arrived. The notification lit up my screen, and I let out a sigh of relief. The waiting was over, and I could finally escape this hellish limbo.<br> — Hemmingway, GPT-3</p>
+          <h1> One small step for you, a big step for mankind. </h1>
+          <p> You are just one step away from investing in the future of fossil-free energy. Check your email for our invitation. </p>
+          <!--
+          <p>As I sat in the dentist's lobby, the silence was almost deafening. I couldn't shake the feeling of anxiousness as I stared at my phone, willing the e-mail verification to appear. Time seemed to crawl by as I waited, and I couldn't help but feel like I was trapped in some sort of purgatory. The only sound in the room was the occasional typing of the receptionist, a constant reminder of the passing time. I tried to distract myself, but it was no use. The e-mail was all I could think about. And then, finally, it arrived. The notification lit up my screen, and I let out a sigh of relief. The waiting was over, and I could finally escape this hellish limbo.<br> — Hemmingway, GPT-3</p>-->
           </div>
-          <nuxt-link to="/auth/sign-in" >
+          <nuxt-link to="/auth" >
               <button tabindex="-1">sign in</button>
           </nuxt-link>
       </div>
