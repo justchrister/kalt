@@ -63,9 +63,5 @@
       })
     router.go(-1)
   }
-  console.log("we have to:")
-  console.log("1. create a select-shares component")
-  console.log("2. verify that the customer has the needed shares in their portfolio")
-  console.log("3. create a sell order")
 
 </script>

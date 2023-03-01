@@ -6,7 +6,7 @@
       <div class="section">
         <navbar-tabs />
         <div class="block">
-          <select-subscription-amount :uuid="uuid" />
+          <choose-amount-subscription :uuid="uuid" :amount="amount" />
         </div>
         <div class="block">
           <label>Select which days you want to auto-invest</label>
@@ -60,8 +60,6 @@
       .eq('user_id', user.value.id)
       .limit(1)
       .single()
-    console.log(error)
-    console.log(data)
     if(error) return null
     uuid.value = data.subscription_id
     amount.value = data.amount
@@ -88,8 +86,14 @@
   if(subscription===null) await createSubscription()
   let tempEnabled
   const toggleSubscription = async () => {
-    if(enabled.value===true) tempEnabled=false
-    if(enabled.value===false) tempEnabled=true
+    if(enabled.value===true) {
+      oklog('success','paused subscription')
+      tempEnabled=false
+    }
+    if(enabled.value===false) {
+      oklog('success','started subscription')
+      tempEnabled=true
+    }
     const { data, error } = await supabase
       .from('subscriptions')
       .update({

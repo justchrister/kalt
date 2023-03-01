@@ -20,11 +20,10 @@ const props = defineProps({
     required: false
   }
 })
-let animatedClass
-if(props.animated){
-  animatedClass = "green-gradient"
-}
-console.log(props.animated)
+  let animatedClass
+  if(props.animated){
+    animatedClass = "green-gradient"
+  }
   const supabase = useSupabaseClient()
 
   const { data, error } = await supabase
@@ -33,5 +32,4 @@ console.log(props.animated)
     .eq('default', true)
     .order('modified_at', { ascending: false })
     .single()
-  console.log(data)
 </script>

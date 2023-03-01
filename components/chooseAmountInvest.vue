@@ -2,25 +2,22 @@
   <div class="component select amount">
     <div class="element input text">
       <label for="amount"> 
-        Amount: 
+        Select amount: 
       </label>
-      <input
-        type="text"
-        placeholder="Amount"
-        id="amount"
-        class="atom amount"
-        v-model="amount"
-        @input="updatePaymentAmount"
-      />
-    </div>
-    <div class="element select preferred_currency">
-      <label for="preferred_currency"> 
-        Currency
-      </label>
-      <select v-model="preferred_currency" :class="state" 
-      @change="updatePaymentCurrency">
-        <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.iso}}</option>
-      </select>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Amount"
+          id="amount"
+          class="atom amount"
+          v-model="amount"
+          @input="updatePaymentAmount"
+        />
+        <select v-model="preferred_currency" :class="state" 
+        @change="updatePaymentCurrency">
+          <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.iso}}</option>
+        </select>
+      </div>
     </div>
   </div>
 </template>
@@ -84,25 +81,3 @@
 
 
 </script>
-<style scoped>
-.element.select.preferred_currency,
-.element.input.text{
-  display:inline-block;
-}
-.element.input.text{
-  width: 80%;
-}
-.element.input.text input {
-  border-right: transparent 0px solid;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.element.select.preferred_currency{
-  width: 20%;
-}
-.element.select.preferred_currency select {
-  border-left: transparent 0px solid;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-</style>
