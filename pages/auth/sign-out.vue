@@ -3,18 +3,25 @@
     <navbar :pageTitle="pagename" />
     <div class='page'>
       <div class="section">
-        <div class="block">        
-          <Image :images="['/media/images/dall-e/404_2.png']" /> 
-        </div>
         <div class="block">
-          <h1>See you soon!</h1>
-          <p>Press the menu button, or go back to the previous page.</p>
+          <h3>See you soon! <omoji emoji="😜" /></h3>
+          <p>Thanks for hanging out, come back anytime.</p>
         </div>
       </div>
     </div>
   </main>
 </template>
 <script lang="ts" setup>
+  const pagename = 'Bye';
+  const title = 'Kalt — ' + pagename;
+  useHead({
+    title,
+    meta: [{
+      name: "description",
+      content: "Make money, make a difference."
+    }]
+  })
+
   const client = useSupabaseAuthClient()
   const { error } = await client.auth.signOut()
 </script>
