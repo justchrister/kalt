@@ -5,7 +5,7 @@
       <div class="section" id="about">
         <div class="block">
           <h3>Let's invest!  <omoji emoji="☀️" /></h3>
-          <select-amount :uuid="transaction_id" v-if="transaction_id"/>
+          <choose-amount-invest :uuid="transaction_id" v-if="transaction_id"/>
           <br/>
           <label>Choose card to charge: </label>
           <nuxt-link to="/account/manage-cards">

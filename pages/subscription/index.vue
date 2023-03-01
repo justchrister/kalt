@@ -6,7 +6,7 @@
       <div class="section">
         <navbar-tabs />
         <div class="block">
-          <choose-amount-subscription :uuid="uuid" :amount="amount" />
+          <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
         </div>
         <div class="block">
           <label>Select which days you want to auto-invest</label>
@@ -30,7 +30,7 @@
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = 'Buy';
+  const pagename = 'Subscription';
   const title = 'Kalt — ' + pagename;
   const router = useRouter()
   const supabase = useSupabaseClient()

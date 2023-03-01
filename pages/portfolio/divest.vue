@@ -5,7 +5,7 @@
       <div class="section" id="about">
         <div class="block">
           Select the amount you want to invest: 
-          <select-amount :uuid="transaction_id" />
+<!--          <choose-amount-divest :uuid="transaction_id" />-->
           <label>Deposit money to: </label>
           <nuxt-link to="/account/manage-cards">
             <default-card />

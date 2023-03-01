@@ -3,6 +3,7 @@
 </template>
 <script lang="ts" setup>
   const supabase = useSupabaseClient()
-  const { error } = await supabase.auth.signOut()
+  const client = useSupabaseAuthClient()
+  const { error } = await client.auth.signOut()
   if(!error) navigateTo('/')
 </script>

@@ -13,7 +13,7 @@
           v-model="amount"
           @input="updatePaymentAmount"
         />
-        <select v-model="preferred_currency" :class="state" 
+        <select v-model="currency" :class="state" 
         @change="updatePaymentCurrency">
           <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.iso}}</option>
         </select>
@@ -34,12 +34,30 @@
     amount: {
       type: Number,
       required: false
+    },
+    currency: {
+      type: String,
+      required: false
     }
   })
-
-  const preferred_currency = ref()
+  
   const amount =  ref('')
+  const currency =  ref('')
   if(props.amount) amount.value = props.amount
+  if(props.currency){
+    currency.value = props.currency
+  } else {
+    const { data } = await supabase
+      .from('accounts')
+      .select('preferred_currency')
+      .single()
+    if (data) {
+      currency.value = data.preferred_currency
+      updatePaymentCurrency()
+    }
+  }
+
+
 
   const { data: currencies } = await supabase
     .from('currencies')
@@ -63,25 +81,13 @@
           .from('subscriptions')
           .update({
             subscription_id: props.uuid,
-            currency: preferred_currency.value
+            currency: currency.value
         })
         if(error) oklog('error', 'could not update currency')
-        if(!error) oklog('success', 'updated currency to: '+preferred_currency.value)
+        if(!error) oklog('success', 'updated currency to: '+currency.value)
     }
 
 
-    const { data } = await supabase
-      .from('accounts')
-      .select('preferred_currency')
-      .single()
-
-
-    if (data) {
-      oklog('success', 'found preferred currency: ' + data.preferred_currency)
-      preferred_currency.value = data.preferred_currency
-      updatePaymentCurrency()
-      oklog('success', 'set buy currency: ' + preferred_currency.value)
-    }
     state.value = ''
 
 
