@@ -19,7 +19,7 @@
 
 @mixin font-monospace {
   font-family: $monospace;
-  font-size: $medium-clamp;
+  font-size: $unit-clamp-l;
   font-weight: normal;
   line-height: 100%;
   font-display: optional;
@@ -27,7 +27,7 @@
 
 @mixin font-logotype {
   font-family: $sans-serif;
-  font-size: $medium-clamp;
+  font-size: $unit-clamp-l;
   font-weight: 500;
   line-height: 100%;
 }

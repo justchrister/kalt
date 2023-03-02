@@ -59,8 +59,8 @@ header .menu-toggle {
 }
 // 😊 
 header .my-account-button{
-  width:$medium-clamp;
-  height:$medium-clamp;
+  width:$unit-clamp-l;
+  height:$unit-clamp-l;
   display:block;
   position:fixed;
   top:$border-width;

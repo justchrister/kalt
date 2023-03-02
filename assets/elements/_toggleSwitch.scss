@@ -15,7 +15,7 @@
   display: inline-block;
   top: clamp($unit-min*0.5, $unit*0.5, $unit-max*0.5);
   width: clamp($unit-min*3.5, $unit*3.5, $unit-max*3.5);
-  height: $medium-clamp;
+  height: $unit-clamp-l;
 }
 
 /* Hide default HTML checkbox */

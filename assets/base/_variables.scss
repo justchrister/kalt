@@ -82,7 +82,14 @@ $border-radius: 0;
 //clamps
 $column-divider: 2.4; // % of sitewidth
 $big-clamp: clamp($unit-min*3.5, $unit*3.5, $unit-max*3.5);
-$medium-clamp: clamp($unit-min*2, $unit*2, $unit-max*2);
+
+$unit-clamp-xxxl: clamp($unit-min*12, $unit*12, $unit-max*12);
+$unit-clamp-xxl: clamp($unit-min*8, $unit*8, $unit-max*8);
+$unit-clamp-xl: clamp($unit-min*4, $unit*4, $unit-max*4);
+$unit-clamp-l: clamp($unit-min*2, $unit*2, $unit-max*2);
+$unit-clamp: clamp($unit-min, $unit, $unit-max);
+$unit-clamp-s: clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
+$unit-clamp-xs: clamp(calc($unit-min/4), calc($unit/4), calc($unit-max/4));
 
 /* The following clamps are half of their counterpart.
 Example: $big-clamp-half is half of $big-clamp. */
