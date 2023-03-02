@@ -3,8 +3,6 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const query = getQuery(event)
-  const body = await readBody(event)
 
   const user_ids = [
     'ab2b5dd7-d9a9-4b07-831c-f03c268b13cd',
