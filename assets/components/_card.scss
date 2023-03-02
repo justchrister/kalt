@@ -31,6 +31,10 @@
 .card .logo.amex{ 
   background-image: url('/media/images/logos/amex.svg');
 }
+.card .logo.plus{ 
+  background-image: url('/omoji/plus.svg');
+  background-size:40%;
+}
 
 .card .details{
   width:clamp($unit-min*15, $unit*15, $unit-max*15);
@@ -72,4 +76,9 @@
 }
 .add-card .expiry_year-group select{
   border-left-width:0px;
+}
+.no-card{
+  padding-left:0;
+  text-align:center;
+  text-decoration:none;
 }

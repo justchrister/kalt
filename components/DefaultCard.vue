@@ -1,8 +1,13 @@
 <template>
-  <div class="card" v-if="card">
-    <div :class="checkBrand(card.card_number)"></div>
-    <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
-    <div :class="'default '+card.default"> <span class="set"> set </span> default  </div>
+  <div>
+    <div class="card" v-if="card">
+      <div :class="checkBrand(card.card_number)"></div>
+      <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
+      <div :class="'default '+card.default"> default card  </div>
+    </div>
+    <div class="card no-card" v-else>
+      no card found, add one <omoji emoji="→"/>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

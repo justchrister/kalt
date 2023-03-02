@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Make money, make a difference!' },
         {
           name: "viewport",
-          content: "width=device-width, initial-scale=1"
+          content: "width=device-width, initial-scale=1, maximum-scale=1"
         }
       ],
     }

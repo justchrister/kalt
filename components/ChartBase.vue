@@ -34,10 +34,6 @@ const props = defineProps({
     type: Object,
     required: true
   },
-  label: {
-    type: String,
-    required: true
-  },
   currency: {
     type: String,
     required: true
@@ -63,6 +59,12 @@ const chartOptions = {
   scales: {
     y: {
       grid: {
+        display: false
+      },
+      ticks: {
+        autoSkip: true,
+        maxRotation: 0,
+        minRotation: 0,
         display: false
       },
       beginAtZero: true
@@ -105,7 +107,7 @@ const chartData = computed(() => ({
   labels: labels.value,
   datasets: [
     {
-      label: props.label,
+      label: "",
       backgroundColor: '#1E96FC',
       borderColor: '#1E96FC',
       pointBackgroundColor: '#1E96FC',
