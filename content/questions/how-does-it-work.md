@@ -10,4 +10,4 @@ We are always selling energy, so you are always making money. If you own 10% of 
 
 Even better, you can feel good knowing your money is making a difference for families in developing regions, for the environment, and generating you a passive income. 
 
-Sounds too good to be true? Try it out today, and if you arent satisfied, you can get your money back within 60 days 
+Sounds too good to be true? Try it out today, and if you arent satisfied, get your money back within 60 days 
