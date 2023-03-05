@@ -59,7 +59,7 @@
           </div>
         </nav>
         <div class="block center-text">
-          <cta showDivest="true"/>
+          <cta :showDivest="true"/>
         </div>
         <div class="block">
           <h3>Our impact in numbers <omoji emoji="😮"/></h3>
