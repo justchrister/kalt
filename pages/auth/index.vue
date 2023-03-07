@@ -9,7 +9,7 @@
             Welcome back! <omoji emoji="😃" />
           </h3>
           <br>
-          <form @submit.prevent="() => (signIn())">
+          <form @submit.prevent="signIn">
             <label for='email'> E-mail</label>
             <input
               type="email"
