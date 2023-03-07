@@ -43,8 +43,8 @@
   });
   definePageMeta({
     layout: "focused",
+    middleware: 'auth'
   });
-
 
   const { data: transaction_id } = await useLazyAsyncData('cards', async () => {
     // if there is not an incomplete transaction, start new transaction
