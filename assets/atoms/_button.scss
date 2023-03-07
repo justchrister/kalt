@@ -5,7 +5,7 @@ a:focus button{
 
 a:focus button,
 a:hover button{
-  border-radius: 0%;
+  border-radius: 0px;
   cursor: pointer;
 }
 button {
@@ -21,6 +21,6 @@ button {
 	&:focus,
   &:hover {
     cursor: pointer;
-    border-radius: 0%;
+    border-radius: 0px;
   }
 }
