@@ -67,5 +67,5 @@ input:checked + .slider:before {
   border-radius: clamp($unit-min*1.9, $unit*1.9, $unit-max*1.9);
 }
 .slider.round:before {
-  border-radius: 50%;
+  border-radius: 900000px;
 }
