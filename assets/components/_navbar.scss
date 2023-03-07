@@ -104,13 +104,9 @@ header .my-account-button{
     li.logomark span{
       opacity:0;
     }
-    li.logomark:hover,
-    li:hover{
-      text-decoration:underline;
-      span{
-        opacity:1;
-        text-decoration:underline;
-      }
+    li.logomark:hover span,
+    li:hover span{
+      opacity:1;
     }
   }
 }
