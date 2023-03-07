@@ -18,7 +18,7 @@
     height:clamp($unit-min*4, $unit*4, $unit-max*4);
     display:inline-block;
     background-size:contain;
-    border-radius:900000px;
+    border-radius:100%;
   }
   .profile-picture.christer{
     background-image: url('../media/people/caleb.jpg');

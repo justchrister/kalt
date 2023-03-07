@@ -1,5 +1,5 @@
 input[type="submit"].atom{
-  border-radius:900000px;
+  border-radius:100%;
   margin-top: clamp($unit-min*3, $unit*3, $unit-max*3);
   text-transform: lowercase;
   color: $dark;
