@@ -1,7 +1,7 @@
 nav.component.pills.filters{
   height:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
-  overflow:scroll;
-
+  overflow-x:scroll;
+  overflow-y:hidden;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
