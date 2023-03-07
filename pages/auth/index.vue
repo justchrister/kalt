@@ -26,7 +26,9 @@
                 id='password'
               />
             </div>
+            <span @click="signIn">
             <input type="submit" value="next" class="atom" />
+            </span>
           </form>
           <br>
           <div class="center-text link-group">
