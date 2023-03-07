@@ -61,6 +61,9 @@ const chartOptions = {
       grid: {
         display: false
       },
+      border: {
+        display: false
+      },
       ticks: {
         autoSkip: true,
         maxRotation: 0,
@@ -71,6 +74,10 @@ const chartOptions = {
     },
     x:{
       grid: {
+        border: false,
+        display: false
+      },
+      border: {
         display: false
       },
       ticks: {
