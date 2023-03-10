@@ -1,5 +1,5 @@
 .infobox{
-    border:1px solid $blue;
+    border:$border-width solid $blue;
     border-radius:$border-radius;
     padding:clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2))
             clamp($unit-min, $unit, $unit-max);
@@ -13,6 +13,6 @@
     }
 }
 .infobox#warn{
-    border:1px solid $yellow;
+    border:$border-width solid $yellow;
     background:$yellow-20;
 }

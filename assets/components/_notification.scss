@@ -2,7 +2,7 @@
 .notification{
   padding:clamp($unit-min, $unit, $unit-max);
   padding-right:none;
-  border:1px solid $dark;
+  border:$border-width solid $dark;
   border-radius:$border-radius;
   margin:clamp($unit-min, $unit, $unit-max) 0;
   height:clamp($unit-min*4, $unit*4, $unit-max*4);
