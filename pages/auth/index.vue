@@ -47,7 +47,6 @@
 
   const user = useSupabaseUser()
   const client = useSupabaseAuthClient()
-  const router = useRouter()
 
   const email = ref('')
   const password = ref('')
@@ -64,6 +63,6 @@
       email: email.value,
       password: password.value,
     })
-    router.push('/portfolio')
+    return navigateTo('/portfolio')
   }
 </script>
