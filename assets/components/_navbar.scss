@@ -98,15 +98,3 @@ header .my-account-button{
     opacity:1;
   }
 }
-// might remove later
-.show-menu{
-  header .menu ul:hover{
-    li.logomark span{
-      opacity:0;
-    }
-    li.logomark:hover span,
-    li:hover span{
-      opacity:1;
-    }
-  }
-}
