@@ -11,7 +11,7 @@ export default defineEventHandler( async (event) => {
     '9703d3f3-e8cc-44e8-981c-efbbeb6f5788',
     '00de9139-8483-4c38-900a-dc389f6c7f56',
     '1b90459d-20e7-46ec-933f-c21390dd4af3',
-    '1b90459d-20e7-46ec-933f-c21390dd4af3',
+    'dbd4c3f7-f094-410a-9f8e-237d3c3a088d',
     'a631c34d-f345-4c74-8e48-100a393849a9',
     'd0820190-da5a-43ad-919b-a22e61044be6'
   ]
