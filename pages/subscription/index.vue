@@ -5,9 +5,7 @@
     <div class="page">
       <div class="section">
         <navbar-tabs />
-        <div class="block">
-          <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
-        </div>
+        <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
         <div class="block">
           <label>Select which days you want to auto-invest</label>
           <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
