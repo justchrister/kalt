@@ -66,11 +66,8 @@ const chartOptions = {
       },
       ticks: {
         autoSkip: true,
-        maxRotation: 0,
-        minRotation: 0,
         display: false
-      },
-      beginAtZero: true
+      }
     },
     x:{
       grid: {
@@ -82,8 +79,6 @@ const chartOptions = {
       },
       ticks: {
         autoSkip: true,
-        maxRotation: 0,
-        minRotation: 0,
         display: false
       }
     }
