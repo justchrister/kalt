@@ -12,7 +12,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account/notifications" >
+          <nuxt-link to="/notifications" >
               Notifications
           </nuxt-link>
         </li>

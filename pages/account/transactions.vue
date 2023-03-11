@@ -3,7 +3,7 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section" v-if="transactions.length">
+      <div class="section" v-if="transactions">
         <div class="block">
           <navbar-tabs />
           <table>
@@ -17,7 +17,9 @@
               <td> <omoji :emoji="getTransactionType(transaction.transaction_type)" /></td>
               <td>{{ transaction.amount }} {{ transaction.currency }}</td>
               <td>
-                {{new Date(transaction.created_at).getDate()}}/{{new Date(transaction.created_at).getMonth()+1}}/{{new Date(transaction.created_at).getFullYear()}} 
+                {{new Date(transaction.created_at).getDate()}}/
+                {{new Date(transaction.created_at).getMonth()+1}}/
+                {{new Date(transaction.created_at).getFullYear()}} 
               </td>
               <td>
                 {{addZero(new Date(transaction.created_at).getHours()) }}:{{addZero(new Date(transaction.created_at).getMinutes())}}
@@ -25,7 +27,6 @@
             </tr>
           </table>
         </div>
-        <!-- make these ones filters at a later point -->
         <div class="block">
           <p style="font-size:70%;">
             <span class="pill"> <omoji emoji="→" /> deposit </span> 
@@ -66,18 +67,15 @@
 
   const loading = ref(null)
 
-  const { data: transactions } = await useLazyAsyncData('transactions', async () => {
-    const {data, error} = await supabase
-      .from('transactions')
-      .select('*')
-      .eq('user_id', user.value.id)
-      .eq('transaction_status', 3)
-      .order('created_at', { ascending: false })
-      .gte('amount', 1)
-    if (data) oklog('success', 'got transactions for '+user.value.id)
-    if (error) oklog('error', 'could not get transactions for '+user.value.id)
-    return data
-  })
+  const {data:transactions, error} = await supabase
+    .from('transactions')
+    .select('*')
+    .eq('user_id', user.value.id)
+    .eq('transaction_status', 3)
+    .order('created_at', { ascending: false })
+    .gte('amount', 1)
+  if (transactions) oklog('success', 'got transactions for '+user.value.id)
+  if (error) oklog('error', 'could not get transactions for '+user.value.id)
 
   // https://www.arrowsymbol.com/
   const deposit = 0;
@@ -104,8 +102,6 @@
   }
 </script>
 <style scoped>
-.green{ color:green; }
-.red{ color:red; }
 span.pill{
   margin-right:5px;
   padding:5px 10px;

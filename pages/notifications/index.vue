@@ -6,7 +6,22 @@
       <div class="section">
         <navbar-tabs/>
         <notification 
-          from="Christer — CEO and Founder @ Kalt" 
+          from="Caleb — COO" 
+          date="20.03.2023"
+          title="We just launched another site!"
+          emoji="☀️"/>
+        <notification 
+          from="Sarah — Your customer rep" 
+          date="01.02.2023"
+          title="Awesome. You've already earned 200$ so far this year!"
+          emoji="😯"/>
+        <notification 
+          from="Christer — CEO" 
+          date="01.01.2023"
+          title="Happy new year!"
+          emoji="😊"/>
+        <notification 
+          from="Christer — CEO" 
           date="11.12.2022"
           title="Welcome to the Kalt Club!"
           emoji="☀️"/>
