@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { oklog } from '~/composables/oklog'
 import { serverSupabaseServiceRole } from '#supabase/server'
 

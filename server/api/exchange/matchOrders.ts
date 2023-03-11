@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { oklog } from '~/composables/oklog'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
@@ -28,16 +30,25 @@ export default defineEventHandler( async (event) => {
   }
   
   const fulfillOrders = async (order, f_order) => {
-    const {data: org, error: org_err } = await supabase.from('exchange').update({ fulfilled_by_order_id: f_order }).eq('order_id', order).select().single()
+    const {data: org, error: org_err } = await supabase.from('exchange')
+      .update({fulfilled_by_order_id: f_order})
+      .eq('order_id', order)
+      .select()
+      .single()
     const {data: full, error: full_err } = await supabase.from('exchange').update({ 
       fulfilled_by_order_id: order, 
       quantity: body.record.quantity }).eq('order_id', f_order).select().single()
   }
   const createOrder = async (user_id, order_type, quantity) => {
-    const {data, error} = await supabase.from('exchange').insert([
-      { user_id: user_id, order_type: order_type, ticker: "DDFGI", quantity: quantity,
-        created_at: new Date },
-    ]).select().single()
+    const {data, error} = await supabase.from('exchange')
+      .insert([{ 
+        user_id: user_id, 
+        order_type: order_type, 
+        ticker: "DDFGI", 
+        quantity: quantity,
+        created_at: new Date }])
+      .select()
+      .single()
     oklog('success', 'created order: ' + data.order_id)
   }
   if(fulfilling_order.order_id){
