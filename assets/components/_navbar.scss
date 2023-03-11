@@ -37,14 +37,22 @@ header .menu ul{
   }
 }
 
+header .bomb,
 header .menu-toggle,
 header .menu ul li {
   @include font-body;
   font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
 }
+header .bomb{
+  position:fixed;
+  right:0;
+  bottom:0;
+  background:$light;
+  border-radius:100%;
+}
 // menu / close menu
 
-header .menu-toggle {
+header button.menu-toggle {
   padding: $big-clamp-half;
   right: $big-clamp;
   position: fixed;
@@ -55,6 +63,12 @@ header .menu-toggle {
   &:hover,
   &:hover:before{
     text-decoration: underline;
+  }
+  &:before{
+    content:"close ";
+    white-space: pre;
+    display:inline-block;
+    opacity:0;
   }
 }
 // 😊 
@@ -90,11 +104,7 @@ header .my-account-button{
     opacity:1;
     pointer-events : all;
   }
-} 
-.show-menu button.menu-toggle{
-  &:before{
-    content:"close ";
-    display:inline-block;
+  header button.menu-toggle:before{
     opacity:1;
   }
 }

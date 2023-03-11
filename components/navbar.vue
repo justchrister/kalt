@@ -2,7 +2,13 @@
     <header>
         <nav class="menu">
             <ul id="menu_items">
-                <li class="logomark">
+                <li class="logomark" v-if="signedIn">
+                    <nuxt-link to="/portfolio">
+                    <span>Kalt — </span>
+                    {{ pageTitle }}
+                    </nuxt-link>
+                </li>
+                <li class="logomark" v-else>
                     <nuxt-link to="/">
                     <span>Kalt — </span>
                     {{ pageTitle }}
@@ -40,9 +46,13 @@
                     <span>Kalt — </span>
                     <a href="/auth/sign-out" v-on:click="toggleMenu"> Sign out </a>
                 </li>
+                <li>
+                    <bomb to="portfolio/invest" text="invest" />
+                </li>
             </ul>
         </nav>
-        <button class="menu-toggle" v-on:click="toggleMenu"> menu</button>
+        
+        <button class="menu-toggle" v-on:click="toggleMenu">menu</button>
         <nuxt-link to="/portfolio">
             <div class="my-account-button"></div>
         </nuxt-link>
