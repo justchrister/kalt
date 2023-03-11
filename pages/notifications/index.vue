@@ -10,7 +10,7 @@
           date="20.03.2023"
           title="We just launched another site!"
           emoji="☀️"/>
-        <notification 
+        <notification
           from="Sarah — Your customer rep" 
           date="01.02.2023"
           title="Awesome. You've already earned 200$ so far this year!"

@@ -28,7 +28,6 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-
 const props = defineProps({
   data: {
     type: Object,
@@ -86,7 +85,6 @@ const chartOptions = {
   tension: 0.2,
   plugins: {
     legend: {
-      position: 'top' as const,
       display: false,
     },
     tooltip: {
@@ -95,7 +93,12 @@ const chartOptions = {
           let label = context.dataset.label || '';
           if (label) label += ': ';
           if (context.parsed.y !== null) {
-              label += new Intl.NumberFormat('en-US', { style: 'currency', currency: props.currency }).format(context.parsed.y);
+              label += new Intl.NumberFormat(
+                'en-US', 
+                { 
+                  style: 'currency', 
+                  currency: props.currency 
+              }).format(context.parsed.y);
           }
           return label;
         }

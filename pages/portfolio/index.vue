@@ -14,14 +14,13 @@
           <div class="overflow-wrap">
             <ul>
               <li>
-                <button @click="setDays(1)" class="element pill">
-                <span class="live-bullet">•</span>
-                  live
+                <button @click="setDays(7)" class="element pill">
+                  <span class="live-bullet">•</span> live
                 </button>
               </li>
               <li>
-                <button @click="setDays(7)" class="element pill">
-                  7 days
+                <button @click="setDays(30)" class="element pill">
+                  1 month
                 </button>
               </li>
               <li>
@@ -88,7 +87,7 @@
   definePageMeta({
     middleware: 'auth'
   })
-  const days = ref(10)
+  const days = ref(7)
   const setDays = (x) => {
     days.value=x
   }
