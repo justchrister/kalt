@@ -46,9 +46,6 @@
                     <span>Kalt — </span>
                     <a href="/auth/sign-out" v-on:click="toggleMenu"> Sign out </a>
                 </li>
-                <li>
-                    <bomb to="portfolio/invest" text="invest" />
-                </li>
             </ul>
         </nav>
         
