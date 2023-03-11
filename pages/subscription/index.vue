@@ -12,9 +12,7 @@
         </div>
         <div class="block">
           <label>Select card you want to withdraw:</label>
-          <nuxt-link to="/account/manage-cards">
-            <default-card />
-          </nuxt-link>
+          <default-card />
           <info-box type="info" text="changing default card will change card being charged" />
         </div>
         <div class="block">

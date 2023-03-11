@@ -17,7 +17,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account/cards" >
+          <nuxt-link to="/cards" >
               Cards
           </nuxt-link>
         </li>
