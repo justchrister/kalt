@@ -57,13 +57,12 @@
     }]
   });
   const testSign = async () => {
+  }
+  const signIn = async () => {
+    navigateTo('/portfolio')
     const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     })
-  }
-  const signIn = async () => {
-    await testSign()
-    return navigateTo('/portfolio')
   }
 </script>
