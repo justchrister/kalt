@@ -6,8 +6,10 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
-  let fulfilling_order_type = 1
-  if(body.record.order_type) fulfilling_order_type=0
+  const buyOrder = 0
+  const sellOrder = 1
+  let fulfilling_order_type = sellOrder
+  if(body.record.order_type===sellOrder) fulfilling_order_type=buyOrder
 
   
   const { data:fulfilling_order, error: fulfilling_order_error} = await supabase
@@ -35,9 +37,14 @@ export default defineEventHandler( async (event) => {
       .eq('order_id', order)
       .select()
       .single()
-    const {data: full, error: full_err } = await supabase.from('exchange').update({ 
-      fulfilled_by_order_id: order, 
-      quantity: body.record.quantity }).eq('order_id', f_order).select().single()
+    const {data: full, error: full_err } = await supabase.from('exchange')
+      .update({ 
+        fulfilled_by_order_id: order, 
+        quantity: body.record.quantity 
+      })
+      .eq('order_id', f_order)
+      .select()
+      .single()
   }
   const createOrder = async (user_id, order_type, quantity) => {
     const {data, error} = await supabase.from('exchange')

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const oklog = (type, text) => {
   // https://talyian.github.io/ansicolors/
   let label = '\x1b[34m● \x1b[0m';

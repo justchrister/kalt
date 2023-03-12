@@ -56,22 +56,27 @@ export default defineEventHandler( async (event) => {
       'error': 'could not get exchange rates'
     }
   }
-  let order_type = 0
-  if (transaction_incomplete.transaction_type===1) order_type = 1
-  if (transaction_incomplete.transaction_type===2) order_type = 2
+  const buyOrder = 0;
+  const sellOrder = 1;
+  const invest = 0;
+  const dividend = 2;
+  let order_type = buyOrder
+  if (transaction_incomplete.transaction_type===invest) order_type = sellOrder
+  if (transaction_incomplete.transaction_type===dividend) order_type = buyOrder
   // insert order object into supabase db
   const createOrder = async () => { 
-    const {data, error} = await supabase.from('exchange').insert([
-      {
-        user_id: transaction_incomplete.user_id,
-        order_type: transaction_incomplete.transaction_type,
-        ticker: "DDFGI",
-        quantity: transaction_incomplete.amount * exchange_rates.eq_ddfgi,
-        created_at: new Date
-      },
-    ]).select().single()
+    const {data, error} = await supabase.from('exchange').insert([{
+      user_id: transaction_incomplete.user_id,
+      order_type: transaction_incomplete.transaction_type,
+      ticker: "DDFGI",
+      quantity: transaction_incomplete.amount * exchange_rates.eq_ddfgi,
+      created_at: new Date
+    }])
+    .select()
+    .single()
 
     if (data) oklog('success', 'order created: ' + data.order_id)
+
     return data
   }
 
