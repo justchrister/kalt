@@ -58,11 +58,13 @@ export default defineEventHandler( async (event) => {
   }
   const buyOrder = 0;
   const sellOrder = 1;
-  const invest = 0;
+  const deposit = 0;
   const dividend = 2;
+  const subscription = 3;
   let order_type = buyOrder
-  if (transaction_incomplete.transaction_type===invest) order_type = sellOrder
+  if (transaction_incomplete.transaction_type===deposit) order_type = sellOrder
   if (transaction_incomplete.transaction_type===dividend) order_type = buyOrder
+  if (transaction_incomplete.transaction_type===subscription) order_type = buyOrder
   // insert order object into supabase db
   const createOrder = async () => { 
     const {data, error} = await supabase.from('exchange').insert([{
