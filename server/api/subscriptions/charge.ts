@@ -36,6 +36,5 @@ export default defineEventHandler( async (event) => {
       })
   }
 
-
   return toCharge
 });

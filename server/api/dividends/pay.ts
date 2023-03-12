@@ -24,7 +24,7 @@ export default defineEventHandler( async (event) => {
   function random(min, max) { 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
-  if(random(0,69)!=69) return "not going to pay out dividends this time, try again :) "
+  if(random(0,420)!=69) return "not going to pay out dividends this time, try again :) "
 
   const getFilteredOrderFlow = async () => {
     let orders = []
