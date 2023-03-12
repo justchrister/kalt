@@ -26,9 +26,7 @@
                 id='password'
               />
             </div>
-            <span @click="signIn">
             <input type="submit" value="next" class="atom" />
-            </span>
           </form>
           <br>
           <div class="center-text link-group">
@@ -59,10 +57,15 @@
     }]
   });
   const signIn = async () => {
-    const { data, error } = await client.auth.signInWithPassword({
+    const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     })
-    return navigateTo('/portfolio')
+
+    if (error) {
+      oklog('error', 'login failed')
+    } else {
+      navigateTo('/portfolio')
+    }
   }
 </script>
