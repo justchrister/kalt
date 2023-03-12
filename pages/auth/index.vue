@@ -63,11 +63,9 @@
       email: email.value,
       password: password.value,
     })
-
-    if (error) {
-      oklog('error', 'login failed')
-    } else {
-      navigateTo('/portfolio')
-    }
+    setTimeout(
+      navigateTo('/portfolio'), 
+      200
+    )
   }
 </script>
