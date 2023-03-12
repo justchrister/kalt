@@ -26,9 +26,7 @@
                 id='password'
               />
             </div>
-            <button @click="signIn()">
-              sign in
-            </button>
+            <input type="submit" value="sign in" class="atom" @click="signIn()" />
           </form>
           <br>
           <div class="center-text link-group">
@@ -58,14 +56,14 @@
       content: "Make money, make a difference."
     }]
   });
-  const signIn = async () => {
+  const testSign = async () => {
     const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     })
-    setTimeout(
-      navigateTo('/portfolio'), 
-      200
-    )
+  }
+  const signIn = async () => {
+    await testSign()
+    return navigateTo('/portfolio')
   }
 </script>
