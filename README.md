@@ -4,39 +4,33 @@
 
 Kalt is a startup building a vertically integrated fossil-free energy generator and exchange that lets anyone invest directly in fossil free energy generation, and earn direct dividends from it. 
 
-## Technologies:
+## Stack:
 
 <a href="https://supabase.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/nuxtjs/nuxtjs-icon.svg" alt="" width="15" height="15" />
   Nuxt
 </a>
 <br>
+
+<a href="https://vercel.com/" target="_blank" rel="noreferrer">
+  <img src="https://www.svgrepo.com/show/327408/logo-vercel.svg" alt="" width="15" height="15" />
+  Vercel
+</a> + 
 <a href="https://nuxtjs.org/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg" alt="" width="15" height="15" />
   Supabase
 </a>
 <br>
-<a href="https://stripe.com/" target="_blank" rel="noreferrer">
++ <a href="https://stripe.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="15" height="15" />
   Stripe
-</a>
-<br>
-<a href="https://vercel.com/" target="_blank" rel="noreferrer">
-  <img src="https://www.svgrepo.com/show/327408/logo-vercel.svg" alt="" width="15" height="15" />
-  Vercel
-</a>
-<br>
-<a href="https://expressjs.com/" target="_blank" rel="noreferrer">
+</a> + <a href="https://expressjs.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg" alt="" width="15" height="15" />
   Express.js
-</a>
-<br>
-<a href="https://nodejs.org/en/" target="_blank" rel="noreferrer">
+</a> + <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg" alt="" width="15" height="15" />
   Node.js
-</a>
-<br>
-<a href="https://sentry.io/welcome/" target="_blank" rel="noreferrer">
+</a> + <a href="https://sentry.io/welcome/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/sentryio/sentryio-icon.svg" alt="" width="15" height="15" />
   Sentry
 </a>
