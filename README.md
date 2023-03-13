@@ -21,6 +21,7 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
   Supabase
 </a>
 <br>
+<br>
 + <a href="https://stripe.com/" target="_blank" rel="noreferrer">
   <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="" width="15" height="15" />
   Stripe
