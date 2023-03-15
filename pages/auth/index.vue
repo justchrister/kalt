@@ -9,7 +9,7 @@
             Welcome back! <omoji emoji="😃" />
           </h3>
           <br>
-          <form @submit.prevent="signIn">
+          <form @submit.prevent="signIn()">
             <label for='email'> E-mail</label>
             <input
               type="email"
@@ -26,7 +26,7 @@
                 id='password'
               />
             </div>
-            <input type="submit" value="sign in" class="atom" @click="signIn()" />
+            <input type="submit" value="sign in" class="atom"/>
           </form>
           <br>
           <div class="center-text link-group">
@@ -56,13 +56,14 @@
       content: "Make money, make a difference."
     }]
   });
-  const testSign = async () => {
-  }
   const signIn = async () => {
-    navigateTo('/portfolio')
     const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     })
+    if (data.user.id) {
+      console.log(data.user.id)
+      return navigateTo('/portfolio') //should only happen after its done
+    }
   }
 </script>
