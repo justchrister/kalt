@@ -25,14 +25,13 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-
   const props = defineProps({
     uuid: {
       type: String,
       required: true
     }
   })
-  
+
   const preferred_currency = ref()
   const { data: currencies } = await supabase
     .from('currencies')

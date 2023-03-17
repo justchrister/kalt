@@ -88,9 +88,8 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const router = useRouter()
-  import { v4 as uuidv4 } from 'uuid';
 
-  const card_id = ref(uuidv4())
+  const card_id = ref(okuuid())
   const card_number = ref('');
   const expiry_month = ref('MM');
   const expiry_year = ref('YY');
@@ -121,7 +120,7 @@
       })
       .select()
       .single()
-      card_id.value = uuidv4()
+      card_id.value = okuuid()
       card_number.value = ''
       expiry_month.value = ''
       expiry_year.value = ''

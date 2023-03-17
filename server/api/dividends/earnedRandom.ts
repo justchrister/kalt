@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { oklog } from '~/composables/oklog'
+import { oklog } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import { v4 as uuidv4 } from 'uuid'
 
