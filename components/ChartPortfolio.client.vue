@@ -1,8 +1,13 @@
 <template>
-  <div class="chartWrap">
-    <chart-base 
-      :currency="data.preferred_currency"
-      :data="dataset"/>
+  <div>
+    <p v-if="dataset[0]">
+      <strong>Current value:</strong> {{prettyCurrency(dataset[0].quantity, data.preferred_currency)}} (<omoji emoji="↑" /> 20%)
+    </p>
+    <div class="chartWrap">
+      <chart-base 
+        :currency="data.preferred_currency"
+        :data="dataset"/>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -32,6 +37,16 @@ const props = defineProps({
     watch(tempdataset, (rawDataset) => {
       dataset.value = rawDataset
     })
+  }
+
+  const prettyCurrency = (amount, currency) =>{
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 3,
+    });
+    return formatter.format(amount)
   }
   initateChart()
   watch(() => props.days, () => initateChart() )

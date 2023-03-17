@@ -77,6 +77,8 @@
 <script setup lang="ts">
   const pagename = 'Portfolio';
   const title = 'Kalt — ' + pagename;
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   useHead({
     title,
     meta: [{
