@@ -2,13 +2,13 @@
     <header>
         <nav class="menu">
             <ul id="menu_items">
-                <li class="logomark" v-if="signedIn">
+                <li class="logomark" v-if="signedIn" v-on:click="toggleMenuOff">
                     <nuxt-link to="/portfolio">
                     <span>Kalt — </span>
                     {{ pageTitle }}
                     </nuxt-link>
                 </li>
-                <li class="logomark" v-else>
+                <li class="logomark" v-else v-on:click="toggleMenuOff">
                     <nuxt-link to="/">
                     <span>Kalt — </span>
                     {{ pageTitle }}
@@ -50,7 +50,7 @@
         </nav>
         
         <button class="menu-toggle" v-on:click="toggleMenu">menu</button>
-        <nuxt-link to="/portfolio">
+        <nuxt-link to="/portfolio" v-on:click="toggleMenuOff">
             <div class="my-account-button"></div>
         </nuxt-link>
     </header>
@@ -63,6 +63,9 @@
     if(user.value) signedIn = true
     const toggleMenu = async () => { 
         document.getElementsByTagName("body")[0].classList.toggle("show-menu");
+    }
+    const toggleMenuOff = async () => { 
+        document.getElementsByTagName("body")[0].classList.remove("show-menu");
     }
 
     const props = defineProps({
