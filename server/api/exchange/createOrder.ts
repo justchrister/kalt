@@ -56,20 +56,24 @@ export default defineEventHandler( async (event) => {
       'error': 'could not get exchange rates'
     }
   }
-  const buyOrder = 0;
-  const sellOrder = 1;
+  const withdrawal = 1;
   const deposit = 0;
   const dividend = 2;
   const subscription = 3;
+
+  const buyOrder = 0;
+  const sellOrder = 1;
+
   let order_type = buyOrder
-  if (transaction_incomplete.transaction_type===deposit) order_type = sellOrder
+  if (transaction_incomplete.transaction_type===deposit) order_type = buyOrder
+  if (transaction_incomplete.transaction_type===withdrawal) order_type = sellOrder
   if (transaction_incomplete.transaction_type===dividend) order_type = buyOrder
   if (transaction_incomplete.transaction_type===subscription) order_type = buyOrder
   // insert order object into supabase db
   const createOrder = async () => { 
     const {data, error} = await supabase.from('exchange').insert([{
       user_id: transaction_incomplete.user_id,
-      order_type: transaction_incomplete.transaction_type,
+      order_type: order_type,
       ticker: "DDFGI",
       quantity: transaction_incomplete.amount * exchange_rates.eq_ddfgi,
       created_at: new Date

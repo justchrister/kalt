@@ -11,8 +11,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-// if we have two lines
-
 const props = defineProps({
   days: {
     type: Number,
