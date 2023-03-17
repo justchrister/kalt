@@ -18,13 +18,12 @@
     border: $border;
     display:inline-block;
     border-radius:$border-radius;
-    width:clamp(1px, $unit * 3, $unit-max * 3);
     height:clamp($unit-min, $unit, $unit-max);
     line-height:clamp($unit-min, $unit, $unit-max);
-    padding:clamp($unit-min * 1, $unit * 1, $unit-max * 1)
-            clamp($unit-min * 1, $unit * 1, $unit-max * 1)
+    padding:clamp($unit-min, $unit, $unit-max)
+            clamp($unit-min, $unit, $unit-max)
             clamp($unit-min * 2, $unit * 2, $unit-max * 2)
-            clamp($unit-min * 3, $unit * 3, $unit-max * 3);
+            0;
     text-align:right;
     margin: clamp(calc($unit-min/3), calc($unit/3), calc($unit-max/3)) 0;
   }
