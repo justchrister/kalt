@@ -4,6 +4,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 1% 1%;
     grid-auto-flow: row;
+    max-width:$maxsitewidth;
   input{
     display:none;
   }
