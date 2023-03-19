@@ -67,7 +67,7 @@
             <impact type="car" title="Driving 1 000 km in a Fiat Panda" />
             <impact type="house" title="Construction of a 200 m2 house" />
             <impact type="plane" title="Flying 1.4 times to Paris from Tokyo" />
-            <impact type="computer" title="Producing, shipping and eating 9 000 avocadoes" />
+            <impact type="plant" title="Producing and eating 9 000 avocadoes" />
           </div>
         </div>
       </div>

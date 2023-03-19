@@ -4,9 +4,9 @@
     <div class='page'>
       <div class="section">
         <div class="frame">
-          <div class="image" style="background-image:url(/media/images/homepage_01_min.jpg);">
+          <div class="image" style="background-image:url(/media/images/architecture/brutalist-house-in-affligem.jpg);">
           </div>
-          <div class="image" style="background-image:url(/media/images/homepage_02_min.jpg);">
+          <div class="image" style="background-image:url(/media/images/eddy-mercx-1970.jpg);">
           </div>
         </div>
         <div class="block">

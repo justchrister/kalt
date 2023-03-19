@@ -20,15 +20,18 @@
 .impacts .impact .image{
   height: 100%;
   background-repeat: no-repeat;
-  background-position: center left;
+  background-position: center;
   background-size:contain;
 }
 .impacts .impact .image#car{
-  background-image:url('/illustrations/car.svg');
+  background-image:url('/media/illustrations/car.svg');
 }
 .impacts .impact .image#house{
-  background-image:url('/illustrations/house.svg');
+  background-image:url('/media/illustrations/house.svg');
 }
 .impacts .impact .image#plane{
-  background-image:url('/illustrations/plane.svg');
+  background-image:url('/media/illustrations/plane.svg');
+}
+.impacts .impact .image#plant{
+  background-image:url('/media/illustrations/plant.svg');
 }
