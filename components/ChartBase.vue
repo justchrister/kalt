@@ -40,7 +40,7 @@ const props = defineProps({
 })
 const chartOptions = {
   responsive: true,
-  maintainAspectRatio: false,
+  maintainAspectRatio: true,
   legend: {
     display: false
   },
