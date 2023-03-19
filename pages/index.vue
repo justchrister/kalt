@@ -37,5 +37,4 @@
       content: "Make money, make a difference."
     }]
   })
-  oklog('success', 'test')
 </script>
