@@ -55,15 +55,16 @@
       name: "description",
       content: "Make money, make a difference."
     }]
-  });
+  })
   const signIn = async () => {
     const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     })
-    if (data.user.id) {
-      console.log(data.user.id)
-      return navigateTo('/portfolio') //should only happen after its done
-    }
   }
+  watchEffect(async () => {
+    if (user.value) {
+      await navigateTo("/portfolio");
+    }
+  })
 </script>
