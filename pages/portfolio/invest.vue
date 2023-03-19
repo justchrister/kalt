@@ -80,7 +80,7 @@
     }
     if(!error) {
       oklog('success', 'completed transaction: '+transaction_id.value)
-      router.go(-1)
+      navigateTo('/portfolio')
     }
   }
 
