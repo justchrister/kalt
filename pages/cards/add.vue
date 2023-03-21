@@ -11,6 +11,7 @@
               <input 
                 type="text" 
                 v-model="card_number" 
+                v-maska data-maska="#### #### #### ####"
                 placeholder="•••• •••• •••• 4242" 
                 id="card_number" 
                 class="atom input-card_number"/>
@@ -56,8 +57,9 @@
                 <div class="element input number">
                   <label for="cvc">CVC:</label> 
                   <input 
-                      type="number" 
+                      type="string" 
                       v-model="cvc" 
+                      v-maska data-maska="###"
                       placeholder="424" 
                       id="cvc"
                       class="atom input-cvc" />

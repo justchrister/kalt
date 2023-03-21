@@ -11,7 +11,7 @@
         </div>
         <div class="block">
           <h2 class="title">
-            Lets make change happen!
+            Be the change you want to see in the world
           </h2>
           <p>
             We let anyone be a part of solving the impending energy crisis by developing, depoloying, and letting you invest in fossil-free energy alternatives. A practical solution that works for the wallet, and the world. <br> <br>Read <nuxt-link to="questions/how-does-it-work">how it works</nuxt-link>, <nuxt-link to="about/values">our values and goals</nuxt-link>, or <nuxt-link to="auth/sign-up">sign up now</nuxt-link>

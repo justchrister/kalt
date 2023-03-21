@@ -6,6 +6,10 @@
       </label>
       <div class="input-group">
         <input
+
+          v-maska:[options]
+          data-maska="0.99"
+          data-maska-tokens="0:\d:multiple|9:\d:optional"
           type="text"
           placeholder="Amount"
           id="amount"
@@ -56,39 +60,62 @@
       updatePaymentCurrency()
     }
   }
+  const convertToInt = (string) => {
+    let integer = string.replace("NOK", "")
+      .replace("EUR", "")
+      .replace("€",   "")
+      .replace("USD", "")
+      .replace("$",   "")
+      .replace(".",   "")
+      .replace(",",   "")
+      .replace(" ",   "")
 
-
-
+    return integer
+  }
   const { data: currencies } = await supabase
     .from('currencies')
     .select('iso, name')
     .eq('available', true)
 
-    const updatePaymentAmount = async () => { 
-      if(amount.value){
-        const { error } = await supabase
-          .from('subscriptions')
-          .update({
-            subscription_id: props.uuid,
-            amount: amount.value
-        })
-        if(error) oklog('error', 'could not update amount')
-        if(!error) oklog('success', 'updated amount')
-      }
+  const updatePaymentAmount = async () => { 
+    if(amount.value){
+      const { error } = await supabase
+        .from('subscriptions')
+        .update({
+          subscription_id: props.uuid,
+          amount: convertToInt(amount.value)
+      })
+      if(error) oklog('error', 'could not update amount')
+      if(error) console.log(error)
+      if(!error) oklog('success', 'updated amount')
     }
-    const updatePaymentCurrency = async () => {
-        const { error } = await supabase
-          .from('subscriptions')
-          .update({
-            subscription_id: props.uuid,
-            currency: currency.value
-        })
-        if(error) oklog('error', 'could not update currency')
-        if(!error) oklog('success', 'updated currency to: '+currency.value)
+  }
+  const updatePaymentCurrency = async () => {
+      const { error } = await supabase
+        .from('subscriptions')
+        .update({
+          subscription_id: props.uuid,
+          currency: currency.value
+      })
+      if(error) oklog('error', 'could not update currency')
+      if(!error) oklog('success', 'updated currency to: '+currency.value)
+  }
+
+  const options = {
+    preProcess: val => val.replace(/[$,]/g, ''),
+    postProcess: val => {
+      if (!val) return ''
+
+      const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
+
+      return Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currency.value
+      }).format(val)
+        .slice(0, sub ? -sub : undefined)
     }
-
-
-    state.value = ''
+  }
+  state.value = ''
 
 
 </script>

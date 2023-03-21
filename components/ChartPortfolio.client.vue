@@ -1,7 +1,7 @@
 <template>
   <div>
     <p v-if="dataset[0]">
-      <strong>Current value:</strong> {{prettyCurrency(dataset[0].quantity, data.preferred_currency)}} (<omoji emoji="↑" /> 20%)
+      {{prettyCurrency(Math.floor(dataset[0].quantity), data.preferred_currency)}} (+20%)
     </p>
     <div class="chartWrap">
       <chart-base 
