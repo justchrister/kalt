@@ -46,25 +46,6 @@ export const oklog = async (type, text) => {
     "type": type,
     "text": text
   }
-  httpPost("~/api/oklog", json)
+  httpPost("https://ka.lt/api/oklog", json)
   return json
 };
-/*
-export const okrandom = () => {
-  return 
-};
-
-
-export const oktranslate = () => {
-  return 
-};
-
-export const createOrder = (userId, ) => {
-  const uuid = okuuid();
-  let order = {
-  }
-  if(!userId) {
-    return oklog("error", "order missing userId")
-  }
-  return 
-};*/
