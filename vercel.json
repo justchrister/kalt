@@ -1,18 +1,4 @@
 {
   "trailingSlash": false,
-  "installCommand": "npm install",
-  "crons": [
-    {
-      "path": "/api/subscriptions/charge",
-      "schedule": "20 04 * * *"
-    },
-    {
-      "path": "/api/dividends/earnedRandom",
-      "schedule": "5 * * * *"
-    },
-    {
-      "path": "/api/exchange/createRandomOrder",
-      "schedule": "5 * * * *"
-    }
-  ]
+  "installCommand": "npm install"
 }
