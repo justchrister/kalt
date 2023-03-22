@@ -46,6 +46,6 @@ export const oklog = async (type, text) => {
     "type": type,
     "text": text
   }
-  httpPost("https://ka.lt/api/oklog", json)
+  //httpPost("https://ka.lt/api/oklog", json)
   return json
 };
