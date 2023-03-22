@@ -15,15 +15,6 @@ export const okuuid = () => {
   return uuid;
 };
 
-const httpPost = async (api, json) => {
-  fetch(api, {
-    method: "POST",
-    body: JSON.stringify(json),
-    headers: { "Content-type": "application/json; charset=UTF-8"}
-  });
-  return
-}
-
 export const okclock = (input) => {
   if (input="now") return Date.now()
   if (input="today") return Date.now()
@@ -46,6 +37,10 @@ export const oklog = async (type, text) => {
     "type": type,
     "text": text
   }
-  httpPost("https://ka.lt/api/oklog", json)
+  fetch("https://ka.lt/api/oklog", {
+    method: "POST",
+    body: JSON.stringify(json),
+    headers: { "Content-type": "application/json; charset=UTF-8"}
+  });
   return json
 };
