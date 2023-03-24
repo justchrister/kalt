@@ -13,7 +13,9 @@
             Make money, make a difference! <omoji emoji="😃" />
           </h2>
           <p>
-            Make your money work for you and the world. By investing in solar energy with us, you can do good and build residual income at the same time. 
+            Join us in using cutting-edge technology to make your money work for you and the world. With our innovative approach, you can contribute to a sustainable future and generate income while making a positive impact.
+            <br>
+            <br>
           </p>
           <p class="links">
             <nuxt-link to="/about/how-it-works">How it works</nuxt-link>
