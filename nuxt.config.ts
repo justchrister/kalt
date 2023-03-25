@@ -6,6 +6,15 @@ export default defineNuxtConfig({
   build: {
     transpile: ['chart.js'],
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/base/_variables.scss" as *;'
+        }
+      }
+    }
+  },
   app: {
     head: {
       charset: 'utf-8',

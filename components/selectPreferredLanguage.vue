@@ -43,3 +43,8 @@
     }
   };
 </script>
+<style scoped lang="scss">
+.element.select{
+  margin-top: clamp($unit-min, $unit, $unit-max);
+}
+</style>

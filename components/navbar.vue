@@ -75,3 +75,101 @@
         }
     })
 </script>
+<style scoped lang="scss">
+.menu ul{
+  position: fixed;
+  z-index: 3;
+  margin: 0;
+  height: clamp($unit-min*4, $unit*4, $unit-max*4);
+  overflow:hidden;
+  padding: $big-clamp-half 0 0 $big-clamp-half;
+  li.logomark,
+  li.logomark span{
+    opacity:1;
+    pointer-events : all;
+  }
+  li {
+    opacity:0;
+    pointer-events : none;
+    padding: 0;
+    margin-bottom:0;
+    a{
+      text-decoration: none;
+      &:hover{
+        text-decoration:underline;
+      }
+    }
+    span{
+      font-weight:500;
+      opacity:0;
+    }
+    &:before{
+      display:none;
+    }
+  }
+}
+
+header .menu-toggle,
+header .menu ul li {
+  font-family: $sans-serif;
+  font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
+  font-weight:300;
+  line-height: 150%;
+  font-display: optional;
+}
+button.menu-toggle {
+  padding: $big-clamp-half;
+  right: $big-clamp;
+  position: fixed;
+  top: $border-width;
+  width: auto;
+  color: $dark;
+  border: 0;
+  &:hover,
+  &:hover:before{
+    text-decoration: underline;
+  }
+  &:before{
+    content:"close ";
+    white-space: pre;
+    display:inline-block;
+    opacity:0;
+  }
+}
+.my-account-button{
+  width:$unit-clamp-l;
+  height:$unit-clamp-l;
+  display:block;
+  position:fixed;
+  top:$border-width;
+  right:$border-width;
+  background-image: url("/omoji/happy.svg");
+  background-size:contain;
+  background-position:center;
+  box-sizing: border-box;
+  margin: $big-clamp-half;
+  margin-top:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
+  &:hover{
+    background-image: url("/omoji/super-happy.svg");
+  }
+}
+</style>
+<style lang="scss">
+.show-menu{
+  .bottom-navbar,
+  .page{
+    opacity:0;
+    pointer-events : none;
+  }
+  .menu ul{
+    overflow: visible;
+  }
+  .menu ul li{
+    opacity:1;
+    pointer-events : all;
+  }
+  header button.menu-toggle:before{
+    opacity:1;
+  }
+}
+</style>

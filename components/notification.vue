@@ -28,3 +28,56 @@ const props = defineProps({
   }
 })
 </script>
+<style scoped lang="scss">
+
+.notification{
+  padding:clamp($unit-min, $unit, $unit-max);
+  padding-right:none;
+  border:$border-width solid $dark;
+  border-radius:$border-radius;
+  margin:clamp($unit-min, $unit, $unit-max) 0;
+  height:clamp($unit-min*4, $unit*4, $unit-max*4);
+  &:hover{
+    background:white;
+    cursor: pointer;
+  }
+  &:hover .title{
+    text-decoration:underline;
+  }
+  .profile-picture{
+    width:clamp($unit-min*4, $unit*4, $unit-max*4);
+    height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    display:inline-block;
+    background-size:contain;
+    border-radius:100%;
+  }
+  .profile-picture.christer{
+    background-image: url('../media/people/caleb.jpg');
+  }
+  .summary{
+    width:85%;
+    margin-left:clamp($unit-min, $unit, $unit-max);
+    display:inline-block;
+    position:relative;
+    height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    overflow:hidden;
+  }
+
+  .date,
+  .summary .by-line{
+    vertical-align:top;
+    font-family: 'Source Code Pro', monospace;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size:60%;
+
+  }
+  .date{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+}
+</style>

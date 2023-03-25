@@ -1,14 +1,14 @@
 <template>
-  <div class="element input text">
-    <label for="address-line"> 
-      Address line: 
+  <div class="input-wrap">
+    <label for="first-name"> 
+      First name: 
     </label>
     <input
       type="text"
-      v-model="address_line"
-      placeholder="Address line"
-      id="address-line"
-      :class="'atom address-line '+state"
+      v-model="first_name"
+      placeholder="First name"
+      id="first-name"
+      :class="'atom first-name '+state"
       @input="updateProfile()"
     />
   </div>
@@ -17,7 +17,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const address_line = ref('')
+  const first_name = ref('')
 
   const props = defineProps({
     initial: {
@@ -29,7 +29,7 @@
       required: false
     }
   })
-  if(props.initial) address_line.value = props.initial
+  if(props.initial) first_name.value = props.initial
 
   state.value = ''
 
@@ -37,7 +37,7 @@
     state.value = 'loading'
     const { error } = await supabase
       .from('accounts')
-      .update({ address_line: address_line.value })
+      .update({ first_name: first_name.value })
       .eq('user_id', props.user_id)
     if(error){
       state.value="error"

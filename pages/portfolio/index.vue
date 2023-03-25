@@ -5,58 +5,62 @@
     <div class="page">
       <div class="section">
         <navbar-tabs />
-        <div class="frame">
-          <div class="chart">
-            <chart-portfolio :days="days" />
+        <div class="block no-margin">
+          <div class="frame">
+            <div class="chart">
+              <chart-portfolio :days="days" />
+            </div>
           </div>
         </div>
-        <nav class="component pills filters">
-          <div class="overflow-wrap">
-            <ul>
-              <li>
-                <button @click="setDays(7)" class="element pill">
-                  <span class="live-bullet">•</span> live
-                </button>
-              </li>
-              <li>
-                <button @click="setDays(30)" class="element pill">
-                  1 month
-                </button>
-              </li>
-              <li>
-                <button @click="setDays(90)" class="element pill">
-                  3 months
-                </button>
-              </li>
-              <li>
-                <button @click="setDays(180)" class="element pill">
-                  6 months
-                </button>
-              </li>
-              <li>
-                <button @click="setDays(365)" class="element pill">
-                  1 year
-                </button>
-              </li>
-              <li>
-                <button @click="setDays(1095)" class="element pill">
-                  3 years
-                </button>
-              </li>
-              <li>
-                <button @click="setDays(1825)" class="element pill">
-                  5 years
-                </button>
-              </li>
-              <li>
-                <!-- should be days since first investment-->
-                <button @click="setDays(1825)" class="element pill">
-                  max
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <div class="block half-margin">
+          <nav class="component pills filters">
+            <div class="overflow-wrap">
+              <ul>
+                <li>
+                  <button @click="setDays(7)" class="element pill">
+                    <span class="live-bullet">•</span> live
+                  </button>
+                </li>
+                <li>
+                  <button @click="setDays(30)" class="element pill">
+                    1 month
+                  </button>
+                </li>
+                <li>
+                  <button @click="setDays(90)" class="element pill">
+                    3 months
+                  </button>
+                </li>
+                <li>
+                  <button @click="setDays(180)" class="element pill">
+                    6 months
+                  </button>
+                </li>
+                <li>
+                  <button @click="setDays(365)" class="element pill">
+                    1 year
+                  </button>
+                </li>
+                <li>
+                  <button @click="setDays(1095)" class="element pill">
+                    3 years
+                  </button>
+                </li>
+                <li>
+                  <button @click="setDays(1825)" class="element pill">
+                    5 years
+                  </button>
+                </li>
+                <li>
+                  <!-- should be days since first investment-->
+                  <button @click="setDays(1825)" class="element pill">
+                    max
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
         <div class="block center-text">
           <cta :showDivest="true"/>
         </div>

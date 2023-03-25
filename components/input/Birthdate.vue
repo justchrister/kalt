@@ -1,14 +1,14 @@
 <template>
-  <div class="element input text">
-    <label for="postal-code"> 
-      Postal code: 
+  <div class="input-wrap">
+    <label for="birthdate"> 
+      Birthdate: 
     </label>
     <input
-      type="text"
-      v-model="postal_code"
-      placeholder="Postal code"
-      id="postal-code"
-      :class="'atom postal-code '+state"
+      type="date"
+      v-model="birthdate"
+      placeholder="Birthdate"
+      id="birthdate"
+      :class="'atom birthdate '+state"
       @input="updateProfile()"
     />
   </div>
@@ -17,7 +17,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const postal_code = ref('')
+  const birthdate = ref('')
 
   const props = defineProps({
     initial: {
@@ -29,7 +29,7 @@
       required: false
     }
   })
-  if(props.initial) postal_code.value = props.initial
+  if(props.initial) birthdate.value = props.initial
 
   state.value = ''
 
@@ -37,7 +37,7 @@
     state.value = 'loading'
     const { error } = await supabase
       .from('accounts')
-      .update({ postal_code: postal_code.value })
+      .update({ birthdate: birthdate.value })
       .eq('user_id', props.user_id)
     if(error){
       state.value="error"

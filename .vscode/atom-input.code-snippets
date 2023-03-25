@@ -49,6 +49,10 @@
 		"body": "clamp($unit-min*$0, $unit*$0, $unit-max*$0)",
 		"description": "the clamp",
 	},
-	
+	"scss": {
+		"prefix": ["/scss"],
+		"body": "<style scoped lang=\"scss\">\n$0\n</style>",
+		"description": "the clamp",
+	},
 }
 

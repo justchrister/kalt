@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="input-wrap">
     <input type="checkbox" id="marketing" name="marketing" value="marketing" checked>
     <label for="marketing"> I want to be notified about my investment performance</label>
   </div>

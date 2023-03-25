@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="input-wrap">
     <input type="checkbox" id="tos" name="tos" value="tos" checked>
     <label for="tos"> I accept the terms of service</label>
   </div>

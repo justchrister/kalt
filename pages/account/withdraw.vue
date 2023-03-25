@@ -22,12 +22,6 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
 
-
-  const { data: incomplete_order_exists, error } = await supabase
-    .from('transactions')
-    .select()
-    .eq('transaction_status',0)
-
   useHead({
     title,
     meta: [{

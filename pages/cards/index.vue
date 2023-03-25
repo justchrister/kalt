@@ -5,10 +5,9 @@
       <div class="section">
         <navbar-tabs />
         <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
-          <div :class="checkBrand(card.card_number)"></div> 
-          <div class="details">  {{ "•••• •••• •••• " + card.card_number.toString().slice(-4) }}  </div>
-          <div :class="'default '+card.default"> <span class="set"> set </span> default  </div>
+          <card :number="card.card_number" :default="card.default" />
         </div>
+
         <nuxt-link to="cards/add">
           <button>
             add card
@@ -47,16 +46,6 @@
   })
   const expiry_date = ref('')
   const expiry_month_test = ref(expiry_date.value.slice(0,2))
-
-  const checkBrand = (brand_id) => {
-    let first_digit = brand_id.toString().slice(0,  1);
-    if(first_digit==='2') return "logo mastercard"
-    if(first_digit==='3') return "logo amex"
-    if(first_digit==='5') return "logo mastercard"
-    if(first_digit==='4') return "logo visa"
-    if(first_digit==='6') return "logo"
-    return "ehm what?"
-  }
 
   const resetDefaultCard = async () => {
     const { data: defaultCard, error: remove } = await supabase

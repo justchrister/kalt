@@ -4,7 +4,7 @@
     <div class='page'>
       <div class="section">
         <div class="block">
-          <h3>See you soon! <omoji emoji="😜" /></h3>
+          <h1 class="sans-serif">See you soon! <omoji emoji="😜" /></h1>
           <p>Thanks for hanging out, come back anytime.</p>
           <bomb to="/auth" text="sign in" />
           <bomb to="/auth/sign-up" text="sign up" />

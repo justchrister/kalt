@@ -119,3 +119,16 @@
 
 
 </script>
+
+<style scoped lang="scss">
+  .component.select.amount .input-group{
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 0% 0%;
+    grid-auto-flow: row;
+    grid-template-columns: 6fr 1fr;
+    .amount{
+      border-right-color:transparent;
+    }
+  }
+</style>

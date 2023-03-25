@@ -65,3 +65,11 @@
     return hour+":"+minute
   }
 </script>
+<style scoped lang="scss">
+.transaction {
+  display: grid; 
+  grid-template-columns: clamp($unit-min, $unit, $unit-max) 12fr 2fr 2fr; 
+  gap: 2% 2%; 
+  border-bottom:$border;
+}
+</style>

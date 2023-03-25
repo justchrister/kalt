@@ -5,10 +5,9 @@
     <div class='page'>
       <div class="section">
         <div class="block">
-          <h3 class="title">
+          <h1 class="sans-serif">
             Welcome back! <omoji emoji="😃" />
-          </h3>
-          <br>
+          </h1>
           <form @submit.prevent="signIn()">
             <label for='email'> E-mail</label>
             <input
@@ -19,7 +18,7 @@
             />
             <div class="element input password">
               <label class="atom" for='password'> Password </label>
-              <input class="atom" 
+              <input
                 type="password"
                 placeholder="Password"
                 v-model="password"

@@ -101,3 +101,41 @@
     oklog("success", "updated subscription: " + data.subscription_id)
   }
 </script>
+<style scoped lang="scss">
+  .component.calendar{
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 1% 1%;
+      grid-auto-flow: row;
+      max-width:$maxsitewidth;
+    input{
+      display:none;
+    }
+    label{
+      user-select: none;
+    }
+    label:hover{
+      background: white;
+      cursor: pointer;
+    }
+    input[type="checkbox"] + label{
+      border: $border;
+      display:inline-block;
+      border-radius:$border-radius;
+      height:clamp($unit-min, $unit, $unit-max);
+      line-height:clamp($unit-min, $unit, $unit-max);
+      padding:clamp($unit-min, $unit, $unit-max)
+              clamp($unit-min, $unit, $unit-max)
+              clamp($unit-min * 2, $unit * 2, $unit-max * 2)
+              0;
+      text-align:right;
+      margin: clamp(calc($unit-min/3), calc($unit/3), calc($unit-max/3)) 0;
+    }
+    input[type="checkbox"]:checked + label {
+        text-decoration:underline;
+        border-radius:$border-radius;
+        background: $green-20;
+    }
+  }
+</style>

@@ -5,9 +5,9 @@
     <div class='page'>
       <div class="section">
         <div class="block">
-          <h3 class="title">
+          <h1 class="sans-serif">
             Welcome to the club! <omoji emoji="😃" />
-          </h3>
+          </h1>
           <br>
           <form @submit.prevent="signUp">
             <label for='email'> E-mail</label>

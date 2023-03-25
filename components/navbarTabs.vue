@@ -29,3 +29,29 @@
       </ul>
     </nav>
 </template>
+<style scoped lang="scss">
+.tabs{
+  margin-bottom:0;
+  nav{
+    width:100%;
+    display: inline-block;
+  }
+  ul{
+    margin-left:0;
+  }
+  ul li{
+    display:inline-block;
+    margin-left: clamp($unit-min*2, $unit*2, $unit-max*2);
+    padding: 0;
+    line-height:1.5;
+    margin-right:0;
+  }
+  ul li:first-child{
+    margin-left:0;
+  }
+  ul li:before{
+    display:none;
+    content: "";
+  }
+}
+</style>
