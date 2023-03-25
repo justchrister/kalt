@@ -1,10 +1,4 @@
 {
   "trailingSlash": false,
-  "installCommand": "npm install",
-  "crons": [
-    {
-      "path": "https://kalt.requestcatcher.com/",
-      "schedule": "20 04 * * *"
-    }
-  ]
+  "installCommand": "npm install"
 }
