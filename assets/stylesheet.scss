@@ -6,14 +6,6 @@
 @import 'base/mixins';
 @import 'base/reset';
 
-@import 'components/image';
-@import 'components/navbar-bottom';
-@import 'components/impact';
-@import 'components/pills';
-
-@import 'elements/link-group';
-@import 'elements/button-square';
-
 @import 'atoms/button';
 @import 'atoms/input';
 @import 'atoms/label';
@@ -54,4 +46,135 @@ h3{
 }
 h4{
   font-weight:500;
+}
+
+
+
+.link-group{
+  width:100%;
+  margin: clamp($unit-min, $unit, $unit-max);
+  text-align:center;
+}
+.link-group a{
+  margin: clamp($unit-min, $unit, $unit-max);
+}
+button.square{
+  border-radius:$border-radius;
+  &:hover{
+    background:white;
+  }
+}
+
+
+
+
+.frame {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-end;
+  align-content: flex-start;
+  height: 50vw;
+  max-height: 418px;
+  div {
+    width:100%;
+  }
+  .image {
+    height: 32vw;
+    max-height: 268px;
+    display: inline-block;
+    flex-grow: 1;
+    flex-basis: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color:$blue-20;
+    border-radius:$border-radius;
+    &.contain{
+      background-size: contain;
+      background-color:transparent;
+    }
+    &:first-child {
+      height: 50vw;
+      max-height: 418px;
+    }
+    &:last-child{
+      margin-left: $unit-clamp-l;
+    }
+  }
+  &:after {
+    display: block;
+    margin: 0;
+    flex: 999 999 auto;
+  }
+}
+
+.chart{
+  box-sizing: border-box;
+}
+.frame:has(.chart){
+  height: 45vw;
+  max-height: 376px;
+  margin:clamp($unit-min*2, $unit*2, $unit-max*2) 0 0 0;
+}
+.chart,
+canvas,
+.chartjs{
+  width:100%;
+}
+
+
+nav.component.pills.filters{
+  height:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
+  overflow-x:scroll;
+  overflow-y:hidden;
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
+  .overflow-wrap{
+    position: relative;
+    width:clamp($unit-min*70, $unit*70, $unit-max*70);
+  }
+  .live-bullet{
+    color:$red;
+  }
+  ul{
+    position: absolute;
+    margin-left:0;
+    width:auto;
+    li{
+      display:inline-block;
+      &:before{
+        display: none;
+      }
+    }
+  }
+  .pill{
+    position:relative;
+  }
+}
+.pill{
+  display:inline-block;
+  width:clamp($unit-min*7.5, $unit*7.5, $unit-max*7.5);
+  padding:0;
+  font-size:85%;
+  margin-right: clamp($unit-min*1, $unit*1, $unit-max*1);
+  border-radius:$border-radius;
+}
+.pill:hover{
+  border-radius:100%;
+  background:white;
+}
+// PILLS
+
+.pills input{
+  display:none; 
+}
+.pills label{
+  font-size:70%;
+  padding:2px clamp($unit-min, $unit, $unit-max);
+  border:$border;
+  border-radius:$border-radius;
+  margin-right:clamp($unit-min, $unit, $unit-max);
 }

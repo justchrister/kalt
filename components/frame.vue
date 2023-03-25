@@ -1,3 +1,15 @@
+<template>
+
+</template>
+<script setup lang="ts">
+const props = defineProps({
+  : {
+    type: String,
+    required: true
+  }
+})
+</script>
+<style scoped lang="scss">
 
 .frame {
   display: flex;
@@ -53,3 +65,5 @@ canvas,
 .chartjs{
   width:100%;
 }
+
+</style>
