@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-  const pagename = 'New Password';
+  const pagename = 'Password';
   const title = 'Kalt — ' + pagename;
 
   const supabase = useSupabaseClient()
