@@ -18,7 +18,7 @@
             <br>
           </p>
           <p class="links">
-            <nuxt-link to="/about/how-it-works">How it works</nuxt-link>
+            <nuxt-link to="/questions/how-does-it-work">How it works</nuxt-link>
             <nuxt-link to="/about">About us</nuxt-link>
           </p>
         </div>
