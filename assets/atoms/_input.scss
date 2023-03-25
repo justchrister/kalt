@@ -34,3 +34,15 @@ input.error{
   background-position:95% center;
   background-repeat:no-repeat;
 }
+
+
+.input-wrap{
+  margin-top: clamp($unit-min, $unit, $unit-max);
+}
+input[type="checkbox" i]  {
+  width:auto;
+  height:auto;
+}
+input[type="checkbox" i] + label{
+  font-size:clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5);
+}

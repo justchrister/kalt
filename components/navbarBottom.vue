@@ -54,7 +54,11 @@
     background-position: center center;
     width:100%;
     color:$light;
-    @include font-display;
+    font-family: $serif;
+    font-size: $big-clamp;
+    line-height: 150%;
+    margin-bottom: $big-clamp-half;
+    font-display: optional;
     font-size: 150%;
     height:clamp($unit-min*8, $unit*8, $unit-max*8);
     line-height:clamp($unit-min*8, $unit*8, $unit-max*8);

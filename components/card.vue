@@ -2,7 +2,7 @@
   <div class="card">
     <div :class="checkBrand(props.number)"></div>
     <div class="details">  {{ "•••• •••• •••• " + props.number.toString().slice(-4) }}  </div>
-    <div :class="'default '+props.default"> default card  </div>
+    <div :class="'default '+props.default"> <span> set </span> default  </div>
   </div>
 </template>
 <script setup lang="ts">
