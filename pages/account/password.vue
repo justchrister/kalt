@@ -52,7 +52,7 @@
   const password = ref('')
   const password2 = ref('')
   const resetPassword = async () => {
-    if(password===password2){
+    if(password.value===password2.value){
       const { data, error } = await supabase.auth.updateUser({
         password: password.value
       })

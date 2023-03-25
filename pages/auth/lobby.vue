@@ -6,9 +6,9 @@
       <div class="section">
         <div class="block">
         <div class="frame">
-          <div class="image" style="background-image:url(/media/images/lobby.png);">
+          <div class="image" style="background-image:url(/media/images/audun-alvestad/waiting-room.png);">
           </div>
-          <div class="image" style="background-image:url(/media/images/lobby_2.jpg);">
+          <div class="image" style="background-image:url(/media/images/apollo-celebration.jpg);">
           </div>
         </div>
         </div>

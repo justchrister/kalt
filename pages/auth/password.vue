@@ -6,7 +6,7 @@
       <div class="section">
         <div class="block">
           <h3>
-            Request a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
+            Request a new password! <omoji emoji="🙃" />
           </h3>
           <form @submit.prevent="resetPassword()">
             <div class="element input email">
@@ -26,12 +26,13 @@
           </div>
         </div>
       </div>
+      <notify :type="notify.type" :message="notify.message" v-if="notify.message" />
     </div>
   </main>
 </template>
 
 <script setup lang="ts">
-  const pagename = 'Sign in';
+  const pagename = 'Password reset';
   const title = 'Kalt — ' + pagename;
 
   const supabase = useSupabaseClient()
@@ -45,12 +46,19 @@
       content: "Make money, make a difference."
     }]
   });
+  const notify = ref({
+    "type": "sorry",
+    "message": "could not sign you in"
+  })
   const email = ref('')
   const resetPassword = async () => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       email.value, {
         redirectTo: 'https://ka.lt/account/password',
     })
-    if(data) console.log(data)
+    if(data) router.push('/auth/lobby')
+    if(error) {
+
+    }
   }
 </script>
