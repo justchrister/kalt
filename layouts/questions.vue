@@ -12,9 +12,7 @@
     router.go(-1)
   }
 </script>
-<style scoped lang="scss">
-
-
+<style lang="scss">
 .layout.questions .back-button{
   padding: $big-clamp-half 0 0 $big-clamp-half;
   font-family: $sans-serif;
