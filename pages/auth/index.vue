@@ -31,7 +31,7 @@
           <br>
           <div class="center-text link-group">
             <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
-            <nuxt-link to="/auth/forgot-password">forgot password</nuxt-link>
+            <nuxt-link to="/auth/password">forgot password</nuxt-link>
           </div>
         </div>
       </div>
