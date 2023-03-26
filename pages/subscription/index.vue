@@ -12,7 +12,7 @@
         </div>
         <div class="block">
           <label>Select card you want to withdraw:</label>
-          <default-card />
+          <card-default />
           <info-box type="info" text="changing default card will change card being charged" />
         </div>
         <div class="block">

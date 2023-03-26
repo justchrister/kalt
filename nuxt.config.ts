@@ -44,5 +44,9 @@ export default defineNuxtConfig({
       supabase_url: 'https://urgitfsodtrsbtcbwnpv.supabase.co',
       supabase_key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyZ2l0ZnNvZHRyc2J0Y2J3bnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkzODQ0MjAsImV4cCI6MTk4NDk2MDQyMH0.l9JEhyEnQ8ILtdJ3mUrCYtWm_Sx6eXHUGNQ8FnSF0yw',
     }
-  }
+  },
+  components: [{
+    path: '~/components',
+    global: true
+  }]
 })

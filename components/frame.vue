@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 const props = defineProps({
-  : {
+  dd: {
     type: String,
     required: true
   }

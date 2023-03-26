@@ -25,6 +25,8 @@
     if(first_digit==='6') return "logo"
     return "ehm what?"
   }
+
+      console.log(props)
 </script>
 <style scoped lang="scss">
   .card{

@@ -21,10 +21,6 @@ const props = defineProps({
   date: {
     type: String,
     required: true
-  },
-  emoji: {
-    type: String,
-    required: false
   }
 })
 </script>
@@ -78,6 +74,5 @@ const props = defineProps({
     top: 0;
     right: 0;
   }
-
 }
 </style>
