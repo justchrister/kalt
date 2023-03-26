@@ -62,9 +62,8 @@ const props = defineProps({
   .date,
   .summary .by-line{
     vertical-align:top;
-    font-family: 'Source Code Pro', monospace;
+    font-family: $monospace;
     text-transform: uppercase;
-    font-weight: 400;
     line-height: 1.5;
     font-size:60%;
 

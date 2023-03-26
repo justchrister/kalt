@@ -1,15 +1,11 @@
 <template>
   <main class="values">
     <navbar :pageTitle="pagename" />
-    <div class="intro">
-      <div class="block">
-        <h3>Our values and goals</h3>
-        <p>
-          All humans are our stakeholders, we try to find a slightly better solution to each challenge we find. Trying to make a slightly better world for everyone at each turn.
-        </p>
-      </div>
-    </div>
     <div class='page'>
+      <intro 
+        title="Our values and goals"
+        paragraph="All humans are our stakeholders, we try to find a slightly better solution to each challenge we find. Trying to make a slightly better world for everyone at each turn." 
+        color="blue"/>
       <div class="block half-margin">
         <h4>Maximize impact</h4>
         <p>
@@ -55,7 +51,7 @@
   });
 </script>
 <style scoped>
-.intro{
-  background: #0CF574;
+.page{
+  padding-top:0;
 }
 </style>

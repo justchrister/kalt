@@ -96,7 +96,7 @@
       }
     }
     span{
-      font-weight:500;
+      font-weight:bold;
       opacity:0;
     }
     &:before{
@@ -109,7 +109,7 @@ header .menu-toggle,
 header .menu ul li {
   font-family: $sans-serif;
   font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
-  font-weight:300;
+  font-weight:normal;
   line-height: 150%;
   font-display: optional;
 }

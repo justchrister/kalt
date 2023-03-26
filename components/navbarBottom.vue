@@ -44,7 +44,6 @@ footer{
   }
   h4{
     color:$light;
-    font-weight:500;
     margin-top:clamp($unit-min*2, $unit*2, $unit-max*2);
   }
   .insignia{

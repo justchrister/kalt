@@ -17,7 +17,7 @@
   padding: $big-clamp-half 0 0 $big-clamp-half;
   font-family: $sans-serif;
   font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
-  font-weight:300;
+  font-weight:normal;
   line-height: 150%;
   font-display: optional;
   position:fixed;
@@ -35,7 +35,7 @@
   border-radius:clamp($unit-min, $unit, $unit-max);
   font-family: $sans-serif;
   font-size: clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5);
-  font-weight:300;
+  font-weight:normal;
   line-height: 150%;
   font-display: optional;
   display:inline-block;
