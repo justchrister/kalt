@@ -1,6 +1,6 @@
 <template>
-  <footer class="page bottom-navbar-wrapper">
-    <div class="bottom-navbar">
+  <footer>
+    <div class="block no-margin">
       <h4>Account:</h4>
       <div class="grid-col-3">
         <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
@@ -13,6 +13,8 @@
         <nuxt-link to="/auth" > Sign in </nuxt-link>
         <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
       </div>
+    </div>
+    <div class="block no-margin">
       <h4>Content:</h4>
       <div class="grid-col-3">
         <nuxt-link to="/about" > About us </nuxt-link>
@@ -22,23 +24,22 @@
         <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
         <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
       </div>
-      <div class="insignia">Make money, make a difference.</div>
     </div>
+    <div class="insignia">Make money, make a difference.</div>
   </footer>
 </template>
 <style scoped lang="scss">
-.bottom-navbar{
-  width: $sitewidth;
-  max-width: $maxsitewidth;
-  padding:clamp($unit-min*2, $unit*2, $unit-max*2) 0;
-  margin:0 auto;
+footer{
+  position:relative;
+  background:$dark;
+  padding:clamp($unit-min*4, $unit*4, $unit-max*4) 0 clamp($unit-min*2, $unit*2, $unit-max*2) 0;
+  margin:clamp($unit-min*4, $unit*4, $unit-max*4) auto 0 auto;
   color:$light;
   a{
     color:$light;
     text-decoration: none;
     &:hover{
       text-decoration: underline;
-
     }
   }
   h4{
@@ -64,10 +65,6 @@
     line-height:clamp($unit-min*8, $unit*8, $unit-max*8);
     text-align:center;
   }
-}
-.bottom-navbar-wrapper{
-  background:$dark;
-
 }
 
 </style>

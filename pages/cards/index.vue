@@ -2,8 +2,8 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section">
-        <navbar-tabs />
+      <navbar-tabs />
+      <div class="block">
         <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
           <card :number="card.card_number" :default="card.default" />
         </div>

@@ -1,19 +1,15 @@
 // Page wrapper
 .page{
-  padding: clamp($unit-min*5, $unit*5, $unit-max*5) 0 0 0;
+  padding-top: clamp($unit-min*15, $unit*15, $unit-max*15);
 }
 main{
   min-height:100vh;
 }
 //  Sections
-.section {
+.block {
   width: $sitewidth;
   max-width: $maxsitewidth;
-  padding: clamp($unit-min*7, $unit*7, $unit-max*7) 0;
-  margin:0 auto;
-}
-.block {
-  margin-bottom: clamp($unit-min*10, $unit*10, $unit-max*10);
+  margin:0 auto clamp($unit-min*10, $unit*10, $unit-max*10) auto;
 }
 .block:last-child{
   margin-bottom:0;

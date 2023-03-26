@@ -1,5 +1,5 @@
 <template>
-    <nav class="tabs">
+    <nav class="block no-margin tabs">
       <ul>
         <li>
           <nuxt-link to="/portfolio" >

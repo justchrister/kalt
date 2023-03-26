@@ -2,8 +2,8 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section">
-        <navbar-tabs />
+      <navbar-tabs />
+      <div class="block">
         <form @submit.prevent="updateProfile">
           <div class="grid-col-2">
             <input-first-name :initial="data.first_name" :user_id="user.id"/>

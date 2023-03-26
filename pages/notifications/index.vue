@@ -2,8 +2,8 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section">
-        <navbar-tabs/>
+      <navbar-tabs/>
+      <div class="block">
         <ContentList path="/notifications" v-slot="{ list }">
             <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
               <notification 
