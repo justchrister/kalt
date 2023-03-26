@@ -2,18 +2,16 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class="intro">
-      <div class="section">
-        <div class="block">
-          <h3>Questions and answers</h3>
-          <p>
-            Here we try to answer some questions you might have, in the simplest terms possible. If you have any other questions, feel free to reach out. 
-          </p>
-          <bomb to="about/contact" text="contact us" />
-        </div>
+      <div class="block">
+        <h3>Questions and answers</h3>
+        <p>
+          Here we try to answer some questions you might have, in the simplest terms possible. If you have any other questions, feel free to reach out. 
+        </p>
+        <bomb to="about/contact" text="contact us" />
       </div>
     </div>
     <div class="page">
-      <div class="section">
+      <div class="block">
         <ContentList path="/questions" v-slot="{ list }">
             <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
               {{ article.title }}

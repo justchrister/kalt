@@ -3,32 +3,30 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class='page'>
-      <div class="section">
-        <div class="block">
-          <h3 class="title">
-            Choose a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
-          </h3>
-          <form @submit.prevent="resetPassword()">
-            <div class="element input password">
-            <label for='password'> Password:</label>
-            <input
-              type="password"
-              placeholder="password"
-              v-model="password"
-              id='password'
-            />
-            </div>
-            <div class="element input password">
-            <input
-              type="password"
-              placeholder="Repeat password"
-              v-model="password2"
-              id='password2'
-            />
-            </div>
-            <input type="submit" value="Reset" class="atom">
-          </form>
-        </div>
+      <div class="block">
+        <h3 class="title">
+          Choose a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
+        </h3>
+        <form @submit.prevent="resetPassword()">
+          <div class="element input password">
+          <label for='password'> Password:</label>
+          <input
+            type="password"
+            placeholder="password"
+            v-model="password"
+            id='password'
+          />
+          </div>
+          <div class="element input password">
+          <input
+            type="password"
+            placeholder="Repeat password"
+            v-model="password2"
+            id='password2'
+          />
+          </div>
+          <input type="submit" value="Reset" class="atom">
+        </form>
       </div>
     </div>
   </main>

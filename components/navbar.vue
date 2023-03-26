@@ -30,10 +30,6 @@
                     <span>Kalt — </span>
                     <nuxt-link to="/account" v-on:click="toggleMenu"> Account </nuxt-link>
                 </li>
-                <li v-if="signedIn">
-                    <span>Kalt — </span>
-                    <nuxt-link to="/subscription" v-on:click="toggleMenu"> Subscription </nuxt-link>
-                </li>
                 <li v-if="!signedIn">
                     <span>Kalt — </span>
                     <nuxt-link to="/auth/sign-up" v-on:click="toggleMenu"> Sign up </nuxt-link>

@@ -3,36 +3,34 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class='page'>
-      <div class="section">
-        <div class="block">
-          <h1 class="sans-serif">
-            Welcome to the club! <omoji emoji="😃" />
-          </h1>
-          <br>
-          <form @submit.prevent="signUp">
-            <label for='email'> E-mail</label>
-            <input
-              type="email"
-              placeholder="Email"
-              v-model="email"
-              id='email'
+      <div class="block">
+        <h1 class="sans-serif">
+          Welcome to the club! <omoji emoji="😃" />
+        </h1>
+        <br>
+        <form @submit.prevent="signUp">
+          <label for='email'> E-mail</label>
+          <input
+            type="email"
+            placeholder="Email"
+            v-model="email"
+            id='email'
+          />
+          <div class="element input password">
+            <label class="atom" for='password'> Password </label>
+            <input class="atom" 
+              type="password"
+              placeholder="Password"
+              v-model="password"
+              id='password'
             />
-            <div class="element input password">
-              <label class="atom" for='password'> Password </label>
-              <input class="atom" 
-                type="password"
-                placeholder="Password"
-                v-model="password"
-                id='password'
-              />
-            </div>
-            <input type="submit" value="next" class="atom" />
-          </form>
-          <br>
-          <div class="center-text link-group">
-            <nuxt-link to="/auth">sign in</nuxt-link>
-            <nuxt-link to="/auth/forgot-password">forgot password</nuxt-link>
           </div>
+          <input type="submit" value="next" class="atom" />
+        </form>
+        <br>
+        <div class="center-text link-group">
+          <nuxt-link to="/auth">sign in</nuxt-link>
+          <nuxt-link to="/auth/forgot-password">forgot password</nuxt-link>
         </div>
       </div>
     </div>

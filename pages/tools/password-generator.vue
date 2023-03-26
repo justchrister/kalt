@@ -2,12 +2,10 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class='page'>
-      <div class="section">
-        <div class="block">
-          <h1>Your strong password:</h1>
-          <input type="text" v-model="password" />
-          <button @click="generatePassword(32)"> generate password </button>
-        </div>
+      <div class="block">
+        <h1>Your strong password:</h1>
+        <input type="text" v-model="password" />
+        <button @click="generatePassword(32)"> generate password </button>
       </div>
     </div>
   </main>

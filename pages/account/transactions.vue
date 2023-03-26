@@ -3,38 +3,34 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class="page">
-      <div class="section" v-if="data">
-        <div class="block">
-          <navbar-tabs />
-          <div class="transaction">
-            <div></div>
-            <div>Amount</div>
-            <div>Date</div>
-            <div>Time</div>
-          </div>
-          <transaction 
-            v-for="transaction of data" 
-            :key="transaction.transaction_id" 
-            :type="transaction.transaction_type"
-            :amount="transaction.amount"
-            :dateTime="transaction.modified_at"
-            :currency="transaction.currency"
-          />
-        </div>
-        <div class="block">
-          <span class="pill"> <omoji emoji="→" /> deposit </span> 
-          <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
-          <span class="pill"> <omoji emoji="↗" /> dividend  </span>
-        </div>
-      </div>
-      <div class="section" v-else>
+      <navbar-tabs />
+      <div class="block" v-if="data">
         <navbar-tabs />
-        <div class="block">
-          <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
+        <div class="transaction">
+          <div></div>
+          <div>Amount</div>
+          <div>Date</div>
+          <div>Time</div>
         </div>
-        <div class="block">
-          <cta />
-        </div>
+        <transaction 
+          v-for="transaction of data" 
+          :key="transaction.transaction_id" 
+          :type="transaction.transaction_type"
+          :amount="transaction.amount"
+          :dateTime="transaction.modified_at"
+          :currency="transaction.currency"
+        />
+      </div>
+      <div class="block" v-if="data">
+        <span class="pill"> <omoji emoji="→" /> deposit </span> 
+        <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
+        <span class="pill"> <omoji emoji="↗" /> dividend  </span>
+      </div>
+      <div class="block" v-else>
+        <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
+      </div>
+      <div class="block">
+        <cta />
       </div>
     </div>
   </main>

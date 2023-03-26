@@ -20,3 +20,64 @@ main{
 .block.no-margin{
   margin-bottom: 0;
 }
+
+
+
+
+.frame {
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  margin:0 auto clamp($unit-min*3, $unit*3, $unit-max*3) auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-end;
+  align-content: flex-start;
+  height: 50vw;
+  max-height: 418px;
+  div {
+    width:100%;
+  }
+  .image {
+    height: 32vw;
+    max-height: 268px;
+    display: inline-block;
+    flex-grow: 1;
+    flex-basis: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color:$blue-20;
+    border-radius:$border-radius;
+    &.contain{
+      background-size: contain;
+      background-color:transparent;
+    }
+    &:first-child {
+      height: 50vw;
+      max-height: 418px;
+    }
+    &:last-child{
+      margin-left: $unit-clamp-l;
+    }
+  }
+  &:after {
+    display: block;
+    margin: 0;
+    flex: 999 999 auto;
+  }
+}
+
+.chart{
+  box-sizing: border-box;
+}
+.frame:has(.chart){
+  height: 45vw;
+  max-height: 376px;
+  margin:clamp($unit-min*2, $unit*2, $unit-max*2) 0 0 0;
+}
+.chart,
+canvas,
+.chartjs{
+  width:100%;
+}

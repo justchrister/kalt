@@ -1,16 +1,14 @@
 <template>
   <main>
     <div class='page'>
-      <div class="section" id="about">
-        <div class="block">
-          Select the amount you want to invest: 
-          <choose-amount-withdraw :uuid="transaction_id" />
-          <label>Deposit money to: </label>
-          <nuxt-link to="/account/manage-cards">
-            <default-card />
-          </nuxt-link>
-          <button @click="completeTransaction"> sell </button>
-        </div>
+      <div class="block">
+        Select the amount you want to invest: 
+        <choose-amount-withdraw :uuid="transaction_id" />
+        <label>Deposit money to: </label>
+        <nuxt-link to="/account/manage-cards">
+          <default-card />
+        </nuxt-link>
+        <button @click="completeTransaction"> sell </button>
       </div>
     </div>
   </main>

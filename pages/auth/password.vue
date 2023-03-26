@@ -3,27 +3,25 @@
   <main>
     <navbar :pageTitle="pagename" />
     <div class='page'>
-      <div class="section">
-        <div class="block">
-          <h3>
-            Request a new password! <omoji emoji="🙃" />
-          </h3>
-          <form @submit.prevent="resetPassword()">
-            <div class="element input email">
-            <label for='email'> E-mail:</label>
-            <input
-              type="email"
-              placeholder="Email"
-              v-model="email"
-              id='email'
-            />
-            </div>
-            <input type="submit" value="Send reset link" class="atom">
-          </form>
-          <div class="element link-group">
-            <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
-            <nuxt-link to="/auth/">sign in</nuxt-link>
+      <div class="block">
+        <h3>
+          Request a new password! <omoji emoji="🙃" />
+        </h3>
+        <form @submit.prevent="resetPassword()">
+          <div class="element input email">
+          <label for='email'> E-mail:</label>
+          <input
+            type="email"
+            placeholder="Email"
+            v-model="email"
+            id='email'
+          />
           </div>
+          <input type="submit" value="Send reset link" class="atom">
+        </form>
+        <div class="element link-group">
+          <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
+          <nuxt-link to="/auth/">sign in</nuxt-link>
         </div>
       </div>
       <notify :type="notify.type" :message="notify.message" v-if="notify.message" />
