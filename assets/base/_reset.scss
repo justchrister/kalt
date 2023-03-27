@@ -74,7 +74,12 @@ a{
 }
 
 h1,h2 {
-  @include font-display;
+  
+  font-family: $serif;
+  font-size: $big-clamp;
+  line-height: 150%;
+  margin-bottom: $big-clamp-half;
+  font-display: block;
   a{
     text-decoration: none;
     &:hover{

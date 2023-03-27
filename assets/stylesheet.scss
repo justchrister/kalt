@@ -1,9 +1,9 @@
 @import 'base/variables';
+@import 'base/mixins';
 @import 'base/reset';
 @import 'base/fonts';
-@import 'base/grid';
 @import 'base/layouts';
-@import 'base/mixins';
+@import 'base/grid';
 
 @import 'atoms/button';
 @import 'atoms/input';
