@@ -1,33 +1,29 @@
 <template>
   <main>
-    
-    <div class="page">
-      <navbar-tabs />
-      <div class="block half-margin">
-        <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
-          <card :number="card.card_number" :default="card.default" />
-        </div>
+    <navbar-tabs />
+    <div class="block half-margin">
+      <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
+        <card :number="card.card_number" :default="card.default" />
       </div>
-      <div class="block">
-        <p>Add a card: </p>
-        <card-add />
-      </div>
+    </div>
+    <div class="block">
+      <p>Add a card: </p>
+      <card-add />
     </div>
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = "Cards";
-  const title = "Kalt — " + pagename;
-  useHead({
-    title,
-    meta: [{
-      name: "description",
-      content: "Make money, make a difference."
-    }]
-  });
   definePageMeta({
+    pagename: 'Cards',
     middleware: 'auth'
-  });
+  })
+  useHead({
+    title: 'Kalt — Cards',
+    meta: [{
+      name: 'description',
+      content: 'Make money, make a difference.'
+    }]
+  })
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()

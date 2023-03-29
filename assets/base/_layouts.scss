@@ -1,8 +1,6 @@
 // Page wrapper
-.page{
-  padding-top: clamp($unit-min*15, $unit*15, $unit-max*15);
-}
 main{
+  padding-top: clamp($unit-min*15, $unit*15, $unit-max*15);
   min-height:100vh;
 }
 //  Sections

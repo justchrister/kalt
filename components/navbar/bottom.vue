@@ -5,7 +5,7 @@
       <div class="grid-col-3">
         <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
         <nuxt-link to="/account" > Account </nuxt-link>
-        <nuxt-link to="/account/notifications" > Notifications </nuxt-link>
+        <nuxt-link to="/notifications" > Notifications </nuxt-link>
         <nuxt-link to="/account/transactions" > Transactions </nuxt-link>
         <nuxt-link to="/cards" > Cards </nuxt-link>
         <nuxt-link to="/subscription" > Subscription </nuxt-link>

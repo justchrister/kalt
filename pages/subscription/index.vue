@@ -1,44 +1,36 @@
 
 <template>
   <main>
-    
-    <div class="page">
-        <navbar-tabs />
-      <div class="block half-margin">
-        <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
-      </div>
-      <div class="block half-margin">
-        <label>Select which days you want to auto-invest</label>
-        <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
-      </div>
-      <div class="block half-margin">
-        <label>Select card you want to withdraw:</label>
-        <card-default />
-        <info-box type="info" text="changing default card will change card being charged" />
-      </div>
-      <div class="block">
-        <toggle text="Subscription enabled " @click="toggleSubscription()" :on="enabled"/>
-      </div>
+    <navbar-tabs />
+    <div class="block half-margin">
+      <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
+    </div>
+    <div class="block half-margin">
+      <label>Select which days you want to auto-invest</label>
+      <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
+    </div>
+    <div class="block half-margin">
+      <label>Select card you want to withdraw:</label>
+      <card-default />
+      <info-box type="info" text="changing default card will change card being charged" />
+    </div>
+    <div class="block">
+      <toggle text="Subscription enabled " @click="toggleSubscription()" :on="enabled"/>
     </div>
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = 'Subscription';
-  const title = 'Kalt — ' + pagename;
-  const router = useRouter()
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-
+  definePageMeta({
+    pagename: 'Subscription',
+    middleware: 'auth'
+  })
   useHead({
-    title,
+    title: 'Kalt — Subscription',
     meta: [{
       name: "description",
       content: "Make money, make a difference."
     }]
-  });
-  definePageMeta({
-    middleware: 'auth'
-  });
+  })
 
   const uuid = ref()
   const days = ref([])

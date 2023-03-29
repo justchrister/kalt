@@ -1,25 +1,32 @@
 
 <template>
   <main>
-    <div class='page'>
-      <div class="block">
-        <h3>Let's invest!  <omoji emoji="☀️" /></h3>
-        <choose-amount-invest :uuid="transaction_id" v-if="transaction_id"/>
-        <br/>
-        <label>Choose card to charge: </label>
-        <nuxt-link to="/account/cards">
-          <default-card />
-        </nuxt-link>
-        <br/>
-        <button @click="completeTransaction"> buy </button>
-      </div>
+    <div class="block">
+      <h3>Let's invest!  <omoji emoji="☀️" /></h3>
+      <choose-amount-invest :uuid="transaction_id" v-if="transaction_id"/>
+      <br/>
+      <label>Choose card to charge: </label>
+      <nuxt-link to="/account/cards">
+        <default-card />
+      </nuxt-link>
+      <br/>
+      <button @click="completeTransaction"> buy </button>
     </div>
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = 'Invest';
-  const title = 'Kalt — ' + pagename;
-  const description = ref('My App Description')
+  definePageMeta({
+    pagename: 'Invest',
+    layout: 'focused',
+    middleware: 'auth'
+  })
+  useHead({
+    title: 'Kalt — Invest',
+    meta: [{
+      name: 'description',
+      content: 'Make money, make a difference.'
+    }]
+  })
   const router = useRouter()
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
@@ -32,17 +39,6 @@
     .single()
 
   if(incomplete_order_exists) oklog('success', 'found incomplete transaction: '+incomplete_order_exists.transaction_id)
-  useHead({
-    title,
-    meta: [{
-      name: "description",
-      content: "Make money, make a difference."
-    }]
-  });
-  definePageMeta({
-    layout: "focused",
-    middleware: 'auth'
-  });
 
   const { data: transaction_id } = await useLazyAsyncData('cards', async () => {
     // if there is not an incomplete transaction, start new transaction

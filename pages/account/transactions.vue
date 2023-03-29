@@ -1,52 +1,47 @@
 
 <template>
   <main>
-    
-    <div class="page">
+    <navbar-tabs />
+    <div class="block" v-if="data">
       <navbar-tabs />
-      <div class="block" v-if="data">
-        <navbar-tabs />
-        <div class="transaction">
-          <div></div>
-          <div>Amount</div>
-          <div>Date</div>
-          <div>Time</div>
-        </div>
-        <transaction 
-          v-for="transaction of data" 
-          :key="transaction.transaction_id" 
-          :type="transaction.transaction_type"
-          :amount="transaction.amount"
-          :dateTime="transaction.modified_at"
-          :currency="transaction.currency"
-        />
+      <div class="transaction">
+        <div></div>
+        <div>Amount</div>
+        <div>Date</div>
+        <div>Time</div>
       </div>
-      <div class="block" v-if="data">
-        <span class="pill"> <omoji emoji="→" /> deposit </span> 
-        <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
-        <span class="pill"> <omoji emoji="↗" /> dividend  </span>
-      </div>
-      <div class="block" v-else>
-        <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
-      </div>
-      <div class="block">
-        <cta />
-      </div>
+      <transaction 
+        v-for="transaction of data" 
+        :key="transaction.transaction_id" 
+        :type="transaction.transaction_type"
+        :amount="transaction.amount"
+        :dateTime="transaction.modified_at"
+        :currency="transaction.currency"
+      />
+    </div>
+    <div class="block" v-if="data">
+      <span class="pill"> <omoji emoji="→" /> deposit </span> 
+      <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
+      <span class="pill"> <omoji emoji="↗" /> dividend  </span>
+    </div>
+    <div class="block" v-else>
+      <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
+    </div>
+    <div class="block">
+      <cta />
     </div>
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = 'Transactions';
-  const title = 'Kalt — ' + pagename;
-
   definePageMeta({
+    pagename: 'Transactions',
     middleware: 'auth'
   })
   useHead({
-    title,
+    title: 'Kalt — Transactions',
     meta: [{
       name: 'description',
-      content: "Make money, make a difference."
+      content: 'Make money, make a difference.'
     }]
   })
 

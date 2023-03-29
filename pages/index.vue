@@ -25,12 +25,11 @@
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = 'Homepage';
   definePageMeta({
-    pagename: pagename,
+    pagename: 'Homepage'
   })
   useHead({
-    title: 'Kalt — ' + pagename,
+    title: 'Kalt — Homepage',
     meta: [{
       name: "description",
       content: "Make money, make a difference."
