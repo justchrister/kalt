@@ -153,7 +153,7 @@ button.menu-toggle {
 <style lang="scss">
 .show-menu{
   .bottom-navbar,
-  .page{
+  .main{
     opacity:0;
     pointer-events : none;
   }

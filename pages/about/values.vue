@@ -3,7 +3,7 @@
     <intro 
       title="Our values and goals"
       paragraph="All humans are our stakeholders, we try to find a slightly better solution to each challenge we find. Trying to make a slightly better world for everyone at each turn." 
-      color="blue"/>
+      color="pink"/>
     <div class="block half-margin">
       <h4>Maximize impact</h4>
       <p>

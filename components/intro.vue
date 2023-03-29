@@ -30,8 +30,8 @@
   h1{
     margin:0;
   }
-  &#green{ background:$green;}
-  &#blue{ background:$blue;}
-  &#pink{ background:$pink;}
+  &#green{ background:$green-20;}
+  &#blue{ background:$blue-20;}
+  &#pink{ background:$pink-20;}
 }
 </style>
