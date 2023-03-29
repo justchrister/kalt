@@ -1,9 +1,9 @@
 <template>
   <div class="cta">
-    <nuxt-link to="/portfolio/invest">
+    <nuxt-link to="/portfolio/buy">
       <button  :class="animatedClass" tabindex="-1">lets invest</button>
     </nuxt-link>
-    <nuxt-link v-if="props.showDivest" to="portfolio/divest">or divest</nuxt-link>
+    <nuxt-link v-if="props.showDivest" to="/portfolio/sell">or divest</nuxt-link>
   </div>
 </template>
 
