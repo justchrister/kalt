@@ -1,5 +1,5 @@
 <template>
-  <main class="page-wrap notification">
+  <main class="notification">
     <div class="block">
       <ContentDoc>
         <template #not-found>
@@ -11,7 +11,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Notification',
+    pagename: 'Question',
     layout: 'focused',
     middleware: 'auth'
   })
