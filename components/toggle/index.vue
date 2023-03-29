@@ -13,10 +13,14 @@ const props = defineProps({
   text: {
     type: String,
     required: true
-  }
+  },
+  on: {
+    type: Boolean,
+    required: false
+  },
 })
 
-const isOn=ref(false)
+const isOn=ref(props.on)
 const toggle = async () => {
   if (isOn.value){
     isOn.value=false

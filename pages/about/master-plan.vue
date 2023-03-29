@@ -1,6 +1,6 @@
 <template>
   <main class="values">
-    <navbar :pageTitle="pagename" />
+    
     <div class="intro">
       <div class="block">
         <h3>Master plan</h3>

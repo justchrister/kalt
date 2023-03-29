@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class='page'>
       <div class="block">
         <h3>

@@ -26,7 +26,6 @@
     return "ehm what?"
   }
 
-      console.log(props)
 </script>
 <style scoped lang="scss">
   .card{

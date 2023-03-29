@@ -1,26 +1,23 @@
 
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class="page">
         <navbar-tabs />
-      <div class="block">
+      <div class="block half-margin">
         <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
       </div>
-      <div class="block">
+      <div class="block half-margin">
         <label>Select which days you want to auto-invest</label>
         <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
       </div>
-      <div class="block">
+      <div class="block half-margin">
         <label>Select card you want to withdraw:</label>
         <card-default />
         <info-box type="info" text="changing default card will change card being charged" />
       </div>
       <div class="block">
-        <button @click="toggleSubscription()">
-          <span v-if="enabled">pause subscription</span>
-          <span v-else>start subscription</span>
-        </button>
+        <toggle text="Subscription enabled " @click="toggleSubscription()" :on="enabled"/>
       </div>
     </div>
   </main>

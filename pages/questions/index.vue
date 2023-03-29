@@ -1,6 +1,6 @@
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class="intro">
       <div class="block">
         <h3>Questions and answers</h3>

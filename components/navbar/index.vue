@@ -4,14 +4,12 @@
             <ul id="menu_items">
                 <li class="logomark" v-if="signedIn" v-on:click="toggleMenuOff">
                     <nuxt-link to="/portfolio">
-                    <span>Kalt — </span>
-                    {{ pageTitle }}
+                    <span>Kalt — </span>{{route.meta.pagename}}
                     </nuxt-link>
                 </li>
                 <li class="logomark" v-else v-on:click="toggleMenuOff">
                     <nuxt-link to="/">
-                    <span>Kalt — </span>
-                    {{ pageTitle }}
+                    <span>Kalt — </span>{{route.meta.pagename}}
                     </nuxt-link>
                 </li>
                 <li>
@@ -53,6 +51,7 @@
 </template>
 
 <script setup>
+    const route = useRoute()
     let signedIn = false
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
@@ -63,7 +62,6 @@
     const toggleMenuOff = async () => { 
         document.getElementsByTagName("body")[0].classList.remove("show-menu");
     }
-
     const props = defineProps({
         pageTitle: {
             type: String,

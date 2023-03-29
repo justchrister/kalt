@@ -1,6 +1,6 @@
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class='page'>
       <div class="block">
         <h1 class="sans-serif">See you soon! <omoji emoji="😜" /></h1>

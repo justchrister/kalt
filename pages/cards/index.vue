@@ -1,18 +1,16 @@
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class="page">
       <navbar-tabs />
-      <div class="block">
+      <div class="block half-margin">
         <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
           <card :number="card.card_number" :default="card.default" />
         </div>
-
-        <nuxt-link to="cards/add">
-          <button>
-            add card
-          </button>
-        </nuxt-link>
+      </div>
+      <div class="block">
+        <p>Add a card: </p>
+        <card-add />
       </div>
     </div>
   </main>

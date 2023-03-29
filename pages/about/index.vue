@@ -1,6 +1,6 @@
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class="page">
       <div class="frame">
         <div class="image" style="background-image:url(/media/images/architecture/brutalist-house-in-affligem.jpg);">

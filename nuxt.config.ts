@@ -22,15 +22,12 @@ export default defineNuxtConfig({
       title: 'Kalt — Undefined',
       link: [ 
         { rel: 'icon', type: "image/x-icon", href: '/favicon/favicon.ico' },
-        { rel: 'icon', type: "image/png", sizes: '32x32', href: '/favicon//favicon-32x32.png' } ,
-        { rel: 'icon', type: "image/png", sizes: '16x16', href: '/favicon//favicon-16x16.png' } ,
+        { rel: 'icon', type: "image/png", sizes: '32x32', href: '/favicon/favicon-32x32.png' } ,
+        { rel: 'icon', type: "image/png", sizes: '16x16', href: '/favicon/favicon-16x16.png' } ,
         { rel: 'manifest', type: "image/x-icon", href: '/favicon/site.webmanifest' },
-        { rel: 'preload', as: 'font', href: "/fonts/display.woff" },
-        { rel: 'preload', as: 'font', href: "/fonts/display.ttf" },
-        { rel: 'preload', as: 'font', href: "/fonts/body.woff" },
-        { rel: 'preload', as: 'font', href: "/fonts/body.ttf" },
-        { rel: 'preload', as: 'font', href: "/fonts/body-bold.woff" },
-        { rel: 'preload', as: 'font', href: "/fonts/body-bold.ttf" }
+        { rel: 'preload', as: 'font', href: "/fonts/display.woff2", crossorigin: true},
+        { rel: 'preload', as: 'font', href: "/fonts/body.woff2", crossorigin: true },
+        { rel: 'preload', as: 'font', href: "/fonts/body-bold.woff2", crossorigin: true}
       ],
       meta: [
         { name: 'description', content: 'Make money, make a difference!' },

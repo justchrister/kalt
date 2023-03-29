@@ -77,7 +77,7 @@
       required: true
     },
     days: {
-      type: String,
+      type: Array,
       required: true
     }
   })

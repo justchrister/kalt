@@ -5,6 +5,6 @@
 </template>
 <script setup lang="ts">
 const updateTos = async () => {
-
+ return "lol"
 }
 </script>

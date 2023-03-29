@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class="page">
       <navbar-tabs />
       <div class="block" v-if="data">

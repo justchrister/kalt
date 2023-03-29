@@ -1,6 +1,6 @@
 <template>
   <main class="values">
-    <navbar :pageTitle="pagename" />
+    <navbar />
     <div class='page'>
       <intro 
         title="Our values and goals"
@@ -40,15 +40,17 @@
   </main>
 </template>
 <script setup lang="ts">
-  const pagename = "Our values";
-  const title = "Kalt — " + pagename;
+  const pagename = 'Our values'
+  definePageMeta({
+    pagename: pagename,
+  })
   useHead({
-    title,
+    title: 'Kalt — ' + pagename,
     meta: [{
       name: "description",
       content: "Make money, make a difference."
     }]
-  });
+  })
 </script>
 <style scoped>
 .page{

@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <navbar :pageTitle="pagename" />
+    
     <div class='page'>
       <div class="block">
         <h1 class="sans-serif">
@@ -24,8 +24,11 @@
               id='password'
             />
           </div>
-          <input type="submit" value="sign in" class="atom"/>
         </form>
+        <br>
+        <button @click="signIn()">
+          sign in
+        </button>
         <br>
         <div class="center-text link-group">
           <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
