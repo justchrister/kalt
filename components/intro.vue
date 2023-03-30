@@ -1,8 +1,8 @@
 <template>
   <div class="intro" :id="props.color">
-    <block>
+    <block margin="none">
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
-      <p>{{props.paragraph}}</p>
+      <p v-if="props.paragraph">{{props.paragraph}}</p>
     </block>
   </div>
 </template>

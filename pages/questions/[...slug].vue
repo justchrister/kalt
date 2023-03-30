@@ -12,7 +12,7 @@
 <script setup lang="ts">
   definePageMeta({
     pagename: 'Question',
-    layout: 'focused',
+    layout: 'questions',
     middleware: 'auth'
   })
   useHead({

@@ -55,37 +55,37 @@
         title="Let people invest in what they care about"
         content=""
         color="green"
-        :number="1"
+        number="1"
       />
       <content-card 
         title="Make it easy to understand the impact"
         content="Giving understandable ways to summarize the impact"
         color="green"
-        :number="2"
+        number="2"
       />
       <content-card 
         title="Use AI to identify high-potential solar energy sites."
         content=""
         color="blue"
-        :number="3"
+        number="3"
       />
       <content-card 
         title="Deploy high-efficiency monocrystalline solar panels, built for scale."
         content=""
         color="blue"
-        :number="4"
+        number="4"
       />
       <content-card 
         title="Pay back profits to investors directly"
         content=""
         color="pink"
-        :number="5"
+        number="5"
       />
       <content-card 
         title="Pay back profits to investors directly"
         content=""
         color="pink"
-        :number="6"
+        number="6"
       />
     </block>
   </main>
