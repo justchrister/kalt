@@ -1,10 +1,8 @@
 <template>
-  <div class="chartWrap">
-    <Line
-      :options="chartOptions"
-      :data="chartData"
-    />
-  </div>
+  <Line
+    :options="chartOptions"
+    :data="chartData"
+  />
 </template>
 <script lang="ts" setup>
 import {
@@ -41,6 +39,7 @@ const props = defineProps({
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: true,
+  aspectRatio: 1.77777777778,
   legend: {
     display: false
   },

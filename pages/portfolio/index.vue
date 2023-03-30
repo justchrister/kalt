@@ -2,13 +2,9 @@
 <template>
   <main>
     <navbar-tabs />
-    <div class="block no-margin">
-      <div class="frame">
-        <div class="chart">
-          <chart-portfolio :days="days" />
-        </div>
-      </div>
-    </div>
+    <frame-wrap>
+      <chart-portfolio :days="days" />
+    </frame-wrap>
     <div class="block half-margin">
       <nav class="component pills filters">
         <div class="overflow-wrap">

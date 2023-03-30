@@ -1,26 +1,24 @@
 <template>
-  <div>
+  <div class="chart-sizer">
+    <chart-base 
+      :currency="data.preferred_currency"
+      :data="dataset"/>
     <p v-if="dataset[0]">
       {{prettyCurrency(Math.floor(dataset[0].quantity), data.preferred_currency)}} (+20%)
     </p>
-    <div class="chartWrap">
-      <chart-base 
-        :currency="data.preferred_currency"
-        :data="dataset"/>
-    </div>
   </div>
 </template>
 <script lang="ts" setup>
-const props = defineProps({
-  days: {
-    type: Number,
-    required: false
-  },
-  currency: {
-    type: String,
-    required: false
-  }
-})
+  const props = defineProps({
+    days: {
+      type: Number,
+      required: false
+    },
+    currency: {
+      type: String,
+      required: false
+    }
+  })
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
 
@@ -49,3 +47,10 @@ const props = defineProps({
   initateChart()
   watch(() => props.days, () => initateChart() )
 </script>
+<style>
+  .chart-sizer{
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+</style>

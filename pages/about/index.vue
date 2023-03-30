@@ -1,11 +1,9 @@
 <template>
   <main>
-    <div class="frame">
-      <div class="image" style="background-image:url(/media/images/architecture/brutalist-house-in-affligem.jpg);">
-      </div>
-      <div class="image" style="background-image:url(/media/images/eddy-mercx-1970.jpg);">
-      </div>
-    </div>
+    <frame-wrap>
+      <frame-image src="/media/images/architecture/brutalist-house-in-affligem.jpg" />
+      <frame-image src="/media/images/eddy-mercx-1970.jpg" />
+    </frame-wrap>
     <div class="block">
       <h2 class="title">
         Be the change you want to see in the world

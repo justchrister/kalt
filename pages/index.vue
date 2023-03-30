@@ -1,10 +1,9 @@
 
 <template>
   <main>
-    <div class="frame">
-      <div class="image" style="background-image:url(/media/images/frontpage.webp); margin-left:0;">
-      </div>
-    </div>
+    <frame-wrap>
+      <frame-image src="/media/images/frontpage.webp" />
+    </frame-wrap>
     <div class="block">
       <h2 class="title">
         Make money, make a difference! <omoji emoji="😃" />

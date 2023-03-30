@@ -1,14 +1,10 @@
 
 <template>
   <main>
-    <div class="block">
-      <div class="frame">
-        <div class="image" style="background-image:url(/media/images/audun-alvestad/waiting-room.png);">
-        </div>
-        <div class="image" style="background-image:url(/media/images/apollo-celebration.jpg);">
-        </div>
-      </div>
-    </div>
+    <frame-wrap>
+      <frame-image src="/media/images/audun-alvestad/waiting-room.png" />
+      <frame-image src="/media/images/apollo-celebration.jpg" />
+    </frame-wrap>
     <div class="block">
       <h1> One small step for you, a big step for mankind. </h1>
       <p> You are just one step away from investing in the future of fossil-free energy. Check your email for our invitation. </p>

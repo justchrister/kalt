@@ -3,7 +3,7 @@
   <main>
     <navbar-tabs />
     <div class="block half-margin">
-      <choose-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
+      <input-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
     </div>
     <div class="block half-margin">
       <label>Select which days you want to auto-invest</label>
@@ -32,6 +32,8 @@
     }]
   })
 
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   const uuid = ref()
   const days = ref([])
   const amount = ref('')
