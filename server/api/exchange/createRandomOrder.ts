@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {

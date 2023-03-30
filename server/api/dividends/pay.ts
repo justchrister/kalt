@@ -1,6 +1,6 @@
 // @ts-nocheck
 // yeah, the above comment should probably be removed, hehehe
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -11,7 +11,7 @@ export default defineEventHandler( async (event) => {
   const orderTypeBuy = 0;
 
   if (!currency){
-    oklog('error', 'currency missing from body')
+    ok.log('error', 'currency missing from body')
     return {
       'error' : 'currency missing from body'
     }

@@ -60,18 +60,6 @@
       updatePaymentCurrency()
     }
   }
-  const convertToInt = (string) => {
-    let integer = string.replace("NOK", "")
-      .replace("EUR", "")
-      .replace("€",   "")
-      .replace("USD", "")
-      .replace("$",   "")
-      .replace(".",   "")
-      .replace(",",   "")
-      .replace(" ",   "")
-
-    return integer
-  }
   const { data: currencies } = await supabase
     .from('currencies')
     .select('iso, name')
@@ -83,11 +71,11 @@
         .from('subscriptions')
         .update({
           subscription_id: props.uuid,
-          amount: convertToInt(amount.value)
+          amount: ok.toInt(amount.value)
       })
-      if(error) oklog('error', 'could not update amount')
+      if(error) ok.log('error', 'could not update amount')
       if(error) console.log(error)
-      if(!error) oklog('success', 'updated amount')
+      if(!error) ok.log('success', 'updated amount')
     }
   }
   const updatePaymentCurrency = async () => {
@@ -97,8 +85,8 @@
           subscription_id: props.uuid,
           currency: currency.value
       })
-      if(error) oklog('error', 'could not update currency')
-      if(!error) oklog('success', 'updated currency to: '+currency.value)
+      if(error) ok.log('error', 'could not update currency')
+      if(!error) ok.log('success', 'updated currency to: '+currency.value)
   }
 
   const options = {

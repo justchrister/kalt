@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -23,9 +23,9 @@ export default defineEventHandler( async (event) => {
     .order('created_at', { ascending: true })
     .limit(1)
     .single()
-  if(fulfilling_order) oklog('success', 'found fulfilling order: ' + fulfilling_order.order_id)
+  if(fulfilling_order) ok.log('success', 'found fulfilling order: ' + fulfilling_order.order_id)
   if(fulfilling_order_error) {
-    oklog('error', 'could not find fulfilling order')
+    ok.log('error', 'could not find fulfilling order')
     return {
       'error': 'could not find fulfilling order'
     }
@@ -56,12 +56,12 @@ export default defineEventHandler( async (event) => {
         created_at: new Date }])
       .select()
       .single()
-    oklog('success', 'created order: ' + data.order_id)
+    ok.log('success', 'created order: ' + data.order_id)
   }
   if(fulfilling_order.order_id){
     const fulfilling_order_id = fulfilling_order.order_id
     await fulfillOrders (body.record.order_id, fulfilling_order.order_id)
-    oklog('success', 'matched orders: ' + body.record.order_id + " with " + fulfilling_order.order_id)
+    ok.log('success', 'matched orders: ' + body.record.order_id + " with " + fulfilling_order.order_id)
     let new_order_quantity = fulfilling_order.quantity - body.record.quantity
     if(new_order_quantity!=0){
       await createOrder(fulfilling_order.user_id, fulfilling_order_type, new_order_quantity) 

@@ -44,10 +44,10 @@
           .from('transactions')
           .update({
             transaction_id: props.uuid,
-            amount: amount.value
+            amount: oktoint(amount.value)
         })
-        if(error) oklog('error', 'could not update amount')
-        if(!error) oklog('success', 'updated amount')
+        if(error) ok.log('error', 'could not update amount')
+        if(!error) ok.log('success', 'updated amount')
       }
     }
     const updatePaymentCurrency = async () => {
@@ -57,8 +57,8 @@
             transaction_id: props.uuid,
             currency: preferred_currency.value
         })
-        if(error) oklog('error', 'could not update currency')
-        if(!error) oklog('success', 'updated currency to: '+preferred_currency.value)
+        if(error) ok.log('error', 'could not update currency')
+        if(!error) ok.log('success', 'updated currency to: '+preferred_currency.value)
     }
 
 
@@ -69,10 +69,10 @@
 
 
     if (data) {
-      oklog('success', 'found preferred currency: ' + data.preferred_currency)
+      ok.log('success', 'found preferred currency: ' + data.preferred_currency)
       preferred_currency.value = data.preferred_currency
       updatePaymentCurrency()
-      oklog('success', 'set buy currency: ' + preferred_currency.value)
+      ok.log('success', 'set buy currency: ' + preferred_currency.value)
     }
     const amount =  ref('')
 

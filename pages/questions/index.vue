@@ -3,20 +3,13 @@
     <intro title="Questions and answers"
     paragraph="Here we try to answer some questions you might have, in simple to understand. " 
     color="blue"/>
-    <div class="intro">
-      <div class="block">
-        <h3></h3>
-        <p>
-        </p>
-      </div>
-    </div>
-    <div class="block">
+    <block>
       <ContentList path="/questions" v-slot="{ list }">
           <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
             {{ article.title }}
           </nuxt-link>
       </ContentList>
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

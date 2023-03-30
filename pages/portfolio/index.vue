@@ -5,7 +5,7 @@
     <frame-wrap>
       <chart-portfolio :days="days" />
     </frame-wrap>
-    <div class="block half-margin">
+    <block margin="half">
       <nav class="component pills filters">
         <div class="overflow-wrap">
           <ul>
@@ -53,11 +53,11 @@
           </ul>
         </div>
       </nav>
-    </div>
-    <div class="block center-text">
+    </block>
+    <block>
       <cta :showDivest="true"/>
-    </div>
-    <div class="block">
+    </block>
+    <block>
       <h3>Our impact in numbers <omoji emoji="😮"/></h3>
       <p> Your investments has decreased your carbon footprint by 90 tonnes of Co2, in other words:  </p>
       <div class="impacts">
@@ -66,7 +66,7 @@
         <impact type="plane" title="Flying 1.4 times to Paris from Tokyo" />
         <impact type="plant" title="Producing and eating 9 000 avocadoes" />
       </div>
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

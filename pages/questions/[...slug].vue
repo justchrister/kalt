@@ -1,12 +1,12 @@
 <template>
   <main class="notification">
-    <div class="block">
+    <block>
       <ContentDoc>
         <template #not-found>
           <not-found />
         </template>
       </ContentDoc>
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

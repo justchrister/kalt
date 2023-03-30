@@ -1,9 +1,9 @@
 <template>
   <div class="intro" :id="props.color">
-    <div class="block">
+    <block>
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
       <p>{{props.paragraph}}</p>
-    </div>
+    </block>
   </div>
 </template>
 <script setup lang="ts">

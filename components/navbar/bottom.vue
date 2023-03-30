@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="block no-margin">
+    <block margin="none">
       <h4>Account:</h4>
       <div class="grid-col-3">
         <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
@@ -13,8 +13,8 @@
         <nuxt-link to="/auth" > Sign in </nuxt-link>
         <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
       </div>
-    </div>
-    <div class="block no-margin">
+    </block>
+    <block margin="none">
       <h4>Content:</h4>
       <div class="grid-col-3">
         <nuxt-link to="/about" > About us </nuxt-link>
@@ -24,7 +24,7 @@
         <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
         <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
       </div>
-    </div>
+    </block>
     <div class="insignia">Make money, make a difference.</div>
   </footer>
 </template>

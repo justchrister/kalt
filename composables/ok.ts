@@ -1,7 +1,32 @@
 // @ts-nocheck
 // import { serverSupabaseServiceRole } from '#supabase/server'
 
+export const ok = {
+  toInt(input){
+    const pattern = /[^0-9]/g;
+    return input.replace(pattern, '');
+  },
+  toChar(input){
+    const pattern = /[^0-9]/g;
+    return input.replace(pattern, '');
+  },
+  log(type, text){
+    // const supabase = serverSupabaseServiceRole()
 
+    // https://talyian.github.io/ansicolors/
+    let label = '\x1b[34m● \x1b[0m';
+    if (type==='success') label = '\x1b[32m● \x1b[0m'
+    if (type==='warn')    label = '\x1b[33m● \x1b[0m'
+    if (type==='error')   label = '\x1b[31m● \x1b[0m'
+    console.log(label + text)
+    let json={
+      "uuid": okuuid(),
+      "type": type,
+      "text": text
+    }
+    return json
+  }
+};
 export const okuuid = () => {  
   const uuidBytes = new Array(16);
   for (let i = 0; i < 16; i++) {
@@ -28,24 +53,10 @@ export const okclock = (input) => {
   if (input="now") return Date.now()
   if (input="today") return Date.now()
   if (input="tomorrow") return "not supported yet"
-};
+}
 
-export const oklog = async (type, text) => {
-  // const supabase = serverSupabaseServiceRole()
-
-  // https://talyian.github.io/ansicolors/
-  let label = '\x1b[34m● \x1b[0m';
-
-  if (type==='success') label = '\x1b[32m● \x1b[0m'
-  if (type==='warn')    label = '\x1b[33m● \x1b[0m'
-  if (type==='error')   label = '\x1b[31m● \x1b[0m'
-  console.log(label + text)
-
-  let json={
-    "uuid": okuuid(),
-    "type": type,
-    "text": text
-  }
-  //httpPost("https://ka.lt/api/oklog", json)
-  return json
+export const oktochars = (input) => {
+    // The regex pattern matches any non-numeric characters and spaces
+    const pattern = /[^a-zA-Z]/g;
+    return input.replace(pattern, '');
 };

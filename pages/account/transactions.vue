@@ -2,7 +2,7 @@
 <template>
   <main>
     <navbar-tabs />
-    <div class="block" v-if="data">
+    <block margin="half" v-if="data">
       <navbar-tabs />
       <div class="transaction">
         <div></div>
@@ -18,18 +18,18 @@
         :dateTime="transaction.modified_at"
         :currency="transaction.currency"
       />
-    </div>
-    <div class="block" v-if="data">
+    </block>
+    <block v-if="data">
       <span class="pill"> <omoji emoji="→" /> deposit </span> 
       <span class="pill"> <omoji emoji="←" /> withdrawal  </span>
       <span class="pill"> <omoji emoji="↗" /> dividend  </span>
-    </div>
-    <div class="block" v-else>
+    </block>
+    <block v-else>
       <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
-    </div>
-    <div class="block">
+    </block>
+    <block margin="none">
       <cta />
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">
@@ -55,7 +55,7 @@
     .eq('transaction_status', 3)
     .order('created_at', { ascending: false })
   console.log(data)
-  if (data) oklog('success', 'got transactions for '+user.value.id)
-  if (error) oklog('error', 'could not get transactions for '+user.value.id)
+  if (data) ok.log('success', 'got transactions for '+user.value.id)
+  if (error) ok.log('error', 'could not get transactions for '+user.value.id)
 
 </script>

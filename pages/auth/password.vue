@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <div class="block">
+    <block>
       <h3>
         Request a new password! <omoji emoji="🙃" />
       </h3>
@@ -21,7 +21,7 @@
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
         <nuxt-link to="/auth/">sign in</nuxt-link>
       </div>
-    </div>
+    </block>
     <notify :type="notify.type" :message="notify.message" v-if="notify.message" />
   </main>
 </template>

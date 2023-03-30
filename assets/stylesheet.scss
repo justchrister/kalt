@@ -2,7 +2,6 @@
 @import 'base/mixins';
 @import 'base/reset';
 @import 'base/fonts';
-@import 'base/layouts';
 @import 'base/grid';
 
 @import 'atoms/button';
@@ -119,4 +118,11 @@ p.links{
   a:first-child{
     margin-right:clamp($unit-min*2, $unit*2, $unit-max*2)
   }
+}
+
+
+// Page wrapper
+main{
+  padding-top: clamp($unit-min*15, $unit*15, $unit-max*15);
+  min-height:100vh;
 }

@@ -1,7 +1,7 @@
 <template>
   <main>
     <navbar-tabs />
-    <div class="block">
+    <block>
       <form @submit.prevent="updateProfile">
         <div class="grid-col-2">
           <input-first-name :initial="data.first_name" :user_id="user.id"/>
@@ -21,7 +21,7 @@
         <toggle-terms-of-service />
         <toggle-marketing />
       </form>
-    </div>
+    </block>
   </main>
 </template>
 
@@ -45,5 +45,5 @@
     .from('accounts')
     .select()
     .single()
-  if(error) oklog("error", "Could not get user account")
+  if(error) ok.log("error", "Could not get user account")
 </script>

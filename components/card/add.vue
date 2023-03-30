@@ -68,7 +68,7 @@
       .select()
       .single()
     if(error){
-      oklog('error', error.message)
+      ok.log('error', error.message)
     }
     if(data) {
       await resetDefaultCard();

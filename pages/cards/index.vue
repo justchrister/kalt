@@ -1,15 +1,15 @@
 <template>
   <main>
     <navbar-tabs />
-    <div class="block half-margin">
+    <block margin="half">
       <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
         <card :number="card.card_number" :default="card.default" />
       </div>
-    </div>
-    <div class="block">
+    </block>
+    <block>
       <p>Add a card: </p>
       <card-add />
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

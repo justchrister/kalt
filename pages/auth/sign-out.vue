@@ -1,11 +1,11 @@
 <template>
   <main>
-    <div class="block">
+    <block margin="none">
       <h1 class="sans-serif">See you soon! <omoji emoji="😜" /></h1>
       <p>Thanks for hanging out, come back anytime.</p>
       <bomb to="/auth" text="sign in" />
       <bomb to="/auth/sign-up" text="sign up" />
-    </div>
+    </block>
   </main>
 </template>
 <script lang="ts" setup>

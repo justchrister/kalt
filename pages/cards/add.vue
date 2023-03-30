@@ -1,9 +1,9 @@
 <template>
   <main>
-    <div class="block">
+    <block>
       <h3> Add a card to start investing </h3>
       <card-add/>
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <div class="block">
+    <block margin="half">
       <h1 class="sans-serif">
         Welcome to the club! <omoji emoji="😃" />
       </h1>
@@ -25,12 +25,13 @@
         </div>
         <input type="submit" value="next" class="atom" />
       </form>
-      <br>
+    </block>
+    <block>
       <div class="center-text link-group">
         <nuxt-link to="/auth">sign in</nuxt-link>
         <nuxt-link to="/auth/forgot-password">forgot password</nuxt-link>
       </div>
-    </div>
+    </block>
   </main>
 </template>
 

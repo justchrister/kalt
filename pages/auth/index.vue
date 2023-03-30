@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <div class="block">
+    <block margin="half">
       <h1 class="sans-serif">
         Welcome back! <omoji emoji="😃" />
       </h1>
@@ -23,16 +23,18 @@
           />
         </div>
       </form>
-      <br>
+    </block>
+    <block margin="half">
       <button @click="signIn()">
         sign in
       </button>
-      <br>
+    </block>
+    <block margin="half">
       <div class="center-text link-group">
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
         <nuxt-link to="/auth/password">forgot password</nuxt-link>
       </div>
-    </div>
+    </block>
   </main>
 </template>
 

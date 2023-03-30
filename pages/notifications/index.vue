@@ -1,7 +1,7 @@
 <template>
   <main>
     <navbar-tabs/>
-    <div class="block">
+    <block>
       <ContentList path="/notifications" v-slot="{ list }">
           <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
             <notification 
@@ -10,7 +10,7 @@
               :title="article.title"/>
           </nuxt-link>
       </ContentList>
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

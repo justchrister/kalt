@@ -4,7 +4,7 @@
     <frame-wrap>
       <frame-image src="/media/images/frontpage.webp" />
     </frame-wrap>
-    <div class="block">
+    <block>
       <h2 class="title">
         Make money, make a difference! <omoji emoji="😃" />
       </h2>
@@ -17,10 +17,10 @@
         <nuxt-link to="/questions/how-does-it-work">How it works</nuxt-link>
         <nuxt-link to="/about">About us</nuxt-link>
       </p>
-    </div>
-    <div class="block">
-      <Cta />
-    </div>
+    </block>
+    <block>
+      <cta />
+    </block>
   </main>
 </template>
 <script setup lang="ts">

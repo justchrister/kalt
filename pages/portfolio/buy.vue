@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <div class="block">
+    <block>
       <h3>Let's invest!  <omoji emoji="☀️" /></h3>
       <input-amount-invest :uuid="transaction_id" v-if="transaction_id"/>
       <br/>
@@ -11,7 +11,7 @@
       </nuxt-link>
       <br/>
       <button @click="completeTransaction"> buy </button>
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">
@@ -38,7 +38,7 @@
     .eq('transaction_status',0)
     .single()
 
-  if(incomplete_order_exists) oklog('success', 'found incomplete transaction: '+incomplete_order_exists.transaction_id)
+  if(incomplete_order_exists) ok.log('success', 'found incomplete transaction: '+incomplete_order_exists.transaction_id)
 
   const { data: transaction_id } = await useLazyAsyncData('cards', async () => {
     // if there is not an incomplete transaction, start new transaction
@@ -52,12 +52,12 @@
         .select('transaction_id')
         .single()
       
-      if(error) oklog('error', 'could not create new transaction id')
-      if(!error) oklog('success', 'started new transaction: '+data.transaction_id)
+      if(error) ok.log('error', 'could not create new transaction id')
+      if(!error) ok.log('success', 'started new transaction: '+data.transaction_id)
       return data.transaction_id
     }
     // if there is an incomplete order, return old id
-    oklog('success', 'setting transaction_id to incomplete transaction_id: '+incomplete_order_exists.transaction_id)
+    ok.log('success', 'setting transaction_id to incomplete transaction_id: '+incomplete_order_exists.transaction_id)
     return incomplete_order_exists.transaction_id
   })
 
@@ -70,10 +70,10 @@
       })
     if (error) {
       // add error handling
-      oklog('error', 'could not complete transaction: '+transaction_id.value)
+      ok.log('error', 'could not complete transaction: '+transaction_id.value)
     }
     if(!error) {
-      oklog('success', 'completed transaction: '+transaction_id.value)
+      ok.log('success', 'completed transaction: '+transaction_id.value)
       navigateTo('/portfolio')
     }
   }

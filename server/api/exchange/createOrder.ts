@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -9,19 +9,19 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   
   if (!body.record.amount){
-    oklog('error', 'amount is under 1')
+    ok.log('error', 'amount is under 1')
     return {
       'error' : 'amount is under 1'
     }
   }
   if (!body.record.currency){
-    oklog('error', 'missing currency')
+    ok.log('error', 'missing currency')
     return {
       'error' : 'missing currency'
     }
   }
   if (!body.record.transaction_id){
-    oklog('error', 'missing transaction_id')
+    ok.log('error', 'missing transaction_id')
     return {
       'error' : 'missing transaction_id'
     }
@@ -36,9 +36,9 @@ export default defineEventHandler( async (event) => {
     .eq('transaction_status', 1) // when we have stripe integration, this should be set to 2 when transaction is completed
     .select('*')
     .single()
-  if (transaction_incomplete) oklog('success', 'found transaction: ' + transaction_incomplete.transaction_id)
+  if (transaction_incomplete) ok.log('success', 'found transaction: ' + transaction_incomplete.transaction_id)
   if (transaction_incomplete_error){
-    oklog('error', 'could not find incomplete transaction: ' + body.record.transaction_id)
+    ok.log('error', 'could not find incomplete transaction: ' + body.record.transaction_id)
     return {
       'error': 'could not find incomplete transaction'
     }
@@ -49,9 +49,9 @@ export default defineEventHandler( async (event) => {
     .eq('iso', body.record.currency)
     .single()
 
-  if (exchange_rates) oklog('success', 'got exchange rates')
+  if (exchange_rates) ok.log('success', 'got exchange rates')
   if (transaction_incomplete_error){
-    oklog('error', 'could not get exchange rates')
+    ok.log('error', 'could not get exchange rates')
     return {
       'error': 'could not get exchange rates'
     }
@@ -81,7 +81,7 @@ export default defineEventHandler( async (event) => {
     .select()
     .single()
 
-    if (data) oklog('success', 'order created: ' + data.order_id)
+    if (data) ok.log('success', 'order created: ' + data.order_id)
 
     return data
   }
@@ -99,7 +99,7 @@ export default defineEventHandler( async (event) => {
       .select()
       .single()
 
-    if (data) oklog('success', 'transaction updated: ' + data.transaction_id)
+    if (data) ok.log('success', 'transaction updated: ' + data.transaction_id)
     return {
       'order_created': {
         order

@@ -98,7 +98,7 @@
       .select()
       .single()
       // for each loop
-    oklog("success", "updated subscription: " + data.subscription_id)
+    ok.log("success", "updated subscription: " + data.subscription_id)
   }
 </script>
 <style scoped lang="scss">

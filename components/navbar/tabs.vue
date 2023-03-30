@@ -1,5 +1,6 @@
 <template>
-    <nav class="block no-margin tabs">
+  <block margin="none">
+    <nav class="tabs">
       <ul>
         <li>
           <nuxt-link to="/portfolio" >
@@ -28,6 +29,7 @@
         </li>
       </ul>
     </nav>
+  </block>
 </template>
 <style scoped lang="scss">
 .tabs{

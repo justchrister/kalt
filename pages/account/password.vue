@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <div class="block">
+    <block>
       <h3 class="title">
         Choose a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
       </h3>
@@ -25,7 +25,7 @@
         </div>
         <input type="submit" value="Reset" class="atom">
       </form>
-    </div>
+    </block>
   </main>
 </template>
 

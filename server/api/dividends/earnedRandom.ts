@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -18,7 +18,7 @@ export default defineEventHandler( async (event) => {
     .select('node_id')
     .gte('node_id', random_uuid)
   if(random_nodes_error){
-    oklog('error', 'could not get a random node_id: '+ random_error.message)
+    ok.log('error', 'could not get a random node_id: '+ random_error.message)
     return {
       "error": random_nodes_error.message
     }
@@ -49,7 +49,7 @@ export default defineEventHandler( async (event) => {
       .select()
       .single()
 
-    if (error) oklog('warn', 'failed to create dividend')
+    if (error) ok.log('warn', 'failed to create dividend')
     if (data) {
       result.push({
         'dividend_id': data.dividend_id,
@@ -57,7 +57,7 @@ export default defineEventHandler( async (event) => {
         'currency': currency
       })
       count = count + 1
-      oklog('success', 'dividend registered')
+      ok.log('success', 'dividend registered')
     }
   }
   return { 'created dividends' : count, result }

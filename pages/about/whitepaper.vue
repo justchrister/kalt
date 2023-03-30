@@ -1,26 +1,26 @@
 <template>
   <main>
     <div class="intro">
-      <div class="block">
-        <h3>Master plan</h3>
+      <block>
+        <h3>Whitepaper</h3>
         <p>
           All humans are our stakeholders, we try to find a slightly better solution to each challenge we find. Trying to make a slightly better world for everyone at each turn.
         </p>
-      </div>
+      </block>
     </div>
-    <div class="block half-margin">
+    <block margin="half">
       <h4>Our mission</h4>
       <p>
         Let anyone maximize their impact through investing in what matters to them
       </p>
-    </div>
-    <div class="block half-margin">
+    </block>
+    <block margin="half">
       <h4>The company</h4>
       <p>
         Everyone should understand what they are investing in, the risks, and how its impacting them financially and the world societally.
       </p>
-    </div>
-    <div class="block half-margin">
+    </block>
+    <block margin="half">
       <h4>The present</h4>
       <p>
         As a retail investor, it can be extremely difficult discerning a good investment from a bad one in terms of making money, let alone its societal impact. This is reflected in the significant growth of global index funds in recent years. Risk appetite is generally low, and people want to feel like they understand what they are investing in.
@@ -34,8 +34,8 @@
       <p>
         It is time to stop being opaque, and start scaling the impact. 
       </p>
-    </div>
-    <div class="block half-margin">
+    </block>
+    <block margin="half">
       <h4>The solution</h4>
       <p>
         We have developed a transparent and scalable product that allows investors to contribute to renewable energy generation while receiving instant dividends. Our business model streamlines the process of identifying high-potential solar energy sites, manufacturing and deploying self-contained solar panel units, and connecting them to the grid. This reduces capital commitment and generates revenue that exceeds operating costs.
@@ -46,8 +46,8 @@
       <p>
         Our solution empowers individuals to make a tangible impact on the energy crisis while benefiting from the financial rewards of renewable energy investments. By accelerating the transition to a more sustainable future, we enable investors to readily support the growth of clean energy infrastructure worldwide.
       </p>
-    </div>
-    <div class="block half-margin">
+    </block>
+    <block margin="none">
       <h4>The product</h4>
       <content-card 
         title="Let people invest in what they care about"
@@ -85,7 +85,7 @@
         color="pink"
         number="6"
       />
-    </div>
+    </block>
   </main>
 </template>
 <script setup lang="ts">

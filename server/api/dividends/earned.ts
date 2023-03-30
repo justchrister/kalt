@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -11,13 +11,13 @@ export default defineEventHandler( async (event) => {
   const node = body.node_id;
 
   if (!node){
-    oklog('error', 'node id missing from body')
+    ok.log('error', 'node id missing from body')
     return {
       'error' : 'node id missing from body'
     }
   }
   if (!currency){
-    oklog('error', 'currency missing from body')
+    ok.log('error', 'currency missing from body')
     return {
       'error' : 'currency missing from body'
     }
@@ -34,11 +34,11 @@ export default defineEventHandler( async (event) => {
     .select()
     .single()
   if(error){
-    oklog('error', 'dividend not registered: ' + error.message)
+    ok.log('error', 'dividend not registered: ' + error.message)
     return {
       "error": error.message
     }
   }
-  oklog('success', 'dividend registered: ' + data.dividend_id)
+  ok.log('success', 'dividend registered: ' + data.dividend_id)
   return data
   });

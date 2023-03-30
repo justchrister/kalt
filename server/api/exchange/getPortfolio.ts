@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { oklog } from '~/composables/ok'
+import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -10,15 +10,15 @@ export default defineEventHandler( async (event) => {
   const currency = query.currency || "EUR"
   // rudementary error handling
   if (!user_id){
-    oklog('error', 'user_id not defined')
+    ok.log('error', 'user_id not defined')
     return {'error': 'user_id not defined'} 
   } 
   if (!days) {
-    oklog('error', 'days not defined')
+    ok.log('error', 'days not defined')
     return {'error': 'days not defined'}
   }
   if (!currency) {
-    oklog('', 'currency not defined')
+    ok.log('', 'currency not defined')
     return {'error': 'currency not defined'}
   }
 
@@ -31,7 +31,7 @@ export default defineEventHandler( async (event) => {
 
   const exchange_rate = exchange_rates.eq_ddfgi;
   if(exchange_rates_error){
-    oklog('error', 'could not get exchange rate for :'+ currency)
+    ok.log('error', 'could not get exchange rate for :'+ currency)
   }
 
   // get all orders 
@@ -120,6 +120,6 @@ export default defineEventHandler( async (event) => {
     
     previousQuantity = combinedQuantity;
   }
-  oklog('success', 'getPortfolio for ' + query.user_id)
+  ok.log('success', 'getPortfolio for ' + query.user_id)
   return result.slice(-days);
 })
