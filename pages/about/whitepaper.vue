@@ -7,7 +7,13 @@
     <block margin="half">
       <h4>Abstract</h4>
       <p>
-        As the global community grapples with the pressing need to transition towards renewable energy sources, the fossil-free energy sector must undergo exponential growth to effectively combat climate change and ensure a sustainable future. In this whitepaper, we introduce Kalt, our innovative investment platform designed to address this urgent demand. By leveraging cutting-edge technology, we empower individuals to actively participate in the energy transition while benefiting from the financial rewards associated with renewable energy investments. We outline our unique approach, which combines a streamlined infrastructure deployment process, accessible investment opportunities, and a user-friendly platform to simplify and accelerate the expansion of the fossil-free energy sector. By connecting investors directly with clean energy projects, Kalt aims to drive rapid and impactful growth in renewable energy, ultimately fostering a better world for generations to come.
+        The ongoing global energy crisis and the urgent need for accelerated advancement in the fossil-free energy adoption highlights the importance of innovative solutions to combat the devastating effects of climate change and meet increasing energy demands. This whitepaper aims to explore ways in which global financial markets can drive rapid growth in the development, deployment, and adoption of fossil-free energy sources worldwide.
+      </p>
+      <p>
+        We propose the introduction of a new investment instrument designed to incentivize investors to become active stakeholders in their investment. This instrument must enable rapid deployment and scaling of renewable energy sites globally, create liquidity in investments that traditionally require capital lock-up for years, and transparency as a core characteristic.
+      </p>
+      <p>
+        To support this investment instrument, the energy infrastructure must be designed for easy and rapid scalability, while maintaining high quality and durability. A streamlined manufacturing, shipping, and deployment process is essential, with each node in the system being a self-contained unit that can be effortlessly relocated or upgraded. Moreover, a robust and innovative approach is necessary for identifying the highest-yield areas to deploy these energy nodes. This will ensure the most efficient and effective use of resources in expanding the global renewable energy infrastructure.
       </p>
     </block>
     <block margin="half">
@@ -107,4 +113,5 @@
 main{ background:white; }
 p,h2,h3,h4{ color:black; }
 a{ text-decoration:none; }
+p{line-height:1.5;}
 </style>
