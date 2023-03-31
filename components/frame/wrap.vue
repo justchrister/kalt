@@ -7,7 +7,7 @@
 .frame {
   width: $sitewidth;
   max-width: $maxsitewidth;
-  margin:0 auto clamp($unit-min*3, $unit*3, $unit-max*3) auto;
+  margin:0 auto $clamp-3 auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

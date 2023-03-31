@@ -43,7 +43,7 @@
   }
   ul li{
     display:inline-block;
-    margin-left: clamp($unit-min*2, $unit*2, $unit-max*2);
+    margin-left: $clamp-2;
     padding: 0;
     line-height:1.5;
     margin-right:0;

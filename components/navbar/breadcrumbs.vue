@@ -133,8 +133,8 @@ button.menu-toggle {
   }
 }
 .my-account-button{
-  width:$unit-clamp-l;
-  height:$unit-clamp-l;
+  width:$clamp-2;
+  height:$clamp-2;
   display:block;
   position:fixed;
   top:$border-width;

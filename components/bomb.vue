@@ -21,8 +21,8 @@ const props = defineProps({
 .bomb{
   border:$border-width solid $dark;
   display:inline-block;
-  padding:0px clamp($unit-min*2, $unit*2, $unit-max*2);
-  margin-top:clamp($unit-min*2, $unit*2, $unit-max*2);
+  padding:0px $clamp-2;
+  margin-top:$clamp-2;
   margin-right:clamp($unit-min, $unit, $unit-max);
   &:hover{
     border-radius:100%;

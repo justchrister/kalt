@@ -17,7 +17,7 @@
 .layout.focused .back-button{
   padding: $big-clamp-half 0 0 $big-clamp-half;
   font-family: $sans-serif;
-  font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
+  font-size:$clamp-2;
   font-weight:300;
   line-height: 150%;
   font-display: optional;

@@ -18,7 +18,7 @@
     margin:0 auto clamp($unit-min*10, $unit*10, $unit-max*10) auto;
   }
   .block#half{
-    margin-bottom: clamp($unit-min*5, $unit*5, $unit-max*5);
+    margin-bottom: $clamp-5;
   }
   .block#none{
     margin-bottom: 0;

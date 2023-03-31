@@ -33,7 +33,7 @@
     border-radius:$border-radius;
     padding:clamp($unit-min, $unit, $unit-max) 0 clamp($unit-min, $unit, $unit-max) clamp($unit-min*2, $unit*2, $unit-max*2);
     margin:clamp($unit-min, $unit, $unit-max) 0;
-    max-height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    max-height:$clamp-4;
     overflow:hidden;
   }
   .card:hover{
@@ -41,8 +41,8 @@
     cursor: pointer;
   }
   .card .logo{
-    width:clamp($unit-min*4, $unit*4, $unit-max*4);
-    height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    width:$clamp-4;
+    height:$clamp-4;
     background: transparent;
     background-size: contain;
     display:inline-block;
@@ -68,16 +68,16 @@
 
   .card .details{
     width:clamp($unit-min*15, $unit*15, $unit-max*15);
-    height:clamp($unit-min*4, $unit*4, $unit-max*4);
-    line-height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    height:$clamp-4;
+    line-height:$clamp-4;
     padding-left:clamp($unit-min*2, $unit*2, $unit-max*2);
     display:inline-block;
     vertical-align: center;
   }
   .card .default{
     width:clamp($unit-min*8, $unit*8, $unit-max*8);
-    height:clamp($unit-min*4, $unit*4, $unit-max*4);
-    line-height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    height:$clamp-4;
+    line-height:$clamp-4;
     display:block;
     float:right;
     padding-right:clamp($unit-min*2, $unit*2, $unit-max*2);

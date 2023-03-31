@@ -70,6 +70,16 @@
     })
 </script>
 <style scoped lang="scss">
+header{
+  height:clamp($unit-min*7, $unit*7, $unit-max*7);
+  width:100vw;
+  background:$light;
+  border-bottom:$border;
+  position:fixed;
+}
+.show-menu header{
+  height:100vh;
+}
 .menu ul{
   position: fixed;
   z-index: 3;
@@ -131,8 +141,8 @@ button.menu-toggle {
   }
 }
 .my-account-button{
-  width:$unit-clamp-l;
-  height:$unit-clamp-l;
+  width:$clamp-2;
+  height:$clamp-2;
   display:block;
   position:fixed;
   top:$border-width;

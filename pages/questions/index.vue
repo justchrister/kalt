@@ -34,7 +34,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-bottom:clamp($unit-min*2, $unit*2, $unit-max*2);
+    margin-bottom:$clamp-2;
     padding-bottom:clamp($unit-min, $unit, $unit-max);
     border-bottom:1px solid black;
   }

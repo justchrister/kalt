@@ -36,7 +36,7 @@ const toggle = async () => {
 $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 .input-wrapper {
   display: grid; 
-  grid-template-columns: clamp($unit-min*3, $unit*3, $unit-max*3) 1fr; 
+  grid-template-columns: $clamp-3 1fr; 
   gap: 2% clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2)); 
 }
 .toggle-wrap,
@@ -50,7 +50,7 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
   display:inline-block;
 }
 .toggle-wrap{
-  width:clamp($unit-min*3, $unit*3, $unit-max*3);
+  width:$clamp-3;
   border:1px solid $blue-80;
   display:inline-block;
 }

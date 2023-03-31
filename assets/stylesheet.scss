@@ -21,10 +21,10 @@ h1.serif{
 }
 h1.sans-serif{
   font-family: $sans-serif;
-  font-size: clamp($unit-min*3, $unit*3, $unit-max*3);
+  font-size: $clamp-3;
 }
 h3{
-  font-size: clamp($unit-min*3, $unit*3, $unit-max*3);
+  font-size: $clamp-3;
   line-height: 150%;
 }
 h4{

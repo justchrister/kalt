@@ -95,9 +95,9 @@ form{
   grid-template-columns: 
     clamp($unit-min*2, $unit*2, $unit-max*2) 
     1fr
-    clamp($unit-min*4, $unit*4, $unit-max*4) 
-    clamp($unit-min*4, $unit*4, $unit-max*4) 
-    clamp($unit-min*5, $unit*5, $unit-max*5); 
+    $clamp-4 
+    $clamp-4 
+    $clamp-5; 
   gap: 0px; 
   border:$border;
   padding:clamp($unit-min, $unit, $unit-max) 

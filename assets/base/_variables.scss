@@ -82,17 +82,18 @@ $border: $border-width solid $dark;
 $border-radius: 0px;
 
 //clamps
-$column-divider: 2.4; // % of sitewidth
 $big-clamp: clamp($unit-min*3.5, $unit*3.5, $unit-max*3.5);
 
-$unit-clamp-xxxl: clamp($unit-min*12, $unit*12, $unit-max*12);
-$unit-clamp-xxl: clamp($unit-min*8, $unit*8, $unit-max*8);
-$unit-clamp-xl: clamp($unit-min*4, $unit*4, $unit-max*4);
-$unit-clamp-l: clamp($unit-min*2, $unit*2, $unit-max*2);
-$unit-clamp: clamp($unit-min, $unit, $unit-max);
-$unit-clamp-s: clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
-$unit-clamp-xs: clamp(calc($unit-min/4), calc($unit/4), calc($unit-max/4));
-
+$clamp: clamp($unit-min*1, $unit*1, $unit-max*1);
+$clamp-2: clamp($unit-min*2, $unit*2, $unit-max*2);
+$clamp-3: clamp($unit-min*3, $unit*3, $unit-max*3);
+$clamp-4: clamp($unit-min*4, $unit*4, $unit-max*4);
+$clamp-5: clamp($unit-min*5, $unit*5, $unit-max*5);
+$clamp-6: clamp($unit-min*6, $unit*6, $unit-max*6);
+$clamp-7: clamp($unit-min*7, $unit*7, $unit-max*7);
+$clamp-8: clamp($unit-min*8, $unit*8, $unit-max*8);
+$clamp-9: clamp($unit-min*10, $unit*9, $unit-max*9);
+$clamp-10: clamp($unit-min*10, $unit*10, $unit-max*10);
 /* The following clamps are half of their counterpart.
 Example: $big-clamp-half is half of $big-clamp. */
 $big-clamp-half: clamp($unit-min*2, $unit*2, $unit-max*2); //FUCK! this is not good... need to move it to unit, min, max...

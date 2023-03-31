@@ -32,7 +32,7 @@ const props = defineProps({
   border:$border-width solid $dark;
   border-radius:$border-radius;
   margin:clamp($unit-min, $unit, $unit-max) 0;
-  height:clamp($unit-min*4, $unit*4, $unit-max*4);
+  height:$clamp-4;
   &:hover{
     background:white;
     cursor: pointer;
@@ -41,8 +41,8 @@ const props = defineProps({
     text-decoration:underline;
   }
   .profile-picture{
-    width:clamp($unit-min*4, $unit*4, $unit-max*4);
-    height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    width:$clamp-4;
+    height:$clamp-4;
     display:inline-block;
     background-size:contain;
     border-radius:100%;
@@ -55,7 +55,7 @@ const props = defineProps({
     margin-left:clamp($unit-min, $unit, $unit-max);
     display:inline-block;
     position:relative;
-    height:clamp($unit-min*4, $unit*4, $unit-max*4);
+    height:$clamp-4;
     overflow:hidden;
   }
 
