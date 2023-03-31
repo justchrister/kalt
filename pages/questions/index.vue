@@ -35,7 +35,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-bottom:$clamp-2;
-    padding-bottom:clamp($unit-min, $unit, $unit-max);
+    padding-bottom:$clamp;
     border-bottom:1px solid black;
   }
 </style>

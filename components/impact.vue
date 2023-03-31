@@ -26,7 +26,7 @@ const props = defineProps({
   grid-auto-flow: row;
 }
 .impacts .impact{
-  padding:clamp($unit-min, $unit, $unit-max) 0;
+  padding:$clamp 0;
   border-top:$border;
   display: grid;
   grid-template-columns: 1fr 9fr;

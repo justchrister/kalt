@@ -2,7 +2,7 @@ select{
   width:100%;
   display:inline-block;
   padding:clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
-          clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5)
+          $clamp-1-5
           clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
           clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   border: $border;
@@ -19,7 +19,7 @@ select:focus{
 }
 select.loading{
   background-image:url("/loading.gif");
-  background-size: clamp($unit-min, $unit, $unit-max);
+  background-size: $clamp;
   background-position:95% center;
   background-repeat:no-repeat;
 }

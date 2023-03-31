@@ -76,7 +76,7 @@
   position: fixed;
   z-index: 3;
   margin: 0;
-  height: clamp($unit-min*4, $unit*4, $unit-max*4);
+  height: $clamp-4;
   overflow:hidden;
   padding: $big-clamp-half 0 0 $big-clamp-half;
   li.logomark,
@@ -108,7 +108,7 @@
 header .menu-toggle,
 header .menu ul li {
   font-family: $sans-serif;
-  font-size:clamp($unit-min*2, $unit*2, $unit-max*2);
+  font-size:$clamp-2;
   font-weight:normal;
   line-height: 150%;
   font-display: optional;

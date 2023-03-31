@@ -35,11 +35,11 @@ const props = defineProps({
 <style scoped lang="scss">
   .content-card{
     border:$border;
-    padding:clamp($unit-min, $unit, $unit-max);
-    margin:clamp($unit-min, $unit, $unit-max) auto;
+    padding:$clamp;
+    margin:$clamp auto;
     max-width:calc($maxsitewidth/1.5);
     width:calc($sitewidth/1.5);
-    border-radius:clamp($unit-min, $unit, $unit-max);
+    border-radius:$clamp;
   }
   .number{
     font-family:$monospace;

@@ -18,31 +18,31 @@ input:active{
 }
 input.loading{
   background-image:url("/loading.gif");
-  background-size: clamp($unit-min, $unit, $unit-max);
+  background-size: $clamp;
   background-position:95% center;
   background-repeat:no-repeat;
 }
 input.success{
   background-image:url("omoji/super-happy.svg");
-  background-size: clamp($unit-min, $unit, $unit-max);
+  background-size: $clamp;
   background-position:95% center;
   background-repeat:no-repeat;
 }
 input.error{
   background-image:url("omoji/suprised.svg");
-  background-size: clamp($unit-min, $unit, $unit-max);
+  background-size: $clamp;
   background-position:95% center;
   background-repeat:no-repeat;
 }
 
 
 .input-wrap{
-  margin-top: clamp($unit-min, $unit, $unit-max);
+  margin-top: $clamp;
 }
 input[type="checkbox" i]  {
   width:auto;
   height:auto;
 }
 input[type="checkbox" i] + label{
-  font-size:clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5);
+  font-size:$clamp-1-5;
 }

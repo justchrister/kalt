@@ -123,10 +123,10 @@
       border: $border;
       display:inline-block;
       border-radius:$border-radius;
-      height:clamp($unit-min, $unit, $unit-max);
-      line-height:clamp($unit-min, $unit, $unit-max);
-      padding:clamp($unit-min, $unit, $unit-max)
-              clamp($unit-min, $unit, $unit-max)
+      height:$clamp;
+      line-height:$clamp;
+      padding:$clamp
+              $clamp
               clamp($unit-min * 2, $unit * 2, $unit-max * 2)
               0;
       text-align:right;

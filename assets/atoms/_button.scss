@@ -9,7 +9,7 @@ a:hover button{
   cursor: pointer;
 }
 button {
-  margin-bottom:clamp($unit-min, $unit, $unit-max);
+  margin-bottom:$clamp;
   width: 100%;
   padding: 2% 0;
   background:transparent;

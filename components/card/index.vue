@@ -31,8 +31,8 @@
   .card{
     border:$border;
     border-radius:$border-radius;
-    padding:clamp($unit-min, $unit, $unit-max) 0 clamp($unit-min, $unit, $unit-max) clamp($unit-min*2, $unit*2, $unit-max*2);
-    margin:clamp($unit-min, $unit, $unit-max) 0;
+    padding:$clamp 0 $clamp $clamp-2;
+    margin:$clamp 0;
     max-height:$clamp-4;
     overflow:hidden;
   }
@@ -70,7 +70,7 @@
     width:clamp($unit-min*15, $unit*15, $unit-max*15);
     height:$clamp-4;
     line-height:$clamp-4;
-    padding-left:clamp($unit-min*2, $unit*2, $unit-max*2);
+    padding-left:$clamp-2;
     display:inline-block;
     vertical-align: center;
   }
@@ -80,7 +80,7 @@
     line-height:$clamp-4;
     display:block;
     float:right;
-    padding-right:clamp($unit-min*2, $unit*2, $unit-max*2);
+    padding-right:$clamp-2;
     text-align:right;
   }
   .card .default.true span{

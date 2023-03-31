@@ -23,7 +23,7 @@ const props = defineProps({
   display:inline-block;
   padding:0px $clamp-2;
   margin-top:$clamp-2;
-  margin-right:clamp($unit-min, $unit, $unit-max);
+  margin-right:$clamp;
   &:hover{
     border-radius:100%;
     background: linear-gradient(318deg, $light, $green-20, $light,);

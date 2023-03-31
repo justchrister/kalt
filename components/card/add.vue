@@ -93,15 +93,15 @@
 form{
   display: grid; 
   grid-template-columns: 
-    clamp($unit-min*2, $unit*2, $unit-max*2) 
+    $clamp-2 
     1fr
     $clamp-4 
     $clamp-4 
-    $clamp-5; 
+    clamp($unit-min*5, $unit*5, $unit-max*5); 
   gap: 0px; 
   border:$border;
-  padding:clamp($unit-min, $unit, $unit-max) 
-    clamp($unit-min*2, $unit*2, $unit-max*2) ;
+  padding:$clamp 
+    $clamp-2 ;
 }
 input{
   display:inline-block;
@@ -112,7 +112,7 @@ input{
   }
 }
 button{
-  margin-top:clamp($unit-min*2, $unit*2, $unit-max*2);
+  margin-top:$clamp-2;
 }
 .logo{
   background-size:contain;

@@ -26,7 +26,7 @@
 .image:first-child {
   height: 50vw;
   max-height: 418px;
-  margin-right:clamp($unit-min, $unit, $unit-max);
+  margin-right:$clamp;
 }
 .image:first-child:only-child{
   margin-right:0px;

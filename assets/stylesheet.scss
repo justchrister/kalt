@@ -31,19 +31,19 @@ h4{
   font-weight:bold;
 }
 p{
-  margin-bottom: clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5);
-  font-size: clamp($unit-min*1.5, $unit*1.5, $unit-max*1.5);
+  margin-bottom: $clamp-1-5;
+  font-size: $clamp-1-5;
   line-height: 135%;
 }
 
 
 .link-group{
   width:100%;
-  margin: clamp($unit-min, $unit, $unit-max);
+  margin: $clamp;
   text-align:center;
 }
 .link-group a{
-  margin: clamp($unit-min, $unit, $unit-max);
+  margin: $clamp;
 }
 button.square{
   border-radius:$border-radius;
@@ -88,7 +88,7 @@ nav.component.pills.filters{
   width:clamp($unit-min*7.5, $unit*7.5, $unit-max*7.5);
   padding:0;
   font-size:85%;
-  margin-right: clamp($unit-min*1, $unit*1, $unit-max*1);
+  margin-right: $clamp;
   border-radius:$border-radius;
 }
 .pill:hover{
@@ -102,10 +102,10 @@ nav.component.pills.filters{
 }
 .pills label{
   font-size:70%;
-  padding:2px clamp($unit-min, $unit, $unit-max);
+  padding:2px $clamp;
   border:$border;
   border-radius:$border-radius;
-  margin-right:clamp($unit-min, $unit, $unit-max);
+  margin-right:$clamp;
 }
 
 // things i dont know where to put yet..
@@ -116,7 +116,7 @@ nav.component.pills.filters{
 
 p.links{
   a:first-child{
-    margin-right:clamp($unit-min*2, $unit*2, $unit-max*2)
+    margin-right:$clamp-2
   }
 }
 

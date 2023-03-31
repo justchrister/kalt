@@ -27,11 +27,11 @@ const props = defineProps({
 <style scoped lang="scss">
 
 .notification{
-  padding:clamp($unit-min, $unit, $unit-max);
+  padding:$clamp;
   padding-right:none;
   border:$border-width solid $dark;
   border-radius:$border-radius;
-  margin:clamp($unit-min, $unit, $unit-max) 0;
+  margin:$clamp 0;
   height:$clamp-4;
   &:hover{
     background:white;
@@ -52,7 +52,7 @@ const props = defineProps({
   }
   .summary{
     width:85%;
-    margin-left:clamp($unit-min, $unit, $unit-max);
+    margin-left:$clamp;
     display:inline-block;
     position:relative;
     height:$clamp-4;

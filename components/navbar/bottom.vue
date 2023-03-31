@@ -41,7 +41,7 @@
 footer{
   position:relative;
   background:$dark;
-  padding:$clamp-4 0 clamp($unit-min*2, $unit*2, $unit-max*2) 0;
+  padding:$clamp-4 0 $clamp-2 0;
   margin:$clamp-4 auto 0 auto;
   color:$light;
   a{
@@ -53,13 +53,13 @@ footer{
   }
   h4{
     color:$light;
-    margin-top:clamp($unit-min*2, $unit*2, $unit-max*2);
+    margin-top:$clamp-2;
   }
   .insignia{
     background-image:url('/media/insignia/insignia-light.svg');
     background-size:contain;
     background-repeat:no-repeat;
-    margin-top:$clamp-5;
+    margin-top:clamp($unit-min*5, $unit*5, $unit-max*5);
     background-position: center center;
     width:100%;
     color:$light;
