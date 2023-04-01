@@ -74,7 +74,7 @@
           amount: ok.toInt(amount.value)
       })
       if(error) ok.log('error', 'could not update amount')
-      if(error) console.log(error)
+      if(error) ok.log('error', error.message)
       if(!error) ok.log('success', 'updated amount')
     }
   }
