@@ -1,24 +1,31 @@
 <template>
-  <nuxt-link :to="props.to">
-    <div class="bomb">
-      {{props.text}}
+  <nuxt-link :to="props.to" v-if="props.to">
+    <div class="pill">
+      <omoji emoji="props.omoji" v-if="props.omoji"/> {{props.text}}
     </div>
   </nuxt-link>
+  <div class="pill" v-else>
+    {{props.text}}
+  </div>
 </template>
 <script setup lang="ts">
   const props = defineProps({
     to: {
       type: String,
-      required: true
+      required: false
     },
     text: {
       type: String,
       required: true
     },
+    omoji:{
+      type: String,
+      required: false
+    }
   })
 </script>
 <style scoped lang="scss">
-.bomb{
+.pill{
   border:$border-width solid $dark;
   display:inline-block;
   padding:0px $clamp-2;
