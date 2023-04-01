@@ -8,7 +8,11 @@
             <span>Kalt —</span>
             {{route.meta.pagename}}
           </nuxt-link>
-          <nuxt-link to="/" v-else> {{route.meta.pagename}} </nuxt-link>
+          <nuxt-link to="/" v-else> 
+            <div class="logo"></div>
+            <span>Kalt —</span>
+            {{route.meta.pagename}}
+          </nuxt-link>
         </li>
         <li>
           <nuxt-link to="/about" @click="toggleMenu()"> About </nuxt-link>
