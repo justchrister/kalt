@@ -6,49 +6,33 @@
       <chart-portfolio :days="days" />
     </frame-wrap>
     <block margin="half">
-      <nav class="component pills filters">
+      <nav class="filters">
         <div class="overflow-wrap">
           <ul>
-            <li>
-              <button @click="setDays(7)" class="element pill">
-                <span class="live-bullet">•</span> live
-              </button>
+            <li @click="setDays(7)">
+              <span class="live-bullet">•</span> live
             </li>
-            <li>
-              <button @click="setDays(30)" class="element pill">
-                1 month
-              </button>
+            <li @click="setDays(30)">
+              1 month
             </li>
-            <li>
-              <button @click="setDays(90)" class="element pill">
-                3 months
-              </button>
+            <li @click="setDays(90)">
+              3 months
             </li>
-            <li>
-              <button @click="setDays(180)" class="element pill">
-                6 months
-              </button>
+            <li @click="setDays(180)">
+              6 months
             </li>
-            <li>
-              <button @click="setDays(365)" class="element pill">
-                1 year
-              </button>
+            <li @click="setDays(365)">
+              1 year
             </li>
-            <li>
-              <button @click="setDays(1095)" class="element pill">
-                3 years
-              </button>
+            <li @click="setDays(1095)">
+              3 years
             </li>
-            <li>
-              <button @click="setDays(1825)" class="element pill">
-                5 years
-              </button>
+            <li @click="setDays(1825)">
+              5 years
             </li>
-            <li>
+            <li @click="setDays(1825)">
               <!-- should be days since first investment-->
-              <button @click="setDays(1825)" class="element pill">
-                max
-              </button>
+              max
             </li>
           </ul>
         </div>
@@ -90,3 +74,48 @@
     days.value=x
   }
 </script>
+<style scoped lang="scss">
+
+.filters{
+  height:$clamp-4;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
+}
+.overflow-wrap{
+  position: relative;
+  width:$clamp-70;
+  height:$clamp-6;
+}
+
+ul{
+  position: absolute;
+  margin-left:0;
+  width:auto;
+}
+.live-bullet{
+  color:$red;
+}
+li{
+  display:inline-block;
+  width:clamp($unit-min*7.5, $unit*7.5, $unit-max*7.5);
+  text-align:center;
+  border:$border;
+  padding:0;
+  font-size:85%;
+  margin-right: $clamp;
+  border-radius:$border-radius;
+  position:relative;
+  &:before{
+    display: none;
+  }
+  &:hover{
+    border-radius:100%;
+    background:white;
+    cursor:   pointer;
+  }
+}
+</style>
