@@ -46,14 +46,15 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-
   const {data, error} = await supabase
     .from('transactions')
     .select()
     .eq('user_id', user.value.id)
     .eq('transaction_status', 3)
     .order('created_at', { ascending: false })
-  console.log(data)
+    .limit(10)
+  
+
   if (data) ok.log('success', 'got transactions for '+user.value.id)
   if (error) ok.log('error', 'could not get transactions for '+user.value.id)
 
@@ -64,5 +65,6 @@
     grid-template-columns: $clamp 12fr 2fr 2fr; 
     gap: 2% 2%; 
     border-bottom:$border;
+    padding-top:$clamp-2;
   }
 </style>
