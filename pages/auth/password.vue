@@ -2,20 +2,24 @@
 <template>
   <main>
     <block>
-      <h3>
+      <h1 class="sans-serif">
         Request a new password! <omoji emoji="🙃" />
-      </h3>
-      <form @submit.prevent="resetPassword()">
-        <div class="element input email">
-        <label for='email'> E-mail:</label>
-        <input
-          type="email"
-          placeholder="Email"
-          v-model="email"
-          id='email'
-        />
+      </h1>
+      <form @submit.prevent="requestPassword()">
+        <div class="input-wrap">
+          <label for='email'> E-mail:</label>
+          <input
+            type="email"
+            placeholder="Email"
+            v-model="email"
+            id='email'
+          />
         </div>
-        <input type="submit" value="Send reset link">
+        <div class="input-wrap">
+          <button @click="requestPassword()">
+            request
+          </button>
+        </div>
       </form>
       <div class="element link-group">
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
@@ -40,14 +44,13 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const router = useRouter()
 
   const notify = ref({
     "type": "sorry",
     "message": "could not sign you in"
   })
   const email = ref('')
-  const resetPassword = async () => {
+  const requestPassword = async () => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       email.value, {
         redirectTo: 'https://ka.lt/profile/password',

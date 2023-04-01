@@ -25,7 +25,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Kalt'
+    pagename: 'Homepage'
   })
   useHead({
     title: 'Kalt',

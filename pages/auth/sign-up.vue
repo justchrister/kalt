@@ -5,16 +5,17 @@
       <h1 class="sans-serif">
         Welcome to the club! <omoji emoji="😃" />
       </h1>
-      <br>
       <form @submit.prevent="signUp">
-        <label for='email'> E-mail</label>
-        <input
-          type="email"
-          placeholder="Email"
-          v-model="email"
-          id='email'
-        />
-        <div class="element input password">
+        <div class="input-wrap">
+          <label for='email'> E-mail</label>
+          <input
+            type="email"
+            placeholder="Email"
+            v-model="email"
+            id='email'
+          />
+        </div>
+        <div class="input-wrap">
           <label for='password'> Password </label>
           <input 
             type="password"
@@ -23,13 +24,17 @@
             id='password'
           />
         </div>
-        <input type="submit" value="next" />
+        <div class="input-wrap">
+          <button @click="signUp()">
+            sign up
+          </button>
+        </div>
       </form>
     </block>
     <block>
       <div class="center-text link-group">
         <nuxt-link to="/auth">sign in</nuxt-link>
-        <nuxt-link to="/auth/forgot-password">forgot password</nuxt-link>
+        <nuxt-link to="/auth/password">forgot password</nuxt-link>
       </div>
     </block>
   </main>
