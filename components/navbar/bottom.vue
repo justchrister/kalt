@@ -3,7 +3,7 @@
     <block margin="half">
       <div class="section">
         <h4>Account</h4>
-        <div class="grid-col-2">
+        <ul>
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/account" > Account </nuxt-link>
           <nuxt-link to="/notifications" > Notifications </nuxt-link>
@@ -13,20 +13,20 @@
           <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link>
           <nuxt-link to="/auth" > Sign in </nuxt-link>
           <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
-        </div>
+        </ul>
       </div>
     </block>
     <block margin="none">
       <div class="section">
         <h4>Content:</h4>
-        <div class="grid-col-2">
+        <ul>
           <nuxt-link to="/about" > About us </nuxt-link>
           <nuxt-link to="/about/values" > Our values </nuxt-link>
           <nuxt-link to="/about/mission" > Our mission </nuxt-link>
           <nuxt-link to="/questions" > Q&A </nuxt-link>
           <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
           <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
-        </div>
+        </ul>
       </div>
     </block>
     <div class="insignia">Make money, make a difference.</div>
@@ -42,12 +42,17 @@
   }
   .section{
     display: grid; 
-    grid-template-columns: 1fr 2fr; 
+    grid-template-columns: 1fr 5fr; 
     gap: 2% 0px;
   }
   h4{
     margin-top:0;
     color:$light;
+  }
+  ul{
+    display: grid;
+    gap: 2% 2%;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   a{
     color:$light;
