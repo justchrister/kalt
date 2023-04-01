@@ -70,23 +70,13 @@
     })
 </script>
 <style scoped lang="scss">
-header{
-  height:clamp($unit-min*7, $unit*7, $unit-max*7);
-  width:100vw;
-  background:$light;
-  border-bottom:$border;
-  position:fixed;
-}
-.show-menu header{
-  height:100vh;
-}
 .menu ul{
   position: fixed;
   z-index: 3;
   margin: 0;
   height: $clamp-4;
   overflow:hidden;
-  padding: $big-clamp-half 0 0 $big-clamp-half;
+  padding: $clamp $clamp-2;
   li.logomark,
   li.logomark span{
     opacity:1;
@@ -122,7 +112,7 @@ header .menu ul li {
   font-display: optional;
 }
 button.menu-toggle {
-  padding: $big-clamp-half;
+  padding: $clamp $clamp-2;
   right: $big-clamp;
   position: fixed;
   top: $border-width;
@@ -147,12 +137,11 @@ button.menu-toggle {
   position:fixed;
   top:$border-width;
   right:$border-width;
-  background-image: url("/omoji/happy.svg");
-  background-size:contain;
-  background-position:center;
+  background:$dark;
+  border-radius:100%;
   box-sizing: border-box;
-  margin: $big-clamp-half;
-  margin-top:clamp($unit-min*2.5, $unit*2.5, $unit-max*2.5);
+  margin: $clamp-2;
+  margin-top:$clamp-1-8;
   &:hover{
     background-image: url("/omoji/super-happy.svg");
   }

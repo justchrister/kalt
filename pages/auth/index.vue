@@ -6,14 +6,16 @@
         Welcome back! <omoji emoji="😃" />
       </h1>
       <form @submit.prevent="signIn()">
-        <label for='email'> E-mail</label>
-        <input
-          type="email"
-          placeholder="Email"
-          v-model="email"
-          id='email'
-        />
-        <div class="element input password">
+        <div class="input-wrap">
+          <label for='email'> E-mail</label>
+          <input
+            type="email"
+            placeholder="Email"
+            v-model="email"
+            id='email'
+          />
+        </div>
+        <div class="input-wrap">
           <label class="atom" for='password'> Password </label>
           <input
             type="password"

@@ -33,27 +33,28 @@
   </footer>
 </template>
 <style scoped lang="scss">
-.section{
-  display: grid; 
-  grid-template-columns: 1fr 2fr; 
-  gap: 2% 0px; 
-}
-footer{
-  position:relative;
-  background:$dark;
-  padding:$clamp-4 0 $clamp-2 0;
-  margin:$clamp-4 auto 0 auto;
-  color:$light;
+  footer{
+    position:relative;
+    background:$dark;
+    padding:$clamp-4 0 $clamp-2 0;
+    margin:$clamp-4 auto 0 auto;
+    color:$light;
+  }
+  .section{
+    display: grid; 
+    grid-template-columns: 1fr 2fr; 
+    gap: 2% 0px;
+  }
+  h4{
+    margin-top:0;
+    color:$light;
+  }
   a{
     color:$light;
     text-decoration: none;
     &:hover{
       text-decoration: underline;
     }
-  }
-  h4{
-    color:$light;
-    margin-top:$clamp-2;
   }
   .insignia{
     background-image:url('/media/insignia/insignia-light.svg');
@@ -73,6 +74,4 @@ footer{
     line-height:clamp($unit-min*8, $unit*8, $unit-max*8);
     text-align:center;
   }
-}
-
 </style>
