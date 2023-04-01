@@ -29,12 +29,4 @@
       content: 'Make money, make a difference.'
     }]
   })
-  
-  useHead({
-    title,
-    meta: [{
-      name: "description",
-      content: "Make money, make a difference."
-    }]
-  });
 </script>
