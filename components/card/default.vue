@@ -17,5 +17,4 @@
     .eq('default', true)
     .order('modified_at', { ascending: false })
     .single()
-  console.log(data)
 </script>
