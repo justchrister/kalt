@@ -1,7 +1,10 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/supabase', '@nuxt/content'],
+  modules: [
+    '@nuxtjs/supabase', 
+    '@nuxt/content'
+  ],
   css: ['@/assets/stylesheet.scss'],
   build: {
     transpile: ['chart.js'],
@@ -21,10 +24,11 @@ export default defineNuxtConfig({
       viewport: 'width=500, initial-scale=1',
       title: 'Kalt — Undefined',
       link: [ 
-        { rel: 'icon', type: "image/x-icon", href: '/favicon/favicon.ico' },
-        { rel: 'icon', type: "image/png", sizes: '32x32', href: '/favicon/favicon-32x32.png' } ,
-        { rel: 'icon', type: "image/png", sizes: '16x16', href: '/favicon/favicon-16x16.png' } ,
-        { rel: 'manifest', type: "image/x-icon", href: '/favicon/site.webmanifest' },
+        { rel: 'icon', type: "image/x-icon", href: '/favicon/icon.ico' },
+        { rel: 'icon', type: "image/png", sizes: '32x32', href: '/favicon/icon-32x32.png' } ,
+        { rel: 'icon', type: "image/png", sizes: '180x180', href: '/favicon/icon-180x180.png' } ,
+        { rel: 'icon', type: "image/svg+xml", href: '/favicon/icon.svg' } ,
+        { rel: 'manifest', type: "image/x-icon", href: '/manifest.webmanifest' },
         { rel: 'preload', as: 'font', href: "/fonts/display.woff2", crossorigin: true},
         { rel: 'preload', as: 'font', href: "/fonts/body.woff2", crossorigin: true },
         { rel: 'preload', as: 'font', href: "/fonts/body-bold.woff2", crossorigin: true}

@@ -96,6 +96,8 @@ $clamp-7: clamp($unit-min*7 , $unit*7, $unit-max*7);
 $clamp-8: clamp($unit-min*8 , $unit*8, $unit-max*8);
 $clamp-9: clamp($unit-min*9 , $unit*9, $unit-max*9);
 $clamp-10: clamp($unit-min*10 , $unit*10, $unit-max*10);
+$clamp-15: clamp($unit-min*15 , $unit*15, $unit-max*15);
+$clamp-70: clamp($unit-min*70 , $unit*70, $unit-max*70);
 /* The following clamps are half of their counterpart.
 Example: $big-clamp-half is half of $big-clamp. */
 $big-clamp-half: $clamp-2; //FUCK! this is not good... need to move it to unit, min, max...
