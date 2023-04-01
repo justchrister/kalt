@@ -11,7 +11,6 @@
       </nuxt-link>
       <br/>
       <button @click="completeTransaction"> buy </button>
-      <button @click="completeTransactionNew"> buy new </button>
     </block>
   </main>
 </template>
