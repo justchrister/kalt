@@ -6,16 +6,18 @@
         Choose a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
       </h3>
       <form @submit.prevent="resetPassword()">
-        <div class="element input password">
-        <label for='password'> Password:</label>
-        <input
-          type="password"
-          placeholder="password"
-          v-model="password"
-          id='password'
-        />
+        <div class="input-wrap">
+          <label for='password'> Password:</label>
+          <input
+            type="password"
+            placeholder="password"
+            v-model="password"
+            id='password'
+          />
         </div>
-        <input type="submit" value="Change password">
+        <div class="input-wrap">
+          <input type="submit" value="Change password">
+        </div>
       </form>
     </block>
   </main>
@@ -42,7 +44,12 @@
     const { data, error } = await supabase.auth.updateUser({
       password: password.value
     })
-    if(data) console.log(data)
-    if(error) console.log(error)
+    if(data){
+      await navigateTo("/portfolio")
+      ok.log('success', 'changed password')
+    } 
+    if(error){
+      ok.log('error', 'password not changed')
+    }
   }
 </script>
