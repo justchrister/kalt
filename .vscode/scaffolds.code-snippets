@@ -6,7 +6,7 @@
 	},
 	"scaffold page": {
 		"prefix": ["/scaffold page"],
-		"body": "<template>\n\t<main>\n\t\t\t\n\t</main>\n</template>\n<script lang=\"ts\" setup>\n\tdefinePageMeta({\n\t\tpagename: '${0:pagename}',\n\t\tmiddleware: 'auth'\n\t})\n\tuseHead({\n\t\ttitle: 'Kalt — ${0:pagename}',\n\t\tmeta: [{\n\t\t\tname: 'description',\n\t\t\tcontent: 'Make money, make a difference.'\n\t\t}]\n\t})\n\t\n</script>\n<style scoped lang=\"scss\">\n\t\n</style>",
+		"body": "<template>\n\t<main>\n\t\t\t\n\t</main>\n</template>\n<script lang=\"ts\" setup>\n\tdefinePageMeta({\n\t\tpagename: '${0:pagename}',\n\t\tmiddleware: 'auth'\n\t})\n\tuseHead({\n\t\ttitle: '${0:pagename}',\n\t\tmeta: [{\n\t\t\tname: 'description',\n\t\t\tcontent: 'Make money, make a difference.'\n\t\t}]\n\t})\n\t\n</script>\n<style scoped lang=\"scss\">\n\t\n</style>",
 		"description": "a snippet to scaffold a component",
 	}
 }

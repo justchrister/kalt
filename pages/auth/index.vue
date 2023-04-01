@@ -45,7 +45,7 @@
     pagename: 'Hello'
   })
   useHead({
-    title: 'Kalt — Hello',
+    title: 'Hello',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

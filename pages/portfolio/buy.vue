@@ -21,7 +21,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Kalt — Invest',
+    title: 'Invest',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

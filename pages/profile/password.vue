@@ -35,7 +35,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Kalt — Change password',
+    title: 'Change password',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

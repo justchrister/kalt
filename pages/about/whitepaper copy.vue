@@ -96,7 +96,7 @@
     layout:'whitepaper'
   })
   useHead({
-    title: 'Kalt — Master plan',
+    title: 'Master plan',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

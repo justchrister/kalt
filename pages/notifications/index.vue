@@ -19,7 +19,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Kalt — Notifications',
+    title: 'Notifications',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

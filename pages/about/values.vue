@@ -41,7 +41,7 @@
     pagename: 'Our values'
   })
   useHead({
-    title: 'Kalt — Our values',
+    title: 'Our values',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

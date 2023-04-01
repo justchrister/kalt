@@ -102,7 +102,7 @@
     layout:'whitepaper'
   })
   useHead({
-    title: 'Master plan',
+    title: 'Whitepaper',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

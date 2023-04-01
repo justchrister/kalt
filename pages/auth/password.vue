@@ -31,7 +31,7 @@
     pagename: 'Password reset'
   })
   useHead({
-    title: 'Kalt — Password reset',
+    title: 'Password reset',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

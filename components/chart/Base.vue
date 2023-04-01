@@ -81,7 +81,7 @@ const chartOptions = {
       }
     }
   },
-  tension: 0.2,
+  tension: 0.1,
   plugins: {
     legend: {
       display: false,
@@ -112,11 +112,10 @@ const chartData = computed(() => ({
   datasets: [
     {
       label: "",
-      backgroundColor: '#1E96FC',
-      borderColor: '#1E96FC',
-      pointBackgroundColor: '#1E96FC',
+      borderColor: '#202124',
+      pointBackgroundColor: '#202124',
       pointBorderWidth: 0,
-      pointBorderColor: '#1E96FC',
+      pointBorderColor: '#202124',
       data: data.value
     },
   ]

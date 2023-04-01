@@ -1,5 +1,5 @@
 // @ts-nocheck
-// publishOrder() should be a way of creating an order, that generates the event
+
 const timestamp = async () => {
   return Date.now()
 }
@@ -22,6 +22,5 @@ export const publishTransaction = (
       "transaction_type": transactionType
     }
   }
-  console.log(message)
   return message
 }

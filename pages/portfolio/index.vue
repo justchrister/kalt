@@ -76,7 +76,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Kalt — Portfolio',
+    title: 'Portfolio',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

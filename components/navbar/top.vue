@@ -1,53 +1,41 @@
 <template>
-    <header>
-        <nav class="menu">
-            <ul id="menu_items">
-                <li class="logomark" v-if="signedIn" v-on:click="toggleMenuOff">
-                    <nuxt-link to="/portfolio">
-                    <span>Kalt — </span>{{route.meta.pagename}}
-                    </nuxt-link>
-                </li>
-                <li class="logomark" v-else v-on:click="toggleMenuOff">
-                    <nuxt-link to="/">
-                    <span>Kalt — </span>{{route.meta.pagename}}
-                    </nuxt-link>
-                </li>
-                <li>
-                    <span>Kalt — </span>
-                    <nuxt-link to="/about" v-on:click="toggleMenu"> About </nuxt-link>
-                </li>
-                <li>
-                    <span>Kalt — </span>
-                    <nuxt-link to="/questions/how-does-it-work" v-on:click="toggleMenu"> How it works </nuxt-link>
-                </li>
-                <li v-if="signedIn">
-                    <span>Kalt — </span>
-                    <nuxt-link to="/portfolio" v-on:click="toggleMenu"> Portfolio </nuxt-link>
-                </li>
-                <li v-if="signedIn">
-                    <span>Kalt — </span>
-                    <nuxt-link to="/profile" v-on:click="toggleMenu"> Account </nuxt-link>
-                </li>
-                <li v-if="!signedIn">
-                    <span>Kalt — </span>
-                    <nuxt-link to="/auth/sign-up" v-on:click="toggleMenu"> Sign up </nuxt-link>
-                </li>
-                <li v-if="!signedIn">
-                    <span>Kalt — </span>
-                    <nuxt-link to="/auth" v-on:click="toggleMenu"> Sign in </nuxt-link>
-                </li>
-                <li v-if="signedIn">
-                    <span>Kalt — </span>
-                    <a href="/auth/sign-out" v-on:click="toggleMenu"> Sign out </a>
-                </li>
-            </ul>
-        </nav>
-        
-        <button class="menu-toggle" v-on:click="toggleMenu">menu</button>
-        <nuxt-link to="/portfolio" v-on:click="toggleMenuOff">
-            <div class="my-account-button"></div>
-        </nuxt-link>
-    </header>
+  <header>
+    <nav class="menu">
+      <ul>
+        <li class="logomark" @click="toggleMenuOff()">
+          <nuxt-link to="/portfolio" v-if="signedIn">
+            <div class="logo"></div>
+            <span>Kalt —</span>
+            {{route.meta.pagename}}
+          </nuxt-link>
+          <nuxt-link to="/" v-else> {{route.meta.pagename}} </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/about" @click="toggleMenu()"> About </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/questions/how-does-it-work" @click="toggleMenu()"> How it works </nuxt-link>
+        </li>
+        <li v-if="signedIn">
+          <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
+        </li>
+        <li v-if="signedIn">
+          <nuxt-link to="/profile" @click="toggleMenu()"> Account </nuxt-link>
+        </li>
+        <li v-if="!signedIn">
+          <nuxt-link to="/auth/sign-up" @click="toggleMenu()"> Sign up </nuxt-link>
+        </li>
+        <li v-if="!signedIn">
+          <nuxt-link to="/auth" @click="toggleMenu()"> Sign in </nuxt-link>
+        </li>
+        <li v-if="signedIn">
+          <a href="/auth/sign-out" @click="toggleMenu()"> Sign out </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button @click="toggleMenu()">menu</button>
+  </header>
 </template>
 
 <script setup>
@@ -70,15 +58,29 @@
     })
 </script>
 <style scoped lang="scss">
+
+.logo{
+  width:$clamp-2;
+  height:$clamp-2;
+  display:block;
+  position:fixed;
+  top:$border-width;
+  left:$border-width;
+  background:$dark;
+  border-radius:100%;
+  margin: clamp($unit-min*1.4, $unit*1.4, $unit-max*1.4) $clamp;
+}
+.logomark span{
+  font-weight:bold;
+}
 .menu ul{
   position: fixed;
   z-index: 3;
   margin: 0;
   height: $clamp-4;
   overflow:hidden;
-  padding: $clamp $clamp-2;
-  li.logomark,
-  li.logomark span{
+  padding: $clamp $clamp-2 $clamp $clamp-4;
+  li.logomark{
     opacity:1;
     pointer-events : all;
   }
@@ -93,27 +95,23 @@
         text-decoration:underline;
       }
     }
-    span{
-      font-weight:bold;
-      opacity:0;
-    }
     &:before{
       display:none;
     }
   }
 }
 
-header .menu-toggle,
-header .menu ul li {
+button,
+li {
   font-family: $sans-serif;
   font-size:$clamp-2;
   font-weight:normal;
   line-height: 150%;
   font-display: optional;
 }
-button.menu-toggle {
-  padding: $clamp $clamp-2;
-  right: $big-clamp;
+button {
+  padding: $clamp;
+  right: $clamp;
   position: fixed;
   top: $border-width;
   width: auto;
@@ -130,30 +128,9 @@ button.menu-toggle {
     opacity:0;
   }
 }
-.my-account-button{
-  width:$clamp-2;
-  height:$clamp-2;
-  display:block;
-  position:fixed;
-  top:$border-width;
-  right:$border-width;
-  background:$dark;
-  border-radius:100%;
-  box-sizing: border-box;
-  margin: $clamp-2;
-  margin-top:$clamp-1-8;
-  &:hover{
-    background-image: url("/omoji/super-happy.svg");
-  }
-}
 </style>
 <style lang="scss">
 .show-menu{
-  .bottom-navbar,
-  main{
-    opacity:0;
-    pointer-events : none;
-  }
   .menu ul{
     overflow: visible;
   }
@@ -161,9 +138,13 @@ button.menu-toggle {
     opacity:1;
     pointer-events : all;
   }
-  header button.menu-toggle:before{
+  header button:before{
     opacity:1;
   }
 }
-
+.show-menu footer,
+.show-menu main{
+  opacity:0;
+  pointer-events : none;
+}
 </style>

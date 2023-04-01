@@ -17,7 +17,7 @@
     pagename: 'Questions'
   })
   useHead({
-    title: 'Kalt — Questions',
+    title: 'Questions',
     meta: [{
       name: "description",
       content: "Make money, make a difference."

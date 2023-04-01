@@ -4,13 +4,11 @@
             <ul id="menu_items">
                 <li class="logomark" v-if="signedIn" v-on:click="toggleMenuOff">
                     <nuxt-link to="/portfolio">
-                    <span>Kalt — </span>
                     {{ pageTitle }}
                     </nuxt-link>
                 </li>
                 <li class="logomark" v-else v-on:click="toggleMenuOff">
                     <nuxt-link to="/">
-                    <span>Kalt — </span>
                     {{ pageTitle }}
                     </nuxt-link>
                 </li>

@@ -23,7 +23,7 @@
     pagename: 'Lobby'
   })
   useHead({
-    title: 'Kalt — Lobby',
+    title: 'Lobby',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
