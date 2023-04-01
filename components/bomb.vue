@@ -6,16 +6,16 @@
   </nuxt-link>
 </template>
 <script setup lang="ts">
-const props = defineProps({
-  to: {
-    type: String,
-    required: true
-  },
-  text: {
-    type: String,
-    required: true
-  },
-})
+  const props = defineProps({
+    to: {
+      type: String,
+      required: true
+    },
+    text: {
+      type: String,
+      required: true
+    },
+  })
 </script>
 <style scoped lang="scss">
 .bomb{
