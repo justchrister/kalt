@@ -16,7 +16,7 @@
           />
         </div>
         <div class="input-wrap">
-          <label class="atom" for='password'> Password </label>
+          <label for='password'> Password </label>
           <input
             type="password"
             placeholder="Password"

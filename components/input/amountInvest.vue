@@ -9,7 +9,7 @@
           type="text"
           placeholder="Amount"
           id="amount"
-          class="atom amount"
+          class="amount"
           v-model="amount"
           @input="updatePaymentAmount"
         />

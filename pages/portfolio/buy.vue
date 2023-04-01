@@ -11,6 +11,7 @@
       </nuxt-link>
       <br/>
       <button @click="completeTransaction"> buy </button>
+      <button @click="completeTransactionNew"> buy new </button>
     </block>
   </main>
 </template>
@@ -76,6 +77,7 @@
       ok.log('success', 'completed transaction: '+transaction_id.value)
       navigateTo('/portfolio')
     }
+
   }
 
 </script>

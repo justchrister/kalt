@@ -15,7 +15,7 @@
           id='email'
         />
         </div>
-        <input type="submit" value="Send reset link" class="atom">
+        <input type="submit" value="Send reset link">
       </form>
       <div class="element link-group">
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
@@ -52,9 +52,9 @@
       email.value, {
         redirectTo: 'https://ka.lt/profile/password',
     })
-    if(data) router.push('/auth/lobby')
+    if(data) navigateTo('/auth/lobby')
     if(error) {
-
+      ok.log('error', 'password reset did not work?' + error.message)
     }
   }
 </script>

@@ -15,15 +15,7 @@
           id='password'
         />
         </div>
-        <div class="element input password">
-        <input
-          type="password"
-          placeholder="Repeat password"
-          v-model="password2"
-          id='password2'
-        />
-        </div>
-        <input type="submit" value="Reset" class="atom">
+        <input type="submit" value="Change password">
       </form>
     </block>
   </main>
@@ -44,17 +36,13 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const router = useRouter()
 
   const password = ref('')
-  const password2 = ref('')
   const resetPassword = async () => {
-    if(password.value===password2.value){
-      const { data, error } = await supabase.auth.updateUser({
-        password: password.value
-      })
-      if(data) console.log(data)
-      if(error) console.log(error)
-    }
+    const { data, error } = await supabase.auth.updateUser({
+      password: password.value
+    })
+    if(data) console.log(data)
+    if(error) console.log(error)
   }
 </script>

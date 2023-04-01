@@ -15,15 +15,15 @@
           id='email'
         />
         <div class="element input password">
-          <label class="atom" for='password'> Password </label>
-          <input class="atom" 
+          <label for='password'> Password </label>
+          <input 
             type="password"
             placeholder="Password"
             v-model="password"
             id='password'
           />
         </div>
-        <input type="submit" value="next" class="atom" />
+        <input type="submit" value="next" />
       </form>
     </block>
     <block>

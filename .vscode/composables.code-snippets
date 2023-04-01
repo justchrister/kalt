@@ -1,0 +1,7 @@
+{
+	"scaffold component": {
+		"prefix": ["ok.log('','')"],
+		"body": "ok.log('$1', '$0')",
+		"description": "ok.log('','')",
+	}
+}
