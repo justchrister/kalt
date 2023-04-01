@@ -76,6 +76,16 @@
 }
 .logomark span{
   font-weight:bold;
+  opacity:1;
+}
+ul li.logomark:before{
+  display:none;
+}
+ul li:before{
+  opacity:0;
+  content:'Kalt — ';
+  font-weight:bold;
+  display:inline;
 }
 .menu ul{
   position: fixed;
@@ -98,9 +108,6 @@
       &:hover{
         text-decoration:underline;
       }
-    }
-    &:before{
-      display:none;
     }
   }
 }
