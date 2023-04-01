@@ -1,0 +1,7 @@
+{
+	"<block>": {
+		"prefix": ["<block>"],
+		"body": "<block>\n\t$0\n</block>",
+		"description": "<block>",
+	}
+}
