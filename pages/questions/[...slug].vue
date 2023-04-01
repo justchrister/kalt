@@ -12,8 +12,7 @@
 <script setup lang="ts">
   definePageMeta({
     pagename: 'Question',
-    layout: 'questions',
-    middleware: 'auth'
+    layout: 'questions'
   })
   useHead({
     title: 'Kalt — Notification',
