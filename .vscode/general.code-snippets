@@ -14,19 +14,9 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"atom input": {
-		"prefix": ["/a i", "/atom input"],
-		"body": "<label for=\"$2\">$3:</label> <input \n type=\"$1\" \n v-model=\"$3\" \n placeholder=\"$3\" \n id=\"$2\" \n class=\"atom input-$2\" \n @input=\"update$1()\" />",
-		"description": "a snippet to create the <input> atom",
-	},
-	"atom label": {
-		"prefix": ["/a l", "/atom label"],
-		"body": "<label> $0 </label>",
-		"description": "a snippet to create the <input> atom",
-	},
-	"arrow function label": {
+	"arrow function": {
 		"prefix": ["/arrow"],
-		"body": "const $1 = async () => {\n$0\n}",
+		"body": "const $1 = async () => {\n\t$0\n}",
 		"description": "a snippet to create a standard arrow function",
 	},
 	"for (i)": {
@@ -34,10 +24,15 @@
 		"body": "for (let i = 0; i < $1; i++) {\n$0\n}",
 		"description": "a snippet to create a standard arrow function",
 	},
-	"add prop": {
+	"props": {
 		"prefix": ["/add props"],
-		"body": "\tconst props = defineProps({\n\t\t$0: {\n\t\t\ttype: String,\n\t\t\trequired: true\n\t\t}\n\t})\n",
-		"description": "a snippet to scaffold a component",
+		"body": "const props = defineProps({\n\t\t$0: {\n\t\t\ttype: $1,\n\t\t\trequired: $2\n\t\t}\n\t})\n",
+		"description": "a snippet to props",
+	},
+	"prop": {
+		"prefix": ["/add prop"],
+		"body": "$1: {\n\ttype: $2,\n\trequired: $3\n}",
+		"description": "a snippet to add a single prop",
 	},
 	"scss": {
 		"prefix": ["/scss"],
