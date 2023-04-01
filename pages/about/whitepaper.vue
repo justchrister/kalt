@@ -58,33 +58,33 @@
     <block margin="none">
       <h4>The product</h4>
       <content-card 
-        title="Let people invest in what they care about"
+        title="Deploy high-efficiency monocrystalline solar panels, built for scale."
         content=""
-        color="green"
+        color="blue"
         :number="1"
-      />
-      <content-card 
-        title="Make it easy to understand the impact"
-        content="Giving understandable ways to summarize the impact"
-        color="green"
-        :number="2"
       />
       <content-card 
         title="Use AI to identify high-potential solar energy sites."
         content=""
         color="blue"
+        :number="2"
+      />
+      <content-card 
+        title="DDF"
+        content=""
+        color="pink"
         :number="3"
       />
       <content-card 
-        title="Deploy high-efficiency monocrystalline solar panels, built for scale."
+        title="Let people invest in what they care about"
         content=""
-        color="blue"
+        color="green"
         :number="4"
       />
       <content-card 
-        title="Pay back profits to investors directly"
-        content=""
-        color="pink"
+        title="Make it easy to understand the impact"
+        content="Giving understandable ways to summarize the impact"
+        color="green"
         :number="5"
       />
       <content-card 
@@ -98,11 +98,11 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Master plan',
+    pagename: 'Whitepaper',
     layout:'whitepaper'
   })
   useHead({
-    title: 'Kalt — Master plan',
+    title: 'Master plan',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'

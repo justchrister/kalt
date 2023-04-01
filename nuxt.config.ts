@@ -3,7 +3,8 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/supabase', 
-    '@nuxt/content'
+    '@nuxt/content',
+    'nuxt-stripe-module',
   ],
   css: ['@/assets/stylesheet.scss'],
   build: {
@@ -17,6 +18,9 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+  stripe: {
+    publishableKey: 'pk_test_51IMoMpDBFB40Q48wJYOe24B4jfH6W3UYyRAduNHLP5o8IER2ML2cAMoxGKdwKkYnGBkFoe1dJzdPxj2cPJjfgg6000tUWGXJvZ',
   },
   app: {
     head: {
