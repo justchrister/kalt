@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 const timestamp = async () => {
   return Date.now()
 }

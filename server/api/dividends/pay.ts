@@ -1,5 +1,3 @@
-// @ts-nocheck
-// yeah, the above comment should probably be removed, hehehe
 import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 

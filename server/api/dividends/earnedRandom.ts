@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import { v4 as uuidv4 } from 'uuid'

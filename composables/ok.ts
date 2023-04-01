@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 export const ok = {
   toInt(input){
     const pattern = /[^0-9]/g;
