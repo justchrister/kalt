@@ -9,7 +9,7 @@
         </li>
         <li>
           <nuxt-link to="/profile" >
-              Account
+              Profile
           </nuxt-link>
         </li>
         <li>
