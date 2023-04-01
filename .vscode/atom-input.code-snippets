@@ -34,20 +34,10 @@
 		"body": "for (let i = 0; i < $1; i++) {\n$0\n}",
 		"description": "a snippet to create a standard arrow function",
 	},
-	"scaffold component": {
-		"prefix": ["/scaffold component"],
-		"body": "<template>\n\n</template>\n<script setup lang=\"ts\">\nconst props = defineProps({\n$0: {\ntype: String,\nrequired: true\n}\n})\n</script>",
-		"description": "a snippet to scaffold a component",
-	},
 	"add prop": {
 		"prefix": ["/add props"],
-		"body": "const props = defineProps({\n$0: {\ntype: String,\nrequired: true\n}\n})\n",
+		"body": "\tconst props = defineProps({\n\t\t$0: {\n\t\t\ttype: String,\n\t\t\trequired: true\n\t\t}\n\t})\n",
 		"description": "a snippet to scaffold a component",
-	},
-	"css clamp": {
-		"prefix": ["/clamp"],
-		"body": "clamp($unit-min*$0, $unit*$0, $unit-max*$0)",
-		"description": "the clamp",
 	},
 	"scss": {
 		"prefix": ["/scss"],
