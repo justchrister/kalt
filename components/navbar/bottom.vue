@@ -7,7 +7,7 @@
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/profile" > Account </nuxt-link>
           <nuxt-link to="/notifications" > Notifications </nuxt-link>
-          <nuxt-link to="/profile/transactions" > Transactions </nuxt-link>
+          <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
           <nuxt-link to="/cards" > Cards </nuxt-link>
           <nuxt-link to="/subscription" > Subscription </nuxt-link>
           <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link>
@@ -22,7 +22,7 @@
         <ul>
           <nuxt-link to="/about" > About us </nuxt-link>
           <nuxt-link to="/about/values" > Our values </nuxt-link>
-          <nuxt-link to="/about/mission" > Our mission </nuxt-link>
+          <nuxt-link to="/about/whitepaper" > Whitepaper </nuxt-link>
           <nuxt-link to="/questions" > Q&A </nuxt-link>
           <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
           <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
