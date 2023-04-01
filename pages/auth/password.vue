@@ -50,7 +50,7 @@
   const resetPassword = async () => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       email.value, {
-        redirectTo: 'https://ka.lt/account/password',
+        redirectTo: 'https://ka.lt/profile/password',
     })
     if(data) router.push('/auth/lobby')
     if(error) {

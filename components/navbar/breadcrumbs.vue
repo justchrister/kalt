@@ -28,7 +28,7 @@
                 </li>
                 <li v-if="signedIn">
                     <span>Kalt — </span>
-                    <nuxt-link to="/account" v-on:click="toggleMenu"> Account </nuxt-link>
+                    <nuxt-link to="/profile" v-on:click="toggleMenu"> Account </nuxt-link>
                 </li>
                 <li v-if="!signedIn">
                     <span>Kalt — </span>

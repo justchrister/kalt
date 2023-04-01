@@ -8,7 +8,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/account" >
+          <nuxt-link to="/profile" >
               Account
           </nuxt-link>
         </li>

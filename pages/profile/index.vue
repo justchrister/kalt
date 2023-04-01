@@ -42,7 +42,7 @@
   const user = useSupabaseUser()
 
   const { data, error } = await supabase
-    .from('accounts')
+    .from('profiles')
     .select()
     .single()
   if(error) ok.log("error", "Could not get user account")

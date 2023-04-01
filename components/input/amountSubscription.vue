@@ -52,7 +52,7 @@
     currency.value = props.currency
   } else {
     const { data } = await supabase
-      .from('accounts')
+      .from('profiles')
       .select('preferred_currency')
       .single()
     if (data) {

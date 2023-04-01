@@ -25,7 +25,7 @@
   const dataset = ref({})
   const days = ref(5)
   const { data } = await supabase
-    .from('accounts')
+    .from('profiles')
     .select('preferred_currency')
     .single()
   const initateChart =  () => {

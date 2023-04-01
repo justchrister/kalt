@@ -6,7 +6,7 @@
       <input-amount-invest :uuid="transaction_id" v-if="transaction_id"/>
       <br/>
       <label>Choose card to charge: </label>
-      <nuxt-link to="/account/cards">
+      <nuxt-link to="/profile/cards">
         <default-card />
       </nuxt-link>
       <br/>
