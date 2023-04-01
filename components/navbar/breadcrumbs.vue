@@ -12,7 +12,6 @@
     }
   })
   const parentUrl = "/"+props.parent.toLowerCase()
-  console.log(parentUrl)
 </script>
 
 <style scoped lang="scss">
