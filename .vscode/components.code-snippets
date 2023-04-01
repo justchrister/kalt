@@ -3,5 +3,10 @@
 		"prefix": ["<block>"],
 		"body": "<block>\n\t$0\n</block>",
 		"description": "<block>",
+	},
+	"<pill>": {
+		"prefix": ["<pill>"],
+		"body": "<pill> $0 </pill>",
+		"description": "<pill>",
 	}
 }
