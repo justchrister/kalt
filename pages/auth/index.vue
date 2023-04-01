@@ -5,7 +5,7 @@
       <h1 class="sans-serif">
         Welcome back! <omoji emoji="😃" />
       </h1>
-      <form @submit.prevent="signIn()">
+      <form @submit.prevent="signIn">
         <div class="input-wrap">
           <label for='email'> E-mail</label>
           <input
@@ -24,12 +24,12 @@
             id='password'
           />
         </div>
+        <div class="input-wrap">
+          <button @click="signIn()">
+            sign in
+          </button>
+        </div>
       </form>
-    </block>
-    <block margin="half">
-      <button @click="signIn()">
-        sign in
-      </button>
     </block>
     <block margin="half">
       <div class="center-text link-group">
