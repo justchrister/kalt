@@ -1,12 +1,11 @@
 
 <template>
   <main>
-    <navbar-tabs />
+    <navbar-breadcrumbs parent="Accounts"/>
     <block margin="half" v-if="data">
-      <navbar-tabs />
-      <div class="transaction">
-        <div></div>
+      <div class="transactions-header">
         <div>Amount</div>
+        <div></div>
         <div>Date</div>
         <div>Time</div>
       </div>
@@ -59,3 +58,11 @@
   if (error) ok.log('error', 'could not get transactions for '+user.value.id)
 
 </script>
+<style scoped lang="scss">
+  .transactions-header {
+    display: grid; 
+    grid-template-columns: $clamp 12fr 2fr 2fr; 
+    gap: 2% 2%; 
+    border-bottom:$border;
+  }
+</style>
