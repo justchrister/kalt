@@ -25,8 +25,7 @@
 
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Change password',
-    middleware: 'auth'
+    pagename: 'Change password'
   })
   useHead({
     title: 'Change password',
