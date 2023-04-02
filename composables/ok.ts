@@ -21,6 +21,33 @@ export const ok = {
       "text": text
     }
     return json
+  },
+
+  addZero(i) {
+    if (i < 10) {i = "0" + i}
+    return i;
+  },
+
+  prettyCurrency(amount, currency) {
+    let amountRounded = (Math.ceil(amount * 10) / 10).toFixed(1);
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 3,
+    });
+    return formatter.format(amountRounded)
+  },
+  prettyDate(dateTime) {
+    const day = new Date(dateTime).getDate()
+    const month = new Date(dateTime).getMonth()+1
+    const year = new Date(dateTime).getFullYear()
+    return day+"/"+month+"/"+year
+  },
+  prettyTime(dateTime){
+    const hour = ok.addZero(new Date(dateTime).getHours())
+    const minute = ok.addZero(new Date(dateTime).getMinutes())
+    return hour+":"+minute
   }
 };
 import { v4 as uuidv4 } from 'uuid';
