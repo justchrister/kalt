@@ -1,0 +1,20 @@
+
+#########################################################
+#                                                       #
+#      To reinitiate the entire local environment       #
+#      simply run bash here                             #
+#                                                       #
+#      it will remove and reinstall using npm,          #
+#      and run the dev environment                      #
+#                                                       #
+#########################################################
+
+rm node_modules
+rm package-lock.json
+rm .nuxt
+clear
+echo "files removed"
+npm i
+clear
+echo "installed"
+npm run dev
