@@ -11,11 +11,12 @@
       </div>
       <transaction 
         v-for="transaction of data" 
-        :key="transaction.transaction_id" 
-        :type="transaction.transaction_type"
+        :key="transaction.time" 
+        :type="transaction.type"
         :amount="transaction.amount"
-        :dateTime="transaction.modified_at"
         :currency="transaction.currency"
+        :date="transaction.date"
+        :time="transaction.time"
       />
     </block>
     <block v-if="data">
@@ -47,13 +48,10 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const {data, error} = await supabase
-    .from('transactions')
+    .from('gettransactions')
     .select()
     .eq('user_id', user.value.id)
-    .eq('transaction_status', 3)
-    .order('created_at', { ascending: false })
-    .limit(10)
-  
+  console.log(data)
 
   if (data) ok.log('success', 'got transactions for '+user.value.id)
   if (error) ok.log('error', 'could not get transactions for '+user.value.id)
