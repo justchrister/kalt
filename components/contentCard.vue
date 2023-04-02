@@ -1,7 +1,7 @@
 <template>
   <div class="content-card" :id="props.color" >
     <div class="title">
-      <span class="number">{{addZero(props.number)}}.</span> 
+      <span class="number">{{ok.addZero(props.number)}}.</span> 
       {{props.title}}
     </div>
     <div class="content" v-if="props.content">{{props.content}}</div>
@@ -27,10 +27,6 @@ const props = defineProps({
   }
 })
 
-  function addZero(i) {
-    if (i < 10) {i = "0" + i}
-    return i;
-  }
 </script>
 <style scoped lang="scss">
   .content-card{
