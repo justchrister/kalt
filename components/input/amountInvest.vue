@@ -79,7 +79,7 @@
 
 </script>
 <style scoped lang="scss">
-  .input-wrap{
+  .input-group{
     display: grid;
     grid-template-rows: 1fr;
     gap: 0% 0%;
