@@ -1,23 +1,21 @@
 <template>
-  <div class="component select amount">
-    <div class="element input text">
-      <label for="amount"> 
-        Select amount: 
-      </label>
-      <div class="input-group">
-        <input
-          type="text"
-          placeholder="Amount"
-          id="amount"
-          class="amount"
-          v-model="amount"
-          @input="updatePaymentAmount"
-        />
-        <select v-model="preferred_currency" :class="state" 
-        @change="updatePaymentCurrency">
-          <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.iso}}</option>
-        </select>
-      </div>
+  <div class="input-wrap">
+    <label for="amount"> 
+      Select amount: 
+    </label>
+    <div class="input-group">
+      <input
+        type="text"
+        placeholder="Amount"
+        id="amount"
+        class="amount"
+        v-model="amount"
+        @input="updatePaymentAmount"
+      />
+      <select v-model="preferred_currency" :class="state" 
+      @change="updatePaymentCurrency">
+        <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.iso}}</option>
+      </select>
     </div>
   </div>
 </template>
@@ -81,7 +79,7 @@
 
 </script>
 <style scoped lang="scss">
-  .component.select.amount .input-group{
+  .input-wrap{
     display: grid;
     grid-template-rows: 1fr;
     gap: 0% 0%;

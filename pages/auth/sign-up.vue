@@ -32,10 +32,10 @@
       </form>
     </block>
     <block>
-      <div class="center-text link-group">
+      <link-group>
         <nuxt-link to="/auth">sign in</nuxt-link>
         <nuxt-link to="/auth/password">forgot password</nuxt-link>
-      </div>
+      </link-group>
     </block>
   </main>
 </template>

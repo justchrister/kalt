@@ -1,5 +1,5 @@
 <template>
-  <div class="element select preferred_language">
+  <div class="input-wrap">
     <label for="preferred_language"> 
       Language: 
     </label>
@@ -44,7 +44,7 @@
   };
 </script>
 <style scoped lang="scss">
-.element.select{
+.input-wrap{
   margin-top: $clamp;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="element select preferred_currency">
+  <div class="input-wrap">
     <label for="preferred_currency"> 
       Currency: 
     </label>
@@ -45,7 +45,7 @@
   };
 </script>
 <style scoped lang="scss">
-.element.select{
+.input-wrap{
   margin-top: $clamp;
 }
 </style>

@@ -21,10 +21,10 @@
           </button>
         </div>
       </form>
-      <div class="element link-group">
+      <link-group>
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
         <nuxt-link to="/auth/">sign in</nuxt-link>
-      </div>
+      </link-group>
     </block>
     <notify :type="notify.type" :message="notify.message" v-if="notify.message" />
   </main>

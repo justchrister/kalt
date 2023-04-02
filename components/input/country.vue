@@ -1,5 +1,5 @@
 <template>
-  <div class="element select country">
+  <div class="input-wrap">
     <label for="country"> 
       Country: 
     </label>
@@ -45,7 +45,7 @@
   };
 </script>
 <style scoped lang="scss">
-.element.select{
+.input-wrap{
   margin-top: $clamp;
 }
 </style>
