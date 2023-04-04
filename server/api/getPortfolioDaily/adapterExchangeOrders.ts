@@ -13,8 +13,8 @@ export default defineEventHandler( async (event) => {
     .update({ read: true })
     .eq('message_id', body.record.message_id)
   
-  if(error) return ok.log('error', error.msg)
-  if(message.message_read) return 'message already read'
+  if(subscriptionError) return ok.log('error', subscriptionError.msg)
+  if(subscription.message_read) return 'message already read'
 
   let json = {
     'date': null,
