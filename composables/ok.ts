@@ -48,6 +48,24 @@ export const ok = {
     const hour = ok.addZero(new Date(dateTime).getHours())
     const minute = ok.addZero(new Date(dateTime).getMinutes())
     return hour+":"+minute
+  },
+  supabaseDate(dateTime) {
+    const day = new Date(dateTime).getDate()
+    const month = new Date(dateTime).getMonth()+1
+    const year = new Date(dateTime).getFullYear()
+    return year+'-'+ok.addZero(month)+'-'+ok.addZero(day)
+  },
+  timestamptz() {
+    const now = new Date()
+    const year = now.getUTCFullYear()
+    const month = String(now.getUTCMonth() + 1).padStart(2, '0')
+    const day = String(now.getUTCDate()).padStart(2, '0')
+    const hours = String(now.getUTCHours()).padStart(2, '0')
+    const minutes = String(now.getUTCMinutes()).padStart(2, '0')
+    const seconds = String(now.getUTCSeconds()).padStart(2, '0')
+    const ms = String(now.getUTCMilliseconds()).padStart(3, '0')
+    const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`
+    return timestamptz
   }
 };
 import { v4 as uuidv4 } from 'uuid';
