@@ -29,7 +29,7 @@ export default defineEventHandler( async (event) => {
     .select()
     .eq('message_entity_id', body.record.message_entity_id)
     .neq('transaction_type', 'withdrawal')
-    .eq('transaction_status', 'payment_complete')
+    .eq('transaction_status', 'payment_accepted')
     .gte('auto_invest',0.1)
     .order('message_created', { ascending: true })
     .limit(1)
