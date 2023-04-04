@@ -9,11 +9,11 @@ export default defineEventHandler( async (event) => {
   if(body.record.message_read) return 'message already read'
   
   const { data: subscription, error: subscriptionError } = await supabase
-    .from('topics.exchange_orders__get_portfolio_daily')
+    .from('exchange_orders__get_portfolio_daily')
     .update({ read: true })
     .eq('message_id', body.record.message_id)
   
-  if(subscriptionError) return ok.log('error', subscriptionError.msg)
+  if(subscriptionError) return ok.log('error', subscriptionError.message)
   if(subscription.message_read) return 'message already read'
 
   let json = {
@@ -25,7 +25,7 @@ export default defineEventHandler( async (event) => {
   }
 
   const { data: message, error: messageError } = await supabase
-    .from('topics.exchange_orders')
+    .from('exchange_orders')
     .select()
     .eq('message_entity_id', subscription.message_entity_id)
     .eq('order_status', 'fulfilled')
@@ -51,7 +51,7 @@ export default defineEventHandler( async (event) => {
   if(!json.date) return 'missing a primary key'
 
   const { data:dateExists, error:dateExistsError } = await supabase
-    .from('service.get_portfolio_daily')
+    .from('get_portfolio_daily')
     .select('quantity')
     .eq('date', json.date)
     .eq('user_id', json.user_id)
@@ -61,7 +61,7 @@ export default defineEventHandler( async (event) => {
   if(dateExists.quantity) json.quantity +=  dateExists.quantity
 
   const { data, error } = await supabase
-    .from('services.get_portfolio_daily')
+    .from('get_portfolio_daily')
     .insert({ json })
 
   if(data) return data
