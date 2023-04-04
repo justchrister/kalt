@@ -11,6 +11,7 @@ export default defineEventHandler( async (event) => {
     .from('exchange_orders__get_portfolio_daily')
     .update({ message_read: true })
     .eq('message_id', body.record.message_id)
+    .select()
   
   if(subscriptionError) return ok.log('error', subscriptionError.message)
 
