@@ -18,14 +18,12 @@ export default defineEventHandler( async (event) => {
     'date': null,
     'user_id': null,
     'quantity': null,
-    'ticker': null,
-    'type': null
+    'ticker': null
   }
   const { data: message, error: messageError } = await supabase
     .from('exchange_orders')
     .select()
     .eq('message_entity_id', body.record.message_entity_id)
-    .eq('order_status', 'fulfilled')
     .order('message_created', { ascending: false })
 
   if(!message.length) return 'order not fulfilled'
@@ -36,13 +34,12 @@ export default defineEventHandler( async (event) => {
     json.date = message[i].message_created
     json.quantity = message[i].quantity
     json.ticker = message[i].ticker
-    json.type = message[i].order_type
 
-    if(data[i].order_type='buy'){
-      json.quantity = data[i].quantity
+    if(message[i].order_type==='buy'){
+      json.quantity = message[i].quantity
     }
-    if(data[i].order_type='sell'){
-      json.quantity = -data[i].quantity
+    if(message[i].order_type==='sell'){
+      json.quantity = -message[i].quantity
     }
   }
 
@@ -57,12 +54,12 @@ export default defineEventHandler( async (event) => {
     .eq('user_id', json.user_id)
     .eq('ticker', json.ticker)
     .single()
-  
-  if(dateExists.quantity) json.quantity +=  dateExists.quantity
 
+  if(dateExists) json.quantity += dateExists.quantity
+  
   const { data, error } = await supabase
     .from('get_portfolio_daily')
-    .insert({ json })
+    .upsert(json)
 
   if(data) return data
   if(error) return error
