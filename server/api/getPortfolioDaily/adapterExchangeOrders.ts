@@ -24,7 +24,7 @@ export default defineEventHandler( async (event) => {
     .from('exchange_orders')
     .select()
     .eq('message_entity_id', body.record.message_entity_id)
-    .order('message_created', { ascending: false })
+    .order('message_created', { ascending: true })
 
   if(!message.length) return 'order not fulfilled'
   if(messageError) return messageError.message
@@ -60,6 +60,8 @@ export default defineEventHandler( async (event) => {
   const { data, error } = await supabase
     .from('get_portfolio_daily')
     .upsert(json)
+    .select()
+    .single()
 
   if(data) return data
   if(error) return error
