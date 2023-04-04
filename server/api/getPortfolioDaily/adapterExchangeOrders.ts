@@ -5,16 +5,14 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const query = getQuery(event)
   const body = await readBody(event)
-  
   if(body.record.message_read) return 'message already read'
   
   const { data: subscription, error: subscriptionError } = await supabase
     .from('exchange_orders__get_portfolio_daily')
-    .update({ read: true })
+    .update({ message_read: true })
     .eq('message_id', body.record.message_id)
   
   if(subscriptionError) return ok.log('error', subscriptionError.message)
-  if(subscription.message_read) return 'message already read'
 
   let json = {
     'date': null,
