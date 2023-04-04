@@ -21,14 +21,16 @@ export default defineEventHandler( async (event) => {
     'ticker': null,
     'type': null
   }
-
   const { data: message, error: messageError } = await supabase
     .from('exchange_orders')
     .select()
-    .eq('message_entity_id', subscription.message_entity_id)
+    .eq('message_entity_id', body.record.message_entity_id)
     .eq('order_status', 'fulfilled')
-    .order('date', { ascending: false })
+    .order('message_created', { ascending: false })
 
+  if(!message.length) return 'order not fulfilled'
+  if(messageError) return messageError.message
+  
   for (let i = 0; i < message.length; i++) {
     json.user_id = message[i].user_id
     json.date = message[i].message_created
