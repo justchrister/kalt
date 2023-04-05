@@ -30,7 +30,7 @@ export default defineEventHandler( async (event) => {
     .select()
     .eq('message_entity_id', body.record.message_entity_id)
     .neq('transaction_type', 'withdrawal')
-    .eq('transaction_status', 'payment_accepted')
+    .eq('transaction_status', 'payment_confirmed')
     .gte('auto_invest_percentage',0.1)
     .limit(1)
     .single()
@@ -55,6 +55,13 @@ export default defineEventHandler( async (event) => {
     .insert(json)
     .select()
   
+  const { data: autoInvestTable, error: autoInvestTableError } = await supabase
+    .from('auto_invest')
+    .insert({
+      'exchange_order_id': data.entity_id,
+      'account_transaction_id': body.record.message_entity_id
+    })
+
   if(data) return data
   if(error) return error
 });
