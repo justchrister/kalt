@@ -34,7 +34,7 @@ export default defineEventHandler( async (event) => {
   if(messagesError) return 'fetching messages failed: '+messagesError.message
   
   const message = await ok.combineEntity(messages)
-  if(message.type<0) return 'its a sell order'
+  if(message.transaction_status!='payment_accepted') return 'wrong payment status'
   
   const { data: exchangeRate, error: exchangeRateError } = await supabase
     .from('exchange_rates')
