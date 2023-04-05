@@ -8,7 +8,7 @@ export default defineEventHandler( async (event) => {
   if(body.record.message_read) return 'message already read'
   
   const { data: subscription, error: subscriptionError } = await supabase
-    .from('exchange_orders__get_portfolio_daily')
+    .from('exchange_orders__get_portfolio_latest')
     .update({ message_read: true })
     .eq('message_id', body.record.message_id)
     .select()
