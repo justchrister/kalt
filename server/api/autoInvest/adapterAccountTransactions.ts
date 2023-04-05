@@ -18,25 +18,24 @@ export default defineEventHandler( async (event) => {
   let json = {
     'message_created': ok.timestamptz(),
     'message_sender': 'autoInvest',
-    'user_id': null,
-    'quantity': null,
-    'ticker': null,
+    'ticker': 'ddf_global_index',
     'order_type': 'buy',
-    'order_status': 'complete'
+    'order_status': 'open',
+    'user_id': null,
+    'quantity': null
   }
-
-  const { data: message, error: messageError } = await supabase
+  
+  const { data: messages, error: messagesError } = await supabase
     .from('account_transactions')
     .select()
     .eq('message_entity_id', body.record.message_entity_id)
-    .neq('transaction_type', 'withdrawal')
-    .eq('transaction_status', 'payment_confirmed')
-    .gte('auto_invest_percentage',0.1)
-    .limit(1)
-    .single()
+    .order('message_created', { ascending: true })
 
-  if(messageError) return messageError.message
-
+  if(messagesError) return 'fetching messages failed: '+messagesError.message
+  
+  const message = await ok.combineEntity(messages)
+  if(message.type<0) return 'its a sell order'
+  
   const { data: exchangeRate, error: exchangeRateError } = await supabase
     .from('exchange_rates')
     .select('ddf_global_index') //should be fetched from profile, when user has option to invest in more than ddf global index
@@ -44,24 +43,24 @@ export default defineEventHandler( async (event) => {
     .limit(1)
     .single()
     
-  if(messageError) return exchangeRateError.message
+  if(exchangeRateError) return exchangeRateError.message
 
   json.user_id = message.user_id
   json.quantity = message.amount * message.auto_invest_percentage * exchangeRate.ddf_global_index
-  json.ticker = message.ticker
   
   const { data, error } = await supabase
-    .from('exchange_order')
+    .from('exchange_orders')
     .insert(json)
     .select()
-  
+  console.log(data)
+  console.log(error)
   const { data: autoInvestTable, error: autoInvestTableError } = await supabase
     .from('auto_invest')
     .insert({
-      'exchange_order_id': data.entity_id,
+      'exchange_order_id': message.entity_id,
       'account_transaction_id': body.record.message_entity_id
     })
-
+  
   if(data) return data
   if(error) return error
 });

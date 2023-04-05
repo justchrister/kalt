@@ -66,6 +66,18 @@ export const ok = {
     const ms = String(now.getUTCMilliseconds()).padStart(3, '0')
     const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`
     return timestamptz
+  },
+  combineEntity(jsonArray){
+    let result = {};
+  
+    for (let i = 0; i < jsonArray.length; i++) {
+        let jsonObj = jsonArray[i];
+  
+        for (let key in jsonObj) {
+            result[key] = jsonObj[key];
+        }
+    }
+    return result
   }
 };
 import { v4 as uuidv4 } from 'uuid';
