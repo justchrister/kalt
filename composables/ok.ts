@@ -7,18 +7,30 @@ export const ok = {
     const pattern = /[^0-9]/g;
     return input.replace(pattern, '');
   },
-  log(type, text){
+  log(type, ...inputs){
     // https://talyian.github.io/ansicolors/
-    let label = '\x1b[34m● \x1b[0m';
+    
+    let label = '\x1b[34m● \x1b[0m'
+    let text = ''
     if (type==='success') label = '\x1b[32m● \x1b[0m'
     if (type==='warn')    label = '\x1b[33m● \x1b[0m'
     if (type==='error')   label = '\x1b[31m● \x1b[0m'
+
+    inputs.forEach((input) => {
+      if (typeof input === 'object') {
+        const formattedObject = JSON.stringify(input, null, 2)
+          .split('\n')
+          .map((line) => '  ' + line)
+          .join('\n');
+        text += '\n' + formattedObject;
+      } else {
+        text += input;
+      }
+    });
+
     console.log(label + text)
-    let json={
-      "type": type,
-      "text": text
-    }
-    return json
+
+    return
   },
 
   addZero(i) {

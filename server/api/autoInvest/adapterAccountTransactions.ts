@@ -7,13 +7,25 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
+  // reads message
+  const { data: messages, error: messagesError } = await supabase
+    .from('account_transactions')
+    .select()
+    .eq('message_entity_id', body.record.message_entity_id)
+    .order('message_created', { ascending: true })
+
+  if(messagesError) return 'fetching messages failed: '+messagesError.message
+
+  // marks message as read
   const { data: subscription, error: subscriptionError } = await supabase
     .from('account_transactions__auto_invest')
     .update({ message_read: true })
     .eq('message_id', body.record.message_id)
     .select()
 
-  if(subscriptionError) return ok.log('error', subscriptionError.message)
+  if(subscriptionError) return ok.log('error', 'could not read message', subscriptionError)
+  
+  const message = await ok.combineEntity(messages)
 
   let json = {
     'message_created': ok.timestamptz(),
@@ -25,28 +37,20 @@ export default defineEventHandler( async (event) => {
     'quantity': null
   }
   
-  const { data: messages, error: messagesError } = await supabase
-    .from('account_transactions')
-    .select()
-    .eq('message_entity_id', body.record.message_entity_id)
-    .order('message_created', { ascending: true })
-
-  if(messagesError) return 'fetching messages failed: '+messagesError.message
-  
-  const message = await ok.combineEntity(messages)
   if(message.transaction_status!='payment_accepted') return 'wrong payment status'
   
   const { data: exchangeRate, error: exchangeRateError } = await supabase
     .from('exchange_rates')
-    .select('ddf_global_index') //should be fetched from profile, when user has option to invest in more than ddf global index
+    .select('value') //should be fetched from profile, when user has option to invest in more than ddf global index
     .eq('iso', message.currency)
+    .eq('ticker', 'ddf_global_index')
     .limit(1)
     .single()
     
   if(exchangeRateError) return exchangeRateError.message
 
   json.user_id = message.user_id
-  json.quantity = message.amount * message.auto_invest_percentage * exchangeRate.ddf_global_index
+  json.quantity = message.amount * message.auto_invest_percentage * exchangeRate.value
   
   const { data, error } = await supabase
     .from('exchange_orders')

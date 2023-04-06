@@ -18,17 +18,15 @@
   })
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  
-  const { data: { portfolio }} = await useFetch('/api/getPortfolioDaily', {
-    headers: useRequestHeaders(['cookie'])
-  })
-  console.log(portfolio)
+
   const { data, error } = await supabase
-    .from('profiles')
-    .select('preferred_currency')
+    .from('components_chart_portfolio')
+    .select()
     .eq('user_id', user.value.id)
-  if(error) ok.log('error', 'currency: ' + error.message)
-  if(data) ok.log('success', 'got it: '+data)
+  
+  
+  if(error) ok.log('error', 'currency: ', message)
+  if(data) ok.log('success', 'got the portfolio currency: ', data)
 </script>
 <style>
   .chart-sizer{
