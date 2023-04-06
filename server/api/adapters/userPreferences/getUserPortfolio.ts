@@ -42,7 +42,7 @@ export default defineEventHandler( async (event) => {
   if(!json.date) return 'missing a primary key'
 
   const { data:dateExists, error:dateExistsError } = await supabase
-    .from('get_portfolio_daily')
+    .from('get_portfolio')
     .select('quantity')
     .eq('date', json.date)
     .eq('user_id', json.user_id)
@@ -50,12 +50,6 @@ export default defineEventHandler( async (event) => {
     .single()
 
   if(dateExists) json.quantity += dateExists.quantity
-  
-  const { data, error } = await supabase
-    .from('get_portfolio_daily')
-    .upsert(json)
-    .select()
-    .single()
 
   if(data) return data
   if(error) return error

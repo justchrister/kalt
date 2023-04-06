@@ -77,7 +77,7 @@ export const ok = {
     const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`
     return timestamptz
   },
-  combineEntity(jsonArray){
+  combineJson(jsonArray){
     let result = {};
   
     for (let i = 0; i < jsonArray.length; i++) {
@@ -88,6 +88,9 @@ export const ok = {
         }
     }
     return result
+  },
+  camelToKebab(string){
+    return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
   }
 };
 import { v4 as uuidv4 } from 'uuid';
