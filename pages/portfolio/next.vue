@@ -3,7 +3,7 @@
   <main>
     <navbar-tabs />
     <frame-wrap>
-      <chart-portfolio-next currency="USD" days="days" />
+      <chart-base-next currency="USD" :days="days"/>
     </frame-wrap>
     <block margin="half">
       <nav class="filters">

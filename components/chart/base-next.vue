@@ -1,10 +1,15 @@
 <template>
-  <Line
-    :options="chartOptions"
-    :data="chartData"
-  />
+  <div class="chart-sizer">
+    <Line
+      :options="chartOptions"
+      :data="chartData"
+    />
+  </div>
 </template>
 <script lang="ts" setup>
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,10 +32,6 @@ ChartJS.register(
   Legend
 )
 const props = defineProps({
-  data: {
-    type: Object,
-    required: true
-  },
   currency: {
     type: String,
     required: true
@@ -48,9 +49,7 @@ const chartOptions = {
       radius: 2
     }
   },
-  animation: {
-    duration: 1
-  },
+  animation: { duration: 1 },
   interaction: {
     intersect: 0
   },
@@ -105,8 +104,8 @@ const chartOptions = {
     }
   }
 }
-const labels = ref();
-const data = ref();
+const labels = ref([]);
+const data = ref([]);
 const chartData = computed(() => ({
   labels: labels.value,
   datasets: [
@@ -120,19 +119,22 @@ const chartData = computed(() => ({
     },
   ]
 }))
+const { data: rawData, error: rawDataError } = await supabase
+  .from('components_chart_portfolio')
+  .select()
+  .eq('user_id', user.value.id)
 
-const updateChart = async (dataset) => {
-  let temp_labels = []
-  let temp_data = []
-  for (let i = 0; i < props.data.length; i++) {
-    temp_labels.push(props.data[i].date)
-    temp_data.push(props.data[i].converted_value)
-  }
-  labels.value= temp_labels
-  data.value= temp_data
+for (let i = 0; i < rawData.length; i++) {
+  labels.value.push(rawData[i].date)
+  data.value.push(rawData[i].converted_value)
 }
-watch(() => props.data, () => 
-    updateChart(props.data)
-, { deep: true })
-
+ok.log('success', 'got the data:', props.data)
 </script>
+<style scoped lang="scss">
+
+  .chart-sizer{
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+</style>
