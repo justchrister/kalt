@@ -11,10 +11,11 @@ export default defineEventHandler( async (event) => {
     .from('exchange_rates')
     .select()
   
+  if(exchangeRateError) console.log(exchangeRateError)
   const { data, error } = await supabase
     .from('get_portfolio_daily')
     .select()
-  
+  if(error) console.log(error)
   if(data) return data
   if(error) return error
 });

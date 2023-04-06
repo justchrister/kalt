@@ -3,53 +3,40 @@
   <main>
     <navbar-tabs />
     <frame-wrap>
-      <chart-portfolio-next :days="days" />
+      <chart-portfolio-next currency="USD" days="days" />
     </frame-wrap>
     <block margin="half">
       <nav class="filters">
         <div class="overflow-wrap">
           <ul>
-            <li @click="setDays(7)">
+            <li @click="days.value=7">
               <span class="live-bullet">•</span> live
             </li>
-            <li @click="setDays(30)">
+            <li @click="days.value=30">
               1 month
             </li>
-            <li @click="setDays(90)">
+            <li @click="days.value=90">
               3 months
             </li>
-            <li @click="setDays(180)">
+            <li @click="days.value=180">
               6 months
             </li>
-            <li @click="setDays(365)">
+            <li @click="days.value=365">
               1 year
             </li>
-            <li @click="setDays(1095)">
+            <li @click="days.value=1095">
               3 years
             </li>
-            <li @click="setDays(1825)">
+            <li @click="days.value=1825">
               5 years
             </li>
-            <li @click="setDays(1825)">
+            <li @click="days.value=1825">
               <!-- should be days since first investment-->
               max
             </li>
           </ul>
         </div>
       </nav>
-    </block>
-    <block>
-      <cta :showDivest="true"/>
-    </block>
-    <block>
-      <h3>Our impact in numbers <omoji emoji="😮"/></h3>
-      <p> Your investments has decreased your carbon footprint by 90 tonnes of Co2, in other words:  </p>
-      <div class="impacts">
-        <impact type="car" title="Driving 1 000 km in a Fiat Panda" />
-        <impact type="house" title="Construction of a 200 m2 house" />
-        <impact type="plane" title="Flying 1.4 times to Paris from Tokyo" />
-        <impact type="plant" title="Producing and eating 9 000 avocadoes" />
-      </div>
     </block>
   </main>
 </template>
@@ -66,13 +53,11 @@
       content: 'Make money, make a difference.'
     }]
   })
-
+  
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const days = ref(7)
-  const setDays = (x) => {
-    days.value=x
-  }
+
 </script>
 <style scoped lang="scss">
 

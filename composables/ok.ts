@@ -8,8 +8,6 @@ export const ok = {
     return input.replace(pattern, '');
   },
   log(type, text){
-    // const supabase = serverSupabaseServiceRole()
-
     // https://talyian.github.io/ansicolors/
     let label = '\x1b[34m● \x1b[0m';
     if (type==='success') label = '\x1b[32m● \x1b[0m'

@@ -1,7 +1,7 @@
 <template>
   <div class="chart-sizer">
     <chart-base 
-      :currency="data.preferred_currency"
+      currency="USD"
       :data="dataset"/>
   </div>
 </template>
@@ -22,7 +22,13 @@
   const { data: { portfolio }} = await useFetch('/api/getPortfolioDaily', {
     headers: useRequestHeaders(['cookie'])
   })
-  
+  console.log(portfolio)
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('preferred_currency')
+    .eq('user_id', user.value.id)
+  if(error) ok.log('error', 'currency: ' + error.message)
+  if(data) ok.log('success', 'got it: '+data)
 </script>
 <style>
   .chart-sizer{
