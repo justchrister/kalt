@@ -18,7 +18,7 @@ export default defineEventHandler( async (event) => {
 
   // marks message as read
   const { data: subscription, error: subscriptionError } = await supabase
-    .from('account_transactions__auto_invest')
+    .from('auto_invest__account_transactions')
     .update({ message_read: true })
     .eq('message_id', body.record.message_id)
     .select()
@@ -39,25 +39,24 @@ export default defineEventHandler( async (event) => {
   
   if(message.transaction_status!='payment_accepted') return 'wrong payment status'
   
-  const { data: exchangeRate, error: exchangeRateError } = await supabase
-    .from('exchange_rates')
+  const { data: assetPrice, error: assetPriceError } = await supabase
+    .from('asset_prices')
     .select('value') //should be fetched from profile, when user has option to invest in more than ddf global index
     .eq('iso', message.currency)
-    .eq('ticker', 'ddf_global_index')
+    .eq('ticker', 'gi.ddf')
     .limit(1)
     .single()
     
-  if(exchangeRateError) return exchangeRateError.message
+  if(assetPriceError) return assetPriceError.message
 
   json.user_id = message.user_id
-  json.quantity = message.amount * message.auto_invest_percentage * exchangeRate.value
+  json.quantity = message.amount * message.auto_invest_percentage * assetPrice.value
   
   const { data, error } = await supabase
     .from('exchange_orders')
     .insert(json)
     .select()
-  console.log(data)
-  console.log(error)
+  
   const { data: autoInvestTable, error: autoInvestTableError } = await supabase
     .from('auto_invest')
     .insert({
