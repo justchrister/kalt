@@ -2,11 +2,18 @@
 	"scaffold component": {
 		"prefix": ["/scaffold component"],
 		"body": "<template>\n\n</template>\n<script setup lang=\"ts\">\n\tconst props = defineProps({\n\t\t$0: {\n\t\t\ttype: String,\n\t\t\trequired: true\n\t\t}\n\t})\n</script>\n<style scoped lang=\"scss\">\n\t\n</style>",
-		"description": "a snippet to scaffold a component",
+		"description": "Scaffold a component",
 	},
 	"scaffold page": {
 		"prefix": ["/scaffold page"],
 		"body": "<template>\n\t<main>\n\t\t\t\n\t</main>\n</template>\n<script lang=\"ts\" setup>\n\tdefinePageMeta({\n\t\tpagename: '${0:pagename}',\n\t\tmiddleware: 'auth'\n\t})\n\tuseHead({\n\t\ttitle: '${0:pagename}',\n\t\tmeta: [{\n\t\t\tname: 'description',\n\t\t\tcontent: 'Make money, make a difference.'\n\t\t}]\n\t})\n\t\n</script>\n<style scoped lang=\"scss\">\n\t\n</style>",
-		"description": "a snippet to scaffold a component",
+		"description": "Scaffold a page",
+	},
+	"scaffold api": {
+		"prefix": ["/scaffold api"],
+		"body": "import { ok } from '~/composables/ok'\nimport { serverSupabaseServiceRole } from '#supabase/server'\n\nexport default defineEventHandler( async (event) => {\n\tconst supabase = serverSupabaseServiceRole(event)\n\tconst query = getQuery(event)\n\tconst body = await readBody(event)\n\n\tif(data) return data\n\tif(error) return error\n});",
+		"description": "Scaffold an API",
 	}
 }
+
+

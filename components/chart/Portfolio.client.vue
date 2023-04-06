@@ -29,7 +29,7 @@
     .select('preferred_currency')
     .single()
   const initateChart =  () => {
-    const { pending, data: tempdataset } = useFetch('/api/exchange/getPortfolio?days='+props.days+'&user_id='+user.value.id+'&currency='+data.preferred_currency)
+    const { pending, data: tempdataset } = useFetch('/api/getPortfolio?days='+props.days+'&user_id='+user.value.id+'&currency='+data.preferred_currency)
     watch(tempdataset, (rawDataset) => {
       dataset.value = rawDataset
     })

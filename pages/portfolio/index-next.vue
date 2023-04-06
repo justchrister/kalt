@@ -1,0 +1,121 @@
+
+<template>
+  <main>
+    <navbar-tabs />
+    <frame-wrap>
+      <chart-portfolio-next :days="days" />
+    </frame-wrap>
+    <block margin="half">
+      <nav class="filters">
+        <div class="overflow-wrap">
+          <ul>
+            <li @click="setDays(7)">
+              <span class="live-bullet">•</span> live
+            </li>
+            <li @click="setDays(30)">
+              1 month
+            </li>
+            <li @click="setDays(90)">
+              3 months
+            </li>
+            <li @click="setDays(180)">
+              6 months
+            </li>
+            <li @click="setDays(365)">
+              1 year
+            </li>
+            <li @click="setDays(1095)">
+              3 years
+            </li>
+            <li @click="setDays(1825)">
+              5 years
+            </li>
+            <li @click="setDays(1825)">
+              <!-- should be days since first investment-->
+              max
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </block>
+    <block>
+      <cta :showDivest="true"/>
+    </block>
+    <block>
+      <h3>Our impact in numbers <omoji emoji="😮"/></h3>
+      <p> Your investments has decreased your carbon footprint by 90 tonnes of Co2, in other words:  </p>
+      <div class="impacts">
+        <impact type="car" title="Driving 1 000 km in a Fiat Panda" />
+        <impact type="house" title="Construction of a 200 m2 house" />
+        <impact type="plane" title="Flying 1.4 times to Paris from Tokyo" />
+        <impact type="plant" title="Producing and eating 9 000 avocadoes" />
+      </div>
+    </block>
+  </main>
+</template>
+<script setup lang="ts">
+  const pagename = 'Portfolio'
+  definePageMeta({
+    pagename: 'Portfolio',
+    middleware: 'auth'
+  })
+  useHead({
+    title: 'Portfolio',
+    meta: [{
+      name: 'description',
+      content: 'Make money, make a difference.'
+    }]
+  })
+
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+  const days = ref(7)
+  const setDays = (x) => {
+    days.value=x
+  }
+</script>
+<style scoped lang="scss">
+
+.filters{
+  height:$clamp-4;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
+}
+.overflow-wrap{
+  position: relative;
+  width:$clamp-70;
+  height:$clamp-6;
+}
+
+ul{
+  position: absolute;
+  margin-left:0;
+  width:auto;
+}
+.live-bullet{
+  color:$red;
+}
+li{
+  display:inline-block;
+  width:clamp($unit-min*7.5, $unit*7.5, $unit-max*7.5);
+  text-align:center;
+  border:$border;
+  padding:0;
+  font-size:85%;
+  margin-right: $clamp;
+  border-radius:$border-radius;
+  position:relative;
+  &:before{
+    display: none;
+  }
+  &:hover{
+    border-radius:100%;
+    background:white;
+    cursor:   pointer;
+  }
+}
+</style>
