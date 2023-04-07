@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const { data: languages } = await supabase.from('languages').select('iso6393, name').eq('available', true)
+  const { data: languages } = await supabase.from('languages').select('iso6393, name')
 
   const preferred_language = ref('')
 
@@ -33,7 +33,7 @@
   const updateProfile = async () => {
     state.value = 'loading'
     const { error } = await supabase
-      .from('profiles')
+      .from('user_preferences')
       .update({ preferred_language: preferred_language.value })
       .eq('user_id', props.user_id)
     if(error){

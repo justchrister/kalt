@@ -42,9 +42,10 @@
   const user = useSupabaseUser()
 
   const { data, error } = await supabase
-    .from('profiles')
+    .from('get_user')
     .select()
     .single()
+  
   if(error) ok.log("error", "Could not get user account")
 </script>
 <style scoped lang="scss">

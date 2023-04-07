@@ -36,8 +36,8 @@
   const updateProfile = async () => {
     state.value = 'loading'
     const { error } = await supabase
-      .from('profiles')
-      .update({ address_line: address_line.value })
+      .from('user_details')
+      .update({ address_line_1: address_line.value })
       .eq('user_id', props.user_id)
     if(error){
       state.value="error"

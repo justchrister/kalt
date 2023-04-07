@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const { data: countries } = await supabase.from('countries').select('iso2, name').eq('available', true)
+  const { data: countries } = await supabase.from('countries').select('iso2, name')
 
   const country = ref('')
 
@@ -34,7 +34,7 @@
   const updateProfile = async () => {
     state.value = 'loading'
     const { error } = await supabase
-      .from('profiles')
+      .from('user_details')
       .update({ country: country.value })
       .eq('user_id', props.user_id)
     if(error){

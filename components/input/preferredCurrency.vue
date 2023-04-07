@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const { data: currencies } = await supabase.from('currencies').select('iso, name').eq('available', true)
+  const { data: currencies } = await supabase.from('currencies').select('iso, name')
 
   const preferred_currency = ref('')
 
@@ -34,7 +34,7 @@
   const updateProfile = async () => {
     state.value = 'loading'
     const { error } = await supabase
-      .from('profiles')
+      .from('user_preferences')
       .update({ preferred_currency: preferred_currency.value })
       .eq('user_id', props.user_id)
     if(error){
