@@ -26,10 +26,10 @@ export default defineEventHandler( async (event) => {
     const { error } = await supabase
       .from(serviceKebab)
       .delete()
-      .eq('message_id', message.message_id)
+      .eq('message_entity_id', message.message_entity_id)
     return 'removed'
   }
-
+  
   
   let json ={
     'message_entity_id': message.message_entity_id,
