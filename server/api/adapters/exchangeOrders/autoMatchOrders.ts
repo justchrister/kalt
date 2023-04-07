@@ -22,7 +22,7 @@ export default defineEventHandler( async (event) => {
     body.record.message_id)
   
   let json ={
-    'order_id': message.message_entity_id,
+    'message_entity_id': message.message_entity_id,
     'user_id': message.user_id,
     'ticker': message.ticker,
     'order_type': message.order_type,
