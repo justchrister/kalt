@@ -5,6 +5,7 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const service = 'autoMatchOrders'
+  const serviceKebab = ok.camelToKebab(service)
   const topic = 'exchangeOrders'
   const query = getQuery(event)
   const body = await readBody(event)
@@ -14,6 +15,14 @@ export default defineEventHandler( async (event) => {
     supabase,
     topic,
     body.record.message_entity_id)
+
+  if(message.order_status!='open'){
+    const { error } = await supabase
+      .from(serviceKebab)
+      .delete()
+      .eq('message_id', message.message_id)
+    return 'removed'
+  }
 
   const readMessage = await messaging.read(
     supabase,
@@ -29,7 +38,6 @@ export default defineEventHandler( async (event) => {
     'quantity': message.quantity
   }
   
-  const serviceKebab = ok.camelToKebab(service)
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)
