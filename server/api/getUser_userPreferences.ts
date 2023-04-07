@@ -13,8 +13,8 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
-  const message = await messaging.getEntity(supabase, topicSub, body.record.message_entity_id)
-  const readMessage = await messaging.read(supabase, topicSub, service, body.record.message_id)
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id)
+  const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
 
   let json = {}
   if(message.auto_invest) json.auto_invest = message.auto_invest

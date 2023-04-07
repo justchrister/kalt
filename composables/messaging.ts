@@ -42,5 +42,13 @@ export const messaging = {
       .single()
     if(error) return amount
     return amount*data.value
+  },
+  removeNullValues: async (message) => {
+    return Object.entries(message).reduce((acc, [key, value]) => {
+      if (value) {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
   }
 };

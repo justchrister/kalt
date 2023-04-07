@@ -1,6 +1,5 @@
 import { ok } from '~/composables/ok'
 import { messaging } from '~/composables/messaging'
-
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -13,27 +12,12 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
-  const message = await messaging.getEntity(
-    supabase,
-    topicSub,
-    body.record.message_entity_id)
-  
-  const readMessage = await messaging.read(
-    supabase,
-    topicSub,
-    service,
-    body.record.message_id)
-  let json = {
-
-  }
-  if(message.address_line_1) json.address_line_1 = message.address_line_1
-  if(message.address_line_2) json.address_line_2 = message.address_line_2
-  if(message.postal_code) json.postal_code = message.postal_code
-  if(message.first_name) json.first_name = message.first_name
-  if(message.birthdate) json.birthdate =  message.birthdate
-  if(message.last_name) json.last_name = message.last_name
-  if(message.country) json.country = message.country
-  if(message.city) json.city = message.city
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id)
+  ok.log('success', 'got combined message: ', message)
+  const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
+  ok.log('success', 'message marked as read: ', body.record.message_id)
+  const json = await messaging.removeNullValues(message)
+  ok.log('success', 'removed null values: ', json)
 
   const { data, error } = await supabase
     .from(serviceKebab)
