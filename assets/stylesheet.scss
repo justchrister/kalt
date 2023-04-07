@@ -55,6 +55,7 @@ p.links{
 main{
   padding-top: $clamp-15;
   min-height:100vh;
+  box-sizing:border-box;
 }
 select{
   width:100%;
