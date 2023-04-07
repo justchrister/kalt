@@ -1,7 +1,9 @@
+
+import { v4 as uuidv4 } from 'uuid';
 export const ok = {
   toInt(input){
     const pattern = /[^0-9]/g;
-    return input.replace(pattern, '');
+    return parseInt(input.replace(pattern, ''));
   },
   toChar(input){
     const pattern = /[^0-9]/g;
@@ -94,11 +96,10 @@ export const ok = {
   },
   camelToKebab(string){
     return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+  },
+  uuid(){
+    return uuidv4()
   }
-};
-import { v4 as uuidv4 } from 'uuid';
-export const okuuid = () => {
-  return uuidv4()
 };
 
 export const okclock = (input) => {
