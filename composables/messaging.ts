@@ -43,12 +43,17 @@ export const messaging = {
     if(error) return amount
     return amount*data.value
   },
-  removeNullValues: async (message) => {
-    return Object.entries(message).reduce((acc, [key, value]) => {
+  cleanMessage: async (message) => {
+    const json = Object.entries(message).reduce((acc, [key, value]) => {
       if (value) {
         acc[key] = value;
       }
       return acc;
     }, {});
+    delete json.message_id
+    delete json.message_entity_id
+    delete json.message_created
+    delete json.message_sender
+    return json
   }
 };

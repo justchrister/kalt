@@ -7,7 +7,7 @@ export default defineEventHandler( async (event) => {
   const topic = 'userDetails'
   const topicKebab = ok.camelToKebab(topic)
   const service = 'getUser'
-  const serviceKebab = ok.camelToKebab(topic)
+  const serviceKebab = ok.camelToKebab(service)
   const query = getQuery(event)
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
@@ -16,10 +16,7 @@ export default defineEventHandler( async (event) => {
   ok.log('success', 'got combined message: ', message)
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
   ok.log('success', 'message marked as read: ', body.record.message_id)
-  const json = await messaging.removeNullValues(message)
-    json.message_sender = service;
-    json.message_id = ok.uuid()
-    json.entity_id = message.user_id
+  const json = await messaging.cleanMessage(message)
   ok.log('success', 'removed null values: ', json)
 
   const { data, error } = await supabase
