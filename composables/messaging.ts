@@ -32,4 +32,15 @@ export const messaging = {
       .single()
     return data.asset_price
   },
+  convertCurrency: async (supabase, amount, from, to) => {
+    const { data, error } = await supabase
+      .from('exchange_rates')
+      .select('value')
+      .eq('from', from)
+      .eq('to', to)
+      .limit(1)
+      .single()
+    if(error) return amount
+    return amount*data.value
+  }
 };
