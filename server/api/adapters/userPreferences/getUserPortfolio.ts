@@ -7,49 +7,17 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
-  const { data: subscription, error: subscriptionError } = await supabase
-    .from('exchange_orders__get_portfolio_daily')
-    .update({ message_read: true })
-    .eq('message_id', body.record.message_id)
-    .select()
-  
-  if(subscriptionError) return ok.log('error', subscriptionError.message)
+  const message = messaging.getEntity(
+    supabase,
+    'userPreferences',
+    'getUserPortfolio',
+    body.record.message_entity_id
+  )
+  if(!message.preferred_currency) return 'different field'
 
-  let json = {
-    'date': null,
-    'user_id': null,
-    'quantity': null,
-    'ticker': null
-  }
-  const { data: message, error: messageError } = await supabase
-    .from('exchange_orders')
-    .select()
-    .eq('message_entity_id', body.record.message_entity_id)
-    .order('message_created', { ascending: true })
-
-  if(!message.length) return 'order not fulfilled'
-  if(messageError) return messageError.message
-  
-  for (let i = 0; i < message.length; i++) {
-    json.user_id = message[i].user_id
-    json.date = message[i].message_created
-    json.quantity = message[i].quantity
-    json.ticker = message[i].ticker
-  }
-
-  if(!json.user_id) return 'missing a primary key'
-  if(!json.ticker) return 'missing a primary key'
-  if(!json.date) return 'missing a primary key'
-
-  const { data:dateExists, error:dateExistsError } = await supabase
-    .from('get_portfolio')
-    .select('quantity')
-    .eq('date', json.date)
-    .eq('user_id', json.user_id)
-    .eq('ticker', json.ticker)
-    .single()
-
-  if(dateExists) json.quantity += dateExists.quantity
+  const readMessage = await messaging.read(
+    supabase,
+    body.record.message_id)
 
   if(data) return data
   if(error) return error

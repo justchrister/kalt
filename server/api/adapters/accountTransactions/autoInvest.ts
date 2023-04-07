@@ -4,37 +4,41 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
+  const service = 'autoInvest'
+  const topicSub = 'accountTransactions'
+  const topicPub = 'exchangeOrders'
   const query = getQuery(event)
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
   const message = await messaging.getEntity(
     supabase,
-    'accountTransactions', 
-    'autoInvest', 
+    topicSub,
     body.record.message_entity_id)
 
   const readMessage = await messaging.read(
     supabase,
+    topicSub,
+    service,
     body.record.message_id)
     
 
   if(message.transaction_status!='payment_accepted') return 'wrong payment status'
   
-  const assetPrice = messaging.getAssetPrice(message.currency)
-
+  const assetPrice = await messaging.getAssetPrice(supabase, message.currency, 'gi.ddf')
   let json = {
     'message_created': ok.timestamptz(),
     'message_sender': 'autoInvest',
-    'ticker': 'ddf_global_index',
+    'ticker': 'gi.ddf',
     'order_type': 'buy',
     'order_status': 'open',
     'user_id': message.user_id,
-    'quantity': message.amount * message.auto_invest_percentage * assetPrice
+    'quantity': message.amount * message.auto_invest * assetPrice
   }
   
+  const topicPubKebab = ok.camelToKebab(topicPub)
   const { data, error } = await supabase
-    .from('exchange_orders')
+    .from(topicPubKebab)
     .insert(json)
     .select()
   
