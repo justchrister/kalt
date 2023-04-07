@@ -7,7 +7,7 @@ export default defineEventHandler( async (event) => {
   const { data, error } = await supabase
     .from('get_user')
     .insert({
-      user_id: body.record.message_entity_id
+      user_id: body.record.user_id
     })
     .select()
 
