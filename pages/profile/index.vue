@@ -12,7 +12,7 @@
           <input-city :initial="data.city" :user_id="user.id"/>
           <input-postal-code :initial="data.postal_code" :user_id="user.id"/>
         </div>
-        <input-address-line :initial="data.address_line" :user_id="user.id"/>
+        <input-address-line :initial="data.address_line_1" :user_id="user.id"/>
         <input-birthdate :initial="data.birthdate" :user_id="user.id"/>
         <div class="grid-col-2">
           <input-preferred-currency :initial="data.preferred_currency" :user_id="user.id"/>

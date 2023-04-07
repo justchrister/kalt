@@ -74,15 +74,18 @@
   border-radius:100%;
   margin: clamp($unit-min*1.4, $unit*1.4, $unit-max*1.4) $clamp;
   animation-name: example;
-  animation-duration: 4s;
+  animation-duration: 12s;
   animation-delay: 9s;
   animation-iteration-count: 99999;
 }
 @keyframes example {
-  from {
+  0% {
   transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
   }
-  to {
+  33% {
+  transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  }
+  100% {
   transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
   }
 }

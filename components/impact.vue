@@ -29,29 +29,32 @@ const props = defineProps({
   padding:$clamp 0;
   border-top:$border;
   display: grid;
-  grid-template-columns: 1fr 9fr;
+  grid-template-columns: $clamp-4 1fr;
   grid-template-rows: 1fr;
-  gap: 3% 2%;
+  gap: 0;
   grid-auto-flow: row;
   font-size:120%;
 }
 
 .impacts .impact .image{
-  height: 100%;
+  height: $clamp-3;
+  width: $clamp-3;
+  border-radius:50%;
   background-repeat: no-repeat;
   background-position: center;
-  background-size:contain;
+  background-size:cover;
+  background-image:url('/orbs/grain.png');
 }
-.impacts .impact .image#car{
-  background-image:url('/media/illustrations/car.svg');
+.impacts .impact .image#pink{
+  background-color:$pink-40;
 }
-.impacts .impact .image#house{
-  background-image:url('/media/illustrations/house.svg');
+.impacts .impact .image#blue{
+  background-color:$blue-40;
 }
-.impacts .impact .image#plane{
-  background-image:url('/media/illustrations/plane.svg');
+.impacts .impact .image#red{
+  background-color:$red-40;
 }
-.impacts .impact .image#plant{
-  background-image:url('/media/illustrations/plant.svg');
+.impacts .impact .image#green{
+  background-color:$green-40;
 }
 </style>

@@ -96,7 +96,11 @@ export default defineEventHandler( async (event) => {
     }
     orders.push(splitAndCancelOrder)
   }
+  /*
+  await messaging.publish('accountTransactions', {
 
+  })*/
+  // the sell order needs to have an account deposit added, with auto-invest 0
   return await publishOrder(orders)
 
 });

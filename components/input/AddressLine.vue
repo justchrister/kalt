@@ -17,7 +17,8 @@
 <script setup lang="ts">
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const address_line_1 = ref('')
+  const user = useSupabaseUser()
+  const address_line_1 = ref(props.initial)
   const props = defineProps({
     initial: {
       type: String,

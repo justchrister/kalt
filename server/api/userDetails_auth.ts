@@ -12,7 +12,7 @@ export default defineEventHandler( async (event) => {
   const query = getQuery(event)
   const body = await readBody(event)
   const { data, error } = await supabase
-    .from('get_user')
+    .from('user_details')
     .insert({
       user_id: body.record.id
     })
