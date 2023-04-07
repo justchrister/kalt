@@ -59,20 +59,22 @@ export default defineEventHandler( async (event) => {
         'message_sender': service,
         'order_status': 'fulfilled',
         'fulfilled_by_id': body.record.message_entity_id
-      }]
-  const orderFulfilledId = ok.uuid()
-  const orderCancelledId = ok.uuid()
-  const orderOpenId = ok.uuid()
+      }
+    ];
   
-  const orderOriginal = orders[0]
-  const orderFulfilled = orders[1] // might be split
+  const orderFulfilledId = ok.uuid();
+  const orderCancelledId = ok.uuid();
+  const orderOpenId = ok.uuid();
+  
+  const orderOriginal = orders[0];
+  const orderFulfilled = orders[1]; // might be split
     
   if(fulfiller.quantity + quantity !== 0){
     orderOriginal.fulfilled_by_id=orderFulfilledId
     orderFulfilled.message_entity_id=orderFulfilledId
     orderFulfilled.part_of=fulfiller.message_entity_id
 
-    let splitAndOpenOrder ={
+    let splitAndOpenOrder = {
       'user_id': fulfiller.user_id,
       'message_entity_id': orderOpenId,
       'ticker': ticker,
@@ -81,10 +83,10 @@ export default defineEventHandler( async (event) => {
       'message_sender': service,
       'order_status': 'open',
       'part_of': fulfiller.message_entity_id
-    }
-    orders.push(splitAndOpenOrder)
+    };
+    orders.push(splitAndOpenOrder);
 
-    let splitAndCancelOrder={
+    let splitAndCancelOrder = {
       'user_id': fulfiller.user_id,
       'message_entity_id': fulfiller.message_entity_id,
       'message_sender': service,
@@ -93,14 +95,13 @@ export default defineEventHandler( async (event) => {
         orderOpenId
       ],
       'order_status': 'split'
-    }
+    };
     orders.push(splitAndCancelOrder)
-  }
+  };
   /*
   await messaging.publish('accountTransactions', {
 
   })*/
   // the sell order needs to have an account deposit added, with auto-invest 0
-  return await publishOrder(orders)
-
+  return await publishOrder(orders);
 });
