@@ -31,12 +31,6 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-const props = defineProps({
-  currency: {
-    type: String,
-    required: true
-  }
-})
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: true,
@@ -95,7 +89,7 @@ const chartOptions = {
                 'en-US', 
                 { 
                   style: 'currency', 
-                  currency: props.currency 
+                  currency: 'eur' 
               }).format(context.parsed.y);
           }
           return label;
@@ -120,15 +114,14 @@ const chartData = computed(() => ({
   ]
 }))
 const { data: rawData, error: rawDataError } = await supabase
-  .from('components_chart_portfolio')
+  .from('get_user_portfolio')
   .select()
   .eq('user_id', user.value.id)
 
 for (let i = 0; i < rawData.length; i++) {
   labels.value.push(rawData[i].date)
-  data.value.push(rawData[i].converted_value)
+  data.value.push(rawData[i].value)
 }
-ok.log('success', 'got the data:', props.data)
 </script>
 <style scoped lang="scss">
 
