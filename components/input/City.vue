@@ -17,15 +17,13 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-
-  const city = ref('')
-
   const props = defineProps({
     initial: {
       type: String,
       required: false
     }
   })
+  const city = ref(props.initial)
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'

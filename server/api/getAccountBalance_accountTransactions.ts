@@ -26,26 +26,29 @@ export default defineEventHandler( async (event) => {
 
   let json = {
     'user_id': message.user_id,
-    'amount': message.amount,
+    'amount': parseFloat(message.amount),
     'currency': message.currency
   }
-
+  ok.log('success', 'msg ', message.currency)
   const { data: current, error: currentError } = await supabase
     .from('get_account_balance')
-    .select('currency')
-    .eq('user_id', body.record.user_id)
+    .select()
+    .eq('user_id', message.user_id)
+    .limit(1)
     .single()
+  
+  ok.log('success', 'yay', current)
+  
   
   if(current){
     const currencyConverted = await messaging.convertCurrency(
       supabase,
       json.amount,
-      message.currency,
+      json.currency,
       current.currency
     )
-    json.amount += current.amount
+    json.amount += currencyConverted
   }
-
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)

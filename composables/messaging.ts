@@ -40,8 +40,8 @@ export const messaging = {
       .eq('to', to)
       .limit(1)
       .single()
+    if(data) return amount*data.value
     if(error) return amount
-    return amount*data.value
   },
   cleanMessage: async (message) => {
     const json = Object.entries(message).reduce((acc, [key, value]) => {
