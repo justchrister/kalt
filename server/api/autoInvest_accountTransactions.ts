@@ -54,6 +54,7 @@ export default defineEventHandler( async (event) => {
       'currency': message.currency,
       'auto_invest': 0,
       'transaction_type': 'withdraw',
+      'transaction_status': 'withdrawal_accepted',
       'transaction_sub_type': 'auto_invested'
     })
     .select()
