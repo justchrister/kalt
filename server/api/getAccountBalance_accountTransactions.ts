@@ -22,7 +22,13 @@ export default defineEventHandler( async (event) => {
     service,
     body.record.message_id)
   
-  if(message.transaction_status!='payment_accepted') return 'wrong payment status'
+  const transactionComplete = (status) => {
+    if(status='payment_accepted') return true
+    if(status='withdrawal_accepted') return true
+    return false
+  }
+
+  if(transactionComplete(message.transaction_status)) return 'wrong payment status'
 
   let json = {
     'user_id': message.user_id,
