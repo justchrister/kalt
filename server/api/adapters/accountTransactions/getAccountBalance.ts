@@ -4,9 +4,9 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const service = 'autoInvest'
+  const service = 'getAccountBalance'
+  const serviceKebab = ok.camelToKebab(getAccountBalance)
   const topicSub = 'accountTransactions'
-  const topicPub = 'getAccountBalance'
   const query = getQuery(event)
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
@@ -21,8 +21,6 @@ export default defineEventHandler( async (event) => {
     topicSub,
     service,
     body.record.message_id)
-
-  if(message.transaction_status!='payment_accepted') return 'wrong payment status'
 
   let json = {
     'user_id': message.user_id,
@@ -47,9 +45,8 @@ export default defineEventHandler( async (event) => {
   }
   json.amount += currencyConverted
 
-  const topicPubKebab = ok.camelToKebab(topicPub)
   const { data, error } = await supabase
-    .from(topicPubKebab)
+    .from(serviceKebab)
     .upsert(json)
     .select()
   
