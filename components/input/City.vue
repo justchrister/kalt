@@ -24,27 +24,25 @@
     initial: {
       type: String,
       required: false
-    },
-    user_id: {
-      type: String,
-      required: false
     }
   })
-  if(props.initial) city.value = props.initial
-
   state.value = ''
-
   const updateProfile = async () => {
     state.value = 'loading'
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('user_details')
-      .update({ city: city.value })
-      .eq('user_id', props.user_id)
+      .insert({ 
+        user_id: user.value.id,
+        city: city.value, 
+        message_entity_id: user.value.id,
+        message_sender: 'components/input/city.vue' 
+      })
+      .select()
+
     if(error){
       state.value="error"
     } else {
       state.value="success"
     }
   };
-
 </script>

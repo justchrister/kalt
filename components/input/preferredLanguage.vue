@@ -31,7 +31,7 @@
         user_id: user.value.id,
         language: language.value, 
         message_entity_id: user.value.id,
-        message_sender: 'components/input/preferredCurrency.vue' 
+        message_sender: 'components/input/preferredLanguage.vue' 
       })
       .select()
 

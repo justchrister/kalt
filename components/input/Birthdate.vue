@@ -17,28 +17,27 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const birthdate = ref('')
+  const birthdate = ref(props.initial)
 
   const props = defineProps({
     initial: {
       type: String,
       required: false
-    },
-    user_id: {
-      type: String,
-      required: false
     }
   })
-  if(props.initial) birthdate.value = props.initial
-
   state.value = ''
-
   const updateProfile = async () => {
     state.value = 'loading'
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('user_details')
-      .update({ birthdate: birthdate.value })
-      .eq('user_id', props.user_id)
+      .insert({ 
+        user_id: user.value.id,
+        birthdate: birthdate.value, 
+        message_entity_id: user.value.id,
+        message_sender: 'components/input/birthdate.vue' 
+      })
+      .select()
+
     if(error){
       state.value="error"
     } else {
