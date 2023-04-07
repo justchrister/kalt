@@ -17,10 +17,11 @@ export default defineEventHandler( async (event) => {
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
   ok.log('success', 'message marked as read: ', body.record.message_id)
   const json = await messaging.removeNullValues(message)
+    json.message_sender = service;
+    json.message_id = ok.uuid()
+    json.entity_id = message.user_id
   ok.log('success', 'removed null values: ', json)
 
-  json.message_sender = service;
-  
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)
