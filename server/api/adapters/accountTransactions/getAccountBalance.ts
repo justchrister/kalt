@@ -42,8 +42,10 @@ export default defineEventHandler( async (event) => {
     message.currency,
     current.currency
   )
-
-  json.amount = currencyConverted
+  if(current){
+    json.amount += current.amount
+  }
+  json.amount += currencyConverted
 
   const topicPubKebab = ok.camelToKebab(topicPub)
   const { data, error } = await supabase

@@ -25,6 +25,7 @@ export default defineEventHandler( async (event) => {
   if(message.transaction_status!='payment_accepted') return 'wrong payment status'
   
   const assetPrice = await messaging.getAssetPrice(supabase, message.currency, 'gi.ddf')
+
   let json = {
     'message_created': ok.timestamptz(),
     'message_sender': 'autoInvest',
@@ -40,7 +41,18 @@ export default defineEventHandler( async (event) => {
     .from(topicPubKebab)
     .insert(json)
     .select()
-  
+  const { data:trx, error:trxerr } = await supabase
+    .from('account_transactions')
+    .insert({
+      'message_created': ok.timestamptz(),
+      'message_sender': 'autoInvest',
+      'user_id': message.user_id,
+      'amount': -message.amount*(message.auto_invest-1),
+      'currency': message.currency,
+      'transaction_type': 'withdraw',
+      'transaction_sub_type': 'auto_invested'
+    })
+    .select()
   if(data) return data
   if(error) return error
 });
