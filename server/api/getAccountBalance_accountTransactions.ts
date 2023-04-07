@@ -23,8 +23,8 @@ export default defineEventHandler( async (event) => {
     body.record.message_id)
   
   const transactionComplete = (status) => {
-    if(status='payment_accepted') return true
-    if(status='withdrawal_accepted') return true
+    if(status==='payment_accepted') return true
+    if(status==='withdrawal_accepted') return true
     return false
   }
 
