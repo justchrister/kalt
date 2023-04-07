@@ -41,8 +41,6 @@ export default defineEventHandler( async (event) => {
     .from(topicPubKebab)
     .insert(json)
     .select()
-  const amountFloat = parseFloat(message.amount)
-  const autoInvestFloat = parseFloat(message.auto_invest)
 
   const { data:wtihdrawTransaction, error:wtihdrawTransactionError } = await supabase
     .from('account_transactions')
@@ -50,7 +48,7 @@ export default defineEventHandler( async (event) => {
       'message_created': ok.timestamptz(),
       'message_sender': 'autoInvest',
       'user_id': message.user_id,
-      'amount': -amountFloat*(autoInvestFloat-1),
+      'amount': -amountFloat*(1-autoInvestFloat),
       'currency': message.currency,
       'auto_invest': 0,
       'transaction_type': 'withdraw',
