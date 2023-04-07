@@ -92,6 +92,9 @@ input{
   height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
   @include font-body;
   box-sizing:border-box;
+  background-size: $clamp;
+  background-position:right $clamp center;
+  background-repeat:no-repeat;
 }
 
 input:focus{
@@ -102,45 +105,38 @@ input:active{
 }
 input.loading{
   background-image:url("/loading.gif");
-  background-size: $clamp;
-  background-position:95% center;
-  background-repeat:no-repeat;
 }
 input.success{
   background-image:url("omoji/super-happy.svg");
-  background-size: $clamp;
-  background-position:right center;
-  background-repeat:no-repeat;
-  border-color:$dark;
   animation-duration: 2s;
   animation-name: borderColorGreen;
 }
-
 @keyframes borderColorGreen {
-  from {
-    border-color:$green;
-    background-color:$green-20;
+  0% {
+    border-color:$dark;
   }
-  to {
+  10% {
+    border-color:$green;
+  }
+  100% {
     border-color:$dark;
   }
 }
 input.error{
   background-image:url("omoji/suprised.svg");
-  background-size: $clamp;
-  background-position:95% center;
-  background-repeat:no-repeat;
-  border-color:$dark;
   animation-duration: 2s;
+  background-color:$red-20;
   animation-name: borderColorRed;
 }
 
 @keyframes borderColorRed {
-  from {
-    border-color:$red;
-    background-color:$red-20;
+  0% {
+    border-color:$dark;
   }
-  to {
+  10% {
+    border-color:$red;
+  }
+  100% {
     border-color:$dark;
   }
 }
