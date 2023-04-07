@@ -14,7 +14,6 @@ export default defineEventHandler( async (event) => {
     supabase,
     topic,
     body.record.message_entity_id)
-  if(!message.message_id) return 'fail'
 
   const readMessage = await messaging.read(
     supabase,
@@ -30,9 +29,9 @@ export default defineEventHandler( async (event) => {
     'quantity': message.quantity
   }
   
-  const servicePubKebab = ok.camelToKebab(service)
+  const serviceKebab = ok.camelToKebab(service)
   const { data, error } = await supabase
-    .from(servicePubKebab)
+    .from(serviceKebab)
     .upsert(json)
     .select()
   
