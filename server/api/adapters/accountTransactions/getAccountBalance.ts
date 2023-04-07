@@ -21,6 +21,8 @@ export default defineEventHandler( async (event) => {
     topicSub,
     service,
     body.record.message_id)
+  
+  if(message.transaction_status!='payment_accepted') return 'wrong payment status'
 
   let json = {
     'user_id': message.user_id,
