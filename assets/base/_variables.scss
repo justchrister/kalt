@@ -99,6 +99,7 @@ $clamp: clamp($unit-min*1 , $unit*1, $unit-max*1);
 $clamp-1-5: clamp($unit-min*1.5 , $unit*1.5, $unit-max*1.5);
 $clamp-1-8: clamp($unit-min*1.7 , $unit*1.7, $unit-max*1.7);
 $clamp-2: clamp($unit-min*2 , $unit*2, $unit-max*2);
+$clamp-2-5: clamp($unit-min*2.5 , $unit*2.5, $unit-max*2.5);
 $clamp-3: clamp($unit-min*3 , $unit*3, $unit-max*3);
 $clamp-3-5: clamp($unit-min*3.5 , $unit*3.5, $unit-max*3.5);
 $clamp-4: clamp($unit-min*4 , $unit*4, $unit-max*4);

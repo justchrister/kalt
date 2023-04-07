@@ -37,8 +37,8 @@ const props = defineProps({
 }
 
 .impacts .impact .image{
-  height: $clamp-3;
-  width: $clamp-3;
+  height: $clamp-2-5;
+  width: $clamp-2-5;
   border-radius:50%;
   background-repeat: no-repeat;
   background-position: center;

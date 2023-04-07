@@ -41,14 +41,18 @@ export default defineEventHandler( async (event) => {
     .from(topicPubKebab)
     .insert(json)
     .select()
-  const { data:trx, error:trxerr } = await supabase
+  const amountFloat = parseFloat(message.amount)
+  const autoInvestFloat = parseFloat(message.auto_invest)
+
+  const { data:wtihdrawTransaction, error:wtihdrawTransactionError } = await supabase
     .from('account_transactions')
     .insert({
       'message_created': ok.timestamptz(),
       'message_sender': 'autoInvest',
       'user_id': message.user_id,
-      'amount': -message.amount*(message.auto_invest-1),
+      'amount': -amountFloat*(autoInvestFloat-1),
       'currency': message.currency,
+      'auto_invest': 0,
       'transaction_type': 'withdraw',
       'transaction_sub_type': 'auto_invested'
     })

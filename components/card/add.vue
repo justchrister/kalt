@@ -32,7 +32,7 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
 
-  const card_id = ref(okuuid())
+  const card_id = ref(ok.uuid())
   const card_number = ref();
   const expiry_month = ref();
   const expiry_year = ref();
