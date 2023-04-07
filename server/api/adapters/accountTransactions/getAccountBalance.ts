@@ -5,7 +5,7 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const service = 'getAccountBalance'
-  const serviceKebab = ok.camelToKebab(getAccountBalance)
+  const serviceKebab = ok.camelToKebab(service)
   const topicSub = 'accountTransactions'
   const query = getQuery(event)
   const body = await readBody(event)
@@ -24,8 +24,8 @@ export default defineEventHandler( async (event) => {
 
   let json = {
     'user_id': message.user_id,
-    'amount': amount,
-    'currency': currency
+    'amount': message.amount,
+    'currency': message.currency
   }
 
   const { data: current, error: currentError } = await supabase
@@ -34,16 +34,15 @@ export default defineEventHandler( async (event) => {
     .eq('user_id', body.record.user_id)
     .single()
   
-  const currencyConverted = await messaging.convertCurrency(
-    supabase,
-    json.amount,
-    message.currency,
-    current.currency
-  )
   if(current){
+    const currencyConverted = await messaging.convertCurrency(
+      supabase,
+      json.amount,
+      message.currency,
+      current.currency
+    )
     json.amount += current.amount
   }
-  json.amount += currencyConverted
 
   const { data, error } = await supabase
     .from(serviceKebab)
