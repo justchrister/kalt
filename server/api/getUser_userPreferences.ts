@@ -14,15 +14,14 @@ export default defineEventHandler( async (event) => {
   if(body.record.message_read) return 'message already read'
   
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id)
+  ok.log('success', 'got combined message: ', message)
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
+  ok.log('success', 'message marked as read: ', body.record.message_id)
+  const json = await messaging.removeNullValues(message)
+  ok.log('success', 'removed null values: ', json)
 
-  let json = {}
-  if(message.auto_invest) json.auto_invest = message.auto_invest
-  if(message.email_marketing) json.email_marketing = message.email_marketing
-  if(message.color_schema) json.color_schema = message.color_schema
-  if(message.language) json.language = message.language
-  if(message.currency) json.currency = message.currency
-
+  json.message_sender = service;
+  
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)

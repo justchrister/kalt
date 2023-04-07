@@ -19,6 +19,8 @@ export default defineEventHandler( async (event) => {
   const json = await messaging.removeNullValues(message)
   ok.log('success', 'removed null values: ', json)
 
+  json.message_sender = service;
+  
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)
