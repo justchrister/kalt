@@ -7,6 +7,9 @@ export const ok = {
     const pattern = /[^0-9]/g;
     return input.replace(pattern, '');
   },
+  invertInt(number) {
+    return -number;
+  },
   log(type, ...inputs){
     // https://talyian.github.io/ansicolors/
     
