@@ -7,7 +7,7 @@ export const messaging = {
       .from(topicKebab)
       .select()
       .eq('message_entity_id', entity_id)
-      .order('message_created', { ascending: false })
+      .order('message_created', { ascending: true })
     return ok.combineJson(data)
   },
   read: async (supabase, topic, service, message_id) => {

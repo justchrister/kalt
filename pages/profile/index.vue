@@ -1,7 +1,7 @@
 <template>
   <main>
     <navbar-tabs />
-    <block><!--
+    <block>
       <form @submit.prevent="updateProfile">
         <div class="grid-col-2">
           <input-first-name :initial="data.first_name" :user_id="user.id"/>
@@ -20,7 +20,7 @@
         </div>
         <toggle-terms-of-service />
         <toggle-marketing />
-      </form>-->
+      </form>
     </block>
   </main>
 </template>
@@ -40,10 +40,12 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-
+  
   const { data, error } = await supabase
     .from('get_user')
-    .select('user_id')
+    .select()
+    .limit(1)
+    .single()
   if(error) ok.log("error", "Could not get user account", error)
   if(data) ok.log('success', 'Got user object: ', data)
 </script>

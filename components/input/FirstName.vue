@@ -17,7 +17,8 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const first_name = ref('')
+  const user = useSupabaseUser()
+  const first_name = ref(props.initial)
 
   const props = defineProps({
     initial: {
@@ -26,19 +27,24 @@
     },
     user_id: {
       type: String,
-      required: false
+      required: true
     }
   })
-  if(props.initial) first_name.value = props.initial
-
   state.value = ''
-
   const updateProfile = async () => {
     state.value = 'loading'
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('user_details')
-      .update({ first_name: first_name.value })
-      .eq('user_id', props.user_id)
+      .insert({ 
+        user_id: user.value.id,
+        first_name: first_name.value, 
+        message_entity_id: user.value.id,
+        message_sender: 'components/input/firstName.vue' 
+      })
+      .select()
+    console.log(data)
+    console.log(error)
+
     if(error){
       state.value="error"
     } else {

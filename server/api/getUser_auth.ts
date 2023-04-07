@@ -1,3 +1,10 @@
+/*
+
+  Technically not a topic, but treating it as one
+
+*/
+
+
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
