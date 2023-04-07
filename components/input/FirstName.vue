@@ -24,10 +24,6 @@
     initial: {
       type: String,
       required: false
-    },
-    user_id: {
-      type: String,
-      required: true
     }
   })
   state.value = ''
@@ -42,8 +38,6 @@
         message_sender: 'components/input/firstName.vue' 
       })
       .select()
-    console.log(data)
-    console.log(error)
 
     if(error){
       state.value="error"

@@ -12,31 +12,29 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   const { data: countries } = await supabase.from('countries').select('iso2, name')
-
-  const country = ref('')
+  const country = ref(props.initial)
 
   const props = defineProps({
     initial: {
       type: String,
       required: false
-    },
-    user_id: {
-      type: String,
-      required: false
     }
   })
-
-  if(countries && props.initial) country.value = props.initial
-
   state.value = ''
-
   const updateProfile = async () => {
     state.value = 'loading'
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('user_details')
-      .update({ country: country.value })
-      .eq('user_id', props.user_id)
+      .insert({ 
+        user_id: user.value.id,
+        country: country.value, 
+        message_entity_id: user.value.id,
+        message_sender: 'components/input/country.vue' 
+      })
+      .select()
+
     if(error){
       state.value="error"
     } else {
