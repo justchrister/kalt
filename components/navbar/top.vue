@@ -75,7 +75,7 @@
   margin: clamp($unit-min*1.4, $unit*1.4, $unit-max*1.4) $clamp;
   animation-name: example;
   animation-duration: 12s;
-  animation-delay: 9s;
+  animation-delay: 500ms;
   animation-iteration-count: 99999;
 }
 @keyframes example {
