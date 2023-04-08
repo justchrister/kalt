@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
     'user_id': message.user_id,
     'quantity': message.amount * message.auto_invest * assetPrice,
   };
-  
+  if(json.quantity===0) return 'thats not a transaction ;)'
   const topicPubKebab = ok.camelToKebab(topicPub);
   const { data, error } = await supabase
     .from(topicPubKebab)
