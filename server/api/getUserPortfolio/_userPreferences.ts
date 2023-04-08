@@ -1,42 +1,24 @@
 import { ok } from '~/composables/ok'
 import { serverSupabaseServiceRole } from '#supabase/server'
-
+// this one should get the new currency and replace that in the value_currency column
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const query = getQuery(event)
+  const service = 'getUserPortfolio';
+  const topic = 'exchangeOrders';
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
   const message = messaging.getEntity(
-    'exchangeOrders', 
-    'getUserPortfolio',
+    topic,
+    service,
     body.record.message_entity_id
   )
-
-  let json = {
-    'date': message.message_created,
-    'user_id': message.user_id,
-    'quantity': message.quantity,
-    'ticker': message.ticker
-  }
-
-  const { data:dateExists, error:dateExistsError } = await supabase
-    .from('get_user_portfolio')
-    .select('quantity')
-    .eq('date', json.date)
-    .eq('user_id', json.user_id)
-    .eq('ticker', json.ticker)
-    .single()
-
-  if(dateExists) json.quantity += dateExists.quantity
-  
   const { data, error } = await supabase
     .from('get_user_portfolio')
-    .upsert(json)
-    .select()
-    .single()
+    .update({ 'currency_value': message.currency })
+    .eq('user_id', message.user_id);
 
   if(data) return data
   if(error) return error
-
 });

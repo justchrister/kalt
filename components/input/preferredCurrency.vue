@@ -4,7 +4,7 @@
       Currency: 
     </label>
     <select v-model="currency" @change="updateProfile()" :class="state">
-      <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.name}}</option>
+      <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.currency_name}}</option>
     </select>
   </div>
 </template>
@@ -12,10 +12,13 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const { data: currencies } = await supabase.from('currencies').select('iso, name')
   const user = useSupabaseUser()
   const currency = ref(props.initial)
 
+  const { data: currencies, error: currenciesError} = await supabase
+    .from('currencies')
+    .select('iso, currency_name')
+    .eq('enabled', true)
   const props = defineProps({
     initial: {
       type: String,
@@ -34,9 +37,9 @@
         message_sender: 'components/input/preferredCurrency.vue' 
       })
       .select()
-
     if(error){
       state.value="error"
+      ok.log('error', 'failed updating currency: ', error)
     } else {
       state.value="success"
     }

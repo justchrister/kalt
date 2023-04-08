@@ -15,7 +15,7 @@
   const user = useSupabaseUser()
   const { data: languages } = await supabase.from('languages').select('iso6393, name')
 
-  const language = ref('')
+  const language = ref(props.initial)
 
   const props = defineProps({
     initial: {
@@ -30,7 +30,7 @@
       .from('user_preferences')
       .insert({ 
         user_id: user.value.id,
-        language: language.value, 
+        language: language.value,
         message_entity_id: user.value.id,
         message_sender: 'components/input/preferredLanguage.vue' 
       })
@@ -38,6 +38,7 @@
 
     if(error){
       state.value="error"
+      ok.log('error', 'could not update language preferrence: ', error)
     } else {
       state.value="success"
     }

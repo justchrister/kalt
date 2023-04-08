@@ -37,7 +37,7 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 .input-wrapper {
   display: grid; 
   grid-template-columns: $clamp-3 1fr; 
-  gap: 2% clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2)); 
+  gap: 2% clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
 }
 .toggle-wrap,
 .toggle{
@@ -51,12 +51,15 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 }
 .toggle-wrap{
   width:$clamp-3;
-  border:1px solid $blue-80;
+  border:1px solid $dark;
   display:inline-block;
+  &:hover{
+    background:white;
+  }
 }
 .toggle{
   box-sizing:border-box;
-  background:$blue-80;
+  background:$dark;
   border:2px solid $light;
 }
 .input-wrapper#false .toggle{
@@ -65,10 +68,10 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 .input-wrapper:hover{
   cursor:pointer;
   .toggle-wrap{
-    border:1px solid $blue;
+    border:1px solid $dark;
   }
   .toggle{
-    background:$blue;
+    background:$dark;
   }
 }
 </style>
