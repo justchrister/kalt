@@ -48,6 +48,7 @@ export default defineEventHandler( async (event) => {
         'user_id': body.record.user_id,
         'message_entity_id': body.record.message_entity_id,
         'ticker': ticker,
+        'quantity': body.record.quantity,
         'message_sender': service,
         'order_status': 'fulfilled',
         'fulfilled_by_id': fulfiller.message_entity_id
