@@ -63,7 +63,7 @@ export default defineEventHandler( async (event) => {
         'fulfilled_by_id': body.record.message_entity_id
       }
     ];
-  
+  const fulfillerQuantityInt = parseFloat(fulfiller.quantity)
   const orderFulfilledId = ok.uuid();
   const orderCancelledId = ok.uuid();
   const orderOpenId = ok.uuid();
@@ -81,7 +81,7 @@ export default defineEventHandler( async (event) => {
       'user_id': fulfiller.user_id,
       'message_entity_id': orderOpenId,
       'ticker': ticker,
-      'quantity': fulfiller.quantity+quantity,
+      'quantity': fulfillerQuantityInt+quantity, // add cause the other one is negative
       'order_type': orderTypeInverted,
       'message_sender': service,
       'order_status': 'open',
@@ -93,6 +93,8 @@ export default defineEventHandler( async (event) => {
       'user_id': fulfiller.user_id,
       'message_entity_id': fulfiller.message_entity_id,
       'message_sender': service,
+      'ticker': ticker,
+      'quantity': fulfillerQuantityInt,
       'split_into': [
         orderFulfilledId,
         orderOpenId
