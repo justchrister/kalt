@@ -30,6 +30,8 @@ export default defineEventHandler( async (event) => {
       .single()
     return data
   }
+  // should have a processing bool that will be updated when its in processing
+  // we also need to remove irrelevant orders from the match orders table.. 
 
   const fulfiller = await getFulfiller()
 
@@ -68,7 +70,8 @@ export default defineEventHandler( async (event) => {
   
   const orderOriginal = orders[0];
   const orderFulfilled = orders[1]; // might be split
-    
+  // need to create two functions; splitOrder(), and fulfillOrder()
+  // or similar
   if(fulfiller.quantity + quantity !== 0){
     orderOriginal.fulfilled_by_id=orderFulfilledId
     orderFulfilled.message_entity_id=orderFulfilledId
