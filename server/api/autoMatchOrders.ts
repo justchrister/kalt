@@ -67,9 +67,7 @@ export default defineEventHandler( async (event) => {
       'message_sender': service,
       'fulfilled_by_id': originalOrder.message_entity_id
     })
-  }
-
-  if(fulfillingOrder.quantity + quantity !== 0){
+  } else if (Math.abs(quantity) >= Math.abs(fulfillingOrder.quantity)) {
     const newOrderId1 = ok.uuid();
     const newOrderId2 = ok.uuid();
     await publishMessage({
