@@ -22,13 +22,13 @@ export default defineEventHandler( async (event) => {
   const getFulfiller = async () => {
     const { data, error } = await supabase
       .from(serviceKebab)
-      .select('*', { count: 'exact', head: true, lock: 'update' }) // Adding lock: 'update' for row-level locking
-      .gte('quantity', quantity_absolute)
+      .select()
+      .gte('quantity_absolute', originalOrder.quantity_absolute)
       .eq('order_type', orderTypeInverted)
       .eq('ticker', ticker)
       .limit(1)
-      .single();
-    return data;
+      .single()
+    return data
   }
 
   const fulfillingOrder = await getFulfiller()
