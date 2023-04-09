@@ -15,17 +15,15 @@ export default defineEventHandler( async (event) => {
   const quantity = parseFloat(originalOrder.quantity)
   const quantityInverted = ok.invertInt(originalOrder.quantity)
 
-
   let orderTypeInverted='buy'
   if(originalOrder.order_type==='buy'){
     orderTypeInverted='sell'
   }
-
   const getFulfiller = async () => {
     const { data, error } = await supabase
       .from(serviceKebab)
       .select()
-      .gte('quantity', originalOrder.absolute_quantity)
+      .gte('quantity_absolute', originalOrder.quantity_absolute)
       .eq('order_type', orderTypeInverted)
       .eq('ticker', ticker)
       .limit(1)
@@ -46,7 +44,7 @@ export default defineEventHandler( async (event) => {
     return data
   }
 
-  if(fulfillingOrder.absolute_quantity===originalOrder.quantity){
+  if(fulfillingOrder.quantity_absolute===originalOrder.quantity_absolute){
     await publishMessage({
       'order_status': 'fulfilled',
       'user_id': originalOrder.user_id,
@@ -66,7 +64,8 @@ export default defineEventHandler( async (event) => {
       'message_sender': service,
       'fulfilled_by_id': originalOrder.message_entity_id
     })
-  } else if (originalOrder.absolute_quantity >= fulfillingOrder.absolute_quantity) {
+  }
+  if (fulfillingOrder.quantity_absolute >=  originalOrder.quantity_absolute) {
     const newOrderId1 = ok.uuid();
     const newOrderId2 = ok.uuid();
     await publishMessage({
