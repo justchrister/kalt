@@ -10,12 +10,14 @@ export default defineEventHandler( async (event) => {
   const serviceKebab = ok.camelToKebab(service)
   const query = getQuery(event)
   const body = await readBody(event)
-  const quantity = parseFloat(body.record.quantity)
-  const invertedQuantity = ok.invertInt(quantity)
-  const ticker = body.record.ticker
+  const originalOrder = body.record
+  const ticker = originalOrder.ticker
+  const quantity = parseFloat(originalOrder.quantity)
+  const quantityInverted = ok.invertInt(originalOrder.quantity)
+
 
   let orderTypeInverted='buy'
-  if(body.record.order_type==='buy'){
+  if(originalOrder.order_type==='buy'){
     orderTypeInverted='sell'
   }
 
@@ -23,19 +25,20 @@ export default defineEventHandler( async (event) => {
     const { data, error } = await supabase
       .from(serviceKebab)
       .select()
-      .lte('quantity', invertedQuantity)
+      .lte('quantity', quantityInverted)
       .eq('order_type', orderTypeInverted)
       .eq('ticker', ticker)
       .limit(1)
       .single()
     return data
   }
-  // should have a processing bool that will be updated when its in processing
-  // we also need to remove irrelevant orders from the match orders table.. 
 
-  const fulfiller = await getFulfiller()
+  const fulfillingOrder = await getFulfiller()
+  if (!fulfillingOrder) return 'no fulfilling order available'
 
-  const publishOrder = async (json) => {
+  const publishMessage = async (json) => {
+    if (!json.quantity) return 'cant create an order without a quanitity here'
+
     const { data, error } = await supabase
       .from(topicKebab)
       .insert(json)
@@ -43,71 +46,76 @@ export default defineEventHandler( async (event) => {
     if(error) return error
     return data
   }
-  let orders=[
-      {
-        'user_id': body.record.user_id,
-        'message_entity_id': body.record.message_entity_id,
-        'ticker': ticker,
-        'quantity': body.record.quantity,
-        'message_sender': service,
-        'order_status': 'fulfilled',
-        'fulfilled_by_id': fulfiller.message_entity_id
-      },
-      {
-        'user_id': fulfiller.user_id,
-        'message_entity_id': fulfiller.message_entity_id,
-        'ticker': ticker,
-        'quantity': invertedQuantity,
-        'order_type': orderTypeInverted,
-        'message_sender': service,
-        'order_status': 'fulfilled',
-        'fulfilled_by_id': body.record.message_entity_id
-      }
-    ];
-  const fulfillerQuantityInt = parseFloat(fulfiller.quantity)
-  const orderFulfilledId = ok.uuid();
-  const orderCancelledId = ok.uuid();
-  const orderOpenId = ok.uuid();
-  
-  const orderOriginal = orders[0];
-  const orderFulfilled = orders[1]; // might be split
-  // need to create two functions; splitOrder(), and fulfillOrder()
-  // or similar
-  if(fulfiller.quantity + quantity !== 0){
-    orderOriginal.fulfilled_by_id=orderFulfilledId
-    orderFulfilled.message_entity_id=orderFulfilledId
-    orderFulfilled.part_of=fulfiller.message_entity_id
 
-    let splitAndOpenOrder = {
-      'user_id': fulfiller.user_id,
-      'message_entity_id': orderOpenId,
+  if(fulfillingOrder.quantity + quantity === 0){
+    await publishMessage({
+      'order_status': 'fulfilled',
+      'user_id': originalOrder.user_id,
+      'message_entity_id': originalOrder.message_entity_id,
       'ticker': ticker,
-      'quantity': fulfillerQuantityInt+quantity, // add cause the other one is negative
-      'order_type': orderTypeInverted,
+      'quantity': originalOrder.quantity,
       'message_sender': service,
-      'order_status': 'open',
-      'part_of': fulfiller.message_entity_id
-    };
-    orders.push(splitAndOpenOrder);
+      'fulfilled_by_id': fulfillingOrder.message_entity_id
+    })
+    await publishMessage({
+      'order_status': 'fulfilled',
+      'user_id': fulfillingOrder.user_id,
+      'message_entity_id': fulfillingOrder.message_entity_id,
+      'ticker': fulfillingOrder.ticker,
+      'quantity': fulfillingOrder.quantity,
+      'order_type': fulfillingOrder.order_type,
+      'message_sender': service,
+      'fulfilled_by_id': originalOrder.message_entity_id
+    })
+  }
 
-    let splitAndCancelOrder = {
-      'user_id': fulfiller.user_id,
-      'message_entity_id': fulfiller.message_entity_id,
-      'message_sender': service,
+  if(fulfillingOrder.quantity + quantity !== 0){
+    const newOrderId1 = ok.uuid();
+    const newOrderId2 = ok.uuid();
+    await publishMessage({
+      'order_status': 'fulfilled',
+      'user_id': originalOrder.user_id,
+      'message_entity_id': originalOrder.message_entity_id,
       'ticker': ticker,
-      'quantity': fulfillerQuantityInt,
+      'quantity': originalOrder.quantity,
+      'message_sender': service,
+      'fulfilled_by_id': newOrderId1
+    })
+    await publishMessage({
+      'order_status': 'split',
+      'user_id': fulfillingOrder.user_id,
+      'message_entity_id': fulfillingOrder.message_entity_id,
+      'ticker': ticker,
+      'quantity': fulfillingOrder.quantity,
+      'order_type': originalOrder.order_type,
+      'message_sender': service,
       'split_into': [
-        orderFulfilledId,
-        orderOpenId
-      ],
-      'order_status': 'split'
-    };
-    orders.push(splitAndCancelOrder)
-  };
-  /*
-  await messaging.publish('accountTransactions', {
-
-  })*/
-  // the sell order needs to have an account deposit added, with auto-invest 0
-  return await publishOrder(orders);
+        newOrderId1,
+        newOrderId2
+      ]
+    })
+    await publishMessage({
+      'order_status': 'fulfilled',
+      'user_id': fulfillingOrder.user_id,
+      'message_entity_id': fulfillingOrder.message_entity_id,
+      'ticker': fulfillingOrder.ticker,
+      'quantity': quantityInverted,
+      'order_type': fulfillingOrder.order_type,
+      'message_sender': service,
+      'fulfilled_by_id': originalOrder.message_entity_id
+      // new order 1, will not be fulfilled
+    })
+    // this one will be fulfilled
+    await publishMessage({
+      'order_status': 'open',
+      'user_id': fulfillingOrder.user_id,
+      'message_entity_id': newOrderId1,
+      'ticker': fulfillingOrder.ticker,
+      'quantity': fulfillingOrder.quantity+originalOrder.quantity,
+      'order_type': fulfillingOrder.order_type,
+      'message_sender': service
+      // new order 1, will not be fulfilled
+    })
+  }
+  return 'Orders processed';
 });
