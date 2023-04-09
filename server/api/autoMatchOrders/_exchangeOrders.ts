@@ -39,6 +39,7 @@ export default defineEventHandler(async (event) => {
     'ticker': message.ticker,
     'order_type': message.order_type,
     'quantity': message.quantity,
+    'quantity_absolute': message.quantity_absolute
   };
 
   const { data, error } = await supabase
