@@ -10,24 +10,14 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
   
-  const message = await messaging.getEntity(
-    supabase,
-    topic,
-    body.record.message_entity_id
-  );
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
 
-  const readMessage = await messaging.read(
-    supabase,
-    topic,
-    service,
-    body.record.message_id
-  );
+  const readMessage = await messaging.read(supabase, topic, service, body.record.message_id);
+
   const date = new Date(message.message_created);
-  // Create a new date object at the start of the day
   const dateFrom = date;
   dateFrom.setHours(0, 0, 0, 0);
-
-  // Create a new date object at the start of the next day
+  
   const dateTo = new Date(dateFrom);
   dateTo.setDate(dateTo.getDate() + 1);
 
