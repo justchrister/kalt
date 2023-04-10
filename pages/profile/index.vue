@@ -27,11 +27,11 @@
 
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Account',
+    pagename: 'Profile',
     middleware: 'auth'
   })
   useHead({
-    title: 'Account',
+    title: 'Profile',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
