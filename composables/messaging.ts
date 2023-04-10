@@ -30,7 +30,8 @@ export const messaging = {
       .eq('ticker', ticker)
       .limit(1)
       .single()
-    return data.asset_price
+    if(data) return data.asset_price
+    if(error) return error
   },
   convertCurrency: async (supabase, amount, from, to) => {
     const { data, error } = await supabase
