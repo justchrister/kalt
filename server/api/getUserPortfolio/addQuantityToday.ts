@@ -35,5 +35,8 @@ export default defineEventHandler(async (event) => {
     .from('get_user_portfolio')
     .update(json)
     .eq('user_id', body.record.user_id)
-    .eq('ticker', ticker);
+    .eq('ticker', ticker)
+    .select();
+  if(data)return data
+  if(error)return error
 });
