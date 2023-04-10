@@ -4,11 +4,9 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 const updateUserPortfolio = async (userId, preferredCurrency, ticker, supabase) => {
   const portfolio = await getUserPortfolio(userId, supabase);
-  let quantity_today = 0;
 
   for (const portfolioItem of portfolio) {
     const { quantity_change, date } = portfolioItem;
-    quantity_today += quantity_change;
     
     const assetPrice = await messaging.getAssetPrice(supabase, preferredCurrency, ticker);
     const value = quantity_today / assetPrice;
@@ -48,6 +46,7 @@ const updatePortfolioValue = async (userId, date, ticker, value, preferredCurren
 };
 
 export default defineEventHandler(async (event) => {
+  return 'im fucked'
   const supabase = serverSupabaseServiceRole(event);
   const ticker = 'gi.ddf';
 
