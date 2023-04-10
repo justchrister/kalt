@@ -13,7 +13,7 @@ const updateUserPortfolio = async (userId, preferredCurrency, ticker, supabase) 
     const assetPrice = await messaging.getAssetPrice(supabase, preferredCurrency, ticker);
     const value = quantity_today / assetPrice;
     
-    await updatePortfolioValue(userId, date, ticker, value, preferredCurrency, quantity_today, supabase);
+    await updatePortfolioValue(userId, date, ticker, value, preferredCurrency, supabase);
   }
 };
 
@@ -34,13 +34,12 @@ const getPreferredCurrencies = async (supabase) => {
   return data;
 };
 
-const updatePortfolioValue = async (userId, date, ticker, value, preferredCurrency, quantity_today, supabase) => {
+const updatePortfolioValue = async (userId, date, ticker, value, preferredCurrency, supabase) => {
   const { data } = await supabase
     .from('get_user_portfolio')
     .update({
       'value': value,
-      'value_currency': preferredCurrency,
-      'quantity_today': quantity_today
+      'value_currency': preferredCurrency
     })
     .eq('user_id', userId)
     .eq('date', date)
