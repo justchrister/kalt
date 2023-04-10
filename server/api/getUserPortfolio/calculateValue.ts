@@ -2,53 +2,61 @@ import { ok } from '~/composables/ok'
 import { messaging } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
-export default defineEventHandler( async (event) => {
-  const supabase = serverSupabaseServiceRole(event);
-  const query = getQuery(event);
-  const body = await readBody(event);
-  const ticker = 'gi.ddf';
-  // get exchange Rates
-  const getPortfolio = async (user) => {
-    const { data, error } = await supabase
-      .from('get_user_portfolio')
-      .select()
-      .eq("user_id", user)
-    return data
-  };
-  const getPreferredCurrencies = async () => {
-    const {data, error} = await supabase
-      .from('get_user')
-      .select('user_id, currency')
-    return data
-  }
-  const userPreferredCurrencies = await getPreferredCurrencies();
+const updateUserPortfolio = async (userId, preferredCurrency, ticker, supabase) => {
+  const portfolio = await getUserPortfolio(userId, supabase);
+  let quantity_today = 0;
 
-  for (let i = 0; i < userPreferredCurrencies.length; i++) {
-    const preferredCurrency = userPreferredCurrencies[i].currency;
-    const userId = userPreferredCurrencies[i].user_id;
-    const portfolio = await getPortfolio(userId);
-    let quantity_today = 0;
-    for (let i = 0; i < portfolio.length; i++) {
-      const quantityChange = portfolio[i].quantity_change;
-      quantity_today += quantityChange;
-      const { data, error } = await supabase
-        .from('get_user_portfolio')
-        .update({
-          'value': await messaging.convertCurrency(
-            supabase,
-            quantity_today,
-            portfolio[i].currency,
-            preferredCurrency
-          ),
-          'value_currency': preferredCurrency,
-          'quantity_today': quantity_today,
-          'value_currency': preferredCurrency
-        })
-        .eq('user_id', userId)
-        .eq('date', portfolio[i].date)
-        .eq('ticker', ticker)
-        .select()
-    }
+  for (const portfolioItem of portfolio) {
+    const { quantity_change, date } = portfolioItem;
+    quantity_today += quantity_change;
+    
+    const assetPrice = await messaging.getAssetPrice(supabase, preferredCurrency, ticker);
+    const value = quantity_today / assetPrice;
+    
+    await updatePortfolioValue(userId, date, ticker, value, preferredCurrency, quantity_today, supabase);
   }
-  return 'Values has been calculated and updated'
+};
+
+const getUserPortfolio = async (userId, supabase) => {
+  const { data } = await supabase
+    .from('get_user_portfolio')
+    .select()
+    .eq("user_id", userId);
+
+  return data;
+};
+
+const getPreferredCurrencies = async (supabase) => {
+  const { data } = await supabase
+    .from('get_user')
+    .select('user_id, currency');
+
+  return data;
+};
+
+const updatePortfolioValue = async (userId, date, ticker, value, preferredCurrency, quantity_today, supabase) => {
+  const { data } = await supabase
+    .from('get_user_portfolio')
+    .update({
+      'value': value,
+      'value_currency': preferredCurrency,
+      'quantity_today': quantity_today
+    })
+    .eq('user_id', userId)
+    .eq('date', date)
+    .eq('ticker', ticker)
+    .select();
+};
+
+export default defineEventHandler(async (event) => {
+  const supabase = serverSupabaseServiceRole(event);
+  const ticker = 'gi.ddf';
+
+  const userPreferredCurrencies = await getPreferredCurrencies(supabase);
+
+  for (const { user_id, currency } of userPreferredCurrencies) {
+    await updateUserPortfolio(user_id, currency, ticker, supabase);
+  }
+
+  return 'Values have been calculated and updated';
 });
