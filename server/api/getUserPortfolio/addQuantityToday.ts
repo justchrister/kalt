@@ -17,26 +17,22 @@ export default defineEventHandler(async (event) => {
       .order('date', { ascending: true })
     if (data) return data
   };
-
-  const json = []
   let quantity_today = 0;
   const days = await getDays(body.record.user_id);
   for (let i = 0; i < days.length; i++) {
     const current = days[i];
     quantity_today += current.quantity_change
-    json.push({
-      "user_id": current.user_id,
-      "ticker": current.ticker,
-      "date": current.date,
-      "quantity_today": quantity_today,
-    })
+    const { data, error } = await supabase
+      .from('get_user_portfolio')
+      .update({
+        "quantity_today": quantity_today
+      })
+      .eq('user_id', current.user_id)
+      .eq('date', current.date)
+      .eq('ticker', current.ticker)
+      .select();
+      if (data) ok.log('success', 'updated date', data)
+      if (error) ok.log('error', 'updated date', error)
   }
-  const { data, error } = await supabase
-    .from('get_user_portfolio')
-    .update(json)
-    .eq('user_id', body.record.user_id)
-    .eq('ticker', ticker)
-    .select();
-  if(data)return data
-  if(error)return error
+  return 'processed'
 });
