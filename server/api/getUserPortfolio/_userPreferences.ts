@@ -12,7 +12,6 @@ export default defineEventHandler( async (event) => {
   
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id);
-
   const { data, error } = await supabase
     .from('get_user_portfolio')
     .update({ 'currency_value': message.currency })
