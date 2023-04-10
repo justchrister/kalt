@@ -48,7 +48,6 @@ export default defineEventHandler( async (event) => {
         .eq('date', portfolio[i].date)
         .eq('ticker', ticker)
         .select()
-      console.log(error)
     }
   }
   return 'Values has been calculated and updated'

@@ -29,7 +29,6 @@ export default defineEventHandler( async (event) => {
         date: dateWithoutTime,
       });
     }
-    console.log(array)
     return array
   }
   const { data:users, error:usersError } = await supabase
@@ -45,7 +44,6 @@ export default defineEventHandler( async (event) => {
       .upsert(dates)
       .eq('user_id', user)
       .eq('ticker', ticker)
-    console.log(error)
   }
   return users
 });

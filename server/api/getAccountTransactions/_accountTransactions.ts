@@ -20,7 +20,6 @@ export default defineEventHandler( async (event) => {
       .from('account_transactions')
       .select('message_entity_id')
       .eq('user_id', message.user_id);
-    console.log(data)
     const distinctMessageEntityIds = [...new Set(data.map(transaction => transaction.message_entity_id))];
     return distinctMessageEntityIds
   }
@@ -31,7 +30,6 @@ export default defineEventHandler( async (event) => {
       supabase,
       topic,
       transactions[i])
-    console.log(transaction)
     const { data, error} = await supabase
       .from(serviceKebab)
       .upsert({
