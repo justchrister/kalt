@@ -34,6 +34,6 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await supabase
     .from('get_user_portfolio')
     .update(json)
-    .eq('user_id', user)
+    .eq('user_id', body.record.user_id)
     .eq('ticker', ticker);
 });
