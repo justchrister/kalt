@@ -46,7 +46,7 @@ const updatePortfolioValue = async (userId, date, ticker, value, preferredCurren
 };
 
 export default defineEventHandler(async (event) => {
-  return 'im fucked'
+  return 'im fucked rebuild me'
   const supabase = serverSupabaseServiceRole(event);
   const ticker = 'gi.ddf';
 
