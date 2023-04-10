@@ -3,9 +3,9 @@ import { messaging } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
-  const supabase = serverSupabaseServiceRole(event)
-  const query = getQuery(event)
-  const body = await readBody(event)
+  const supabase = serverSupabaseServiceRole(event);
+  const query = getQuery(event);
+  const body = await readBody(event);
   const ticker = 'gi.ddf';
   // get exchange Rates
   const getPortfolio = async (user) => {
@@ -23,7 +23,6 @@ export default defineEventHandler( async (event) => {
   }
   const userPreferredCurrencies = await getPreferredCurrencies();
 
-  const array = []
   for (let i = 0; i < userPreferredCurrencies.length; i++) {
     const preferredCurrency = userPreferredCurrencies[i].currency;
     const userId = userPreferredCurrencies[i].user_id;
@@ -32,23 +31,25 @@ export default defineEventHandler( async (event) => {
     for (let i = 0; i < portfolio.length; i++) {
       const quantityChange = portfolio[i].quantity_change;
       quantity_today += quantityChange;
-      array.push({
-        'user_id': userId,
-        "value": await messaging.convertCurrency(
-          supabase,
-          quantity_today,
-          portfolio[i].currency,
-          preferredCurrency
-        ),  
-        "value_currency": preferredCurrency,
-        "quantity_today": quantity_today,
-        "quantity_change": portfolio[i].quantity_change,
-        "date": portfolio[i].date,
-        'currency': preferredCurrency
-      })
+      const { data, error } = await supabase
+        .from('get_user_portfolio')
+        .update({
+          'value': await messaging.convertCurrency(
+            supabase,
+            quantity_today,
+            portfolio[i].currency,
+            preferredCurrency
+          ),
+          'value_currency': preferredCurrency,
+          'quantity_today': quantity_today,
+          'value_currency': preferredCurrency
+        })
+        .eq('user_id', userId)
+        .eq('date', portfolio[i].date)
+        .eq('ticker', ticker)
+        .select()
+      console.log(error)
     }
   }
-  return {
-    array
-  }
+  return 'Values has been calculated and updated'
 });
