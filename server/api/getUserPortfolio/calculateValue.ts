@@ -1,4 +1,5 @@
 import { ok } from '~/composables/ok'
+import { messaging } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -7,39 +8,47 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   const ticker = 'gi.ddf';
   // get exchange Rates
-  const getPortfolios = async (user) => {
+  const getPortfolio = async (user) => {
     const { data, error } = await supabase
       .from('get_user_portfolio')
       .select()
+      .eq("user_id", user)
     return data
   };
   const getPreferredCurrencies = async () => {
     const {data, error} = await supabase
       .from('get_user')
       .select('user_id, currency')
-    console.log(error)
-    console.log(data)
     return data
   }
-  const calculateValues = async (firstOrderDate, user, ticker) => {
-    const today = new Date();
-    const array = [];
-    for (let currentDate = firstOrderDate; currentDate <= today; currentDate.setDate(currentDate.getDate() + 1)) {
-      const dateWithoutTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+  const userPreferredCurrencies = await getPreferredCurrencies();
+
+  const array = []
+  for (let i = 0; i < userPreferredCurrencies.length; i++) {
+    const preferredCurrency = userPreferredCurrencies[i].currency;
+    const userId = userPreferredCurrencies[i].user_id;
+    const portfolio = await getPortfolio(userId);
+    let quantity_today = 0;
+    for (let i = 0; i < portfolio.length; i++) {
+      const quantityChange = portfolio[i].quantity_change;
+      quantity_today += quantityChange;
       array.push({
-        user_id: user,
-        ticker: ticker,
-      });
+        'user_id': userId,
+        "value": await messaging.convertCurrency(
+          supabase,
+          quantity_today,
+          portfolio[i].currency,
+          preferredCurrency
+        ),  
+        "value_currency": preferredCurrency,
+        "quantity_today": quantity_today,
+        "quantity_change": portfolio[i].quantity_change,
+        "date": portfolio[i].date,
+        'currency': preferredCurrency
+      })
     }
-    console.log(array)
-    return array
   }
-  const portfolios = getPortfolios();
-  console.log(portfolios)
-  const userPreferredCurrencies = getPreferredCurrencies();
-  console.log(userPreferredCurrencies)
-//  const combinedArray = ok.combineArrays(portfolios, userPrefferedCurrencies)
-
-
-  return userPreferredCurrencies
+  return {
+    array
+  }
 });
