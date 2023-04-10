@@ -5,7 +5,7 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'getAccountBalance';
-  const topic = 'accountTransactions';
+  const topic = 'userPreferences';
   const serviceKebab = ok.camelToKebab(service);
   const topicKebab = ok.camelToKebab(topic);
   const query = getQuery(event);
