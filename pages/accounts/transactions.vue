@@ -16,7 +16,6 @@
         :amount="transaction.amount"
         :currency="transaction.currency"
         :date="transaction.date"
-        :time="transaction.time"
       />
     </block>
     <block v-if="data">
@@ -48,10 +47,9 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const {data, error} = await supabase
-    .from('gettransactions')
+    .from('get_account_transactions')
     .select()
     .eq('user_id', user.value.id)
-  console.log(data)
 
   if (data) ok.log('success', 'got transactions for '+user.value.id)
   if (error) ok.log('error', 'could not get transactions for '+user.value.id)

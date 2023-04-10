@@ -12,7 +12,7 @@
       {{ok.prettyDate(props.date)}}
     </div>
     <div class="time">
-      {{ok.prettyTime(props.time)}}
+      {{ok.prettyTime(props.date)}}
     </div>
   </div>
 </template>
@@ -27,10 +27,6 @@
       required: true
     },
     date: {
-      type: String, 
-      required: true
-    },
-    time: {
       type: String, 
       required: true
     },

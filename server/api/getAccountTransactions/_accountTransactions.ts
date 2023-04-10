@@ -12,11 +12,7 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(
-    supabase,
-    topic,
-    body.record.message_entity_id)
-
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
   await messaging.read( supabase, topic, service, body.record.message_id)
 
   const getDistinctTransactions = async () => {
@@ -24,7 +20,7 @@ export default defineEventHandler( async (event) => {
       .from('account_transactions')
       .select('message_entity_id')
       .eq('user_id', message.user_id);
-
+    console.log(data)
     const distinctMessageEntityIds = [...new Set(data.map(transaction => transaction.message_entity_id))];
     return distinctMessageEntityIds
   }
