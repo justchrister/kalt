@@ -1,0 +1,12 @@
+--- create the table, with default values
+CREATE TABLE get_account_transactions (
+  user_id           uuid                    NOT NULL,
+  date              timestamptz             NOT NULL,
+  amount            numeric                 NOT NULL,
+  type              transaction_types       NOT NULL,
+  sub_type          transaction_sub_types   NOT NULL,
+  PRIMARY KEY (user_id, date)
+);
+
+--- Add row level security
+ALTER TABLE get_account_transactions ENABLE ROW LEVEL SECURITY;
