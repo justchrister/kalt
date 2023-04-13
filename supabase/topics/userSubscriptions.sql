@@ -32,3 +32,22 @@ is 'when the message was generated, usually set in the application. It can be cr
 
 comment on column user_subscriptions.message_sender 
 is 'where the message originates, usually set in the application.';
+
+
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = 'user_subscriptions'
+      AND policyname = 'SELF — Insert'
+  ) THEN
+    CREATE POLICY "SELF — Insert" ON public.user_subscriptions
+      AS PERMISSIVE FOR INSERT
+      TO authenticated
+      WITH CHECK (TRUE);
+  END IF;
+END
+$$;
