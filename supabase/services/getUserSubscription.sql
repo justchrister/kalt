@@ -1,5 +1,5 @@
 --- create the table, with default values
-CREATE TABLE "getUserSubscription" (
+CREATE TABLE get_user_subscription (
   user_id             uuid        PRIMARY KEY, 
   amount              numeric,
   currency            CHAR(3)     default 'EUR',

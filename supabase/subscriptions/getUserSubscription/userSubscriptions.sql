@@ -1,49 +1,49 @@
 -- subscribe to topic, by simply renaming all instances of <<topic name>__<service name>
 -- version 6.4.23
--- service "getUserSubscription"
--- topic   "userSubscriptions"
+-- service get_user_subscription
+-- topic   user_subscriptions
 
 --- create the table, with default values
-CREATE TABLE "getUserSubscription_userSubscriptions" (
-    "massageId"           uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    "massageEntityId"     uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    "messageCreated"      timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
-    "messageSender"       text        NOT NULL,
-    "messageRead"         boolean     NOT NULL  DEFAULT FALSE
+CREATE TABLE get_user_subscription__user_subscriptions (
+    message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    message_entity_id   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
+    message_created     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
+    message_sender      text        NOT NULL,
+    message_read        boolean     NOT NULL  DEFAULT FALSE
 );
 
 --- add row level security
-ALTER TABLE "getUserSubscription_userSubscriptions" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE get_user_subscription__user_subscriptions ENABLE ROW LEVEL SECURITY;
 
 --- Standard descriptions
-comment on column "getUserSubscription_userSubscriptions"."massageId" 
+comment on column get_user_subscription__user_subscriptions.message_id 
 is 'this is the unique id of this message, not the unique id of its contents. (for instance, account_transactions have their own account_transaction_id';
 
-comment on column "getUserSubscription_userSubscriptions"."massageEntityId" 
-is 'Used to correlate messages that are associated with a single entity, since they will have updates in the same table with different massageIds, usually a 1:1 relation to an orderId or similar';
+comment on column get_user_subscription__user_subscriptions.message_entity_id 
+is 'Used to correlate messages that are associated with a single entity, since they will have updates in the same table with different message_ids, usually a 1:1 relation to an order_id or similar';
 
-comment on column "getUserSubscription_userSubscriptions"."messageCreated" 
+comment on column get_user_subscription__user_subscriptions.message_created 
 is 'when the message was generated, usually set in the application. It can be created in javascript by doing ok.timestamptz()';
 
-comment on column "getUserSubscription_userSubscriptions"."messageSender" 
+comment on column get_user_subscription__user_subscriptions.message_sender 
 is 'where the message originates, usually set in the application.';
 
-comment on column "getUserSubscription_userSubscriptions"."messageRead" 
+comment on column get_user_subscription__user_subscriptions.message_read 
 is 'the only field that is updated in this table, when the service reads it, it changes the bool to true.';
 
 
--- Create the trigger function on the "userSubscriptions"
-CREATE OR REPLACE FUNCTION "getUserSubscription_userSubscriptions"()
+-- Create the trigger function on the user_subscriptions
+CREATE OR REPLACE FUNCTION get_user_subscription__user_subscriptions()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO "getUserSubscription_userSubscriptions" ("massageId", "massageEntityId", "messageSender", "messageCreated")
-  VALUES (NEW."massageId", NEW."massageEntityId", NEW."messageSender", NEW."messageCreated");
+  INSERT INTO get_user_subscription__user_subscriptions (message_id, message_entity_id, message_sender, message_created)
+  VALUES (NEW.message_id, NEW.message_entity_id, NEW.message_sender, NEW.message_created);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create the trigger on the topic table and event
-CREATE TRIGGER "getUserSubscriptio_userSubscriptions"
-AFTER INSERT ON "userSubscriptions"
+CREATE TRIGGER get_user_subscription__user_subscriptions
+AFTER INSERT ON user_subscriptions
 FOR EACH ROW
-EXECUTE FUNCTION "getUserSubscription_userSubscriptions"();
+EXECUTE FUNCTION get_user_subscription__user_subscriptions();
