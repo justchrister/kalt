@@ -1,31 +1,35 @@
-import { ok } from '~/composables/ok';
+// @ts-nocheck
 import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const ticker = 'gi.ddf';
-  const body = await readBody(event)
-  const user_id = body.record.user_id;
-  const today = new Date();
+  const body = await readBody(event);
 
   const insertDate = async (date) => {
     const { data, error } = await supabase
     .from('get_user_portfolio')
     .insert({
       'date': date,
-      'ticker': ticker,
-      'user_id': user_id
+      'ticker': 'gi.ddf',
+      'user_id': body.record.user_id
     })
   }
 
   const { data, error } = await supabase
     .from('get_user_portfolio')
     .select('date')
-    .eq('user_id', user_id)
-    .eq('ticker', ticker)
+    .eq('user_id', body.record.user_id)
     .order('date', { ascending: true })
     .limit(1)
-    .single();  
+    .single();
   
-  return data.date
+  const start = new Date(data.date);
+  const end = new Date();
+
+  while (start <= end) {
+    await insertDate(start);
+    start.setDate(start.getDate() + 1);
+  };
+
+  return 'dates added'
 });
