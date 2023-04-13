@@ -1,0 +1,43 @@
+create type public.transaction_statuses as enum (
+    'incomplete',
+    'payment_awaiting',
+    'payment_declined',
+    'payment_accepted',
+    'withdrawal_awaiting',
+    'withdrawal_processing',
+    'withdrawal_accepted'
+);
+create type public.transaction_types as enum (
+    'deposit',
+    'withdraw'
+);
+create type public.transaction_sub_types as enum (
+    'card',
+    'wire_transfer',
+    'dividend',
+    'subscription',
+    'auto_invested',
+    'auto_withdraw'
+);
+create type public.tickers as enum (
+    'gi.ddf'
+);
+create type public.order_types as enum (
+    'buy',
+    'sell'
+);
+create type public.order_statuses as enum (
+    'open',
+    'fulfilled',
+    'cancelled',
+    'split'
+);
+create type public.continents as enum (
+    'Africa',
+    'Antarctica',
+    'Asia',
+    'Europe',
+    'Oceania',
+    'North America',
+    'South America'
+);
