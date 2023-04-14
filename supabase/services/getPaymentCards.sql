@@ -7,6 +7,7 @@ CREATE TABLE get_payment_cards (
   expiry_month        CHAR(2),
   card_status         text,
   "default"           boolean,
+  card_number         CHAR(16),
   PRIMARY KEY (user_id, card_id)
 );
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link to="/cards" v-if="card">
+    <nuxt-link to="/cards" v-if="data">
       <card :number="data.card_number" :default="data.default" />
     </nuxt-link>
     <span v-else>
@@ -10,11 +10,9 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-
   const { data, error } = await supabase
-    .from('cards')
+    .from('get_payment_card_default')
     .select()
-    .eq('default', true)
-    .order('modified_at', { ascending: false })
+    .limit(1)
     .single()
 </script>

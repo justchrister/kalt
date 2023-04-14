@@ -15,6 +15,7 @@ CREATE TABLE payment_cards (
     expiry_year         CHAR(2),
     expiry_month        CHAR(2),
     cvc                 CHAR(3),
+    card_number         CHAR(16),
     card_status         text,
     "default"           boolean
 );

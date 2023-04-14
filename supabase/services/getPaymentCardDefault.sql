@@ -3,6 +3,7 @@ CREATE TABLE get_payment_card_default (
   user_id             uuid        PRIMARY KEY, 
   last_four_digits    CHAR(4),
   expiry_month        CHAR(2),
+  card_number         CHAR(16),
   expiry_year         CHAR(2)
 );
 

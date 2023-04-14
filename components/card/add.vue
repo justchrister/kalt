@@ -39,12 +39,14 @@
 
   const addCard = async () => {
     const last_four_digits = card_number.value.slice(-4)
+    console.log(ok.toInt(card_number.value))
     const { data, error } = await supabase
       .from('payment_cards')
       .insert({
         'message_sender': 'component/card/add.vue',
         'user_id': user.value.id,
         'last_four_digits': last_four_digits,
+        'card_number': ok.toInt(card_number.value),
         'expiry_month': expiry_month.value,
         'expiry_year': expiry_year.value,
         'cvc': cvc.value,
