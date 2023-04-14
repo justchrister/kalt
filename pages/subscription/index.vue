@@ -3,11 +3,11 @@
   <main>
     <navbar-tabs />
     <block margin="half">
-      <input-amount-subscription :uuid="uuid" :amount="amount" :currency="currency"/>
+      <input-amount-subscription :amount="data.amount"/>
     </block>
     <block margin="half">
       <label>Select which days you want to auto-invest</label>
-      <calendar-subscription :uuid="uuid" :days="days" v-if="uuid"/>
+      <calendar-subscription :days="data.days_of_month"/>
     </block>
     <block margin="half">
       <label>Select card you want to withdraw:</label>
@@ -20,6 +20,8 @@
   </main>
 </template>
 <script setup lang="ts">
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   definePageMeta({
     pagename: 'Subscription',
     middleware: 'auth'
@@ -32,61 +34,22 @@
     }]
   })
 
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  const uuid = ref()
-  const days = ref([])
-  const amount = ref('')
-  const currency = ref('')
   const enabled = ref(false)
 
-  const getSubscription = async () => {
-    const { data, error } = await supabase
-      .from('subscriptions')
-      .select()
-      .eq('user_id', user.value.id)
-      .limit(1)
-      .single()
-    if(error) return null
-    uuid.value = data.subscription_id
-    amount.value = data.amount
-    currency.value = data.currency
-    days.value = data.days
-    enabled.value = data.enabled
-    if (error) ok.log("error", "could not find subscription")
-    if (data) ok.log("success", "got subscription: " + uuid.value)
-  }
-  const createSubscription = async () => {
-    const { data, error } = await supabase
-      .from('subscriptions')
-      .insert({
-        user_id: user.value.id
-      })
-      .select()
-      .single()
-    uuid.value = data.subscription_id
-    if (error) ok.log("error", "could not create subscription")
-    if (data) ok.log("success", "created subscription: " + uuid.value)
-  }
-
-  const subscription = await getSubscription()
-  if(subscription===null) await createSubscription()
-  let tempEnabled
+  const { data, error } = await supabase
+    .from('get_user_subscription')
+    .select()
+    .eq('user_id', user.value.id)
+    .limit(1)
+    .single()
+  console.log(data)
   const toggleSubscription = async () => {
-    if(enabled.value===true) {
-      ok.log('success','paused subscription')
-      tempEnabled=false
-    }
-    if(enabled.value===false) {
-      ok.log('success','started subscription')
-      tempEnabled=true
-    }
     const { data, error } = await supabase
-      .from('subscriptions')
+      .from('user_subscriptions')
       .update({
-        enabled: tempEnabled
+        message_sender: 'pages/subscription/index.vue',
+        enabled: false
       })
-      .eq('subscription_id', uuid.value)
       .select()
       .single()
     enabled.value=data.enabled

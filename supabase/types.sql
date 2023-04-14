@@ -19,6 +19,12 @@ create type public.transaction_sub_types as enum (
     'auto_invested',
     'auto_withdraw'
 );
+create type public.card_statuses as enum (
+    'incomplete',
+    'active',
+    'rejected',
+    'expired'
+);
 create type public.tickers as enum (
     'gi.ddf'
 );

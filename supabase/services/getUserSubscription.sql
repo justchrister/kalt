@@ -8,7 +8,7 @@ CREATE TABLE get_user_subscription (
 );
 
 
-ALTER TABLE get_user_portfolio ENABLE ROW LEVEL SECURITY;
+ALTER TABLE get_user_subscription ENABLE ROW LEVEL SECURITY;
 
 
 DO $$
@@ -17,10 +17,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'get_user_portfolio'
+      AND tablename = 'get_user_subscription'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.get_user_portfolio
+    CREATE POLICY "SELF — Select" ON public.get_user_subscription
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (auth.uid() = user_id);

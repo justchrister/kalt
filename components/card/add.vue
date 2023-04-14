@@ -52,15 +52,14 @@
       .eq('card_id', uuid)
   }
   const addCard = async () => {
-    const card_number_int = card_number.value.replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '')
+    const last_four_digits = card_number.slice(0,-4)
     const json = {
-        "card_id": card_id.value,
         "user_id": user.value.id,
-        "card_number": card_number_int,
+        "last_four_digits": last_four_digits,
         "expiration_month": expiry_month.value,
         "expiration_year": expiry_year.value,
-        "default": true,
-        "cvc": cvc.value
+        "cvc": cvc.value,
+        "default": true
     }
     const { data, error } = await supabase
       .from('cards')

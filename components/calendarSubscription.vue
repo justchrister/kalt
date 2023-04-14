@@ -71,34 +71,30 @@
 
 <script setup lang="ts">
   const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   const props = defineProps({
-    uuid: {
-      type: String,
-      required: true
-    },
     days: {
       type: Array,
       required: true
     }
   })
+  console.log(props.days)
   const days = ref([])
   const warn = ref(false)
-  const uuid = props.uuid;
   if(props.days) days.value=props.days
   const updateSubscription = async () => {
     if(days.value.includes('29')) warn.value = true
     if(days.value.includes('30')) warn.value = true
     if(days.value.includes('31')) warn.value = true
     const { data, error } = await supabase
-      .from('subscriptions')
-      .update({
-        days: days.value
+      .from('user_subscriptions')
+      .insert({
+        'days_of_month': days.value,
+        'message_entity_id': user.value.id,
+        'user_id': user.value.id,
+        'message_sender': 'components/calendarSubscription.vue'
       })
-      .eq('subscription_id', uuid)
-      .select()
-      .single()
-      // for each loop
-    ok.log("success", "updated subscription: " + data.subscription_id)
+    if(error)ok.log('error', 'could not update the user_subscriptions table: ', error)
   }
 </script>
 <style scoped lang="scss">

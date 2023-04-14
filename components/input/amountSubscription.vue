@@ -16,10 +16,7 @@
         v-model="amount"
         @input="updatePaymentAmount"
       />
-      <select v-model="currency" :class="state" 
-      @change="updatePaymentCurrency">
-        <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.iso}}</option>
-      </select>
+      <div class="currency">{{ currency }}</div>
     </div>
   </div>
 </template>
@@ -27,76 +24,45 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
 
   const props = defineProps({
-    uuid: {
-      type: String,
-      required: true
-    },
     amount: {
       type: Number,
-      required: false
-    },
-    currency: {
-      type: String,
       required: false
     }
   })
   
-  const amount =  ref('')
-  const currency =  ref('')
-  if(props.amount) amount.value = props.amount
-  if(props.currency){
-    currency.value = props.currency
-  } else {
+  const getCurrency = async () => {
     const { data } = await supabase
-      .from('profiles')
-      .select('preferred_currency')
+      .from('get_user')
+      .select('currency')
+      .limit(1)
       .single()
-    if (data) {
-      currency.value = data.preferred_currency
-      updatePaymentCurrency()
-    }
+    return data.currency
   }
-  const { data: currencies } = await supabase
-    .from('currencies')
-    .select('iso, name')
-    .eq('available', true)
+  const amount =  ref(props.amount)
+  const currency = await getCurrency()
 
   const updatePaymentAmount = async () => { 
-    if(amount.value){
-      const { error } = await supabase
-        .from('subscriptions')
-        .update({
-          subscription_id: props.uuid,
-          amount: ok.toInt(amount.value)
-      })
-      if(error) ok.log('error', 'could not update amount')
-      if(error) ok.log('error', error.message)
-      if(!error) ok.log('success', 'updated amount')
-    }
+    const { error } = await supabase
+      .from('user_subscriptions')
+      .insert({
+        message_entity_id:user.value.id,
+        message_sender: 'components/input/amountSubscription.vue',
+        amount: ok.toInt(amount.value)
+    })
+    if(error) ok.log('error', 'could not update amount', error)
+    if(!error) ok.log('success', 'updated amount 🥰')
   }
-  const updatePaymentCurrency = async () => {
-      const { error } = await supabase
-        .from('subscriptions')
-        .update({
-          subscription_id: props.uuid,
-          currency: currency.value
-      })
-      if(error) ok.log('error', 'could not update currency')
-      if(!error) ok.log('success', 'updated currency to: '+currency.value)
-  }
-
   const options = {
     preProcess: val => val.replace(/[$,]/g, ''),
     postProcess: val => {
       if (!val) return ''
-
       const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
-
       return Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: currency.value
+        currency: currency
       }).format(val)
         .slice(0, sub ? -sub : undefined)
     }
@@ -108,13 +74,20 @@
 
 <style scoped lang="scss">
   .input-group{
+    border:$border;
     display: grid;
     grid-template-rows: 1fr;
     gap: 0% 0%;
     grid-auto-flow: row;
     grid-template-columns: 6fr 1fr;
-    .amount{
-      border-right-color:transparent;
-    }
+  }
+  .currency{
+    height:$clamp-4;
+    line-height:$clamp-4;
+    text-align:center;
+  }
+  input{
+    border:none;
+    border-right:$border;
   }
 </style>

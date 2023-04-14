@@ -13,3 +13,24 @@ CREATE TABLE get_user_portfolio (
   PRIMARY KEY (user_id, date, ticker)
 );
 
+
+
+ALTER TABLE get_user_portfolio ENABLE ROW LEVEL SECURITY;
+
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = 'get_user_portfolio'
+      AND policyname = 'SELF — Select'
+  ) THEN
+    CREATE POLICY "SELF — Select" ON public.get_user_portfolio
+      AS PERMISSIVE FOR SELECT
+      TO authenticated
+      USING (auth.uid() = user_id);
+  END IF;
+END
+$$;
