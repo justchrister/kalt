@@ -18,12 +18,17 @@ export default defineEventHandler(async (event) => {
   );
 
   await messaging.read(supabase, topic, service, body.record.message_id);
-
-  const cleanMessage = await messaging.cleanMessage(message);
   
+  if (!message.default) return 'not default';
   const { data, error } = await supabase
     .from(serviceKebab)
-    .upsert(cleanMessage)
+    .upsert({
+      'user_id': message.user_id,
+      'last_four_digits': message.last_four_digits,
+      'expiry_month': message.expiry_month,
+      'expiry_year': message.expiry_year,
+      'cvc': message.cvc
+    })
     .select();
   
   if(data) return data;
