@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   await messaging.read(supabase, topic, service, body.record.message_id);
 
   const cleanMessage = await messaging.cleanMessage(message);
-
+  
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(cleanMessage)
