@@ -83,14 +83,18 @@ export const ok = {
     return timestamptz
   },
   combineJson(jsonArray){
+    
     let result = {};
-  
+
     for (let i = 0; i < jsonArray.length; i++) {
-        let jsonObj = jsonArray[i];
-  
-        for (let key in jsonObj) {
-            result[key] = jsonObj[key];
+      let jsonObj = jsonArray[i];
+
+      for (let key in jsonObj) {
+        // Only set the value in result object if it's not null
+        if (jsonObj[key] !== null) {
+          result[key] = jsonObj[key];
         }
+      }
     }
     return result
   },
