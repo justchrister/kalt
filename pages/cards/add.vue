@@ -1,7 +1,8 @@
 <template>
   <main>
+    <navbar-breadcrumbs parent="cards"/>
     <block>
-      <h3> Add a card to start investing </h3>
+      <label>add card:</label>
       <card-add/>
     </block>
   </main>

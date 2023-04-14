@@ -5,6 +5,7 @@
       <input 
         type="text" 
         v-model="card_number" 
+        minlength="19"
         v-maska data-maska="#### #### #### ####"
         placeholder="•••• •••• •••• 4242"/>
       <input 
@@ -29,51 +30,27 @@
   </div>
 </template>
 <script setup lang="ts">
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-
-  const card_id = ref(ok.uuid())
+  const supabase = useSupabaseClient();
+  const user = useSupabaseUser();
   const card_number = ref();
   const expiry_month = ref();
   const expiry_year = ref();
   const cvc = ref('');
 
-  const resetDefaultCard = async () =>{
-    const { data, error } = await supabase
-      .from('cards')
-      .update({ default: false })
-      .eq('user_id', user.value.id)
-  }
-  const setDefaultCard = async (uuid) =>{
-    const { data, error } = await supabase
-      .from('cards')
-      .update({ default: true })
-      .eq('user_id', user.value.id)
-      .eq('card_id', uuid)
-  }
   const addCard = async () => {
-    const last_four_digits = card_number.slice(0,-4)
-    const json = {
-        "user_id": user.value.id,
-        "last_four_digits": last_four_digits,
-        "expiration_month": expiry_month.value,
-        "expiration_year": expiry_year.value,
-        "cvc": cvc.value,
-        "default": true
-    }
+    const last_four_digits = card_number.value.slice(-4)
     const { data, error } = await supabase
-      .from('cards')
-      .insert(json)
-      .select()
-      .single()
-    if(error){
-      ok.log('error', error.message)
-    }
-    if(data) {
-      await resetDefaultCard();
-      await setDefaultCard(card_id.value);
-      goBack()
-    }
+      .from('payment_cards')
+      .insert({
+        'message_sender': 'component/card/add.vue',
+        'user_id': user.value.id,
+        'last_four_digits': last_four_digits,
+        'expiry_month': expiry_month.value,
+        'expiry_year': expiry_year.value,
+        'cvc': cvc.value,
+        'default': true
+    })
+    if(error)ok.log('error', 'could not add card', error)
   }
 
   const checkBrand = (brand_id) => {

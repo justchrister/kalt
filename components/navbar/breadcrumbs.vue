@@ -1,6 +1,6 @@
 <template>
   <block margin="none">
-    <nuxt-link :to="parentUrl"> {{parent}}</nuxt-link> > {{route.meta.pagename}}
+    <nuxt-link :to="parentUrl"> {{parent}}</nuxt-link> / {{route.meta.pagename}}
   </block>
 </template>
 <script setup lang="ts">
