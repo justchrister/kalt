@@ -47,10 +47,12 @@
     const { data, error } = await supabase
       .from('payment_cards')
       .insert({
-        'message_sender': 'component/card/add.vue',
+        'message_sender': 'pages/cards/index.vue',
         'user_id': user.value.id,
         'card_id': id,
+        'message_entity_id': id,
         'default': true
       })
+    if(error) ok.log('error', 'could not set default card', error)
   }
 </script>

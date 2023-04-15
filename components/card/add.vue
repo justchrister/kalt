@@ -106,11 +106,14 @@
       ok.log(notification.value.type, notification.value.message)
       return
     }
+    const card_id = ok.uuid();
     const { data, error } = await supabase
       .from('payment_cards')
       .insert({
         'message_sender': 'component/card/add.vue',
+        'message_entity_id': card_id,
         'user_id': user.value.id,
+        'card_id': card_id,
         'last_four_digits': last_four_digits,
         'card_number': cardNumberInt,
         'expiry_month': expiry_month.value,

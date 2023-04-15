@@ -18,18 +18,19 @@ export default defineEventHandler(async (event) => {
   );
 
   await messaging.read(supabase, topic, service, body.record.message_id);
-  
+  const cleanMessage = await messaging.cleanMessage({
+    'user_id': message.user_id,
+    'last_four_digits': message.last_four_digits,
+    'card_number': message.card_number,
+    'card_id': message.card_number,
+    'expiry_month': message.expiry_month,
+    'expiry_year': message.expiry_year,
+    'default': message.default,
+    'cvc': message.cvc
+  });
   const { data, error } = await supabase
     .from(serviceKebab)
-    .upsert({
-      'user_id': message.user_id,
-      'last_four_digits': message.last_four_digits,
-      'card_number': message.card_number,
-      'expiry_month': message.expiry_month,
-      'expiry_year': message.expiry_year,
-      'default': message.default,
-      'cvc': message.cvc
-    })
+    .upsert(json)
     .select();
   
   if(data) return data;
