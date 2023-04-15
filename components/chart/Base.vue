@@ -11,7 +11,7 @@
         {{ hoveredValue }}
       </span>
       <span v-else>
-        {{labels[labels.length - props.days] }}
+        {{datas[datas.length - props.days] }}
       </span>
     </span>
     <div class="dates">
@@ -107,6 +107,15 @@ const chartOptions = {
       display: false,
     },
     tooltip: {
+      backgroundColor: '#000',
+      bodyFont:{
+        family: 'Kalt Body',
+      },
+      footerFont:{
+        family: 'Kalt Body',
+      },
+      displayColors:false,
+      cornerRadius:0,
       callbacks: {
         label: function(context) {
           let label = context.dataset.label || '';
@@ -120,8 +129,7 @@ const chartOptions = {
               }).format(context.parsed.y);
           }
           updateHoveredValue(label)
-          return
-          //return label;
+          return label;
         }
       }
     }
