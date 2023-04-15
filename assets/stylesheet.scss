@@ -70,7 +70,7 @@ select{
   box-sizing:border-box;
   background-color:transparent;
   height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
-  -webkit-appearance: none;
+  appearance: none;
 
 }
 select:focus{
