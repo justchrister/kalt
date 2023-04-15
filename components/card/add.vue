@@ -50,12 +50,51 @@
     const cardNumberInt = ok.toInt(card_number.value);
     loading.value = true;
 
+
+    if(!card_number.value){
+      notification.value={
+        type: 'error',
+        message: 'Card number is missing 😅'
+      }
+      ok.log(notification.value.type, notification.value.message)
+      return
+    }
+
+    if(!expiry_month.value){
+      notification.value={
+        type: 'error',
+        message: 'Expiry month is missing 😅'
+      }
+      ok.log(notification.value.type, notification.value.message)
+      return
+    }
+
+
+    if(!card_number.value){
+      notification.value={
+        type: 'error',
+        message: 'Expiry year is missing 😅'
+      }
+      ok.log(notification.value.type, notification.value.message)
+      return
+    }
+
+    if(!card_number.value){
+      notification.value={
+        type: 'error',
+        message: 'CVC is missing 😅 It can be found on the back of the card'
+      }
+      ok.log(notification.value.type, notification.value.message)
+      return
+    }
+
     if(16>cardNumberInt.toString().length){
       notification.value={
         type: 'error',
-        message: 'Payment card is too short'
+        message: 'Payment card number is too short'
       };
-      ok.log('error', 'card number is too short');
+      ok.log(notification.value.type, notification.value.message)
+      loading.value = false;
       return
     }
 
@@ -64,7 +103,7 @@
         type: 'error',
         message: 'Expiry month is set to '+expiry_month.value+' and it should be between 1 and 12 😅'
       }
-      ok.log('warn', 'Expiry month is set to ' + expiry_month.value + ' and it should be between 1 and 12 😅')
+      ok.log(notification.value.type, notification.value.message)
       return
     }
     const { data, error } = await supabase
@@ -78,10 +117,20 @@
         'expiry_year': expiry_year.value,
         'cvc': cvc.value,
         'default': true
-    })
-    if(error)ok.log('error', 'could not add card', error)
+      })
+    if(error){
+      ok.log('error', 'could not add card', error)
+      loading.value=false
+    } else {
+      loading.value=false
+      goBack()
+    }
   }
-
+  
+  const router = useRouter()
+  const goBack = () => {
+    router.go(-1)
+  }
   const checkBrand = (brand_id) => {
     if(brand_id){
       let first_digit = brand_id.toString().slice(0,  1);
@@ -106,7 +155,7 @@
   gap: 0px; 
   border:$border;
   padding:$clamp 
-    $clamp-2 ;
+          $clamp-2 ;
 }
 input{
   display:inline-block;
