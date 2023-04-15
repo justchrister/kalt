@@ -1,6 +1,8 @@
 {
+  "trailingSlash": false,
+  "installCommand": "npm install",
   "crons": [{
-    "path": "https://kalt.requestcatcher.com",
+    "path": "/api/chargeSubscriptions",
     "schedule": "* * * * *"
   }]
 }
