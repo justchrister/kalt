@@ -3,6 +3,6 @@
   "installCommand": "npm install",
   "crons": [{
     "path": "/api/chargeSubscriptions",
-    "schedule": "* * * * *"
+    "schedule": "20 04 * * *"
   }]
 }
