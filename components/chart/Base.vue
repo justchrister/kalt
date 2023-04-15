@@ -1,8 +1,10 @@
 <template>
-  <Line
-    :options="chartOptions"
-    :data="chartData"
-  />
+  <div class="chart-sizer">
+    <Line
+      :options="chartOptions"
+      :data="chartData"
+    />
+  </div>
 </template>
 <script lang="ts" setup>
 import {
@@ -16,6 +18,15 @@ import {
   Legend
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
+const props = defineProps({
+    days: {
+      type: Number,
+      required: true
+    }
+  })
+
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 
 ChartJS.register(
   CategoryScale,
@@ -26,16 +37,6 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-const props = defineProps({
-  data: {
-    type: Object,
-    required: true
-  },
-  currency: {
-    type: String,
-    required: true
-  }
-})
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: true,
@@ -48,9 +49,7 @@ const chartOptions = {
       radius: 2
     }
   },
-  animation: {
-    duration: 1
-  },
+  animation: { duration: 1 },
   interaction: {
     intersect: 0
   },
@@ -96,7 +95,7 @@ const chartOptions = {
                 'en-US', 
                 { 
                   style: 'currency', 
-                  currency: props.currency 
+                  currency: 'eur' 
               }).format(context.parsed.y);
           }
           return label;
@@ -105,10 +104,10 @@ const chartOptions = {
     }
   }
 }
-const labels = ref();
-const data = ref();
+const labels = ref([]);
+const data = ref([]);
 const chartData = computed(() => ({
-  labels: labels.value,
+  labels: labels.value.slice(-props.days),
   datasets: [
     {
       label: "",
@@ -116,23 +115,25 @@ const chartData = computed(() => ({
       pointBackgroundColor: '#202124',
       pointBorderWidth: 0,
       pointBorderColor: '#202124',
-      data: data.value
+      data: data.value.slice(-props.days)
     },
   ]
 }))
+const { data: rawData, error: rawDataError } = await supabase
+  .from('get_user_portfolio')
+  .select()
+  .eq('user_id', user.value.id)
 
-const updateChart = async (dataset) => {
-  let temp_labels = []
-  let temp_data = []
-  for (let i = 0; i < props.data.length; i++) {
-    temp_labels.push(props.data[i].date)
-    temp_data.push(props.data[i].converted_value)
-  }
-  labels.value= temp_labels
-  data.value= temp_data
+for (let i = 0; i < rawData.length; i++) {
+  labels.value.push(rawData[i].date)
+  data.value.push(rawData[i].value)
 }
-watch(() => props.data, () => 
-    updateChart(props.data)
-, { deep: true })
-
 </script>
+<style scoped lang="scss">
+
+  .chart-sizer{
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+</style>
