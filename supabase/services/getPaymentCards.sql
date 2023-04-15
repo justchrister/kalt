@@ -36,7 +36,7 @@ $$;
 CREATE OR REPLACE FUNCTION set_default_card()
 RETURNS TRIGGER AS $$
 BEGIN
-    IF NEW.is_default THEN
+    IF NEW."default" THEN
         UPDATE get_payment_cards
         SET "default" = false
         WHERE user_id = NEW.user_id AND card_id <> NEW.card_id;
