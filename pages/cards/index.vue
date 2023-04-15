@@ -44,12 +44,13 @@
   if(error) ok.log('error', 'could not get payment cards', error)
   
   const setDefault = async (id) => {
-    await resetDefaultCard();
-    const { error } = await supabase
-      .from('cards')
-      .update({ default: true })
-      .eq('card_id', id)
-      .select()
-//    refreshNuxtData()
+    const { data, error } = await supabase
+      .from('payment_cards')
+      .insert({
+        'message_sender': 'component/card/add.vue',
+        'user_id': user.value.id,
+        'card_id': id,
+        'default': true
+      })
   }
 </script>
