@@ -15,7 +15,7 @@
 </script>
 <style scoped lang="scss">
 .layout.focused .back-button{
-  padding: $big-clamp-half 0 0 $big-clamp-half;
+  padding: $clamp-2 0 0 $clamp-2;
   font-family: $sans-serif;
   font-size:$clamp-2;
   font-weight:300;
