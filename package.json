@@ -15,7 +15,6 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/supabase": "^0.3.5",
-    "@stripe/stripe-js": "^1.52.0",
     "autoprefixer": "^10.4.13",
     "chart.js": "^4.1.1",
     "maska": "^2.1.7",
