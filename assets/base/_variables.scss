@@ -8,58 +8,46 @@ $maxsitewidth: 720px;
 $unit-min: 8px;
 $unit: calc($sitewidth/55);
 $unit-max: calc($maxsitewidth/55);
-// Colors
+
 $light: #FCF9F2;
+
 $dark: #202124;
-$blue: #1E96FC;
-$yellow: #F7B538;
-$green: #0CF574;
-$red: #F4442E;
-$purple: #624CAB;
-$pink: #F991CC;
-// coding at night
-/*
-$red: #FF312E;
-$purple: #A833B9;
-$blue: #71A9F7;
-*/
-/*
-
-$light: #202124 ;
-$dark: #FCF9F2;
-
-*/
-// Color variations
 $dark-80: mix($dark, $light, 80%);
 $dark-60: mix($dark, $light, 60%);
 $dark-40: mix($dark, $light, 40%);
 $dark-20: mix($dark, $light, 20%);
 
+$blue: #1E96FC;
 $blue-80: mix($blue, $light, 80%);
 $blue-60: mix($blue, $light, 60%);
 $blue-40: mix($blue, $light, 40%);
 $blue-20: mix($blue, $light, 20%);
 
+$yellow: #F7B538;
 $yellow-80: mix($yellow, $light, 80%);
 $yellow-60: mix($yellow, $light, 60%);
 $yellow-40: mix($yellow, $light, 40%);
 $yellow-20: mix($yellow, $light, 20%);
 
+$green: #0CF574;
 $green-80: mix($green, $light, 80%);
 $green-60: mix($green, $light, 60%);
 $green-40: mix($green, $light, 40%);
 $green-20: mix($green, $light, 20%);
 
+$red: #F4442E;
 $red-80: mix($red, $light, 80%);
 $red-60: mix($red, $light, 60%);
 $red-40: mix($red, $light, 40%);
 $red-20: mix($red, $light, 20%);
 
+$purple: #624CAB;
 $purple-80: mix($purple, $light, 80%);
 $purple-60: mix($purple, $light, 60%);
 $purple-40: mix($purple, $light, 40%);
 $purple-20: mix($purple, $light, 20%);
 
+$pink: #F991CC;
 $pink-80: mix($pink, $light, 80%);
 $pink-60: mix($pink, $light, 60%);
 $pink-40: mix($pink, $light, 40%);
@@ -111,9 +99,3 @@ $clamp-9: clamp($unit-min*9 , $unit*9, $unit-max*9);
 $clamp-10: clamp($unit-min*10 , $unit*10, $unit-max*10);
 $clamp-15: clamp($unit-min*15 , $unit*15, $unit-max*15);
 $clamp-70: clamp($unit-min*70 , $unit*70, $unit-max*70);
-/* The following clamps are half of their counterpart.
-Example: $big-clamp-half is half of $big-clamp. */
-$big-clamp-half: $clamp-2; //FUCK! this is not good... need to move it to unit, min, max...
-$medium-clamp-half: $clamp;
-
-$medium-clamp-negative: clamp($unit-min - $unit-min*2, $unit - $unit*2, $unit-max - $unit-max*2);

@@ -73,7 +73,7 @@
     font-family: $serif;
     font-size: $big-clamp;
     line-height: 150%;
-    margin-bottom: $big-clamp-half;
+    margin-bottom: $clamp-2;
     font-display: optional;
     font-size: 150%;
     height:clamp($unit-min*8, $unit*8, $unit-max*8);
