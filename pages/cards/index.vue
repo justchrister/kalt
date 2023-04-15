@@ -2,13 +2,16 @@
   <main>
     <navbar-tabs />
     <block margin="half">
-      <div v-for="card of cards" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
-        <card :number="card.card_number" :default="card.default" />
+      <div v-for="card of data" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
+        <card :number="ok.toInt(card.card_number)" :default="card.default" />
       </div>
     </block>
     <block>
-      <p>Add a card: </p>
-      <card-add />
+      <nuxt-link to="cards/add">
+        <button>
+          add card
+        </button>
+      </nuxt-link>
     </block>
   </main>
 </template>
@@ -28,30 +31,18 @@ import { v4 as uuidv4 } from 'uuid';
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const new_card_id = ref(uuidv4())
 
-  const { data: cards } = await useLazyAsyncData('cards', async () => {
-    if(user.value){
-      const { data, error } = await supabase
-        .from('cards')
-        .select()
-        .eq('user_id', user.value.id)
-        .order('modified_at', { ascending: false })
-      return data
-    }
-  })
-  const expiry_date = ref('')
-  const expiry_month_test = ref(expiry_date.value.slice(0,2))
-
-  const resetDefaultCard = async () => {
-    const { data: defaultCard, error: remove } = await supabase
-      .from('cards')
-      .update({ default: false })
-      .eq('user_id', user.value.id)
-      // for each loop
+  const { data, error } = await supabase
+    .from('get_payment_cards')
+    .select()
+    .eq('user_id', user.value.id)
+  if(1>data.length) {
+    ok.log('warn', 'no cards found')
+    await navigateTo('cards/add')
   }
+  if(data) ok.log('success', 'got payment cards', data)
+  if(error) ok.log('error', 'could not get payment cards', error)
   
-  // push data to cards array
   const setDefault = async (id) => {
     await resetDefaultCard();
     const { error } = await supabase
@@ -59,6 +50,6 @@ import { v4 as uuidv4 } from 'uuid';
       .update({ default: true })
       .eq('card_id', id)
       .select()
-    refreshNuxtData()
+//    refreshNuxtData()
   }
 </script>
