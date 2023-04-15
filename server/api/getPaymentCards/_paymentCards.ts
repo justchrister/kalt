@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
   );
 
   await messaging.read(supabase, topic, service, body.record.message_id);
-  const cleanMessage = await messaging.cleanMessage({
+  const json = await messaging.cleanMessage({
     'user_id': message.user_id,
     'last_four_digits': message.last_four_digits,
     'card_number': message.card_number,
