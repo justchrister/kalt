@@ -1,9 +1,19 @@
 <template>
-  <div class="chart-sizer">
-    <Line
-      :options="chartOptions"
-      :data="chartData"
-    />
+  <div class="wrap">
+    <div class="chart-sizer">
+      <Line
+        :options="chartOptions"
+        :data="chartData"
+      />
+    </div>
+    <div class="dates">
+      <span>
+        {{ labels[labels.length - props.days] }}
+      </span>
+      <span class="right">
+        {{ labels[labels.length - 1]}}
+      </span>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -135,5 +145,18 @@ for (let i = 0; i < rawData.length; i++) {
     height: 100%;
     width: 100%;
     max-height: 100%;
+  }
+  .wrap{
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+  .dates{
+    font-size:80%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .right{
+    text-align:right;
   }
 </style>
