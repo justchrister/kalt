@@ -28,19 +28,24 @@
   }
   .notify{
     box-sizing: border-box;
-    background: rgba($blue, 0.2);
+    border:$border;
+    background: $blue;
+    border-color:$blue;
     width:$sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:$clamp-1-5 $clamp-2;
+    padding:$clamp $clamp-2;
   }
   #warn{
     background: $yellow-20;
+    border-color:$yellow;
   }
   #success{
     background:$green-20;
+    border-color:$green;
   }
   #error{
     background:$red-20;
+    border-color:$red;
   }
 </style>
