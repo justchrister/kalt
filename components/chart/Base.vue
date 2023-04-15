@@ -6,9 +6,20 @@
         :data="chartData"
       />
     </div>
+    <span class="value">
+      <span v-if="hoveredValue">
+        {{ hoveredValue }}
+      </span>
+      <span v-else>
+        €0
+      </span>
+    </span>
     <div class="dates">
-      <span>
-        {{ labels[labels.length - props.days] }}
+      <span v-if="labels[labels.length - props.days]">
+        {{labels[labels.length - props.days] }}
+      </span>
+      <span v-else>
+        {{ labels[0] }}
       </span>
       <span class="right">
         {{ labels[labels.length - 1]}}
@@ -59,7 +70,7 @@ const chartOptions = {
       radius: 2
     }
   },
-  animation: { duration: 1 },
+  animation: { duration: 1000 },
   interaction: {
     intersect: 0
   },
@@ -90,7 +101,7 @@ const chartOptions = {
       }
     }
   },
-  tension: 0.1,
+  tension: 0,
   plugins: {
     legend: {
       display: false,
@@ -108,6 +119,7 @@ const chartOptions = {
                   currency: 'eur' 
               }).format(context.parsed.y);
           }
+          updateHoveredValue(label)
           return label;
         }
       }
@@ -115,7 +127,7 @@ const chartOptions = {
   }
 }
 const labels = ref([]);
-const data = ref([]);
+const datas = ref([]);
 const chartData = computed(() => ({
   labels: labels.value.slice(-props.days),
   datasets: [
@@ -125,25 +137,28 @@ const chartData = computed(() => ({
       pointBackgroundColor: '#202124',
       pointBorderWidth: 0,
       pointBorderColor: '#202124',
-      data: data.value.slice(-props.days)
+      data: datas.value.slice(-props.days)
     },
   ]
 }))
-const { data: rawData, error: rawDataError } = await supabase
+const { data, error } = await supabase
   .from('get_user_portfolio')
   .select()
   .eq('user_id', user.value.id)
 
-for (let i = 0; i < rawData.length; i++) {
-  labels.value.push(rawData[i].date)
-  data.value.push(rawData[i].value)
+for (let i = 0; i < data.length; i++) {
+  labels.value.push(data[i].date)
+  datas.value.push(data[i].value)
+}
+const hoveredValue = ref('');
+const updateHoveredValue = async (x) => {
+  hoveredValue.value = x;
 }
 </script>
 <style scoped lang="scss">
 
   .chart-sizer{
     height: 100%;
-    width: 100%;
     max-height: 100%;
   }
   .wrap{
