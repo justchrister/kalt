@@ -84,7 +84,6 @@
           type: 'error',
           message: error.message
         }
-
       }
     }
     if(data){
