@@ -65,7 +65,6 @@
   });
   const signIn = async () => {
     loading.value = true
-    console.log('lol')
     const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
@@ -89,7 +88,7 @@
       }
     }
     if(data){
-      ok.log('success', 'user signed in ' + email.value);
+      ok.log('success', 'signed in ' + email.value);
     }
   }
   watchEffect(async () => {
