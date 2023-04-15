@@ -12,9 +12,7 @@ CREATE TABLE get_payment_cards (
   PRIMARY KEY (user_id, card_id)
 );
 
-
 ALTER TABLE get_payment_cards ENABLE ROW LEVEL SECURITY;
-
 
 DO $$
 BEGIN
@@ -32,3 +30,21 @@ BEGIN
   END IF;
 END
 $$;
+
+CREATE OR REPLACE FUNCTION set_default_card()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.default THEN
+        UPDATE get_payment_cards
+        SET "default" = false
+        WHERE user_id = NEW.user_id;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_default_card_trigger
+BEFORE INSERT OR UPDATE OF "default" ON get_payment_cards
+FOR EACH ROW
+EXECUTE FUNCTION set_default_card();
