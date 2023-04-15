@@ -25,8 +25,8 @@
           />
         </div>
         <div class="input-wrap">
-          <button @click="signIn()">
-            sign in
+          <button>
+            sign in <loading-icon v-if="loading" />
           </button>
         </div>
       </form>
@@ -37,6 +37,7 @@
         <nuxt-link to="/auth/password">forgot password</nuxt-link>
       </link-group>
     </block>
+    <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
   </main>
 </template>
 
@@ -51,22 +52,56 @@
       content: 'Make money, make a difference.'
     }]
   })
-
+  const loading = ref(false)
   const user = useSupabaseUser()
+  const supabase = useSupabaseClient()
   const client = useSupabaseAuthClient()
 
   const email = ref('')
   const password = ref('')
-
+  const notification = ref({
+    type: null, 
+    message: null
+  });
   const signIn = async () => {
+    loading.value = true
+    console.log('lol')
     const {data, error} = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     })
+    if(error) {
+      loading.value = false
+      ok.log('error', 'could not sign in '+email.value+': ', error);
+
+      if(password.value.length<8){
+        ok.log('error', 'password too short');
+        notification.value={
+          type: 'error',
+          message: 'Password too short'
+        }
+      } else{
+        notification.value={
+          type: 'error',
+          message: error.message
+        }
+
+      }
+    }
+    if(data){
+      ok.log('success', 'user signed in ' + email.value);
+    }
   }
   watchEffect(async () => {
     if (user.value) {
+      const { data, error } = await supabase
+        .from('user_signed_in')
+        .insert({
+          'message_sender': 'pages/auth/index.vue',
+          user_id: user.value.id
+        })
       await navigateTo("/portfolio");
+      loading.value = false
     }
   })
 </script>
