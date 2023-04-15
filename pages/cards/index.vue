@@ -16,7 +16,6 @@
   </main>
 </template>
 <script setup lang="ts">
-import { v4 as uuidv4 } from 'uuid';
   definePageMeta({
     pagename: 'Cards',
     middleware: 'auth'
@@ -36,6 +35,7 @@ import { v4 as uuidv4 } from 'uuid';
     .from('get_payment_cards')
     .select()
     .eq('user_id', user.value.id)
+    
   if(1>data.length) {
     ok.log('warn', 'no cards found')
     await navigateTo('cards/add')
