@@ -64,6 +64,7 @@
 <style scoped lang="scss">
 
 .filters{
+  margin-top:$clamp-5;
   height:$clamp-4;
   overflow-x:scroll;
   overflow-y:hidden;
