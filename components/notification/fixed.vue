@@ -18,13 +18,16 @@
   })
 </script>
 <style scoped lang="scss">
-.wrap{
-  position:fixed;
-  width:100vw;
-  bottom:$clamp-2;
+  .wrap{
+    position:fixed;
+    width:100vw;
+    bottom:$clamp-2;
     z-index:2;
-}
+    left: 0;
+    right: 0;
+  }
   .notify{
+    box-sizing: border-box;
     background: rgba($blue, 0.2);
     width:$sitewidth;
     max-width: $maxsitewidth; 
