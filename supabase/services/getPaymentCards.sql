@@ -8,6 +8,7 @@ CREATE TABLE get_payment_cards (
   card_status         text,
   "default"           boolean,
   card_number         CHAR(16),
+  cvc                 CHAR(3),
   PRIMARY KEY (user_id, card_id)
 );
 
