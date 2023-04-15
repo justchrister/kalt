@@ -2,7 +2,6 @@
   <main>
     <navbar-breadcrumbs parent="cards"/>
     <block>
-      <label>add card:</label>
       <card-add/>
     </block>
   </main>
