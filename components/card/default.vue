@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link to="/cards" v-if="data">
+    <nuxt-link to="/cards" v-if="data.card_number">
       <card :number="data.card_number" :default="data.default" />
     </nuxt-link>
     <span v-else>
