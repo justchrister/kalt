@@ -11,7 +11,7 @@
         {{ hoveredValue }}
       </span>
       <span v-else>
-        €0
+        {{labels[labels.length - props.days] }}
       </span>
     </span>
     <div class="dates">
@@ -110,7 +110,7 @@ const chartOptions = {
       callbacks: {
         label: function(context) {
           let label = context.dataset.label || '';
-          if (label) label += ': ';
+          //if (label) label += ': ';
           if (context.parsed.y !== null) {
               label += new Intl.NumberFormat(
                 'en-US', 
@@ -120,7 +120,8 @@ const chartOptions = {
               }).format(context.parsed.y);
           }
           updateHoveredValue(label)
-          return label;
+          return
+          //return label;
         }
       }
     }
