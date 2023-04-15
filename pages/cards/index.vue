@@ -13,6 +13,7 @@
   </main>
 </template>
 <script setup lang="ts">
+import { v4 as uuidv4 } from 'uuid';
   definePageMeta({
     pagename: 'Cards',
     middleware: 'auth'
@@ -27,16 +28,17 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  import { v4 as uuidv4 } from 'uuid';
   const new_card_id = ref(uuidv4())
 
   const { data: cards } = await useLazyAsyncData('cards', async () => {
-    const { data, error } = await supabase
-      .from('cards')
-      .select()
-      .eq('user_id', user.value.id)
-      .order('modified_at', { ascending: false })
-    return data
+    if(user.value){
+      const { data, error } = await supabase
+        .from('cards')
+        .select()
+        .eq('user_id', user.value.id)
+        .order('modified_at', { ascending: false })
+      return data
+    }
   })
   const expiry_date = ref('')
   const expiry_month_test = ref(expiry_date.value.slice(0,2))
