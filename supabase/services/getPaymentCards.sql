@@ -12,7 +12,9 @@ CREATE TABLE get_payment_cards (
   PRIMARY KEY (user_id, card_id)
 );
 
+
 ALTER TABLE get_payment_cards ENABLE ROW LEVEL SECURITY;
+
 
 DO $$
 BEGIN
@@ -34,10 +36,10 @@ $$;
 CREATE OR REPLACE FUNCTION set_default_card()
 RETURNS TRIGGER AS $$
 BEGIN
-    IF NEW.default THEN
+    IF NEW.is_default THEN
         UPDATE get_payment_cards
         SET "default" = false
-        WHERE user_id = NEW.user_id;
+        WHERE user_id = NEW.user_id AND card_id <> NEW.card_id;
     END IF;
 
     RETURN NEW;
