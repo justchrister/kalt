@@ -27,6 +27,8 @@
 .intro{
   padding:clamp($unit-min*7, $unit*7, $unit-max*7) 0;
   margin-bottom:clamp($unit-min*5, $unit*5, $unit-max*5);
+  border-bottom:$border;
+
   background:$dark-20;
   h1{
     margin:0;
