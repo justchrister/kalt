@@ -3,14 +3,11 @@
   <main>
     <block>
       <h3>Let's invest!  <omoji emoji="☀️" /></h3>
-      <input-amount-invest :uuid="uuid"/>
-      <br/>
-      <label>Choose card to charge: </label>
-      <nuxt-link to="/profile/cards">
+      <form @submit.prevent="completeTransaction">
+        <input-amount-invest :uuid="uuid"/>
         <default-card />
-      </nuxt-link>
-      <br/>
-      <button @click="completeTransaction"> buy </button>
+        <button @click="completeTransaction"> buy </button>
+      </form>
     </block>
   </main>
 </template>
