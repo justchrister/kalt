@@ -4,5 +4,31 @@
 		"prefix": ["/supabase update"],
 		"body": "const { data, error } = await supabase\n\t.from('$1')\n\t.update({\n\t\t$2: $0,\n\t})\n\t.select()",
 		"description": "a snippet to scaffold a supabase update",
+	},
+	"supabase upsert": {
+		"prefix": ["/supabase upsert"],
+		"body": "const { data, error } = await supabase\n\t.from('$1')\n\t.upsert({\n\t\t$2: $0,\n\t})\n\t.select()",
+		"description": "a snippet to scaffold a supabase upsert",
+	},
+	"supabase insert": {
+		"prefix": ["/supabase insert"],
+		"body": "const { data, error } = await supabase\n\t.from('$1')\n\t.insert({\n\t\t$2: $0,\n\t})\n\t.select()",
+		"description": "a snippet to scaffold a supabase insert",
+	},
+	"supabase select": {
+		"prefix": ["/supabase select"],
+		"body": "const { data, error } = await supabase\n\t.from('$1')\n\t.select()",
+		"description": "a snippet to scaffold a supabase select",
+	},
+	"supabase client": {
+		"prefix": ["/supabase client"],
+		"body": "const supabase = useSupabaseClient()",
+		"description": "a snippet to scaffold a supabase client",
+	},
+	"supabase user": {
+		"prefix": ["/supabase user"],
+		"body": "const user = useSupabaseUser()const user = useSupabaseUser()",
+		"description": "a snippet to scaffold a supabase user",
 	}
 }
+
