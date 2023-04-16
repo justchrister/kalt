@@ -49,6 +49,7 @@
 <style scoped lang="scss">
 .cta{
   text-align: center;
+  margin:$clamp 0;
 }
 .button-group{
   display:grid;
