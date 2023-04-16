@@ -15,6 +15,14 @@ export const ok = {
   toPercent(int){
     return int*100 + '%'
   },
+  formatIBAN(iban) {
+    const formattedIBAN = iban.match(/.{1,4}/g).join(' ');
+    return formattedIBAN;
+  },
+  formatBankCode(bic) {
+    const formattedBIC = bic.replace(/(.{4})(.{3})(.*)/, '$1 $2 $3');
+    return formattedBIC;
+  },
   formatCurrency(amount, currency) {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -42,8 +50,15 @@ export const ok = {
         text += input;
       }
     });
-
-    console.log(label + text)
+    if (type==='success') {
+      console.log(label + text)
+    } else if (type==='warn') {
+      console.warn(label + text)
+    } else if (type==='error') {
+      console.error(label + text)
+    } else {
+      console.log(label + text)
+    }
 
     return
   },
