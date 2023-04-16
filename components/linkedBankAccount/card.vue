@@ -24,19 +24,19 @@
       IBAN
     </div>
     <div class="right">
-      LT83 7044 0600 0338 1770
+      {{ok.formatIBAN(linkedBankAccount.iban)}}
     </div>
     <div>
       Bank code (BIC/SWIFT)
     </div>
     <div class="right">
-      CBVILT2XXXX
+      {{ok.formatBankCode(linkedBankAccount.bank_code)}}
     </div>
     <div>
       Reference text
     </div>
     <div class="right">
-      Manual transfer (default)
+      {{linkedBankAccount.reference}}
     </div>
   </div>
 </template>
@@ -44,6 +44,23 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
 
+  const getLinkedBankAccount = async () => {
+    const { data, error } = await supabase
+      .from('get_linked_bank_accounts')
+      .select()
+      .eq('user_id', user.value.id)
+      .limit(1)
+      .single()
+    if(data) {
+      ok.log('success', 'got linked bank account', data)
+      return data
+    }
+    if(error) {
+      ok.log('', 'no linked bank account', error)
+      return false
+    }
+  }
+  const linkedBankAccount = await getLinkedBankAccount()
 </script>
 <style scoped lang="scss">
   .card{
