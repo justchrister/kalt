@@ -19,5 +19,6 @@ export default defineEventHandler( async (event) => {
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(cleanedMessage)
-
+    .select()
+  return { data, error }
 });
