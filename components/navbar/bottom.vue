@@ -2,31 +2,37 @@
   <footer>
     <block margin="half">
       <div class="section">
-        <h4>Account</h4>
+        <p>Account</p>
         <ul>
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/profile" > Profile </nuxt-link>
-          <nuxt-link to="/notifications" > Notifications </nuxt-link>
-          <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
           <nuxt-link to="/accounts" > Accounts </nuxt-link>
-          <nuxt-link to="/cards" > Cards </nuxt-link>
+          <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
           <nuxt-link to="/subscription" > Subscription </nuxt-link>
-          <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link>
-          <nuxt-link to="/auth" > Sign in </nuxt-link>
-          <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
+        </ul>
+      </div>
+    </block>
+    <block margin="half">
+      <div class="section">
+        <p>Content</p>
+        <ul>
+          <nuxt-link to="/about" > About us </nuxt-link>
+          <nuxt-link to="/about/values" > Our values </nuxt-link>
+          <nuxt-link to="/about/whitepaper" > Whitepaper </nuxt-link>
+          <nuxt-link to="/jobs" > Jobs </nuxt-link>
+          <nuxt-link to="/questions" > Q&A </nuxt-link>
+          <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
+          <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
         </ul>
       </div>
     </block>
     <block margin="none">
       <div class="section">
-        <h4>Content:</h4>
+        <p>Auth</p>
         <ul>
-          <nuxt-link to="/about" > About us </nuxt-link>
-          <nuxt-link to="/about/values" > Our values </nuxt-link>
-          <nuxt-link to="/about/whitepaper" > Whitepaper </nuxt-link>
-          <nuxt-link to="/questions" > Q&A </nuxt-link>
-          <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
-          <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
+          <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link><span></span><span></span>
+          <nuxt-link to="/auth" > Sign in </nuxt-link><span></span><span></span>
+          <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
         </ul>
       </div>
     </block>
@@ -46,7 +52,7 @@
     grid-template-columns: 1fr 5fr; 
     gap: 2% 0px;
   }
-  h4{
+  p{
     margin-top:0;
     color:$light;
   }

@@ -13,13 +13,8 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/notifications" >
-              Notifications
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/cards" >
-              Cards
+          <nuxt-link to="/accounts" >
+              Accounts
           </nuxt-link>
         </li>
         <li>
