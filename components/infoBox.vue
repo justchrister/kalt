@@ -35,4 +35,8 @@ const props = defineProps({
     border:$border-width solid $yellow;
     background:$yellow-20;
 }
+.infobox#success{
+    border:$border-width solid $green;
+    background:$green-20;
+}
 </style>
