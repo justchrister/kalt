@@ -9,14 +9,14 @@ CREATE TABLE account_transactions (
     message_sender        text                      NOT NULL,
 --- 
     user_id               uuid                      NOT NULL,
-    amount                numeric                   NOT NULL,
-    currency              CHAR(3)                   NOT NULL  DEFAULT 'EUR'                      REFERENCES currencies(iso),
-    transaction_type      transaction_types         NOT NULL  DEFAULT 'deposit',
-    transaction_sub_type  transaction_sub_types     NOT NULL  DEFAULT 'card',
-    transaction_status    transaction_statuses      NOT NULL  DEFAULT 'incomplete',
+    amount                numeric,
+    currency              CHAR(3)                                                                REFERENCES currencies(iso),
+    transaction_type      transaction_types,
+    transaction_sub_type  transaction_sub_types,
+    transaction_status    transaction_statuses      NOT NULL,
     auto_invest           DECIMAL(5, 4) 
                           CHECK (auto_invest >= 0 
-                          AND auto_invest <= 1)     NOT NULL DEFAULT 1
+                          AND auto_invest <= 1)     NOT NULL
 );
 
 --- add row level security
@@ -34,3 +34,21 @@ is 'when the message was generated, usually set in the application. It can be cr
 
 comment on column user_details.message_sender 
 is 'where the message originates, usually set in the application.';
+
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = 'account_transactions'
+      AND policyname = 'SELF — Insert'
+  ) THEN
+    CREATE POLICY "SELF — Insert" ON public.account_transactions
+      AS PERMISSIVE FOR INSERT
+      TO authenticated
+      WITH CHECK (auth.uid() = user_id);
+  END IF;
+END
+$$;
