@@ -29,13 +29,6 @@ p{
   line-height: 135%;
 }
 
-button.square{
-  border-radius:$border-radius;
-  &:hover{
-    background:white;
-  }
-}
-
 
 
 // things i dont know where to put yet..
@@ -65,7 +58,6 @@ select{
           clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
           clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   border: $border;
-  border-radius: $border-radius;
   @include font-body;
   box-sizing:border-box;
   background-color:transparent;
@@ -88,7 +80,6 @@ input{
   padding:clamp($unit-min/2, $unit/2, $unit-max/2) 
           clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   border: $border;
-  border-radius: $border-radius;
   height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
   @include font-body;
   box-sizing:border-box;
@@ -174,7 +165,6 @@ button {
   &:hover {
     border-radius:100%;
     cursor: pointer;
-    border-radius: 0px;
   }
 }
 label{
