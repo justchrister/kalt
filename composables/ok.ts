@@ -12,6 +12,16 @@ export const ok = {
   invertInt(number) {
     return -number;
   },
+  toPercent(int){
+    return int*100 + '%'
+  },
+  formatCurrency(amount, currency) {
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+    });
+    return formatter.format(amount);
+  },
   log(type, ...inputs){
     // https://talyian.github.io/ansicolors/
     
