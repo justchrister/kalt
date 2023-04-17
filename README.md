@@ -8,8 +8,23 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
 
 ## Back-end
 <img src="https://ka.lt/media/architecture.svg" alt="" width="100%" height="auto">
-### Architecture
 
+The back-end leverages Supabase message queue to enable seamless communication between various services. This message queue system implements a publish-subscribe pattern where any service can publish messages to specific topics, and other services can subscribe to these topics to consume the messages.
+
+Benefits of using Supabase message queue in this architecture include:
+
+- Decoupling of services, allowing for independent scaling and easy maintenance.
+- Improved fault tolerance, as services can continue to function even if some other services fail.
+- Enhanced extensibility, as new services can be easily added to the system without affecting existing services.
+
+Nuxt Microservices (APIs)
+The project consists of multiple Nuxt.js microservices, each responsible for a specific functionality. These microservices expose APIs to interact with the front-end and other services. The microservices have their own state databases, which are hosted on Supabase.
+
+Advantages of using Nuxt.js microservices in this architecture are:
+
+Modular design, making it easy to understand, develop, and maintain individual services.
+Flexibility to develop and deploy each service independently, reducing the risk of introducing bugs or causing downtime.
+Better resource utilization, as each service can be scaled independently based on its own requirements.
 
 ## Design
 *remove everything but the most crucial features*
