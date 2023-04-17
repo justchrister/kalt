@@ -11,15 +11,19 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
 
 
 ## Design
+*remove everything but the most crucial features*
+<img src="https://ka.lt/media/grids.svg" alt="" width="100%" height="auto">
 
-<img src="https://ka.lt/media/grid.svg" alt="" width="100%" height="auto">
+
 
 The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where you create one design to fit every single screen. While this has its limitations, the limitations have an advantage: Good design, all the time. It requires some abstract thinking around the design, however, with the proper testing, you can achieve a beatiful design that works on all surfaces, for all users.
 
 
 
 ### Framework
-
+Components
+- Data only flows down
+- 
 
 ## Coding principles
 - 100ms rule; Everything you do has to be completed in 100ms
