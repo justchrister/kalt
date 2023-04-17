@@ -1,6 +1,6 @@
 <img src="https://ka.lt/media/intro.svg" alt="" width="100%" height="auto">
 
-<img alt="Mozilla HTTP Observatory Grade" src="https://img.shields.io/github/license/okchrister/kalt?style=flat-square"> <img alt="Mozilla HTTP Observatory Grade" src="https://img.shields.io/mozilla-observatory/grade-score/ka.lt?publish&style=flat-square"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/okchrister/kalt?style=flat-square"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/okchrister/kalt?style=flat-square">
+<img alt="Mozilla HTTP Observatory Grade" src="https://img.shields.io/github/license/justchrister/kalt?style=flat-square"> <img alt="Mozilla HTTP Observatory Grade" src="https://img.shields.io/mozilla-observatory/grade-score/ka.lt?publish&style=flat-square"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/justchrister/kalt?style=flat-square"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/justchrister/kalt?style=flat-square">
 
 <h1>Kalt — Make money, make a difference</h1>
 
