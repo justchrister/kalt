@@ -5,7 +5,7 @@
     <frame-wrap>
       <chart-base :days="days"/>
     </frame-wrap>
-    <block margin="half">
+    <block margin="none">
       <nav class="filters">
         <div class="overflow-wrap">
           <ul><!--
@@ -43,7 +43,7 @@
     </block>
   </main>
 </template>
-<script setup lang="ts">
+<script setup>
   const pagename = 'Portfolio'
   definePageMeta({
     pagename: 'Portfolio',
