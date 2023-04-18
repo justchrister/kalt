@@ -25,3 +25,6 @@ To report a security vulnerability, please email us at sec@ka.lt with the follow
 We offer financial rewards for qualifying vulnerability reports. The reward amount depends on the severity of the issue and the quality of the report. Our security team will evaluate each submission and determine the reward based on factors such as impact, exploitability, and report clarity.
 
 Please note that we reserve the right to decide whether a vulnerability qualifies for a reward and to modify the Bug Bounty Program at any time.
+
+## Thank You
+We appreciate your efforts in helping us maintain the security of our software and protecting our users. Your responsible disclosure and participation in our Bug Bounty Program make a significant difference in ensuring the safety of our community.
