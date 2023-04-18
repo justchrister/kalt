@@ -7,11 +7,12 @@ As an Artificial Intelligence (AI) professional, you are passionate about develo
 Key qualifications:
 - Bachelor's or higher degree in Computer Science, Engineering, Mathematics, or a related field, is cool but not required.
 - Strong understanding of machine learning, deep learning, and AI algorithms.
-- Proficiency in programming languages, such as Python, Java, or C++.
+- Proficiency in programming languages, such as Python.
 - Knowledge of data structures, algorithms, and software design principles.
 - Familiarity with AI frameworks and libraries, such as TensorFlow, PyTorch, or scikit-learn.
 - Excellent problem-solving and analytical skills.
 - Ability to work collaboratively in a team environment and communicate effectively with both technical and non-technical stakeholders.
+- Ability to work focused and deliver rapidly. 
 
 ## Us
 We are a forward-thinking organization that values innovation, creativity, and collaboration. Our team is committed to leveraging AI to drive positive change in various industries. We offer a supportive and inclusive work environment where you can grow professionally, contribute meaningfully, and make a significant impact.
