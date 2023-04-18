@@ -1,3 +1,5 @@
+<img src="https://ka.lt/media/intro-licence.svg" alt="" width="100%" height="auto">
+
 MIT License
 
 Copyright (c) 2023 Kalt LLC
