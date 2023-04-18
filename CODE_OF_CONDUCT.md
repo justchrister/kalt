@@ -31,5 +31,5 @@ Report instances of unacceptable behavior to christer@ka.lt. Reports will be rev
 * **Temporary Ban:** Severe or persistent violations; temporary ban from community interaction.
 * **Permanent Ban:** Pattern of violations, harassment, or aggression; permanent ban from community interaction.
 
-##Credits
+## Credits
 Adapted from the Contributor Covenant and inspired by Mozilla's code of conduct enforcement ladder.
