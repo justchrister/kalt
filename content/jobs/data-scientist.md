@@ -38,6 +38,6 @@ What we offer:
 ## Salary & Benefits
 We offer competitive salaries, commensurate with your experience and expertise. Our benefits package includes:
 
-All employees receive a minimum salary of 65k EUR, the same as the CEO.
-Starting salary for Data Scientists: 85k EUR
-Performance-based bonuses, awarded subjectively to avoid reliance on flawed performance indicators. You can choose whether to receive your bonus in stock or cash.
+- All employees receive a minimum salary of 65k EUR, the same as the CEO.
+- Starting salary for Data Scientists: 85k EUR
+- Performance-based bonuses, awarded subjectively to avoid reliance on flawed performance indicators. You can choose whether to receive your bonus in stock or cash.
