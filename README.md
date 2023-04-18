@@ -9,9 +9,7 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
 ## Back-end
 <img src="https://ka.lt/media/architecture.svg" alt="" width="100%" height="auto">
 
-The back-end leverages Supabase message queue to enable seamless communication between various services. This message queue system implements a publish-subscribe pattern where any service can publish messages to specific topics, and other services can subscribe to these topics to consume the messages.
-
-Benefits of using Supabase message queue in this architecture include:
+The back-end leverages Supabase (postgres) as a message queue to enable seamless communication between the micro-services. This message queue system implements a publish-subscribe pattern where any service can publish messages to specific topics, and other services can subscribe to these topics to consume the messages. The quality of the message contents are ensured through interfaces and types, that are implemented in Supabase Postgres and the Nuxt Typescript
 
 - Decoupling of services, allowing for independent scaling and easy maintenance.
 - Improved fault tolerance, as services can continue to function even if some other services fail.
