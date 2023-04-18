@@ -15,7 +15,7 @@ To participate in our Bug Bounty Program, please follow these guidelines:
 - **No Disruption:** Do not use the vulnerability to disrupt, degrade, or damage our services, systems, or networks.
 
 ### Reporting
-To report a security vulnerability, please email us at [security@example.com] with the following information:
+To report a security vulnerability, please email us at sec@ka.lt with the following information:
 
 - A clear and concise description of the vulnerability
 - Steps to reproduce the issue, including any relevant tools, scripts, or code
