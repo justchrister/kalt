@@ -22,23 +22,14 @@ The project consists of multiple Nuxt microservices hosted on Vercel, each respo
 - Flexibility to develop and deploy each service independently, reducing the risk of introducing bugs or causing downtime.
 - Better resource utilization, as each service can be scaled independently based on its own requirements.
 
-## Design
-*remove everything but the most crucial features*
+## Front-end
 <img src="https://ka.lt/media/grids.svg" alt="" width="100%" height="auto">
 
-
+Using the Nuxt framework lets us get the best of both reactive web applications and server-side rendered ones, the navigation is blazing fast, will still having reactive elements. 
 
 The site leverages clamp(MIN, VAL, MAX) in order to be auto-responsive, where you create one design to fit every single screen. While this has its limitations, the limitations have an advantage: Good design, all the time. It requires some abstract thinking around the design, however, with the proper testing, you can achieve a beatiful design that works on all surfaces, for all users.
 
-
-
-### Framework
-Components
+### Design system
 - Data only flows down
-- 
-
-## Coding principles
-- 100ms rule; Everything you do has to be completed in 100ms
 - 150px rule; the website should scale perfectly from 150px to 150 000px. 
-- Do more, do better
-- <a href="https://www.youtube.com/watch?v=Bf7vDBBOBUA">Don't Write Comments</a>
+- 100ms rule; Everything you do has to be completed in 100ms
