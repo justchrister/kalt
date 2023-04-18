@@ -1,4 +1,6 @@
-# Community Guidelines
+<img src="https://ka.lt/media/intro-code-of-conduct.svg" alt="" width="100%" height="auto">
+
+
 ## Commitment
 We commit to fostering a respectful, inclusive, and engaging environment for all community members, regardless of personal characteristics or background.
 
