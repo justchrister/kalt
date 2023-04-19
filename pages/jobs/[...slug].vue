@@ -33,5 +33,16 @@ main.candidate h1{
   line-height: $clamp-15;
   text-align: center;
   width: 100%;
+  margin-bottom: $clamp-10;
+}
+h2{
+  margin: $clamp-3 0 $clamp-1 0;
+}
+ul{
+  list-style: decimal-leading-zero;
+}
+li{
+  magin-left:$clamp-9;
+  padding-left:$clamp-2;
 }
 </style>
