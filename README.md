@@ -1,6 +1,6 @@
 <img src="https://ka.lt/media/intro.svg" alt="" width="100%" height="auto">
 
-<img alt="Mozilla HTTP Observatory Grade" src="https://img.shields.io/github/license/justchrister/kalt?style=flat-square"> <img alt="Website" src="https://img.shields.io/website?style=flat-square&down_message=offline&up_message=online&url=https%3A%2F%2Fka.lt"> <img alt="Uptime Robot ratio (30 days)" src="https://img.shields.io/uptimerobot/ratio/m794185416-8ffeb1920e5dc9f7c754d4d3?style=flat-square"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/justchrister/kalt?style=flat-square"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/justchrister/kalt?style=flat-square">
+<img alt="Mozilla HTTP Observatory Grade" src="https://ka.lt/media/shield-licence.svg"> <img alt="Website" src="https://img.shields.io/website?style=flat-square&down_message=offline&up_message=online&url=https%3A%2F%2Fka.lt"> <img alt="Uptime Robot ratio (30 days)" src="https://img.shields.io/uptimerobot/ratio/m794185416-8ffeb1920e5dc9f7c754d4d3?style=flat-square"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/justchrister/kalt?style=flat-square"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/justchrister/kalt?style=flat-square">
 
 <h1>Kalt — Make money, make a difference</h1>
 
