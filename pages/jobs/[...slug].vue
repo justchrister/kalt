@@ -35,14 +35,24 @@ main.candidate h1{
   width: 100%;
   margin-bottom: $clamp-10;
 }
-h2{
+main.candidate h2{
+  font-size: $clamp-3;
   margin: $clamp-3 0 $clamp-1 0;
 }
-ul{
+main.candidate ol,
+main.candidate ul{
   list-style: decimal-leading-zero;
 }
-li{
-  magin-left:$clamp-9;
-  padding-left:$clamp-2;
+main.candidate li{
+  margin-left:$clamp-4;
+  padding-left:$clamp-1;
 }
+main.candidate h3{
+  margin: $clamp-3 0 $clamp-1 0;
+}
+main.candidate h3 a{
+  text-decoration:none;
+  font-size: $clamp-2-5;
+}
+
 </style>
