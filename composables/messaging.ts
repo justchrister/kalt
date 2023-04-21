@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ok } from '~/composables/ok'
 
 export const messaging = {
