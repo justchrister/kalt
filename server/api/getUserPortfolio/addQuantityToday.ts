@@ -3,10 +3,6 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const query = getQuery(event)
-  const service = 'getUserPortfolio';
-  const topic = 'userPreferences';
-  const ticker = 'gi.ddf';
   const body = await readBody(event)
 
   const getDays = async (user) => {
