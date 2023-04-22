@@ -11,7 +11,13 @@
         {{ hoveredValue }}
       </span>
       <span v-else>
-        {{datas[datas.length - props.days] }}
+        {{ new Intl.NumberFormat(
+                'en-US', 
+                { 
+                  style: 'currency', 
+                  currency: userData.currency
+              }).format(datas[datas.length - props.days])
+        }}
       </span>
     </span>
     <div class="dates">
@@ -27,7 +33,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup>
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -125,7 +131,7 @@ const chartOptions = {
                 'en-US', 
                 { 
                   style: 'currency', 
-                  currency: 'eur' 
+                  currency: userData.currency
               }).format(context.parsed.y);
           }
           updateHoveredValue(label)
@@ -154,6 +160,12 @@ const { data, error } = await supabase
   .from('get_user_portfolio')
   .select()
   .eq('user_id', user.value.id)
+const { data:userData, error:userError } = await supabase
+  .from('get_user')
+  .select()
+  .eq('user_id', user.value.id)
+  .limit(1)
+  .single()
 
 for (let i = 0; i < data.length; i++) {
   labels.value.push(data[i].date)
