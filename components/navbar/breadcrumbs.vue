@@ -1,6 +1,8 @@
 <template>
   <block margin="none">
+    <span>
     <nuxt-link :to="parentUrl"> {{parent}}</nuxt-link> / {{route.meta.pagename}}
+  </span>
   </block>
 </template>
 <script setup lang="ts">
@@ -15,6 +17,13 @@
 </script>
 
 <style scoped lang="scss">
+span,
+span a{
+  text-transform: lowercase;
+  text-transform: uppercase;
+  font-family: 'Kalt Monospace', monospace;
+  font-size:$clamp;
+}
   a{
     text-decoration:none;
     &:hover{
