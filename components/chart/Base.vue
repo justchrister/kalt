@@ -7,25 +7,14 @@
       />
     </div>
     <span class="value">
-      <span v-if="hoveredValue">
         {{ hoveredValue }}
-      </span>
-      <span v-else>
-        {{ new Intl.NumberFormat(
-                'en-US', 
-                { 
-                  style: 'currency', 
-                  currency: userData.currency
-              }).format(datas[datas.length - props.days])
-        }}
+      <span class="percentage">
+        ({{ percentageChange }} %)
       </span>
     </span>
     <div class="dates">
-      <span v-if="labels[labels.length - props.days]">
-        {{labels[labels.length - props.days] }}
-      </span>
-      <span v-else>
-        {{ labels[0] }}
+      <span>
+        {{ labels[labels.length - props.days] || labels[0] }}
       </span>
       <span class="right">
         {{ labels[labels.length - 1]}}
@@ -67,7 +56,7 @@ ChartJS.register(
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: true,
-  aspectRatio: 1.77777777778,
+  aspectRatio: 1.7,
   legend: {
     display: false
   },
@@ -114,18 +103,13 @@ const chartOptions = {
     },
     tooltip: {
       backgroundColor: '#000',
-      bodyFont:{
-        family: 'Kalt Body',
-      },
-      footerFont:{
-        family: 'Kalt Body',
-      },
+      bodyFont:{ family: 'Kalt Body'},
+      footerFont:{ family: 'Kalt Body'},
       displayColors:false,
       cornerRadius:0,
       callbacks: {
         label: function(context) {
           let label = context.dataset.label || '';
-          //if (label) label += ': ';
           if (context.parsed.y !== null) {
               label += new Intl.NumberFormat(
                 'en-US', 
@@ -134,6 +118,7 @@ const chartOptions = {
                   currency: userData.currency
               }).format(context.parsed.y);
           }
+          updatePercentageChange(context.parsed.y)
           updateHoveredValue(label)
           return label;
         }
@@ -143,6 +128,7 @@ const chartOptions = {
 }
 const labels = ref([]);
 const datas = ref([]);
+
 const chartData = computed(() => ({
   labels: labels.value.slice(-props.days),
   datasets: [
@@ -161,21 +147,35 @@ const { data, error } = await supabase
   .select()
   .eq('user_id', user.value.id)
   .order('date', { ascending: true })
+
 const { data:userData, error:userError } = await supabase
   .from('get_user')
   .select()
   .eq('user_id', user.value.id)
   .limit(1)
   .single()
-console.log(data)
+
 for (let i = 0; i < data.length; i++) {
   labels.value.push(data[i].date)
   datas.value.push(data[i].value)
 }
-const hoveredValue = ref('');
+const hoveredValue = ref(new Intl.NumberFormat('en-US', { style: 'currency', currency: userData.currency}).format(datas.value[datas.value.length - props.days]));
+
 const updateHoveredValue = async (x) => {
   hoveredValue.value = x;
 }
+const percentageChange = ref(
+  datas.value[datas.value.length - props.days]
+)
+const updatePercentageChange = async (x) => {
+  const firstValue = datas.value[datas.value.length - props.days] || datas.value[0];
+  const lastValue = x;
+  const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
+  percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
+  percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
+
+}
+
 </script>
 <style scoped lang="scss">
 
@@ -195,5 +195,8 @@ const updateHoveredValue = async (x) => {
   }
   .right{
     text-align:right;
+  }
+  .percentage{
+    font-size:80%;
   }
 </style>
