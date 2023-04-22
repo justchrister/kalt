@@ -126,6 +126,14 @@ export const ok = {
   camelToKebab(string){
     return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
   },
+  convertKeysToCamelCase(object) {
+    const result = {};
+    for (const key in object) {
+      const camelKey = kebabToCamel(key);
+      result[camelKey] = object[key];
+    }
+    return result;
+  },
   uuid(){
     return uuidv4()
   }
