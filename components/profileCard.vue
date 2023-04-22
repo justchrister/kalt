@@ -46,6 +46,20 @@
   }
 </script>
 <style scoped lang="scss">
+.profile-card{
+  margin-top:$clamp;
+  display:grid;
+  grid-gap: $clamp;
+  height:$clamp-8;
+  grid-template-columns: $clamp-8 4fr;
+}
+.image{
+  background-image:url('/media/people/caleb.jpg');
+  height:100%;
+  background-size:contain;
+  background-repeat: no-repeat;
+  width:100%;
+}
   a{
     text-decoration:none;
   }
