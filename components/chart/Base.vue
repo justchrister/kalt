@@ -160,13 +160,14 @@ const { data, error } = await supabase
   .from('get_user_portfolio')
   .select()
   .eq('user_id', user.value.id)
+  .order('date', { ascending: true })
 const { data:userData, error:userError } = await supabase
   .from('get_user')
   .select()
   .eq('user_id', user.value.id)
   .limit(1)
   .single()
-
+console.log(data)
 for (let i = 0; i < data.length; i++) {
   labels.value.push(data[i].date)
   datas.value.push(data[i].value)
