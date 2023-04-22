@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
 
-  if(body.record.value!==body.old_record.value) return "No change in quantity_today"
   const getUserCurrency = async () => {
     const { data, error } = await supabase
       .from('get_user')
