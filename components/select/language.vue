@@ -2,8 +2,8 @@
   <div>
   <label>Language: </label>
   <nuxt-link to="/select/language">
-    <span class="iso">{{data.iso}}</span>
-    <span>{{data.name}}</span>
+    <span class="iso">{{languageDetails.iso}}</span>
+    <span>{{languageDetails.name}}</span>
     <span>→</span>
   </nuxt-link></div>
 </template>
@@ -22,17 +22,20 @@
     if(error) ok.log('error', 'Could not get preferred language', error)
     return data.language
   }
+  const getLanguageDetails = async () => {
+    const { data, error } = await supabase
+      .from('languages')
+      .select()
+      .eq('enabled', true)
+      .eq('iso', language)
+      .limit(1)
+      .single()
+    if(data) return data
+    if(error) return {iso: '?', name: 'Could not get language details'}
+  }
 
-  const language = await getPreferredLanguage();
-
-  const { data, error } = await supabase
-    .from('languages')
-    .select()
-    .eq('enabled', true)
-    .eq('iso', language)
-    .limit(1)
-    .single()
-  if(error) ok.log('error', 'Could not get languages', error)
+const language = await getPreferredLanguage();
+const languageDetails = await getLanguageDetails();
 </script>
 <style scoped lang="scss">
   div{
