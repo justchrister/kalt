@@ -12,6 +12,8 @@
           <select-language />
         </div>
       </div>
+    </block>
+    <block margin="half">
       <div class="section">
         <p>Preferences</p>
         <div>
@@ -19,11 +21,14 @@
           <select-language />
         </div>
       </div>
+    </block>
+    <block margin="half">
       <div class="section">
         <p>Legal</p>
         <div>
-          <select-currency />
-          <select-language />
+          <toggle-terms-of-service />
+          <toggle-emails />
+          <toggle-performance />
         </div>
       </div>
     </block>
