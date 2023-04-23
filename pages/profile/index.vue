@@ -15,7 +15,7 @@
       <div class="section">
         <p>Preferences</p>
         <div>
-          <select-currency />
+          <select-color-scheme />
           <select-language />
         </div>
       </div>
