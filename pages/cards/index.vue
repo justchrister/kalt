@@ -45,13 +45,6 @@
   if(error) ok.log('error', 'could not get payment cards', error)
   
   const setDefault = async (id) => {
-    console.log({
-      'message_sender': 'pages/cards/index.vue',
-      'user_id': user.value.id,
-      'card_id': id,
-      'message_entity_id': id,
-      'default': true
-    })
     const { data, error } = await supabase
       .from('payment_cards')
       .insert({

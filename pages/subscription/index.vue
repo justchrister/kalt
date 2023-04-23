@@ -42,7 +42,6 @@
     .eq('user_id', user.value.id)
     .limit(1)
     .single()
-  console.log(data)
   const toggleSubscription = async () => {
     const { data, error } = await supabase
       .from('user_subscriptions')

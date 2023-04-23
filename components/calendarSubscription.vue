@@ -78,7 +78,6 @@
       required: true
     }
   })
-  console.log(props.days)
   const days = ref([])
   const warn = ref(false)
   if(props.days) days.value=props.days
