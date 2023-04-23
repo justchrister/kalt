@@ -47,11 +47,18 @@
 </script>
 <style scoped lang="scss">
 .profile-card{
+  border:$border;
+  padding:$clamp;
   margin-top:$clamp;
   display:grid;
   grid-gap: $clamp;
-  height:$clamp-8;
-  grid-template-columns: $clamp-8 4fr;
+  height:$clamp-9;
+  grid-template-columns: $clamp-9 4fr;
+
+  display:grid;
+  grid-gap: $clamp;
+  grid-template-columns: $clamp-10 4fr;
+  margin-bottom: $clamp-2;
 }
 .image{
   background-image:url('/media/people/caleb.jpg');
