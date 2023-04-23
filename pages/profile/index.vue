@@ -2,7 +2,7 @@
   <main>
     <navbar-tabs />
     <block margin="half">
-      <profile-card />
+        <profile-card />
     </block>
     <block margin="half">
       <div class="section">
