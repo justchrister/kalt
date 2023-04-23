@@ -2,9 +2,9 @@
   <main>
     <ul>
       <span @click="goBack()">← back</span>
-      <li v-for="currency of data" :value="currency.iso" :key="currency.iso" @click="updateProfile(currency.iso)">
-        <span class="iso">{{currency.iso}}</span>
-        <span>{{currency.name}}</span>
+      <li v-for="language of data" :value="language.iso" :key="language.iso" @click="updateProfile(language.iso)">
+        <span class="iso">{{language.iso}}</span>
+        <span>{{language.name}}</span>
       </li>
     </ul>
   </main>
@@ -13,12 +13,11 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   definePageMeta({
-    pagename: 'select currency',
     middleware: 'auth',
     layout: 'whitepaper'
   })
   useHead({
-    title: 'select currency',
+    title: 'select language',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
@@ -26,31 +25,32 @@
   })
 
   const router = useRouter()
-  const goBack = () => { router.go(-1)}
-  const getPreferredCurrency = async () => {
+  const goBack = () => { router.go(-1) }
+  const getPreferredLanguage = async () => {
     const { data, error } = await supabase
       .from('get_user')
-      .select('currency')
+      .select('language')
       .eq('user_id', user.value.id)
       .limit(1)
       .single()
-    return data.currency
+    return data.language
   }
 
-  const currency = await getPreferredCurrency();
+  const language = await getPreferredLanguage();
   const { data, error } = await supabase
-    .from('currencies')
+    .from('languages')
     .select()
     .eq('enabled', true)
-    .neq('iso', currency)
+    .neq('iso', language)
+  if(error)ok.log('error', 'could not get languages', error)
     
   const updateProfile = async (iso) => {
     const { error } = await supabase
       .from('user_preferences')
       .insert({ 
         user_id: user.value.id,
-        currency: iso,
-        message_sender: 'pages/select/currency.vue' 
+        language: iso,
+        message_sender: 'pages/select/language.vue' 
       })
     if(error) {
       ok.log('error', 'failed updating currency: ', error)
@@ -80,8 +80,5 @@
   .iso{
     font-family:"Kalt Monospace", monospace;
     font-size:75%;
-  }
-  span:hover{
-    cursor:pointer;
   }
 </style>
