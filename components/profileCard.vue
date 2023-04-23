@@ -47,7 +47,6 @@
 </script>
 <style scoped lang="scss">
 .profile-card{
-  border:$border;
   padding:$clamp;
   margin-top:$clamp;
   display:grid;
