@@ -4,7 +4,7 @@
       Currency: 
     </label>
     <select v-model="currency" @change="updateProfile()" :class="state">
-      <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.currency_name}}</option>
+      <option v-for="currency of currencies" :value="currency.iso" :key="currency.iso">{{currency.name}}</option>
     </select>
   </div>
 </template>
@@ -17,7 +17,7 @@
 
   const { data: currencies, error: currenciesError} = await supabase
     .from('currencies')
-    .select('iso, currency_name')
+    .select('iso, name')
     .eq('enabled', true)
   const props = defineProps({
     initial: {
