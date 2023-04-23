@@ -1,8 +1,31 @@
 <template>
   <main>
     <navbar-tabs />
-    <block>
+    <block margin="half">
       <profile-card />
+    </block>
+    <block margin="half">
+      <div class="section">
+        <p>Settings</p>
+        <div>
+          <select-currency />
+          <select-language />
+        </div>
+      </div>
+      <div class="section">
+        <p>Preferences</p>
+        <div>
+          <select-currency />
+          <select-language />
+        </div>
+      </div>
+      <div class="section">
+        <p>Legal</p>
+        <div>
+          <select-currency />
+          <select-language />
+        </div>
+      </div>
     </block>
   </main>
 </template>
@@ -39,10 +62,10 @@
     gap: 2% 2%;
     grid-auto-flow: row;
   }
-  .grid-col-2{
-    grid-template-columns: 1fr 1fr;
-  }
-  .grid-col-3{
-    grid-template-columns: 1fr 1fr 1fr; 
+  .section{
+    display:grid;
+    grid-gap: $clamp;
+    grid-template-columns: $clamp-10 4fr;
+    margin-bottom: $clamp-2;
   }
 </style>
