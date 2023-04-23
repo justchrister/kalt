@@ -2,8 +2,8 @@
   <div>
   <label>Language: </label>
   <nuxt-link to="/select/currency">
-    <span class="iso">{{data.iso}}</span>
-    <span>{{data.name}}</span>
+    <span class="iso">{{currencyDetails.iso}}</span>
+    <span>{{currencyDetails.name}}</span>
     <span>→</span>
   </nuxt-link>
   </div>
@@ -23,14 +23,18 @@
   }
 
   const currency = await getPreferredCurrency();
-
-  const { data, error } = await supabase
-    .from('currencies')
-    .select()
-    .eq('enabled', true)
-    .eq('iso', currency)
-    .limit(1)
-    .single()
+  const getCurrencyDetails = async () => {
+    const { data, error } = await supabase
+      .from('currencies')
+      .select()
+      .eq('enabled', true)
+      .eq('iso', currency)
+      .limit(1)
+      .single()
+    if(data) return data
+    return {iso: '?', name: 'Could not get currency details'}
+  }
+  const currencyDetails = await getCurrencyDetails();
 </script>
 <style scoped lang="scss">
   a{
