@@ -1,6 +1,6 @@
 <template>
   <div class="input-wrap">
-    <toggle text="I want to be notified about my investment performance" @click="updateTos()"/>
+    <toggle text="Monthly newsletter" @click="updateTos()"/>
   </div>
 </template>
 <script setup lang="ts">

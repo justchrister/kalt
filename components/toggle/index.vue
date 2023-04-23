@@ -1,10 +1,10 @@
 <template>
   <div class="input-wrapper" :id="isOn" @click="toggle()">
-    <div class="toggle-wrap">
-      <div class="toggle"></div>
-    </div>
     <div class="text">
       {{props.text}}
+    </div>
+    <div class="toggle-wrap">
+      <div class="toggle"></div>
     </div>
   </div>
 </template>
@@ -36,7 +36,8 @@ const toggle = async () => {
 $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 .input-wrapper {
   display: grid; 
-  grid-template-columns: $clamp-3 1fr; 
+  grid-template-columns: 1fr $clamp-3 ; 
+  max-width:$clamp-30;
   gap: 2% clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
 }
 .toggle-wrap,
