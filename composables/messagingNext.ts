@@ -35,7 +35,6 @@ export const message = {
       .order('message_created', { ascending: true })
 
     const combinedMessage = ok.combineJson(data)
-    const 
     return camelCase
   }
 };
