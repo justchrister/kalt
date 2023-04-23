@@ -1,7 +1,7 @@
 <template>
   <main>
     <ul>
-      <span @click="goBack()">← back</span>
+      <span @click="navigateTo('/profile')">← back</span>
       <li v-for="currency of data" :value="currency.iso" :key="currency.iso" @click="updateProfile(currency.iso)">
         <span class="iso">{{currency.iso}}</span>
         <span>{{currency.name}}</span>
@@ -25,8 +25,6 @@
     }]
   })
 
-  const router = useRouter()
-  const goBack = () => { router.go(-1)}
   const getPreferredCurrency = async () => {
     const { data, error } = await supabase
       .from('get_user')
@@ -55,7 +53,7 @@
     if(error) {
       ok.log('error', 'failed updating currency: ', error)
     } else {
-      goBack()
+      navigateTo('/profile')
     }
   };
 </script>
