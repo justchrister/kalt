@@ -23,158 +23,155 @@
   </div>
 </template>
 <script setup>
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
-import { Line } from 'vue-chartjs'
-const props = defineProps({
-    days: {
-      type: Number,
-      required: true
-    }
-  })
-
-const supabase = useSupabaseClient()
-const user = useSupabaseUser()
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-)
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: true,
-  aspectRatio: 1.7,
-  legend: {
-    display: false
-  },
-  elements: {
-    point:{
-      radius: 2
-    }
-  },
-  animation: { duration: 1000 },
-  interaction: {
-    intersect: 0
-  },
-  scales: {
-    y: {
-      grid: {
-        display: false
-      },
-      border: {
-        display: false
-      },
-      ticks: {
-        autoSkip: true,
-        display: false
+  import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  } from 'chart.js'
+  import { Line } from 'vue-chartjs'
+  const props = defineProps({
+      days: {
+        type: Number,
+        required: true
       }
-    },
-    x:{
-      grid: {
-        border: false,
-        display: false
-      },
-      border: {
-        display: false
-      },
-      ticks: {
-        autoSkip: true,
-        display: false
-      }
-    }
-  },
-  tension: 0,
-  plugins: {
+    })
+
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  )
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 1.7,
     legend: {
-      display: false,
+      display: false
     },
-    tooltip: {
-      backgroundColor: '#000',
-      bodyFont:{ family: 'Kalt Body'},
-      footerFont:{ family: 'Kalt Body'},
-      displayColors:false,
-      cornerRadius:0,
-      callbacks: {
-        label: function(context) {
-          let label = context.dataset.label || '';
-          if (context.parsed.y !== null) {
-              label += new Intl.NumberFormat(
-                'en-US', 
-                { 
-                  style: 'currency', 
-                  currency: userData.currency
-              }).format(context.parsed.y);
+    elements: {
+      point:{
+        radius: 2
+      }
+    },
+    animation: { duration: 1000 },
+    interaction: {
+      intersect: 0
+    },
+    scales: {
+      y: {
+        grid: {
+          display: false
+        },
+        border: {
+          display: false
+        },
+        ticks: {
+          autoSkip: true,
+          display: false
+        }
+      },
+      x:{
+        grid: {
+          border: false,
+          display: false
+        },
+        border: {
+          display: false
+        },
+        ticks: {
+          autoSkip: true,
+          display: false
+        }
+      }
+    },
+    tension: 0,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        backgroundColor: '#000',
+        bodyFont:{ family: 'Kalt Body'},
+        footerFont:{ family: 'Kalt Body'},
+        displayColors:false,
+        cornerRadius:0,
+        callbacks: {
+          label: function(context) {
+            let label = context.dataset.label || '';
+            if (context.parsed.y !== null) {
+                label += new Intl.NumberFormat(
+                  'en-US', 
+                  { 
+                    style: 'currency', 
+                    currency: userData.currency
+                }).format(context.parsed.y);
+            }
+            updatePercentageChange(context.parsed.y)
+            updateHoveredValue(label)
+            return label;
           }
-          updatePercentageChange(context.parsed.y)
-          updateHoveredValue(label)
-          return label;
         }
       }
     }
   }
-}
-const labels = ref([]);
-const datas = ref([]);
+  const labels = ref([]);
+  const datas = ref([]);
 
-const chartData = computed(() => ({
-  labels: labels.value.slice(-props.days),
-  datasets: [
-    {
-      label: "",
-      borderColor: '#202124',
-      pointBackgroundColor: '#202124',
-      pointBorderWidth: 0,
-      pointBorderColor: '#202124',
-      data: datas.value.slice(-props.days)
-    },
-  ]
-}))
-const { data, error } = await supabase
-  .from('get_user_portfolio')
-  .select()
-  .eq('user_id', user.value.id)
-  .order('date', { ascending: true })
+  const chartData = computed(() => ({
+    labels: labels.value.slice(-props.days),
+    datasets: [{
+        label: "",
+        borderColor: '#202124',
+        pointBackgroundColor: '#202124',
+        pointBorderWidth: 0,
+        pointBorderColor: '#202124',
+        data: datas.value.slice(-props.days)
+      }]
+  }))
+  const { data, error } = await supabase
+    .from('get_user_portfolio')
+    .select()
+    .eq('user_id', user.value.id)
+    .order('date', { ascending: true })
 
-const { data:userData, error:userError } = await supabase
-  .from('get_user')
-  .select()
-  .eq('user_id', user.value.id)
-  .limit(1)
-  .single()
+  const { data:userData, error:userError } = await supabase
+    .from('get_user')
+    .select()
+    .eq('user_id', user.value.id)
+    .limit(1)
+    .single()
 
-for (let i = 0; i < data.length; i++) {
-  labels.value.push(data[i].date)
-  datas.value.push(data[i].value)
-}
-const hoveredValue = ref(new Intl.NumberFormat('en-US', { style: 'currency', currency: userData.currency}).format(datas.value[datas.value.length - props.days]));
+  for (let i = 0; i < data.length; i++) {
+    labels.value.push(data[i].date)
+    datas.value.push(data[i].value)
+  }
+  const hoveredValue = ref(new Intl.NumberFormat('en-US', { style: 'currency', currency: userData.currency}).format(datas.value[datas.value.length - props.days]));
 
-const updateHoveredValue = async (x) => {
-  hoveredValue.value = x;
-}
-const percentageChange = ref(
-  datas.value[datas.value.length - props.days]
-)
-const updatePercentageChange = async (x) => {
-  const firstValue = datas.value[datas.value.length - props.days] || datas.value[0];
-  const lastValue = x;
-  const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
-  percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
-  percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
-
-}
+  const updateHoveredValue = (x) => {
+    hoveredValue.value = x;
+  }
+  const percentageChange = ref(
+    datas.value[datas.value.length - 1]
+  )
+  const updatePercentageChange = (x) => {
+    const firstValue = datas.value[datas.value.length - props.days] || datas.value[0];
+    const lastValue = x;
+    const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
+    percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
+    percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
+  }
 
 </script>
 <style scoped lang="scss">
