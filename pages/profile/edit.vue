@@ -27,11 +27,11 @@
 
 <script setup>
   definePageMeta({
-    pagename: 'Profile',
+    pagename: 'Edit',
     middleware: 'auth'
   })
   useHead({
-    title: 'Profile',
+    title: 'Edit',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
