@@ -13,11 +13,8 @@ export default defineEventHandler( async (event) => {
   if(body.record.message_read) return 'message already read'
   
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id)
-  ok.log('success', 'got combined message: ', message)
-  const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
-  ok.log('success', 'message marked as read: ', body.record.message_id)
+  await messaging.read(supabase, topic, service, body.record.message_id)
   const json = await messaging.cleanMessage(message)
-  ok.log('success', 'removed null values: ', json)
 
   const { data, error } = await supabase
     .from(serviceKebab)
