@@ -1,7 +1,7 @@
 <template>
   <main>
     <ul>
-      <span @click="goBack()">← back</span>
+      <span @click="navigateTo('/profile')">← back</span>
       <li v-for="language of data" :value="language.iso" :key="language.iso" @click="updateProfile(language.iso)">
         <span class="iso">{{language.iso}}</span>
         <span>{{language.name}}</span>
@@ -24,8 +24,6 @@
     }]
   })
 
-  const router = useRouter()
-  const goBack = () => { router.go(-1) }
   const getPreferredLanguage = async () => {
     const { data, error } = await supabase
       .from('get_user')
@@ -53,9 +51,9 @@
         message_sender: 'pages/select/language.vue' 
       })
     if(error) {
-      ok.log('error', 'failed updating currency: ', error)
+      ok.log('error', 'failed updating language: ', error)
     } else {
-      goBack()
+      navigateTo('/profile')
     }
   };
 </script>
