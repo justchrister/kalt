@@ -8,6 +8,7 @@ Kalt is a startup building a vertically integrated fossil-free energy generator 
 
 ## Backend
 <img src="https://ka.lt/media/architecture.svg" alt="" width="100%" height="auto">
+
 ### Message queue
 The backend leverages Supabase (postgres) as a message queue to enable seamless communication between the microservices. This message queue system implements a publish-subscribe pattern where any service can publish messages to specific topics, and other services can subscribe to these topics to consume the messages. The quality of the message contents are ensured through interfaces and types, that are implemented in Postgres and the Nuxt. 
 
