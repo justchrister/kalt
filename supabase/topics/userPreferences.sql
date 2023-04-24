@@ -13,9 +13,9 @@ CREATE TABLE user_preferences (
     user_id             uuid        NOT NULL,
     auto_invest         numeric     NOT NULL DEFAULT 1,
     email_marketing     boolean     NOT NULL DEFAULT true, 
-    color_schema        text        NOT NULL DEFAULT 'normal',
-    language            text        NOT NULL DEFAULT 'english',
-    currency            text        NOT NULL DEFAULT 'EUR'
+    color_schema        text,
+    language            text,
+    currency            text
 );
 
 --- add row level security
