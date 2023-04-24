@@ -3,23 +3,13 @@
     <navbar-breadcrumbs parent="profile"/>
     <block>
       <form @submit.prevent="updateProfile">
-        <div class="grid-col-2">
-          <input-first-name :initial="data.first_name" :user_id="user.id"/>
-          <input-last-name :initial="data.last_name" :user_id="user.id"/>
-        </div>
-        <div class="grid-col-3">
-          <input-country :initial="data.country" :user_id="user.id"/>
-          <input-city :initial="data.city" :user_id="user.id"/>
-          <input-postal-code :initial="data.postal_code" :user_id="user.id"/>
-        </div>
+        <input-first-name :initial="data.first_name" :user_id="user.id"/>
+        <input-last-name :initial="data.last_name" :user_id="user.id"/>
+        <input-country :initial="data.country" :user_id="user.id"/>
+        <input-city :initial="data.city" :user_id="user.id"/>
+        <input-postal-code :initial="data.postal_code" :user_id="user.id"/>
         <input-address-line :initial="data.address_line_1" :user_id="user.id"/>
         <input-birthdate :initial="data.birthdate" :user_id="user.id"/>
-        <div class="grid-col-2">
-          <input-preferred-currency :initial="data.currency" :user_id="user.id"/>
-          <input-preferred-language :initial="data.language" :user_id="user.id"/>
-        </div>
-        <toggle-terms-of-service />
-        <toggle-marketing />
       </form>
     </block>
   </main>
