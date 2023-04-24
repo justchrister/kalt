@@ -1,40 +1,46 @@
 // @ts-nocheck
 import { ok } from '~/composables/ok'
+import { serverSupabaseServiceRole } from '#supabase/server';
 
+function toSnakeCase(str) {
+  return str.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+}
+function convertKeysToSnakeCase(obj) {
+  const result = {};
+  for (const key in obj) {
+    result[toSnakeCase(key)] = obj[key];
+  }
+  return result;
+}
+const supabase = serverSupabaseServiceRole()
 export const message = {
-  get: async (supabase, topic, service, entityId) => {
-    const topicKebab = ok.camelToKebab(topic)
-    const serviceKebab = ok.camelToKebab(service)
-    const subscription = serviceKebab+'__'+topicKebab
-    
-    const { data, error } = await supabase
-      .from(topicKebab)
-      .select()
-      .eq('message_entity_id', entityId)
-      .eq('message_read', false)
-      .order('message_created', { ascending: true })
-
-    if(data){
-      const { data: sub, error: subError } = await supabase
-      .from(subscription)
-      .update({ message_read: true })
-      .eq('message_id', message_id)
-    }
-    const combinedMessage = ok.combineJson(data)
-    const camelCase = ok.convertKeysToCamelCase(combinedMessage)
-    return camelCase
+  get: async (messageEntityId) => {
+    // create a view where you can get messageEntityId
+    // Retrieve the account transaction messages related to the entityId
+    // Combine messages and remove null values
+    // Return the combined result
   },
-  post: async (supabase, topic, message) => {
-    const topicKebab = ok.camelToKebab(topic)
-    const message = ok.convertKeysToKebabCase(message)
-    
-    const { data, error } = await supabase
-      .from(topicKebab)
-      .select()
-      .eq('message_entity_id', entity_id)
-      .order('message_created', { ascending: true })
+  post: async (sender, topic, json) => {
+    const snakeCaseTopic = toSnakeCase(topic);
+    const snakeCaseJson = convertKeysToSnakeCase(json);
 
-    const combinedMessage = ok.combineJson(data)
-    return camelCase
+    const { data, error } = await supabase
+      .from(snakeCaseTopic)
+      .insert({
+        'message_created': ok.timestamptz(),
+        'message_id': ok.uuid(),
+        'message_sender': sender,
+        ...snakeCaseJson
+      })
+      .select()
+    
+    if(data) {
+      ok.log('success', 'inserted on '+topic+': ', data)
+      return data
+    }
+    if(error) {
+      ok.log('error', 'failed to insert on '+topic+': ', error)
+      return error
+    }
   }
 };
