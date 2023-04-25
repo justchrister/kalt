@@ -47,7 +47,7 @@ export const messaging = {
   },
   cleanMessage: async (message) => {
     const json = Object.entries(message).reduce((acc, [key, value]) => {
-      if (value) {
+      if (value !== null) {
         acc[key] = value;
       }
       return acc;
