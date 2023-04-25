@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <label>Color scheme: </label>
   <ul>
     <li class="dark">
       
@@ -10,6 +12,7 @@
       
     </li>
   </ul>
+</div>
 </template>
 <script setup lang="ts">
 </script>
