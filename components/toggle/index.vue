@@ -1,7 +1,7 @@
 <template>
-  <div class="input-wrapper" :id="isOn" @click="toggle()">
+  <div class="input-wrapper" :id="props.on">
     <div class="text">
-      {{props.text}}
+      {{ props.text }}
     </div>
     <div class="toggle-wrap">
       <div class="toggle"></div>
@@ -19,18 +19,7 @@ const props = defineProps({
     required: false
   },
 })
-
-const isOn=ref(props.on)
-const toggle = async () => {
-  if (isOn.value){
-    isOn.value=false
-    return
-  }
-  if(!isOn.value){
-    isOn.value=true
-    return
-  }
-}
+console.log('toggled: '+props.on)
 </script>
 <style scoped lang="scss">
 $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
@@ -63,7 +52,7 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
   background:$dark;
   border:2px solid $light;
 }
-.input-wrapper#false .toggle{
+.input-wrapper#true .toggle{
   float:right;
 }
 .input-wrapper:hover{
