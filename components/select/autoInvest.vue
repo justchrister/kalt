@@ -35,7 +35,7 @@ label{
     border-left:$border;
     padding:$clamp-0-5 0;
     min-width:$clamp-4;   
-  user-select: none;
+    user-select: none;
     text-align:center;
     &:hover{
       cursor: pointer;
