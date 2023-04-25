@@ -18,7 +18,7 @@
         <p>Preferences</p>
         <div>
           <select-color-scheme />
-          <select-language />
+          <select-auto-invest />
         </div>
       </div>
     </block>
