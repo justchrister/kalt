@@ -1,5 +1,6 @@
 import { ok } from '~/composables/ok'
 import { messaging } from '~/composables/messaging'
+import { message } from '~/composables/messagingNext'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -21,7 +22,7 @@ export default defineEventHandler( async (event) => {
     .upsert(json)
     .eq('user_id', message.user_id)
     .select()
-
+  console.log(message)
   if(data) return data
   if(error) return error
 });
