@@ -26,9 +26,9 @@
       <div class="section">
         <p>Legal</p>
         <div>
-          <toggle-terms-of-service />
+          <!--<toggle-performance />-->
           <toggle-emails />
-          <toggle-performance />
+          <!--<toggle-terms-of-service />-->
         </div>
       </div>
     </block>
