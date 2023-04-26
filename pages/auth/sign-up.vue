@@ -67,3 +67,12 @@
     router.push('/auth/lobby')
   }
 </script>
+
+<style scoped lang="scss">
+  button{
+    margin-top:$clamp-2;
+  }
+  a{
+    margin:0 $clamp-0-5;
+  }
+</style>

@@ -34,7 +34,7 @@
     <block margin="half">
       <link-group>
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
-        <nuxt-link to="/auth/password">forgot password</nuxt-link>
+        <nuxt-link to="/auth/password">password reset</nuxt-link>
       </link-group>
     </block>
     <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
@@ -103,3 +103,11 @@
     }
   })
 </script>
+<style scoped lang="scss">
+  button{
+    margin-top:$clamp-2;
+  }
+  a{
+    margin:0 $clamp-0-5;
+  }
+</style>
