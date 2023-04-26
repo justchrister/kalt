@@ -14,18 +14,34 @@ export default defineEventHandler(async (event) => {
       .single();
     return data.currency;
   };
+  const getUserPortfolio = async () => {
+    const { data, error } = await supabase
+      .from('get_user_portfolio')
+      .select()
+      .eq('user_id', body.record.user_id)
+      .eq('ticker', body.record.ticker)
+    return data;
+  }
   const currency = await getUserCurrency();
-  const assetPrice = await messaging.getAssetPrice(supabase, currency, body.record.ticker)
-  const valueCalculated = body.record.quantity_today/assetPrice;
+  const portfolio = await getUserPortfolio();
+  const assetPrice = await messaging.getAssetPrice(supabase, currency, body.record.ticker);
+  const array = []
+
+  for (let i = 0; i < portfolio.length; i++) {
+    array.push({
+      'user_id': body.record.user_id,
+      'date': body.record.date,
+      'value_currency': currency,
+      'ticker': portfolio[i].ticker,
+      'value': portfolio[i].quantity_today/assetPrice
+    })
+  }
   const { data, error } = await supabase
     .from('get_user_portfolio')
-    .update({
-      'value': valueCalculated,
-      'value_currency': currency
-    })
-    .eq('date', body.record.date)
+    .update(...array)
     .eq('ticker', body.record.ticker)
     .eq('user_id', body.record.user_id)
     .select()
-  return data
+  if(data) return data
+  if(error) return error
 });
