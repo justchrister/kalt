@@ -26,22 +26,25 @@ export default defineEventHandler(async (event) => {
   const portfolio = await getUserPortfolio();
   const assetPrice = await messaging.getAssetPrice(supabase, currency, body.record.ticker);
   const array = []
-
+  let value = 0;
   for (let i = 0; i < portfolio.length; i++) {
+    value = portfolio[i].quantity_today/assetPrice;
     array.push({
       'user_id': body.record.user_id,
-      'date': body.record.date,
-      'value_currency': currency,
+      'date': portfolio[i].date,
       'ticker': portfolio[i].ticker,
-      'value': portfolio[i].quantity_today/assetPrice
+      'value_currency': currency,
+      'value': value
     })
   }
-  const { data, error } = await supabase
-    .from('get_user_portfolio')
-    .update(...array)
-    .eq('ticker', body.record.ticker)
-    .eq('user_id', body.record.user_id)
-    .select()
-  if(data) return data
-  if(error) return error
+  for (let i = 0; i < array.length; i++) {
+    const { data, error } = await supabase
+      .from('get_user_portfolio')
+      .update(array[i])
+      .eq('ticker', array[i].ticker)
+      .eq('date', array[i].date)
+      .eq('user_id', array[i].user_id)
+      .select()
+  }
+  return array
 });
