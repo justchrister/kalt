@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blkkk">
     <label>Amount to auto-invest: </label>
     <div class="wrapper">
       <span>{{val}}%</span>
@@ -9,16 +9,50 @@
   </div>
 </template>
 <script setup lang="ts">
-const val = ref(0)
-const add = () => { 
-  if(val.value>=100) val.value=100
-  else val.value+=10
-  
-}
-const remove = () => {
-  if(val.value<=0) val.value=0
-  else val.value-=10 
-}
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+  const val = ref(1)
+
+  const postUserPreference = async () => {
+    const autoInvest = val.value/100;
+    ok.log('autoInvest', autoInvest)
+    const { data, error } = await supabase
+        .from('user_preferences')
+        .insert({
+          'user_id': user.value.id,
+          'message_sender': 'components/select/autoInvest.vue',
+          'auto_invest': autoInvest
+        })
+        .eq('user_id', user.value.id)
+      if(error) ok.log('error', 'could not update auto-invest', error)
+  }
+
+
+  const { data, error } = await supabase
+    .from('get_user')
+    .select('auto_invest')
+    .eq('user_id', user.value.id)
+    .limit(1)
+    .single()
+    
+
+  if(data) val.value = data.auto_invest*100
+  const add = async () => { 
+    if(val.value>=100){
+      val.value=100
+    } else {
+      val.value+=10
+      await postUserPreference();
+    }
+  }
+  const remove = async () => {
+    if(val.value<=0){
+      val.value=0
+    } else {
+      val.value-=10
+      await postUserPreference();
+    }
+  }
 </script>
 <style scoped lang="scss">
 label{
@@ -51,5 +85,8 @@ label{
   button:active,
   button:focus{
     border-radius:0;
+  }
+  .blkkk{
+    margin-top:$clamp;
   }
 </style>
