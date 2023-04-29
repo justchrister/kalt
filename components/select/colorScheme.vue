@@ -21,21 +21,32 @@
   </div>
 </template>
 <script setup>
-  const selectedColorScheme = ref("dark");
+  const selectedColorScheme = useCookie("light");
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
+  const colorMode = useColorMode()
+
   const setColorScheme = async (colorScheme) => {
-    selectedColorScheme.value = colorScheme;
+    colorMode.value = colorScheme;
     const { data, error } = await supabase
-        .from('user_preferences')
-        .insert({
-          'user_id': user.value.id,
-          'message_sender': 'components/select/autoInvest.vue',
-          'color_scheme': colorScheme
-        })
-        .eq('user_id', user.value.id)
-      if(error) ok.log('error', 'could not update color scheme', error)
+      .from('user_preferences')
+      .insert({
+        'user_id': user.value.id,
+        'message_sender': 'components/select/autoInvest.vue',
+        'color_scheme': colorScheme
+      })
+      .eq('user_id', user.value.id)
+    if(error) ok.log('error', 'could not update color scheme', error)
   };
+  const { data, error } = await supabase
+    .from('get_user')
+    .select()
+    .limit(1)
+    .single()
+
+  if (data) colorMode.value = data.color_scheme;
+  if(error) ok.log('error', 'could not get color scheme', error)
+
 </script>
 <style scoped lang="scss">
   ul {
