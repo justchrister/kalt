@@ -1,18 +1,18 @@
 <template>
   <div>
-  <label>Color scheme: </label>
-  <ul>
-    <li class="dark">
-      
-    </li>
-    <li class="light">
-      
-    </li>
-    <li class="crazy">
-      
-    </li>
-  </ul>
-</div>
+    <label>Color scheme: </label>
+    <ul>
+      <li class="dark">
+        
+      </li>
+      <li class="light">
+        
+      </li>
+      <li class="crazy">
+        
+      </li>
+    </ul>
+  </div>
 </template>
 <script setup lang="ts">
 </script>
