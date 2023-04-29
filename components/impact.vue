@@ -4,7 +4,7 @@
     <p class="title">{{props.title}}</p>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 const props = defineProps({
   title: {
     type: String,

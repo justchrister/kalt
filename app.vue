@@ -3,6 +3,6 @@
     <NuxtPage />
   </NuxtLayout>
 </template>
-<script setup lang="ts">
+<script setup>
   console.log("✨ https://ka.lt/jobs ✨")
 </script>

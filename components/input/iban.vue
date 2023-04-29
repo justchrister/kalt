@@ -4,7 +4,7 @@
     <input type="text" v-model="iban" @input="updateIBAN()"/>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const props = defineProps({

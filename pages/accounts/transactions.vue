@@ -5,7 +5,7 @@
     <transaction-list />
   </main>
 </template>
-<script setup lang="ts">
+<script setup>
   definePageMeta({
     pagename: 'Transactions',
     middleware: 'auth'

@@ -8,7 +8,7 @@
     </span>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   const supabase = useSupabaseClient()
   const { data, error } = await supabase
     .from('get_payment_card_default')

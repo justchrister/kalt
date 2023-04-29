@@ -4,7 +4,7 @@
     <input type="text" v-model="bank_code" @input="updateBankCode()"/>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const props = defineProps({

@@ -3,7 +3,7 @@
     <toggle text="I accept the terms of service" @click="updateTos()"/>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 const updateTos = async () => {
   return "Lol"
 }

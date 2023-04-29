@@ -5,7 +5,7 @@
     <div :class="'default '+props.default"> <span> set </span> default  </div>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   const props = defineProps({
     number: {
       type: Number,

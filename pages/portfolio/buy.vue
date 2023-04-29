@@ -11,7 +11,7 @@
     </block>
   </main>
 </template>
-<script setup lang="ts">
+<script setup>
   const loading = ref(false)
   definePageMeta({
     pagename: 'Invest',

@@ -32,7 +32,7 @@
     <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   const supabase = useSupabaseClient();
   const user = useSupabaseUser();
   const card_number = ref();

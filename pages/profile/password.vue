@@ -23,7 +23,7 @@
   </main>
 </template>
 
-<script setup lang="ts">
+<script setup>
   definePageMeta({
     pagename: 'Change password'
   })

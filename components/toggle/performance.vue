@@ -3,7 +3,7 @@
     <toggle text="Performance updates" @click="updateTos()"/>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 const updateTos = async () => {
  return "lol"
 }
