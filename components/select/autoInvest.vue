@@ -15,7 +15,6 @@
 
   const postUserPreference = async () => {
     const autoInvest = val.value/100;
-    ok.log('autoInvest', autoInvest)
     const { data, error } = await supabase
         .from('user_preferences')
         .insert({
