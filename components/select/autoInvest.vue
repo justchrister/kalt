@@ -8,7 +8,7 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const val = ref(1)
