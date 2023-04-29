@@ -13,7 +13,7 @@ CREATE TABLE user_preferences (
     user_id             uuid        NOT NULL,
     auto_invest         numeric     NOT NULL DEFAULT 1,
     email_marketing     boolean     NOT NULL DEFAULT true, 
-    color_schema        text,
+    color_scheme        text,
     language            text,
     currency            text
 );

@@ -11,7 +11,7 @@ CREATE TABLE get_user (
     address_line_2      text,
     auto_invest         numeric,
     email_marketing     boolean, 
-    color_schema        text,
+    color_scheme        text,
     language            text,
     currency            text
 );
