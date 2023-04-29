@@ -90,17 +90,13 @@
     </block>
   </main>
 </template>
-<script setup lang="ts">
+<script setup>
   definePageMeta({
     pagename: 'Master plan',
     layout:'whitepaper'
   })
   useHead({
-    title: 'Master plan',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Master plan'
   })
 </script>
 <style scoped lang="scss">

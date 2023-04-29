@@ -19,11 +19,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Notifications',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Notifications'
   })
 </script>
 <style scoped>

@@ -102,11 +102,7 @@
     layout:'whitepaper'
   })
   useHead({
-    title: 'Whitepaper',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Whitepaper'
   })
 </script>
 <style scoped lang="scss">

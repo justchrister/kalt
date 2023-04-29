@@ -12,16 +12,20 @@
             <li @click="setDays(1)">
               <span class="live-bullet">•</span> live
             </li>-->
-            <li @click="setDays(7)">
+            <li @click="days=7" 
+                :class="{ active: days === 7 }">
               7 days
             </li>
-            <li @click="setDays(30)">
+            <li @click="days=30"
+                :class="{ active: days === 30 }">
               1 month
             </li>
-            <li @click="setDays(90)">
+            <li @click="days=90"
+                :class="{ active: days === 90 }">
               3 months
             </li>
-            <li @click="setDays(100)">
+            <li @click="days=100"
+                :class="{ active: days === 100 }">
               max
             </li>
           </ul>
@@ -44,22 +48,14 @@
   </main>
 </template>
 <script setup>
-  const pagename = 'Portfolio'
   definePageMeta({
     pagename: 'Portfolio',
     middleware: 'auth'
   })
   useHead({
-    title: 'Portfolio',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Portfolio'
   })
-  const days = ref(3)
-  const setDays = (x) => {
-    days.value=x
-  }
+  const days = ref(30)
 </script>
 <style scoped lang="scss">
 
@@ -100,10 +96,12 @@ li{
   &:before{
     display: none;
   }
+  &.active,
   &:hover{
     border-radius:100%;
     background:white;
     cursor:   pointer;
   }
+  
 }
 </style>

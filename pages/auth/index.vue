@@ -46,11 +46,7 @@
     pagename: 'Hello'
   })
   useHead({
-    title: 'Hello',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Hello'
   })
   const loading = ref(false)
   const user = useSupabaseUser()

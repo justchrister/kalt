@@ -17,11 +17,7 @@
     layout: 'whitepaper'
   })
   useHead({
-    title: 'select language',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'select language'
   })
 
   const getPreferredLanguage = async () => {

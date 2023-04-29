@@ -15,11 +15,7 @@
     layout: 'questions'
   })
   useHead({
-    title: 'Notification',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Notification'
   })
 </script>
 <style lang="scss">

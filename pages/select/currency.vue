@@ -18,11 +18,7 @@
     layout: 'whitepaper'
   })
   useHead({
-    title: 'select currency',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'select currency'
   })
 
   const getPreferredCurrency = async () => {

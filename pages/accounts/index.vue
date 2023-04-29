@@ -13,17 +13,13 @@
     </block>
   </main>
 </template>
-<script lang="ts" setup>
+<script setup>
   definePageMeta({
     pagename: 'Accounts',
     middleware: 'auth'
   })
   useHead({
-    title: 'Accounts',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Accounts'
   })
   
 </script>

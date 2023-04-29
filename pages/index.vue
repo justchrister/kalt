@@ -24,10 +24,6 @@
     pagename: 'Homepage'
   })
   useHead({
-    title: 'Kalt',
-    meta: [{
-      name: "description",
-      content: "Make money, make a difference."
-    }]
+    title: 'Kalt'
   })
 </script>

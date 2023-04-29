@@ -12,11 +12,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Add card',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Add card'
   })
 
 </script>

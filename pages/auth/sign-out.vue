@@ -13,11 +13,7 @@
     pagename: 'Bye'
   })
   useHead({
-    title: 'Bye',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Bye'
   })
   const client = useSupabaseAuthClient()
   const { error } = await client.auth.signOut()

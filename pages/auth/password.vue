@@ -35,11 +35,7 @@
     pagename: 'Password reset'
   })
   useHead({
-    title: 'Password reset',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Password reset'
   })
 
   const supabase = useSupabaseClient()

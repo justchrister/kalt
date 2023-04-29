@@ -23,10 +23,6 @@
     pagename: 'Lobby'
   })
   useHead({
-    title: 'Lobby',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Lobby'
   })
 </script>

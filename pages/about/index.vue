@@ -27,11 +27,7 @@
     pagename: 'About us'
   })
   useHead({
-    title: 'About us',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'About us'
   })
   
   const supabase = useSupabaseClient()

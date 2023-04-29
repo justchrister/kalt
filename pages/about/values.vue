@@ -40,11 +40,7 @@
     pagename: 'Our values'
   })
   useHead({
-    title: 'Our values',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Our values'
   })
 </script>
 <style scoped>

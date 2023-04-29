@@ -27,11 +27,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Subscription',
-    meta: [{
-      name: "description",
-      content: "Make money, make a difference."
-    }]
+    title: 'Subscription'
   })
 
   const enabled = ref(false)

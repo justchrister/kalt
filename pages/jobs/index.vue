@@ -16,11 +16,7 @@
     pagename: 'Questions'
   })
   useHead({
-    title: 'Questions',
-    meta: [{
-      name: "description",
-      content: "Make money, make a difference."
-    }]
+    title: 'Questions'
   })
 </script>
 <style scoped lang="scss">

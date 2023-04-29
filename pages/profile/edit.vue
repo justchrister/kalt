@@ -21,11 +21,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Edit',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Edit'
   })
 
   const supabase = useSupabaseClient()
