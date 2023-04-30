@@ -31,7 +31,7 @@ BEGIN
       AND tablename = 'user_preferences'
       AND policyname = 'SELF — Insert'
   ) THEN
-    CREATE POLICY "SELF — Insert" ON public.user_preferences
+    CREATE POLICY "AUTH — Insert" ON public.user_preferences
       AS PERMISSIVE FOR INSERT
       TO authenticated
       WITH CHECK (TRUE);
