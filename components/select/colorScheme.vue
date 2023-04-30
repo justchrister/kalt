@@ -3,17 +3,17 @@
     <label>Color scheme: </label>
     <ul>
       <li
-        :class="{ active: selectedColorScheme === 'dark' }"
+        :class="{ active: colorMode.preference === 'dark' }"
         class="dark"
         @click="setColorScheme('dark')"
       ></li>
       <li
-        :class="{ active: selectedColorScheme === 'light' }"
+        :class="{ active: colorMode.preference === 'light' }"
         class="light"
         @click="setColorScheme('light')"
       ></li>
       <li
-        :class="{ active: selectedColorScheme === 'crazy' }"
+        :class="{ active: colorMode.preference === 'crazy' }"
         class="crazy"
         @click="setColorScheme('crazy')"
       ></li>
@@ -21,13 +21,13 @@
   </div>
 </template>
 <script setup>
-  const selectedColorScheme = useCookie("light");
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const colorMode = useColorMode()
 
   const setColorScheme = async (colorScheme) => {
-    colorMode.value = colorScheme;
+    console.log(colorMode)
+    colorMode.preference = colorScheme;
     const { data, error } = await supabase
       .from('user_preferences')
       .insert({
@@ -44,7 +44,11 @@
     .limit(1)
     .single()
 
-  if (data) colorMode.value = data.color_scheme;
+  if (data) {
+    ok.log('', 'user color scheme: ', data.color_scheme)
+    colorMode.preference = data.color_scheme;
+    ok.log('', 'client color mode: ', colorMode.value)
+  }
   if(error) ok.log('error', 'could not get color scheme', error)
 
 </script>
