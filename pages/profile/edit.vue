@@ -3,6 +3,7 @@
     <navbar-breadcrumbs parent="profile"/>
     <block>
       <form @submit.prevent="updateProfile">
+        <select-profile-picture />
         <input-first-name :initial="data.first_name" :user_id="user.id"/>
         <input-last-name :initial="data.last_name" :user_id="user.id"/>
         <input-country :initial="data.country" :user_id="user.id"/>
