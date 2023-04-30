@@ -8,8 +8,8 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/profile" >
-              Profile
+          <nuxt-link to="/subscription" >
+              Subscription
           </nuxt-link>
         </li>
         <li>
@@ -17,17 +17,16 @@
               Accounts
           </nuxt-link>
         </li>
-        <li>
-          <nuxt-link to="/subscription" >
-              Subscription
-          </nuxt-link>
-        </li>
       </ul>
+    <div class="pfp" @click="navigateTo('/profile')"></div>
     </nav>
   </block>
 </template>
 <style scoped lang="scss">
 .tabs{
+  display:grid;
+  grid-template-columns: 1fr $clamp-4;
+  grid-gap: $clamp;
   margin-bottom:0;
   nav{
     width:100%;
@@ -49,6 +48,15 @@
   ul li:before{
     display:none;
     content: "";
+  }
+  .pfp{
+    background-image:url('/media/images/pfp-2.png');
+    height:$clamp-3;
+    background-size:contain;
+    background-repeat: no-repeat;
+    width:$clamp-3;
+    cursor:pointer;
+    border:$border;
   }
 }
 </style>
