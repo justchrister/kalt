@@ -29,20 +29,18 @@
   const completeTransaction = async () => {
     loading.value = true
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('exchange_orders')
       .insert({
           message_entity_id: uuid,
-          message_sender: 'pages/portfolio/buy.vue',
+          message_sender: 'pages/portfolio/sell.vue',
           user_id: user.value.id,
-          transaction_sub_type: 'card',
-          transaction_status: 'payment_awaiting',
-          auto_invest: 1
+          order_status: 'incomplete'
       })
     if(error){
-      ok.log('error', 'could not create transaction', error)
+      ok.log('error', 'could not create exchange order: ', error)
       loading.value = false
     } else {
-      ok.log('success', 'transaction created')
+      ok.log('success', 'exchange order created: ')
       loading.value = false;
     };
   }
