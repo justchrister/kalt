@@ -38,7 +38,6 @@
 </script>
 <style scoped lang="scss">
   a{
-    max-width:$clamp-20;
     padding:$clamp $clamp-2;
     display:grid;
     grid-template-columns: $clamp-4 4fr $clamp;
