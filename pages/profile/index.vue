@@ -1,7 +1,7 @@
 <template>
   <main>
-    <block margin="none" >
-      <navbar-back to="/portfolio"/>
+    <block margin="2" >
+      <navbar-tabs :hidePfp="true"/>
     </block>
     <block margin="2" >
       <profile-card />
