@@ -15,7 +15,7 @@
   definePageMeta({
     pagename: 'select currency',
     middleware: 'auth',
-    layout: 'whitepaper'
+    layout: 'blank'
   })
   useHead({
     title: 'select currency'

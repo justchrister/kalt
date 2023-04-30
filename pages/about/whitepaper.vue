@@ -99,7 +99,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Whitepaper',
-    layout:'whitepaper'
+    layout:'blank'
   })
   useHead({
     title: 'Whitepaper'

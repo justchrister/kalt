@@ -14,7 +14,7 @@
   const user = useSupabaseUser()
   definePageMeta({
     middleware: 'auth',
-    layout: 'whitepaper'
+    layout: 'blank'
   })
   useHead({
     title: 'select language'
