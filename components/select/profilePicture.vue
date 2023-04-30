@@ -37,6 +37,21 @@
         class="alt7"
         @click="setProfilePicture('alt7')"
       ></li>
+      <li
+        :class="{ active: colorMode.preference === 'alt8' }"
+        class="alt8"
+        @click="setProfilePicture('alt8')"
+      ></li>
+      <li
+        :class="{ active: colorMode.preference === 'alt9' }"
+        class="alt9"
+        @click="setProfilePicture('alt9')"
+      ></li>
+      <li
+        :class="{ active: colorMode.preference === 'alt10' }"
+        class="alt10"
+        @click="setProfilePicture('alt10')"
+      ></li>
     </ul>
   </div>
 </template>
@@ -88,7 +103,7 @@
     cursor: pointer;
   }
   .alt1{
-    background-image:url('/media/images/pfp.png');
+    background-image:url('/media/images/pfp-1.png');
   }
   .alt2{
     background-image:url('/media/images/pfp-2.png');
@@ -113,6 +128,9 @@
   }
   .alt9{
     background-image:url('/media/images/pfp-9.png');
+  }
+  .alt10{
+    background-image:url('/media/images/pfp-10.png');
   }
   .active{
     border-radius:50%;
