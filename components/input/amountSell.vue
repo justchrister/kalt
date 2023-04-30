@@ -22,15 +22,22 @@ const user = useSupabaseUser()
   
 
   const updateSellOrder = async () => { 
-    const { error } = await supabase
-      .from('exchange_orders')
-      .insert({
-        message_entity_id: props.uuid,
-        quantity: val.value,
-        message_sender: 'components/input/amountSell.vue'
-    })
-    if(error) ok.log('error', 'could not update quantity', error)
-    if(!error) ok.log('success', 'updated quantity')
+
+    if(val.value>0){
+      const { error } = await supabase
+        .from('exchange_orders')
+        .insert({
+          message_entity_id: props.uuid,
+          quantity: -val.value,
+          user_id: user.value.id,
+          order_type: 'sell',
+          message_sender: 'components/input/amountSell.vue'
+      })
+      if(error) ok.log('error', 'could not update quantity', error)
+      if(!error) ok.log('success', 'updated quantity')
+    } else{
+      return false
+    }
   }
   const getMax = async () => {
     const { data, error } = await supabase
@@ -58,6 +65,7 @@ const user = useSupabaseUser()
       val.value-=1
       await updateSellOrder();
     }
+    
   }
 </script>
 <style scoped lang="scss">
