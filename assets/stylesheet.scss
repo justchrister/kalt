@@ -145,4 +145,5 @@ button {
 label{
   @include font-body;
   font-size: clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
+  margin:$clamp-0-5 0;
 }
