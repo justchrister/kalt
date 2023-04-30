@@ -1,19 +1,10 @@
 <template>
-  <div class="input-wrap">
-    <label for="quantity"> 
-      Select quantity: 
-    </label>
-    <div class="input-group">
-      <input
-        type="text"
-        placeholder="Quantity"
-        id="quantity"
-        v-maska data-maska="##.##"
-        class="quantity"
-        v-model="quantity"
-        @input="updatePaymentAmount"
-      />
-      <div class="ticker">ddf.gi</div>
+  <div class="blkkk">
+    <label>Select quantity: </label>
+    <div class="wrapper">
+      <span>{{val}}</span>
+      <span @click="remove()">-</span>
+      <span @click="add()">+</span>
     </div>
   </div>
 </template>
@@ -31,35 +22,80 @@ const user = useSupabaseUser()
   
 
   const updateSellOrder = async () => { 
-    if(quantity.value){
-      const { error } = await supabase
-        .from('exchange_orders')
-        .insert({
-          message_entity_id: props.uuid,
-          message_sender: 'components/input/quantityOneTime.vue',
-      })
-      if(error) ok.log('error', 'could not update quantity', error)
-      if(!error) ok.log('success', 'updated quantity')
+    const { error } = await supabase
+      .from('exchange_orders')
+      .insert({
+        message_entity_id: props.uuid,
+        quantity: val.value,
+        message_sender: 'components/input/amountSell.vue'
+    })
+    if(error) ok.log('error', 'could not update quantity', error)
+    if(!error) ok.log('success', 'updated quantity')
+  }
+  const getMax = async () => {
+    const { data, error } = await supabase
+      .from('get_user_portfolio')
+      .select('quantity_today')
+      .order('date', { ascending: false })
+      .limit(1)
+      .single()
+    return data.quantity_today
+  }
+  const max = await getMax();
+  const val = ref(0)
+  const add = async () => { 
+    if(val.value>=max){
+      val.value=max
+    } else {
+      val.value+=1
+      await updateSellOrder();
     }
   }
-
+  const remove = async () => {
+    if(val.value<=0){
+      val.value=0
+    } else {
+      val.value-=1
+      await updateSellOrder();
+    }
+  }
 </script>
 <style scoped lang="scss">
-  .input-group{
-    border:$border;
-    display: grid;
-    grid-template-rows: 1fr;
-    gap: 0% 0%;
-    grid-auto-flow: row;
-    grid-template-columns: 6fr 1fr;
+  label{
+    display:block;
   }
-  .ticker{
-    height:$clamp-4;
-    line-height:$clamp-4;
-    text-align:center;
+  .wrapper{
+    display:grid;
+    grid-template-columns: 1fr $clamp-5 $clamp-5;
+    border:$border;   
+    user-select: none;
   }
-  input{
+  span{
+    display:inline-block;
     border:none;
-    border-right:$border;
+    border-left:$border;
+    padding:$clamp-1 0;
+    min-width:$clamp-4;
+    box-sizing: border-box;
+    user-select: none;
+    height:100%;
+    text-align:center;
+    &:hover{
+      cursor: pointer;
+      background:white;
+    }
+    &:first-child{
+      border-left:none;
+      text-align: left;
+      padding-left: $clamp-2;
+    }
+  }
+  button:hover,
+  button:active,
+  button:focus{
+    border-radius:0;
+  }
+  .blkkk{
+    margin-top:$clamp;
   }
 </style>
