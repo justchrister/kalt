@@ -17,13 +17,13 @@
 </script>
 
 <style scoped lang="scss">
-span,
-span a{
-  text-transform: lowercase;
-  text-transform: uppercase;
-  font-family: 'Kalt Monospace', monospace;
-  font-size:$clamp;
-}
+  span,
+  span a{
+    text-transform: lowercase;
+    text-transform: uppercase;
+    font-family: 'Kalt Monospace', monospace;
+    font-size:$clamp;
+  }
   a{
     text-decoration:none;
     &:hover{
