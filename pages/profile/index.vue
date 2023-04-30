@@ -1,21 +1,29 @@
 <template>
   <main>
-    <navbar-tabs />
-    <block margin="half">
-        <profile-card />
+    <block margin="none" width="small">
+      <navbar-back to="/portfolio"/>
     </block>
-    <block margin="half">
-      <p>Settings</p>
-      <select-currency />
+    <block margin="2" width="small">
+      <profile-card />
+    </block>
+    <block margin="2" width="small">
+      
+    <select-currency />
+    
+  </block>
+    <block margin="2" width="small">
       <select-language />
+    
     </block>
-    <block margin="half">
-      <p>Preferences</p>
+    <block margin="2" width="small">
       <select-color-scheme />
-      <select-auto-invest />
+    
     </block>
-    <block margin="half">
-      <p>Legal</p>
+    <block margin="2" width="small">
+      <select-auto-invest />
+    
+    </block>
+    <block margin="2" width="small">
       <toggle-performance />
       <toggle-emails />
       <toggle-terms-of-service />
@@ -31,17 +39,4 @@
   useHead({
     title: 'Profile'
   })
-
-  const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  
-  const { data, error } = await supabase
-    .from('get_user')
-    .select()
-    .limit(1)
-    .single()
-  if(error) ok.log('error', 'Could not get user account', error)
-  if(data) ok.log('success', 'Got user object: ', data)
 </script>
-<style scoped lang="scss">
-</style>
