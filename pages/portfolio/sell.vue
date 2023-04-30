@@ -4,9 +4,8 @@
     <block>
       <h3>Sell shares</h3>
       <p>Selling shares will directly effect your portfolio performance negatively and the positive impact on the environemnt.</p>
-      <form @submit.prevent="completeTransaction">
+      <form @submit.prevent="publishSellOrder()">
         <input-amount-sell :uuid="uuid"/>
-        <!--<account-card />-->
         <button> sell <loading-icon v-if="loading" /> </button>
       </form>
     </block>
@@ -26,15 +25,27 @@
   const user = useSupabaseUser()
   const uuid = ok.uuid();
 
-  const completeTransaction = async () => {
+  const getMax = async () => {
+    const { data, error } = await supabase
+      .from('get_user_portfolio')
+      .select('quantity_today')
+      .order('date', { ascending: false })
+      .limit(1)
+      .single()
+    return data.quantity_today
+  }
+
+  const publishSellOrder = async () => {
     loading.value = true
+    const hasShares = await getMax();
+    if(!hasShares) return false;
     const { data, error } = await supabase
       .from('exchange_orders')
       .insert({
           message_entity_id: uuid,
           message_sender: 'pages/portfolio/sell.vue',
           user_id: user.value.id,
-          order_status: 'incomplete'
+          order_status: 'open'
       })
     if(error){
       ok.log('error', 'could not create exchange order: ', error)
@@ -46,3 +57,8 @@
   }
 
 </script>
+<style scoped lang="scss">
+  button{
+    margin-top:$clamp;
+  }
+</style>
