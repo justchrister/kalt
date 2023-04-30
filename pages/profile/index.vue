@@ -1,24 +1,24 @@
 <template>
   <main>
-    <block margin="none" width="small">
+    <block margin="none" >
       <navbar-back to="/portfolio"/>
     </block>
-    <block margin="2" width="small">
+    <block margin="2" >
       <profile-card />
     </block>
-    <block margin="2" width="small">
+    <block margin="2" >
       <select-currency />
     </block>
-    <block margin="2" width="small">
+    <block margin="2" >
       <select-auto-invest />
     </block>
-    <block margin="2" width="small">
+    <block margin="2" >
       <select-language />
     </block>
-    <block margin="2" width="small">
+    <block margin="2" >
       <select-color-scheme />
     </block>
-    <block margin="2" width="small">
+    <block margin="2" >
       <label> Legal stuff</label>
       <toggle-performance />
       <toggle-emails />
