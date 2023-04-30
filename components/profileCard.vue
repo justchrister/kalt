@@ -48,7 +48,7 @@
     grid-template-columns: $clamp-4 4fr;
   }
   .image{
-    background-image:url('/media/images/pfp-3.png');
+    background-image:url('/media/images/pfp-4.png');
     border-radius:$clamp-4;
     height:$clamp-4;
     background-size:contain;
@@ -63,16 +63,13 @@
 
   .profile-card:hover{
     cursor:pointer;
-    background:white;
-    .edit,
-    .name{
+    .edit{
       text-decoration:underline;
     }
   }
   .edit{
     text-align:right;
   }
-  .edit,
   .birthdate{
     font-size:80%;
     text-decoration:none;
