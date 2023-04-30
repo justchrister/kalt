@@ -1,23 +1,18 @@
 <template>
-  <div class="profile-card">
+  <div class="profile-card" @click="navigateTo('/profile/edit')">
     <div class="image">
     </div>
     <div class="details">
       <div class="name">
         {{ data.first_name }} {{ data.last_name }} 
       </div>
+      <div class="edit">
+        edit
+      </div>
       <div class="bio">
         <div class="birthdate">
-          🎂  {{ calculateAge(data.birthdate) }} years old
+          {{ calculateAge(data.birthdate) }} years old — {{ data.city }}, {{ data.country }}
         </div>
-        <div class="location">
-          📍 {{ data.city }}, {{ data.country }}
-        </div>
-      </div>
-      <div class="edit">
-        <nuxt-link to="profile/edit">
-          EDIT
-        </nuxt-link>
       </div>
     </div>
   </div>
@@ -46,44 +41,40 @@
   }
 </script>
 <style scoped lang="scss">
-.profile-card{
-  padding:$clamp;
-  margin-top:$clamp;
-  display:grid;
-  grid-gap: $clamp;
-  height:$clamp-9;
-  grid-template-columns: $clamp-9 4fr;
-
-  display:grid;
-  grid-gap: $clamp;
-  grid-template-columns: $clamp-10 4fr;
-  margin-bottom: $clamp-2;
-}
-.image{
-  background-image:url('/media/people/caleb.jpg');
-  height:100%;
-  background-size:contain;
-  background-repeat: no-repeat;
-  width:100%;
-}
-  a{
-    text-decoration:none;
+  .profile-card{
+    border-radius:3px;
+    display:grid;
+    grid-gap: $clamp;
+    grid-template-columns: $clamp-4 4fr;
   }
-  a:hover{
-    text-decoration:underline;
+  .image{
+    background-image:url('/media/images/pfp-3.png');
+    border-radius:$clamp-4;
+    height:$clamp-4;
+    background-size:contain;
+    background-repeat: no-repeat;
+    width:$clamp-4;
+  }
+  .details{
+    display:grid;
+    grid-gap: 0px $clamp;
+    grid-template-columns: 4fr $clamp-3;
+  }
+
+  .profile-card:hover{
+    cursor:pointer;
+    background:white;
+    .edit,
+    .name{
+      text-decoration:underline;
+    }
   }
   .edit{
-
-    margin-top:$clamp;
+    text-align:right;
   }
-  a,
-  .birthdate,
-  .location{
+  .edit,
+  .birthdate{
     font-size:80%;
-  }
-  .birthdate,
-  .location{
-    margin-right: $clamp;
-    display:inline-block;
+    text-decoration:none;
   }
 </style>
