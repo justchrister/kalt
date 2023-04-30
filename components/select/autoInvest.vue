@@ -1,6 +1,6 @@
 <template>
   <div class="blkkk">
-    <label>Reinvestment ratio (%): </label>
+    <label>Select reinvestment ratio (%): </label>
     <div class="wrapper">
       <span>{{val}}%</span>
       <span @click="remove()">-</span>
@@ -58,7 +58,8 @@
     display:block;
   }
   .wrapper{
-    display:inline-block;
+    display:grid;
+    grid-template-columns: 1fr $clamp-5 $clamp-5;
     border:$border;   
     user-select: none;
   }
@@ -66,9 +67,11 @@
     display:inline-block;
     border:none;
     border-left:$border;
-    padding:$clamp-0-5 0;
-    min-width:$clamp-4;   
+    padding:$clamp-1;
+    min-width:$clamp-4;
+    box-sizing: border-box;
     user-select: none;
+    height:100%;
     text-align:center;
     &:hover{
       cursor: pointer;

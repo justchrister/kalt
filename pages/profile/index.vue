@@ -7,23 +7,19 @@
       <profile-card />
     </block>
     <block margin="2" width="small">
-      
-    <select-currency />
-    
-  </block>
-    <block margin="2" width="small">
-      <select-language />
-    
-    </block>
-    <block margin="2" width="small">
-      <select-color-scheme />
-    
+      <select-currency />
     </block>
     <block margin="2" width="small">
       <select-auto-invest />
-    
     </block>
     <block margin="2" width="small">
+      <select-language />
+    </block>
+    <block margin="2" width="small">
+      <select-color-scheme />
+    </block>
+    <block margin="2" width="small">
+      <label> Legal stuff</label>
       <toggle-performance />
       <toggle-emails />
       <toggle-terms-of-service />

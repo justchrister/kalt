@@ -1,6 +1,6 @@
 <template>
   <div>
-  <label>Language: </label>
+  <label>Select default currency: </label>
   <nuxt-link to="/select/currency">
     <span class="iso">{{currencyDetails.iso}}</span>
     <span>{{currencyDetails.name}}</span>
