@@ -30,8 +30,8 @@
       <div class="section">
         <p>Auth</p>
         <ul>
-          <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link><span></span><span></span>
-          <nuxt-link to="/auth" > Sign in </nuxt-link><span></span><span></span>
+          <nuxt-link to="/auth/sign-up" > Sign up </nuxt-link>
+          <nuxt-link to="/auth" > Sign in </nuxt-link>
           <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
         </ul>
       </div>
