@@ -18,10 +18,21 @@
           </nuxt-link>
         </li>
       </ul>
-    <div class="pfp" @click="navigateTo('/profile')"></div>
+    <div v-if="!props.hidePfp" class="pfp" @click="navigateTo('/profile')"></div>
     </nav>
   </block>
 </template>
+
+
+<script lang="ts" setup>
+const props = defineProps({
+    hidePfp: {
+      type: Boolean,
+      required: false
+    }
+  })
+
+</script>
 <style scoped lang="scss">
 .tabs{
   display:grid;
@@ -50,13 +61,15 @@
     content: "";
   }
   .pfp{
-    background-image:url('/media/images/pfp-2.png');
+    background-image:url('/media/images/pfp-4.png');
     height:$clamp-3;
     background-size:contain;
     background-repeat: no-repeat;
     width:$clamp-3;
+    border-radius:100%;
     cursor:pointer;
     border:$border;
+    float:right;
   }
 }
 </style>
