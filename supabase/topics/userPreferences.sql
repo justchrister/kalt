@@ -9,12 +9,14 @@ CREATE TABLE user_preferences (
     message_entity_id   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
     message_created     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
     message_sender      text        NOT NULL,
--- 
+    -- 
     user_id             uuid        NOT NULL,
     auto_invest         numeric     NOT NULL DEFAULT 1,
-    email_marketing     boolean     NOT NULL DEFAULT true, 
+    newsletters         boolean, 
+    terms_of_service    boolean, 
+    performance_updates boolean, 
     color_scheme        text,
-    language            text,
+    "language"          text,
     currency            text
 );
 

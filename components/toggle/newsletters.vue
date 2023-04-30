@@ -1,6 +1,6 @@
 <template>
   <div class="input-wrap">
-    <toggle text="Monthly newsletter" :on="isOn" @click="updateTos()"/>
+    <toggle text="Monthly newsletter" :on="isOn" @click="updateNewsletters()"/>
   </div>
 </template>
 <script setup>
@@ -12,19 +12,19 @@
     .select()
     .limit(1)
     .single()
-  if(data) isOn.value = data.email_marketing;
-  ok.log('success', 'Got user object: ', data.email_marketing)
-  const xxx = async () => {
+  if(data) isOn.value = data.newsletters;
+  ok.log('success', 'Got user object: ', data.newsletters)
+  const toggleValue = async () => {
     if(isOn.value) return false
     else return true
   }
-  const updateTos = async () => {
-    const x = await xxx()
-    isOn.value = x
+  const updateNewsletters = async () => {
+    const toggledValue = await toggleValue()
+    isOn.value = toggledValue
     message.post(supabase, 'user_preferences',{
-      "messageSender": "components/toggle/emails.vue",
+      "messageSender": "components/toggle/newsletters.vue",
       "userId": user.value.id,
-      "emailMarketing": x
+      "newsletters": isOn.value
     })
   }
 </script>

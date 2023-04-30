@@ -1,6 +1,6 @@
 <template>
   <div class="input-wrap">
-    <toggle text="I accept the terms of service" :on="isOn" @click="updateTermsOfService()"/>
+    <toggle text="Performance updates" :on="isOn" @click="updatePerformanceUpdates()"/>
   </div>
 </template>
 <script setup>
@@ -12,19 +12,19 @@
     .select()
     .limit(1)
     .single()
-  if(data) isOn.value = data.terms_of_service;
-  ok.log('success', 'Got user preference: ', data.terms_of_service)
+  if(data) isOn.value = data.performance_updates;
+  ok.log('success', 'Got user preference: ', data.performance_updates)
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
   }
-  const updateTermsOfService = async () => {
+  const updatePerformanceUpdates = async () => {
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
     message.post(supabase, 'user_preferences',{
-      "messageSender": "components/toggle/termsOfService.vue",
+      "messageSender": "components/toggle/performanceUpdates.vue",
       "userId": user.value.id,
-      "termsOfService": isOn.value
+      "performanceUpdates": isOn.value
     })
   }
 </script>

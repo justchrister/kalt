@@ -10,7 +10,9 @@ CREATE TABLE get_user (
     address_line_1      text,
     address_line_2      text,
     auto_invest         numeric,
-    email_marketing     boolean, 
+    newsletters         boolean, 
+    terms_of_service    boolean, 
+    performance_updates boolean, 
     color_scheme        text,
     language            text,
     currency            text

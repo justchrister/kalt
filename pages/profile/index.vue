@@ -20,8 +20,8 @@
     </block>
     <block margin="2" >
       <label> Legal stuff</label>
-      <toggle-performance />
-      <toggle-emails />
+      <toggle-performance-updates />
+      <toggle-newsletters />
       <toggle-terms-of-service />
     </block>
   </main>
