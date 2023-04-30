@@ -54,13 +54,13 @@
   }
 </script>
 <style scoped lang="scss">
-label{
-  display:block;
-}
+  label{
+    display:block;
+  }
   .wrapper{
     display:inline-block;
     border:$border;   
-  user-select: none;
+    user-select: none;
   }
   span{
     display:inline-block;
