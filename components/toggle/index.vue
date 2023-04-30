@@ -25,8 +25,7 @@ console.log('toggled: '+props.on)
 $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 .input-wrapper {
   display: grid; 
-  grid-template-columns: 1fr $clamp-3 ; 
-  max-width:$clamp-30;
+  grid-template-columns: 1fr $clamp-3;
   gap: 2% clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
 }
 .toggle-wrap,

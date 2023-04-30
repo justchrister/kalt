@@ -42,7 +42,6 @@ const languageDetails = await getLanguageDetails();
     margin:$clamp 0 0 0 ;
   }
   a{
-    max-width:$clamp-20;
     padding:$clamp $clamp-2;
     display:grid;
     grid-template-columns: $clamp-4 4fr $clamp;
