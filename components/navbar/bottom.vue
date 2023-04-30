@@ -72,7 +72,7 @@
     background-image:url('/media/insignia/insignia-light.svg');
     background-size:contain;
     background-repeat:no-repeat;
-    margin-top:clamp($unit-min*5, $unit*5, $unit-max*5);
+    margin-top:$clamp-5;
     background-position: center center;
     width:100%;
     color:$light;

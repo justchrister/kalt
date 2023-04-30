@@ -29,7 +29,7 @@
     margin:0 auto clamp($unit-min*10, $unit*10, $unit-max*10) auto;
 
     &.margin-half{
-      margin-bottom: clamp($unit-min*5, $unit*5, $unit-max*5);
+      margin-bottom: $clamp-5;
     }
     &.margin-3{
       margin-bottom: $clamp-3;

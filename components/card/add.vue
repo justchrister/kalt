@@ -154,7 +154,7 @@
     1fr
     $clamp-4 
     $clamp-4 
-    clamp($unit-min*5, $unit*5, $unit-max*5); 
+    $clamp-5; 
   gap: 0px; 
   border:$border;
   padding:$clamp 
