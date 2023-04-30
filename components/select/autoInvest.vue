@@ -1,6 +1,6 @@
 <template>
   <div class="blkkk">
-    <label>Amount to auto-invest: </label>
+    <label>Reinvestment ratio (%): </label>
     <div class="wrapper">
       <span>{{val}}%</span>
       <span @click="remove()">-</span>
