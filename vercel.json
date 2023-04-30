@@ -1,8 +1,14 @@
 {
   "trailingSlash": false,
   "installCommand": "npm install",
-  "crons": [{
-    "path": "/api/chargeSubscriptions",
-    "schedule": "20 04 * * *"
-  }]
+  "crons": [
+    {
+      "path": "/api/chargeSubscriptions",
+      "schedule": "20 04 * * *"
+    },
+    {
+      "path": "/api/getUserPortfolio/addMissingDates",
+      "schedule": "20 04 * * *"
+    }
+  ]
 }
