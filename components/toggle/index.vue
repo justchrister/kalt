@@ -64,4 +64,22 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
     background:$dark;
   }
 }
+.dark-mode{
+  .input-wrapper:hover{
+    .toggle-wrap{
+      border:1px solid $light;
+      background:black;
+    }
+    .toggle{
+      background:$light;
+    }
+  }
+  .toggle{
+    background:$light;
+    border-color:$dark;
+  }
+  .toggle-wrap{
+    border-color:$light;
+  }
+}
 </style>

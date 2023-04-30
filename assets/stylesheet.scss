@@ -98,38 +98,13 @@ input.loading{
   background-image:url("/loading.gif");
 }
 input.success{
-  background-image:url("omoji/super-happy.svg");
+  background-image:url("omoji/check-no-bg.svg");
   animation-duration: 2s;
-  animation-name: borderColorGreen;
-}
-@keyframes borderColorGreen {
-  0% {
-    border-color:$dark;
-  }
-  10% {
-    border-color:$green;
-  }
-  100% {
-    border-color:$dark;
-  }
 }
 input.error{
   background-image:url("omoji/suprised.svg");
   animation-duration: 2s;
   background-color:$red-20;
-  animation-name: borderColorRed;
-}
-
-@keyframes borderColorRed {
-  0% {
-    border-color:$dark;
-  }
-  10% {
-    border-color:$red;
-  }
-  100% {
-    border-color:$dark;
-  }
 }
 
 .input-wrap{
