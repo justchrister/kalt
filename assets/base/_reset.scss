@@ -42,6 +42,12 @@ body {
 	overflow-x: hidden;
   @include font-body;
 }
+body.dark-mode{
+	background:$dark;
+}
+body.crazy-mode{
+	background:$pink;
+}
 ol, ul {
 	list-style: none;
 }
