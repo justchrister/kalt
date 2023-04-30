@@ -5,32 +5,20 @@
         <profile-card />
     </block>
     <block margin="half">
-      <div class="section">
-        <p>Settings</p>
-        <div>
-          <select-currency />
-          <select-language />
-        </div>
-      </div>
+      <p>Settings</p>
+      <select-currency />
+      <select-language />
     </block>
     <block margin="half">
-      <div class="section">
-        <p>Preferences</p>
-        <div>
-          <select-color-scheme />
-          <select-auto-invest />
-        </div>
-      </div>
+      <p>Preferences</p>
+      <select-color-scheme />
+      <select-auto-invest />
     </block>
     <block margin="half">
-      <div class="section">
-        <p>Legal</p>
-        <div>
-          <!--<toggle-performance />-->
-          <toggle-emails />
-          <!--<toggle-terms-of-service />-->
-        </div>
-      </div>
+      <p>Legal</p>
+      <toggle-performance />
+      <toggle-emails />
+      <toggle-terms-of-service />
     </block>
   </main>
 </template>
@@ -41,11 +29,7 @@
     middleware: 'auth'
   })
   useHead({
-    title: 'Profile',
-    meta: [{
-      name: 'description',
-      content: 'Make money, make a difference.'
-    }]
+    title: 'Profile'
   })
 
   const supabase = useSupabaseClient()
@@ -56,21 +40,8 @@
     .select()
     .limit(1)
     .single()
-  if(error) ok.log("error", "Could not get user account", error)
+  if(error) ok.log('error', 'Could not get user account', error)
   if(data) ok.log('success', 'Got user object: ', data)
 </script>
 <style scoped lang="scss">
-  .grid-col-3,
-  .grid-col-2{
-    display: grid;
-    grid-template-rows: 1fr;
-    gap: 2% 2%;
-    grid-auto-flow: row;
-  }
-  .section{
-    display:grid;
-    grid-gap: $clamp;
-    grid-template-columns: $clamp-10 4fr;
-    margin-bottom: $clamp-2;
-  }
 </style>
