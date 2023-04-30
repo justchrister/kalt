@@ -11,10 +11,10 @@ CREATE TABLE exchange_orders (
     message_sender      text            NOT NULL,
 --
     user_id             uuid            NOT NULL,
-    quantity            numeric                  DEFAULT 1,
-    ticker              tickers                  DEFAULT 'gi.ddf',
-    order_type          order_types              DEFAULT 'buy',
-    order_status        order_statuses  NOT NULL DEFAULT 'open',
+    quantity            numeric,
+    ticker              tickers,
+    order_type          order_types,
+    order_status        order_statuses,
     fulfilled_by_id     uuid,
     split_into          uuid[],
     part_of             uuid,
@@ -37,3 +37,38 @@ is 'when the message was generated, usually set in the application. It can be cr
 comment on column exchange_orders.message_sender 
 is 'where the message originates, usually set in the application.';
 
+
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = 'exchange_orders'
+      AND policyname = 'SELF — Insert'
+  ) THEN
+    CREATE POLICY "SELF — Insert" ON public.exchange_orders
+      AS PERMISSIVE FOR INSERT
+      TO authenticated
+      WITH CHECK (auth.uid() = user_id);
+  END IF;
+END
+$$;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = 'exchange_orders'
+      AND policyname = 'SELF — Select'
+  ) THEN
+    CREATE POLICY "SELF — Select" ON public.exchange_orders
+      AS PERMISSIVE FOR SELECT
+      TO authenticated
+      USING (auth.uid() = user_id);
+  END IF;
+END
+$$;
