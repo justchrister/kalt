@@ -14,6 +14,8 @@
   </main>
 </template>
 <script setup>
+  const supabase = useSupabaseClient()
+  const user = await getUser(supabase)
   definePageMeta({
     pagename: 'Homepage'
   })
