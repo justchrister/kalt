@@ -1,33 +1,7 @@
 <template>
   <div class="card">
-    <div class="bold">
-      Kalt account details
-    </div>
-    <div class="right">
-      <nuxt-link to="profile">
-        change
-      </nuxt-link>
-    </div>
-    <div>
-      Balance
-    </div>
-    <div class="right">
-      {{accountBalance}}
-    </div>
-    <div>
-      Auto invest
-    </div>
-    <div class="right">
-      {{ok.toPercent(autoInvest)}}
-    </div>
-    <div>
-      Preferred currency
-    </div>
-    <div class="right">
-      {{currency}}
-    </div>
     <div class="bold transfer">
-      Transfer details
+      Deposit transfer details
     </div>
     <div>
     </div>
@@ -110,8 +84,5 @@
   }
   a{
     color:$blue;
-  }
-  .transfer{
-    margin-top: $clamp;
   }
 </style>
