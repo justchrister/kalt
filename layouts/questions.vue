@@ -14,7 +14,7 @@
 </script>
 <style lang="scss">
 .layout.questions .back-button{
-  padding: $clamp-2 0 0 $clamp-2;
+  padding: $clamp;
   font-family: $sans-serif;
   font-size:$clamp-2;
   font-weight:normal;
