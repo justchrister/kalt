@@ -1,6 +1,6 @@
 <template>
   <div class="input-wrap">
-    <toggle text="Subscription enabled" :on="isOn" @click="toggleSubscription()"/>
+    <toggle text="Subscription active" :on="isOn" @click="toggleSubscription()"/>
   </div>
 </template>
 <script setup>
