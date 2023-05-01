@@ -22,37 +22,21 @@ BEGIN
 END
 $$;
 
+
+
 DO $$
 BEGIN
   IF NOT EXISTS (
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'user_preferences'
+      AND tablename = 'user_subscriptions'
       AND policyname = 'SELF — Insert'
   ) THEN
-    CREATE POLICY "AUTH — Insert" ON public.user_preferences
+    CREATE POLICY "SELF — Insert" ON public.user_subscriptions
       AS PERMISSIVE FOR INSERT
       TO authenticated
-      WITH CHECK (TRUE);
-  END IF;
-END
-$$;
-
-
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = 'user_details'
-      AND policyname = 'SELF — Select'
-  ) THEN
-    CREATE POLICY "SELF — Select" ON public.user_details
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (auth.uid() = user_id);
+      WITH CHECK (auth.uid() = user_id);
   END IF;
 END
 $$;
@@ -63,10 +47,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'user_preferences'
+      AND tablename = 'user_subscriptions'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.user_preferences
+    CREATE POLICY "SELF — Select" ON public.user_subscriptions
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (auth.uid() = user_id);
