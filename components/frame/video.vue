@@ -17,10 +17,10 @@
 <style scoped lang="scss">
 video {
   width:100%;
-  height: 50vw;
-  max-height: 418px;
-  border:auto;
-  display: block;
-  border-radius:$clamp;
+  height: 32vw;
+  max-height: 268px;
+  flex-grow: 1;
+  flex-basis: 0;
+  display: inline-block;
 }
 </style>

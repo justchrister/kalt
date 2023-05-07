@@ -5,27 +5,26 @@
       <h1 class="sans-serif" style="font-size: 300%;">
         Invest in the <strong>future</strong>, today.
       </h1>
-      <nuxt-link to="/invest-flow">
+      <nuxt-link to="/request">
         <h1 class="sans-serif" style="font-size: 300%;">
           start →
         </h1>
       </nuxt-link>
     </block>
     <frame-wrap>
-      <frame-video src="/media/videos/short-plants-film.mp4" />
+      <frame-image src="/media/images/frontpage.webp" />
+      <frame-video src="/media/videos/film.mp4" />
     </frame-wrap>
-    <block margin="none">
-      <h1 class="sans-serif">
+    <block>
+      <h1>
         Make money, make a difference! <omoji emoji="😃" />
       </h1>
       <p>
         Join us in using cutting-edge technology to make your money work for you and the world. With our innovative approach, you can contribute to a sustainable future and generate income while making a positive impact.
-        <br>
-        <br>
       </p>
-    </block>
-    <block>
-      <cta />
+      <p>
+        By investing in what you believe in, you can be sure that your money is aligned with your values. 
+      </p>
     </block>
   </main>
 </template>
