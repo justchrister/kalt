@@ -12,7 +12,7 @@
       </nuxt-link>
     </block>
     <frame-wrap>
-      <frame-image src="/media/images/frontpage.webp" />
+      <frame-video src="/media/videos/short-plants-film.mp4" />
     </frame-wrap>
     <block margin="none">
       <h1 class="sans-serif">
