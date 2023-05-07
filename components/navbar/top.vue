@@ -78,6 +78,17 @@
   animation-delay: 500ms;
   animation-iteration-count: 99999;
 }
+.dark-mode {
+   .logo{
+    background:$light;
+  }
+   button{
+    color:$light;
+   }
+  
+  
+  
+}
 @keyframes example {
   0% {
     transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
