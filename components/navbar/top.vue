@@ -27,7 +27,7 @@
           <nuxt-link to="/profile" @click="toggleMenu()"> Account </nuxt-link>
         </li>
         <li v-if="!signedIn">
-          <nuxt-link to="/auth/sign-up" @click="toggleMenu()"> Sign up </nuxt-link>
+          <nuxt-link to="/request" @click="toggleMenu()"> Request invite </nuxt-link>
         </li>
         <li v-if="!signedIn">
           <nuxt-link to="/auth" @click="toggleMenu()"> Sign in </nuxt-link>

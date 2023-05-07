@@ -33,7 +33,7 @@
     </block>
     <block margin="half">
       <link-group>
-        <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
+        <nuxt-link to="/request">request invite</nuxt-link>
         <nuxt-link to="/auth/password">password reset</nuxt-link>
       </link-group>
     </block>

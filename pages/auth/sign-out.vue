@@ -4,7 +4,7 @@
       <h1 class="sans-serif">See you soon! <omoji emoji="😜" /></h1>
       <p>Thanks for hanging out, come back anytime.</p>
       <pill to="/auth" text="sign in" />
-      <pill to="/auth/sign-up" text="sign up" />
+      <pill to="/request" text="request invite" />
     </block>
   </main>
 </template>
