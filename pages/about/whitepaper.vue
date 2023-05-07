@@ -94,6 +94,18 @@
         :number="6"
       />
     </block>
+    <block>
+      <h4>The goal</h4>
+      <p>
+        Allow anyone to invest in things that align with their values, and make it easy to understand the impact of their investments.
+      </p>
+    </block>
+    <block>
+      <h4>The future</h4>
+      <p>
+        We are building a platform that allows anyone to invest in things that align with their values, and make it easy to understand the impact of their investments.
+      </p>
+    </block>
   </main>
 </template>
 <script setup>
