@@ -80,10 +80,11 @@
           type: 'error',
           message: error.message
         }
+        ok.log('error', 'could not sign in '+email.value+': ', error)
       }
     }
     if(data){
-      ok.log('success', 'signed in ' + email.value);
+      ok.log('success', 'signed in ' + email.value + ' successfully: ' + data);
     }
   }
   watchEffect(async () => {
