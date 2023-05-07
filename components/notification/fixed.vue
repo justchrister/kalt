@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap">
-    <div class="notify" :id="props.type">
+  <div class="wrap" :id="props.type">
+    <div class="notify">
       {{props.message}}
     </div>
   </div>
@@ -21,31 +21,30 @@
   .wrap{
     position:fixed;
     width:100vw;
-    bottom:$clamp-2;
+    bottom:0;
+    padding:$clamp 0;
+    border-top:$border;
     z-index:2;
     left: 0;
     right: 0;
   }
   .notify{
     box-sizing: border-box;
-    border:$border;
-    background: $blue;
-    border-color:$blue;
     width:$sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:$clamp $clamp-2;
+    padding:$clamp 0;
   }
   #warn{
     background: $yellow-20;
-    border-color:$yellow;
+    border-top-color:$yellow;
   }
   #success{
     background:$green-20;
-    border-color:$green;
+    border-top-color: $green;
   }
   #error{
     background:$red-20;
-    border-color:$red;
+    border-top-color: $red;
   }
 </style>
