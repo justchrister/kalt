@@ -3,52 +3,52 @@
     <label>Select profile picture: </label>
     <ul>
       <li
-        :class="{ active: colorMode.preference === 'alt1' }"
+        :class="{ active: profilePicture.preference === 'alt1' }"
         class="alt1"
         @click="setProfilePicture('alt1')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt2' }"
+        :class="{ active: profilePicture.preference === 'alt2' }"
         class="alt2"
         @click="setProfilePicture('alt2')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt3' }"
+        :class="{ active: profilePicture.preference === 'alt3' }"
         class="alt3"
         @click="setProfilePicture('alt3')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt4' }"
+        :class="{ active: profilePicture.preference === 'alt4' }"
         class="alt4"
         @click="setProfilePicture('alt4')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt5' }"
+        :class="{ active: profilePicture.preference === 'alt5' }"
         class="alt5"
         @click="setProfilePicture('alt5')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt6' }"
+        :class="{ active: profilePicture.preference === 'alt6' }"
         class="alt6"
         @click="setProfilePicture('alt6')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt7' }"
+        :class="{ active: profilePicture.preference === 'alt7' }"
         class="alt7"
         @click="setProfilePicture('alt7')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt8' }"
+        :class="{ active: profilePicture.preference === 'alt8' }"
         class="alt8"
         @click="setProfilePicture('alt8')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt9' }"
+        :class="{ active: profilePicture.preference === 'alt9' }"
         class="alt9"
         @click="setProfilePicture('alt9')"
       ></li>
       <li
-        :class="{ active: colorMode.preference === 'alt10' }"
+        :class="{ active: profilePicture.preference === 'alt10' }"
         class="alt10"
         @click="setProfilePicture('alt10')"
       ></li>
@@ -58,11 +58,11 @@
 <script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const colorMode = useColorMode()
+  const profilePicture = useColorMode()
 
   const setProfilePicture = async (colorScheme) => {
-    console.log(colorMode)
-    colorMode.preference = colorScheme;
+    console.log(profilePicture)
+    profilePicture.preference = colorScheme;
     const { data, error } = await supabase
       .from('user_preferences')
       .insert({
@@ -80,9 +80,8 @@
     .single()
 
   if (data) {
-    ok.log('', 'user color scheme: ', data.color_scheme)
-    colorMode.preference = data.color_scheme;
-    ok.log('', 'client color mode: ', colorMode.value)
+    profilePicture.preference = data.color_scheme;
+    ok.log('', 'client color mode: ', profilePicture.value)
   }
   if(error) ok.log('error', 'could not get color scheme', error)
 
