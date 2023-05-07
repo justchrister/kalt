@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt-link to="/cards" v-if="data.card_number">
-      <card :number="cardNumberInt" :default="data.default" />
+      <card :number="cardNumberInt" :default="true" />
     </nuxt-link>
     <span v-else>
       <card-add/>
@@ -15,7 +15,6 @@
     .select()
     .limit(1)
     .single()
-    .eq('default', true)
   if(error) ok.log('error', 'Failed to get default card: ', error)
-  const cardNumberInt = await ok.toInt(data.card_number)  
+  const cardNumberInt = await ok.toInt(data.card_number)
 </script>
