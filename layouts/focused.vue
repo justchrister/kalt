@@ -1,7 +1,7 @@
 <template>
   <div class="layout focused">
     <div class="back-button" @click="goBack()">
-      <omoji emoji="←" /> back
+      ← back
     </div>
     <slot />
   </div>

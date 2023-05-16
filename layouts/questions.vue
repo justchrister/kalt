@@ -1,7 +1,7 @@
 <template>
   <div class="layout questions">
     <div class="back-button" @click="goBack()">
-      <omoji emoji="←" /> back
+      ← back
     </div>
     <slot />
   </div>
