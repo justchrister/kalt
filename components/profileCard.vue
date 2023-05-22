@@ -1,6 +1,6 @@
 <template>
   <div class="profile-card" @click="navigateTo('/profile/edit')">
-    <div class="image">
+    <div class="image" :id="data.profile_picture">
     </div>
     <div class="details">
       <div class="name">
@@ -54,6 +54,36 @@
     background-size:contain;
     background-repeat: no-repeat;
     width:$clamp-4;
+    &#alt1{
+      background-image:url('/media/images/pfp-1.png');
+    }
+    &#alt2{
+      background-image:url('/media/images/pfp-2.png');
+    }
+    &#alt3{
+      background-image:url('/media/images/pfp-3.png');
+    }
+    &#alt4{
+      background-image:url('/media/images/pfp-4.png');
+    }
+    &#alt5{
+      background-image:url('/media/images/pfp-5.png');
+    }
+    &#alt6{
+      background-image:url('/media/images/pfp-6.png');
+    }
+    &#alt7{
+      background-image:url('/media/images/pfp-7.png');
+    }
+    &#alt8{
+      background-image:url('/media/images/pfp-8.png');
+    }
+    &#alt9{
+      background-image:url('/media/images/pfp-9.png');
+    }
+    &#alt10{
+      background-image:url('/media/images/pfp-10.png');
+    }
   }
   .details{
     display:grid;
