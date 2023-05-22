@@ -14,6 +14,7 @@ CREATE TABLE get_user (
     terms_of_service    boolean, 
     performance_updates boolean, 
     color_scheme        text,
+    profile_picture     text                    DEFAULT 'alt1',
     language            text,
     currency            text
 );

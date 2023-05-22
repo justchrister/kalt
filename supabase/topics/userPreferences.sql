@@ -16,6 +16,7 @@ CREATE TABLE user_preferences (
     terms_of_service    boolean, 
     performance_updates boolean, 
     color_scheme        text,
+    profile_picture     text,
     "language"          text,
     currency            text
 );
