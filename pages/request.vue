@@ -39,8 +39,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Request invite',
-    middleware: 'auth'
+    pagename: 'Request invite'
   })
   useHead({
     title: 'Request invite',
