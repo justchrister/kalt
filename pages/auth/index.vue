@@ -52,6 +52,8 @@
   const user = useSupabaseUser()
   const supabase = useSupabaseClient()
   const client = useSupabaseAuthClient()
+  const userCookie = useCookie('user');
+  const colorMode = useColorMode()
 
   const email = ref('')
   const password = ref('')
@@ -95,8 +97,20 @@
           'message_sender': 'pages/auth/index.vue',
           user_id: user.value.id
         })
-      await navigateTo("/portfolio");
-      loading.value = false
+      const { data:userObject, error:userObjectError } = await supabase
+        .from('get_user')
+        .select()
+        .limit(1)
+        .single()
+        if(data) ok.log('success', 'got user: ', userObject)
+        if(error) ok.log('error', 'could not get user: ', userObjectError)
+      userCookie.value = {userObject};
+      console.log(userCookie.value.userObject)
+      if(userCookie.value){
+        colorMode.preference = userCookie.value.color_scheme;
+        await navigateTo("/portfolio");
+        loading.value = false
+      }
     }
   })
 </script>
