@@ -1,13 +1,14 @@
 import { ok } from '~/composables/ok';
 import { messaging } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server';
+import Stripe from 'stripe';
 
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'getPaymentCards';
-  const serviceKebab = ok.camelToKebab(service);
   const topic = 'paymentCards';
   const body = await readBody(event);
+  const stripe = new Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); // your stripe key here
   
   if (body.record.message_read) return 'message already read';
 
@@ -28,7 +29,16 @@ export default defineEventHandler(async (event) => {
     'default': message.default,
     'cvc': message.cvc
   });
-  // do api call to Stripe???
-  // Store some correlation??
-  
+  // do api call to Stripe
+  const paymentMethod = await stripe.paymentMethods.create({
+    type: 'card',
+    card: {
+      number: json.card_number,
+      exp_month: json.expiry_month,
+      exp_year: json.expiry_year,
+      cvc: json.cvc,
+    },
+  });
+
+
 });
