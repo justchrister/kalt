@@ -2,7 +2,7 @@
 
 We build small and big fossil-free energy sites all over the world. Close to cities, industrial areas, and even around small villages. 
 
-This means more people have equal access to clean energy. Not just cities in reach countries. 
+This means more people have equal access to clean energy. Not just cities in rich countries. 
 
 Then we add all those sites to a big pool of sites (just like an index fund does with stocks), so when you invest, you buy shares of the index instead of a single solar panel. That means your risk is substanitally lower, since an earthquake or bad weather wont effect your investment.
 
