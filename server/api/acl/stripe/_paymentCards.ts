@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const service = 'getPaymentCards';
   const topic = 'paymentCards';
   const body = await readBody(event);
-  const stripe = new Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); // your stripe key here
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
   
   if (body.record.message_read) return 'message already read';
 
@@ -30,15 +30,20 @@ export default defineEventHandler(async (event) => {
     'cvc': message.cvc
   });
   // do api call to Stripe
-  const paymentMethod = await stripe.paymentMethods.create({
-    type: 'card',
-    card: {
-      number: json.card_number,
-      exp_month: json.expiry_month,
-      exp_year: json.expiry_year,
-      cvc: json.cvc,
-    },
-  });
+  const addCard = async () => {
+    
+    const paymentMethod = await stripe.paymentMethods.create({
+      type: 'card',
+      card: {
+        number: json.card_number,
+        exp_month: json.expiry_month,
+        exp_year: json.expiry_year,
+        cvc: json.cvc
+      },
+    });
+    return paymentMethod;
+  }
 
+  
 
 });
