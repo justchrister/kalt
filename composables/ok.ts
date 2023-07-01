@@ -110,7 +110,7 @@ export const ok = {
   combineJson(jsonArray){
     
     let result = {};
-
+    if (!jsonArray) return "no input"
     for (let i = 0; i < jsonArray.length; i++) {
       let jsonObj = jsonArray[i];
 
