@@ -25,10 +25,19 @@ export default defineEventHandler(async (event) => {
     'expiry_year': message.expiry_year,
     'cvc': message.cvc
   });
-  ok.log('','card details', json);
-  // do api call to Stripe
-  const addCard = async () => {
+  
     
+  const checkIfUserExists = async () => {
+    const { data, error } = await supabase
+      .from('acl_stripe_user_ids')
+      .select()
+      .eq('user_id', message.user_id)
+      .limit(1)
+      .single()
+    if(data) return data
+    else return false
+  }
+  const addCard = async () => {
     const paymentMethod = await stripe.paymentMethods.create({
       type: 'card',
       card: {
@@ -38,7 +47,8 @@ export default defineEventHandler(async (event) => {
         cvc: json.cvc
       },
       metadata: {
-        card_id: json.card_id  // your unique card id here
+        card_id: json.card_id,
+        user_id: json.user_id
       }
     });
     return paymentMethod;
@@ -53,7 +63,10 @@ export default defineEventHandler(async (event) => {
     ok.log('success', 'attached card', card);
     return card
   }
-  const createdCard = await addCard();
-  const attachedCard = await attachCard(createdCustomer.id, createdCard.id);
-  return attachedCard;
+  const userExists = await checkIfUserExists();
+  if(userExists){
+    const createdCard = await addCard();
+    const attachedCard = await attachCard(userExists.stripe_user_id, createdCard.id);
+    return attachedCard;
+  }
 });
