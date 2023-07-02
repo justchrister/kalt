@@ -14,48 +14,32 @@ export default defineEventHandler(async (event) => {
     topic,
     body.record.message_entity_id
   );
-  await messaging.read(supabase, topic, service, body.record.message_id);
-  const json = await messaging.cleanMessage({
-    'user_id': message.user_id,
-    'last_four_digits': message.last_four_digits,
-    'card_number': message.card_number,
-    'card_id': message.card_id,
-    'expiry_month': message.expiry_month,
-    'expiry_year': message.expiry_year,
-    'cvc': message.cvc
-  });
-  ok.log('','card details', json);
-  // do api call to Stripe
-  const addCard = async () => {
-    
-    const paymentMethod = await stripe.paymentMethods.create({
-      type: 'card',
-      card: {
-        number: json.card_number,
-        exp_month: json.expiry_month,
-        exp_year: json.expiry_year,
-        cvc: json.cvc
-      },
-      metadata: {
-        card_id: json.card_id  // your unique card id here
-      }
+  await messaging.read(supabase, topic, service, body.record.message_id);  
+  ok.log('','user id: '+message.user_id);
+
+  const createUser = async () => {
+    const user = await stripe.customers.create({
+      email: message.email,
+      name: message.first_name+' '+message.last_name
     });
-    return paymentMethod;
+    if (user) return user;
+    ok.log('succes', 'created user: '+user)
+  };
+  const assignStripeId = async (userId, stripeUserId) => {
+    const { data, error } = await supabase
+      .from('acl_stripe_user_ids')
+      .insert({
+        "user_id": userId,
+        "stripe_user_id": stripeUserId
+      })
+      .select()
+    ok.log('success', 'assigned stripe id: '+data)
+    return data
   }
-  const attachCard = async (customerId, cardId) => {
-    const card = await stripe.paymentMethods.attach(
-      cardId,
-      {
-        customer: customerId
-      }
-    );
-    ok.log('success', 'attached card', card);
-    return card
-  }  
-  const createdCard = await createUser();
+  // do api call to Stripe
+  const createdUser = await createUser();
 
   // post new message containing user id in stripe
   // add to a table that is user ids (acl_stripe_user_ids)
-  
-  return attachedCard;
+  if (createdUser) await assignStripeId(message.user_id, createdUser.id);
 });
