@@ -4,7 +4,7 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 import Stripe from 'stripe';
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const service = 'getPaymentCards';
+  const service = 'aclStripe';
   const topic = 'paymentCards';
   const body = await readBody(event);
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
     );
     ok.log('success', 'attached card', card);
     return card
-  }  
+  }
   const createdCard = await addCard();
   const attachedCard = await attachCard(createdCustomer.id, createdCard.id);
   return attachedCard;
