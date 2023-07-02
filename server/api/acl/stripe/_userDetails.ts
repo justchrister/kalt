@@ -25,11 +25,11 @@ export default defineEventHandler(async (event) => {
       .eq('user_id', message.user_id)
       .limit(1)
       .single()
-    if(data) return true
+    if(data) return data
     else return false
   }
   const userExists = await checkIfUserExists();
-  if(userExists) return "user already exists"
+
   ok.log('','user id: '+message.user_id);
 
   const createUser = async () => {
@@ -43,6 +43,7 @@ export default defineEventHandler(async (event) => {
     ok.log('succes', 'created user:', user)
     if (user) return user;
   };
+
   const assignStripeId = async (userId, stripeUserId) => {
     const { data, error } = await supabase
       .from('acl_stripe_user_ids')
@@ -54,7 +55,20 @@ export default defineEventHandler(async (event) => {
     ok.log('success', 'assigned stripe id: '+data)
     return data
   }
-  const createdUser = await createUser();
-  if (createdUser) await assignStripeId(message.user_id, createdUser.id);
-  return "successfully assigned internal user_id with stripe user_id"
+  const updateStripeUserDetails = async (stripeId) => {
+    const updatedUser = await stripe.customers.update(
+      stripeId, {
+        name: message.first_name+' '+message.last_name,
+      }
+    );
+  }
+  if(userExists) {
+    const updatedUser = await updateStripeUserDetails(userExists.stripe_user_id);
+    return "user already exists"
+  }
+  if(!userExists) {
+    const createdUser = await createUser();
+    if (createdUser) await assignStripeId(message.user_id, createdUser.id);
+    return "successfully assigned internal user_id with stripe user_id"
+  }
 });
