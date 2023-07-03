@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
     if(error) ok.log('error', 'could not get all users: ', error)
     return data
   };
-  if(body.record.user_id==='all'){
+  if(!body){
     const users = await getUsers();
     console.log(users)
     for (let i = 0; i < users.length; i++) {
