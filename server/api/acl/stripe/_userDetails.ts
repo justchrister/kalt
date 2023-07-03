@@ -17,7 +17,9 @@ export default defineEventHandler(async (event) => {
   );
   await messaging.read(supabase, topic, service, body.record.message_id);  
 
-    
+  if(!message.first_name) return "no first name"
+  if(!message.last_name) return "no last name"
+
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
       .from('acl_stripe_user_ids')
