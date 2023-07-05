@@ -1,14 +1,13 @@
 <template>
   <div class="cta">
     <div class="button-group" v-if="signedIn">
-      <nuxt-link to="/subscription">
-        <button id="subscription" tabindex="-1">manage subscription</button>
+      <nuxt-link to="/portfolio/sell">
+        <button id="sell" tabindex="-1">divest</button>
       </nuxt-link>
       <nuxt-link to="/portfolio/buy">
-        <button id="one-time" tabindex="-1">one-time investment</button>
+        <button id="buy" tabindex="-1">invest</button>
       </nuxt-link>
     </div>
-    <nuxt-link v-if="props.showDivest" to="/portfolio/sell">or divest</nuxt-link>
     <div class="button-group" v-if="!signedIn">
       <nuxt-link to="/auth/sign-up">
         <button id="sign-up" tabindex="-1">create account</button>
@@ -52,10 +51,6 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: $clamp;
 }
-
-#subscription{
-  animation-delay: 1s;
-}
 a{
   text-decoration: none;
 }
@@ -67,4 +62,5 @@ a{
   margin-right:$clamp-1-5;
   text-decoration:underline;
 }
+
 </style>
