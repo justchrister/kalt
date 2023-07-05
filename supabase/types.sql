@@ -17,6 +17,7 @@ create type public.transaction_sub_types as enum (
     'dividend',
     'subscription',
     'auto_invested',
+    'new_shares',
     'auto_withdraw'
 );
 create type public.card_statuses as enum (
