@@ -83,7 +83,9 @@ $border-radius: 0px;
 //clamps
 $big-clamp: clamp($unit-min*3.5, $unit*3.5, $unit-max*3.5);
 
+$clamp-0-2: clamp($unit-min*0.2 , $unit*0.2, $unit-max*0.2);
 $clamp-0-5: clamp($unit-min*0.5 , $unit*0.5, $unit-max*0.5);
+$clamp-0-7: clamp($unit-min*0.7 , $unit*0.7, $unit-max*0.7);
 $clamp: clamp($unit-min*1 , $unit*1, $unit-max*1);
 $clamp-1: $clamp;
 $clamp-1-5: clamp($unit-min*1.5 , $unit*1.5, $unit-max*1.5);
