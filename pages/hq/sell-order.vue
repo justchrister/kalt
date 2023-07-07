@@ -36,6 +36,7 @@
       content: 'Make money, make a difference.'
     }]
   })
+  const supabase = useSupabaseClient()
   const val = ref(0)
   const add = async () => { 
     val.value+=1
@@ -50,12 +51,13 @@
   const create = async () => {
     if(!val.value)return
     const { data, error } = await supabase
-      .from('exchange_orders')
+      .from('account_transactions')
       .insert({
           message_entity_id: ok.uuid(),
           message_sender: 'pages/hq/sell-order.vue',
           user_id: "DDF00000-0000-0000-0000-000000000000",
-          transaction_sub_type: 'card',
+          transaction_type: 'deposit',
+          transaction_sub_type: 'new_shares',
           transaction_status: 'payment_awaiting',
           auto_invest: 1
       })
