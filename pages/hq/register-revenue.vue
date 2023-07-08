@@ -27,7 +27,7 @@
 <script lang="ts" setup>
   definePageMeta({
     pagename: 'sell order',
-    middleware: 'auth'
+    middleware: 'auth-hq'
   })
   useHead({
     title: 'sell order',
@@ -57,7 +57,7 @@
       .from('account_transactions')
       .insert({
           message_entity_id: ok.uuid(),
-          message_sender: 'pages/hq/sell-order.vue',
+          message_sender: 'pages/hq/register-revenue.vue',
           user_id: user.value.id,
           amount: val.value*1.2,
           currency: 'EUR',
