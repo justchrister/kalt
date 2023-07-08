@@ -8,13 +8,13 @@
         <span @click="add()">+</span>
       </div>
       <div>
-        cost: {{val*10}} EUR
+        cost: {{val*1}} EUR
       </div>
       <div>
-        fee: {{val*10*0.2}} EUR
+        fee: {{val*1*0.2}} EUR
       </div>
       <div>
-        total: {{val*10*1.2}} EUR
+        total: {{val*1*1.2}} EUR
       </div>
       <div>
         <button @click="create()">
@@ -36,8 +36,10 @@
       content: 'Make money, make a difference.'
     }]
   })
-  const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient();
+  const user = useSupabaseUser();
   const val = ref(0)
+  const loading = ref(false)
   const add = async () => { 
     val.value+=1
   }
@@ -50,15 +52,18 @@
   }
   const create = async () => {
     if(!val.value)return
+    console.log(user.value.id)
     const { data, error } = await supabase
       .from('account_transactions')
       .insert({
           message_entity_id: ok.uuid(),
           message_sender: 'pages/hq/sell-order.vue',
-          user_id: "DDF00000-0000-0000-0000-000000000000",
+          user_id: user.value.id,
+          amount: val.value*1.2,
+          currency: 'EUR',
           transaction_type: 'deposit',
           transaction_sub_type: 'new_shares',
-          transaction_status: 'payment_awaiting',
+          transaction_status: 'payment_accepted',
           auto_invest: 1
       })
     if(error){
