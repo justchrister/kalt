@@ -1,8 +1,12 @@
 <template>
   <main>
       <block>
-        <nuxt-link to="hq/sell-order">
-          Create sell order
+        <h1>Register</h1>
+        <nuxt-link to="/hq/register-shares">
+          Shares
+        </nuxt-link>
+        <nuxt-link to="/hq/register-revenue">
+          Revenue
         </nuxt-link>
       </block>
   </main>
@@ -10,7 +14,7 @@
 <script lang="ts" setup>
   definePageMeta({
     pagename: 'HQ',
-    middleware: 'auth'
+    middleware: 'auth-hq'
   })
   useHead({
     title: 'HQ',
