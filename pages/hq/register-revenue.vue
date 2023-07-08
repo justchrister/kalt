@@ -1,12 +1,8 @@
 <template>
   <main>
     <block>
-      <h1> Create sell order </h1>
-      <div class="wrapper">
-        <span>{{val}}</span>
-        <span @click="remove()">-</span>
-        <span @click="add()">+</span>
-      </div>
+      <h1> Register revenue </h1>
+      <input type="number" v-model="val" />
       <div>
         cost: {{val*1}} EUR
       </div>
@@ -26,11 +22,11 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'sell order',
+    pagename: 'Register revenue',
     middleware: 'auth-hq'
   })
   useHead({
-    title: 'sell order',
+    title: 'Register revenue',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
