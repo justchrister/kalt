@@ -1,7 +1,7 @@
 <template>
   <main>
     <block>
-      <h1> Create sell order </h1>
+      <h1> Register shares </h1>
       <div class="wrapper">
         <span>{{val}}</span>
         <span @click="remove()">-</span>
@@ -26,11 +26,11 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'sell order',
+    pagename: 'Register shares',
     middleware: 'auth-hq'
   })
   useHead({
-    title: 'sell order',
+    title: 'Register shares',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
