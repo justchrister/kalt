@@ -7,10 +7,10 @@
         cost: {{val*1}} EUR
       </div>
       <div>
-        fee: {{val*1*0.2}} EUR
+        fee: {{val*1*0.04}} EUR
       </div>
       <div>
-        total: {{val*1*1.2}} EUR
+        total: {{val*1*1.04}} EUR
       </div>
       <div>
         <button @click="create()">
@@ -36,31 +36,18 @@
   const user = useSupabaseUser();
   const val = ref(0)
   const loading = ref(false)
-  const add = async () => { 
-    val.value+=1
-  }
-  const remove = async () => {
-    if(val.value<=0){
-      val.value=0
-    } else {
-      val.value-=1
-    }
-  }
   const create = async () => {
     if(!val.value)return
-    console.log(user.value.id)
+
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('revenue_transactions')
       .insert({
+          message_id: ok.uuid(),
           message_entity_id: ok.uuid(),
           message_sender: 'pages/hq/register-revenue.vue',
-          user_id: user.value.id,
-          amount: val.value*1.2,
-          currency: 'EUR',
-          transaction_type: 'deposit',
-          transaction_sub_type: 'new_shares',
-          transaction_status: 'payment_accepted',
-          auto_invest: 1
+          ticker: 'gi.ddf',
+          amount: val.value*1,
+          currency: 'EUR'
       })
     if(error){
       ok.log('error', 'could not create transaction', error)
