@@ -47,6 +47,23 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
+      AND tablename = 'revenue_transactions'
+      AND policyname = 'HQ — Insert'
+  ) THEN
+    CREATE POLICY "HQ — Insert" ON public.revenue_transactions
+      AS PERMISSIVE FOR INSERT
+      TO authenticated
+      WITH CHECK (auth.uid() = 'f1359334-a0f2-4b43-a6cc-06a86b8e4d49');
+  END IF;
+END
+$$;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
       AND tablename = 'user_subscriptions'
       AND policyname = 'SELF — Select'
   ) THEN
