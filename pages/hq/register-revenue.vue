@@ -10,7 +10,7 @@
         fee: {{val*1*0.04}} EUR
       </div>
       <div>
-        total: {{val*1*1.04}} EUR
+        total: {{val-(val*0.04)}} EUR
       </div>
       <div>
         <button @click="create()">
@@ -46,7 +46,7 @@
           message_entity_id: ok.uuid(),
           message_sender: 'pages/hq/register-revenue.vue',
           ticker: 'gi.ddf',
-          amount: val.value*1,
+          amount: val.value-(val.value*0.04),
           currency: 'EUR'
       })
     if(error){
