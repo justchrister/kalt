@@ -19,6 +19,7 @@ export default defineEventHandler( async (event) => {
       .select()
       .eq('user_id', message.user_id)
       .eq('order_status', 'fulfilled')
+    ok.log('success', 'did it!:', data)
     return data
   }
   const sumShares = async (portfolio) => {
@@ -38,11 +39,13 @@ export default defineEventHandler( async (event) => {
         quantity: shares,
       })
       .select()
+    ok.log('success', 'did it!:', data)
     return data
   }
   const portfolio = await getPortfolio();
   const totalShares = await sumShares(portfolio);
   const updatedShares = await updateShares(totalShares);
   
+  ok.log('success', 'did it!:', updatedShares)
   return updatedShares;
 });
