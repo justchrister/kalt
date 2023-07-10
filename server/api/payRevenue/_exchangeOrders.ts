@@ -21,8 +21,14 @@ export default defineEventHandler( async (event) => {
       .select()
       .eq('user_id', message.user_id)
       .eq('order_status', 'fulfilled')
-    ok.log('success', 'did it!:', data)
-    return data
+    if(data){
+      ok.log('success', 'got fulfilled orders: ', data)
+      return data
+    }
+    if(error){
+      ok.log('error', 'error getting fulfilled orders: ', error)
+      return error
+    }
   }
   const sumShares = async (portfolio) => {
     let totalShares = 0;
@@ -30,6 +36,7 @@ export default defineEventHandler( async (event) => {
       const order = portfolio[i];
       totalShares += order.quantity;
     };
+    ok.log('success', 'summed shares: ', totalShares)
     return totalShares
   }
 
@@ -41,13 +48,18 @@ export default defineEventHandler( async (event) => {
         quantity: shares,
       })
       .select()
-    ok.log('success', 'did it!:', data)
-    return data
+    if(data){
+      ok.log('success', 'updated shares for user: ', data)
+      return data
+    }
+    if(error){
+      ok.log('error', 'could not update shares for user: '+message.user_id)
+      return error
+    }
   }
   const portfolio = await getPortfolio();
   const totalShares = await sumShares(portfolio);
   const updatedShares = await updateShares(totalShares);
   
-  ok.log('success', 'did it!:', updatedShares)
   return updatedShares;
 });
