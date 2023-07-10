@@ -1,17 +1,14 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_704_14)">
-<rect x="28" y="26" width="2" height="14" fill="#202124"/>
-<rect x="28" y="8" width="2" height="14" fill="#202124"/>
-<rect x="40" y="23" width="2" height="8" transform="rotate(90 40 23)" fill="#202124"/>
-<rect x="26" y="23" width="2" height="8" transform="rotate(90 26 23)" fill="#202124"/>
-<rect x="7" y="14" width="2" height="10" fill="#202124"/>
-<rect x="7" width="2" height="10" fill="#202124"/>
-<rect x="16" y="11" width="2" height="6" transform="rotate(90 16 11)" fill="#202124"/>
-<rect x="6" y="11" width="2" height="6" transform="rotate(90 6 11)" fill="#202124"/>
-</g>
-<defs>
-<clipPath id="clip0_704_14">
-<rect width="40" height="40" fill="white"/>
-</clipPath>
-</defs>
+<rect x="29" y="1" width="1" height="10" fill="#202124"/>
+<rect x="29" y="14" width="1" height="10" fill="#202124"/>
+<rect x="37" y="12" width="1" height="6" transform="rotate(90 37 12)" fill="#202124"/>
+<rect x="28" y="12" width="1" height="6" transform="rotate(90 28 12)" fill="#202124"/>
+<rect x="8" y="10" width="1" height="7" fill="#202124"/>
+<rect x="8" width="1" height="7" fill="#202124"/>
+<rect x="14" y="8" width="1" height="4" transform="rotate(90 14 8)" fill="#202124"/>
+<rect x="7" y="8" width="1" height="4" transform="rotate(90 7 8)" fill="#202124"/>
+<rect x="16" y="33" width="1" height="7" fill="#202124"/>
+<rect x="16" y="23" width="1" height="7" fill="#202124"/>
+<rect x="22" y="31" width="1" height="4" transform="rotate(90 22 31)" fill="#202124"/>
+<rect x="15" y="31" width="1" height="4" transform="rotate(90 15 31)" fill="#202124"/>
 </svg>
