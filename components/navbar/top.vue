@@ -51,8 +51,8 @@
     if(!user.value) signedIn.value = false
     watch(user, (newVal, oldVal) => {
       ok.log('', 'watched values: ',{
-        'newVal': newVal.id,
-        'oldVal': oldVal.id
+        'newVal': newVal,
+        'oldVal': oldVal
       })
       if(!oldValue.id && newValue.id) signedIn.value = true
     })
