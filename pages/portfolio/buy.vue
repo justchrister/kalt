@@ -2,7 +2,7 @@
 <template>
   <main>
     <block>
-      <h3>Let's invest!  <omoji emoji="☀️" /></h3>
+      <h1>Let's invest!  <omoji emoji="☀️" /></h1>
       <form @submit.prevent="completeTransaction">
         <input-amount-buy :uuid="uuid"/>
         <card-default />
@@ -42,6 +42,7 @@
       loading.value = false
     } else {
       ok.log('success', 'transaction created')
+      navigateTo('/portfolio/success')
       loading.value = false;
     };
   }
