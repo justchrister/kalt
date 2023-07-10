@@ -8,11 +8,15 @@
     },
     {
       "path": "/api/getUserPortfolio/addMissingDates",
-      "schedule": "20 04 * * *"
+      "schedule": "10 * * * *"
     },
     {
       "path": "/api/getUserPortfolio/addQuantityToday",
-      "schedule": "20 04 * * *"
+      "schedule": "20 * * * *"
+    },
+    {
+      "path": "/api/getUserPortfolio/calculateValue",
+      "schedule": "30 * * * *"
     }
   ]
 }
