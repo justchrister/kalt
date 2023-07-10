@@ -52,13 +52,12 @@
   }
   const create = async () => {
     if(!val.value)return
-    console.log(user.value.id)
     const { data, error } = await supabase
       .from('account_transactions')
       .insert({
           message_entity_id: ok.uuid(),
           message_sender: 'pages/hq/register-shares.vue',
-          user_id: user.value.id,
+          user_id: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
           amount: val.value*1.2,
           currency: 'EUR',
           transaction_type: 'deposit',
