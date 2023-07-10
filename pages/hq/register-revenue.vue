@@ -2,7 +2,11 @@
   <main>
     <block>
       <h1> Register revenue </h1>
-      <input type="number" v-model="val" />
+      <div class="wrapper">
+        <span>{{val}}</span>
+        <span @click="remove()">-</span>
+        <span @click="add()">+</span>
+      </div>
       <div>
         cost: {{val*1}} EUR
       </div>
@@ -56,6 +60,16 @@
       ok.log('success', 'transaction created')
       loading.value = false;
     };
+  }
+  const add = async () => { 
+    val.value+=1
+  }
+  const remove = async () => {
+    if(val.value<=0){
+      val.value=0
+    } else {
+      val.value-=1
+    }
   }
 </script>
 <style scoped lang="scss">
