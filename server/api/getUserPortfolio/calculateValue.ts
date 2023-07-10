@@ -60,12 +60,13 @@ export default defineEventHandler(async (event) => {
   }
   if(body){
     const calculated = await calculateAndAdd(body.record.user_id);
+    return array
   }
   if(!body){
     const users = await getUsers();
     for (let i = 0; i < users.length; i++) {
       const calculated = await calculateAndAdd(users[i].user_id);
     }
+    return 'updated for all'
   }
-  return array
 });
