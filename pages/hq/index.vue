@@ -2,12 +2,18 @@
   <main>
       <block>
         <h1>Register</h1>
-        <nuxt-link to="/hq/register-shares">
-          Shares
-        </nuxt-link>
-        <nuxt-link to="/hq/register-revenue">
-          Revenue
-        </nuxt-link>
+        <ul>
+          <li>
+            <nuxt-link to="/hq/register-shares">
+              Shares
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/hq/register-revenue">
+              Revenue
+            </nuxt-link>
+          </li>
+        </ul>
       </block>
   </main>
 </template>
