@@ -44,10 +44,11 @@
 
 <script setup>
     const route = useRoute()
-    let signedIn = false
+    const signedIn = ref(false)
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
-    if(user.value) signedIn = true
+    if(user.value) signedIn.value = true
+    if(!user.value) signedIn.value = false
     const toggleMenu = async () => { 
         document.getElementsByTagName("body")[0].classList.toggle("show-menu");
     }
