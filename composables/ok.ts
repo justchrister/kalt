@@ -50,15 +50,8 @@ export const ok = {
         text += input;
       }
     });
-    if (type==='success') {
-      console.log(label + text)
-    } else if (type==='warn') {
-      console.warn(label + text)
-    } else if (type==='error') {
-      console.error(label + text)
-    } else {
-      console.log(label + text)
-    }
+    
+    console.log(label + text)
 
     return
   },
