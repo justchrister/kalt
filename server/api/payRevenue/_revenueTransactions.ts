@@ -17,7 +17,14 @@ export default defineEventHandler( async (event) => {
     const { data, error } = await supabase
       .from('pay_revenue')
       .select()
-    return data
+    if(data) {
+      ok.log('success', 'got shares per user: ', data)
+      return data
+    }
+    if(error){
+      ok.log('error', 'error getting shares per user: ', error)
+      return error
+    }
   }
 
   const getTotalShares = async (userList) => {
@@ -29,7 +36,15 @@ export default defineEventHandler( async (event) => {
     return totalShares;
   }
 
-  const createDividendTransactions = async () => {
+  const createDividendTransactions = async (json) => {
+    const { data, error } = await supabase
+      .from('account_transactions')
+      .insert(json)
+    if(data) return data
+    if(error) {
+      ok.log('error', 'could not create transaction for'+json.user_id, error)
+      return error
+    }
   }
   const sharesPerUser = await getSharesPerUser();
   const totalShares = await getTotalShares(sharesPerUser);
@@ -42,19 +57,14 @@ export default defineEventHandler( async (event) => {
     const dividend = message.dividend * share;
 
     const json = {
-      'user_id': user.id,
-      'currency': message.ticker,
-      'quantity_change': 0
+      'message_id': ok.uuid(),
+      'message_entity_id': ok.uuid(),
+      'user_id': user,
+      'amount': dividend,
+      'currency': 'EUR'
     };
-    ok.log('success', 'did it!:', json)
+    const created = await createDividendTransactions(json);
+    ok.log('success', 'dividend transaction created: ', json)
   }
-  // get shares per user
-  // create transaction to each user
-  // voila!
-  
-
-  console.log(message)
-  return message  
-  if(data) return data
-  if(error) return error
+  return message
 });
