@@ -13,6 +13,8 @@ export default defineEventHandler( async (event) => {
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
 
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id);
+  if (message.order_status !== 'fulfilled') return 'order not fulfilled';
+  
   const getPortfolio = async () => {
     const { data, error } = await supabase
       .from('exchange_orders')
