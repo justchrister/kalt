@@ -76,6 +76,9 @@ span.🤪 {
 span.☀️{ 
   background-image:url('../omoji/sun.svg');
 }
+span.✨ {
+  background-image:url('../omoji/stars.svg');
+}
 /* arrows */
 
 span.↑{
