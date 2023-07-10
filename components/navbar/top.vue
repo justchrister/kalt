@@ -49,6 +49,13 @@
     const user = useSupabaseUser()
     if(user.value) signedIn.value = true
     if(!user.value) signedIn.value = false
+    watch(user, (newVal, oldVal) => {
+      ok.log('', 'watched values: ',{
+        'newVal': newVal.id,
+        'oldVal': oldVal.id
+      })
+      if(!oldValue.id && newValue.id) signedIn.value = true
+    })
     const toggleMenu = async () => { 
         document.getElementsByTagName("body")[0].classList.toggle("show-menu");
     }
