@@ -10,13 +10,9 @@ export default defineEventHandler(async (event) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(
-    supabase,
-    topic,
-    body.record.message_entity_id
-  );
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
   await messaging.read(supabase, topic, service, body.record.message_id);  
-
+  
   if(!message.first_name) return "no first name"
   if(!message.last_name) return "no last name"
 
