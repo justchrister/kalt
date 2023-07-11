@@ -5,15 +5,17 @@
 --- create the table, with default values
 CREATE TABLE payments_pending (
 -- meta information used for processing
-    message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity_id   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    message_created     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
-    message_sender      text        NOT NULL,
+    message_id          uuid                        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    message_entity_id   uuid                        NOT NULL  DEFAULT uuid_generate_v4(),
+    message_created     timestamptz                 NOT NULL  DEFAULT (now() at time zone 'utc'),
+    message_sender      text                        NOT NULL,
 -- 
-    user_id             uuid        NOT NULL,
+    user_id             uuid                        NOT NULL,
     amount              numeric,
     currency            text,
-    transaction         uuid
+    transaction_id      uuid,
+    status              payments_pending_statuses   NOT NULL,
+    provider            payment_provider            NOT NULL
 );
 
 --- add row level security
