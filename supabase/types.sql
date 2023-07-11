@@ -39,6 +39,15 @@ create type public.order_statuses as enum (
     'cancelled',
     'split'
 );
+create type public.payments_pending_statuses as enum (
+    'pending',
+    'processing',
+    'failed',
+    'complete'
+);
+create type public.payment_providers as enum (
+    'stripe'
+);
 create type public.continents as enum (
     'Africa',
     'Antarctica',
