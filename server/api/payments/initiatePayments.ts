@@ -11,6 +11,11 @@ export default defineEventHandler( async (event) => {
       .eq('processing', false)
     if(data){
       ok.log('success', 'found payment pending processing in table ', data)
+      return data
+    }
+    if(error){
+      ok.log('error', 'could not find payment pending processing in table ')
+      return false
     }
   }
   const returnToProcessing = async (id) => {
@@ -27,7 +32,8 @@ export default defineEventHandler( async (event) => {
       transaction_id: payment.transaction_id,
       amount: payment.amount,
       currency: payment.currency,
-      user_id: payment.user_id
+      user_id: payment.user_id,
+      message_sender: 'server/api/payments/initiatePayments.ts'
     };
 
     const { data, error } = await supabase
@@ -45,7 +51,6 @@ export default defineEventHandler( async (event) => {
     }
   }
   const paymentsPendingProcessing = await getPaymentsPendingProcessing()
-  if(!paymentsPendingProcessing) return 'no payments pending processing'
 
   for (let i = 0; i < paymentsPendingProcessing.length; i++) {
     const payment = paymentsPendingProcessing[i];
