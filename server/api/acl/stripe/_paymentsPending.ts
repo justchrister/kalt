@@ -10,7 +10,7 @@ export default defineEventHandler( async (event) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id) as any;
   await messaging.read(supabase, topic, service, body.record.message_id);  
 
   if(message.status !== 'pending') return 'message status is not pending';
@@ -21,15 +21,17 @@ export default defineEventHandler( async (event) => {
   const chargeCard = async (customerId) => {
     try {
       const charge = await stripe.charges.create({
-        amount: amountCents, // Amount in cents
+        amount: amountCents, 
         currency: currencyLower,
         description: message.transaction_id,
         customer: customerId,
       });
       
       ok.log('success', charge);
+      return 'success'
     } catch (error) {
-      ok.log('error', error);
+      ok.log('error', 'failed to charge '+customerId+' / '+message.user_id+': ', error);
+      return 'error'
     }
   }
   const updatePaymentPendingStatus = async (status) => {
@@ -38,22 +40,29 @@ export default defineEventHandler( async (event) => {
       .insert({
         message_id: ok.uuid(),
         message_entity_id: message.message_entity_id,
+        message_sender: 'service/api/acl/stripe/_paymentsPending.ts',
         user_id: message.user_id,
         transaction_id: message.transaction_id,
         status: status
       })
       .select()
-    if(data) return 'success'
-    if(error) return 'failed'
+    if(data) {
+      ok.log('success', 'updated payment pending status')
+      return 'success'
+    }
+    if(error){
+      ok.log('error', 'error updating payment pending status', error)
+      return 'error'
+    } 
   }
-  const updateTransactionStatus = async () => {
+  const updateTransactionStatus = async (status) => {
     const { data, error } = await supabase
       .from('account_transactions')
       .insert({
         message_id: ok.uuid(),
         message_entity_id: message.transaction_id,
         user_id: message.user_id,
-        status: 'processing'
+        status: status
       })
       .select()
   }
@@ -69,12 +78,16 @@ export default defineEventHandler( async (event) => {
     }
   }
 
-  const paymentPendingStatus = await updatePaymentPendingStatus('processing');
+  const paymentPendingStatus = await updatePaymentPendingStatus('processing')
+  
   if(paymentPendingStatus=='success') await updateTransactionStatus('processing')
-  if(paymentPendingStatus=='failed') return 'failed to set as processing'
-  const stripeCustomerId = await getCustomerId(message.user_id);
+  if(paymentPendingStatus=='error') return 'failed to set as processing'
 
+  const stripeCustomerId = await getCustomerId(message.user_id)
   const charge = await chargeCard(stripeCustomerId)
 
+  if(charge=='success') await updatePaymentPendingStatus('complete')
+  if(charge=='error') await updatePaymentPendingStatus('failed')
+  
   return charge
 });
