@@ -1,7 +1,7 @@
 <template>
   <block margin="none">
     <span>
-    <nuxt-link :to="parentUrl"> {{parent}}</nuxt-link> / {{route.meta.pagename}}
+    <nuxt-link :to="parentUrl"> {{parent}}</nuxt-link> <span id="slash">/</span> {{route.meta.pagename}}
   </span>
   </block>
 </template>
@@ -29,5 +29,8 @@
     &:hover{
       text-decoration:underline;
     }
+  }
+  #slash{
+    color:$dark-60;
   }
 </style>
