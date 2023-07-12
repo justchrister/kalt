@@ -24,7 +24,7 @@
           <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
         </li>
         <li v-if="signedIn">
-          <nuxt-link to="/profile" @click="toggleMenu()"> Account </nuxt-link>
+          <nuxt-link to="/profile" @click="toggleMenu()"> Profile </nuxt-link>
         </li>
         <li v-if="!signedIn">
           <nuxt-link to="/request" @click="toggleMenu()"> Request invite </nuxt-link>
