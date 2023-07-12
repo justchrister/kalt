@@ -13,7 +13,6 @@
     .limit(1)
     .single()
   if(data) isOn.value = data.newsletters;
-  ok.log('success', 'Got user object: ', data.newsletters)
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true

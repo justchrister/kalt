@@ -50,10 +50,6 @@
     if(user.value) signedIn.value = true
     if(!user.value) signedIn.value = false
     watch(user, (newVal, oldVal) => {
-      ok.log('', 'watched values: ',{
-        'newVal': newVal,
-        'oldVal': oldVal
-      })
       if(!oldVal.id && newVal.id) signedIn.value = true
     })
     const toggleMenu = async () => { 
