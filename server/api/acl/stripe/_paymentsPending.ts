@@ -30,7 +30,7 @@ export default defineEventHandler( async (event) => {
       ok.log('success', charge);
       return 'success'
     } catch (error) {
-      ok.log('error', 'failed to charge '+customerId+' / '+message.user_id+': ', error);
+      ok.log('error', 'failed to charge '+customerId+' / '+message.user_id+': ', error.statusCode+': '+error.raw.message);
       return 'error'
     }
   }
