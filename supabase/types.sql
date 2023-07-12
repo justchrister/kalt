@@ -5,7 +5,8 @@ create type public.transaction_statuses as enum (
     'payment_accepted',
     'withdrawal_awaiting',
     'withdrawal_processing',
-    'withdrawal_accepted'
+    'withdrawal_accepted',
+    'payment_processing'
 );
 create type public.transaction_types as enum (
     'deposit',
