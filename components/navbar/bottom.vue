@@ -45,6 +45,8 @@
     background:$dark;
     padding:$clamp-4 0 $clamp-2 0;
     margin:$clamp-4 auto 0 auto;
+
+    border-top: $light solid 1px;
     color:$light;
   }
   .section{
