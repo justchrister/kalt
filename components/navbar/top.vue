@@ -54,7 +54,7 @@
         'newVal': newVal,
         'oldVal': oldVal
       })
-      if(!oldValue.id && newValue.id) signedIn.value = true
+      if(!oldVal.id && newVal.id) signedIn.value = true
     })
     const toggleMenu = async () => { 
         document.getElementsByTagName("body")[0].classList.toggle("show-menu");
