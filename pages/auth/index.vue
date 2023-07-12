@@ -92,20 +92,14 @@
   watchEffect(async () => {
     if (user.value) {
       const { data, error } = await supabase
-        .from('user_signed_in')
-        .insert({
-          'message_sender': 'pages/auth/index.vue',
-          user_id: user.value.id
-        })
-      const { data:userObject, error:userObjectError } = await supabase
         .from('get_user')
         .select()
         .limit(1)
         .single()
-        if(data) ok.log('success', 'got user: ', userObject)
-        if(error) ok.log('error', 'could not get user: ', userObjectError)
-      userCookie.value = {userObject};
-      console.log(userCookie.value.userObject)
+        if(data) ok.log('success', 'got user: ', data)
+        if(error) ok.log('error', 'could not get user: ', error)
+      userCookie.value = {data};
+      console.log(userCookie.value.data)
       if(userCookie.value){
         colorMode.preference = userCookie.value.color_scheme;
         await navigateTo("/portfolio");
