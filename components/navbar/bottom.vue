@@ -7,8 +7,9 @@
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/profile" > Profile </nuxt-link>
           <nuxt-link to="/accounts" > Accounts </nuxt-link>
-          <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
           <nuxt-link to="/subscription" > Subscription </nuxt-link>
+          <nuxt-link to="/cards" > Cards </nuxt-link>
+          <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
         </ul>
       </div>
     </block>
