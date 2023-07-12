@@ -19,7 +19,6 @@ const props = defineProps({
     required: false
   },
 })
-console.log('toggled: '+props.on)
 </script>
 <style scoped lang="scss">
 $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
