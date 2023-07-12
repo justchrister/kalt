@@ -52,8 +52,18 @@ export const ok = {
     });
     
     console.log(label + text)
-
     return
+/*
+drain function
+    return {
+      drain: async function (supabase) {
+        await supabaseClient
+          .from('logs')
+          .insert([
+            { type: type, content: text },
+          ])
+      }
+    }; */
   },
 
   addZero(i) {
