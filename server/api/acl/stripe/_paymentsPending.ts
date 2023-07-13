@@ -18,13 +18,15 @@ export default defineEventHandler( async (event) => {
   const amountCents = message.amount*100;
   const currencyLower = message.currency.toLowerCase();
 
-  const chargeCard = async (customerId) => {
+  const chargeCard = async (customerId, cardId) => {
     try {
-      const charge = await stripe.charges.create({
+      const charge = await stripe.paymentIntents.create({
         amount: amountCents, 
         currency: currencyLower,
         description: message.transaction_id,
         customer: customerId,
+        off_session: true, // Set to true if customer is not present
+        confirm: true, // This will automatically confirm the payment
       });
       
       ok.log('success', charge);
@@ -84,7 +86,7 @@ export default defineEventHandler( async (event) => {
   if(paymentPendingStatus=='error') return 'failed to set as processing'
 
   const stripeCustomerId = await getCustomerId(message.user_id)
-  const charge = await chargeCard(stripeCustomerId)
+  const charge = await chargeCard(stripeCustomerId, 'pm_1NTMXuDBFB40Q48wHoXJ7HmE')
 
   if(charge=='success') await updatePaymentPendingStatus('complete')
   if(charge=='error') await updatePaymentPendingStatus('failed')
