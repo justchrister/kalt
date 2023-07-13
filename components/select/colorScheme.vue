@@ -26,7 +26,6 @@
   const colorMode = useColorMode()
 
   const setColorScheme = async (colorScheme) => {
-    console.log(colorMode)
     colorMode.preference = colorScheme;
     const { data, error } = await supabase
       .from('user_preferences')
@@ -45,9 +44,8 @@
     .single()
 
   if (data) {
-    ok.log('', 'user color scheme: ', data.color_scheme)
     colorMode.preference = data.color_scheme;
-    ok.log('', 'client color mode: ', colorMode.value)
+    ok.log('', 'user color scheme: ', data.color_scheme)
   }
   if(error) ok.log('error', 'could not get color scheme', error)
 
