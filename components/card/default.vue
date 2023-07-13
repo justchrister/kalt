@@ -1,20 +1,19 @@
 <template>
   <div>
-    <nuxt-link to="/cards" v-if="data.card_number">
+    <nuxt-link to="/cards">
       <card :number="cardNumberInt" :default="true" />
     </nuxt-link>
-    <span v-else>
-      <card-add/>
-    </span>
   </div>
 </template>
 <script setup>
   const supabase = useSupabaseClient()
+  const hasDefaultCard = ref(false)
   const { data, error } = await supabase
     .from('get_payment_card_default')
     .select()
     .limit(1)
     .single()
-  if(error) ok.log('error', 'Failed to get default card: ', error)
+  if(data) hasDefaultCard.value = true
+  if(error) ok.log('error', 'Failed to fetch default card')
   const cardNumberInt = await ok.toInt(data.card_number)
 </script>
