@@ -33,7 +33,6 @@
     title: 'Subscription'
   })
   const getUserSubscription = async () => {
-    
     const { data, error } = await supabase
       .from('get_user_subscription')
       .select()
@@ -48,6 +47,22 @@
       ok.log('error', 'Failed to get user subscription: ', error)
       return error
     }
+  }
+  const hasDefaultCard = async () => {
+    const { data, error } = await supabase
+      .from('get_payment_card_default')
+      .select()
+      .limit(1)
+      .single()
+    if(data) return true
+    else return false
+  }
+  const defaultCard = await hasDefaultCard();
+  if(defaultCard){
+    ok.log('success', 'User has default card')
+  } else {
+    ok.log('error', 'User does not have default card')
+    await navigateTo('/cards')
   }
   const subscription = await getUserSubscription();
 
