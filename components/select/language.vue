@@ -18,7 +18,7 @@
       .eq('user_id', user.value.id)
       .limit(1)
       .single()
-    if(data) ok.log('success', 'Got user object: ', data)
+    if(data) ok.log('success', 'Got preferred language: ', data.language)
     if(error) ok.log('error', 'Could not get preferred language', error)
     return data.language
   }
