@@ -71,6 +71,12 @@ export default defineEventHandler(async (event) => {
         stripe_card_id: cardId
       })
       .select()
+    if(data){
+      ok.log('success', 'updated default card', data)
+    }
+    if(error){
+      ok.log('error', 'failed to update default card', error)
+    }
     ok.log('success', 'updated customer', customer);
     return customer
   }
