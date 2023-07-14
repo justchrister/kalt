@@ -14,8 +14,19 @@ export default defineEventHandler( async (event) => {
 
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
   await messaging.read( supabase, topic, service, body.record.message_id)
-  if(message.transaction_type != 'deposit') return 'wrong transaction type'
-  if(message.transaction_sub_type != 'card') return 'wrong transaction sub type'
+
+  if(message.transaction_type != 'deposit'){
+    ok.log('error', 'wrong transaction type')
+    return 'wrong transaction type'
+  } 
+  if(message.transaction_sub_type != 'card') {
+    ok.log('error', 'wrong transaction sub type')
+    return 'wrong transaction sub type'
+  }
+  if(message.transaction_status != 'payment_awaiting') {
+    ok.log('error', 'wrong transaction status')
+    return 'wrong transaction status'
+  }
   
   const deletePayment = async () => {
     const { error } = await supabase
@@ -27,7 +38,7 @@ export default defineEventHandler( async (event) => {
   }
   const updateTransaction = async () => {
     let json = message;
-    json.transaction_status = 'payment_awaiting';
+    json.transaction_status = 'payment_processing';
     json.message_id = ok.uuid();
     json.message_sender = 'server/api/payments/_accountTransactions.ts';
     const { data, error } = await supabase
