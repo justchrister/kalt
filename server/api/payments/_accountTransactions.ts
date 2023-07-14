@@ -78,15 +78,21 @@ export default defineEventHandler( async (event) => {
       .select()
     if(error) return error;
     if(data) {
-      const updatedAccountTransaction = await updateTransaction();
+      await updateTransaction();
       return data
     };
   }
   
   if(message.transaction_status='payment_declined' || 'payment_approved' ) {
     const deletedPayment = await deletePayment(message.message_entity_id);
-    if(deletedPayment===true) return 'payment'+message.message_entity_id+' deleted'
-    if(deletedPayment===false) return 'payment'+message.message_entity_id+' did not exist, it might have been deleted previously'
+    if(deletedPayment===true) {
+      ok.log('success', 'payment'+message.message_entity_id+' deleted')
+      return 'payment'+message.message_entity_id+' deleted'
+    }
+    if(deletedPayment===false) {
+      ok.log('error', 'payment'+message.message_entity_id+' not deleted')
+      return 'payment'+message.message_entity_id+' did not exist, it might have been deleted previously'
+    }
   }
   return 'ggg'
 });
