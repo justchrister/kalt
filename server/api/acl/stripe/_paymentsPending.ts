@@ -3,15 +3,15 @@ import { messaging } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import Stripe from 'stripe';
 export default defineEventHandler( async (event) => {
-  const supabase = serverSupabaseServiceRole(event)
-  const body = await readBody(event)
+  const supabase = serverSupabaseServiceRole(event);
+  const body = await readBody(event);
   const topic = 'paymentsPending';
   const service = 'aclStripe';
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   if (body.record.message_read) return 'message already read';
 
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id) as any;
-  await messaging.read(supabase, topic, service, body.record.message_id);  
+  await messaging.read(supabase, topic, service, body.record.message_id);
 
   if(message.status !== 'pending') return 'message status is not pending';
   if(message.provider !== 'stripe') return 'charge is not for Stripe';
@@ -25,6 +25,7 @@ export default defineEventHandler( async (event) => {
         currency: currencyLower,
         description: message.transaction_id,
         customer: customerId,
+        payment_method: cardId,
         off_session: true, // Set to true if customer is not present
         confirm: true, // This will automatically confirm the payment
       });
@@ -79,16 +80,30 @@ export default defineEventHandler( async (event) => {
       return data.stripe_user_id
     }
   }
+  const getDefaultCard = async (userId) => {
+    const { data, error } = await supabase
+      .from('acl_stripe_default_card_ids')
+      .select()
+      .eq('user_id', userId)
+      .limit(1)
+      .single()
+    if(data){
+      return data.stripe_card_id
+    }
+  }
 
   const paymentPendingStatus = await updatePaymentPendingStatus('processing')
   
   if(paymentPendingStatus=='success') await updateTransactionStatus('processing')
   if(paymentPendingStatus=='error') return 'failed to set as processing'
 
+  const stripeDefaultCardId = await getDefaultCard(message.user_id);
   const stripeCustomerId = await getCustomerId(message.user_id)
-  const charge = await chargeCard(stripeCustomerId, 'pm_1NTMXuDBFB40Q48wHoXJ7HmE')
+
+  const charge = await chargeCard(stripeCustomerId, stripeDefaultCardId)
 
   if(charge=='success') await updatePaymentPendingStatus('complete')
+  if(charge=='success') await updateTransactionStatus('payment_accepted')
   if(charge=='error') await updatePaymentPendingStatus('failed')
   
   return charge
