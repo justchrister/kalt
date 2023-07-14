@@ -64,6 +64,13 @@ export default defineEventHandler(async (event) => {
       customerId,
       {invoice_settings: {default_payment_method: cardId}}
     );
+    const { data, error } = await supabase
+      .from('acl_stripe_default_card_ids')
+      .upsert({
+        user_id: json.user_id,
+        stripe_card_id: cardId
+      })
+      .select()
     ok.log('success', 'updated customer', customer);
     return customer
   }
