@@ -1,6 +1,27 @@
 // @ts-nocheck
 import { v4 as uuidv4 } from 'uuid';
 export const ok = {
+  today() {
+    const date = new Date();
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Add 1 because getMonth() starts at 0
+    const year = date.getFullYear().toString();
+    const yearShort = year.slice(-2); // Get last two digits for short year format
+
+    return {
+      toString: () => `${day}.${month}.${yearShort}`,
+      dd: () => day,
+      mm: () => month,
+      yy: () => yearShort,
+      yyyy: () => year
+    }
+  },
+  lastDateOfMonth(){
+    const date = new Date();
+    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate().toString().padStart(2, '0');
+
+    return lastDayOfMonth;
+  },
   toInt(input){
     const pattern = /[^0-9]/g;
     return parseInt(input.replace(pattern, ''));
