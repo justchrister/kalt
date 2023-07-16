@@ -23,6 +23,7 @@
     isOn.value = toggledValue
     message.post(supabase, 'user_subscriptions',{
       "messageSender": "components/toggle/subscription.vue",
+      "messageEntityId": user.value.id,
       "userId": user.value.id,
       "active": isOn.value
     })
