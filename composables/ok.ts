@@ -119,17 +119,17 @@ drain function
     const year = new Date(dateTime).getFullYear()
     return year+'-'+ok.addZero(month)+'-'+ok.addZero(day)
   },
-  timestamptz() {
-    const now = new Date()
-    const year = now.getUTCFullYear()
-    const month = String(now.getUTCMonth() + 1).padStart(2, '0')
-    const day = String(now.getUTCDate()).padStart(2, '0')
-    const hours = String(now.getUTCHours()).padStart(2, '0')
-    const minutes = String(now.getUTCMinutes()).padStart(2, '0')
-    const seconds = String(now.getUTCSeconds()).padStart(2, '0')
-    const ms = String(now.getUTCMilliseconds()).padStart(3, '0')
-    const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`
-    return timestamptz
+  timestamptz(dd = null, mm = null, yyyy = null) {
+    const date = dd && mm && yyyy ? new Date(yyyy, mm - 1, dd) : new Date();
+    const year = date.getUTCFullYear();
+    const month = dd || mm || yyyy ? String(date.getUTCMonth() + 1).padStart(2, '0') : String(new Date().getUTCMonth() + 1).padStart(2, '0');
+    const day = dd || mm || yyyy ? String(date.getUTCDate()).padStart(2, '0') : String(new Date().getUTCDate()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+    const ms = String(date.getUTCMilliseconds()).padStart(3, '0');
+    const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`;
+    return timestamptz;
   },
   combineJson(jsonArray){
     
