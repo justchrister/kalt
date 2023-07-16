@@ -19,7 +19,7 @@ export default defineEventHandler( async (event) => {
     ok.log('error', 'wrong transaction type')
     return 'wrong transaction type'
   } 
-  if(message.transaction_sub_type != 'card') {
+  if(message.transaction_sub_type != 'card' || message.transaction_sub_type != 'subscription') {
     ok.log('error', 'wrong transaction sub type')
     return 'wrong transaction sub type'
   }
