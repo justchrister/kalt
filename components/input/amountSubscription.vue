@@ -5,7 +5,6 @@
     </label>
     <div class="input-group">
       <input
-
         v-maska:[options]
         data-maska="0.99"
         data-maska-tokens="0:\d:multiple|9:\d:optional"
@@ -43,17 +42,25 @@
   }
   const amount =  ref(props.amount)
   const currency = await getCurrency()
-
+  let initialAmount = props.amount
+  let previousValue;
   const updatePaymentAmount = async () => { 
+    if(initialAmount==ok.toInt(amount.value)) return
+    if(previousValue==ok.toInt(amount.value)) return
+    ok.log('', previousValue)
+    previousValue = ok.toInt(amount.value)
+    ok.log('', previousValue)
     const { error } = await supabase
       .from('user_subscriptions')
       .insert({
         message_entity_id:user.value.id,
+        user_id:user.value.id,
         message_sender: 'components/input/amountSubscription.vue',
         amount: ok.toInt(amount.value)
     })
     if(error) ok.log('error', 'could not update amount', error)
     if(!error) ok.log('success', 'updated amount 🥰')
+    initialAmount = null;
   }
   const options = {
     preProcess: val => val.replace(/[$,]/g, ''),
