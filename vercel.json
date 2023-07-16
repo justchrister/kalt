@@ -3,19 +3,23 @@
   "installCommand": "npm install",
   "crons": [
     {
-      "path": "/api/chargeSubscriptions",
-      "schedule": "20 04 * * *"
-    },
-    {
       "path": "/api/getUserPortfolio/addMissingDates",
       "schedule": "10 * * * *"
     },
     {
       "path": "/api/getUserPortfolio/addQuantityToday",
-      "schedule": "20 * * * *"
+      "schedule": "15 * * * *"
     },
     {
       "path": "/api/getUserPortfolio/calculateValue",
+      "schedule": "20 * * * *"
+    },
+    {
+      "path": "/api/payments/initiatePayments",
+      "schedule": "25 * * * *"
+    },
+    {
+      "path": "/api/payments/initiateSubscriptionPayments",
       "schedule": "30 * * * *"
     }
   ]
