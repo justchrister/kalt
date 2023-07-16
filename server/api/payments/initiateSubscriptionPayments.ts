@@ -68,23 +68,37 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('get_user')
       .select()
-    if(data) ok.log('success', 'got all users', data)
+    if(data) ok.log('success', 'got all users')
     if(error) ok.log('error', 'could not get all users: ', error)
     return data
   };
-
   const getTransactions = async (userId) => {
+    const now = new Date();
+    const startOfDay = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0, 0)).toISOString();
+    const endOfDay = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 23, 59, 59, 999)).toISOString();
+ 
+  
     const { data, error } = await supabase
       .from('account_transactions')
       .select()
-      .eq('transaction_type', 'subscription')
-      .eq('transaction_date', ok.timestamptz(today.day, today.month, today.year))
       .eq('user_id', userId)
+      .eq('transaction_type', 'deposit')
+      .eq('transaction_sub_type', 'subscription')
+      .gte('message_created', startOfDay)
+      .lte('message_created', endOfDay)
       .limit(1)
       .single()
-    if(data) return true
-    if(error) return false
+  
+    if(data) {
+      ok.log('', 'found transaction, already charged')
+      return 'already charged'
+    }
+    if(error) {
+      ok.log('', 'could not find transaction, not charged')
+      return 'not charged'
+    }
   }
+
   const createTransaction = async (userId, amount, currency) => {
     const { data, error } = await supabase
       .from('account_transactions')
@@ -94,11 +108,18 @@ export default defineEventHandler(async (event) => {
         message_sender: 'server/api/payments/initiateSubscriptionPayments.ts',
         user_id: userId,
         transaction_status: 'payment_awaiting',
+        transaction_type: 'deposit',
         transaction_sub_type: 'subscription',
         amount: amount,
         currency: currency
       })
       .select()
+    if(data){
+      ok.log('success', 'created transaction'+data.transaction_id)
+    }
+    if(error){
+      ok.log('error', 'could not create transaction', error)
+    }
   }
   const getChargableDays = async () => {
     let days = [ok.toInt(today.day)];
@@ -127,8 +148,11 @@ export default defineEventHandler(async (event) => {
     let subscription = null
     subscription = await messaging.getEntity(supabase, topic, users[i].user_id);
     const transaction = await getTransactions(users[i].user_id);
-    if(!transaction) {
+    if(transaction=='not charged') {
       subscriptions.push(subscription)
+    }
+    if(transaction=='already charged') {
+      ok.log('', 'already charged for today')
     }
   }
   const chargeableDays = await getChargableDays();  
