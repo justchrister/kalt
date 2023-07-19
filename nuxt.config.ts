@@ -35,7 +35,7 @@ export default defineNuxtConfig({
         { rel: 'manifest', type: "image/x-icon", href: '/manifest.webmanifest' }
       ],
       meta: [
-        { name: 'description', content: 'Make money, make a difference!' },
+        { name: 'description', content: 'Make money, make a difference.' },
         {
           name: "viewport",
           content: "width=device-width, initial-scale=1, maximum-scale=1"
