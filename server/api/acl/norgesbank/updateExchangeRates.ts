@@ -10,23 +10,19 @@ export default defineEventHandler( async (event) => {
       .from('currencies')
       .select()
       .eq('enabled', true)
-    if(error) {
-      ok.log('error', 'could not get currencies', error.message )
-    }
+    if(error) ok.log('error', 'could not get currencies', error.message )
     if(data) {
       for (let i = 0; i < data.length; i++) {
         const currency = data[i];
         currencies.push(currency.iso)
       }
     }
-
     ok.log('', 'got the currencies', data)
     return currencies
   }
 
   const createCurrencyPairs = (currencies) => {
     let pairs = [];
-  
     for (let i = 0; i < currencies.length; i++) {
       for (let j = 0; j < currencies.length; j++) {
         pairs.push({
@@ -37,7 +33,6 @@ export default defineEventHandler( async (event) => {
       }
     }
     ok.log('', 'made them into pairs ', pairs)
-  
     return pairs;
   }
   const getRate = async (iso) => {
@@ -68,6 +63,7 @@ export default defineEventHandler( async (event) => {
       .select()
     if(data){
       ok.log('', 'data: ', data)
+      return data
     }
     if(error){
       ok.log('', 'error: ', error)
@@ -75,10 +71,12 @@ export default defineEventHandler( async (event) => {
   }
   const currencies = await getCurrencies()
   const currencyPairs = await createCurrencyPairs(currencies)
+  let updatedValues = [];
   for (let i = 0; i < currencyPairs.length; i++) {
     ok.log('', 'im here 1')
     const pair = currencyPairs[i];
-    await updateRate(pair)
+    let updatedRate = await updateRate(pair)
+    updatedValues.push(...updatedRate)
   }
-  return currencyPairs
+  return updatedValues
 });
