@@ -1,0 +1,228 @@
+{
+  "meta": {
+      "id": "IREF680645",
+      "prepared": "2023-07-19T12:01:02",
+      "test": false,
+      "datasetId": "ec596adc-86c5-4236-aefa-a4e66422d473",
+      "sender": {
+          "id": "Unknown"
+      },
+      "receiver": {
+          "id": "guest"
+      },
+      "links": [
+          {
+              "rel": "self",
+              "href": "/data/EXR/B.USD.NOK.SP?format=sdmx-json&lastNObservations=1&locale=no",
+              "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/1.0/sdmx-json-structure-schema.json"
+          }
+      ]
+  },
+  "data": {
+      "dataSets": [
+          {
+              "links": [
+                  {
+                      "rel": "dataflow",
+                      "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=NB:EXR(1.0)"
+                  }
+              ],
+              "reportingBegin": "2023-07-18T00:00:00",
+              "reportingEnd": "2023-07-18T23:59:59",
+              "action": "Information",
+              "series": {
+                  "0:0:0:0": {
+                      "attributes": [
+                          0,
+                          0,
+                          0,
+                          0
+                      ],
+                      "observations": {
+                          "0": [
+                              "10.0751"
+                          ]
+                      }
+                  }
+              }
+          }
+      ],
+      "structure": {
+          "links": [
+              {
+                  "rel": "dataflow",
+                  "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=NB:EXR(1.0)"
+              },
+              {
+                  "rel": "datastructure",
+                  "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=NB:DSD_EXR(1.0)"
+              }
+          ],
+          "name": "Valutakurser",
+          "names": {
+              "no": "Valutakurser"
+          },
+          "description": "Norges Banks valutakurser",
+          "descriptions": {
+              "no": "Norges Banks valutakurser"
+          },
+          "dimensions": {
+              "dataset": [],
+              "series": [
+                  {
+                      "id": "FREQ",
+                      "name": "Frekvens",
+                      "description": "Tidsintervallet for observasjoner over en gitt\n                        tidsperiode.",
+                      "keyPosition": 0,
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "B",
+                              "name": "Virkedag",
+                              "description": "Virkedag"
+                          }
+                      ]
+                  },
+                  {
+                      "id": "BASE_CUR",
+                      "name": "Basisvaluta",
+                      "description": "Første valuta i et valutakvoteringspar. Også kalt\n                        transaksjonsvalutaen.",
+                      "keyPosition": 1,
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "USD",
+                              "name": "Amerikanske dollar"
+                          }
+                      ]
+                  },
+                  {
+                      "id": "QUOTE_CUR",
+                      "name": "Kvoteringsvaluta",
+                      "description": "Den andre valutaen i et valutakvoteringspar. Også\n                        kjent som motvaluta.",
+                      "keyPosition": 2,
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "NOK",
+                              "name": "Norske kroner"
+                          }
+                      ]
+                  },
+                  {
+                      "id": "TENOR",
+                      "name": "Løpetid",
+                      "description": "Mengde tid igjen inntil tilbakebetaling av et lån\n                        eller en finansiell kontrakt utløper.",
+                      "keyPosition": 3,
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "SP",
+                              "name": "Spot"
+                          }
+                      ]
+                  }
+              ],
+              "observation": [
+                  {
+                      "id": "TIME_PERIOD",
+                      "name": "Tidsperiode",
+                      "description": "Tidsperioden eller tidspunktet for den målte\n                        observasjonen.",
+                      "keyPosition": 4,
+                      "role": "time",
+                      "values": [
+                          {
+                              "start": "2023-07-18T00:00:00",
+                              "end": "2023-07-18T23:59:59",
+                              "id": "2023-07-18",
+                              "name": "2023-07-18"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "attributes": {
+              "dataset": [],
+              "series": [
+                  {
+                      "id": "DECIMALS",
+                      "name": "Desimaler",
+                      "description": "Antall sifre til høyre for desimalskilletegnet.",
+                      "relationship": {
+                          "dimensions": [
+                              "BASE_CUR",
+                              "QUOTE_CUR",
+                              "TENOR"
+                          ]
+                      },
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "4",
+                              "name": "4"
+                          }
+                      ]
+                  },
+                  {
+                      "id": "CALCULATED",
+                      "name": "Kalkulert",
+                      "description": "Indikerer om verdien er en kalkulasjon / anslag\n                        eller en observert verdi.",
+                      "relationship": {
+                          "dimensions": [
+                              "BASE_CUR",
+                              "QUOTE_CUR",
+                              "TENOR"
+                          ]
+                      },
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "false",
+                              "name": "false"
+                          }
+                      ]
+                  },
+                  {
+                      "id": "UNIT_MULT",
+                      "name": "Multiplikator",
+                      "description": "Eksponent i tiende potens slik at en\n                        multiplikasjon av observasjonsverdien med 10^UNIT_MULT gir verdien av en\n                        enhet.",
+                      "relationship": {
+                          "dimensions": [
+                              "BASE_CUR",
+                              "QUOTE_CUR",
+                              "TENOR"
+                          ]
+                      },
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "0",
+                              "name": "Enheter"
+                          }
+                      ]
+                  },
+                  {
+                      "id": "COLLECTION",
+                      "name": "Innsamlingstidspunkt",
+                      "description": "Datoer eller perioder for når verdien ble\n                        innhentet.",
+                      "relationship": {
+                          "dimensions": [
+                              "BASE_CUR",
+                              "QUOTE_CUR",
+                              "TENOR"
+                          ]
+                      },
+                      "role": null,
+                      "values": [
+                          {
+                              "id": "C",
+                              "name": "ECB concertation tidspunkt 14:15 CET"
+                          }
+                      ]
+                  }
+              ],
+              "observation": []
+          }
+      }
+  }
+}
