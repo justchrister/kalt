@@ -1,6 +1,22 @@
 // @ts-nocheck
 import { v4 as uuidv4 } from 'uuid';
 export const ok = {
+
+  async fetch(method, url) {
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      return { data, error: null };
+    } catch (error) {
+      return { data: null, error };
+    }
+  },
   today() {
     const date = new Date();
     const day = date.getDate().toString().padStart(2, '0');
