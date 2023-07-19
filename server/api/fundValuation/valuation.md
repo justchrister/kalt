@@ -6,8 +6,8 @@ this is a very simplified approach to valuation. By no means an adequate solutio
 1. 90 day average, multiplied by 365
 2. -4% operating cost
 3. +2% inflation
-4. -x% discount rate (see calc below)
-5. +x% premium rate (see calc below
+4. -x% discount rate (see desc below)
+5. +x% premium rate (see desc below
 
 ## discount rate
 Market risk, the specific industry risk, and any company-specific risks
