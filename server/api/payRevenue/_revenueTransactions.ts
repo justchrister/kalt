@@ -59,12 +59,17 @@ export default defineEventHandler( async (event) => {
     const json = {
       'message_id': ok.uuid(),
       'message_entity_id': ok.uuid(),
+      'message_sender': 'server/api/payRevenue/_revenueTransactions.ts',
       'user_id': user,
       'amount': dividend,
+      'transaction_type': 'deposit',
+      'transaction_sub_type': 'dividend',
+      'transaction_status': 'payment_accepted',
       'currency': 'EUR'
     };
     const created = await createDividendTransactions(json);
     ok.log('success', 'dividend transaction created: ', json)
   }
+  // we need to take into account exchange rates!!!!
   return message
 });
