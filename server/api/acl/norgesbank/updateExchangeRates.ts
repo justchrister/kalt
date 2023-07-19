@@ -42,7 +42,7 @@ export default defineEventHandler( async (event) => {
   }
   const getRate = async (iso) => {
     if(iso=='NOK') return 1;
-    const { data, error} = await ok.fetch('get', 'https://data.norges-bank.no/api/data/EXR/B.'+iso+'.NOK.SP?format=sdmx-json&startPeriod=2022-07-19&endPeriod=2023-07-19&locale=no')
+    const { data, error} = await ok.fetch('get', 'https://data.norges-bank.no/api/data/EXR/B.'+iso+'.NOK.SP?format=sdmx-json&lastNObservations=1&locale=no')
     if(error) {
       ok.log('error', 'could not get rate for '+iso, error.message)
       return null
@@ -54,12 +54,12 @@ export default defineEventHandler( async (event) => {
   const updateRate = async (pair) => {
     const fromRate = await getRate(pair.from);
     const toRate = await getRate(pair.to);
+    const rate = (fromRate/toRate) || 1;
     const json = {
       'from': pair.from,
       'to': pair.to,
-      'value': fromRate/toRate
+      'value': rate
     };
-    if(pair.to==pair.from) return;
     if(!fromRate) return;
     if(!toRate) return;
     const { data, error } = await supabase
