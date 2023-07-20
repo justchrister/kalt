@@ -74,3 +74,7 @@ BEGIN
   END IF;
 END
 $$;
+CREATE POLICY "PUBLIC — Insert"
+ON public.request_access
+FOR INSERT
+WITH CHECK (true);
