@@ -1,11 +1,30 @@
 import { ok } from '~/composables/ok'
+import { pub } from '~/composables/messagingNext'
+
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const getTotalShares = async () => {
-    return 1010
-    // here we need to get and sum all shares active in the exchange (fulfilled buy orders, and unfulfilled sell orders)
+    const { data, error } = await supabase
+      .from('exchange_orders')
+      .select()
+      .eq('order_status', 'fulfilled')
+      .eq('ticker', 'gi.ddf')
+      .eq('order_type', 'buy')
+    let total = 0;
+    if(data){
+      for (let i = 0; i < data.length; i++) {
+        const order = data[i];
+        total += order.quantity;
+      }
+      ok.log('success', 'got total shares: '+total)
+      return total
+    }
+    if(error){
+      ok.log('error', 'error getting fulfilled orders: '+error.message)
+      return error
+    }
   }
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
@@ -41,25 +60,31 @@ export default defineEventHandler( async (event) => {
     }
   }
   const getForecastedAnnualCashFlow = async () => {
+    // will be extended
     const dailyForecast = await getTrailingAverageForecast();
     const annualForecast = dailyForecast.average*365;
     return annualForecast;
   }
 
-  const totalShares = await getTotalShares();
+  const totalShares = await getTotalShares() || 0 as any;
 
   const annualCashFlow = await getForecastedAnnualCashFlow();
   const operatingCost = annualCashFlow*0.04;
   const presentValue = annualCashFlow - operatingCost;
-  const discountRate = 0.8; // 
+  const discountRate = 0.8;
   const premiumRate = 0.1; 
-  const growthRate = 0.02; // annual growthRate projection
+  const growthRate = 0.02;
 
   const totalValuation = presentValue / (discountRate - premiumRate - growthRate)
   const shareValuation = totalValuation/totalShares
-  return {
+  
+  const json = {
     "ticker": "ddf.gi",
     "totalValuation": totalValuation,
+    "totalShares": totalShares,
     "shareValuation": shareValuation
   }
+
+  await pub(supabase, 'fundValuation', { 'messageSender': 'server/api/fundValuation/calculate.ts' }, json)
+  return json
 });
