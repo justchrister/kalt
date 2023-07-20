@@ -21,12 +21,6 @@ const removeNullValues = (message) => {
   return json
 }
 export const message = {
-  get: async (messageEntityId) => {
-    // create a view where you can get messageEntityId
-    // Retrieve the account transaction messages related to the entityId
-    // Combine messages and remove null values
-    // Return the combined result
-  },
   post: async (supabase, topic, json) => {
     const snakeCaseTopic = toSnakeCase(topic);
     // remove null values
@@ -48,5 +42,35 @@ export const message = {
       ok.log('error', 'failed to insert on '+topic+': ', error)
       return error
     }
+  }
+};
+
+export const pub = async (supabase, topic, meta, json) => {
+  if(!meta.messageSender) {
+    return 'no message sender'
+    ok.log('error', 'failed to insert on '+topic+': no messageSender')
+  }
+  let metaJson = {
+    'message_id': meta.messageId || ok.uuid(),
+    'message_entity_id': meta.messageEntityId || ok.uuid(),
+    'message_created': meta.messageCreated || ok.timestamptz(),
+    'message_sender': meta.messageSender
+  }
+  const snakeCaseTopic = toSnakeCase(topic);
+  const snakeCaseJson = convertKeysToSnakeCase(json);
+  const { data, error } = await supabase
+    .from(snakeCaseTopic)
+    .insert({
+      ...metaJson,
+      ...snakeCaseJson
+    })
+    .select()
+  if(data) {
+    ok.log('success', 'inserted on '+topic+': ', data)
+    return data
+  }
+  if(error) {
+    ok.log('error', 'failed to insert on '+topic+': ', error)
+    return error
   }
 };
