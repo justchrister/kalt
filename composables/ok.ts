@@ -69,18 +69,29 @@ export const ok = {
   },
   log(type, ...inputs){
     // https://talyian.github.io/ansicolors/
-    
     let label = '\x1b[34m● \x1b[0m'
+    let lineIcon ='\x1b[34m| \x1b[0m'
     let text = ''
-    if (type==='success') label = '\x1b[32m● \x1b[0m'
-    if (type==='warn')    label = '\x1b[33m● \x1b[0m'
-    if (type==='error')   label = '\x1b[31m● \x1b[0m'
-
-    inputs.forEach((input) => {
-      if (typeof input === 'object') {
+    if (type==='success') {
+      label = '\x1b[32m● \x1b[0m'
+      lineIcon ='\x1b[32m| \x1b[0m'
+    }
+    if (type==='warn'){
+      label = '\x1b[33m● \x1b[0m'
+      lineIcon ='\x1b[33m| \x1b[0m'
+    }
+    if (type==='error'){
+      label = '\x1b[31m● \x1b[0m'
+      lineIcon ='\x1b[31m| \x1b[0m'
+    }
+  
+    inputs.forEach((input, i) => {
+      if (Array.isArray(input) && input.every(x => typeof x === 'string')) {
+        text += '\n' + input.map((elem, index) => `${lineIcon} ${String(index)}  "${elem}"`).join('\n');
+      } else if (typeof input === 'object') {
         const formattedObject = JSON.stringify(input, null, 2)
           .split('\n')
-          .map((line) => '  ' + line)
+          .map((line) => lineIcon+' '+ line)
           .join('\n');
         text += '\n' + formattedObject;
       } else {
@@ -90,17 +101,6 @@ export const ok = {
     
     console.log(label + text)
     return
-/*
-drain function
-    return {
-      drain: async function (supabase) {
-        await supabaseClient
-          .from('logs')
-          .insert([
-            { type: type, content: text },
-          ])
-      }
-    }; */
   },
 
   addZero(i) {

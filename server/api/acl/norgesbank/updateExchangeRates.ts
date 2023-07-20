@@ -17,7 +17,7 @@ export default defineEventHandler( async (event) => {
         currencies.push(currency.iso)
       }
     }
-    ok.log('', 'got the currencies', data)
+    ok.log('', 'got the currencies', currencies)
     return currencies
   }
 
@@ -32,7 +32,6 @@ export default defineEventHandler( async (event) => {
         });
       }
     }
-    ok.log('', 'made them into pairs ', pairs)
     return pairs;
   }
   const getRate = async (iso) => {
@@ -66,7 +65,7 @@ export default defineEventHandler( async (event) => {
       .upsert(json)
       .select()
     if(data){
-      ok.log('', 'data: ', data)
+      ok.log('', 'updated exchange rate '+pair.from+' → '+pair.to+' to '+rate)
       return data
     }
     if(error){
@@ -77,7 +76,6 @@ export default defineEventHandler( async (event) => {
   const currencyPairs = await createCurrencyPairs(currencies)
   let updatedValues = [];
   for (let i = 0; i < currencyPairs.length; i++) {
-    ok.log('', 'im here 1')
     const pair = currencyPairs[i];
     let updatedRate = await updateRate(pair)
     updatedValues.push(...updatedRate)
