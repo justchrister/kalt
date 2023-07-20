@@ -51,9 +51,13 @@ export default defineEventHandler( async (event) => {
     const toRate = await getRate(pair.to);
     const rate = (fromRate/toRate) || 1;
     const json = {
+      'message_sender': 'server/api/acl/norgesbank/updateExchangeRates.ts',
+      'message_created': ok.timestamptz(),
+      'message_id': ok.uuid(),
+      'message_entity_id': ok.uuid(),
       'from': pair.from,
       'to': pair.to,
-      'value': rate
+      'rate': rate
     };
     if(!fromRate) return;
     if(!toRate) return;
