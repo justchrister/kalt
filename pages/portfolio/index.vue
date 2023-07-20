@@ -39,10 +39,10 @@
       <h3>Impact in numbers <omoji emoji="😮"/></h3>
       <p> Your investments has decreased your carbon footprint by 90 tonnes of Co2, in other words: </p>
       <div class="impacts">
-        <impact type="pink" title="Driving 1 000 km in a Fiat Panda" />
-        <impact type="blue" title="Construction of a 200 m2 house" />
-        <impact type="red" title="Flying 1.4 times to Paris from Tokyo" />
-        <impact type="green" title="Producing and eating 9 000 avocadoes" />
+        <impact type="fiat"/>
+        <impact type="house"/>
+        <impact type="plane" />
+        <impact type="avocado"/>
       </div>
     </block>
   </main>
