@@ -25,6 +25,10 @@
     {
       "path": "/api/acl/norgesbank/updateExchangeRates",
       "schedule": "35 * * * *"
+    },
+    {
+      "path": "/api/fundValuations/calculate",
+      "schedule": "20 04 * * *"
     }
   ]
 }
