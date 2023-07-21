@@ -1,5 +1,5 @@
 <template>
-  <div class="blkkk">
+  <div class="input-wrap">
     <label>Select reinvestment ratio (%): </label>
     <div class="wrapper">
       <span>{{val}}%</span>
@@ -88,7 +88,18 @@
   button:focus{
     border-radius:0;
   }
-  .blkkk{
+  .input-wrap{
     margin-top:$clamp;
+  }
+
+
+  .dark-mode span{
+    border-color:$light;
+    &:hover{
+      background:$dark;
+    }
+  }
+  .dark-mode .wrapper{
+    border-color:$light;
   }
 </style>
