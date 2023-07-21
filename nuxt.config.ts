@@ -19,6 +19,9 @@ export default defineNuxtConfig({
       }
     }
   },
+  content: {
+    anchorLinks: false
+  },
   htmlAttrs: {
     lang: 'en'
   },
