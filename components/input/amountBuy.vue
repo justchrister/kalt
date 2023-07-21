@@ -93,4 +93,10 @@ const user = useSupabaseUser()
     border:none;
     border-right:$border;
   }
+  .dark-mode{
+    .input-group,
+    input{
+      border-color:$light;
+    }
+  }
 </style>
