@@ -128,15 +128,20 @@
   }
   const labels = ref([]);
   const datas = ref([]);
+  let color = '#202124';
 
+  const colorMode = useColorMode()
+  if(colorMode.value=='dark') {
+    color = '#FCF9F2'
+  }
   const chartData = computed(() => ({
     labels: labels.value.slice(-props.days),
     datasets: [{
         label: "",
-        borderColor: '#202124',
-        pointBackgroundColor: '#202124',
+        borderColor: color,
+        pointBackgroundColor: color,
         pointBorderWidth: 0,
-        pointBorderColor: '#202124',
+        pointBorderColor: color,
         data: datas.value.slice(-props.days)
       }]
   }))
