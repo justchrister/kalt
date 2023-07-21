@@ -55,4 +55,24 @@ const props = defineProps({
     border-color:$pink;
     background:$pink-20;
   }
+  .dark-mode{
+    .number,
+    .content,
+    .title{
+      color:$dark;
+    }
+    #green{
+      border-color:$green;
+      background:$green-80;
+    }
+    #blue{
+      border-color:$blue;
+      background:$blue-80;
+    }
+    #pink{
+      border-color:$pink;
+      background:$pink-80;
+    }
+
+  }
 </style>
