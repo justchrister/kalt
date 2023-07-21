@@ -33,4 +33,7 @@
     padding-bottom:$clamp;
     border-bottom:1px solid black;
   }
+  .dark-mode main a{
+    border-color:$light;
+  }
 </style>

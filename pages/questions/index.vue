@@ -2,7 +2,7 @@
   <main>
     <intro title="Questions and answers"
     paragraph="Here we try to answer some questions you might have, in simple to understand."/>
-    <block margin="none">
+    <block>
       <ContentList path="/questions" v-slot="{ list }">
           <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
             {{ article.title }}
