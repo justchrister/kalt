@@ -1,7 +1,7 @@
 <template>
   <main>
     <block>
-      <nuxt-link to="/"><omoji emoji="←"/> back</nuxt-link>
+      <nuxt-link to="/">← back</nuxt-link>
       <h1>Whitepaper: Accelerating Fossil-Free Energy Growth Through Innovative Investment Solutions </h1>
     </block>
     <block margin="half">
@@ -122,4 +122,6 @@
   p,h2,h3,h2{ color:black; }
   a{ text-decoration:none; }
   p{line-height:1.5;}
+  .dark-mode main{ background:$dark; }
+  .dark-mode p,h2,h3,h2{ color:$light; }
 </style>
