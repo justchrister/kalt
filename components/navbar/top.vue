@@ -79,6 +79,11 @@
   animation-delay: 500ms;
   animation-iteration-count: 99999;
 }
+  header{
+    position:fixed;
+    width:100%;
+    height:$clamp-5;
+  }
 .dark-mode {
    .logo{
     background:$light;
@@ -86,9 +91,13 @@
    button{
     color:$light;
    }
-  
-  
-  
+   .show-menu header{
+    height:$clamp-17;
+   }
+   header{
+    background:$dark-95;
+    border-bottom:$border-width solid $light;
+   }
 }
 @keyframes example {
   0% {
