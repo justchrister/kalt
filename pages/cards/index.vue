@@ -53,3 +53,12 @@
     if(error) ok.log('error', 'could not set default card', error)
   }
 </script>
+<style scoped lang="scss">
+  .dark-mode button{
+    color:$light;
+    border-color:$light;
+  }
+  .dark-mode button:hover{
+    background:$dark;
+  }
+</style>
