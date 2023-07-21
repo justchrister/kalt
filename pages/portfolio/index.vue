@@ -104,4 +104,11 @@ li{
   }
   
 }
+  .dark-mode li{
+    border-color:$light;
+  }
+  .dark-mode li.active,
+  .dark-mode li:hover{
+    background:$dark;
+  }
 </style>
