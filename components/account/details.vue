@@ -85,4 +85,7 @@
   a{
     color:$blue;
   }
+  .dark-mode .card{
+    border-color:$light;
+  }
 </style>
