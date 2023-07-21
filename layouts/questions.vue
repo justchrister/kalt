@@ -53,4 +53,17 @@
   background: $green-60;
   position: relative;
 }
+.dark-mode{
+
+  .layout.questions h1,
+  .layout.questions p{
+    color:$dark;
+  }
+  .layout.questions h1{
+    background: $blue-80;
+  }
+  .layout.questions p{
+    background: $green-80;
+  }
+}
 </style>
