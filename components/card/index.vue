@@ -112,4 +112,22 @@
     text-align:center;
     text-decoration:none;
   }
+  .dark-mode{
+    .card .logo.visa{ 
+      background-image: url('/media/icons/visa-light.svg');
+    }
+    .card .logo.mastercard{ 
+      background-image: url('/media/icons/mastercard.svg');
+    }
+    .card .logo.amex{ 
+      background-image: url('/media/icons/amex.svg');
+    }
+    .card{
+      border-color:$light;
+      
+    }
+    .card:hover{
+      background-color:$dark;
+  }
+  }
 </style>
