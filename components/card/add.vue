@@ -186,6 +186,13 @@ button{
   background-image: url('/media/icons/amex.svg');
 }
 .dark-mode{
+  button,
+  .card{
+    border-color:$light;
+  }
+  button{
+    color:$light;
+  }
   .logo.visa{ 
     background-image: url('/media/icons/visa-light.svg');
   }
