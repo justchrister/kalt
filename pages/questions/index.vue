@@ -2,7 +2,7 @@
   <main>
     <intro title="Questions and answers"
     paragraph="Here we try to answer some questions you might have, in simple to understand."/>
-    <block>
+    <block margin="none">
       <ContentList path="/questions" v-slot="{ list }">
           <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
             {{ article.title }}
@@ -32,5 +32,8 @@
     margin-bottom:$clamp-2;
     padding-bottom:$clamp;
     border-bottom:1px solid black;
+  }
+  .dark-mode main a{
+    border-color:$light;
   }
 </style>
