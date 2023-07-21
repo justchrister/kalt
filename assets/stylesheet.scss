@@ -2,6 +2,7 @@
 @import 'base/variables';
 @import 'base/mixins';
 @import 'base/base';
+@import 'base/dark-mode';
 
 
 
@@ -37,7 +38,6 @@ select{
   background-color:transparent;
   height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
   appearance: none;
-
 }
 select:focus{
   background-color:white;
