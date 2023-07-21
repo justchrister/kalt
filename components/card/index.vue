@@ -124,7 +124,6 @@
     }
     .card{
       border-color:$light;
-      
     }
     .card:hover{
       background-color:$dark;
