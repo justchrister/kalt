@@ -57,4 +57,7 @@ const props = defineProps({
     border-bottom:$border;
     padding-top:$clamp-2;
   }
+  .dark-mode .transactions-header{
+    border-color:$light;
+  }
 </style>
