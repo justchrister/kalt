@@ -18,7 +18,7 @@
     const Co2 = 0.527;    // KWh equivalent CO2 emissions
     const avoidedEmissions=KWh*Co2;
     const equivalent = avoidedEmissions/productGWP
-    return equivalent
+    return Number(equivalent.toFixed(2));
   }
   const getUserPortfolio = async () => {
     const { data, error } = await supabase
@@ -83,6 +83,8 @@
 .impact{
   padding:$clamp 0;
   border-top:$border;
+  max-height:$clamp-2-5;
+  line-height:$clamp-2-5;;
   display: grid;
   grid-template-columns: $clamp-4 1fr;
   grid-template-rows: 1fr;
@@ -111,5 +113,13 @@
 }
 .impact .image#avocado{
   background-color:$green-40;
+}
+.impact p{
+  line-height:$clamp-2-5;;
+}
+.dark-mode{
+  .impact{
+    border-color:$light;
+  }
 }
 </style>
