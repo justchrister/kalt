@@ -11,15 +11,6 @@ function convertKeysToSnakeCase(obj) {
   }
   return result;
 }
-const removeNullValues = (message) => {
-  const json = Object.entries(message).reduce((acc, [key, value]) => {
-    if (value !== null) {
-      acc[key] = value;
-    }
-    return acc;
-  }, {});
-  return json
-}
 export const message = {
   post: async (supabase, topic, json) => {
     const snakeCaseTopic = toSnakeCase(topic);
