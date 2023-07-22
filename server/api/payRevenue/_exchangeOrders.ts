@@ -41,9 +41,12 @@ export default defineEventHandler( async (event) => {
   }
 
   const updateShares = async (shares) => {
+    if(shares<0) {
+      shares = null
+    }
     const { data, error } = await supabase
       .from('pay_revenue')
-      .insert({
+      .upsert({
         user_id: message.user_id,
         quantity: shares,
       })
