@@ -54,7 +54,6 @@
   position: relative;
 }
 .dark-mode{
-
   .layout.questions h1,
   .layout.questions p{
     color:$dark;
