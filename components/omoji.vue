@@ -120,5 +120,180 @@ span.ⓘ{
   background-image:url('../omoji/enclosed-text-i.svg');
 }
 
+
+/* happy */
+span.happy,
+span.😊 ,
+span.🙂 { 
+  background-image:url('../omoji/happy.svg');
+}
+/* Super happy */
+span.😃,
+span.😄,
+span.😁,
+span.😆,
+span.😀 { 
+  background-image:url('../omoji/super-happy.svg');
+}
+/* Sad */
+span.☹️,
+span.🙁,
+span.😟,
+span.😒,
+span.😞,
+span.😔 { background-image:url('../omoji/sad.svg');}
+
+/* ambivalent */
+span.🙃 {
+  background-image:url('../omoji/ambivalent.svg');
+}
+
+/* Suprised */
+span.😯,
+span.😮,
+span.😲 {
+  background-image:url('../omoji/suprised.svg');
+}
+
+//                               //
+//           DARK MODE           //
+//                               //
+
+.dark-mode{
+
+
+/* happy */
+span.happy,
+span.😊 ,
+span.🙂 { 
+  background-image:url('../omoji/light/happy.svg');
+}
+/* Super happy */
+span.😃,
+span.😄,
+span.😁,
+span.😆,
+span.😀 { 
+  background-image:url('../omoji/light/super-happy.svg');
+}
+/* Sad */
+span.☹️,
+span.🙁,
+span.😟,
+span.😒,
+span.😞,
+span.😔 { background-image:url('../omoji/light/sad.svg');}
+
+/* ambivalent */
+span.🙃 {
+  background-image:url('../omoji/light/ambivalent.svg');
+}
+
+/* Suprised */
+span.😯,
+span.😮,
+span.😲 {
+  background-image:url('../omoji/light/suprised.svg');
+}
+
+/* Scared or very sad*/
+span.😦 {
+  background-image:url('../omoji/light/scared.svg');
+}
+/* wink */
+span.😉 {
+  background-image:url('../omoji/light/wink.svg');
+}
+/* laughing */
+/* tounge-out */
+span.😜,
+span.😛,
+span.😝,
+span.🤪 {
+  background-image:url('../omoji/light/tounge-out.svg');
+}
+/* other */
+span.☀️{ 
+  background-image:url('../omoji/light/sun.svg');
+}
+span.✨ {
+  background-image:url('../omoji/light/stars.svg');
+}
+/* arrows */
+
+span.↑{
+  background-image:url('../omoji/light/arrow-up.svg');
+}
+span.↗{
+  background-image:url('../omoji/light/arrow-up-right.svg');
+}
+span.→{
+  background-image:url('../omoji/light/arrow-right.svg');
+}
+span.↘{
+  background-image:url('../omoji/light/arrow-down-right.svg');
+}
+span.↓{
+  background-image:url('../omoji/light/arrow-down.svg');
+}
+span.↙{
+  background-image:url('../omoji/light/arrow-down-left.svg');
+}
+span.←{
+  background-image:url('../omoji/light/arrow-left.svg');
+}
+span.↖{
+  background-image:url('../omoji/light/arrow-up-left.svg');
+}
+span.↻{
+  font-size: 138%;
+  background-image:url('../omoji/light/arrow-clockwise.svg');
+}
+span.↺{
+  font-size: 138%;
+  background-image:url('../omoji/light/arrow-anti-clockwise.svg');
+}
+
+// Enclosed Alphanumerics - compart.com/en/unicode/block/U+2460
+span.ⓘ{
+  font-size: 138%;
+  background-image:url('../omoji/light/enclosed-text-i.svg');
+}
+
+
+/* happy */
+span.happy,
+span.😊 ,
+span.🙂 { 
+  background-image:url('../omoji/light/happy.svg');
+}
+/* Super happy */
+span.😃,
+span.😄,
+span.😁,
+span.😆,
+span.😀 { 
+  background-image:url('../omoji/light/super-happy.svg');
+}
+/* Sad */
+span.☹️,
+span.🙁,
+span.😟,
+span.😒,
+span.😞,
+span.😔 { background-image:url('../omoji/light/sad.svg');}
+
+/* ambivalent */
+span.🙃 {
+  background-image:url('../omoji/light/ambivalent.svg');
+}
+
+/* Suprised */
+span.😯,
+span.😮,
+span.😲 {
+  background-image:url('../omoji/light/suprised.svg');
+}
+}
 </style>
 
