@@ -18,20 +18,19 @@ export default defineEventHandler( async (event) => {
       .from('pay_revenue')
       .select()
     if(data) {
-      ok.log('success', 'got shares per user: ', data)
+      ok.log('success', 'got shares per user')
       return data
     }
     if(error){
-      ok.log('error', 'error getting shares per user: ', error)
+      ok.log('error', 'error getting shares per user')
       return error
     }
   }
 
   const getTotalShares = async (userList) => {
     let totalShares = 0;
-    for (let i = 0; i < userList; i++) {
-      const user = userList[i];
-      totalShares += user.quantity;
+    for (let i = 0; i < userList.length; i++) {
+      totalShares += userList[i].quantity;
     }
     return totalShares;
   }
@@ -50,12 +49,19 @@ export default defineEventHandler( async (event) => {
   const totalShares = await getTotalShares(sharesPerUser);
 
   for (let i = 0; i < sharesPerUser.length; i++) {
-
+    // check that user_id, amount etc is correct
     const user = sharesPerUser[i].user_id;
     const shares = sharesPerUser[i].quantity;
     const share = shares / totalShares;
-    const dividend = message.dividend * share;
-
+    const dividend = message.amount * share;
+    ok.log('', {
+      "user": user,
+      "shares": shares,
+      "totalShares": totalShares,
+      "totalAmount": message.amount,
+      "share": share,
+      "dividend": dividend
+    })
     const json = {
       'message_id': ok.uuid(),
       'message_entity_id': ok.uuid(),
@@ -67,6 +73,11 @@ export default defineEventHandler( async (event) => {
       'transaction_status': 'payment_accepted',
       'currency': 'EUR'
     };
+
+    if(!json.amount) {
+      ok.log('error', 'no shares for user: ', sharesPerUser[i].user_id)
+      return 'error: no shares for user:'
+    }
     const created = await createDividendTransactions(json);
     ok.log('success', 'dividend transaction created: ', json)
   }
