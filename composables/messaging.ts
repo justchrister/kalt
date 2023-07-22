@@ -42,7 +42,7 @@ export const messaging = {
       .eq('to', to)
       .limit(1)
       .single()
-    if(data) return amount*data.value
+    if(data) return amount*data.rate
     if(error) return amount
   },
   cleanMessage: async (message) => {
