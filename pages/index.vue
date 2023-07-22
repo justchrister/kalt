@@ -30,7 +30,8 @@
 </template>
 <script setup>
   definePageMeta({
-    pagename: 'Homepage'
+    pagename: 'Homepage',
+    middleware: 'default'
   })
   useHead({
     title: 'Kalt'

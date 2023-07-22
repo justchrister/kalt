@@ -111,7 +111,8 @@
 <script setup>
   definePageMeta({
     pagename: 'Whitepaper',
-    layout:'blank'
+    layout:'blank',
+    middleware: 'default'
   })
   useHead({
     title: 'Whitepaper'

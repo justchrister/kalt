@@ -24,7 +24,8 @@
 </template>
 <script setup>
   definePageMeta({
-    pagename: 'About us'
+    pagename: 'About us',
+    middleware: 'default'
   })
   useHead({
     title: 'About us'

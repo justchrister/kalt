@@ -13,7 +13,8 @@
 </template>
 <script setup>
   definePageMeta({
-    pagename: 'Questions'
+    pagename: 'Questions',
+    middleware: 'default'
   })
   useHead({
     title: 'Questions'

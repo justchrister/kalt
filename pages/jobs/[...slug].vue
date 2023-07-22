@@ -11,7 +11,8 @@
 </template>
 <script setup>
   definePageMeta({
-    pagename: 'Candidate'
+    pagename: 'Candidate',
+    middleware: 'default'
   })
   useHead({
     title: 'Candidate'
