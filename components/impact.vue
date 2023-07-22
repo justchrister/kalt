@@ -2,6 +2,7 @@
   <div class="impact">
     <div class="image" :id="props.type"></div>
     <p class="title">{{title}}</p>
+    <p class="read-more"> <nuxt-link :to="'calculations/'+props.type">read more</nuxt-link></p>
   </div>
 </template>
 <script setup>
@@ -86,11 +87,14 @@
   max-height:$clamp-2-5;
   line-height:$clamp-2-5;;
   display: grid;
-  grid-template-columns: $clamp-4 1fr;
+  grid-template-columns: $clamp-4 2fr 1fr;
   grid-template-rows: 1fr;
   gap: 0;
   grid-auto-flow: row;
   font-size:120%;
+}
+.read-more{
+  text-align:right;
 }
 
 .impact .image{
