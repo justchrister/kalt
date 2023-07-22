@@ -16,7 +16,7 @@
   definePageMeta({
     pagename: 'Invest',
     layout: 'focused',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Invest'

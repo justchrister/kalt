@@ -12,7 +12,7 @@
 <script lang="ts" setup>
   definePageMeta({
     pagename: 'error',
-    middleware: 'auth'
+    middleware: ['default']
   })
   useHead({
     title: 'error',

@@ -50,7 +50,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Portfolio',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Portfolio'

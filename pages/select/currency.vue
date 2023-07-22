@@ -14,7 +14,7 @@
   const user = useSupabaseUser()
   definePageMeta({
     pagename: 'select currency',
-    middleware: 'auth',
+    middleware: ['default', 'auth'],
     layout: 'blank'
   })
   useHead({

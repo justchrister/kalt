@@ -9,7 +9,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Add card',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Add card'

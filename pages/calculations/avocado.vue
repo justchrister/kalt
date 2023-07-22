@@ -41,7 +41,7 @@
 <script lang="ts" setup>
   definePageMeta({
     pagename: 'Avocado',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Avocado'

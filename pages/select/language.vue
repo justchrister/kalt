@@ -13,7 +13,7 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   definePageMeta({
-    middleware: 'auth',
+    middleware: ['default', 'auth'],
     layout: 'blank'
   })
   useHead({

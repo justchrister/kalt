@@ -30,7 +30,7 @@
 <script lang="ts" setup>
   definePageMeta({
     pagename: 'Profile',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Profile'

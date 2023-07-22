@@ -19,7 +19,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Edit',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Edit'

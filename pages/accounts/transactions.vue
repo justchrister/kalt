@@ -8,7 +8,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Transactions',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Transactions'

@@ -39,7 +39,7 @@
 <script lang="ts" setup>
   definePageMeta({
     pagename: 'Fiat panda',
-    middleware: 'auth'
+    middleware: ['default', 'auth']
   })
   useHead({
     title: 'Fiat panda'
