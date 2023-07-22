@@ -25,13 +25,12 @@
 
 
 <script lang="ts" setup>
-const props = defineProps({
+  const props = defineProps({
     hidePfp: {
       type: Boolean,
       required: false
     }
   })
-
 </script>
 <style scoped lang="scss">
 .tabs{
