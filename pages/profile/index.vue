@@ -15,9 +15,9 @@
     <block margin="2" >
       <select-language />
     </block><!--
-    <block margin="2" >-->
+    <block margin="2" >
       <select-color-scheme />
-    </block>
+    </block>-->
     <block margin="2" >
       <label> Legal stuff</label>
       <toggle-performance-updates />
