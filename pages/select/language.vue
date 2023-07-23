@@ -75,10 +75,12 @@
     font-family:"Kalt Monospace", monospace;
     font-size:75%;
   }
+  /*
   .dark-mode li{
     border-color:$light;
     &:hover{
       background:$dark;
     }
   }
+  */
 </style>

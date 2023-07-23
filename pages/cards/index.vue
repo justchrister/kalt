@@ -54,11 +54,12 @@
   }
 </script>
 <style scoped lang="scss">
+/*
   .dark-mode button{
     color:$light;
     border-color:$light;
   }
   .dark-mode button:hover{
     background:$dark;
-  }
+  }*/
 </style>

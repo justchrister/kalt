@@ -55,6 +55,7 @@ const props = defineProps({
     border-color:$pink;
     background:$pink-20;
   }
+  /*
   .dark-mode{
     .number,
     .content,
@@ -74,5 +75,5 @@ const props = defineProps({
       background:$pink-80;
     }
 
-  }
+  }*/
 </style>

@@ -123,6 +123,8 @@
   p,h2,h3,h2{ color:black; }
   a{ text-decoration:none; }
   p{line-height:1.5;}
+  /*
   .dark-mode main{ background:$dark; }
   .dark-mode p,h2,h3,h2{ color:$light; }
+  */
 </style>

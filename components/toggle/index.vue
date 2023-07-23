@@ -61,7 +61,7 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
   .toggle{
     background:$dark;
   }
-}
+}/*
 .dark-mode{
   .input-wrapper:hover{
     .toggle-wrap{
@@ -79,5 +79,5 @@ $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
   .toggle-wrap{
     border-color:$light;
   }
-}
+}*/
 </style>

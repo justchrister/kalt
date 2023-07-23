@@ -31,11 +31,11 @@
   h1{
     margin:0;
   }
-}
+}/*
 .dark-mode{
   .intro{
     padding:$clamp-12 0 $clamp-7 0;
     background:$blue-80;
   }
-}
+}*/
 </style>

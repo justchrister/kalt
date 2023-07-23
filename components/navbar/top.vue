@@ -81,21 +81,6 @@
     width:100%;
     height:$clamp-5;
   }
-.dark-mode {
-   .logo{
-    background:$light;
-  }
-   button{
-    color:$light;
-   }
-   .show-menu header{
-    height:$clamp-17;
-   }
-   header{
-    background:$dark-95;
-    border-bottom:$border-width solid $light;
-   }
-}
 @keyframes example {
   0% {
     transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
@@ -172,6 +157,23 @@ button {
     opacity:0;
   }
 }
+
+  /*
+.dark-mode {
+   .logo{
+    background:$light;
+  }
+   button{
+    color:$light;
+   }
+   .show-menu header{
+    height:$clamp-17;
+   }
+   header{
+    background:$dark-95;
+    border-bottom:$border-width solid $light;
+   }
+}*/
 </style>
 <style lang="scss">
 .show-menu{

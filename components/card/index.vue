@@ -111,7 +111,7 @@
     padding-left:0;
     text-align:center;
     text-decoration:none;
-  }
+  }/*
   .dark-mode{
     .card .logo.visa{ 
       background-image: url('/media/icons/visa-light.svg');
@@ -128,5 +128,5 @@
     .card:hover{
       background-color:$dark;
   }
-  }
+  }*/
 </style>

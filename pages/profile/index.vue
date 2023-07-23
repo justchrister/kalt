@@ -14,8 +14,8 @@
     </block>
     <block margin="2" >
       <select-language />
-    </block>
-    <block margin="2" >
+    </block><!--
+    <block margin="2" >-->
       <select-color-scheme />
     </block>
     <block margin="2" >

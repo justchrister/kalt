@@ -132,7 +132,7 @@
         border-radius:$border-radius;
         background: $green-20;
     }
-  }
+  }/*
   .dark-mode .component.calendar input[type="checkbox"]:checked + label {
       background: $green-60;
       color:$dark;
@@ -143,5 +143,5 @@
   .dark-mode .component.calendar input[type="checkbox"] + label{
     border-color:$light;
   }
-
+*/
 </style>

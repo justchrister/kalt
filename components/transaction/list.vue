@@ -60,8 +60,8 @@ const props = defineProps({
     gap: 2% 2%; 
     border-bottom:$border;
     padding-top:$clamp-2;
-  }
+  }/*
   .dark-mode .transactions-header{
     border-color:$light;
-  }
+  }*/
 </style>

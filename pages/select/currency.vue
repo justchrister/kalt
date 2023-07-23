@@ -78,10 +78,12 @@
   span:hover{
     cursor:pointer;
   }
+  /*
   .dark-mode li{
     border-color:$light;
     &:hover{
       background:$dark;
     }
   }
+  */
 </style>

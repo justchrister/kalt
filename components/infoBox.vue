@@ -38,7 +38,7 @@ const props = defineProps({
 .infobox#success{
     border:$border-width solid $green;
     background:$green-20;
-}
+}/*
 .dark-mode{
   .infobox{
     border:$border-width solid $blue;
@@ -53,5 +53,5 @@ const props = defineProps({
     border:$border-width solid $green;
     background:$green-60;
   }
-}
+}*/
 </style>

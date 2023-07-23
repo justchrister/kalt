@@ -185,6 +185,7 @@ button{
 .logo.amex{ 
   background-image: url('/media/icons/amex.svg');
 }
+/*
 .dark-mode{
   button,
   .card{
@@ -197,4 +198,5 @@ button{
     background-image: url('/media/icons/visa-light.svg');
   }
 }
+*/
 </style>

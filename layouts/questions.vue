@@ -52,7 +52,7 @@
   margin-bottom:$clamp;
   background: $green-60;
   position: relative;
-}
+}/*
 .dark-mode{
   .layout.questions h1,
   .layout.questions p{
@@ -64,5 +64,5 @@
   .layout.questions p{
     background: $green-80;
   }
-}
+}*/
 </style>

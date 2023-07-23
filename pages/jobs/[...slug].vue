@@ -51,9 +51,11 @@ main.candidate h3 a{
   text-decoration:none;
   font-size: $clamp-2-5;
 }
+/*
 .dark-mode main.candidate h1{
   background-image: url(/media/insignia/insignia-light.svg);
   color: $light;
 }
+*/
 
 </style>

@@ -56,11 +56,11 @@ const languageDetails = await getLanguageDetails();
     font-family:"Kalt Monospace", monospace;
     font-size:75%;
   }
-
+/*
   .dark-mode a{
     border-color:$light;
     &:hover{
       background:$dark;
     }
-  }
+  }*/
 </style>

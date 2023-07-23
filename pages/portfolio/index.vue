@@ -104,6 +104,7 @@ li{
   }
   
 }
+/*
   .dark-mode li{
     border-color:$light;
   }
@@ -111,4 +112,5 @@ li{
   .dark-mode li:hover{
     background:$dark;
   }
+  */
 </style>

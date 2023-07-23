@@ -92,7 +92,7 @@
     margin-top:$clamp;
   }
 
-
+/*
   .dark-mode span{
     border-color:$light;
     &:hover{
@@ -101,5 +101,5 @@
   }
   .dark-mode .wrapper{
     border-color:$light;
-  }
+  }*/
 </style>

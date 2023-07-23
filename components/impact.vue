@@ -120,10 +120,10 @@
 }
 .impact p{
   line-height:$clamp-2-5;;
-}
+}/*
 .dark-mode{
   .impact{
     border-color:$light;
   }
-}
+}*/
 </style>
