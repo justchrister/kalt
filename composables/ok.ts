@@ -108,21 +108,21 @@ export const ok = {
     return i;
   },
 
-  prettyCurrency(amount, currency) {
+  prettyCurrency(amount) {
     let amountRounded = (Math.ceil(amount * 10) / 10).toFixed(1);
     const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currency,
+      style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 3,
     });
-    return formatter.format(amountRounded)
+    return formatter.format(amountRounded);
   },
   prettyDate(dateTime) {
-    const day = new Date(dateTime).getDate()
-    const month = new Date(dateTime).getMonth()+1
-    const year = new Date(dateTime).getFullYear()
-    return day+"/"+month+"/"+year
+    const date = new Date(dateTime);
+    const day = ("0" + date.getDate()).slice(-2);
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
   },
   prettyTime(dateTime){
     const hour = ok.addZero(new Date(dateTime).getHours())
