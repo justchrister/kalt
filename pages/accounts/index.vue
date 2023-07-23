@@ -6,6 +6,9 @@
     </block>
     <block margin="2">
       <account-card />
+      <nuxt-link to="accounts/transactions">
+        <button>transactions →</button>
+      </nuxt-link>
     </block>
     <block margin="2">
       <account-details />
@@ -25,3 +28,8 @@
   })
   
 </script>
+<style scoped lang="scss">
+  button{
+    margin-top:$clamp;
+  }
+</style>
