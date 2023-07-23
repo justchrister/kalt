@@ -1,12 +1,14 @@
 <template>
-  <div class="transaction">
-    <div class="transaction-type" :id="props.type">
+  <div class="transaction" v-if="props.currency">
+    <div class="transaction-type">
+      {{ type }}
     </div>
     <div class="amount">
-      {{ok.prettyCurrency(props.amount, currency)}}
+      {{props.currency}}
+      {{ok.prettyCurrency(props.amount)}}
     </div>
     <div class="date">
-      {{ok.prettyDate(props.date)}}
+        {{ok.prettyDate(props.date)}} at
     </div>
     <div class="time">
       {{ok.prettyTime(props.date)}}
@@ -31,39 +33,33 @@
       type: String,
       required: true
     }
-  }) 
-  const currency = props.currency || 'EUR';
+  })
+  const type = ref('←')
+  if(props.type==='deposit'){
+    type.value = '→'
+  }
 
 </script>
 <style scoped lang="scss">
   .transaction {
     display: grid; 
-    grid-template-columns: $clamp-2 12fr 2fr 2fr; 
+    grid-template-columns: $clamp 1fr 1fr $clamp-4; 
     gap: $clamp;
     border-bottom:$border;
-  }
-  .transaction-type{
-    background-size:$clamp-1;
-    background-repeat:no-repeat;
-    background-position:center;
-    width:$clamp-2;
-    height:$clamp-2;
-  }
-  #withdraw{
-    background-image:url('/omoji/withdraw.svg');
-  }
-  #deposit{
-    background-image:url('/omoji/deposit.svg');
-  }
-  .dark-mode{
-    .transaction{
-      border-color:$light;
+    *{
+      font-family:$monospace;
+      font-size:85%;
     }
-    #withdraw{
-      background-image:url('/omoji/light/withdraw.svg');
-    }
-    #deposit{
-      background-image:url('/omoji/light/deposit.svg');
-    }
+  }
+
+  .date, .time{
+    text-align:right;
+  }
+  .date span{
+    padding-right:$clamp-2;
+    border-right:$border;
+  }
+  .dark-mode .transaction{
+    border-color:$light;
   }
 </style>
