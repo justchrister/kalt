@@ -3,7 +3,8 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/supabase', 
-    '@nuxt/content' // ,'@nuxtjs/color-mode'
+    '@nuxt/content',
+    '@nuxtjs/color-mode'
   ],
   css: ['@/assets/stylesheet.scss'],
   build: {
