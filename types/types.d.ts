@@ -1,52 +1,23 @@
-
 export { };
 
 declare global {
-  // Enums
-  const enum TransactionStatus {
+  const enum AccountTransactionsStatuses {
     Incomplete = 'incomplete',
-    PaymentAwaiting = 'payment_awaiting',
-    PaymentDeclined = 'payment_declined',
-    PaymentAccepted = 'payment_accepted',
-    WithdrawalAwaiting = 'withdrawal_awaiting',
-    WithdrawalProcessing = 'withdrawal_processing',
-    WithdrawalAccepted = 'withdrawal_accepted',
+    Pending = 'pending',
+    Processing = 'processing',
+    Complete = 'complete'
   }
-
-  const enum TransactionType {
-    Deposit = 'deposit',
-    Withdraw = 'withdraw',
+  const enum AccountTransactionsTypes {
+      Deposit = 'deposit',
+      Withdraw = 'withdraw'
   }
-
-  const enum TransactionSubType {
-    Card = 'card',
-    WireTransfer = 'wire_transfer',
-    Dividend = 'dividend',
-    Subscription = 'subscription',
-    AutoInvested = 'auto_invested',
-    AutoWithdraw = 'auto_withdraw',
-  }
-
-  const enum CardStatus {
-    Incomplete = 'incomplete',
-    Active = 'active',
-    Rejected = 'rejected',
-    Expired = 'expired',
-  }
-
-  const enum Ticker {
-    GiDdf = 'gi.ddf',
-  }
-
-  const enum OrderType {
-    Buy = 'buy',
-    Sell = 'sell',
-  }
-
-  const enum OrderStatus {
-    Open = 'open',
-    Fulfilled = 'fulfilled',
-    Cancelled = 'cancelled',
-    Split = 'split',
+  const enum AccountTransactionsSubTypes {
+      Card = 'card',
+      WireTransfer = 'wireTransfer',
+      Dividend = 'dividend',
+      Subscription = 'subscription',
+      AutoInvested = 'autoInvested',
+      NewShares = 'newShares',
+      AutoWithdraw = 'autoWithdraw'
   }
 }
