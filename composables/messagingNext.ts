@@ -1,67 +1,43 @@
 // @ts-nocheck
 import { ok } from '~/composables/ok'
-
-function toSnakeCase(str) {
-  return str.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+  
+export const pub = (client, meta: messageMeta) => {
+  return {
+    accountTransaction: async (content: accountTransaction) => {
+      const json = {
+        'id': meta.id || ok.uuid(),
+        'entity': meta.entity || ok.uuid(),
+        'sent': meta.sent || ok.timestamptz(),
+        'sender': meta.sender,
+        ...content
+      }
+      const { data, error } = await client.from('topic_accountTransaction').insert(json).select()
+      if(data) {
+        ok.log('success', 'inserted on accountTransaction: ', data)
+        return data
+      }
+      if(error) {
+        ok.log('error', 'failed to insert accountTransaction: '+error.message)
+        return error
+      }
+    },
+    exchangeOrder: async (content: exchangeOrder) => {
+      const json = {
+        'id': meta.id || ok.uuid(),
+        'entity': meta.entity || ok.uuid(),
+        'sent': meta.sent || ok.timestamptz(),
+        'sender': meta.sender,
+        ...content
+      }
+      const { data, error } = await client.from(topic_exchangeOrder).insert(json).select()
+      if(data) {
+        ok.log('success', 'inserted on exchangeOrder: ', data)
+        return data
+      }
+      if(error) {
+        ok.log('error', 'failed to insert exchangeOrder: '+error.message)
+        return error
+      }
+    },
+  }
 }
-function convertKeysToSnakeCase(obj) {
-  const result = {};
-  for (const key in obj) {
-    result[toSnakeCase(key)] = obj[key];
-  }
-  return result;
-}
-export const message = {
-  post: async (supabase, topic, json) => {
-    const snakeCaseTopic = toSnakeCase(topic);
-    // remove null values
-    const snakeCaseJson = convertKeysToSnakeCase(json);
-
-    const { data, error } = await supabase
-      .from(snakeCaseTopic)
-      .insert({
-        'message_created': ok.timestamptz(),
-        'message_id': ok.uuid(),
-        ...snakeCaseJson
-      })
-      .select()
-    if(data) {
-      ok.log('success', 'inserted on '+topic+': ', data)
-      return data
-    }
-    if(error) {
-      ok.log('error', 'failed to insert on '+topic+': ', error)
-      return error
-    }
-  }
-};
-
-export const pub = async (supabase, topic, meta, json) => {
-  if(!meta.messageSender) {
-    return 'no message sender'
-    ok.log('error', 'failed to insert on '+topic+': no messageSender')
-  }
-  let metaJson = {
-    'message_id': meta.messageId || ok.uuid(),
-    'message_entity_id': meta.messageEntityId || ok.uuid(),
-    'message_created': meta.messageCreated || ok.timestamptz(),
-    'message_sender': meta.messageSender
-  }
-  const snakeCaseTopic = toSnakeCase(topic);
-  const snakeCaseJson = convertKeysToSnakeCase(json);
-  const { data, error } = await supabase
-    .from(snakeCaseTopic)
-    .insert({
-      ...metaJson,
-      ...snakeCaseJson
-    })
-    .select()
-  if(data) {
-    ok.log('success', 'inserted on '+topic+': ', data)
-    return data
-  }
-  if(error) {
-    ok.log('error', 'failed to insert on '+topic+': ', error)
-    return error
-  }
-};
