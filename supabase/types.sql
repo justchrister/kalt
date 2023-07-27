@@ -1,3 +1,23 @@
+create type public."accountTransactions_statuses" as enum (
+    'incomplete',
+    'pending',
+    'processing',
+    'complete'
+);
+create type public."accountTransactions_types" as enum (
+    'deposit',
+    'withdraw'
+);
+create type public."accountTransactions_subTypes" as enum (
+    'card',
+    'wireTransfer',
+    'dividend',
+    'subscription',
+    'autoInvested',
+    'newShares',
+    'autoWithdraw'
+);
+
 create type public.card_statuses as enum (
     'incomplete',
     'active',
