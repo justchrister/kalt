@@ -1,5 +1,5 @@
 -- create table
-create table public.currencies (
+create table public.sys_currencies (
   iso           CHAR(3) primary key,
   "name"        text,
   used_in       text,
@@ -7,10 +7,10 @@ create table public.currencies (
 );
 
 --- add row level security
-ALTER TABLE currencies ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sys_currencies ENABLE ROW LEVEL SECURITY;
 
 -- insert values
-insert into public.currencies (iso, name, used_in) values
+insert into public.sys_currencies (iso, name, used_in) values
 ('AED','Arabic dirham','United Arab Emirates'),
 ('AFN','afghani','Afghanistan'),
 ('ALL','lek','Albania'),
