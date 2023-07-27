@@ -1,4 +1,4 @@
-export interface AccountTransaction {
+export interface accountTransaction {
     id?: string; // UUID
     entity?: string; // UUID
     sent?: Date; // timestamptz
