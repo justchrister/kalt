@@ -1,23 +1,23 @@
 export { };
 
 declare global {
-  const enum AccountTransactionsStatuses {
-    Incomplete = 'incomplete',
-    Pending = 'pending',
-    Processing = 'processing',
-    Complete = 'complete'
+  const enum accountTransactionsStatuses {
+    incomplete = 'incomplete',
+    pending = 'pending',
+    processing = 'processing',
+    complete = 'complete'
   }
-  const enum AccountTransactionsTypes {
-      Deposit = 'deposit',
-      Withdraw = 'withdraw'
+  const enum accountTransactionsTypes {
+      deposit = 'deposit',
+      withdraw = 'withdraw'
   }
-  const enum AccountTransactionsSubTypes {
-      Card = 'card',
-      WireTransfer = 'wireTransfer',
-      Dividend = 'dividend',
-      Subscription = 'subscription',
-      AutoInvested = 'autoInvested',
-      NewShares = 'newShares',
-      AutoWithdraw = 'autoWithdraw'
+  const enum accountTransactionsSubTypes {
+      card = 'card',
+      wireTransfer = 'wireTransfer',
+      dividend = 'dividend',
+      subscription = 'subscription',
+      autoInvested = 'autoInvested',
+      newShares = 'newShares',
+      autoWithdraw = 'autoWithdraw'
   }
 }
