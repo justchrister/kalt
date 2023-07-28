@@ -230,3 +230,24 @@ insert into public.sys_countries (name, iso2, iso3) values
   ('Zimbabwe','ZW','ZWE'),
   ('Afghanistan','AF','AFG'),
   ('Algeria','DZ','DZA');
+
+
+---
+
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = '"sys_countries"'
+      AND policyname = 'AUTH — Select'
+  ) THEN
+    CREATE POLICY "AUTH — Select" ON public."sys_countries"
+      AS PERMISSIVE FOR SELECT
+      TO authenticated
+      USING (true);
+  END IF;
+END
+$$;

@@ -172,3 +172,23 @@ insert into public.sys_currencies ("iso", "name", "usedIn") values
 ('ZAR','South African rand','South Africa'),
 ('ZMW','Zambian kwacha','Zambia'),
 ('ZWL','Zimbabwe dollar','Zimbabwe');
+
+
+---
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = '"sys_currencies"'
+      AND policyname = 'AUTH — Select'
+  ) THEN
+    CREATE POLICY "AUTH — Select" ON public."sys_currencies"
+      AS PERMISSIVE FOR SELECT
+      TO authenticated
+      USING (true);
+  END IF;
+END
+$$;
