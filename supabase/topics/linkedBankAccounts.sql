@@ -10,11 +10,11 @@ CREATE TABLE "topic_linkedBankAccounts" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
 -- 
-    "userId"             uuid        NOT NULL,
-    "name"              text,
-    email               text,
-    iban                text,
-    "bankCode"           text
+    "userId"              uuid                            NOT NULL,
+    "name"                text,
+    "email"               text,
+    "iban"                text,
+    "bankCode"            text
 );
 
 --- add row level security
