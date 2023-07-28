@@ -1,40 +1,40 @@
 -- create a topic, by simply renaming all instances of <<topic_name>
 -- version 6.4.23
--- topic   exchange_orders
+-- topic   "topic_exchangeOrders"
 
 --- create the table, with default values
-CREATE TABLE exchange_orders (
+CREATE TABLE "topic_exchangeOrders" (
 -- meta information used for processing
-    message_id          uuid            NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity_id   uuid            NOT NULL  DEFAULT uuid_generate_v4(),
-    message_created     timestamptz     NOT NULL  DEFAULT (now() at time zone 'utc'),
-    message_sender      text            NOT NULL,
+    "id"          uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "entity"      uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
+    "sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
+    "sender"      text                            NOT NULL,
 --
-    user_id             uuid            NOT NULL,
-    quantity            numeric,
-    ticker              tickers,
-    order_type          order_types,
-    order_status        order_statuses,
-    fulfilled_by_id     uuid,
-    split_into          uuid[],
-    part_of             uuid,
-    CHECK ((order_type = 'buy' AND quantity > 0) OR (order_type = 'sell' AND quantity < 0))
+    "userId"              uuid            NOT NULL,
+    "quantity"            numeric,
+    "ticker"              tickers,
+    "type"                "exchangeOrders_types",
+    "status"              "exchangeOrders_statuses",
+    "fulfilledBy"         uuid,
+    "splitInto"           uuid[],
+    "partOf"              uuid,
+    CHECK (("type" = 'buy' AND quantity > 0) OR ("type" = 'sell' AND quantity < 0))
 );
 
 --- add row level security
-ALTER TABLE exchange_orders ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "topic_exchangeOrders" ENABLE ROW LEVEL SECURITY;
 
 --- Standard descriptions
-comment on column exchange_orders.message_id 
+comment on column "topic_exchangeOrders"."id" 
 is 'this is the unique id of this message, not the unique id of its contents. (for instance, account_transactions have their own account_transaction_id';
 
-comment on column exchange_orders.message_entity_id 
+comment on column "topic_exchangeOrders"."entity" 
 is 'Used to correlate messages that are associated with a single entity, since they will have updates in the same table with different message_ids, usually a 1:1 relation to an order_id or similar';
 
-comment on column exchange_orders.message_created 
+comment on column "topic_exchangeOrders"."created" 
 is 'when the message was generated, usually set in the application. It can be created in javascript by doing ok.timestamptz()';
 
-comment on column exchange_orders.message_sender 
+comment on column "topic_exchangeOrders"."sender" 
 is 'where the message originates, usually set in the application.';
 
 
@@ -45,10 +45,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'exchange_orders'
+      AND tablename = '"topic_exchangeOrders"'
       AND policyname = 'SELF — Insert'
   ) THEN
-    CREATE POLICY "SELF — Insert" ON public.exchange_orders
+    CREATE POLICY "SELF — Insert" ON public."topic_exchangeOrders"
       AS PERMISSIVE FOR INSERT
       TO authenticated
       WITH CHECK (auth.uid() = user_id);
@@ -62,10 +62,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'exchange_orders'
+      AND tablename = '"topic_exchangeOrders"'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.exchange_orders
+    CREATE POLICY "SELF — Select" ON public."topic_exchangeOrders"
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (auth.uid() = user_id);
