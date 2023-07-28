@@ -1,15 +1,13 @@
 --- create the table, with default values
-CREATE TABLE get_user_subscription (
-  user_id             uuid        PRIMARY KEY, 
-  amount              numeric,
-  currency            CHAR(3)     default 'EUR',
-  active              boolean     default false,
-  days_of_month       integer[]
+CREATE TABLE "getUserSubscription" (
+  "userId"             uuid        PRIMARY KEY, 
+  "amount"             numeric,
+  "currency"           CHAR(3)     default 'EUR',
+  "active"             boolean     default false,
+  "days"               integer[]
 );
 
-
-ALTER TABLE get_user_subscription ENABLE ROW LEVEL SECURITY;
-
+ALTER TABLE "getUserSubscription" ENABLE ROW LEVEL SECURITY;
 
 DO $$
 BEGIN
@@ -17,10 +15,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'get_user_subscription'
+      AND tablename = '"getUserSubscription"'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.get_user_subscription
+    CREATE POLICY "SELF — Select" ON public."getUserSubscription"
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (auth.uid() = "userId");

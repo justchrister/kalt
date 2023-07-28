@@ -1,15 +1,15 @@
 --- create the table, with default values
-CREATE TABLE get_account_transactions (
-  user_id           uuid                    NOT NULL,
-  date              timestamptz             NOT NULL,
-  amount            numeric                 NOT NULL,
-  type              transaction_types       NOT NULL,
-  sub_type          transaction_sub_types   NOT NULL,
-  PRIMARY KEY (user_id, date)
+CREATE TABLE "getAccountTransactions" (
+  "userId"           uuid                    NOT NULL,
+  "date"              timestamptz             NOT NULL,
+  "amount"            numeric                 NOT NULL,
+  "type"              "accountTransactions_types"       NOT NULL,
+  "subType"          "accountTransactions_subTypes"   NOT NULL,
+  PRIMARY KEY ("userId", date)
 );
 
 --- Add row level security
-ALTER TABLE get_account_transactions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "getAccountTransactions" ENABLE ROW LEVEL SECURITY;
 
 DO $$
 BEGIN
@@ -17,10 +17,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'get_account_transactions'
+      AND tablename = '"getAccountTransactions"'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.get_account_transactions
+    CREATE POLICY "SELF — Select" ON public."getAccountTransactions"
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (auth.uid() = "userId");

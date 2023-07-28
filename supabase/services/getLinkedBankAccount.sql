@@ -1,18 +1,19 @@
 --- create the table, with default values
-CREATE TABLE get_linked_bank_accounts (
-  user_id             uuid        NOT NULL,
-  "name"              text,
-  email               text,
-  iban                text,
-  bank_code           text,
+CREATE TABLE "getLinkedBankAccount" (
+  "userId"        uuid      NOT NULL,
+  "name"          text,
+  "email"         text,
+  "iban"          text,
+  "bankCode"      text,
+
   PRIMARY KEY (user_id, iban)
 );
 
 --- Add row level security
-ALTER TABLE get_linked_bank_accounts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "getLinkedBankAccount" ENABLE ROW LEVEL SECURITY;
 
 --- Create RLS policy
-CREATE POLICY "SELF — Select" ON "public"."get_linked_bank_accounts"
+CREATE POLICY "SELF — Select" ON "public"."getLinkedBankAccount"
   AS PERMISSIVE FOR SELECT
   TO authenticated
-  USING (auth.uid() = user_id)
+  USING (auth.uid() = "userId")

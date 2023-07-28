@@ -1,19 +1,18 @@
-
-
 --- create the table, with default values
-CREATE TABLE asset_prices (
-  ticker            tickers        NOT NULL,
-  date              date           NOT NULL,
-  currency          CHAR(3)        NOT NULL,
-  asset_price       numeric,
+CREATE TABLE "getAssetPrice" (
+  "ticker"            tickers        NOT NULL,
+  "date"              date           NOT NULL,
+  "currency"          CHAR(3)        NOT NULL,
+  "price"             numeric,
+  
   PRIMARY KEY (ticker, currency, date)
 );
 
 --- Add row level security
-ALTER TABLE asset_prices ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "getAssetPrice" ENABLE ROW LEVEL SECURITY;
 
 --- Create RLS policy
-CREATE POLICY "SELF — Select" ON "public"."asset_prices"
+CREATE POLICY "SELF — Select" ON "public"."getAssetPrice"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (TRUE)

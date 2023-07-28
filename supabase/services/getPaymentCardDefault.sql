@@ -1,14 +1,14 @@
 --- create the table, with default values
-CREATE TABLE get_payment_card_default (
-  user_id             uuid        PRIMARY KEY, 
-  last_four_digits    CHAR(4),
-  expiry_month        CHAR(2),
-  card_number         CHAR(16),
-  expiry_year         CHAR(2)
+CREATE TABLE "getPaymentCardDefault" (
+  "userId"            uuid        PRIMARY KEY, 
+  "lastFourDigits"    CHAR(4),
+  "month"             CHAR(2),
+  "number"            CHAR(16),
+  "year"              CHAR(2)
 );
 
 
-ALTER TABLE get_payment_card_default ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "getPaymentCardDefault" ENABLE ROW LEVEL SECURITY;
 
 
 DO $$
@@ -17,10 +17,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'get_payment_card_default'
+      AND tablename = '"getPaymentCardDefault"'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.get_payment_card_default
+    CREATE POLICY "SELF — Select" ON public."getPaymentCardDefault"
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (auth.uid() = "userId");
