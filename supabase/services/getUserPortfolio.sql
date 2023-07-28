@@ -30,7 +30,7 @@ BEGIN
     CREATE POLICY "SELF — Select" ON public.get_user_portfolio
       AS PERMISSIVE FOR SELECT
       TO authenticated
-      USING (auth.uid() = user_id);
+      USING (auth.uid() = "userId");
   END IF;
 END
 $$;
