@@ -5,10 +5,10 @@
 --- create the table, with default values
 CREATE TABLE user_subscriptions (
 -- meta information used for processing
-    message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity_id   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    message_created     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
-    message_sender      text        NOT NULL,
+    "id"          uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "entity"      uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
+    "sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
+    "sender"      text                            NOT NULL,
 --
     user_id                uuid, 
     amount                numeric,
