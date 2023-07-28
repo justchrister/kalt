@@ -12,7 +12,7 @@ CREATE TABLE "topic_exchangeOrders" (
 --
     "userId"              uuid            NOT NULL,
     "quantity"            numeric,
-    "ticker"              tickers,
+    "ticker"              "tickers",
     "type"                "exchangeOrders_types",
     "status"              "exchangeOrders_statuses",
     "fulfilledBy"         uuid,
@@ -36,7 +36,7 @@ BEGIN
     CREATE POLICY "SELF — Insert" ON public."topic_exchangeOrders"
       AS PERMISSIVE FOR INSERT
       TO authenticated
-      WITH CHECK (auth.uid() = user_id);
+      WITH CHECK (auth.uid() = "userId");
   END IF;
 END
 $$;
@@ -53,7 +53,7 @@ BEGIN
     CREATE POLICY "SELF — Select" ON public."topic_exchangeOrders"
       AS PERMISSIVE FOR SELECT
       TO authenticated
-      USING (auth.uid() = user_id);
+      USING (auth.uid() = "userId");
   END IF;
 END
 $$;
