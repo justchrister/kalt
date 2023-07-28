@@ -47,7 +47,7 @@ BEGIN
     CREATE POLICY "SELF — Insert" ON public."topic_accountTransactions"
       AS PERMISSIVE FOR INSERT
       TO authenticated
-      WITH CHECK (auth.uid() = user_id);
+      WITH CHECK (auth.uid() = "userId");
   END IF;
 END
 $$;
