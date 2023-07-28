@@ -24,11 +24,11 @@ create type public."paymentCards_statuses" as enum (
     'rejected',
     'expired'
 );
-create type public."exchangeOrder_types" as enum (
+create type public."exchangeOrders_types" as enum (
     'buy',
     'sell'
 );
-create type public."exchangeOrder_statuses" as enum (
+create type public."exchangeOrders_statuses" as enum (
     'open',
     'fulfilled',
     'cancelled',
@@ -40,14 +40,14 @@ create type public."paymentsPending_statuses" as enum (
     'failed',
     'complete'
 );
-create type public."payments_paymentProviders" as enum (
+create type public."paymentProviders" as enum (
     'stripe'
 );
 
 
-create type public.tickers as enum (
+create type public."tickers" as enum (
     'gi.ddf',
     'mi.ddf',
     'ffe.ddf',
-    'ffe.ddf'
+    'ah.ddf'
 );
