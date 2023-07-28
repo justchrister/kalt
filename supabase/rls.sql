@@ -11,10 +11,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'currencies'
+      AND tablename = '"sys_currencies"'
       AND policyname = 'AUTH — Select'
   ) THEN
-    CREATE POLICY "AUTH — Select" ON public.currencies
+    CREATE POLICY "AUTH — Select" ON public."sys_currencies"
       AS PERMISSIVE FOR SELECT
       TO authenticated
       USING (true);
@@ -30,13 +30,13 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'user_subscriptions'
+      AND tablename = '"topic_userSubscriptions"'
       AND policyname = 'SELF — Insert'
   ) THEN
-    CREATE POLICY "SELF — Insert" ON public.user_subscriptions
+    CREATE POLICY "SELF — Insert" ON public."topic_userSubscriptions"
       AS PERMISSIVE FOR INSERT
       TO authenticated
-      WITH CHECK (auth.uid() = user_id);
+      WITH CHECK (auth.uid() = "userId");
   END IF;
 END
 $$;
@@ -64,13 +64,13 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'user_subscriptions'
+      AND tablename = '"topic_userSubscriptions"'
       AND policyname = 'SELF — Select'
   ) THEN
-    CREATE POLICY "SELF — Select" ON public.user_subscriptions
+    CREATE POLICY "SELF — Select" ON public."topic_userSubscriptions"
       AS PERMISSIVE FOR SELECT
       TO authenticated
-      USING (auth.uid() = user_id);
+      USING (auth.uid() = "userId");
   END IF;
 END
 $$;
