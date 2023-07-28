@@ -2,7 +2,7 @@
 create table public.sys_currencies (
   iso           CHAR(3) primary key,
   "name"        text,
-  "usedIn"       text,
+  "usedIn"      text,
   "enabled"     boolean
 );
 
@@ -10,18 +10,18 @@ create table public.sys_currencies (
 ALTER TABLE sys_currencies ENABLE ROW LEVEL SECURITY;
 
 -- insert values
-insert into public.sys_currencies (iso, name, "usedIn") values
-('AED','Arabic dirham','United Arab Emirates'),
-('AFN','afghani','Afghanistan'),
-('ALL','lek','Albania'),
-('AMD','dram','Armenia'),
-('ANG','Netherlands Antillean guilder','Sint Maarten, Curacao'),
-('AOA','kwanza','Angola'),
-('ARS','Argentine peso','Argentina'),
-('AUD','Australian dollar','Australia, Christmas Island, Cocos Keeling Islands, Nauru, Norfolk Island, Heard Island and McDonald Islands'),
-('AWG','guilder','Aruba'),
-('AZN','manat','Azerbaijan'),
-('BAM','Convertible mark','Bosnia and Herzegovina'),
+insert into public.sys_currencies ("iso", "name", "usedIn") values
+('AED',     'Arabic dirham',                  'United Arab Emirates'               ),
+('AFN',     'Afghani',                        'Afghanistan'                        ),
+('ALL',     'Lek',                            'Albania'                            ),
+('AMD',     'Dram',                           'Armenia'                            ),
+('ANG',     'Netherlands Antillean guilder',  'Sint Maarten, Curacao'),
+('AOA',     'kwanza','Angola'),
+('ARS',     'Argentine peso','Argentina'),
+('AUD',     'Australian dollar','Australia'),
+('AWG',     'guilder','Aruba'),
+('AZN',     'manat','Azerbaijan'),
+('BAM',     'Convertible mark','Bosnia and Herzegovina'),
 ('BBD','Barbadian dollar','Barbados'),
 ('BDT','taka','Bangladesh'),
 ('BGN','Bulgarian lev','Bulgaria'),
@@ -171,4 +171,4 @@ insert into public.sys_currencies (iso, name, "usedIn") values
 ('YER','Jemen rial','Yemen'),
 ('ZAR','South African rand','South Africa'),
 ('ZMW','Zambian kwacha','Zambia'),
-('ZWL','Zimbabwe dollar','Zimbabwe')
+('ZWL','Zimbabwe dollar','Zimbabwe');
