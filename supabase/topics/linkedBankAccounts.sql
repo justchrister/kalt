@@ -1,14 +1,14 @@
 -- create a topic, by simply renaming all instances of <<topic_name>
 -- version 6.4.23
--- topic   linked_bank_accounts
+-- topic   "topic_linkedBankAccounts"
 
 --- create the table, with default values
-CREATE TABLE linked_bank_accounts (
+CREATE TABLE "topic_linkedBankAccounts" (
 -- meta information used for processing
-    "id"          uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    "entity"      uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
-    "sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
-    "sender"      text                            NOT NULL,
+    "message_id"          uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "message_entity"      uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
+    "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
+    "message_sender"      text                            NOT NULL,
 -- 
     "userId"             uuid        NOT NULL,
     "name"              text,
@@ -18,24 +18,7 @@ CREATE TABLE linked_bank_accounts (
 );
 
 --- add row level security
-ALTER TABLE linked_bank_accounts ENABLE ROW LEVEL SECURITY;
-
---- Standard descriptions
-comment on column linked_bank_accounts.message_id 
-is 'this is the unique id of this message, not the unique id of its contents. (for instance, account_transactions have their own account_transaction_id';
-
-comment on column linked_bank_accounts.message_entity_id 
-is 'Used to correlate messages that are associated with a single entity, since they will have updates in the same table with different message_ids, usually a 1:1 relation to an order_id or similar';
-
-comment on column linked_bank_accounts.message_created 
-is 'when the message was generated, usually set in the application. It can be created in javascript by doing ok.timestamptz()';
-
-comment on column linked_bank_accounts.message_sender 
-is 'where the message originates, usually set in the application.';
-
-comment on column linked_bank_accounts.message_sender 
-is 'where the message originates, usually set in the application.';
-
+ALTER TABLE "topic_linkedBankAccounts" ENABLE ROW LEVEL SECURITY;
 
 DO $$
 BEGIN
@@ -43,10 +26,10 @@ BEGIN
     SELECT 1
     FROM pg_policies
     WHERE schemaname = 'public'
-      AND tablename = 'linked_bank_accounts'
+      AND tablename = '"topic_linkedBankAccounts"'
       AND policyname = 'SELF — Insert'
   ) THEN
-    CREATE POLICY "SELF — Insert" ON public.linked_bank_accounts
+    CREATE POLICY "SELF — Insert" ON public."topic_linkedBankAccounts"
       AS PERMISSIVE FOR INSERT
       TO authenticated
       WITH CHECK (auth.uid() = "userId");
