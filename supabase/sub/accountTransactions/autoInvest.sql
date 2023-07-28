@@ -4,29 +4,29 @@
 -- topic   account_transactions
 
 --- create the table, with default values
-CREATE TABLE auto_invest__account_transactions (
+CREATE TABLE "sub_accountTransactions_autoInvest" (
     message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity_id   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    message_created     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
+    message_entity      uuid        NOT NULL  DEFAULT uuid_generate_v4(),
+    message_sent        timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
     message_sender      text        NOT NULL,
     message_read        boolean     NOT NULL  DEFAULT FALSE
 );
 
 --- add row level security
-ALTER TABLE auto_invest__account_transactions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "sub_accountTransactions_autoInvest" ENABLE ROW LEVEL SECURITY;
 
 -- Create the trigger function on the account_transactions
-CREATE OR REPLACE FUNCTION auto_invest__account_transactions()
+CREATE OR REPLACE FUNCTION "sub_accountTransactions_autoInvest"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO auto_invest__account_transactions (message_id, message_entity_id, message_sender, message_created)
-  VALUES (NEW.message_id, NEW.message_entity_id, NEW.message_sender, NEW.message_created);
+  INSERT INTO "sub_accountTransactions_autoInvest" (message_id, message_entity, message_sender, message_sent)
+  VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create the trigger on the topic table and event
-CREATE TRIGGER auto_invest__account_transactions
+CREATE TRIGGER "sub_accountTransactions_autoInvest"
 AFTER INSERT ON account_transactions
 FOR EACH ROW
-EXECUTE FUNCTION auto_invest__account_transactions();
+EXECUTE FUNCTION "sub_accountTransactions_autoInvest"();
