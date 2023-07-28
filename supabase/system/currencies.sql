@@ -2,7 +2,7 @@
 create table public.sys_currencies (
   iso           CHAR(3) primary key,
   "name"        text,
-  used_in       text,
+  "usedIn"       text,
   "enabled"     boolean
 );
 
@@ -10,7 +10,7 @@ create table public.sys_currencies (
 ALTER TABLE sys_currencies ENABLE ROW LEVEL SECURITY;
 
 -- insert values
-insert into public.sys_currencies (iso, name, used_in) values
+insert into public.sys_currencies (iso, name, "usedIn") values
 ('AED','Arabic dirham','United Arab Emirates'),
 ('AFN','afghani','Afghanistan'),
 ('ALL','lek','Albania'),
