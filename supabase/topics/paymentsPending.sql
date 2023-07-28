@@ -10,12 +10,12 @@ CREATE TABLE "topic_paymentsPending" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
 -- 
-    "user_id"             uuid                        NOT NULL,
+    "user_id"             uuid                            NOT NULL,
     "amount"              numeric,
     "currency"            text,
     "transactionId"       uuid,
-    "status"              "paymentsPending_statuses"   NOT NULL,
-    "provider"            "paymentProviders"            NOT NULL
+    "status"              "paymentsPending_statuses"      NOT NULL,
+    "provider"            "paymentProviders"              NOT NULL
 );
 
 --- add row level security
