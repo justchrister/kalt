@@ -3,7 +3,7 @@
 -- topic   <<topic_name>>
 
 --- create the table, with default values
-CREATE TABLE <<topic_name>> (
+CREATE TABLE "topic_<<topic_name>>" (
 -- meta information used for processing
     "message_id"       uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
     "message_entity"   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
@@ -12,4 +12,4 @@ CREATE TABLE <<topic_name>> (
 );
 
 --- add row level security
-ALTER TABLE <<topic_name>> ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "topic_<<topic_name>>" ENABLE ROW LEVEL SECURITY;
