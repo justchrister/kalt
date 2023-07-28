@@ -1,31 +1,24 @@
 
 
 create table
-  public.languages (
-    iso6393 text not null,
-    name text null,
-    available boolean null default false,
-    constraint languages_pkey primary key (iso6393)
-  ) tablespace pg_default;
+  public."sys_languages" (
+    iso           text        not null,
+    name          text,
+    available     boolean                 default false,
 
 
 --- add row level security
-ALTER TABLE currencies ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "sys_languages" ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "auth_select"
-ON public.languages
+CREATE POLICY "AUTH — Select"
+ON public."sys_languages"
 FOR SELECT 
 TO authenticated 
 USING (
   true
 );
 
-insert into public.languages (iso6393,name,available) 
-values ('NOR', 'Norwegian', true) ;
-
-
-insert into public.languages (iso6393,name,available) 
-values ('ENG', 'English', true);
-
-insert into public.languages (iso6393,name,available)
-values ('GER', 'German', true);
+insert into public."sys_languages" (iso, name, available) values 
+  ('NOR', 'Norwegian', true),
+  ('ENG', 'English', true),
+  ('GER', 'German', true);
