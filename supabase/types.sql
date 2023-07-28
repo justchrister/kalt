@@ -18,20 +18,17 @@ create type public."accountTransactions_subTypes" as enum (
     'autoWithdraw'
 );
 
-create type public.card_statuses as enum (
+create type public."paymentCards_statuses" as enum (
     'incomplete',
     'active',
     'rejected',
     'expired'
 );
-create type public.tickers as enum (
-    'gi.ddf'
-);
-create type public.order_types as enum (
+create type public."exchangeOrder_types" as enum (
     'buy',
     'sell'
 );
-create type public."order_statuses" as enum (
+create type public."exchangeOrder_statuses" as enum (
     'open',
     'fulfilled',
     'cancelled',
@@ -46,12 +43,11 @@ create type public."paymentsPending_statuses" as enum (
 create type public."payments_paymentProviders" as enum (
     'stripe'
 );
-create type public.continents as enum (
-    'Africa',
-    'Antarctica',
-    'Asia',
-    'Europe',
-    'Oceania',
-    'North America',
-    'South America'
+
+
+create type public.tickers as enum (
+    'gi.ddf',
+    'mi.ddf',
+    'ffe.ddf',
+    'ffe.ddf'
 );
