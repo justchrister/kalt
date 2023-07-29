@@ -59,17 +59,12 @@
 
   const create = async () => {
     loading.value = true;
-    const { error } = await supabase
-      .from('request_access')
-      .insert({
-        'message_entity_id': ok.uuid(),
-        'message_id': ok.uuid(),
-        'message_sender': 'pages/request/index.vue',
-        'first_name': firstName.value,
-        'last_name': lastName.value,
-        'email': email.value,
-        'country': country.value
-      })
+    const { error, data } = await pub(supabase, {"sender":"pages/request/index.vue"}).requestAccess({
+      'firstName': firstName.value,
+      'lastName': lastName.value,
+      'email': email.value,
+      'country': country.value
+    });
     loading.value = false;
     if(error){
       ok.log('error', 'could not request access '+error.message)
