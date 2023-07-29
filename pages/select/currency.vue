@@ -39,13 +39,10 @@
     .neq('iso', currency)
     
   const updateProfile = async (iso) => {
-    const { error } = await supabase
-      .from('user_preferences')
-      .insert({ 
-        user_id: user.value.id,
-        currency: iso,
-        message_sender: 'pages/select/currency.vue' 
-      })
+    const { error, data } = await pub(supabase, {"sender":"pages/select/currency.vue"}).userPreferences({
+      userId: user.value.id,
+      currency: iso
+    });
     if(error) {
       ok.log('error', 'failed updating currency: ', error)
     } else {
