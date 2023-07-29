@@ -29,7 +29,7 @@
   const user = useSupabaseUser()
   
   const { data, error } = await supabase
-    .from('get_user')
+    .from('getUser')
     .select()
     .limit(1)
     .single()
