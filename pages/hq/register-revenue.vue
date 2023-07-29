@@ -37,22 +37,16 @@
     }]
   })
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
   const val = ref(0)
   const loading = ref(false)
-  const create = async () => {
-    if(!val.value)return
 
-    const { data, error } = await supabase
-      .from('revenue_transactions')
-      .insert({
-          message_id: ok.uuid(),
-          message_entity_id: ok.uuid(),
-          message_sender: 'pages/hq/register-revenue.vue',
-          ticker: 'gi.ddf',
-          amount: val.value-(val.value*0.04),
-          currency: 'EUR'
-      })
+  const create = async () => {
+    if(!val.value) return false;
+    const { error, data } = await pub(supabase, {"sender":"pages/hq/register-revenue.vue"}).revenueTransaction({
+      ticker: 'gi.ddf',
+      amount: val.value-(val.value*0.04),
+      currency: 'EUR'
+    });
     if(error){
       ok.log('error', 'could not create transaction', error)
       loading.value = false
@@ -73,7 +67,6 @@
   }
 </script>
 <style scoped lang="scss">
-  
   label{
     display:block;
   }
