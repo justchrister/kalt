@@ -23,7 +23,7 @@
 
   const getPreferredCurrency = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('currency')
       .eq('user_id', user.value.id)
       .limit(1)
@@ -33,7 +33,7 @@
 
   const currency = await getPreferredCurrency();
   const { data, error } = await supabase
-    .from('currencies')
+    .from('sys_currencies')
     .select()
     .eq('enabled', true)
     .neq('iso', currency)
