@@ -10,7 +10,7 @@
     </block>
     <block margin="2">
       <label>Select which days you want to auto-invest</label>
-      <calendar-subscription :days="subscription.days_of_month"/>
+      <calendar-subscription :days="subscription.days"/>
     </block>
     <block margin="2">
       <label>Select card you want to withdraw:</label>
@@ -34,9 +34,9 @@
   })
   const getUserSubscription = async () => {
     const { data, error } = await supabase
-      .from('get_user_subscription')
+      .from('getUserSubscription')
       .select()
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     if(data) {
@@ -48,16 +48,7 @@
       return error
     }
   }
-  const hasDefaultCard = async () => {
-    const { data, error } = await supabase
-      .from('get_payment_card_default')
-      .select()
-      .limit(1)
-      .single()
-    if(data) return true
-    else return false
-  }
-  const defaultCard = await hasDefaultCard();
+  const defaultCard = await get("paymentCardDefault").;
   if(defaultCard){
     ok.log('success', 'User has default card')
   } else {
