@@ -1,21 +1,17 @@
--- subscribe to topic, by simply renaming all instances of <<topic name>__<service name>
--- version 6.4.23
--- service auto_invest
--- topic   account_transactions
+-- version 29.7.23
+-- service autoInvest
+-- topic   accountTransactions
 
 --- create the table, with default values
 CREATE TABLE "sub_accountTransactions_autoInvest" (
-    message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity      uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    message_sent        timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
-    message_sender      text        NOT NULL,
-    message_read        boolean     NOT NULL  DEFAULT FALSE
+    "message_id"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "message_entity"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
+    "message_sent"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
+    "message_sender"      text          NOT NULL,
+    "message_read"        boolean       NOT NULL  DEFAULT FALSE
 );
 
---- add row level security
-ALTER TABLE "sub_accountTransactions_autoInvest" ENABLE ROW LEVEL SECURITY;
-
--- Create the trigger function on the account_transactions
+-- Create the replicate function 
 CREATE OR REPLACE FUNCTION "sub_accountTransactions_autoInvest"()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -25,8 +21,35 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Create the trigger on the topic table and event
-CREATE TRIGGER "sub_accountTransactions_autoInvest"
-AFTER INSERT ON account_transactions
+-- Create replicate trigger
+CREATE TRIGGER "replicate"
+AFTER INSERT ON "topic_accountTransactions"
 FOR EACH ROW
 EXECUTE FUNCTION "sub_accountTransactions_autoInvest"();
+
+
+-- Set up webhook function 
+
+CREATE OR REPLACE FUNCTION "autoInvest/webhooks/accountTransactions"()
+RETURNS TRIGGER AS $$
+DECLARE 
+  response RECORD;
+  payload TEXT;
+BEGIN
+  -- Convert row data to json then to string format
+  payload := row_to_json(NEW)::text;
+  SELECT * INTO response FROM http_post(
+    'https://ka.lt/api/autoInvest/webhooks/accountTransactions',
+    payload,
+    'application/json'
+  );
+  RAISE NOTICE 'API Response: %', response.content;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Create webhook trigger
+CREATE TRIGGER "webhook"
+AFTER INSERT ON "trigger_accountTransactions_autoInvest"
+FOR EACH ROW
+EXECUTE FUNCTION sub_webhook(NEW);

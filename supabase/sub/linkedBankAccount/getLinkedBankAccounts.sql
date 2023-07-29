@@ -1,32 +1,55 @@
--- subscribe to topic, by simply renaming all instances of <<topic name>__<service name>
--- version 6.4.23
--- service get_linked_bank_accounts
--- topic   linked_bank_accounts
+-- version 29.7.23
+-- service getLinkedBankAccount
+-- topic   linkedBankAccount
 
 --- create the table, with default values
-CREATE TABLE get_linked_bank_accounts__linked_bank_accounts (
-    message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    message_sent     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
-    message_sender      text        NOT NULL,
-    message_read        boolean     NOT NULL  DEFAULT FALSE
+CREATE TABLE "sub_linkedBankAccount_getLinkedBankAccount" (
+    "message_id"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "message_entity"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
+    "message_sent"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
+    "message_sender"      text          NOT NULL,
+    "message_read"        boolean       NOT NULL  DEFAULT FALSE
 );
 
---- add row level security
-ALTER TABLE get_linked_bank_accounts__linked_bank_accounts ENABLE ROW LEVEL SECURITY;
-
--- Create the trigger function on the linked_bank_accounts
-CREATE OR REPLACE FUNCTION get_linked_bank_accounts__linked_bank_accounts()
+-- Create the replicate function 
+CREATE OR REPLACE FUNCTION "sub_linkedBankAccount_getLinkedBankAccount"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO get_linked_bank_accounts__linked_bank_accounts (message_id, message_entity, message_sender, message_sent)
+  INSERT INTO "sub_linkedBankAccount_getLinkedBankAccount" (message_id, message_entity, message_sender, message_sent)
   VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Create the trigger on the topic table and event
-CREATE TRIGGER get_linked_bank_accounts__linked_bank_accounts
-AFTER INSERT ON linked_bank_accounts
+-- Create replicate trigger
+CREATE TRIGGER "replicate"
+AFTER INSERT ON "topic_linkedBankAccount"
 FOR EACH ROW
-EXECUTE FUNCTION get_linked_bank_accounts__linked_bank_accounts();
+EXECUTE FUNCTION "sub_linkedBankAccount_getLinkedBankAccount"();
+
+
+-- Set up webhook function 
+
+CREATE OR REPLACE FUNCTION "getLinkedBankAccount/webhooks/linkedBankAccount"()
+RETURNS TRIGGER AS $$
+DECLARE 
+  response RECORD;
+  payload TEXT;
+BEGIN
+  -- Convert row data to json then to string format
+  payload := row_to_json(NEW)::text;
+  SELECT * INTO response FROM http_post(
+    'https://ka.lt/api/getLinkedBankAccount/webhooks/linkedBankAccount',
+    payload,
+    'application/json'
+  );
+  RAISE NOTICE 'API Response: %', response.content;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Create webhook trigger
+CREATE TRIGGER "webhook"
+AFTER INSERT ON "trigger_linkedBankAccount_getLinkedBankAccount"
+FOR EACH ROW
+EXECUTE FUNCTION sub_webhook(NEW);

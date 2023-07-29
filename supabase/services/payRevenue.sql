@@ -1,6 +1,6 @@
 --- create the table, with default values
 CREATE TABLE "payRevenue" (
-  user_id           uuid        NOT NULL PRIMARY KEY,
+  "userId"          uuid        NOT NULL PRIMARY KEY,
   amount            numeric,
   currency          CHAR(3)
 );

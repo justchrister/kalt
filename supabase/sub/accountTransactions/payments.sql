@@ -1,32 +1,55 @@
--- subscribe to topic, by simply renaming all instances of <<topic name>__<service name>
--- version 6.4.23
+-- version 29.7.23
 -- service payments
--- topic   account_transactions
+-- topic   accountTransactions
 
 --- create the table, with default values
-CREATE TABLE payments__account_transactions (
-    message_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    message_entity   uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-    message_sent     timestamptz NOT NULL  DEFAULT (now() at time zone 'utc'),
-    message_sender      text        NOT NULL,
-    message_read        boolean     NOT NULL  DEFAULT FALSE
+CREATE TABLE "sub_accountTransactions_payments" (
+    "message_id"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "message_entity"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
+    "message_sent"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
+    "message_sender"      text          NOT NULL,
+    "message_read"        boolean       NOT NULL  DEFAULT FALSE
 );
 
---- add row level security
-ALTER TABLE payments__account_transactions ENABLE ROW LEVEL SECURITY;
-
--- Create the trigger function on the account_transactions
-CREATE OR REPLACE FUNCTION payments__account_transactions()
+-- Create the replicate function 
+CREATE OR REPLACE FUNCTION "sub_accountTransactions_payments"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO payments__account_transactions (message_id, message_entity, message_sender, message_sent)
+  INSERT INTO "sub_accountTransactions_payments" (message_id, message_entity, message_sender, message_sent)
   VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Create the trigger on the topic table and event
-CREATE TRIGGER payments__account_transactions
-AFTER INSERT ON account_transactions
+-- Create replicate trigger
+CREATE TRIGGER "replicate"
+AFTER INSERT ON "topic_accountTransactions"
 FOR EACH ROW
-EXECUTE FUNCTION payments__account_transactions();
+EXECUTE FUNCTION "sub_accountTransactions_payments"();
+
+
+-- Set up webhook function 
+
+CREATE OR REPLACE FUNCTION "payments/webhooks/accountTransactions"()
+RETURNS TRIGGER AS $$
+DECLARE 
+  response RECORD;
+  payload TEXT;
+BEGIN
+  -- Convert row data to json then to string format
+  payload := row_to_json(NEW)::text;
+  SELECT * INTO response FROM http_post(
+    'https://ka.lt/api/payments/webhooks/accountTransactions',
+    payload,
+    'application/json'
+  );
+  RAISE NOTICE 'API Response: %', response.content;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Create webhook trigger
+CREATE TRIGGER "webhook"
+AFTER INSERT ON "trigger_accountTransactions_payments"
+FOR EACH ROW
+EXECUTE FUNCTION sub_webhook(NEW);

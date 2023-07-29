@@ -1,5 +1,5 @@
-CREATE TABLE acl_stripe_user_ids (
-    user_id          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    stripe_user_id   text
+CREATE TABLE "acl_stripe_userIds" (
+    "userId"          uuid        NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "stripeUserId"   text
 );
-ALTER TABLE acl_stripe_user_ids ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "acl_stripe_userIds" ENABLE ROW LEVEL SECURITY;
