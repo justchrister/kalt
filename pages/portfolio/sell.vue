@@ -11,7 +11,7 @@
     </block>
   </main>
 </template>
-<script setup>
+<script lang="ts" setup>
   const loading = ref(false)
   definePageMeta({
     pagename: 'Invest',
@@ -27,26 +27,30 @@
 
   const getMax = async () => {
     const { data, error } = await supabase
-      .from('get_user_portfolio')
-      .select('quantity_today')
+      .from('getUserPortfolio')
+      .select('quantityToday')
       .order('date', { ascending: false })
       .limit(1)
       .single()
-    return data.quantity_today
+    if(error){
+      return null
+    } else {
+      return data.quantityToday
+    }
   }
 
   const publishSellOrder = async () => {
     loading.value = true
     const hasShares = await getMax();
     if(!hasShares) return false;
-    const { data, error } = await supabase
-      .from('exchange_orders')
-      .insert({
-          message_entity_id: uuid,
-          message_sender: 'pages/portfolio/sell.vue',
-          user_id: user.value.id,
-          order_status: 'open'
-      })
+    if(!user.value) return false;
+    const { error, data } = await pub(supabase, {
+      sender: 'pages/portfolio/sell.vue',
+      entity: uuid
+    }).accountTransaction({
+      userId: user.value.id,
+      status: 'open'
+    } as accountTransaction);
     if(error){
       ok.log('error', 'could not create exchange order: ', error)
       loading.value = false
