@@ -32,20 +32,17 @@
 
   const language = await getPreferredLanguage();
   const { data, error } = await supabase
-    .from('languages')
+    .from('sys_languages')
     .select()
     .eq('enabled', true)
     .neq('iso', language)
   if(error)ok.log('error', 'could not get languages', error)
-    
+
   const updateProfile = async (iso) => {
-    const { error } = await supabase
-      .from('user_preferences')
-      .insert({ 
-        user_id: user.value.id,
-        language: iso,
-        message_sender: 'pages/select/language.vue' 
-      })
+    const { error, data } = await pub(supabase, {"sender":"pages/select/language.vue"}).userPreferences({
+      userId: user.value.id,
+      language: iso
+    });
     if(error) {
       ok.log('error', 'failed updating language: ', error)
     } else {
