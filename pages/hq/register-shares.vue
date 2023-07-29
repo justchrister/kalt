@@ -28,16 +28,15 @@
   definePageMeta({
     pagename: 'Register shares',
     middleware: 'auth-hq'
-  })
+  });
   useHead({
     title: 'Register shares',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
     }]
-  })
+  });
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
   const val = ref(0)
   const loading = ref(false)
   const add = async () => { 
@@ -49,22 +48,18 @@
     } else {
       val.value-=1
     }
-  }
+  };
   const create = async () => {
-    if(!val.value)return
-    const { data, error } = await supabase
-      .from('account_transactions')
-      .insert({
-          message_entity_id: ok.uuid(),
-          message_sender: 'pages/hq/register-shares.vue',
-          user_id: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
-          amount: val.value*1.2,
-          currency: 'EUR',
-          transaction_type: 'deposit',
-          transaction_sub_type: 'new_shares',
-          transaction_status: 'payment_accepted',
-          auto_invest: 1
-      })
+    if(!val.value) return
+    const { error, data } = await pub(supabase, {"sender":"pages/hq/register-shares.vue"}).revenueTransaction({
+      userId: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
+      amount: val.value*1.2,
+      currency: 'EUR',
+      type: 'deposit',
+      subType: 'new_shares',
+      status: 'payment_accepted',
+      auto_invest: 1
+    });
     if(error){
       ok.log('error', 'could not create transaction', error)
       loading.value = false
@@ -72,7 +67,7 @@
       ok.log('success', 'transaction created')
       loading.value = false;
     };
-  }
+  };
 </script>
 <style scoped lang="scss">
   
