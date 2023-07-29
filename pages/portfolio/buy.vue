@@ -27,23 +27,23 @@
 
   const completeTransaction = async () => {
     loading.value = true
-    const { data, error } = await supabase
-      .from('account_transactions')
-      .insert({
-          message_entity_id: uuid,
-          message_sender: 'pages/portfolio/buy.vue',
-          user_id: user.value.id,
-          transaction_sub_type: 'card',
-          transaction_status: 'payment_awaiting',
-          auto_invest: 1
-      })
+    const { error, data } = await pub(supabase, {
+      sender: 'pages/portfolio/buy.vue',
+      entity: uuid
+    }).accountTransaction({
+      userId: user.value.id,
+      type: 'deposit',
+      subType: 'card',
+      transaction_status: 'payment_awaiting',
+      autoInvest: 1
+    });
     if(error){
       ok.log('error', 'could not create transaction', error)
       loading.value = false
     } else {
       ok.log('success', 'transaction created')
-      navigateTo('/portfolio/success')
       loading.value = false;
+      navigateTo('/portfolio/success')
     };
   }
 
