@@ -8,7 +8,7 @@ export const messaging = {
       .from(topicKebab)
       .select()
       .eq('message_entity', entity_id)
-      .order('message_created', { ascending: true })
+      .order('message_sent', { ascending: true })
     return ok.combineJson(data)
   },
   read: async (supabase, topic, service, message_id) => {
@@ -23,6 +23,7 @@ export const messaging = {
 
     return 'read'
   },
+  // needs to be replaced and should be gotten from fundValuations
   getAssetPrice: async (supabase, currency, ticker) => {
     const { data, error } = await supabase
       .from('asset_prices')
@@ -36,7 +37,7 @@ export const messaging = {
   },
   convertCurrency: async (supabase, amount, from, to) => {
     const { data, error } = await supabase
-      .from('exchange_rates')
+      .from('topic_exchangeRates')
       .select('value')
       .eq('from', from)
       .eq('to', to)
@@ -54,7 +55,7 @@ export const messaging = {
     }, {});
     delete json.message_id
     delete json.message_entity
-    delete json.message_created
+    delete json.message_sent
     delete json.message_sender
     return json
   }
