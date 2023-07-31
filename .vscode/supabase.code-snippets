@@ -29,6 +29,11 @@
 		"prefix": ["/supabase user"],
 		"body": "const user = useSupabaseUser()const user = useSupabaseUser()",
 		"description": "a snippet to scaffold a supabase user",
+	},
+	"pub": {
+		"prefix": ["/pub"],
+		"body": "const { error, data } = await pub(supabase, {sender:'$1'}).$2({\n\t$0\n});",
+		"description": "a snippet to scaffold a pub",
 	}
 }
 
