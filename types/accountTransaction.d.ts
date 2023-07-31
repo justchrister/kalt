@@ -7,7 +7,7 @@ declare global {
         currency?: string; // CHAR(3) - references currencies(iso)
         type?: AccountTransactionsTypes;
         subType?: AccountTransactionsSubTypes;
-        status: AccountTransactionsStatuses;
-        autoInvest: number; // DECIMAL(5, 4)
+        status?: AccountTransactionsStatuses;
+        autoInvest?: number; // DECIMAL(5, 4)
     }
 }
