@@ -25,11 +25,11 @@ const user = useSupabaseUser()
 
     if(val.value>0){
       const { error } = await supabase
-        .from('exchange_orders')
+        .from('topic_exchangeOrders')
         .insert({
           message_entity_id: props.uuid,
           quantity: -val.value,
-          user_id: user.value.id,
+          userId: user.value.id,
           order_type: 'sell',
           message_sender: 'components/input/amountSell.vue'
       })
