@@ -48,7 +48,7 @@
     const { data, error } = await supabase
       .from('get_linked_bank_accounts')
       .select()
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     if(data) {
