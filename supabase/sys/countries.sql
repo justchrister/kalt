@@ -2,7 +2,7 @@ create table public.sys_countries (
   name      text,
   iso2      text                      not null primary key,
   iso3      text                      not null,
-  enabled   boolean   default false   not null,
+  enabled   boolean   default false   not null
 );
 
 insert into public.sys_countries (name, iso2, iso3) values
