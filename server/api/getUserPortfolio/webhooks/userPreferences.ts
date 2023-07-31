@@ -17,7 +17,7 @@ export default defineEventHandler( async (event) => {
   const { data, error } = await supabase
     .from('get_user_portfolio')
     .update({ 'value_currency': message.currency })
-    .eq('user_id', message.user_id)
+    .eq('userId', message.userId)
     .eq('ticker', ticker)
     .select();
 

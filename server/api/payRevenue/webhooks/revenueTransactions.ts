@@ -15,7 +15,7 @@ export default defineEventHandler( async (event) => {
 
   const getSharesPerUser = async () => {
     const { data, error } = await supabase
-      .from('pay_revenue')
+      .from('payRevenue')
       .select()
     if(data) {
       ok.log('success', 'got shares per user')
@@ -41,7 +41,7 @@ export default defineEventHandler( async (event) => {
       .insert(json)
     if(data) return data
     if(error) {
-      ok.log('error', 'could not create transaction for'+json.user_id, error)
+      ok.log('error', 'could not create transaction for'+json.userId, error)
       return error
     }
   }
@@ -49,8 +49,8 @@ export default defineEventHandler( async (event) => {
   const totalShares = await getTotalShares(sharesPerUser);
 
   for (let i = 0; i < sharesPerUser.length; i++) {
-    // check that user_id, amount etc is correct
-    const user = sharesPerUser[i].user_id;
+    // check that userId, amount etc is correct
+    const user = sharesPerUser[i].userId;
     const shares = sharesPerUser[i].quantity;
     const share = shares / totalShares;
     const dividend = message.amount * share;
@@ -63,19 +63,17 @@ export default defineEventHandler( async (event) => {
       "dividend": dividend
     })
     const json = {
-      'message_id': ok.uuid(),
-      'message_entity_id': ok.uuid(),
       'message_sender': 'server/api/payRevenue/_revenueTransactions.ts',
-      'user_id': user,
+      'userId': user,
       'amount': dividend,
-      'transaction_type': 'deposit',
-      'transaction_sub_type': 'dividend',
-      'transaction_status': 'payment_accepted',
+      'type': 'deposit',
+      'subType': 'dividend',
+      'status': 'payment_accepted',
       'currency': 'EUR'
     };
 
     if(!json.amount) {
-      ok.log('error', 'no shares for user: ', sharesPerUser[i].user_id)
+      ok.log('error', 'no shares for user: ', sharesPerUser[i].userId)
       return 'error: no shares for user:'
     }
     const created = await createDividendTransactions(json);

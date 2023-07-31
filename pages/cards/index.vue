@@ -2,8 +2,8 @@
   <main>
     <navbar-tabs />
     <block margin="half">
-      <div v-for="card of data" :key="card.card_id" class="card" @click="setDefault(card.card_id)">
-        <card :number="ok.toInt(card.card_number)" :default="card.default" />
+      <div v-for="card of data" :key="card.cardId" class="card" @click="setDefault(card.cardId)">
+        <card :number="ok.toInt(card.cardNumber)" :default="card.default" />
       </div>
     </block>
     <block>
@@ -28,9 +28,9 @@
   const user = useSupabaseUser()
 
   const { data, error } = await supabase
-    .from('get_payment_cards')
+    .from('getPaymentCards')
     .select()
-    .eq('user_id', user.value.id)
+    .eq('userId', user.value.id)
     .order('default', { ascending: false })
     
   if(1>data.length) {
@@ -41,15 +41,14 @@
   if(error) ok.log('error', 'could not get payment cards', error)
   
   const setDefault = async (id) => {
-    const { data, error } = await supabase
-      .from('payment_cards')
-      .insert({
-        'message_sender': 'pages/cards/index.vue',
-        'user_id': user.value.id,
-        'card_id': id,
-        'message_entity_id': id,
-        'default': true
-      })
+    const { error, data } = await pub(supabase, {
+      sender: 'pages/cards/index.vue',
+      entity: id
+    }).paymentCards({
+      userId: user.value.id,
+      cardId: id,
+      'default': true
+    });
     if(error) ok.log('error', 'could not set default card', error)
   }
 </script>

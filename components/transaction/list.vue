@@ -32,7 +32,7 @@ const props = defineProps({
     const {data, error} = await supabase
       .from('get_account_transactions')
       .select()
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .not('currency', 'is', null)
       .not('amount', 'is', null)
       .order('date', { ascending: false })

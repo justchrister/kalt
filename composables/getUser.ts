@@ -9,7 +9,7 @@ export const getUser = async (supabase) => {
       .select()
       .limit(1)
       .single()
-    if(data) ok.log('success', 'got user: ', data.first_name+' '+data.last_name, data.user_id)
+    if(data) ok.log('success', 'got user: ', data.first_name+' '+data.last_name, data.userId)
     if(error) ok.log('error', 'could not get user: ', error)
     userCookie.value = { data }
   }

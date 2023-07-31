@@ -7,9 +7,9 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const getTotalShares = async () => {
     const { data, error } = await supabase
-      .from('exchange_orders')
+      .from('topic_exchangeOrders')
       .select()
-      .eq('order_status', 'fulfilled')
+      .eq('orderStatus', 'fulfilled')
       .eq('ticker', 'gi.ddf')
       .eq('order_type', 'buy')
     let total = 0;

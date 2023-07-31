@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
     if(status==='withdrawal_accepted') return true
     return false
   }
-  if(!transactionComplete(message.transaction_status)) return 'wrong payment status'
+  if(!transactionComplete(message.transactionStatus)) return 'wrong payment status'
 
   const assetPrice = await messaging.getAssetPrice(supabase, message.currency, 'gi.ddf');
 
@@ -39,8 +39,8 @@ export default defineEventHandler(async (event) => {
     'message_sender': 'autoInvest',
     'ticker': 'gi.ddf',
     'order_type': 'buy',
-    'order_status': 'open',
-    'user_id': message.user_id,
+    'orderStatus': 'open',
+    'userId': message.userId,
     'quantity': message.amount * message.auto_invest * assetPrice,
   };
   if(json.quantity===0) return 'thats not a transaction ;)'
@@ -55,13 +55,13 @@ export default defineEventHandler(async (event) => {
     .insert({
       'message_created': ok.timestamptz(),
       'message_sender': 'autoInvest',
-      'user_id': message.user_id,
+      'userId': message.userId,
       'amount': -message.amount * message.auto_invest,
       'currency': message.currency,
       'auto_invest': 0,
-      'transaction_type': 'withdraw',
-      'transaction_status': 'withdrawal_accepted',
-      'transaction_sub_type': 'auto_invested',
+      'type': 'withdraw',
+      'status': 'withdrawal_accepted',
+      'subType': 'autoInvested',
     })
     .select();
 

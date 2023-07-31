@@ -92,12 +92,13 @@
   watchEffect(async () => {
     if (user.value) {
       const { data, error } = await supabase
-        .from('get_user')
+        .from('getUser')
         .select()
         .limit(1)
         .single()
-        if(data) ok.log('success', 'got user: ', data.first_name+' '+data.last_name+'          '+data.user_id)
-        if(error) ok.log('error', 'could not get user: ', error)
+      if(data) ok.log('success', 'got user: ', data.first_name+' '+data.last_name)
+      if(error) ok.log('error', 'could not get user: ', error)
+
       userCookie.value = {data};
       console.log(userCookie.value.data)
       if(userCookie.value){
@@ -105,6 +106,7 @@
         await navigateTo("/portfolio");
         loading.value = false
       }
+      
     }
   })
 </script>

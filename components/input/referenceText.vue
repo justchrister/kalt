@@ -24,7 +24,7 @@
       .from('linked_bank_accounts')
       .insert({
         message_sender: 'components/input/referenceText.vue',
-        user_id: user.value.id,
+        userId: user.value.id,
         bank_code: reference.value
       })
     if(error) {

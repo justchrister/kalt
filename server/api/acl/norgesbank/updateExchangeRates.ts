@@ -3,11 +3,10 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  
   const getCurrencies = async () => {
     let currencies = []
     const { data, error } = await supabase
-      .from('currencies')
+      .from('sys_currencies')
       .select()
       .eq('enabled', true)
     if(error) ok.log('error', 'could not get currencies', error.message )
@@ -49,21 +48,13 @@ export default defineEventHandler( async (event) => {
     const fromRate = await getRate(pair.from);
     const toRate = await getRate(pair.to);
     const rate = (fromRate/toRate) || 1;
-    const json = {
-      'message_sender': 'server/api/acl/norgesbank/updateExchangeRates.ts',
-      'message_created': ok.timestamptz(),
-      'message_id': ok.uuid(),
-      'message_entity_id': ok.uuid(),
-      'from': pair.from,
-      'to': pair.to,
-      'rate': rate
-    };
     if(!fromRate) return;
     if(!toRate) return;
-    const { data, error } = await supabase
-      .from('exchange_rates')
-      .upsert(json)
-      .select()
+    const { error, data } = await pub(supabase, {sender:'server/api/acl/updateExchangeRates.ts'}).exchangeRates({
+      from: pair.from,
+      to: pair.to,
+      rate: rate
+    });
     if(data){
       ok.log('', 'updated exchange rate '+pair.from+' → '+pair.to+' to '+rate)
       return data

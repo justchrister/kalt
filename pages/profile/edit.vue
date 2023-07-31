@@ -4,13 +4,13 @@
     <block>
       <form @submit.prevent="updateProfile">
         <select-profile-picture />
-        <input-first-name :initial="data.first_name" :user_id="user.id"/>
-        <input-last-name :initial="data.last_name" :user_id="user.id"/>
-        <input-country :initial="data.country" :user_id="user.id"/>
-        <input-city :initial="data.city" :user_id="user.id"/>
-        <input-postal-code :initial="data.postal_code" :user_id="user.id"/>
-        <input-address-line :initial="data.address_line_1" :user_id="user.id"/>
-        <input-birthdate :initial="data.birthdate" :user_id="user.id"/>
+        <input-first-name :initial="data.first_name" :userId="user.id"/>
+        <input-last-name :initial="data.last_name" :userId="user.id"/>
+        <input-country :initial="data.country" :userId="user.id"/>
+        <input-city :initial="data.city" :userId="user.id"/>
+        <input-postal-code :initial="data.postal_code" :userId="user.id"/>
+        <input-address-line :initial="data.address_line_1" :userId="user.id"/>
+        <input-birthdate :initial="data.birthdate" :userId="user.id"/>
       </form>
     </block>
   </main>

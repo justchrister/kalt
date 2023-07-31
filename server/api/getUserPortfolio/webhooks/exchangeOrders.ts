@@ -25,16 +25,16 @@ export default defineEventHandler( async (event) => {
   const dateToISOString = dateTo.toISOString();
   
   const { data: dailyOrders, error: dailyOrdersError } = await supabase
-    .from('exchange_orders')
+    .from('topic_exchangeOrders')
     .select()
-    .eq('user_id', message.user_id)
-    .eq('order_status', 'fulfilled')
+    .eq('userId', message.userId)
+    .eq('orderStatus', 'fulfilled')
     .eq('ticker', message.ticker)
     .gte('message_created', dateFromISOString)
     .lt('message_created', dateToISOString)
   
   const json = {
-    'user_id': message.user_id,
+    'userId': message.userId,
     'date': date,
     'ticker': message.ticker,
     'quantity_change': 0
@@ -48,7 +48,7 @@ export default defineEventHandler( async (event) => {
   const { data, error} = await supabase
     .from('get_user_portfolio')
     .upsert(json)
-    .eq('user_id', message.user_id)
+    .eq('userId', message.userId)
     .eq('date', date)
     .eq('ticker', message.ticker);
   

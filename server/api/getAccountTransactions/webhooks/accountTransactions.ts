@@ -19,7 +19,7 @@ export default defineEventHandler( async (event) => {
     const { data, error } = await supabase
       .from('account_transactions')
       .select('message_entity_id')
-      .eq('user_id', message.user_id);
+      .eq('userId', message.userId);
     const distinctMessageEntityIds = [...new Set(data.map(transaction => transaction.message_entity_id))];
     return distinctMessageEntityIds
   }
@@ -33,12 +33,12 @@ export default defineEventHandler( async (event) => {
     const { data, error} = await supabase
       .from(serviceKebab)
       .upsert({
-        "user_id": transaction.user_id,
+        "userId": transaction.userId,
         "amount": transaction.amount,
         "currency": transaction.currency,
         "date": transaction.message_created,
-        "type": transaction.transaction_type,
-        "sub_type": transaction.transaction_sub_type
+        "type": transaction.type,
+        "sub_type": transaction.subType
       })
       .select()
       .limit(1)

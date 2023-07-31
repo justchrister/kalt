@@ -29,7 +29,7 @@
     const { data, error } = await supabase
       .from('user_preferences')
       .insert({ 
-        user_id: user.value.id,
+        userId: user.value.id,
         language: language.value,
         message_entity_id: user.value.id,
         message_sender: 'components/input/preferredLanguage.vue' 

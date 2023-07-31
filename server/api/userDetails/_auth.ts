@@ -1,10 +1,3 @@
-/*
-
-  Technically not a topic, but treating it as one
-
-*/
-
-
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -12,9 +5,9 @@ export default defineEventHandler( async (event) => {
   const query = getQuery(event)
   const body = await readBody(event)
   const { data, error } = await supabase
-    .from('user_details')
+    .from('userDetails')
     .insert({
-      user_id: body.record.id
+      userId: body.record.id
     })
     .select()
 

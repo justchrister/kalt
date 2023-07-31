@@ -20,7 +20,7 @@ export default defineEventHandler( async (event) => {
   await messaging.read( supabase, topic, service, body.record.message_id)
   
   let json = {
-    "user_id": message.user_id,
+    "userId": message.userId,
     "amount": null,
     "currency": message.currency
   }
@@ -29,8 +29,8 @@ export default defineEventHandler( async (event) => {
       const { data, error } = await supabase
       .from('account_transactions')
       .select()
-      .or('transaction_status.eq.payment_accepted,transaction_status.eq.withdrawal_accepted')
-      .eq('user_id', message.user_id);
+      .or('transactionStatus.eq.payment_accepted,transactionStatus.eq.withdrawal_accepted')
+      .eq('userId', message.userId);
     return data
   }
   const transactions = await getTransactions();

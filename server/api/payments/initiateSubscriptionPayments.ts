@@ -81,9 +81,9 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('account_transactions')
       .select()
-      .eq('user_id', userId)
-      .eq('transaction_type', 'deposit')
-      .eq('transaction_sub_type', 'subscription')
+      .eq('userId', userId)
+      .eq('type', 'deposit')
+      .eq('subType', 'subscription')
       .gte('message_created', startOfDay)
       .lte('message_created', endOfDay)
       .limit(1)
@@ -106,10 +106,10 @@ export default defineEventHandler(async (event) => {
         message_id: ok.uuid(),
         message_entity_id: ok.uuid(),
         message_sender: 'server/api/payments/initiateSubscriptionPayments.ts',
-        user_id: userId,
-        transaction_status: 'payment_awaiting',
-        transaction_type: 'deposit',
-        transaction_sub_type: 'subscription',
+        userId: userId,
+        transactionStatus: 'payment_awaiting',
+        type: 'deposit',
+        subType: 'subscription',
         amount: amount,
         currency: currency
       })
@@ -146,8 +146,8 @@ export default defineEventHandler(async (event) => {
   let subscriptions = [];
   for (let i = 0; i < users.length; i++) {
     let subscription = null
-    subscription = await messaging.getEntity(supabase, topic, users[i].user_id);
-    const transaction = await getTransactions(users[i].user_id);
+    subscription = await messaging.getEntity(supabase, topic, users[i].userId);
+    const transaction = await getTransactions(users[i].userId);
     if(transaction=='not charged') {
       subscriptions.push(subscription)
     }
@@ -160,13 +160,13 @@ export default defineEventHandler(async (event) => {
   let charges = [];
   for (let i = 0; i < subscriptions.length; i++) {
     if(subscriptions[i].active == true) {
-      const user = users.find(u => u.user_id === subscriptions[i].user_id);
+      const user = users.find(u => u.userId === subscriptions[i].userId);
       const userCurrency = user ? user.currency : null;
       for (let j = 0; j < subscriptions[i].days_of_month.length; j++) {
         if(chargeableDays.includes(subscriptions[i].days_of_month[j])) {
           ok.log('success', 'chargeable day for', subscriptions[i]);
           charges.push({
-            user_id: subscriptions[i].user_id,
+            userId: subscriptions[i].userId,
             day: subscriptions[i].days_of_month[j],
             amount: subscriptions[i].amount,
             currency: userCurrency,
@@ -179,7 +179,7 @@ export default defineEventHandler(async (event) => {
   inProcessing = await checkIfInProcessing();
   if(inProcessing == 'me') {
     for (let i = 0; i < charges.length; i++) {
-      await createTransaction(charges[i].user_id, charges[i].amount, charges[i].currency);
+      await createTransaction(charges[i].userId, charges[i].amount, charges[i].currency);
     }
     await removeAsProcessing();
     return charges

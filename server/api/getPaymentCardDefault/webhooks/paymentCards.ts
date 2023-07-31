@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert({
-      'user_id': message.user_id,
+      'userId': message.userId,
       'last_four_digits': message.last_four_digits,
       'card_number': message.card_number,
       'expiry_month': message.expiry_month,

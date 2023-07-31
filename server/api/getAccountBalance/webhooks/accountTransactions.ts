@@ -22,8 +22,8 @@ export default defineEventHandler( async (event) => {
   const getPreferredCurrency = async () => {
     const {data, error} = await supabase
       .from('get_user')
-      .select('user_id, currency')
-      .eq('user_id', message.user_id)
+      .select('userId, currency')
+      .eq('userId', message.userId)
       .limit(1)
       .single()
     return data.currency
@@ -31,7 +31,7 @@ export default defineEventHandler( async (event) => {
   const preferredCurrency = await getPreferredCurrency();
   
   let json = {
-    "user_id": message.user_id,
+    "userId": message.userId,
     "amount": null,
     "currency": preferredCurrency
   }
@@ -40,8 +40,8 @@ export default defineEventHandler( async (event) => {
       const { data, error } = await supabase
       .from(topicKebab)
       .select()
-      .or('transaction_status.eq.payment_accepted,transaction_status.eq.withdrawal_accepted')
-      .eq('user_id', message.user_id);
+      .or('transactionStatus.eq.payment_accepted,transactionStatus.eq.withdrawal_accepted')
+      .eq('userId', message.userId);
     return data
   }
   const transactions = await getTransactions();

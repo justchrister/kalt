@@ -34,7 +34,7 @@ const user = useSupabaseUser()
     const { data, error } = await supabase
       .from('get_user')
       .select('currency')
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     return data.currency
@@ -49,12 +49,12 @@ const user = useSupabaseUser()
         .insert({
           message_entity_id: props.uuid,
           message_sender: 'components/input/amountBuy.vue',
-          user_id: user.value.id,
+          userId: user.value.id,
           amount: ok.toInt(amount.value),
           currency: currency,
-          transaction_type: 'deposit',
-          transaction_sub_type: 'card',
-          transaction_status: 'incomplete',
+          type: 'deposit',
+          subType: 'card',
+          transactionStatus: 'incomplete',
           auto_invest: 1,
       })
       if(error) ok.log('error', 'could not update amount', error)

@@ -18,11 +18,11 @@
     const { data, error } = await supabase
         .from('user_preferences')
         .insert({
-          'user_id': user.value.id,
+          'userId': user.value.id,
           'message_sender': 'components/select/autoInvest.vue',
           'auto_invest': autoInvest
         })
-        .eq('user_id', user.value.id)
+        .eq('userId', user.value.id)
       if(error) ok.log('error', 'could not update auto-invest', error)
   }
 
@@ -30,7 +30,7 @@
   const { data, error } = await supabase
     .from('get_user')
     .select('auto_invest')
-    .eq('user_id', user.value.id)
+    .eq('userId', user.value.id)
     .limit(1)
     .single()
     

@@ -46,8 +46,8 @@ export default defineEventHandler( async (event) => {
 
   if(fulfillingOrder.quantity_absolute===originalOrder.quantity_absolute){
     await publishMessage({
-      'order_status': 'fulfilled',
-      'user_id': originalOrder.user_id,
+      'orderStatus': 'fulfilled',
+      'userId': originalOrder.userId,
       'message_entity_id': originalOrder.message_entity_id,
       'ticker': ticker,
       'quantity': originalOrder.quantity,
@@ -55,8 +55,8 @@ export default defineEventHandler( async (event) => {
       'fulfilled_by_id': fulfillingOrder.message_entity_id
     })
     await publishMessage({
-      'order_status': 'fulfilled',
-      'user_id': fulfillingOrder.user_id,
+      'orderStatus': 'fulfilled',
+      'userId': fulfillingOrder.userId,
       'message_entity_id': fulfillingOrder.message_entity_id,
       'ticker': fulfillingOrder.ticker,
       'quantity': fulfillingOrder.quantity,
@@ -69,8 +69,8 @@ export default defineEventHandler( async (event) => {
     const newOrderId1 = ok.uuid();
     const newOrderId2 = ok.uuid();
     await publishMessage({
-      'order_status': 'fulfilled',
-      'user_id': originalOrder.user_id,
+      'orderStatus': 'fulfilled',
+      'userId': originalOrder.userId,
       'message_entity_id': originalOrder.message_entity_id,
       'ticker': ticker,
       'order_type': originalOrder.order_type,
@@ -79,8 +79,8 @@ export default defineEventHandler( async (event) => {
       'fulfilled_by_id': newOrderId1
     })
     await publishMessage({
-      'order_status': 'split',
-      'user_id': fulfillingOrder.user_id,
+      'orderStatus': 'split',
+      'userId': fulfillingOrder.userId,
       'message_entity_id': fulfillingOrder.message_entity_id,
       'ticker': ticker,
       'quantity': fulfillingOrder.quantity,
@@ -92,8 +92,8 @@ export default defineEventHandler( async (event) => {
       ]
     })
     await publishMessage({
-      'order_status': 'fulfilled',
-      'user_id': fulfillingOrder.user_id,
+      'orderStatus': 'fulfilled',
+      'userId': fulfillingOrder.userId,
       'message_entity_id': newOrderId1,
       'ticker': fulfillingOrder.ticker,
       'quantity': quantityInverted,
@@ -103,8 +103,8 @@ export default defineEventHandler( async (event) => {
     })
     
     await publishMessage({
-      'order_status': 'open',
-      'user_id': fulfillingOrder.user_id,
+      'orderStatus': 'open',
+      'userId': fulfillingOrder.userId,
       'message_entity_id': newOrderId2,
       'ticker': fulfillingOrder.ticker,
       'quantity': fulfillingOrder.quantity+originalOrder.quantity,

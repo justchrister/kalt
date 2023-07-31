@@ -1,7 +1,9 @@
 import { ok } from '~/composables/ok'
 import { messaging } from '~/composables/messaging'
+import { sub, pub } from '~/composables/messagingNext'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import Stripe from 'stripe';
+
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
@@ -10,8 +12,8 @@ export default defineEventHandler( async (event) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id) as any;
-  await messaging.read(supabase, topic, service, body.record.message_id);
+  const message = await sub(supabase, topic).entity(body.record.message_entity_id);
+  await sub(supabase, topic).read(service, body.record.message_id);
 
   if(message.status !== 'pending') return 'message status is not pending';
   if(message.provider !== 'stripe') return 'charge is not for Stripe';
@@ -23,7 +25,7 @@ export default defineEventHandler( async (event) => {
       const charge = await stripe.paymentIntents.create({
         amount: amountCents, 
         currency: currencyLower,
-        description: message.transaction_id,
+        description: message.transactionId,
         customer: customerId,
         payment_method: cardId,
         off_session: true, // Set to true if customer is not present
@@ -33,22 +35,20 @@ export default defineEventHandler( async (event) => {
       ok.log('success', charge);
       return 'success'
     } catch (error) {
-      ok.log('error', 'failed to charge '+customerId+' / '+message.user_id+': ', error.statusCode+': '+error.raw.message);
+      ok.log('error', 'failed to charge '+customerId+' / '+message.userId+': ', error.statusCode+': '+error.raw.message);
       return 'error'
     }
   }
   const updatePaymentPendingStatus = async (status) => {
-    const { data, error } = await supabase
-      .from('payments_pending')
-      .insert({
-        message_id: ok.uuid(),
-        message_entity_id: message.message_entity_id,
-        message_sender: 'service/api/acl/stripe/_paymentsPending.ts',
-        user_id: message.user_id,
-        transaction_id: message.transaction_id,
-        status: status
-      })
-      .select()
+    const { error, data } = await pub(supabase, {
+      entity: message.message_entity_id,
+      sender: 'service/api/acl/stripe/webhooks/paymentsPending.ts'
+    }).paymentsPending({
+      userId: message.userId,
+      transactionId: message.transactionId,
+      provider: 'stripe',
+      status: status
+    });
     if(data) {
       ok.log('success', 'updated payment pending status')
       return 'success'
@@ -59,32 +59,30 @@ export default defineEventHandler( async (event) => {
     } 
   }
   const updateTransactionStatus = async (status) => {
-    const { data, error } = await supabase
-      .from('account_transactions')
-      .insert({
-        message_id: ok.uuid(),
-        message_entity_id: message.transaction_id,
-        user_id: message.user_id,
-        status: status
-      })
-      .select()
+    const { error, data } = await pub(supabase, {
+      sender:'server/api/acl/stripe/webhooks/paymentsPending.ts',
+      message_entity_id: message.transaction_id
+    }).accountTransaction({
+      userId: message.userId,
+      status: status
+    });
   }
   const getCustomerId = async (userId) => {
     const { data, error } = await supabase
-      .from('acl_stripe_user_ids')
+      .from('acl_stripe_userIds')
       .select()
-      .eq('user_id', userId)
+      .eq('userId', userId)
       .limit(1)
       .single()
     if(data){
-      return data.stripe_user_id
+      return data.stripe_userId
     }
   }
   const getDefaultCard = async (userId) => {
     const { data, error } = await supabase
-      .from('acl_stripe_default_card_ids')
+      .from('acl_stripe_defaultCardIds')
       .select()
-      .eq('user_id', userId)
+      .eq('userId', userId)
       .limit(1)
       .single()
     if(data){
@@ -97,8 +95,8 @@ export default defineEventHandler( async (event) => {
   if(paymentPendingStatus=='success') await updateTransactionStatus('processing')
   if(paymentPendingStatus=='error') return 'failed to set as processing'
 
-  const stripeDefaultCardId = await getDefaultCard(message.user_id);
-  const stripeCustomerId = await getCustomerId(message.user_id)
+  const stripeDefaultCardId = await getDefaultCard(message.userId);
+  const stripeCustomerId = await getCustomerId(message.userId)
 
   const charge = await chargeCard(stripeCustomerId, stripeDefaultCardId)
 

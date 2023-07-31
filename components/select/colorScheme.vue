@@ -30,11 +30,11 @@
     const { data, error } = await supabase
       .from('user_preferences')
       .insert({
-        'user_id': user.value.id,
+        'userId': user.value.id,
         'message_sender': 'components/select/autoInvest.vue',
         'color_scheme': colorScheme
       })
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
     if(error) ok.log('error', 'could not update color scheme', error)
   };
   const { data, error } = await supabase

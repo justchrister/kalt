@@ -13,14 +13,14 @@ export default defineEventHandler( async (event) => {
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
 
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id);
-  if (message.order_status !== 'fulfilled') return 'order not fulfilled';
+  if (message.orderStatus !== 'fulfilled') return 'order not fulfilled';
   
   const getPortfolio = async () => {
     const { data, error } = await supabase
-      .from('exchange_orders')
+      .from('topic_exchangeOrders')
       .select()
-      .eq('user_id', message.user_id)
-      .eq('order_status', 'fulfilled')
+      .eq('userId', message.userId)
+      .eq('orderStatus', 'fulfilled')
     if(data){
       ok.log('success', 'got fulfilled orders: ', data)
       return data
@@ -47,7 +47,7 @@ export default defineEventHandler( async (event) => {
     const { data, error } = await supabase
       .from('pay_revenue')
       .upsert({
-        user_id: message.user_id,
+        userId: message.userId,
         quantity: shares,
       })
       .select()
@@ -56,7 +56,7 @@ export default defineEventHandler( async (event) => {
       return data
     }
     if(error){
-      ok.log('error', 'could not update shares for user: '+message.user_id)
+      ok.log('error', 'could not update shares for user: '+message.userId)
       return error
     }
   }

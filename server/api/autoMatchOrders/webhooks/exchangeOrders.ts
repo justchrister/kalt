@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     body.record.message_id
   );
 
-  if (message.order_status !== 'open') {
+  if (message.orderStatus !== 'open') {
     const { error } = await supabase
       .from(serviceKebab)
       .delete()
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
 
   let json = {
     'message_entity_id': message.message_entity_id,
-    'user_id': message.user_id,
+    'userId': message.userId,
     'ticker': message.ticker,
     'order_type': message.order_type,
     'quantity': message.quantity,

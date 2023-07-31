@@ -25,7 +25,7 @@
     const { data, error } = await supabase
       .from('getUser')
       .select('currency')
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     return data.currency

@@ -32,7 +32,7 @@ export default defineEventHandler( async (event) => {
       transaction_id: payment.transaction_id,
       amount: payment.amount,
       currency: payment.currency,
-      user_id: payment.user_id,
+      userId: payment.userId,
       message_sender: 'server/api/payments/initiatePayments.ts'
     };
 

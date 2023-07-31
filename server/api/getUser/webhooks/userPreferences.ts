@@ -20,7 +20,7 @@ export default defineEventHandler( async (event) => {
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)
-    .eq('user_id', message.user_id)
+    .eq('userId', message.userId)
     .select()
   console.log(message)
   if(data) return data

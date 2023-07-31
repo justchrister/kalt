@@ -15,7 +15,7 @@
     const { data, error } = await supabase
       .from('get_user')
       .select('language')
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     if(data) ok.log('success', 'Got preferred language: ', data.language)

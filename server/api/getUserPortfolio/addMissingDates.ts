@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('get_user_portfolio')
       .select('date')
-      .eq('user_id', userId)
+      .eq('userId', userId)
       .order('date', { ascending: true })
       .limit(1)
       .single();
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     .insert({
       'date': date,
       'ticker': 'gi.ddf',
-      'user_id': userId
+      'userId': userId
     })
   }
   const addDays = async (userId) => {
@@ -37,7 +37,7 @@ export default defineEventHandler(async (event) => {
   const getUsers = async () => {
     const { data, error } = await supabase
       .from('get_user')
-      .select('user_id')
+      .select('userId')
     if(data) ok.log('success', 'got all users: ', data)
     if(error) ok.log('error', 'could not get all users: ', error)
     return data
@@ -46,10 +46,10 @@ export default defineEventHandler(async (event) => {
     const users = await getUsers();
     console.log(users)
     for (let i = 0; i < users.length; i++) {
-      await addDays(users[i].user_id);
+      await addDays(users[i].userId);
     }
   } else {
-    await addDays(body.record.user_id);
+    await addDays(body.record.userId);
   }
   return 'dates added'
 });

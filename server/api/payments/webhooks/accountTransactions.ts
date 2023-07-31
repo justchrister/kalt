@@ -15,15 +15,15 @@ export default defineEventHandler( async (event) => {
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
   await messaging.read( supabase, topic, service, body.record.message_id)
 
-  if(message.transaction_type != 'deposit'){
+  if(message.type != 'deposit'){
     ok.log('error', 'wrong transaction type')
     return 'wrong transaction type'
   } 
-  if (message.transaction_sub_type != 'card' && message.transaction_sub_type != 'subscription') {
+  if (message.subType != 'card' && message.subType != 'subscription') {
     ok.log('error', 'wrong transaction sub type')
     return 'wrong transaction sub type'
   }
-  if(message.transaction_status != 'payment_awaiting') {
+  if(message.transactionStatus != 'payment_awaiting') {
     ok.log('error', 'wrong transaction status')
     return 'wrong transaction status'
   }
@@ -38,7 +38,7 @@ export default defineEventHandler( async (event) => {
   }
   const updateTransaction = async () => {
     let json = message;
-    json.transaction_status = 'payment_processing';
+    json.transactionStatus = 'payment_processing';
     json.message_id = ok.uuid();
     json.message_sender = 'server/api/payments/_accountTransactions.ts';
     const { data, error } = await supabase
@@ -66,11 +66,11 @@ export default defineEventHandler( async (event) => {
   const existingPayment = await paymentExists(message.message_entity_id);
   if(existingPayment) return 'payment already exists'
 
-  if(message.transaction_status='payment_awaiting'){
+  if(message.transactionStatus='payment_awaiting'){
     const { data, error } = await supabase
       .from('payments')
       .insert({
-        user_id: message.user_id,
+        userId: message.userId,
         amount: message.amount,
         currency: message.currency,
         transaction_id: message.message_entity_id
@@ -83,7 +83,7 @@ export default defineEventHandler( async (event) => {
     };
   }
   
-  if(message.transaction_status='payment_declined' || 'payment_approved' ) {
+  if(message.transactionStatus='payment_declined' || 'payment_approved' ) {
     const deletedPayment = await deletePayment(message.message_entity_id);
     if(deletedPayment===true) {
       ok.log('success', 'payment'+message.message_entity_id+' deleted')

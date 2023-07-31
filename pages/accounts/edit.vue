@@ -5,7 +5,7 @@
     </block>
     <block>
       <input-iban :initialValue="linkedBankAccount.iban"/>
-      <input-bank-code :initialValue="linkedBankAccount.bank_code"/>
+      <input-bank-code :initialValue="linkedBankAccount.bankCode"/>
       <input-reference-text :initialValue="linkedBankAccount.reference"/>
     </block>
   </main>
@@ -24,9 +24,9 @@
 
   const getLinkedBankAccount = async () => {
     const { data, error } = await supabase
-      .from('get_linked_bank_accounts')
+      .from('getLinkedBankAccount')
       .select()
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     if(data) {

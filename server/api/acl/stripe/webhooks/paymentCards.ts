@@ -10,24 +10,24 @@ export default defineEventHandler(async (event) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id) as any;
   await messaging.read(supabase, topic, service, body.record.message_id);
 
-  const json = await messaging.cleanMessage({
-    'user_id': message.user_id,
-    'last_four_digits': message.last_four_digits,
-    'card_number': message.card_number,
-    'card_id': message.card_id,
-    'expiry_month': message.expiry_month,
-    'expiry_year': message.expiry_year,
+  const json = {
+    'userId': message.userId,
+    'last_four_digits': message.lastFourDigits,
+    'card_number': message.number,
+    'cardId': message.cardId,
+    'expiry_month': message.month,
+    'expiry_year': message.year,
     'cvc': message.cvc
-  });
+  } as any;
 
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_user_ids')
+      .from('acl_stripe_userIds')
       .select()
-      .eq('user_id', message.user_id)
+      .eq('userId', message.userId)
       .limit(1)
       .single()
     if(data) return data
@@ -37,19 +37,19 @@ export default defineEventHandler(async (event) => {
     const paymentMethod = await stripe.paymentMethods.create({
       type: 'card',
       card: {
-        number: json.card_number,
-        exp_month: json.expiry_month,
-        exp_year: json.expiry_year,
+        number: json.number,
+        exp_month: json.month,
+        exp_year: json.year,
         cvc: json.cvc
       },
       metadata: {
-        card_id: json.card_id,
-        user_id: json.user_id
+        card_id: json.cardId,
+        userId: json.userId
       }
     });
     return paymentMethod;
   }
-  const attachCard = async (customerId, cardId) => {
+  const attachCard = async (customerId: any, cardId: any) => {
     const card = await stripe.paymentMethods.attach(
       cardId,
       {
@@ -59,15 +59,15 @@ export default defineEventHandler(async (event) => {
     ok.log('success', 'attached card', card);
     return card
   }
-  const makeCardDefault = async (customerId, cardId) => {
+  const makeCardDefault = async (customerId: any, cardId: any) => {
     const customer = await stripe.customers.update(
       customerId,
       {invoice_settings: {default_payment_method: cardId}}
     );
     const { data, error } = await supabase
-      .from('acl_stripe_default_card_ids')
+      .from('acl_stripe_defaultCardIds')
       .upsert({
-        user_id: json.user_id,
+        userId: json.userId,
         stripe_card_id: cardId
       })
       .select()
@@ -82,12 +82,12 @@ export default defineEventHandler(async (event) => {
   }
   const checkIfCardExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_card_ids')
+      .from('acl_stripe_cardIds')
       .select()
-      .eq('card_id', message.card_id)
+      .eq('cardId', message.card_id)
       .limit(1)
       .single()
-    if(data) return data.stripe_card_id
+    if(data) return data.stripe_cardId
     else return false
   }
 
@@ -96,14 +96,14 @@ export default defineEventHandler(async (event) => {
 
   if(!userExists) return 'user does not exist';
   if(userExists && cardExists && message.default){
-    const defaultCard = await makeCardDefault(userExists.stripe_user_id, cardExists.stripe_card_id);
+    const defaultCard = await makeCardDefault(userExists.stripe_userId, cardExists.stripe_card_id);
     return defaultCard;
   }
   if(userExists){
     const createdCard = await addCard();
-    const attachedCard = await attachCard(userExists.stripe_user_id, createdCard.id);
+    const attachedCard = await attachCard(userExists.stripe_userId, createdCard.id);
     if(message.default) {
-      const defaultCard = await makeCardDefault(userExists.stripe_user_id, createdCard.id);
+      const defaultCard = await makeCardDefault(userExists.stripe_userId, createdCard.id);
     }
     return attachedCard;
   }
