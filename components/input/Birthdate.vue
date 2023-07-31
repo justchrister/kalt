@@ -32,7 +32,7 @@
     const { data, error } = await supabase
       .from('user_details')
       .insert({ 
-        user_id: user.value.id,
+        userId: user.value.id,
         birthdate: birthdate.value, 
         message_entity_id: user.value.id,
         message_sender: 'components/input/birthdate.vue' 

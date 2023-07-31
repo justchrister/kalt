@@ -23,7 +23,7 @@
       .from('linked_bank_accounts')
       .insert({
         message_sender: 'components/input/bankCode.vue',
-        user_id: user.value.id,
+        userId: user.value.id,
         bank_code: bank_code.value
       })
     if(error) {

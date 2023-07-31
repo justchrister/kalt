@@ -24,7 +24,7 @@
       .from('linked_bank_accounts')
       .insert({
         message_sender: 'components/input/iban.vue',
-        user_id: user.value.id,
+        userId: user.value.id,
         bank_code: iban.value
       })
     if(error) {
