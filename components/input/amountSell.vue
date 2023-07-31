@@ -27,7 +27,7 @@ const user = useSupabaseUser()
       const { error } = await supabase
         .from('topic_exchangeOrders')
         .insert({
-          message_entity_id: props.uuid,
+          message_entity: props.uuid,
           quantity: -val.value,
           userId: user.value.id,
           order_type: 'sell',

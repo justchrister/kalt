@@ -12,15 +12,15 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity);
   await messaging.read( supabase, topic, service, body.record.message_id)
 
   const getDistinctTransactions = async () => {
     const { data, error } = await supabase
       .from('account_transactions')
-      .select('message_entity_id')
+      .select('message_entity')
       .eq('userId', message.userId);
-    const distinctMessageEntityIds = [...new Set(data.map(transaction => transaction.message_entity_id))];
+    const distinctMessageEntityIds = [...new Set(data.map(transaction => transaction.message_entity))];
     return distinctMessageEntityIds
   }
   const transactions = await getDistinctTransactions();

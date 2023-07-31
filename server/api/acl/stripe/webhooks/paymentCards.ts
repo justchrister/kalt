@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id) as any;
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity) as any;
   await messaging.read(supabase, topic, service, body.record.message_id);
 
   const json = {

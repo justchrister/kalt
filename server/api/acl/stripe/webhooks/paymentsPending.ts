@@ -12,7 +12,7 @@ export default defineEventHandler( async (event) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   if (body.record.message_read) return 'message already read';
 
-  const message = await sub(supabase, topic).entity(body.record.message_entity_id);
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);
 
   if(message.status !== 'pending') return 'message status is not pending';
@@ -41,7 +41,7 @@ export default defineEventHandler( async (event) => {
   }
   const updatePaymentPendingStatus = async (status) => {
     const { error, data } = await pub(supabase, {
-      entity: message.message_entity_id,
+      entity: message.message_entity,
       sender: 'service/api/acl/stripe/webhooks/paymentsPending.ts'
     }).paymentsPending({
       userId: message.userId,
@@ -61,7 +61,7 @@ export default defineEventHandler( async (event) => {
   const updateTransactionStatus = async (status) => {
     const { error, data } = await pub(supabase, {
       sender:'server/api/acl/stripe/webhooks/paymentsPending.ts',
-      message_entity_id: message.transaction_id
+      message_entity: message.transaction_id
     }).accountTransaction({
       userId: message.userId,
       status: status

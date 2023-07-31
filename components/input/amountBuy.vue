@@ -47,7 +47,7 @@ const user = useSupabaseUser()
       const { error } = await supabase
         .from('account_transactions')
         .insert({
-          message_entity_id: props.uuid,
+          message_entity: props.uuid,
           message_sender: 'components/input/amountBuy.vue',
           userId: user.value.id,
           amount: ok.toInt(amount.value),

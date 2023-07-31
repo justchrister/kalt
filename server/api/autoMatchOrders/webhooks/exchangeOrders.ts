@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   const message = await messaging.getEntity(
     supabase,
     topic,
-    body.record.message_entity_id
+    body.record.message_entity
   );
 
   const readMessage = await messaging.read(
@@ -29,12 +29,12 @@ export default defineEventHandler(async (event) => {
     const { error } = await supabase
       .from(serviceKebab)
       .delete()
-      .eq('message_entity_id', message.message_entity_id);
+      .eq('message_entity', message.message_entity);
     return 'removed';
   }
 
   let json = {
-    'message_entity_id': message.message_entity_id,
+    'message_entity': message.message_entity,
     'userId': message.userId,
     'ticker': message.ticker,
     'order_type': message.order_type,

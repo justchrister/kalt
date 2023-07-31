@@ -104,7 +104,7 @@ export default defineEventHandler(async (event) => {
       .from('account_transactions')
       .insert({
         message_id: ok.uuid(),
-        message_entity_id: ok.uuid(),
+        message_entity: ok.uuid(),
         message_sender: 'server/api/payments/initiateSubscriptionPayments.ts',
         userId: userId,
         transactionStatus: 'payment_awaiting',

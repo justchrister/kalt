@@ -34,7 +34,7 @@
       .insert({ 
         userId: user.value.id,
         postal_code: postal_code.value, 
-        message_entity_id: user.value.id,
+        message_entity: user.value.id,
         message_sender: 'components/input/lastName.vue' 
       })
       .select()

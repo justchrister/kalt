@@ -34,7 +34,7 @@
       .insert({ 
         userId: user.value.id,
         last_name: last_name.value, 
-        message_entity_id: user.value.id,
+        message_entity: user.value.id,
         message_sender: 'components/input/lastName.vue' 
       })
       .select()

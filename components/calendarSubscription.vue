@@ -89,7 +89,7 @@
       .from('user_subscriptions')
       .insert({
         'days_of_month': days.value,
-        'message_entity_id': user.value.id,
+        'message_entity': user.value.id,
         'userId': user.value.id,
         'message_sender': 'components/calendarSubscription.vue'
       })

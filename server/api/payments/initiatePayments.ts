@@ -28,7 +28,7 @@ export default defineEventHandler( async (event) => {
   const createPendingPayments = async (payment) => {
     const json = {
       message_id: ok.uuid(),
-      message_entity_id: ok.uuid(),
+      message_entity: ok.uuid(),
       transaction_id: payment.transaction_id,
       amount: payment.amount,
       currency: payment.currency,

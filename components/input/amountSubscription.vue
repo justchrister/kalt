@@ -53,7 +53,7 @@
     const { error } = await supabase
       .from('user_subscriptions')
       .insert({
-        message_entity_id:user.value.id,
+        message_entity:user.value.id,
         userId:user.value.id,
         message_sender: 'components/input/amountSubscription.vue',
         amount: ok.toInt(amount.value)

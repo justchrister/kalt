@@ -46,7 +46,7 @@ export const sub = (client: any, topic: any) => {
       const { data, error } = await client
         .from('topic_'+topic)
         .select()
-        .eq('message_entity_id', entity_id)
+        .eq('message_entity', entity_id)
         .order('message_created', { ascending: true })
       if(error) {
         return error

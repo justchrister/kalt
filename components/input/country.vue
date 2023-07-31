@@ -30,7 +30,7 @@
       .insert({ 
         userId: user.value.id,
         country: country.value, 
-        message_entity_id: user.value.id,
+        message_entity: user.value.id,
         message_sender: 'components/input/country.vue' 
       })
       .select()

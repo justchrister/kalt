@@ -11,7 +11,7 @@ export default defineEventHandler( async (event) => {
 
   messaging.read(supabase, topic, service, body.record.message_id);
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity);
 
   const getSharesPerUser = async () => {
     const { data, error } = await supabase

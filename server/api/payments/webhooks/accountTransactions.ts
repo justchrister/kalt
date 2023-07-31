@@ -12,7 +12,7 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity_id);
+  const message = await messaging.getEntity(supabase, topic, body.record.message_entity);
   await messaging.read( supabase, topic, service, body.record.message_id)
 
   if(message.type != 'deposit'){
@@ -63,7 +63,7 @@ export default defineEventHandler( async (event) => {
       return true
     }
   }
-  const existingPayment = await paymentExists(message.message_entity_id);
+  const existingPayment = await paymentExists(message.message_entity);
   if(existingPayment) return 'payment already exists'
 
   if(message.transactionStatus='payment_awaiting'){
@@ -73,7 +73,7 @@ export default defineEventHandler( async (event) => {
         userId: message.userId,
         amount: message.amount,
         currency: message.currency,
-        transaction_id: message.message_entity_id
+        transaction_id: message.message_entity
       })
       .select()
     if(error) return error;
@@ -84,14 +84,14 @@ export default defineEventHandler( async (event) => {
   }
   
   if(message.transactionStatus='payment_declined' || 'payment_approved' ) {
-    const deletedPayment = await deletePayment(message.message_entity_id);
+    const deletedPayment = await deletePayment(message.message_entity);
     if(deletedPayment===true) {
-      ok.log('success', 'payment'+message.message_entity_id+' deleted')
-      return 'payment'+message.message_entity_id+' deleted'
+      ok.log('success', 'payment'+message.message_entity+' deleted')
+      return 'payment'+message.message_entity+' deleted'
     }
     if(deletedPayment===false) {
-      ok.log('error', 'payment'+message.message_entity_id+' not deleted')
-      return 'payment'+message.message_entity_id+' did not exist, it might have been deleted previously'
+      ok.log('error', 'payment'+message.message_entity+' not deleted')
+      return 'payment'+message.message_entity+' did not exist, it might have been deleted previously'
     }
   }
   return 'ggg'

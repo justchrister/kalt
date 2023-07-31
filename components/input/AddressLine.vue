@@ -33,7 +33,7 @@
       .insert({ 
         userId: user.value.id,
         address_line_1: address_line_1.value, 
-        message_entity_id: user.value.id,
+        message_entity: user.value.id,
         message_sender: 'components/input/addressLine.vue' 
       })
       .select()

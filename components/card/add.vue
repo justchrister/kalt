@@ -111,7 +111,7 @@
       .from('payment_cards')
       .insert({
         'message_sender': 'component/card/add.vue',
-        'message_entity_id': card_id,
+        'message_entity': card_id,
         'userId': user.value.id,
         'cardId': card_id,
         'last_four_digits': last_four_digits,
