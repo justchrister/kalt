@@ -6,7 +6,7 @@ CREATE TABLE "getLinkedBankAccount" (
   "iban"          text,
   "bankCode"      text,
 
-  PRIMARY KEY (user_id, iban)
+  PRIMARY KEY (userId, iban)
 );
 
 --- Add row level security

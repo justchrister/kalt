@@ -10,7 +10,7 @@ CREATE TABLE "getUserPortfolio" (
   "percentageChange"  DECIMAL(5, 4)
                       CHECK (percentage_change >= 0 
                       AND percentage_change <= 1),
-  PRIMARY KEY (user_id, date, ticker)
+  PRIMARY KEY (userId, date, ticker)
 );
 
 

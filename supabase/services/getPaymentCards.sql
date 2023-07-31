@@ -9,7 +9,7 @@ CREATE TABLE "getPaymentCards" (
   "default"           boolean,
   "number"            CHAR(16),
   "cvc"               CHAR(3),
-  PRIMARY KEY (user_id, card_id)
+  PRIMARY KEY (userId, card_id)
 );
 
 
@@ -39,7 +39,7 @@ BEGIN
     IF NEW."default" THEN
         UPDATE "getPaymentCards"
         SET "default" = false
-        WHERE user_id = NEW.user_id AND card_id <> NEW.card_id;
+        WHERE userId = NEW.userId AND card_id <> NEW.card_id;
     END IF;
 
     RETURN NEW;
