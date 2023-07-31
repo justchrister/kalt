@@ -12,7 +12,7 @@ CREATE TABLE "sub_exchangeOrders_autoMatchOrders" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_exchangeOrders_autoMatchOrders"()
+CREATE OR REPLACE FUNCTION "replicate_exchangeOrders_autoMatchOrders"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_exchangeOrders_autoMatchOrders" (message_id, message_entity, message_sender, message_sent)
@@ -25,12 +25,12 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER "replicate"
 AFTER INSERT ON "topic_exchangeOrders"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_exchangeOrders_autoMatchOrders"();
+EXECUTE FUNCTION "replicate_exchangeOrders_autoMatchOrders"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "autoMatchOrders/webhooks/exchangeOrders"()
+CREATE OR REPLACE FUNCTION "webhook_exchangeOrders_autoMatchOrders"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_exchangeOrders_autoMatchOrders"
+CREATE TRIGGER "webhook_exchangeOrders_autoMatchOrders"
+AFTER INSERT ON "sub_exchangeOrders_autoMatchOrders"
 FOR EACH ROW
 EXECUTE FUNCTION sub_webhook(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_exchangeOrders_autoMatchOrders" ENABLE ROW LEVEL SECURITY;

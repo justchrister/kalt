@@ -12,7 +12,7 @@ CREATE TABLE "sub_accountTransactions_autoInvest" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_accountTransactions_autoInvest"()
+CREATE OR REPLACE FUNCTION "replicate_accountTransactions_autoInvest"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_accountTransactions_autoInvest" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_accountTransactions_autoInvest"
 AFTER INSERT ON "topic_accountTransactions"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_accountTransactions_autoInvest"();
+EXECUTE FUNCTION "replicate_accountTransactions_autoInvest"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "autoInvest/webhooks/accountTransactions"()
+CREATE OR REPLACE FUNCTION "webhook_accountTransactions_autoInvest"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_accountTransactions_autoInvest"
+CREATE TRIGGER "webhook_accountTransactions_autoInvest"
+AFTER INSERT ON "sub_accountTransactions_autoInvest"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_accountTransactions_autoInvest"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_accountTransactions_autoInvest" ENABLE ROW LEVEL SECURITY;

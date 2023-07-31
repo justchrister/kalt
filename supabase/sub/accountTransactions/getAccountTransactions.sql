@@ -12,7 +12,7 @@ CREATE TABLE "sub_accountTransactions_getAccountTransactions" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_accountTransactions_getAccountTransactions"()
+CREATE OR REPLACE FUNCTION "replicate_accountTransactions_getAccountTransactions"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_accountTransactions_getAccountTransactions" (message_id, message_entity, message_sender, message_sent)
@@ -25,12 +25,12 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER "replicate"
 AFTER INSERT ON "topic_accountTransactions"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_accountTransactions_getAccountTransactions"();
+EXECUTE FUNCTION "replicate_accountTransactions_getAccountTransactions"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getAccountTransactions/webhooks/accountTransactions"()
+CREATE OR REPLACE FUNCTION "webhook_accountTransactions_getAccountTransactions"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_accountTransactions_getAccountTransactions"
+CREATE TRIGGER "webhook_accountTransactions_getAccountTransactions"
+AFTER INSERT ON "sub_accountTransactions_getAccountTransactions"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_accountTransactions_getAccountTransactions"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_accountTransactions_getAccountTransactions" ENABLE ROW LEVEL SECURITY;

@@ -12,7 +12,7 @@ CREATE TABLE "sub_paymentCards_acl_stripe" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_paymentCards_acl_stripe"()
+CREATE OR REPLACE FUNCTION "replicate_paymentCards_acl_stripe"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_paymentCards_acl_stripe" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_paymentCards_acl_stripe"
 AFTER INSERT ON "topic_paymentCards"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_paymentCards_acl_stripe"();
+EXECUTE FUNCTION "replicate_paymentCards_acl_stripe"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "acl/stripe/webhooks/paymentCards"()
+CREATE OR REPLACE FUNCTION "webhook_paymentCards_acl_stripe"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_paymentCards_acl_stripe"
+CREATE TRIGGER "webhook_paymentCards_acl_stripe"
+AFTER INSERT ON "sub_paymentCards_acl_stripe"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_paymentCards_acl_stripe"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_paymentCards_acl_stripe" ENABLE ROW LEVEL SECURITY;

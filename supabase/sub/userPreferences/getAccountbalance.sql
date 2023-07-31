@@ -12,7 +12,7 @@ CREATE TABLE "sub_userPreferences_getAccountBalance" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_userPreferences_getAccountBalance"()
+CREATE OR REPLACE FUNCTION "replicate_userPreferences_getAccountBalance"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_userPreferences_getAccountBalance" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_userPreferences_getAccountBalance"
 AFTER INSERT ON "topic_userPreferences"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_userPreferences_getAccountBalance"();
+EXECUTE FUNCTION "replicate_userPreferences_getAccountBalance"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getAccountBalance/webhooks/userPreferences"()
+CREATE OR REPLACE FUNCTION "webhook_userPreferences_getAccountBalance"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_userPreferences_getAccountBalance"
+CREATE TRIGGER "webhook_userPreferences_getAccountBalance"
+AFTER INSERT ON "sub_userPreferences_getAccountBalance"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_userPreferences_getAccountBalance"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_userPreferences_getAccountBalance" ENABLE ROW LEVEL SECURITY;

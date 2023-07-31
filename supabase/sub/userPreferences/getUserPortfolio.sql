@@ -12,7 +12,7 @@ CREATE TABLE "sub_userPreferences_getUserPortfolio" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_userPreferences_getUserPortfolio"()
+CREATE OR REPLACE FUNCTION "replicate_userPreferences_getUserPortfolio"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_userPreferences_getUserPortfolio" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_userPreferences_getUserPortfolio"
 AFTER INSERT ON "topic_userPreferences"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_userPreferences_getUserPortfolio"();
+EXECUTE FUNCTION "replicate_userPreferences_getUserPortfolio"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getUserPortfolio/webhooks/userPreferences"()
+CREATE OR REPLACE FUNCTION "webhook_userPreferences_getUserPortfolio"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_userPreferences_getUserPortfolio"
+CREATE TRIGGER "webhook_userPreferences_getUserPortfolio"
+AFTER INSERT ON "sub_userPreferences_getUserPortfolio"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_userPreferences_getUserPortfolio"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_userPreferences_getUserPortfolio" ENABLE ROW LEVEL SECURITY;

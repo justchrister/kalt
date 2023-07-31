@@ -12,7 +12,7 @@ CREATE TABLE "sub_revenueTransactions_payRevenue" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_revenueTransactions_payRevenue"()
+CREATE OR REPLACE FUNCTION "replicate_revenueTransactions_payRevenue"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_revenueTransactions_payRevenue" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_revenueTransactions_payRevenue"
 AFTER INSERT ON "topic_revenueTransactions"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_revenueTransactions_payRevenue"();
+EXECUTE FUNCTION "replicate_revenueTransactions_payRevenue"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "payRevenue/webhooks/revenueTransactions"()
+CREATE OR REPLACE FUNCTION "webhook_revenueTransactions_payRevenue"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_revenueTransactions_payRevenue"
+CREATE TRIGGER "webhook_revenueTransactions_payRevenue"
+AFTER INSERT ON "sub_revenueTransactions_payRevenue"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_revenueTransactions_payRevenue"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_revenueTransactions_payRevenue" ENABLE ROW LEVEL SECURITY;

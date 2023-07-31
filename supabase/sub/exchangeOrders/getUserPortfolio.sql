@@ -12,7 +12,7 @@ CREATE TABLE "sub_exchangeOrders_getUserPortfolio" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_exchangeOrders_getUserPortfolio"()
+CREATE OR REPLACE FUNCTION "replicate_exchangeOrders_getUserPortfolio"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_exchangeOrders_getUserPortfolio" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_exchangeOrders_getUserPortfolio"
 AFTER INSERT ON "topic_exchangeOrders"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_exchangeOrders_getUserPortfolio"();
+EXECUTE FUNCTION "replicate_exchangeOrders_getUserPortfolio"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getUserPortfolio/webhooks/exchangeOrders"()
+CREATE OR REPLACE FUNCTION "webhook_exchangeOrders_getUserPortfolio"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_exchangeOrders_getUserPortfolio"
+CREATE TRIGGER "webhook_exchangeOrders_getUserPortfolio"
+AFTER INSERT ON "sub_exchangeOrders_getUserPortfolio"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_exchangeOrders_getUserPortfolio"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_exchangeOrders_getUserPortfolio" ENABLE ROW LEVEL SECURITY;

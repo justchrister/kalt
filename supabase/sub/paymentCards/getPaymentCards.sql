@@ -12,25 +12,25 @@ CREATE TABLE "sub_paymentCards_getPaymentCards" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_paymentCards_getPaymentCards"()
+CREATE OR REPLACE FUNCTION "replicate_paymentCards_getPaymentCards"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO "sub_paymentCards_getPaymentCards" (message_id, message_entity, message_sender, message_sent)
+  INSERT INTO "topic_paymentCards" (message_id, message_entity, message_sender, message_sent)
   VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_paymentCards_getPaymentCards"
 AFTER INSERT ON "topic_paymentCards"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_paymentCards_getPaymentCards"();
+EXECUTE FUNCTION "replicate_paymentCards_getPaymentCards"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getPaymentCards/webhooks/paymentCards"()
+CREATE OR REPLACE FUNCTION "webhook_paymentCards_getPaymentCards"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_paymentCards_getPaymentCards"
+CREATE TRIGGER "webhook_paymentCards_getPaymentCards"
+AFTER INSERT ON "sub_paymentCards_getPaymentCards"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_paymentCards_getPaymentCards"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_paymentCards_getPaymentCards" ENABLE ROW LEVEL SECURITY;

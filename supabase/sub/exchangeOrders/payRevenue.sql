@@ -12,7 +12,7 @@ CREATE TABLE "sub_exchangeOrders_payRevenue" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_exchangeOrders_payRevenue"()
+CREATE OR REPLACE FUNCTION "replicate_exchangeOrders_payRevenue"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_exchangeOrders_payRevenue" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_exchangeOrders_payRevenue"
 AFTER INSERT ON "topic_exchangeOrders"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_exchangeOrders_payRevenue"();
+EXECUTE FUNCTION "replicate_exchangeOrders_payRevenue"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "payRevenue/webhooks/exchangeOrders"()
+CREATE OR REPLACE FUNCTION "webhook_exchangeOrders_payRevenue"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_exchangeOrders_payRevenue"
+CREATE TRIGGER "webhook_exchangeOrders_payRevenue"
+AFTER INSERT ON "sub_exchangeOrders_payRevenue"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_exchangeOrders_payRevenue"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_exchangeOrders_payRevenue" ENABLE ROW LEVEL SECURITY;

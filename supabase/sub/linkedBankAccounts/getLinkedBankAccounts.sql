@@ -3,7 +3,7 @@
 -- topic   linkedBankAccount
 
 --- create the table, with default values
-CREATE TABLE "sub_linkedBankAccount_getLinkedBankAccount" (
+CREATE TABLE "sub_linkedBankAccounts_getLinkedBankAccount" (
     "message_id"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
     "message_entity"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
     "message_sent"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
@@ -12,25 +12,25 @@ CREATE TABLE "sub_linkedBankAccount_getLinkedBankAccount" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_linkedBankAccount_getLinkedBankAccount"()
+CREATE OR REPLACE FUNCTION "replicate_linkedBankAccounts_getLinkedBankAccount"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO "sub_linkedBankAccount_getLinkedBankAccount" (message_id, message_entity, message_sender, message_sent)
+  INSERT INTO "sub_linkedBankAccounts_getLinkedBankAccount" (message_id, message_entity, message_sender, message_sent)
   VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
-AFTER INSERT ON "topic_linkedBankAccount"
+CREATE TRIGGER "replicate_linkedBankAccounts_getLinkedBankAccount"
+AFTER INSERT ON "topic_linkedBankAccounts"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_linkedBankAccount_getLinkedBankAccount"();
+EXECUTE FUNCTION "replicate_linkedBankAccounts_getLinkedBankAccount"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getLinkedBankAccount/webhooks/linkedBankAccount"()
+CREATE OR REPLACE FUNCTION "webhook_linkedBankAccounts_getLinkedBankAccount"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_linkedBankAccount_getLinkedBankAccount"
+CREATE TRIGGER "webhook_linkedBankAccounts_getLinkedBankAccount"
+AFTER INSERT ON "sub_linkedBankAccounts_getLinkedBankAccount"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_linkedBankAccounts_getLinkedBankAccount"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_linkedBankAccounts_getLinkedBankAccount" ENABLE ROW LEVEL SECURITY;

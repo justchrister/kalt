@@ -1,4 +1,4 @@
--- version 29.7.23
+-- version 31.7.23
 -- service <<service>>
 -- topic   <<topic>>
 
@@ -12,7 +12,7 @@ CREATE TABLE "sub_<<topic>>_<<service>>" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_<<topic>>_<<service>>"()
+CREATE OR REPLACE FUNCTION "replicate_<<topic>>_<<service>>"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_<<topic>>_<<service>>" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,14 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_<<topic>>_<<service>>"
 AFTER INSERT ON "topic_<<topic>>"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_<<topic>>_<<service>>"();
-
+EXECUTE FUNCTION "replicate_<<topic>>_<<service>>"();
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "<<service>>/webhooks/<<topic>>"()
+CREATE OR REPLACE FUNCTION "webhook_<<service>>_<<topic>>"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +48,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_<<topic>>_<<service>>"
+CREATE TRIGGER "webhook_<<service>>_<<topic>>"
+AFTER INSERT ON "sub_<<topic>>_<<service>>"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_<<service>>_<<topic>>"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_<<topic>>_<<service>>" ENABLE ROW LEVEL SECURITY;

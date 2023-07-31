@@ -12,7 +12,7 @@ CREATE TABLE "sub_userSubscriptions_getUserSubscriptions" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "sub_userSubscriptions_getUserSubscriptions"()
+CREATE OR REPLACE FUNCTION "replicate_userSubscriptions_getUserSubscriptions"()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO "sub_userSubscriptions_getUserSubscriptions" (message_id, message_entity, message_sender, message_sent)
@@ -22,15 +22,15 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_userSubscriptions_getUserSubscriptions"
 AFTER INSERT ON "topic_userSubscriptions"
 FOR EACH ROW
-EXECUTE FUNCTION "sub_userSubscriptions_getUserSubscriptions"();
+EXECUTE FUNCTION "replicate_userSubscriptions_getUserSubscriptions"();
 
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "getUserSubscriptions/webhooks/userSubscriptions"()
+CREATE OR REPLACE FUNCTION "webhook_userSubscriptions_getUserSubscriptions"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,7 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook"
-AFTER INSERT ON "trigger_userSubscriptions_getUserSubscriptions"
+CREATE TRIGGER "webhook_userSubscriptions_getUserSubscriptions"
+AFTER INSERT ON "sub_userSubscriptions_getUserSubscriptions"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_userSubscriptions_getUserSubscriptions"(NEW);
+
+-- Enable RLS
+ALTER TABLE "sub_userSubscriptions_getUserSubscriptions" ENABLE ROW LEVEL SECURITY;
