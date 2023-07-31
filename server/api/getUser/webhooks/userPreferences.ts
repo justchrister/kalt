@@ -1,6 +1,5 @@
 import { ok } from '~/composables/ok'
-import { messaging } from '~/composables/messaging'
-import { message } from '~/composables/messagingNext'
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {

@@ -1,15 +1,13 @@
 import { ok } from '~/composables/ok'
-import { messaging } from '~/composables/messaging'
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const topic = 'exchangeOrders'
-  const topicKebab = ok.camelToKebab(topic)
   const service = 'autoMatchOrders'
-  const serviceKebab = ok.camelToKebab(service)
-  const query = getQuery(event)
   const body = await readBody(event)
+  
   const originalOrder = body.record
   const ticker = originalOrder.ticker
   const quantity = parseFloat(originalOrder.quantity)

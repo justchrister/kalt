@@ -1,6 +1,5 @@
 import { ok } from '~/composables/ok'
-import { messaging } from '~/composables/messaging'
-import { sub, pub } from '~/composables/messagingNext'
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server'
 import Stripe from 'stripe';
 

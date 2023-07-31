@@ -1,13 +1,14 @@
 import { ok } from '~/composables/ok'
-import { messaging } from '~/composables/messaging'
+import { pub, sub } from '~/composables/messagingNext'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
-  const supabase = serverSupabaseServiceRole(event);
+  const supabase = serverSupabaseServiceRole(event)
   const topic = 'exchangeOrders';
   const service = 'getUserPortfolio';
-  const body = await readBody(event);
+  const body = await readBody(event)
   if(body.record.message_read) return 'message already read';
+  
   
   const message = await messaging.getEntity(supabase, topic, body.record.message_entity);
 

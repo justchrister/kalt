@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok';
-import { messaging } from '~/composables/messaging';
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server';
 import Stripe from 'stripe';
 export default defineEventHandler(async (event) => {

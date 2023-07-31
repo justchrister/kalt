@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok'
-import { messaging } from '~/composables/messaging'
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server'
 // this one should get the new currency and replace that in the value_currency column
 export default defineEventHandler( async (event) => {

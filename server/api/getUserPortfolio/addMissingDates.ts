@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { ok } from '~/composables/ok';
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
