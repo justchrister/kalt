@@ -27,9 +27,9 @@ export default defineEventHandler( async (event) => {
 
   const getTransactions = async () => {
       const { data, error } = await supabase
-      .from('account_transactions')
+      .from('topic_accountTransactions')
       .select()
-      .or('transactionStatus.eq.payment_accepted,transactionStatus.eq.withdrawal_accepted')
+      .or('transactionStatus.eq.paymentAccepted,transactionStatus.eq.withdrawalAccepted')
       .eq('userId', message.userId);
     return data
   }
@@ -47,7 +47,7 @@ export default defineEventHandler( async (event) => {
   }
 
   const { data, error } = await supabase
-    .from('get_account_balance')
+    .from('getAccountBalance')
     .upsert(json)
     .select()
   

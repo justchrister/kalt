@@ -39,13 +39,13 @@ export default defineEventHandler( async (event) => {
   }
   const getTrailingAverageForecast = async () => {
     const { data, error } = await supabase
-      .from('revenue_transactions')
+      .from('topic_revenueTransactions')
       .select()
       .eq('ticker', 'gi.ddf')
     let groupedData = {};
     let total = 0;
     for (let i = 0; i < data.length; i++) {
-      const date = formatDate(data[i].message_created);
+      const date = formatDate(data[i].message_sent);
       if (!groupedData[date]) {
         groupedData[date] = 0;
       }

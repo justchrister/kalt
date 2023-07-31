@@ -17,7 +17,7 @@ export default defineEventHandler( async (event) => {
 
   const getDistinctTransactions = async () => {
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('topic_accountTransactions')
       .select('message_entity')
       .eq('userId', message.userId);
     const distinctMessageEntityIds = [...new Set(data.map(transaction => transaction.message_entity))];
@@ -36,7 +36,7 @@ export default defineEventHandler( async (event) => {
         "userId": transaction.userId,
         "amount": transaction.amount,
         "currency": transaction.currency,
-        "date": transaction.message_created,
+        "date": transaction.message_sent,
         "type": transaction.type,
         "sub_type": transaction.subType
       })

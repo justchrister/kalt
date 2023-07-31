@@ -4,7 +4,6 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const query = getQuery(event);
   const topic = 'exchangeOrders';
   const service = 'getUserPortfolio';
   const body = await readBody(event);
@@ -45,7 +44,7 @@ export default defineEventHandler( async (event) => {
       shares = null
     }
     const { data, error } = await supabase
-      .from('pay_revenue')
+      .from('payRevenue')
       .upsert({
         userId: message.userId,
         quantity: shares,

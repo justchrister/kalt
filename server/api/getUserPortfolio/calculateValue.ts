@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   const getUsers = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('userId')
     if(data) ok.log('success', 'got all users: ', data)
     if(error) ok.log('error', 'could not get all users: ', error)
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   };
   const getUserCurrency = async (user) => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('currency')
       .eq('userId', user)
       .limit(1)
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   };
   const getUserPortfolio = async (user) => {
     const { data, error } = await supabase
-      .from('get_user_portfolio')
+      .from('getUserPortfolio')
       .select()
       .eq('userId', user)
       .eq('ticker', 'gi.ddf')
@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
     }
     for (let i = 0; i < array.length; i++) {
       const { data, error } = await supabase
-        .from('get_user_portfolio')
+        .from('getUserPortfolio')
         .update(array[i])
         .eq('ticker', array[i].ticker)
         .eq('date', array[i].date)

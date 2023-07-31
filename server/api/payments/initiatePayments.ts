@@ -37,7 +37,7 @@ export default defineEventHandler( async (event) => {
     };
 
     const { data, error } = await supabase
-      .from('payments_pending')
+      .from('paymentsPending')
       .insert(json)
       .select()
     if(error) {

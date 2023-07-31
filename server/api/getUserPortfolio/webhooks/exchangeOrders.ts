@@ -14,7 +14,7 @@ export default defineEventHandler( async (event) => {
 
   const readMessage = await messaging.read(supabase, topic, service, body.record.message_id);
 
-  const date = new Date(message.message_created);
+  const date = new Date(message.message_sent);
   const dateFrom = date;
   dateFrom.setHours(0, 0, 0, 0);
   
@@ -30,8 +30,8 @@ export default defineEventHandler( async (event) => {
     .eq('userId', message.userId)
     .eq('orderStatus', 'fulfilled')
     .eq('ticker', message.ticker)
-    .gte('message_created', dateFromISOString)
-    .lt('message_created', dateToISOString)
+    .gte('message_sent', dateFromISOString)
+    .lt('message_sent', dateToISOString)
   
   const json = {
     'userId': message.userId,
@@ -46,7 +46,7 @@ export default defineEventHandler( async (event) => {
   };
 
   const { data, error} = await supabase
-    .from('get_user_portfolio')
+    .from('getUserPortfolio')
     .upsert(json)
     .eq('userId', message.userId)
     .eq('date', date)

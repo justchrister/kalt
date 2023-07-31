@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   const getFirstInvestDate = async (userId) => {
     const { data, error } = await supabase
-      .from('get_user_portfolio')
+      .from('getUserPortfolio')
       .select('date')
       .eq('userId', userId)
       .order('date', { ascending: true })
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   }
   const insertDate = async (date, userId) => {
     const { data, error } = await supabase
-    .from('get_user_portfolio')
+    .from('getUserPortfolio')
     .insert({
       'date': date,
       'ticker': 'gi.ddf',
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
   };
   const getUsers = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('userId')
     if(data) ok.log('success', 'got all users: ', data)
     if(error) ok.log('error', 'could not get all users: ', error)

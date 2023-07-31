@@ -30,7 +30,7 @@ export default defineEventHandler( async (event) => {
   
   const deletePayment = async () => {
     const { error } = await supabase
-      .from('payments_pending')
+      .from('paymentsPending')
       .delete()
       .eq('message_id', message.transaction_id)
     if(error) return false
@@ -42,7 +42,7 @@ export default defineEventHandler( async (event) => {
     json.message_id = ok.uuid();
     json.message_sender = 'server/api/payments/_accountTransactions.ts';
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('topic_accountTransactions')
       .insert(json)
       .select()
     return data

@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   const endOfMonth = ok.lastDateOfMonth();
   const checkIfInProcessing = async () => {
     const { data, error } = await supabase
-      .from('payments_subscriptions_processing')
+      .from('payments_subscriptionsProcessing')
       .select()
       .limit(1)
       .single()
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
 
   const setAsProcessing = async () => {
     const { data, error } = await supabase
-      .from('payments_subscriptions_processing')
+      .from('payments_subscriptionsProcessing')
       .insert({
         processing_id: processingId,
       })
@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
 
   const removeAsProcessing = async () => {
     const { data, error } = await supabase
-      .from('payments_subscriptions_processing')
+      .from('payments_subscriptionsProcessing')
       .delete()
       .eq('processing_id', processingId)
       .select()
@@ -66,7 +66,7 @@ export default defineEventHandler(async (event) => {
 
   const getUsers = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select()
     if(data) ok.log('success', 'got all users')
     if(error) ok.log('error', 'could not get all users: ', error)
@@ -79,13 +79,13 @@ export default defineEventHandler(async (event) => {
  
   
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('topic_accountTransactions')
       .select()
       .eq('userId', userId)
       .eq('type', 'deposit')
       .eq('subType', 'subscription')
-      .gte('message_created', startOfDay)
-      .lte('message_created', endOfDay)
+      .gte('message_sent', startOfDay)
+      .lte('message_sent', endOfDay)
       .limit(1)
       .single()
   
@@ -101,7 +101,7 @@ export default defineEventHandler(async (event) => {
 
   const createTransaction = async (userId, amount, currency) => {
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('topic_accountTransactions')
       .insert({
         message_id: ok.uuid(),
         message_entity: ok.uuid(),

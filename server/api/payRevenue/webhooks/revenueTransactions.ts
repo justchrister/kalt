@@ -4,7 +4,6 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const query = getQuery(event)
   const topic = 'revenueTransactions';
   const service = 'payRevenue';
   const body = await readBody(event)
@@ -37,7 +36,7 @@ export default defineEventHandler( async (event) => {
 
   const createDividendTransactions = async (json) => {
     const { data, error } = await supabase
-      .from('account_transactions')
+      .from('topic_accountTransactions')
       .insert(json)
     if(data) return data
     if(error) {

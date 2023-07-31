@@ -34,26 +34,24 @@ export default defineEventHandler(async (event) => {
 
   const assetPrice = await messaging.getAssetPrice(supabase, message.currency, 'gi.ddf');
 
-  let json = {
-    'message_created': ok.timestamptz(),
-    'message_sender': 'autoInvest',
-    'ticker': 'gi.ddf',
-    'order_type': 'buy',
-    'orderStatus': 'open',
-    'userId': message.userId,
-    'quantity': message.amount * message.auto_invest * assetPrice,
-  };
-  if(json.quantity===0) return 'thats not a transaction ;)'
   const topicPubKebab = ok.camelToKebab(topicPub);
-  const { data, error } = await supabase
-    .from(topicPubKebab)
-    .insert(json)
-    .select();
 
-  const { data: withdrawTransaction, error: withdrawTransactionError } = await supabase
-    .from('account_transactions')
+  const createExchangeOrder = async () => {
+    const quantity = message.amount * message.auto_invest * assetPrice;
+    if(json.quantity===0) return 'thats not a transaction ;)'
+    const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/webhooks/accountTransactions.ts'}).exchangeOrder({
+      'ticker': 'gi.ddf',
+      'type': 'buy',
+      'status': 'open',
+      'userId': message.userId,
+      'quantity': quantity
+    });
+  }
+  const createWithdrawTransaction = async () => {
+    const { data: withdrawTransaction, error: withdrawTransactionError } = await supabase
+    .from('topic_accountTransactions')
     .insert({
-      'message_created': ok.timestamptz(),
+      'message_sent': ok.timestamptz(),
       'message_sender': 'autoInvest',
       'userId': message.userId,
       'amount': -message.amount * message.auto_invest,
@@ -64,7 +62,7 @@ export default defineEventHandler(async (event) => {
       'subType': 'autoInvested',
     })
     .select();
-
+  }
   if (data) return data;
   if (error) return error;
 });

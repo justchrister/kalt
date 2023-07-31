@@ -21,7 +21,7 @@ export default defineEventHandler( async (event) => {
 
   const getPreferredCurrency = async () => {
     const {data, error} = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('userId, currency')
       .eq('userId', message.userId)
       .limit(1)
@@ -58,7 +58,7 @@ export default defineEventHandler( async (event) => {
   }
 
   const { data, error } = await supabase
-    .from('get_account_balance')
+    .from('getAccountBalance')
     .upsert(json)
     .select()
   if(data) return data
