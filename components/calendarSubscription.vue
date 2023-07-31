@@ -90,7 +90,7 @@
       .insert({
         'days_of_month': days.value,
         'message_entity_id': user.value.id,
-        'user_id': user.value.id,
+        'userId': user.value.id,
         'message_sender': 'components/calendarSubscription.vue'
       })
     if(error)ok.log('error', 'could not update the user_subscriptions table: ', error)
