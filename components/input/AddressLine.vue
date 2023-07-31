@@ -31,7 +31,7 @@
     const { data, error } = await supabase
       .from('user_details')
       .insert({ 
-        user_id: user.value.id,
+        userId: user.value.id,
         address_line_1: address_line_1.value, 
         message_entity_id: user.value.id,
         message_sender: 'components/input/addressLine.vue' 
