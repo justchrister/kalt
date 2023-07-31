@@ -12,12 +12,9 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity)
-  ok.log('success', 'got combined message: ', message)
-  const readMessage = await messaging.read(supabase, topic, service, body.record.message_id)
-  ok.log('success', 'message marked as read: ', body.record.message_id)
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);
   const json = await messaging.cleanMessage(message)
-  ok.log('success', 'removed null values: ', json)
 
   const { data, error } = await supabase
     .from(serviceKebab)

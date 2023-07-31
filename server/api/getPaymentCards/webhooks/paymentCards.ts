@@ -11,14 +11,10 @@ export default defineEventHandler(async (event) => {
   
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(
-    supabase,
-    topic,
-    body.record.message_entity
-  );
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);
 
-  await messaging.read(supabase, topic, service, body.record.message_id);
-  const json = await messaging.cleanMessage({
+  const json = await {
     'userId': message.userId,
     'last_four_digits': message.last_four_digits,
     'card_number': message.card_number,
@@ -27,7 +23,7 @@ export default defineEventHandler(async (event) => {
     'expiry_year': message.expiry_year,
     'default': message.default,
     'cvc': message.cvc
-  });
+  } as any;
   const { data, error } = await supabase
     .from(serviceKebab)
     .upsert(json)

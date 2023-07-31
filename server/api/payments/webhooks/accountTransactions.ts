@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok'
-import { pub, sub } from '~/composables/messagingNext'
+import { pub, sub } from '~/composables/messagingNext';
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -12,8 +12,8 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity);
-  await messaging.read( supabase, topic, service, body.record.message_id)
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);  
 
   if(message.type != 'deposit'){
     ok.log('error', 'wrong transaction type')

@@ -12,18 +12,8 @@ export default defineEventHandler(async (event) => {
   
   if (body.record.message_read) return 'message already read';
 
-  const message = await messaging.getEntity(
-    supabase,
-    topic,
-    body.record.message_entity
-  );
-
-  const readMessage = await messaging.read(
-    supabase,
-    topic,
-    service,
-    body.record.message_id
-  );
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);  
 
   if (message.orderStatus !== 'open') {
     const { error } = await supabase

@@ -8,9 +8,8 @@ export default defineEventHandler( async (event) => {
   const service = 'payRevenue';
   const body = await readBody(event)
 
-  messaging.read(supabase, topic, service, body.record.message_id);
-
-  const message = await messaging.getEntity(supabase, topic, body.record.message_entity);
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);  
 
   const getSharesPerUser = async () => {
     const { data, error } = await supabase
