@@ -112,8 +112,8 @@
       .insert({
         'message_sender': 'component/card/add.vue',
         'message_entity_id': card_id,
-        'user_id': user.value.id,
-        'card_id': card_id,
+        'userId': user.value.id,
+        'cardId': card_id,
         'last_four_digits': last_four_digits,
         'card_number': cardNumberInt,
         'expiry_month': expiry_month.value,

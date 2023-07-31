@@ -25,7 +25,7 @@
     const { data, error } = await supabase
       .from('get_user_portfolio')
       .select()
-      .eq('user_id', user.value.id)
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
     if(data){
