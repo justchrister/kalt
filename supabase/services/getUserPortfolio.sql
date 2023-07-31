@@ -10,27 +10,15 @@ CREATE TABLE "getUserPortfolio" (
   "percentageChange"  DECIMAL(5, 4)
                       CHECK (percentage_change >= 0 
                       AND percentage_change <= 1),
-  PRIMARY KEY (userId, date, ticker)
+  PRIMARY KEY ("userId", "date", "ticker")
 );
 
 
 
 ALTER TABLE "getUserPortfolio" ENABLE ROW LEVEL SECURITY;
 
-
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"getUserPortfolio"'
-      AND policyname = 'SELF — Select'
-  ) THEN
-    CREATE POLICY "SELF — Select" ON public."getUserPortfolio"
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (auth.uid() = "userId");
-  END IF;
-END
-$$;
+--- Create RLS policy
+CREATE POLICY "SELF — Select" ON "public"."getUserPortfolio"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "userId");

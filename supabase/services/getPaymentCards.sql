@@ -9,31 +9,21 @@ CREATE TABLE "getPaymentCards" (
   "default"           boolean,
   "number"            CHAR(16),
   "cvc"               CHAR(3),
-  PRIMARY KEY (userId, card_id)
+  PRIMARY KEY ("userId", "cardId")
 );
 
 
 ALTER TABLE "getPaymentCards" ENABLE ROW LEVEL SECURITY;
 
+--- Create RLS policy
+CREATE POLICY "SELF — Select" ON "public"."getPaymentCards"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "userId");
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"getPaymentCards"'
-      AND policyname = 'SELF — Select'
-  ) THEN
-    CREATE POLICY "SELF — Select" ON public."getPaymentCards"
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (auth.uid() = "userId");
-  END IF;
-END
-$$;
 
-CREATE OR REPLACE FUNCTION set_default_card()
+--- Set default funciton
+CREATE OR REPLACE FUNCTION "getPaymentCards_setDefaultCard"()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW."default" THEN
@@ -46,7 +36,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER set_default_card_trigger
+CREATE TRIGGER "getPaymentCards_setDefaultCard"
 BEFORE INSERT OR UPDATE OF "default" ON "getPaymentCards"
 FOR EACH ROW
-EXECUTE FUNCTION set_default_card();
+EXECUTE FUNCTION "getPaymentCards_setDefaultCard"();

@@ -6,7 +6,7 @@ CREATE TABLE "getLinkedBankAccount" (
   "iban"          text,
   "bankCode"      text,
 
-  PRIMARY KEY (userId, iban)
+  PRIMARY KEY ("userId", "iban")
 );
 
 --- Add row level security
@@ -16,4 +16,4 @@ ALTER TABLE "getLinkedBankAccount" ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "SELF — Select" ON "public"."getLinkedBankAccount"
   AS PERMISSIVE FOR SELECT
   TO authenticated
-  USING (auth.uid() = "userId")
+  USING (auth.uid() = "userId");
