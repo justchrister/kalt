@@ -36,23 +36,32 @@ export default defineEventHandler(async (event) => {
       'userId': message.userId,
       'quantity': quantity
     });
+    if(error){
+      return error
+    } else {
+      return data
+    }
   }
   const createWithdrawTransaction = async () => {
-    const { data: withdrawTransaction, error: withdrawTransactionError } = await supabase
-    .from('topic_accountTransactions')
-    .insert({
-      'message_sent': ok.timestamptz(),
-      'message_sender': 'autoInvest',
+    const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/accountTransactions.ts'}).accountTransaction({
       'userId': message.userId,
       'amount': -message.amount * message.auto_invest,
       'currency': message.currency,
-      'auto_invest': 0,
+      'autoInvest': 0,
       'type': 'withdraw',
       'status': 'withdrawal_accepted',
       'subType': 'autoInvested',
-    })
-    .select();
+    });
+    if(error){
+      return error
+    } else {
+      return data
+    }
   }
-  if (data) return data;
-  if (error) return error;
+  const exchangeOrder = await createExchangeOrder();
+  const withdrawTransaction = await createWithdrawTransaction();
+  return {
+    'exchangeOrder': exchangeOrder,
+    'withdrawTransaction': withdrawTransaction
+  }
 });
