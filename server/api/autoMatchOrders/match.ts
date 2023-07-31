@@ -32,30 +32,29 @@ export default defineEventHandler( async (event) => {
   const fulfillingOrder = await getFulfiller()
   if (!fulfillingOrder) return 'no fulfilling order available'
 
-  const publishMessage = async (json) => {
+  const publishMessage = async (entity, json) => {
     if (!json.quantity) return 'cant create an order without a quanitity here'
-    const { data, error } = await supabase
-      .from(topicKebab)
-      .insert(json)
-      .select()
+    const { error, data } = await pub(supabase, {
+      entity: entity,
+      sender:'server/api/autoMatchOrders/match.ts'
+    }).exchangeOrder(json);
+
     if(error) return error
     return data
   }
 
   if(fulfillingOrder.quantity_absolute===originalOrder.quantity_absolute){
-    await publishMessage({
+    await publishMessage(originalOrder.message_entity, {
       'orderStatus': 'fulfilled',
       'userId': originalOrder.userId,
-      'message_entity': originalOrder.message_entity,
       'ticker': ticker,
       'quantity': originalOrder.quantity,
       'message_sender': service,
       'fulfilled_by_id': fulfillingOrder.message_entity
     })
-    await publishMessage({
+    await publishMessage(fulfillingOrder.message_entity, {
       'orderStatus': 'fulfilled',
       'userId': fulfillingOrder.userId,
-      'message_entity': fulfillingOrder.message_entity,
       'ticker': fulfillingOrder.ticker,
       'quantity': fulfillingOrder.quantity,
       'order_type': fulfillingOrder.order_type,
@@ -66,20 +65,18 @@ export default defineEventHandler( async (event) => {
   if (fulfillingOrder.quantity_absolute >=  originalOrder.quantity_absolute) {
     const newOrderId1 = ok.uuid();
     const newOrderId2 = ok.uuid();
-    await publishMessage({
+    await publishMessage(originalOrder.message_entity,{
       'orderStatus': 'fulfilled',
       'userId': originalOrder.userId,
-      'message_entity': originalOrder.message_entity,
       'ticker': ticker,
       'order_type': originalOrder.order_type,
       'quantity': originalOrder.quantity,
       'message_sender': service,
       'fulfilled_by_id': newOrderId1
     })
-    await publishMessage({
+    await publishMessage(fulfillingOrder.message_entity, {
       'orderStatus': 'split',
       'userId': fulfillingOrder.userId,
-      'message_entity': fulfillingOrder.message_entity,
       'ticker': ticker,
       'quantity': fulfillingOrder.quantity,
       'order_type': fulfillingOrder.order_type,
@@ -89,10 +86,9 @@ export default defineEventHandler( async (event) => {
         newOrderId2
       ]
     })
-    await publishMessage({
+    await publishMessage(newOrderId1, {
       'orderStatus': 'fulfilled',
       'userId': fulfillingOrder.userId,
-      'message_entity': newOrderId1,
       'ticker': fulfillingOrder.ticker,
       'quantity': quantityInverted,
       'order_type': fulfillingOrder.order_type,
@@ -100,10 +96,9 @@ export default defineEventHandler( async (event) => {
       'fulfilled_by_id': originalOrder.message_entity
     })
     
-    await publishMessage({
+    await publishMessage(newOrderId2, {
       'orderStatus': 'open',
       'userId': fulfillingOrder.userId,
-      'message_entity': newOrderId2,
       'ticker': fulfillingOrder.ticker,
       'quantity': fulfillingOrder.quantity+originalOrder.quantity,
       'order_type': fulfillingOrder.order_type,
