@@ -96,13 +96,13 @@
         .select()
         .limit(1)
         .single()
-      if(data) ok.log('success', 'got user: ', data.first_name+' '+data.last_name)
+      if(data) ok.log('success', 'got user: ', data.firstName+' '+data.lastName)
       if(error) ok.log('error', 'could not get user: ', error)
 
       userCookie.value = {data};
       console.log(userCookie.value.data)
       if(userCookie.value){
-        colorMode.preference = userCookie.value.color_scheme;
+        colorMode.preference = userCookie.value.colorScheme;
         await navigateTo("/portfolio");
         loading.value = false
       }
