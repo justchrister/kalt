@@ -32,9 +32,6 @@ export const pub = (client: any, meta: any) => {
   }
 }
 
-
-// sub
-
 export const sub = (client: any, topic: any) => {
   return {
     entity: async (entity_id: any) => {
