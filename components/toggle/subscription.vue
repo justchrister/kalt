@@ -8,7 +8,7 @@
   const user = useSupabaseUser()
   const isOn = ref()
   const { data, error } = await supabase
-    .from('get_user_subscription')
+    .from('getUserSubscription')
     .select()
     .limit(1)
     .single()
@@ -21,11 +21,12 @@
   const toggleSubscription = async () => {
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
-    message.post(supabase, 'user_subscriptions',{
-      "messageSender": "components/toggle/subscription.vue",
-      "messageEntityId": user.value.id,
-      "userId": user.value.id,
-      "active": isOn.value
-    })
+    const { error, data } = await pub(supabase, {
+      sender:'components/toggle/subscription.vue',
+      entity: user.value.id
+    }).userSubscriptions({
+      'userId': user.value.id,
+      'active': isOn.value
+    });
   }
 </script>
