@@ -24,7 +24,7 @@ CREATE TABLE "topic_userDetails" (
 --- add row level security
 ALTER TABLE "topic_userDetails" ENABLE ROW LEVEL SECURITY;
 -- adding check to ensure its only numbers 
-ALTER TABLE "topic_userDetails" ADD CONSTRAINT postal_code_numeric_check CHECK ("postalCode" ~ '^[0-9]*$');
+ALTER TABLE "topic_userDetails" ADD CONSTRAINT postalCode_numeric_check CHECK ("postalCode" ~ '^[0-9]*$');
 
 
 DO $$
