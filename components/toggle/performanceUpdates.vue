@@ -8,7 +8,7 @@
   const user = useSupabaseUser()
   const isOn = ref()
   const { data, error } = await supabase
-    .from('get_user')
+    .from('getUser')
     .select()
     .limit(1)
     .single()
@@ -21,10 +21,12 @@
   const updatePerformanceUpdates = async () => {
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
-    message.post(supabase, 'user_preferences',{
-      "messageSender": "components/toggle/performanceUpdates.vue",
-      "userId": user.value.id,
-      "performanceUpdates": isOn.value
-    })
+    
+    const { error, data } = await pub(supabase, {
+      sender:'components/toggle/performanceUpdates.vue'
+    }).userPreferences({
+      'userId': user.value.id,
+      'performanceUpdates': isOn.value
+    });
   }
 </script>
