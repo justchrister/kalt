@@ -30,7 +30,7 @@ const props = defineProps({
   const user = useSupabaseUser()
   const getTransactions = async () => {
     const {data, error} = await supabase
-      .from('get_account_transactions')
+      .from('getAccountTransactions')
       .select()
       .eq('userId', user.value.id)
       .not('currency', 'is', null)
@@ -48,9 +48,6 @@ const props = defineProps({
   }
   
   const transactions = await getTransactions()
-  const getExchangeRates = async () => {
-    
-  }
 </script>
 <style scoped lang="scss">
   
