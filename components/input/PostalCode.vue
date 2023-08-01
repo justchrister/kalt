@@ -5,7 +5,7 @@
     </label>
     <input
       type="text"
-      v-model="postal_code"
+      v-model="postalCode"
       placeholder="Postal code"
       id="postal-code"
       :class="state"
@@ -18,7 +18,7 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const postal_code = ref(props.initial)
+  const postalCode = ref(props.initial)
 
   const props = defineProps({
     initial: {
@@ -29,16 +29,13 @@
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
-    const { data, error } = await supabase
-      .from('user_details')
-      .insert({ 
+    const { error, data } = await pub(supabase, {
+      sender:'components/input/lastName.vue',
+      entity: user.value.id
+    }).userDetails({
         userId: user.value.id,
-        postal_code: postal_code.value, 
-        message_entity: user.value.id,
-        message_sender: 'components/input/lastName.vue' 
-      })
-      .select()
-
+        postalCode: postalCode.value
+    });
     if(error){
       state.value="error"
     } else {
