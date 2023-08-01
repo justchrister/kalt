@@ -9,7 +9,7 @@
   const supabase = useSupabaseClient()
   const hasDefaultCard = ref(false)
   const { data, error } = await supabase
-    .from('get_payment_card_default')
+    .from('getPaymentCardDefault')
     .select()
     .limit(1)
     .single()
