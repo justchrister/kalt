@@ -13,8 +13,8 @@ export default defineEventHandler(async (event) => {
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
   
-  if(!message.first_name) return "no first name"
-  if(!message.last_name) return "no last name"
+  if(!message.firstName) return "no first name"
+  if(!message.lastName) return "no last name"
 
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
   const createUser = async () => {
     const user = await stripe.customers.create({
       email: message.email,
-      name: message.first_name+' '+message.last_name,
+      name: message.firstName+' '+message.lastName,
       metadata: { 
         userId: message.userId
       }
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
   const updateStripeUserDetails = async (stripeId) => {
     const updatedUser = await stripe.customers.update(
       stripeId, {
-        name: message.first_name+' '+message.last_name,
+        name: message.firstName+' '+message.lastName,
       }
     );
   }
