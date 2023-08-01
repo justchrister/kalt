@@ -5,7 +5,7 @@ export const getUser = async (supabase) => {
   const userCookie = useCookie('user');
   const getSetUser = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select()
       .limit(1)
       .single()
