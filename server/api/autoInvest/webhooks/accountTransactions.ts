@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
   const topicPubKebab = ok.camelToKebab(topicPub);
 
   const createExchangeOrder = async () => {
-    const quantity = message.amount * message.auto_invest * assetPrice;
+    const quantity = message.amount * message.autoInvest * assetPrice;
     if(json.quantity===0) return 'thats not a transaction ;)'
     const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/webhooks/accountTransactions.ts'}).exchangeOrder({
       'ticker': 'gi.ddf',
@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
   const createWithdrawTransaction = async () => {
     const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/accountTransactions.ts'}).accountTransaction({
       'userId': message.userId,
-      'amount': -message.amount * message.auto_invest,
+      'amount': -message.amount * message.autoInvest,
       'currency': message.currency,
       'autoInvest': 0,
       'type': 'withdraw',
