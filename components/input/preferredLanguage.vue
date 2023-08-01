@@ -26,16 +26,13 @@
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
-    const { data, error } = await supabase
-      .from('user_preferences')
-      .insert({ 
-        userId: user.value.id,
-        language: language.value,
-        message_entity: user.value.id,
-        message_sender: 'components/input/preferredLanguage.vue' 
-      })
-      .select()
-
+    const { error, data } = await pub(supabase, {
+      sender:'components/input/preferredLanguage.vue',
+      entity: user.value.id
+    }).userPrefrences({
+      userId: user.value.id,
+      language: language.value
+    });
     if(error){
       state.value="error"
       ok.log('error', 'could not update language preferrence: ', error)
