@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const state = ref('loading')
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
@@ -32,7 +32,7 @@ const user = useSupabaseUser()
   })
   const getPreferredCurrency = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('currency')
       .eq('userId', user.value.id)
       .limit(1)
@@ -41,22 +41,21 @@ const user = useSupabaseUser()
   }
 
   const currency = await getPreferredCurrency();
-
+  const amount = ref(10);
   const updatePaymentAmount = async () => { 
     if(amount.value){
-      const { error } = await supabase
-        .from('account_transactions')
-        .insert({
-          message_entity: props.uuid,
-          message_sender: 'components/input/amountBuy.vue',
-          userId: user.value.id,
-          amount: ok.toInt(amount.value),
-          currency: currency,
-          type: 'deposit',
-          subType: 'card',
-          transactionStatus: 'incomplete',
-          auto_invest: 1,
-      })
+      const { error, data } = await pub(supabase, {
+        sender:'components/input/amountBuy.vue',
+        entity: props.uuid,
+      }).accountTransaction({
+        userId: user.value.id,
+        amount: ok.toInt(amount.value),
+        currency: currency,
+        type: 'deposit',
+        subType: 'card',
+        transactionStatus: 'incomplete',
+        autoInvest: 1
+      });
       if(error) ok.log('error', 'could not update amount', error)
       if(!error) ok.log('success', 'updated amount')
     }
