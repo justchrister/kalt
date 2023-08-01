@@ -28,15 +28,13 @@
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
-    const { data, error } = await supabase
-      .from('user_preferences')
-      .insert({ 
-        userId: user.value.id,
-        currency: currency.value, 
-        message_entity: user.value.id,
-        message_sender: 'components/input/preferredCurrency.vue' 
-      })
-      .select()
+    const { error, data } = await pub(supabase, {
+      sender:'components/input/preferredCurrency.vue', 
+      entity: user.value.id
+    }).userPreferences({
+      userId: user.value.id,
+      currency: currency.value
+    });
     if(error){
       state.value="error"
       ok.log('error', 'failed updating currency: ', error)
