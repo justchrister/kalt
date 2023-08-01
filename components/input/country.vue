@@ -25,16 +25,13 @@
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
-    const { data, error } = await supabase
-      .from('user_details')
-      .insert({ 
-        userId: user.value.id,
-        country: country.value, 
-        message_entity: user.value.id,
-        message_sender: 'components/input/country.vue' 
-      })
-      .select()
-
+    const { error, data } = await pub(supabase, {
+      sender:'components/input/country.vue', 
+      entity: user.value.id
+    }).userDetails({
+      userId: user.value.id,
+      country: country.value
+    });
     if(error){
       state.value="error"
     } else {
