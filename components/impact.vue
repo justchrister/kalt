@@ -23,7 +23,7 @@
   }
   const getUserPortfolio = async () => {
     const { data, error } = await supabase
-      .from('get_user_portfolio')
+      .from('getUserPortfolio')
       .select()
       .eq('userId', user.value.id)
       .limit(1)
