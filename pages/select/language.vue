@@ -22,7 +22,7 @@
 
   const getPreferredLanguage = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('language')
       .eq('userId', user.value.id)
       .limit(1)
