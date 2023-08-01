@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrap">
-    <label for="bank_code">Bank code (swift/bic)</label>
-    <input type="text" v-model="bank_code" v-maska data-maska="@@@@ @@ ** ***" @input="updateBankCode()"/>
+    <label for="bankCode">Bank code (swift/bic)</label>
+    <input type="text" v-model="bankCode" v-maska data-maska="@@@@ @@ ** ***" @input="updateBankCode()"/>
   </div>
 </template>
 <script setup>
@@ -14,22 +14,21 @@
       default: null
     }
   })
-  const bank_code = ref(props.initialValue)
+  const bankCode = ref(props.initialValue)
   if(props.initialValue) {
     ok.log('success', 'initial value: '+props.initialValue)
   }
   const updateBankCode = async () => {
-    const { data, error } = await supabase
-      .from('linked_bank_accounts')
-      .insert({
-        message_sender: 'components/input/bankCode.vue',
-        userId: user.value.id,
-        bank_code: bank_code.value
-      })
+    const { error, data } = await pub(supabase, {
+      sender:'components/input/bankCode.vue'
+    }).linkedBankAccount({
+      userId: user.value.id,
+      bankCode: bankCode.value
+    });
     if(error) {
       ok.log('error', 'error updating bank code', error)
     } else{
-      ok.log('success', 'updated bank code: '+bank_code.value)
+      ok.log('success', 'updated bank code: '+bankCode.value)
     }
   }
 </script>
