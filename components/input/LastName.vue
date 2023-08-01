@@ -5,7 +5,7 @@
     </label>
     <input
       type="text"
-      v-model="last_name"
+      v-model="lastName"
       placeholder="Last name"
       id="last-name"
       :class="'atom last-name '+state"
@@ -18,7 +18,7 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const last_name = ref(props.initial)
+  const lastName = ref(props.initial)
 
   const props = defineProps({
     initial: {
@@ -29,16 +29,13 @@
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
-    const { data, error } = await supabase
-      .from('user_details')
-      .insert({ 
-        userId: user.value.id,
-        last_name: last_name.value, 
-        message_entity: user.value.id,
-        message_sender: 'components/input/lastName.vue' 
-      })
-      .select()
-
+    const { error, data } = await pub(supabase, {
+      sender: 'components/input/lastName.vue',
+      message_entity: user.value.id
+    }).userDetails({
+      userId: user.value.id,
+      lastName: lastName.value
+    });
     if(error){
       state.value="error"
     } else {
