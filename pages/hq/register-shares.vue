@@ -58,7 +58,7 @@
       type: 'deposit',
       subType: 'new_shares',
       status: 'payment_accepted',
-      auto_invest: 1
+      autoInvest: 1
     });
     if(error){
       ok.log('error', 'could not create transaction', error)
