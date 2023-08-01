@@ -25,7 +25,7 @@
   const user = useSupabaseUser()
   const getAccountBalance = async () => {
     const { data, error } = await supabase
-      .from('get_account_balance')
+      .from('getAccountBalance')
       .select()
       .limit(1)
       .single()
@@ -33,7 +33,7 @@
   }
   const getCurrency = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select()
       .limit(1)
       .single()
@@ -41,11 +41,11 @@
   }
   const getAutoInvest = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select()
       .limit(1)
       .single()
-    return data.auto_invest
+    return data.autoInvest
   }
   const currency = await getCurrency()
   const accountBalance = await getAccountBalance()
