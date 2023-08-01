@@ -14,7 +14,7 @@
 
   const getPreferredCurrency = async () => {
     const { data, error } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('currency')
       .eq('userId', user.value.id)
       .limit(1)
