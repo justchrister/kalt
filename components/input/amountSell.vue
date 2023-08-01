@@ -19,20 +19,17 @@ const user = useSupabaseUser()
       required: true
     }
   })
-  
 
   const updateSellOrder = async () => { 
-
     if(val.value>0){
-      const { error } = await supabase
-        .from('topic_exchangeOrders')
-        .insert({
-          message_entity: props.uuid,
-          quantity: -val.value,
-          userId: user.value.id,
-          order_type: 'sell',
-          message_sender: 'components/input/amountSell.vue'
-      })
+      const { error, data } = await pub(supabase, {
+        sender:'components/input/amountSell.vue',
+        entity: props.uuid
+      }).exchangeOrder({
+        userId: user.value.id,
+        quantity: -val.value,
+        order_type: 'sell',
+      });
       if(error) ok.log('error', 'could not update quantity', error)
       if(!error) ok.log('success', 'updated quantity')
     } else{
@@ -41,12 +38,12 @@ const user = useSupabaseUser()
   }
   const getMax = async () => {
     const { data, error } = await supabase
-      .from('get_user_portfolio')
-      .select('quantity_today')
+      .from('getUserPortfolio')
+      .select('quantityToday')
       .order('date', { ascending: false })
       .limit(1)
       .single()
-    return data.quantity_today
+    return data.quantityToday
   }
   const max = await getMax();
   const val = ref(0)
