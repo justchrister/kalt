@@ -62,24 +62,23 @@
 
   const setProfilePicture = async (selectedProfilePicture) => {
     profilePicture.value = selectedProfilePicture;
-    const { data, error } = await supabase
-      .from('user_preferences')
-      .insert({
-        'userId': user.value.id,
-        'message_sender': 'components/select/autoInvest.vue',
-        'profile_picture': selectedProfilePicture
-      })
-      .eq('userId', user.value.id)
+    const { error, data } = await pub(supabase, {
+      sender:'components/select/profilePicture.vue',
+      entity: user.value.id
+    }).userPreferences({
+      'userId': user.value.id,
+      'profilePicture': selectedProfilePicture
+    });
     if(error) ok.log('error', 'could not update profile picture', error)
   };
   const { data, error } = await supabase
-    .from('get_user')
+    .from('getUser')
     .select()
     .limit(1)
     .single()
 
   if (data) {
-    profilePicture.value = data.profile_picture;
+    profilePicture.value = data.profilePicture;
   }
   if(error) ok.log('error', 'could not get profile picture', error)
 
