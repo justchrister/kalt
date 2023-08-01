@@ -146,13 +146,13 @@
       }]
   }))
   const { data, error } = await supabase
-    .from('get_user_portfolio')
+    .from('getUserPortfolio')
     .select()
     .eq('userId', user.value.id)
     .order('date', { ascending: true })
 
   const { data:userData, error:userError } = await supabase
-    .from('get_user')
+    .from('getUser')
     .select()
     .eq('userId', user.value.id)
     .limit(1)
