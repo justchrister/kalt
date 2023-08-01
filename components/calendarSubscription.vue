@@ -85,15 +85,16 @@
     if(days.value.includes('29')) warn.value = true
     if(days.value.includes('30')) warn.value = true
     if(days.value.includes('31')) warn.value = true
-    const { data, error } = await supabase
-      .from('user_subscriptions')
-      .insert({
-        'days_of_month': days.value,
-        'message_entity': user.value.id,
-        'userId': user.value.id,
-        'message_sender': 'components/calendarSubscription.vue'
-      })
-    if(error)ok.log('error', 'could not update the user_subscriptions table: ', error)
+
+    const { error, data } = await pub(supabase, {
+      sender:'components/calendarSubscription.vue',
+      entity: user.value.id
+    }).userSubscriptions({
+      'userId': user.value.id,
+      'days': days.value
+    });
+
+    if(error)ok.log('error', 'could not update the userSubscriptions table: ', error)
   }
 </script>
 <style scoped lang="scss">
@@ -122,7 +123,7 @@
       line-height:$clamp;
       padding:$clamp
               $clamp
-              clamp($unit-min * 2, $unit * 2, $unit-max * 2)
+              $clamp-2
               0;
       text-align:right;
       margin: clamp(calc($unit-min/3), calc($unit/3), calc($unit-max/3)) 0;
@@ -132,16 +133,17 @@
         border-radius:$border-radius;
         background: $green-20;
     }
-  }/*
-  .dark-mode .component.calendar input[type="checkbox"]:checked + label {
-      background: $green-60;
-      color:$dark;
   }
-  .dark-mode .component.calendar label:hover{
-    background:$dark;
-  }
-  .dark-mode .component.calendar input[type="checkbox"] + label{
-    border-color:$light;
-  }
-*/
+  /*
+    .dark-mode .component.calendar input[type="checkbox"]:checked + label {
+        background: $green-60;
+        color:$dark;
+    }
+    .dark-mode .component.calendar label:hover{
+      background:$dark;
+    }
+    .dark-mode .component.calendar input[type="checkbox"] + label{
+      border-color:$light;
+    }
+  */
 </style>
