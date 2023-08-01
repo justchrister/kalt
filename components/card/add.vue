@@ -2,21 +2,21 @@
   <div>
     <form @submit.prevent="addCard">
       <div class="card">
-        <div :class="checkBrand(card_number)"></div>
+        <div :class="checkBrand(number)"></div>
         <input 
           type="text" 
-          v-model="card_number" 
+          v-model="number" 
           minlength="19"
           v-maska data-maska="#### #### #### ####"
           placeholder="•••• •••• •••• 4242"/>
         <input 
           type="text" 
-          v-model="expiry_month" 
+          v-model="month" 
           v-maska data-maska="##"
           placeholder="12" />
         <input 
           type="text" 
-          v-model="expiry_year" 
+          v-model="year" 
           v-maska data-maska="##"
           placeholder="24" />
         <input 
@@ -35,9 +35,9 @@
 <script setup>
   const supabase = useSupabaseClient();
   const user = useSupabaseUser();
-  const card_number = ref();
-  const expiry_month = ref();
-  const expiry_year = ref();
+  const number = ref();
+  const month = ref();
+  const year = ref();
   const cvc = ref('');
   const loading = ref(false);
   const notification = ref({
@@ -46,12 +46,12 @@
   });
 
   const addCard = async () => {
-    const last_four_digits = card_number.value.slice(-4)
-    const cardNumberInt = ok.toInt(card_number.value);
+    const lastFourDigits = number.value.slice(-4)
+    const numberInt = ok.toInt(number.value);
     loading.value = true;
 
 
-    if(!card_number.value){
+    if(!number.value){
       notification.value={
         type: 'error',
         message: 'Card number is missing 😅'
@@ -60,7 +60,7 @@
       return
     }
 
-    if(!expiry_month.value){
+    if(!month.value){
       notification.value={
         type: 'error',
         message: 'Expiry month is missing 😅'
@@ -70,7 +70,7 @@
     }
 
 
-    if(!card_number.value){
+    if(!year.value){
       notification.value={
         type: 'error',
         message: 'Expiry year is missing 😅'
@@ -79,7 +79,7 @@
       return
     }
 
-    if(!card_number.value){
+    if(!number.value){
       notification.value={
         type: 'error',
         message: 'CVC is missing 😅 It can be found on the back of the card'
@@ -88,7 +88,7 @@
       return
     }
 
-    if(16>cardNumberInt.toString().length){
+    if(16>numberInt.toString().length){
       notification.value={
         type: 'error',
         message: 'Payment card number is too short'
@@ -98,29 +98,25 @@
       return
     }
 
-    if(12<expiry_month.value){
+    if(12<month.value){
       notification.value={
         type: 'error',
-        message: 'Expiry month is set to '+expiry_month.value+' and it should be between 1 and 12 😅'
+        message: 'Expiry month is set to '+month.value+' and it should be between 1 and 12 😅'
       }
       ok.log(notification.value.type, notification.value.message)
       return
     }
-    const card_id = ok.uuid();
-    const { data, error } = await supabase
-      .from('payment_cards')
-      .insert({
-        'message_sender': 'component/card/add.vue',
-        'message_entity': card_id,
-        'userId': user.value.id,
-        'cardId': card_id,
-        'last_four_digits': last_four_digits,
-        'card_number': cardNumberInt,
-        'expiry_month': expiry_month.value,
-        'expiry_year': expiry_year.value,
-        'cvc': cvc.value,
-        'default': true
-      })
+    const { error, data } = await pub(supabase, {sender:'components/card/add.vue'}).payment_cards({
+      
+      'userId': user.value.id,
+      'cardId': card_id,
+      'lastFourDigits': lastFourDigits,
+      'number': numberInt,
+      'month': month.value,
+      'expiry_year': year.value,
+      'cvc': cvc.value,
+      'default': true
+    });
     if(error){
       ok.log('error', 'could not add card', error)
       loading.value=false
