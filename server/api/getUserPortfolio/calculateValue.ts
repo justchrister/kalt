@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
     const array = []
     let value = 0;
     for (let i = 0; i < portfolio.length; i++) {
-      value = portfolio[i].quantity_today/assetPrice;
+      value = portfolio[i].quantityToday/assetPrice;
       array.push({
         'userId': user,
         'date': portfolio[i].date,
