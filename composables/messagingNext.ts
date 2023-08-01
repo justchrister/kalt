@@ -9,11 +9,6 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
     ...content
   }
   const { data, error } = await client.from(topic).insert(json).select()
-  if (error) {
-    ok.log('error', `failed to insert ${topic}: `+error.message)
-  } else {
-    ok.log('success', `inserted on ${topic}: `, data)
-  }
   return { data, error }
 }
 
