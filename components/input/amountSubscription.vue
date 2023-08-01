@@ -34,7 +34,7 @@
   
   const getCurrency = async () => {
     const { data } = await supabase
-      .from('get_user')
+      .from('getUser')
       .select('currency')
       .limit(1)
       .single()
@@ -51,7 +51,7 @@
     previousValue = ok.toInt(amount.value)
     ok.log('', previousValue)
     const { error } = await supabase
-      .from('user_subscriptions')
+      .from('userSubscriptions')
       .insert({
         message_entity:user.value.id,
         userId:user.value.id,
