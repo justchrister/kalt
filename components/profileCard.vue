@@ -1,10 +1,10 @@
 <template>
   <div class="profile-card" @click="navigateTo('/profile/edit')">
-    <div class="image" :id="data.profile_picture">
+    <div class="image" :id="data.profilePicture">
     </div>
     <div class="details">
       <div class="name">
-        {{ data.first_name }} {{ data.last_name }} 
+        {{ data.firstName }} {{ data.lastName }} 
       </div>
       <div class="edit">
         edit
@@ -20,7 +20,7 @@
 <script setup>
   const supabase = useSupabaseClient()
   const { data, error } = await supabase
-    .from('get_user')
+    .from('getUser')
     .select()
     .limit(1)
     .single()
