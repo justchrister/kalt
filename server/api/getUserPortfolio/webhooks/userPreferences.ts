@@ -15,7 +15,7 @@ export default defineEventHandler( async (event) => {
   await sub(supabase, topic).read(service, body.record.message_id);  
 
   const { data, error } = await supabase
-    .from('get_user_portfolio')
+    .from('getUserPortfolio')
     .update({ 'value_currency': message.currency })
     .eq('userId', message.userId)
     .eq('ticker', ticker)
