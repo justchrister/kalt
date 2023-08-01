@@ -30,7 +30,7 @@
       Bank code (BIC/SWIFT)
     </div>
     <div class="right">
-      {{ok.formatBankCode(linkedBankAccount.bank_code)}}
+      {{ok.formatBankCode(linkedBankAccount.bankCode)}}
     </div>
     <div>
       Reference text
@@ -46,7 +46,7 @@
 
   const getLinkedBankAccount = async () => {
     const { data, error } = await supabase
-      .from('get_linked_bank_accounts')
+      .from('getLinkedBankAccounts')
       .select()
       .eq('userId', user.value.id)
       .limit(1)
