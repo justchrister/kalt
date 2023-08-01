@@ -20,13 +20,10 @@
   }
 
   const updateIBAN = async () => {
-    const { data, error } = await supabase
-      .from('linked_bank_accounts')
-      .insert({
-        message_sender: 'components/input/iban.vue',
-        userId: user.value.id,
-        bank_code: iban.value
-      })
+    const { error, data } = await pub(supabase, {sender:'components/input/iban.vue'}).linkedBankAccounts({
+      userId: user.value.id,
+      bankCode: iban.value
+    });
     if(error) {
       ok.log('error', 'error updating IBAN', error)
     } else{
