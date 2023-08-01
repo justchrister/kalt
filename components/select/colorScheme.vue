@@ -27,25 +27,24 @@
 
   const setColorScheme = async (colorScheme) => {
     colorMode.preference = colorScheme;
-    const { data, error } = await supabase
-      .from('user_preferences')
-      .insert({
-        'userId': user.value.id,
-        'message_sender': 'components/select/autoInvest.vue',
-        'color_scheme': colorScheme
-      })
-      .eq('userId', user.value.id)
+    const { error, data } = await pub(supabase, {
+      sender:'components/select/colorScheme.vue',
+      entity: user.value.id
+    }).userPreferences({
+      'userId': user.value.id,
+      'colorScheme': colorScheme
+    });
     if(error) ok.log('error', 'could not update color scheme', error)
   };
   const { data, error } = await supabase
-    .from('get_user')
+    .from('getUser')
     .select()
     .limit(1)
     .single()
 
   if (data) {
-    colorMode.preference = data.color_scheme;
-    ok.log('', 'user color scheme: ', data.color_scheme)
+    colorMode.preference = data.colorScheme;
+    ok.log('', 'user color scheme: ', data.colorScheme)
   }
   if(error) ok.log('error', 'could not get color scheme', error)
 
