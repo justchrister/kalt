@@ -68,13 +68,13 @@ export default defineEventHandler( async (event) => {
   }
   const getCustomerId = async (userId) => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripeUserIds')
       .select()
       .eq('userId', userId)
       .limit(1)
       .single()
     if(data){
-      return data.stripe_userId
+      return data.stripeUserId
     }
   }
   const getDefaultCard = async (userId) => {
@@ -85,7 +85,7 @@ export default defineEventHandler( async (event) => {
       .limit(1)
       .single()
     if(data){
-      return data.stripe_cardId
+      return data.stripeCardId
     }
   }
 
