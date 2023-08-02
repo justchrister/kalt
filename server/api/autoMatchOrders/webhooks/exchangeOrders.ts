@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
 
-  if (message.orderStatus !== 'open') {
+  if (message.status !== 'open') {
     const { error } = await supabase
       .from(serviceKebab)
       .delete()
