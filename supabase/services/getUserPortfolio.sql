@@ -8,12 +8,10 @@ CREATE TABLE "getUserPortfolio" (
   "value"             numeric,
   "valueCurrency"     CHAR(3),
   "percentageChange"  DECIMAL(5, 4)
-                      CHECK (percentage_change >= 0 
-                      AND percentage_change <= 1),
+                      CHECK ("percentageChange" >= 0 
+                      AND "percentageChange" <= 1),
   PRIMARY KEY ("userId", "date", "ticker")
 );
-
-
 
 ALTER TABLE "getUserPortfolio" ENABLE ROW LEVEL SECURITY;
 
