@@ -1,62 +1,61 @@
-// @ts-nocheck
 import { ok } from '~/composables/ok'
 
-export const messaging = {
-  getEntity: async (supabase, topic, entity_id) => {
-    const topicKebab = ok.camelToKebab(topic)
-    const { data, error } = await supabase
-      .from(topicKebab)
-      .select()
-      .eq('message_entity', entity_id)
-      .order('message_sent', { ascending: true })
-    return ok.combineJson(data)
-  },
-  read: async (supabase, topic, service, message_id) => {
-    const topicKebab = ok.camelToKebab(topic)
-    const serviceKebab = ok.camelToKebab(service)
-    const subscription = serviceKebab+'__'+topicKebab
-
-    const { data: sub, error: subError } = await supabase
-      .from(subscription)
-      .update({ message_read: true })
-      .eq('message_id', message_id)
-
-    return 'read'
-  },
-  // needs to be replaced and should be gotten from fundValuations
-  getAssetPrice: async (supabase, currency, ticker) => {
-    const { data, error } = await supabase
-      .from('asset_prices')
-      .select('asset_price')
-      .eq('currency', currency)
-      .eq('ticker', ticker)
-      .limit(1)
-      .single()
-    if(data) return data.asset_price
-    if(error) return error
-  },
-  convertCurrency: async (supabase, amount, from, to) => {
-    const { data, error } = await supabase
-      .from('topic_exchangeRates')
-      .select('value')
-      .eq('from', from)
-      .eq('to', to)
-      .limit(1)
-      .single()
-    if(data) return amount*data.rate
-    if(error) return amount
-  },
-  cleanMessage: async (message) => {
-    const json = Object.entries(message).reduce((acc, [key, value]) => {
-      if (value !== null) {
-        acc[key] = value;
-      }
-      return acc;
-    }, {});
-    delete json.message_id
-    delete json.message_entity
-    delete json.message_sent
-    delete json.message_sender
-    return json
+const createJsonAndPublish = async (client: any, meta: any, content: any, topic: any) => {
+  const json = {
+    'message_id': meta.id || ok.uuid(),
+    'message_entity': meta.entity || ok.uuid(),
+    'message_sent': meta.sent || ok.timestamptz(),
+    'message_sender': meta.sender,
+    ...content
   }
-};
+  const { data, error } = await client.from(topic).insert(json).select()
+  return { data, error }
+}
+
+export const pub = (client: any, meta: any) => {
+  return {
+    accountTransactions: async (content: accountTransaction) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_accountTransaction');
+    },
+    exchangeOrders: async (content: exchangeOrder) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_exchangeOrder');
+    },
+    userSubscriptions: async (content: userSubscription) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_userSubscriptions');
+    },
+    exchangeRates: async (content: exchangeRate) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_exchangeRates');
+    },
+    paymentsPending: async (content: paymentsPending) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_paymentsPending');
+    },
+    requestAccess: async (content: requestAccess) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_requestAccess');
+    }
+  }
+}
+
+export const sub = (client: any, topic: any) => {
+  return {
+    entity: async (entity_id: any) => {
+      const { data, error } = await client
+        .from('topic_'+topic)
+        .select()
+        .eq('message_entity', entity_id)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        return error
+      } else {
+        return ok.combineJson(data)
+      }
+    },
+    read: async (service: any, message_id: any) => {
+      const subscription = topic+'__'+service
+      const { data, error} = await client
+        .from(subscription)
+        .update({ message_read: true })
+        .eq('message_id', message_id)
+      return {data, error}
+    }
+  }
+}
