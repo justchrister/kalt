@@ -53,7 +53,7 @@
     })
     if(data) navigateTo('/auth/lobby')
     if(error) {
-      ok.log('error', 'password reset did not work?' + error.message)
+      ok.log('error', 'password reset did not work? ' + error.message)
     }
   }
 </script>
