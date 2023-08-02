@@ -11,14 +11,14 @@ export default defineEventHandler( async (event) => {
   
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
-  if (message.orderStatus !== 'fulfilled') return 'order not fulfilled';
+  if (message.status !== 'fulfilled') return 'order not fulfilled';
   
   const getPortfolio = async () => {
     const { data, error } = await supabase
       .from('topic_exchangeOrders')
       .select()
       .eq('userId', message.userId)
-      .eq('orderStatus', 'fulfilled')
+      .eq('status', 'fulfilled')
     if(data){
       ok.log('success', 'got fulfilled orders: ', data)
       return data
