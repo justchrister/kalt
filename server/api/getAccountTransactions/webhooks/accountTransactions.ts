@@ -6,9 +6,6 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'getAccountTransactions';
   const topic = 'accountTransactions';
-  const serviceKebab = ok.camelToKebab(service);
-  const topicKebab = ok.camelToKebab(topic);
-  const query = getQuery(event);
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
 
@@ -31,7 +28,7 @@ export default defineEventHandler( async (event) => {
       topic,
       transactions[i])
     const { data, error} = await supabase
-      .from(serviceKebab)
+      .from(service)
       .upsert({
         "userId": transaction.userId,
         "amount": transaction.amount,
