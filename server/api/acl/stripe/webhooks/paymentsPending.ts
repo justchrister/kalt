@@ -85,7 +85,7 @@ export default defineEventHandler( async (event) => {
       .limit(1)
       .single()
     if(data){
-      return data.stripe_card_id
+      return data.stripe_cardId
     }
   }
 

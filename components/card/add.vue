@@ -109,7 +109,7 @@
     const { error, data } = await pub(supabase, {sender:'components/card/add.vue'}).payment_cards({
       
       'userId': user.value.id,
-      'cardId': card_id,
+      'cardId': cardId,
       'lastFourDigits': lastFourDigits,
       'number': numberInt,
       'month': month.value,

@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     'userId': message.userId,
     'last_four_digits': message.last_four_digits,
     'card_number': message.card_number,
-    'cardId': message.card_id,
+    'cardId': message.cardId,
     'expiry_month': message.expiry_month,
     'expiry_year': message.expiry_year,
     'default': message.default,

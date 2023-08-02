@@ -29,7 +29,7 @@ BEGIN
     IF NEW."default" THEN
         UPDATE "getPaymentCards"
         SET "default" = false
-        WHERE userId = NEW.userId AND card_id <> NEW.card_id;
+        WHERE userId = NEW.userId AND cardId <> NEW.cardId;
     END IF;
 
     RETURN NEW;

@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
         cvc: json.cvc
       },
       metadata: {
-        card_id: json.cardId,
+        cardId: json.cardId,
         userId: json.userId
       }
     });
@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
       .from('acl_stripe_defaultCardIds')
       .upsert({
         userId: json.userId,
-        stripe_card_id: cardId
+        stripe_cardId: cardId
       })
       .select()
     if(data){
@@ -84,7 +84,7 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('acl_stripe_cardIds')
       .select()
-      .eq('cardId', message.card_id)
+      .eq('cardId', message.cardId)
       .limit(1)
       .single()
     if(data) return data.stripe_cardId
@@ -96,7 +96,7 @@ export default defineEventHandler(async (event) => {
 
   if(!userExists) return 'user does not exist';
   if(userExists && cardExists && message.default){
-    const defaultCard = await makeCardDefault(userExists.stripe_userId, cardExists.stripe_card_id);
+    const defaultCard = await makeCardDefault(userExists.stripe_userId, cardExists.stripe_cardId);
     return defaultCard;
   }
   if(userExists){
