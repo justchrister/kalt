@@ -48,7 +48,15 @@
       return error
     }
   }
-  const defaultCard = await get("paymentCardDefault").;
+  const getPaymentCardDefault = async () => {
+    const { data, error } = await supabase
+      .from('getPaymentCardDefault')
+      .select()
+      .eq('userId', user.value.id)
+    if(error) return false
+    if(data) return true
+  }
+  const defaultCard = await getPaymentCardDefault();
   if(defaultCard){
     ok.log('success', 'User has default card')
   } else {
