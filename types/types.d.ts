@@ -5,20 +5,21 @@ declare global {
     incomplete = 'incomplete',
     pending = 'pending',
     processing = 'processing',
-    complete = 'complete'
+    complete = 'complete',
+    failed = 'failed'
   }
   const enum accountTransactionsTypes {
-      deposit = 'deposit',
-      withdraw = 'withdraw'
+    deposit = 'deposit',
+    withdraw = 'withdraw'
   }
   const enum accountTransactionsSubTypes {
-      card = 'card',
-      wireTransfer = 'wireTransfer',
-      dividend = 'dividend',
-      subscription = 'subscription',
-      autoInvested = 'autoInvested',
-      newShares = 'newShares',
-      autoWithdraw = 'autoWithdraw'
+    card = 'card',
+    wireTransfer = 'wireTransfer',
+    dividend = 'dividend',
+    subscription = 'subscription',
+    autoInvested = 'autoInvested',
+    newShares = 'newShares',
+    autoWithdraw = 'autoWithdraw'
   }
   const enum paymentCardsStatuses {
     incomplete = 'incomplete',

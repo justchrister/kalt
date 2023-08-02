@@ -2,7 +2,8 @@ create type public."accountTransactions_statuses" as enum (
     'incomplete',
     'pending',
     'processing',
-    'complete'
+    'complete',
+    'failed'
 );
 create type public."accountTransactions_types" as enum (
     'deposit',
