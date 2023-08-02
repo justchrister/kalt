@@ -8,7 +8,7 @@ export default defineEventHandler( async (event) => {
     const { data, error } = await supabase
       .from('topic_exchangeOrders')
       .select()
-      .eq('orderStatus', 'fulfilled')
+      .eq('status', 'fulfilled')
       .eq('ticker', 'gi.ddf')
       .eq('order_type', 'buy')
     let total = 0;
