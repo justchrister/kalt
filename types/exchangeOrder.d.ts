@@ -6,7 +6,7 @@ declare global {
     quantity?: number;
     ticker?: string;
     type?: exchangeOrdersTypes;
-    status: exchangeOrdersStatuses;
+    status?: exchangeOrdersStatuses;
     fulfilledBy?: string;
     splitInto?: string[];
     partOf?: string;

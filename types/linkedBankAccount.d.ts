@@ -2,7 +2,7 @@ export { linkedBankAccount };
 
 declare global {
     interface linkedBankAccount {
-        userId: string;
+        userId?: string;
         name?: string;
         email?: string;
         iban?: string;

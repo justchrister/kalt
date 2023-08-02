@@ -2,7 +2,7 @@ export { paymentsPending };
 
 declare global {
     interface paymentsPending {
-        userId: string;
+        userId?: string;
         amount?: number;
         currency?: string;
         transactionId?: string;

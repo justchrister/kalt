@@ -2,7 +2,7 @@ export { userDetails };
 
 declare global {
     interface userDetails {
-        userId: string;
+        userId?: string;
         firstName?: string;
         lastName?: string;
         country?: string;

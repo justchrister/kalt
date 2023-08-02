@@ -2,8 +2,8 @@ export { userPreferences };
 
 declare global {
     interface userPreferences {
-        userId: string;
-        autoInvest: number;
+        userId?: string;
+        autoInvest?: number;
         newsletters?: boolean;
         termsOfService?: boolean;
         performanceUpdates?: boolean;

@@ -2,7 +2,7 @@ export { revenueTransactions };
 
 declare global {
     interface revenueTransactions {
-        ticker: tickers;
+        ticker?: tickers;
         amount?: number;
         currency?: string;
     }
