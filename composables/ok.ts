@@ -177,6 +177,15 @@ export const ok = {
   uuid(){
     return uuidv4()
   },
+  getEntity: async (supabase, topic, entity_id) => {
+    const topicKebab = ok.camelToKebab(topic)
+    const { data, error } = await supabase
+      .from(topicKebab)
+      .select()
+      .eq('message_entity', entity_id)
+      .order('message_sent', { ascending: true })
+    return ok.combineJson(data)
+  },
   convertCurrency: async (supabase, amount, from, to) => {
     const { data, error } = await supabase
       .from('topic_exchangeRates')

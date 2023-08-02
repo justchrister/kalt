@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok';
-import { pub, sub } from '~/composables/messagingNext'
+import { pub, sub } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
@@ -146,7 +146,7 @@ export default defineEventHandler(async (event) => {
   let subscriptions = [];
   for (let i = 0; i < users.length; i++) {
     let subscription = null
-    subscription = await messaging.getEntity(supabase, topic, users[i].userId);
+    subscription = await ok.getEntity(supabase, topic, users[i].userId);
     const transaction = await getTransactions(users[i].userId);
     if(transaction=='not charged') {
       subscriptions.push(subscription)

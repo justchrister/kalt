@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok'
-import { pub, sub } from '~/composables/messagingNext';
+import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -33,7 +33,7 @@ export default defineEventHandler( async (event) => {
 
   for (let i = 0; i < transactions.length; i++) {
     const transaction = transactions[i];
-    const amountConverted = await messaging.convertCurrency(
+    const amountConverted = await ok.convertCurrency(
       supabase,
       transaction.amount, 
       transaction.currency,

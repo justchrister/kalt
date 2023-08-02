@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { messaging } from '~/composables/messaging'
-import { pub, sub } from '~/composables/messagingNext';
+import { pub, sub } from '~/composables/messaging';
+import { ok } from '~/composables/ok';
 import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
@@ -31,11 +31,29 @@ export default defineEventHandler(async (event) => {
       .eq('ticker', 'gi.ddf')
     return data;
   }
+
+
+  const getAssetPrice = async (currency, ticker) => {
+    const { data, error } = await supabase
+      .from('getAssetPrice')
+      .select()
+      .eq('currency', currency)
+      .eq('ticker', ticker)
+      .order('date', { ascending: false })
+      .limit(1)
+      .single();
+    if(error) {
+      return error
+    } else {
+      return data.price
+    }
+  }
+
   const calculateAndAdd = async (user) => {
     
     const currency = await getUserCurrency(user);
     const portfolio = await getUserPortfolio(user);
-    const assetPrice = await messaging.getAssetPrice(supabase, currency, 'gi.ddf');
+    const assetPrice = await getAssetPrice(currency, 'gi.ddf');
     const array = []
     let value = 0;
     for (let i = 0; i < portfolio.length; i++) {

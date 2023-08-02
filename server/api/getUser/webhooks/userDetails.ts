@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok'
-import { pub, sub } from '~/composables/messagingNext';
+import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
@@ -14,7 +14,7 @@ export default defineEventHandler( async (event) => {
   
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);
-  const json = await messaging.cleanMessage(message)
+  const json = await ok.cleanMessage(message)
 
   const { data, error } = await supabase
     .from(serviceKebab)

@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok';
-import { pub, sub } from '~/composables/messagingNext';
+import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
@@ -21,7 +21,22 @@ export default defineEventHandler(async (event) => {
   }
   if(!transactionComplete(message.status)) return 'wrong payment status'
 
-  const assetPrice = await messaging.getAssetPrice(supabase, message.currency, 'gi.ddf');
+  const getAssetPrice = async (currency, ticker) => {
+    const { data, error } = await supabase
+      .from('getAssetPrice')
+      .select()
+      .eq('currency', currency)
+      .eq('ticker', ticker)
+      .order('date', { ascending: false })
+      .limit(1)
+      .single();
+    if(error) {
+      return error
+    } else {
+      return data.price
+    }
+  }
+  const assetPrice = await ok.getAssetPrice(message.currency, 'gi.ddf');
 
   const topicPubKebab = ok.camelToKebab(topicPub);
 
