@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
 
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripeUserIds')
       .select()
       .eq('userId', message.userId)
       .limit(1)
@@ -44,10 +44,10 @@ export default defineEventHandler(async (event) => {
 
   const assignStripeId = async (userId, stripeUserId) => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripeUserIds')
       .insert({
         "userId": userId,
-        "stripe_userId": stripeUserId
+        "stripeUserId": stripeUserId
       })
       .select()
     ok.log('success', 'assigned stripe id: '+data)
@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
     );
   }
   if(userExists) {
-    const updatedUser = await updateStripeUserDetails(userExists.stripe_userId);
+    const updatedUser = await updateStripeUserDetails(userExists.stripeUserId);
     return "user already exists"
   }
   if(!userExists) {
