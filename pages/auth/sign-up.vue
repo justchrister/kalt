@@ -24,11 +24,9 @@
             id='password'
           />
         </div>
-        <div class="input-wrap">
-          <button @click="signUp()">
-            sign up
-          </button>
-        </div>
+        <button>
+          sign up  <loading-icon v-if="loading" />
+        </button>
       </form>
     </block>
     <block>
@@ -37,6 +35,7 @@
         <nuxt-link to="/auth/password">forgot password</nuxt-link>
       </link-group>
     </block>
+    <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
   </main>
 </template>
 
@@ -47,20 +46,32 @@
   useHead({
     title: 'Welcome'
   })
-
-  const user = useSupabaseUser()
+  const loading = ref(false)
   const client = useSupabaseAuthClient()
-  const router = useRouter()
 
   const email = ref('')
   const password = ref('')
+
+  const notification = ref({
+    type: null, 
+    message: null
+  });
 
   const signUp = async () => {
     const { user, error } = await client.auth.signUp({
       email: email.value,
       password: password.value
-    }) 
-    router.push('/auth/lobby')
+    })
+    if(error){
+      loading.value=false;
+      notification.value = {
+        type: 'error',
+        message: error.message
+      }
+    } else {
+      await navigateTo('/auth/lobby')
+    }
+    
   }
 </script>
 
