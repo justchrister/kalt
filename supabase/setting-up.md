@@ -1,0 +1,71 @@
+# Setting up a new instance
+
+1. Enable the HTTP extension
+2. Disable confirm email (auth->providers->expand email)
+
+
+
+
+## Email templates
+
+### Confirm signup
+Subject: Kalt — Welcome
+
+```
+<h2>Welcome to Kalt </h2><br>
+<p>
+<strong> Make money, make a difference </strong>
+<br>
+<br>
+The next steps:<br>
+<a href="{{ .ConfirmationURL }}/subscription">1. Set up a subscription</a><br>
+<a href="{{ .ConfirmationURL }}/profile">2. Verify your identity</a><br>
+<a href="{{ .ConfirmationURL }}/portfolio">3. Earn money</a><br>
+<br><br>
+——&nbsp;<br>
+Sincerely, Christer<br>
+CEO @ Kalt<br>
+<br><br>
+<a href="mailto:christer@ka.lt">christer@ka.lt</a>
+</p>
+```
+### Invite user
+Subject: Kalt — Invitation
+
+```
+<h2>You have been invited</h2>
+
+<p>You have been invited to create a user on {{ .SiteURL }}. Follow this link to accept the invite:</p>
+<p><a href="{{ .ConfirmationURL }}">Accept the invite</a></p>
+
+```
+
+### Magic link 
+Subject: Kalt — Magic link
+
+```
+<h2>Magic Link</h2>
+
+<p>Follow this link to login:</p>
+<p><a href="{{ .ConfirmationURL }}">Log In</a></p>
+```
+
+### Change email address
+Subject: Kalt — Change email
+
+```
+<h2>Confirm Change of Email</h2>
+
+<p>Follow this link to confirm the update of your email from {{ .Email }} to {{ .NewEmail }}:</p>
+<p><a href="{{ .ConfirmationURL }}">Change Email</a></p>
+```
+
+###  Reset Password
+Subject: Kalt — Password reset
+
+```
+<h2>Forgot your password? No problem</h2>
+
+<p>Simply follow this link to reset your password:</p>
+<p><a href="{{ .ConfirmationURL }}">Reset password</a></p>
+```
