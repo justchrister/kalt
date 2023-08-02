@@ -53,7 +53,7 @@ const user = useSupabaseUser()
         currency: currency,
         type: 'deposit',
         subType: 'card',
-        transactionStatus: 'incomplete',
+        status: 'incomplete',
         autoInvest: 1
       });
       if(error) ok.log('error', 'could not update amount', error)

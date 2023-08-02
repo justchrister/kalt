@@ -16,11 +16,10 @@ export default defineEventHandler(async (event) => {
   await sub(supabase, topic).read(service, body.record.message_id);  
 
   const transactionComplete = (status) => {
-    if(status==='payment_accepted') return true
-    if(status==='withdrawal_accepted') return true
+    if(status==='complete') return true
     return false
   }
-  if(!transactionComplete(message.transactionStatus)) return 'wrong payment status'
+  if(!transactionComplete(message.status)) return 'wrong payment status'
 
   const assetPrice = await messaging.getAssetPrice(supabase, message.currency, 'gi.ddf');
 
@@ -32,7 +31,7 @@ export default defineEventHandler(async (event) => {
     const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/webhooks/accountTransactions.ts'}).exchangeOrder({
       'ticker': 'gi.ddf',
       'type': 'buy',
-      'status': 'open',
+      'status': 'pending',
       'userId': message.userId,
       'quantity': quantity
     });
@@ -49,7 +48,7 @@ export default defineEventHandler(async (event) => {
       'currency': message.currency,
       'autoInvest': 0,
       'type': 'withdraw',
-      'status': 'withdrawal_accepted',
+      'status': 'complete',
       'subType': 'autoInvested',
     });
     if(error){

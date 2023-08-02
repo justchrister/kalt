@@ -100,7 +100,7 @@ export default defineEventHandler( async (event) => {
   const charge = await chargeCard(stripeCustomerId, stripeDefaultCardId)
 
   if(charge=='success') await updatePaymentPendingStatus('complete')
-  if(charge=='success') await updateTransactionStatus('payment_accepted')
+  if(charge=='success') await updateTransactionStatus('complete')
   if(charge=='error') await updatePaymentPendingStatus('failed')
   
   return charge

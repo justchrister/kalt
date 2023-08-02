@@ -107,7 +107,7 @@ export default defineEventHandler(async (event) => {
         message_entity: ok.uuid(),
         message_sender: 'server/api/payments/initiateSubscriptionPayments.ts',
         userId: userId,
-        transactionStatus: 'payment_awaiting',
+        status: 'pending',
         type: 'deposit',
         subType: 'subscription',
         amount: amount,

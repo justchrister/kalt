@@ -34,7 +34,7 @@
       userId: user.value.id,
       type: 'deposit',
       subType: 'card',
-      transactionStatus: 'payment_awaiting',
+      status: 'pending',
       autoInvest: 1
     });
     if(error){

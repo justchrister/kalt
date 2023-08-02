@@ -6,8 +6,6 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'getAccountBalance';
   const topic = 'accountTransactions';
-  const serviceKebab = ok.camelToKebab(service);
-  const topicKebab = ok.camelToKebab(topic);
   const query = getQuery(event);
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
@@ -34,9 +32,9 @@ export default defineEventHandler( async (event) => {
 
   const getTransactions = async () => {
       const { data, error } = await supabase
-      .from(topicKebab)
+      .from(topic)
       .select()
-      .or('transactionStatus.eq.payment_accepted,transactionStatus.eq.withdrawal_accepted')
+      .eq('status', 'complete')
       .eq('userId', message.userId);
     return data
   }

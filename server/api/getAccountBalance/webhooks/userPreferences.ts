@@ -25,7 +25,7 @@ export default defineEventHandler( async (event) => {
       const { data, error } = await supabase
       .from('topic_accountTransactions')
       .select()
-      .or('transactionStatus.eq.paymentAccepted,transactionStatus.eq.withdrawalAccepted')
+      .or('status.eq.complete,status.eq.complete')
       .eq('userId', message.userId);
     return data
   }

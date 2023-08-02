@@ -61,12 +61,12 @@ export default defineEventHandler( async (event) => {
       "dividend": dividend
     })
     const json = {
-      'message_sender': 'server/api/payRevenue/_revenueTransactions.ts',
+      'message_sender': 'server/api/payRevenue/webhooks/revenueTransactions.ts',
       'userId': user,
       'amount': dividend,
       'type': 'deposit',
       'subType': 'dividend',
-      'status': 'payment_accepted',
+      'status': 'complete',
       'currency': 'EUR'
     };
 

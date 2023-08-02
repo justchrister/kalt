@@ -57,7 +57,7 @@
       currency: 'EUR',
       type: 'deposit',
       subType: 'new_shares',
-      status: 'payment_accepted',
+      status: 'complete',
       autoInvest: 1
     });
     if(error){

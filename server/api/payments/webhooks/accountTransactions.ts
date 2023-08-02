@@ -23,7 +23,7 @@ export default defineEventHandler( async (event) => {
     ok.log('error', 'wrong transaction sub type')
     return 'wrong transaction sub type'
   }
-  if(message.transactionStatus != 'payment_awaiting') {
+  if(message.status != 'pending') {
     ok.log('error', 'wrong transaction status')
     return 'wrong transaction status'
   }
@@ -38,9 +38,9 @@ export default defineEventHandler( async (event) => {
   }
   const updateTransaction = async () => {
     let json = message;
-    json.transactionStatus = 'payment_processing';
+    json.status = 'processing';
     json.message_id = ok.uuid();
-    json.message_sender = 'server/api/payments/_accountTransactions.ts';
+    json.message_sender = 'server/api/payments/webhooks/accountTransactions.ts';
     const { data, error } = await supabase
       .from('topic_accountTransactions')
       .insert(json)
@@ -66,7 +66,7 @@ export default defineEventHandler( async (event) => {
   const existingPayment = await paymentExists(message.message_entity);
   if(existingPayment) return 'payment already exists'
 
-  if(message.transactionStatus='payment_awaiting'){
+  if(message.status='pending'){
     const { data, error } = await supabase
       .from('payments')
       .insert({
@@ -83,7 +83,7 @@ export default defineEventHandler( async (event) => {
     };
   }
   
-  if(message.transactionStatus='payment_declined' || 'payment_approved' ) {
+  if(message.status='failed' || 'complete' ) {
     const deletedPayment = await deletePayment(message.message_entity);
     if(deletedPayment===true) {
       ok.log('success', 'payment'+message.message_entity+' deleted')
