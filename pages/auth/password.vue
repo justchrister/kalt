@@ -26,7 +26,7 @@
         <nuxt-link to="/auth/">sign in</nuxt-link>
       </link-group>
     </block>
-    <notify :type="notify.type" :message="notify.message" v-if="notify.message" />
+    <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
   </main>
 </template>
 
@@ -41,19 +41,26 @@
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
 
-  const notify = ref({
-    "type": "sorry",
-    "message": "could not sign you in"
-  })
+  const notification = ref({
+    type: null, 
+    message: null
+  });
+
   const email = ref('')
   const requestPassword = async () => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       email.value, {
         redirectTo: 'https://ka.lt/profile/password',
     })
-    if(data) navigateTo('/auth/lobby')
     if(error) {
       ok.log('error', 'password reset did not work? ' + error.message)
+
+      notification.value={
+        type: 'error',
+        message: error.message
+      }
+    } else {
+      navigateTo('/auth/lobby')
     }
   }
 </script>
