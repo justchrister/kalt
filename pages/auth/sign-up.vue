@@ -69,7 +69,7 @@
         message: error.message
       }
     } else {
-      await navigateTo('/auth/lobby')
+      await navigateTo('/profile')
     }
     
   }
