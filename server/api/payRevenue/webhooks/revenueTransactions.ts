@@ -32,17 +32,6 @@ export default defineEventHandler( async (event) => {
     }
     return totalShares;
   }
-
-  const createDividendTransactions = async (json) => {
-    const { data, error } = await supabase
-      .from('topic_accountTransactions')
-      .insert(json)
-    if(data) return data
-    if(error) {
-      ok.log('error', 'could not create transaction for'+json.userId, error)
-      return error
-    }
-  }
   const sharesPerUser = await getSharesPerUser();
   const totalShares = await getTotalShares(sharesPerUser);
 
@@ -52,30 +41,18 @@ export default defineEventHandler( async (event) => {
     const shares = sharesPerUser[i].quantity;
     const share = shares / totalShares;
     const dividend = message.amount * share;
-    ok.log('', {
-      "user": user,
-      "shares": shares,
-      "totalShares": totalShares,
-      "totalAmount": message.amount,
-      "share": share,
-      "dividend": dividend
-    })
-    const json = {
-      'message_sender': 'server/api/payRevenue/webhooks/revenueTransactions.ts',
+    if(!dividend) {
+      ok.log('error', 'no shares for user: ', sharesPerUser[i].userId)
+      return 'error: no shares for user:'
+    }
+    await pub(supabase, {sender:'server/api/payRevenue/webhooks/revenueTransactions.ts'}).accountTransactions({
       'userId': user,
       'amount': dividend,
       'type': 'deposit',
       'subType': 'dividend',
       'status': 'complete',
       'currency': 'EUR'
-    };
-
-    if(!json.amount) {
-      ok.log('error', 'no shares for user: ', sharesPerUser[i].userId)
-      return 'error: no shares for user:'
-    }
-    const created = await createDividendTransactions(json);
-    ok.log('success', 'dividend transaction created: ', json)
+    });
   }
   // we need to take into account exchange rates!!!!
   return message
