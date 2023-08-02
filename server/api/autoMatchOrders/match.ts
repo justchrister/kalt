@@ -45,7 +45,7 @@ export default defineEventHandler( async (event) => {
 
   if(fulfillingOrder.quantity_absolute===originalOrder.quantity_absolute){
     await publishMessage(originalOrder.message_entity, {
-      'orderStatus': 'fulfilled',
+      'status': 'fulfilled',
       'userId': originalOrder.userId,
       'ticker': ticker,
       'quantity': originalOrder.quantity,
@@ -53,7 +53,7 @@ export default defineEventHandler( async (event) => {
       'fulfilled_by_id': fulfillingOrder.message_entity
     })
     await publishMessage(fulfillingOrder.message_entity, {
-      'orderStatus': 'fulfilled',
+      'status': 'fulfilled',
       'userId': fulfillingOrder.userId,
       'ticker': fulfillingOrder.ticker,
       'quantity': fulfillingOrder.quantity,
@@ -66,7 +66,7 @@ export default defineEventHandler( async (event) => {
     const newOrderId1 = ok.uuid();
     const newOrderId2 = ok.uuid();
     await publishMessage(originalOrder.message_entity,{
-      'orderStatus': 'fulfilled',
+      'status': 'fulfilled',
       'userId': originalOrder.userId,
       'ticker': ticker,
       'order_type': originalOrder.order_type,
@@ -75,7 +75,7 @@ export default defineEventHandler( async (event) => {
       'fulfilled_by_id': newOrderId1
     })
     await publishMessage(fulfillingOrder.message_entity, {
-      'orderStatus': 'split',
+      'status': 'split',
       'userId': fulfillingOrder.userId,
       'ticker': ticker,
       'quantity': fulfillingOrder.quantity,
@@ -87,7 +87,7 @@ export default defineEventHandler( async (event) => {
       ]
     })
     await publishMessage(newOrderId1, {
-      'orderStatus': 'fulfilled',
+      'status': 'fulfilled',
       'userId': fulfillingOrder.userId,
       'ticker': fulfillingOrder.ticker,
       'quantity': quantityInverted,
@@ -97,7 +97,7 @@ export default defineEventHandler( async (event) => {
     })
     
     await publishMessage(newOrderId2, {
-      'orderStatus': 'open',
+      'status': 'open',
       'userId': fulfillingOrder.userId,
       'ticker': fulfillingOrder.ticker,
       'quantity': fulfillingOrder.quantity+originalOrder.quantity,
