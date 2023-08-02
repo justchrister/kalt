@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" v-if="data">
     <div class="chart-sizer">
       <Line
         :options="chartOptions"
@@ -150,13 +150,14 @@
     .select()
     .eq('userId', user.value.id)
     .order('date', { ascending: true })
-
+  if(error) ok.log('error', 'could not get user portfolio', error)
   const { data:userData, error:userError } = await supabase
     .from('getUser')
     .select()
     .eq('userId', user.value.id)
     .limit(1)
     .single()
+  if(userError) ok.log('error', 'could not get user data', userError)
 
   for (let i = 0; i < data.length; i++) {
     labels.value.push(data[i].date)
