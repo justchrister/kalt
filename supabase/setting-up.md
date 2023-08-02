@@ -1,15 +1,15 @@
 # Setting up a new instance
 1. Enable the HTTP extension (databases->extensions->toggle http)
 2. Disable confirm email (auth->providers->expand email)
-3. Change email templates (see below)
-4. Add redirect URL (localhost for dev, test.ka.lt for test, and ka.lt for prod)
-5. Add site URL (localhost for dev, test.ka.lt for test, and ka.lt for prod)
-4. Run types.sql
-5. Run sys/*.sql
-6. Run topics/*.sql
-7. Run sub/*.sql 
-8. Run services/*.sql
-9. Run acl/*/*.sql
+3. Add redirect URL (localhost for dev, test.ka.lt for test, and ka.lt for prod)
+4. Add site URL (localhost for dev, test.ka.lt for test, and ka.lt for prod)
+5. Change email templates (see below)
+6. Run types.sql
+7. Run sys/*.sql
+8. Run topics/*.sql
+9. Run sub/*.sql 
+10. Run services/*.sql
+11. Run acl/*/*.sql
 
 ## Email templates
 
