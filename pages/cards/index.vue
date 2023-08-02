@@ -37,8 +37,11 @@
     ok.log('warn', 'no cards found')
     await navigateTo('cards/add')
   }
-  if(data) ok.log('success', 'got payment cards', data)
-  if(error) ok.log('error', 'could not get payment cards', error)
+  if(error) {
+    ok.log('error', 'could not get payment cards', error)
+  } else {
+    ok.log('success', 'got payment cards', data)
+  }
   
   const setDefault = async (id) => {
     const { error, data } = await pub(supabase, {
