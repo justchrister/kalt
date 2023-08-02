@@ -2,9 +2,9 @@
 <template>
   <main>
     <block>
-      <h3 class="title">
-        Choose a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
-      </h3>
+      <h1>
+        Set a new password! <omoji emoji="😃" /> <omoji emoji="☀️" />
+      </h1>
       <form @submit.prevent="resetPassword()">
         <div class="input-wrap">
           <label for='password'> Password:</label>
@@ -15,9 +15,7 @@
             id='password'
           />
         </div>
-        <div class="input-wrap">
-          <input type="submit" value="Change password">
-        </div>
+        <button> Change password </button>
       </form>
     </block>
   </main>
@@ -25,10 +23,10 @@
 
 <script setup>
   definePageMeta({
-    pagename: 'Change password'
+    pagename: 'Password'
   })
   useHead({
-    title: 'Change password'
+    title: 'Password'
   })
 
   const supabase = useSupabaseClient()
@@ -39,12 +37,14 @@
     const { data, error } = await supabase.auth.updateUser({
       password: password.value
     })
-    if(data){
-      await navigateTo("/portfolio")
-      ok.log('success', 'changed password')
-    } 
     if(error){
-      ok.log('error', 'password not changed')
+      ok.log('error', 'password not changed', error)
+    } else{
+      // await navigateTo("/portfolio")
+      ok.log('success', 'changed password')
     }
   }
 </script>
+<style scoped lang="scss">
+  button{margin-top:$clamp-2;}
+</style>

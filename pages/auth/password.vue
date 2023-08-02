@@ -16,8 +16,8 @@
           />
         </div>
         <div class="input-wrap">
-          <button @click="requestPassword()">
-            request
+          <button>
+            request new password
           </button>
         </div>
       </form>
@@ -37,24 +37,21 @@
   useHead({
     title: 'Password reset'
   })
-
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
 
   const notification = ref({
     type: null, 
     message: null
   });
-
+  const redirectTo = window.location.origin + '/profile/password';
   const email = ref('')
   const requestPassword = async () => {
-    const { data, error } = await supabase.auth.resetPasswordForEmail(
+    const { error } = await supabase.auth.resetPasswordForEmail(
       email.value, {
-        redirectTo: 'https://ka.lt/profile/password',
+        redirectTo: redirectTo,
     })
     if(error) {
       ok.log('error', 'password reset did not work? ' + error.message)
-
       notification.value={
         type: 'error',
         message: error.message
