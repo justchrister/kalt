@@ -52,7 +52,7 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER "webhook_exchangeOrders_autoMatchOrders"
 AFTER INSERT ON "sub_exchangeOrders_autoMatchOrders"
 FOR EACH ROW
-EXECUTE FUNCTION sub_webhook(NEW);
+EXECUTE FUNCTION "webhook_exchangeOrders_autoMatchOrders"(NEW);
 
 -- Enable RLS
 ALTER TABLE "sub_exchangeOrders_autoMatchOrders" ENABLE ROW LEVEL SECURITY;
