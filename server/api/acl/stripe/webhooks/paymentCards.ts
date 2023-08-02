@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
 
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripeUserIds')
       .select()
       .eq('userId', message.userId)
       .limit(1)
@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
       .from('acl_stripe_defaultCardIds')
       .upsert({
         userId: json.userId,
-        stripe_cardId: cardId
+        stripeCardId: cardId
       })
       .select()
     if(data){
@@ -82,12 +82,12 @@ export default defineEventHandler(async (event) => {
   }
   const checkIfCardExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_cardIds')
+      .from('acl_stripeCardIds')
       .select()
       .eq('cardId', message.cardId)
       .limit(1)
       .single()
-    if(data) return data.stripe_cardId
+    if(data) return data.stripeCardId
     else return false
   }
 
@@ -96,14 +96,14 @@ export default defineEventHandler(async (event) => {
 
   if(!userExists) return 'user does not exist';
   if(userExists && cardExists && message.default){
-    const defaultCard = await makeCardDefault(userExists.stripe_userId, cardExists.stripe_cardId);
+    const defaultCard = await makeCardDefault(userExists.stripeUserId, cardExists.stripeCardId);
     return defaultCard;
   }
   if(userExists){
     const createdCard = await addCard();
-    const attachedCard = await attachCard(userExists.stripe_userId, createdCard.id);
+    const attachedCard = await attachCard(userExists.stripeUserId, createdCard.id);
     if(message.default) {
-      const defaultCard = await makeCardDefault(userExists.stripe_userId, createdCard.id);
+      const defaultCard = await makeCardDefault(userExists.stripeUserId, createdCard.id);
     }
     return attachedCard;
   }
