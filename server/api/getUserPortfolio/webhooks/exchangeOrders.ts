@@ -27,7 +27,7 @@ export default defineEventHandler( async (event) => {
     .from('topic_exchangeOrders')
     .select()
     .eq('userId', message.userId)
-    .eq('orderStatus', 'fulfilled')
+    .eq('status', 'fulfilled')
     .eq('ticker', message.ticker)
     .gte('message_sent', dateFromISOString)
     .lt('message_sent', dateToISOString)
