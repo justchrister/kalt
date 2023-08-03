@@ -11,11 +11,11 @@ CREATE TABLE "topic_paymentCards" (
     "message_sender"      text                            NOT NULL,
 -- 
     "userId"              uuid                            NOT NULL,
-    "lastFourDigits"      CHAR(4),
-    "year"                CHAR(2),
-    "month"               CHAR(2),
-    "cvc"                 CHAR(3),
-    "number"              CHAR(16),
+    "lastFourDigits"      numeric,
+    "year"                numeric,
+    "month"               numeric,
+    "cvc"                 numeric,
+    "number"              numeric,
     "status"              text,
     "default"             boolean
 );
@@ -23,19 +23,7 @@ CREATE TABLE "topic_paymentCards" (
 --- add row level security
 ALTER TABLE "topic_paymentCards" ENABLE ROW LEVEL SECURITY;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"topic_paymentCards"'
-      AND policyname = 'SELF — Insert'
-  ) THEN
-    CREATE POLICY "SELF — Insert" ON public."topic_paymentCards"
-      AS PERMISSIVE FOR INSERT
-      TO authenticated
-      WITH CHECK (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Insert" ON public."topic_paymentCards"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = "userId");
