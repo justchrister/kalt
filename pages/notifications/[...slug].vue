@@ -13,7 +13,7 @@
   definePageMeta({
     pagename: 'Notification',
     layout: 'focused',
-    middleware: ['default', 'auth']
+    middleware: 'auth'
   })
   useHead({
     title: 'Notification'

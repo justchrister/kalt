@@ -52,8 +52,6 @@
   const user = useSupabaseUser()
   const supabase = useSupabaseClient()
   const client = useSupabaseAuthClient()
-  const userCookie = useCookie('user');
-  const colorMode = useColorMode()
 
   const email = ref('')
   const password = ref('')
@@ -91,22 +89,8 @@
   }
   watchEffect(async () => {
     if (user.value) {
-      const { data, error } = await supabase
-        .from('getUser')
-        .select()
-        .limit(1)
-        .single()
-      if(data) ok.log('success', 'got user: ', data.firstName+' '+data.lastName)
-      if(error) ok.log('error', 'could not get user: ', error)
-
-      userCookie.value = {data};
-      console.log(userCookie.value.data)
-      if(userCookie.value){
-        colorMode.preference = userCookie.value.colorScheme;
-        await navigateTo("/portfolio");
-        loading.value = false
-      }
-      
+      await navigateTo("/portfolio");
+      loading.value = false
     }
   })
 </script>

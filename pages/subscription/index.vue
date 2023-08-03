@@ -27,7 +27,7 @@
   const user = useSupabaseUser()
   definePageMeta({
     pagename: 'Subscription',
-    middleware: ['default', 'auth']
+    middleware: 'auth'
   })
   useHead({
     title: 'Subscription'

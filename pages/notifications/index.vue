@@ -16,7 +16,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Notifications',
-    middleware: ['default', 'auth']
+    middleware: 'auth'
   })
   useHead({
     title: 'Notifications'

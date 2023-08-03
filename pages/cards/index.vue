@@ -18,7 +18,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Cards',
-    middleware: ['default', 'auth']
+    middleware: 'auth'
   })
   useHead({
     title: 'Cards'

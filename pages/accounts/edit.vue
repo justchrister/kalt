@@ -13,7 +13,7 @@
 <script setup>
   definePageMeta({
     pagename: 'Accounts',
-    middleware: ['default', 'auth'],
+    middleware: 'auth',
     layout:'focused'
   })
   useHead({
