@@ -107,8 +107,14 @@
       return
     }
     ok.log('', user.value.id)
-    const { error, data } = await pub(supabase, {sender:'components/card/add.vue'}).paymentCards({
-      'user_id': user.value.id
+    const { error } = await pub(supabase, {sender:'components/card/add.vue'}).paymentCards({
+      'userId': user.value.id,
+      'lastFourDigits': lastFourDigits,
+      'number': numberInt,
+      'month': month.value,
+      'year': year.value,
+      'cvc': cvc.value,
+      'default': true
     });
     if(error){
       ok.log('error', 'could not add card', error)
