@@ -15,5 +15,5 @@
     .single()
   if(data) hasDefaultCard.value = true
   if(error) ok.log('error', 'Failed to fetch default card')
-  const cardNumberInt = await ok.toInt(data.card_number)
+  const cardNumberInt = await ok.toInt(data.number)
 </script>

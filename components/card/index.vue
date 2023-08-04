@@ -89,22 +89,22 @@
   .card:hover .default.false{
     text-decoration:underline;
   }
-  .add-card .expiry_year-group,
-  .add-card .expiry_month-group{
+  .add-card .year-group,
+  .add-card .month-group{
     width:50%;
     display: inline-block;
   }
 
-  .add-card .expiry_month-group select{
+  .add-card .month-group select{
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-  .add-card .expiry_year-group select{
+  .add-card .year-group select{
     border-left-width:0px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
   }
-  .add-card .expiry_year-group select{
+  .add-card .year-group select{
     border-left-width:0px;
   }
   .no-card{

@@ -15,11 +15,11 @@ export default defineEventHandler(async (event) => {
 
   const json = {
     'userId': message.userId,
-    'last_four_digits': message.lastFourDigits,
-    'card_number': message.number,
+    'lastFourDigits': message.lastFourDigits,
+    'number': message.number,
     'cardId': message.cardId,
-    'expiry_month': message.month,
-    'expiry_year': message.year,
+    'month': message.month,
+    'year': message.year,
     'cvc': message.cvc
   } as any;
 
