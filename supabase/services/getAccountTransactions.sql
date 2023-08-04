@@ -1,9 +1,9 @@
 --- create the table, with default values
 CREATE TABLE "getAccountTransactions" (
-  "userId"           uuid                    NOT NULL,
-  "date"              timestamptz             NOT NULL,
-  "amount"            numeric                 NOT NULL,
-  "type"              "accountTransactions_types"       NOT NULL,
+  "userId"           uuid                             NOT NULL,
+  "date"             timestamptz                      NOT NULL,
+  "amount"           numeric                          NOT NULL,
+  "type"             "accountTransactions_types"      NOT NULL,
   "subType"          "accountTransactions_subTypes"   NOT NULL,
   PRIMARY KEY ("userId", date)
 );
