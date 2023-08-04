@@ -17,4 +17,4 @@ CREATE TABLE "topic_requestAccess" (
 );
 
 --- add row level security
-ALTER TABLE "topic_requestAccess" DISABLE ROW LEVEL SECURITY;
+ALTER TABLE "topic_requestAccess" ENABLE ROW LEVEL SECURITY;
