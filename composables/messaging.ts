@@ -7,9 +7,9 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
     'message_sent': meta.sent || ok.timestamptz(),
     'message_sender': meta.sender,
     ...content
-  }
-  const { data, error } = await client.from(topic).insert(json).select()
-  return { data, error }
+  };
+  const { error } = await client.from(topic).insert(json);
+  return { error };
 }
 
 export const pub = (client: any, meta: any) => {
@@ -27,7 +27,7 @@ export const pub = (client: any, meta: any) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchangeRates');
     },
     paymentCards: async (content: paymentCard) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_payment_cards');
+      return await createJsonAndPublish(client, meta, content, 'topic_paymentCards');
     },
     paymentsPending: async (content: paymentsPending) => {
       return await createJsonAndPublish(client, meta, content, 'topic_paymentsPending');
