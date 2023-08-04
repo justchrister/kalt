@@ -20,36 +20,12 @@ CREATE TABLE "topic_userSubscriptions" (
 --- add row level security
 ALTER TABLE "topic_userSubscriptions" ENABLE ROW LEVEL SECURITY;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"topic_userSubscriptions"'
-      AND policyname = 'SELF — Insert'
-  ) THEN
-    CREATE POLICY "SELF — Insert" ON public."topic_userSubscriptions"
-      AS PERMISSIVE FOR INSERT
-      TO authenticated
-      WITH CHECK (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Insert" ON public."topic_userSubscriptions"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = "userId");
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"topic_userSubscriptions"'
-      AND policyname = 'SELF — Select'
-  ) THEN
-    CREATE POLICY "SELF — Select" ON public."topic_userSubscriptions"
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Select" ON public."topic_userSubscriptions"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "userId");
