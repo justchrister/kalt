@@ -21,25 +21,13 @@ CREATE TABLE "topic_userDetails" (
     "addressLine2"        text
 );
 
---- add row level security
-ALTER TABLE "topic_userDetails" ENABLE ROW LEVEL SECURITY;
 -- adding check to ensure its only numbers 
 ALTER TABLE "topic_userDetails" ADD CONSTRAINT postalCode_numeric_check CHECK ("postalCode" ~ '^[0-9]*$');
 
+--- add row level security
+ALTER TABLE "topic_userDetails" ENABLE ROW LEVEL SECURITY;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"topic_userDetails"'
-      AND policyname = 'SELF — Insert'
-  ) THEN
-    CREATE POLICY "SELF — Insert" ON public."topic_userDetails"
-      AS PERMISSIVE FOR INSERT
-      TO authenticated
-      WITH CHECK (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Insert" ON public."topic_userDetails"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = "userId");
