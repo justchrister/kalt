@@ -5,10 +5,7 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const topic = 'userDetails'
-  const topicKebab = ok.camelToKebab(topic)
   const service = 'getUser'
-  const serviceKebab = ok.camelToKebab(service)
-  const query = getQuery(event)
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
@@ -17,9 +14,8 @@ export default defineEventHandler( async (event) => {
   const json = await ok.cleanMessage(message)
 
   const { data, error } = await supabase
-    .from(serviceKebab)
+    .from(service)
     .upsert(json)
-    .eq('userId', message.userId)
     .select()
 
   if(data) return data
