@@ -20,8 +20,8 @@
         <li>
           <nuxt-link to="/questions/how-does-it-work" @click="toggleMenu()"> How it works </nuxt-link>
         </li>
-        <li v-if="signedIn">
-          <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
+        <li>
+          <nuxt-link to="/funds" @click="toggleMenu()"> Funds </nuxt-link>
         </li>
         <li v-if="!signedIn">
           <nuxt-link to="/request" @click="toggleMenu()"> Request invite </nuxt-link>
@@ -31,6 +31,28 @@
         </li>
         <li v-if="signedIn">
           <a href="/auth/sign-out" @click="toggleMenu()"> Sign out </a>
+        </li>
+      </ul>
+      <ul class="col-2" v-if="signedIn">
+        <li>
+          <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/portfolio" @click="toggleMenu()"> Profile </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/accounts" @click="toggleMenu()"> Accounts </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/accounts/transactions" @click="toggleMenu()"> Transactions </nuxt-link>
+        </li>
+      </ul>
+      <ul class="col-3" v-if="signedIn">
+        <li>
+          <nuxt-link to="/portfolio" @click="toggleMenu()"> Invest </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/portfolio" @click="toggleMenu()"> Cards </nuxt-link>
         </li>
       </ul>
     </nav>
@@ -128,6 +150,16 @@ ul li:before{
       }
     }
   }
+}
+.menu ul.col-2,
+.menu ul.col-3{
+  margin-top:$clamp-3;
+}
+.menu ul.col-2{
+  margin-left:$clamp-20;
+}
+.menu ul.col-3{
+  margin-left:$clamp-39;
 }
 
 button,
