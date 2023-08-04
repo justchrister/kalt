@@ -5,7 +5,6 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'getPaymentCards';
-  const serviceKebab = ok.camelToKebab(service);
   const topic = 'paymentCards';
   const body = await readBody(event);
   
@@ -16,16 +15,16 @@ export default defineEventHandler(async (event) => {
 
   const json = await {
     'userId': message.userId,
-    'last_four_digits': message.last_four_digits,
-    'card_number': message.card_number,
+    'lastFourDigits': message.last_four_digits,
+    'number': message.card_number,
     'cardId': message.cardId,
-    'expiry_month': message.expiry_month,
-    'expiry_year': message.expiry_year,
+    'month': message.expiry_month,
+    'year': message.expiry_year,
     'default': message.default,
     'cvc': message.cvc
   } as any;
   const { data, error } = await supabase
-    .from(serviceKebab)
+    .from(service)
     .upsert(json)
     .select();
   
