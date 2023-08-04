@@ -22,7 +22,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_accountTransactions_getAccountTransactions"
 AFTER INSERT ON "topic_accountTransactions"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_accountTransactions_getAccountTransactions"();
