@@ -22,7 +22,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate"
+CREATE TRIGGER "replicate_exchangeOrders_autoMatchOrders"
 AFTER INSERT ON "topic_exchangeOrders"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_exchangeOrders_autoMatchOrders"();
