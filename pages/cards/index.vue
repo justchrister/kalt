@@ -47,8 +47,7 @@
       sender: 'pages/cards/index.vue',
       entity: id
     }).paymentCards({
-      userId: user.value.id,
-      cardId: id,
+      'userId': user.value.id,
       'default': true
     });
     if(error) ok.log('error', 'could not set default card', error)
