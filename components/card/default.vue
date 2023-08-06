@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nuxt-link to="/cards">
-      <card :number="cardNumberInt" :default="true" />
+    <nuxt-link to="/cards" v-if="data">
+      <card :number="data.number" :default="true" />
     </nuxt-link>
   </div>
 </template>
@@ -15,5 +15,4 @@
     .single()
   if(data) hasDefaultCard.value = true
   if(error) ok.log('error', 'Failed to fetch default card')
-  const cardNumberInt = await ok.toInt(data.number)
 </script>
