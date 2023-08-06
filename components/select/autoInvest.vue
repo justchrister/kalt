@@ -11,7 +11,7 @@
 <script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const val = ref(1)
+  const val = ref(100)
 
   const postUserPreference = async () => {
     const autoInvest = val.value/100;
