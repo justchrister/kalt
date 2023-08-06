@@ -15,7 +15,7 @@ CREATE TABLE "sub_paymentCards_getPaymentCards" (
 CREATE OR REPLACE FUNCTION "replicate_paymentCards_getPaymentCards"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO "topic_paymentCards" (message_id, message_entity, message_sender, message_sent)
+  INSERT INTO "sub_paymentCards_getPaymentCards" (message_id, message_entity, message_sender, message_sent)
   VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
   RETURN NEW;
 END;
