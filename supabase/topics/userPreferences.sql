@@ -5,10 +5,10 @@
 --- create the table, with default values
 CREATE TABLE "topic_userPreferences" (
 -- meta information used for processing
-    "message_id"                    uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    "message_entity"                uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
-    "message_sent"                  timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
-    "message_sender"                text                            NOT NULL,
+    "message_id"            uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "message_entity"        uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
+    "message_sent"          timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
+    "message_sender"        text                            NOT NULL,
     -- 
     "userId"                uuid                            NOT NULL,
     "autoInvest"            numeric                         NOT NULL        DEFAULT 1,
