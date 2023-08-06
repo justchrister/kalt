@@ -3,11 +3,11 @@
     <navbar-tabs />
     <block margin="half">
       <div v-for="card of data" :key="card.cardId" class="card" @click="setDefault(card.cardId)">
-        <card :number="ok.toInt(card.cardNumber)" :default="card.default" />
+        <card :number="card.number" :default="card.default" />
       </div>
     </block>
     <block>
-      <nuxt-link to="cards/add">
+      <nuxt-link to="/cards/add">
         <button>
           add card
         </button>
@@ -32,7 +32,6 @@
     .select()
     .eq('userId', user.value.id)
     .order('default', { ascending: false })
-    
   if(1>data.length) {
     ok.log('warn', 'no cards found')
     await navigateTo('cards/add')
