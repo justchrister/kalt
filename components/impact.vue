@@ -33,6 +33,11 @@
         'value': data.value,
         'currency': data.value_currency
       }
+    } else {
+      return {
+        'value': 0,
+        'currency': 'EUR'
+      }
     }
   }
   
@@ -52,7 +57,7 @@
   const title = ref('missing type?')
   const portfolio = await getUserPortfolio()
   const exchangeRate = await getExchangeRate(portfolio.currency)
-  const eur = portfolio.value*exchangeRate||1;
+  const eur = portfolio.value*exchangeRate || 1;
 
   if(props.type === 'fiat') {
     const equivalent = await getImpactEquivalent(0.00012, eur)
