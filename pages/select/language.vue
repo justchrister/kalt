@@ -27,19 +27,26 @@
       .eq('userId', user.value.id)
       .limit(1)
       .single()
-    return data.language
+    if(error){
+      return 'XXX'
+    } else {
+      return data.language
+
+    }
   }
 
   const language = await getPreferredLanguage();
   const { data, error } = await supabase
     .from('sys_languages')
     .select()
-    .eq('enabled', true)
+    .eq('available', true)
     .neq('iso', language)
   if(error)ok.log('error', 'could not get languages', error)
 
   const updateProfile = async (iso) => {
-    const { error, data } = await pub(supabase, {"sender":"pages/select/language.vue"}).userPreferences({
+    const { error, data } = await pub(supabase, {
+      sender:"pages/select/language.vue"
+    }).userPreferences({
       userId: user.value.id,
       language: iso
     });
