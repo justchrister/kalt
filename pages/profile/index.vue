@@ -1,29 +1,29 @@
 <template>
-  <main>
+  <main><!--
     <block margin="2" >
       <navbar-tabs :hidePfp="true"/>
     </block>
     <block margin="2" >
       <profile-card />
-    </block>
+    </block>-->
     <block margin="2" >
       <select-currency />
-    </block>
+    </block><!--
     <block margin="2" >
       <select-auto-invest />
     </block>
     <block margin="2" >
       <select-language />
-    </block><!--
+    </block>
     <block margin="2" >
       <select-color-scheme />
-    </block>-->
+    </block>
     <block margin="2" >
       <label> Legal stuff</label>
       <toggle-performance-updates />
       <toggle-newsletters />
       <toggle-terms-of-service />
-    </block>
+    </block>-->
   </main>
 </template>
 
