@@ -2,12 +2,12 @@ import { ok } from '~/composables/ok'
 
 const createJsonAndPublish = async (client: any, meta: any, content: any, topic: any) => {
   const json = {
-    'message_id': meta.id || ok.uuid(),
-    'message_entity': meta.entity || ok.uuid(),
-    'message_sent': meta.sent || ok.timestamptz(),
-    'message_sender': meta.sender,
     ...content
   };
+  if(meta.id) json['message_id'] = meta.id;
+  if(meta.entity) json['message_entity'] = meta.entity;
+  if(meta.sent) json['message_sent'] = meta.sent;
+  if(meta.sender) json['message_sender'] = meta.sender;
   const { error } = await client.from(topic).insert(json);
   return { error };
 }
