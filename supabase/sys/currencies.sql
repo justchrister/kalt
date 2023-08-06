@@ -11,14 +11,14 @@ ALTER TABLE sys_currencies ENABLE ROW LEVEL SECURITY;
 
 -- insert values
 insert into public.sys_currencies ("iso", "name", "usedIn") values
-('AED',     'Arabic dirham',                  'United Arab Emirates'               ),
-('AFN',     'Afghani',                        'Afghanistan'                        ),
-('ALL',     'Lek',                            'Albania'                            ),
-('AMD',     'Dram',                           'Armenia'                            ),
-('ANG',     'Netherlands Antillean guilder',  'Sint Maarten, Curacao'),
-('AOA',     'kwanza','Angola'),
-('ARS',     'Argentine peso','Argentina'),
-('AUD',     'Australian dollar','Australia'),
+('AED',     'Arabic dirham',                  'United Arab Emirates'                ),
+('AFN',     'Afghani',                        'Afghanistan'                         ),
+('ALL',     'Lek',                            'Albania'                             ),
+('AMD',     'Dram',                           'Armenia'                             ),
+('ANG',     'Netherlands Antillean guilder',  'Sint Maarten, Curacao'               ),
+('AOA',     'kwanza',                         'Angola'                              ),
+('ARS',     'Argentine peso',                 'Argentina'                           ),
+('AUD',     'Australian dollar',              'Australia'                           ),
 ('AWG',     'guilder','Aruba'),
 ('AZN',     'manat','Azerbaijan'),
 ('BAM',     'Convertible mark','Bosnia and Herzegovina'),
@@ -54,7 +54,7 @@ insert into public.sys_currencies ("iso", "name", "usedIn") values
 ('EGP','Egypt pound','Egypt'),
 ('ERN','nakfa','Eritrea'),
 ('ETB','birr','Ethiopia'),
-('EUR','XXX','XXX'),
+('EUR','Euro','XXX'),
 ('FJD','Fidschi dollar','Fiji'),
 ('FKP','Falklands pound','Falkland Islands'),
 ('FOK','Faroese krona','Faroe Islands'),
@@ -173,22 +173,28 @@ insert into public.sys_currencies ("iso", "name", "usedIn") values
 ('ZMW','Zambian kwacha','Zambia'),
 ('ZWL','Zimbabwe dollar','Zimbabwe');
 
+UPDATE sys_currencies
+SET enabled = true
+WHERE iso = 'EUR';
+
+UPDATE sys_currencies
+SET enabled = true
+WHERE iso = 'USD';
+
+UPDATE sys_currencies
+SET enabled = true
+WHERE iso = 'NOK';
+
+UPDATE sys_currencies
+SET enabled = true
+WHERE iso = 'DKK';
+
+UPDATE sys_currencies
+SET enabled = true
+WHERE iso = 'SEK';
 
 ---
-
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"sys_currencies"'
-      AND policyname = 'AUTH — Select'
-  ) THEN
-    CREATE POLICY "AUTH — Select" ON public."sys_currencies"
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (true);
-  END IF;
-END
-$$;
+CREATE POLICY "AUTH — Select" ON public."sys_currencies"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (true);
