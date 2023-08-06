@@ -23,6 +23,9 @@ export const pub = (client: any, meta: any) => {
     userSubscriptions: async (content: userSubscription) => {
       return await createJsonAndPublish(client, meta, content, 'topic_userSubscriptions');
     },
+    userPreferences: async (content: userPreferences) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_userPreferences');
+    },
     exchangeRates: async (content: exchangeRate) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchangeRates');
     },
