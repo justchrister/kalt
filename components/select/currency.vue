@@ -19,22 +19,33 @@
       .eq('userId', user.value.id)
       .limit(1)
       .single()
-    return data.currency
+    if(error){
+      return 'EUR'
+    } else {
+      return data.currency
+    }
   }
-
-  const currency = await getPreferredCurrency();
-  const getCurrencyDetails = async () => {
+  const getCurrencyDetails = async (iso) => {
     const { data, error } = await supabase
-      .from('currencies')
+      .from('sys_currencies')
       .select()
       .eq('enabled', true)
       .eq('iso', currency)
       .limit(1)
       .single()
-    if(data) return data
-    return {iso: '?', name: 'Could not get currency details'}
+    if(data){
+      return data
+    } else {
+      ok.log('', 'could not get currency details: '+error.message)
+      return {
+        iso: '?', 
+        name: 'Could not get currency details'
+      }
+    }
   }
-  const currencyDetails = await getCurrencyDetails();
+
+  const currency = await getPreferredCurrency();
+  const currencyDetails = await getCurrencyDetails(currency);
 </script>
 <style scoped lang="scss">
   a{
