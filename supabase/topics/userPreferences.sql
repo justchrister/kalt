@@ -23,3 +23,9 @@ CREATE TABLE "topic_userPreferences" (
 
 --- add row level security
 ALTER TABLE "topic_userPreferences" ENABLE ROW LEVEL SECURITY;
+
+
+CREATE POLICY "SELF — Insert" ON public."topic_userPreferences"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = "userId");
