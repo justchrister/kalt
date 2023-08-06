@@ -12,8 +12,7 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.message_entity);
   await sub(supabase, topic).read(service, body.message_id);
-  ok.log('', message)
-  
+
   const { data, error } = await supabase
     .from(service)
     .upsert({
@@ -27,7 +26,6 @@ export default defineEventHandler(async (event) => {
       'cvc': message.cvc    
     })
     .select();
-  
   if(data) return data;
   if(error) return error;
 });
