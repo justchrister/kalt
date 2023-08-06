@@ -26,7 +26,7 @@
     const { data, error } = await supabase
       .from('languages')
       .select()
-      .eq('enabled', true)
+      .eq('available', true)
       .eq('iso', language)
       .limit(1)
       .single()
