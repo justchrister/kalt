@@ -8,13 +8,13 @@
     </block>-->
     <block margin="2" >
       <select-currency />
-    </block><!--
+    </block>
     <block margin="2" >
       <select-auto-invest />
     </block>
     <block margin="2" >
       <select-language />
-    </block>
+    </block><!--
     <block margin="2" >
       <select-color-scheme />
     </block>
