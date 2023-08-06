@@ -84,7 +84,7 @@
       }
     }
     if(data){
-      ok.log('success', 'signed in ' + email.value + ' successfully: ' + data);
+      ok.log('success', 'signed in ' + email.value + ' successfully');
     }
   }
   watchEffect(async () => {
