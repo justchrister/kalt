@@ -43,11 +43,11 @@ export const pub = (client: any, meta: any) => {
 
 export const sub = (client: any, topic: any) => {
   return {
-    entity: async (entity_id: any) => {
+    entity: async (entity: any) => {
       const { data, error } = await client
         .from('topic_'+topic)
         .select()
-        .eq('message_entity', entity_id)
+        .eq('message_entity', entity)
         .order('message_sent', { ascending: true })
       if(error) {
         return error
@@ -55,12 +55,12 @@ export const sub = (client: any, topic: any) => {
         return ok.combineJson(data)
       }
     },
-    read: async (service: any, message_id: any) => {
+    read: async (service: any, id: any) => {
       const subscription = 'sub_'+topic+'_'+service
       const { error} = await client
         .from(subscription)
         .update({ message_read: true })
-        .eq('message_id', message_id)
+        .eq('message_id', id)
     }
   }
 }
