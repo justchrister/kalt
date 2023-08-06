@@ -2,13 +2,13 @@
 CREATE TABLE "getPaymentCards" (
   "userId"            uuid        NOT NULL, 
   "cardId"            uuid        NOT NULL  DEFAULT uuid_generate_v4(),
-  "lastFourDigits"    CHAR(4),
-  "year"              CHAR(2),
-  "month"             CHAR(2),
+  "lastFourDigits"    numeric,
+  "year"              numeric,
+  "month"             numeric,
   "status"            text,
   "default"           boolean,
-  "number"            CHAR(16),
-  "cvc"               CHAR(3),
+  "number"            numeric,
+  "cvc"               numeric,
   PRIMARY KEY ("userId", "cardId")
 );
 
@@ -29,7 +29,7 @@ BEGIN
     IF NEW."default" THEN
         UPDATE "getPaymentCards"
         SET "default" = false
-        WHERE userId = NEW.userId AND cardId <> NEW.cardId;
+        WHERE "userId" = NEW."userId" AND "cardId" <> NEW."cardId";
     END IF;
 
     RETURN NEW;
