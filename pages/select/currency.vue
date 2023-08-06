@@ -28,7 +28,11 @@
       .eq('userId', user.value.id)
       .limit(1)
       .single()
-    return data.currency
+    if(error) {
+      return 'Not found'
+    } else {
+      return data.currency
+    }
   }
 
   const currency = await getPreferredCurrency();
@@ -39,7 +43,9 @@
     .neq('iso', currency)
     
   const updateProfile = async (iso) => {
-    const { error, data } = await pub(supabase, {"sender":"pages/select/currency.vue"}).userPreferences({
+    const { error, data } = await pub(supabase, {
+      sender:"pages/select/currency.vue"
+    }).userPreferences({
       userId: user.value.id,
       currency: iso
     });
