@@ -115,7 +115,7 @@
                   'en-US', 
                   { 
                     style: 'currency', 
-                    currency: userData.currency
+                    currency: currency 
                 }).format(context.parsed.y);
             }
             updatePercentageChange(context.parsed.y)
@@ -150,20 +150,30 @@
     .select()
     .eq('userId', user.value.id)
     .order('date', { ascending: true })
-  if(error) ok.log('error', 'could not get user portfolio', error)
-  const { data:userData, error:userError } = await supabase
-    .from('getUser')
-    .select()
-    .eq('userId', user.value.id)
-    .limit(1)
-    .single()
-  if(userError) ok.log('error', 'could not get user data', userError)
+  if(error) ok.log('error', 'could not getUserPortfolio: ', error)
+
+  const getUser = async () => {
+    const { data, error } = await supabase
+      .from('getUser')
+      .select()
+      .eq('userId', user.value.id)
+      .limit(1)
+      .single()
+    if(error) {
+      ok.log('error', 'could not getUser: '+error.message)
+      return error
+    } else{
+      return data
+    }
+  }
+  const userObject = await getUser()
+  const currency = userObject.currency || 'EUR';
 
   for (let i = 0; i < data.length; i++) {
     labels.value.push(data[i].date)
     datas.value.push(data[i].value)
   }
-  const hoveredValue = ref(new Intl.NumberFormat('en-US', { style: 'currency', currency: userData.currency}).format(datas.value[datas.value.length - props.days]));
+  const hoveredValue = ref(new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(datas.value[datas.value.length - props.days]));
 
   const updateHoveredValue = (x) => {
     hoveredValue.value = x;
@@ -178,7 +188,6 @@
     percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
     percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
   }
-
 </script>
 <style scoped lang="scss">
 
