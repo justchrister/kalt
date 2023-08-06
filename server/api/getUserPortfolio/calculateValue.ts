@@ -77,7 +77,7 @@ export default defineEventHandler(async (event) => {
     }
   }
   if(body){
-    const calculated = await calculateAndAdd(body.record.userId);
+    const calculated = await calculateAndAdd(body.userId);
     return array
   }
   if(!body){
