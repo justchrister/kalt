@@ -13,7 +13,6 @@
     .limit(1)
     .single()
   if(data) isOn.value = data.active;
-  ok.log('success', 'Got user preference: ', data.terms_of_service)
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
