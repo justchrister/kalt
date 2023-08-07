@@ -29,7 +29,11 @@
       .select()
       .limit(1)
       .single()
-    return ok.formatCurrency(data.amount, data.currency)
+    if(error){
+      return ok.formatCurrency(0, 'EUR')
+    } else {
+      return ok.formatCurrency(data.amount, data.currency)
+    }
   }
   const getCurrency = async () => {
     const { data, error } = await supabase
@@ -37,7 +41,11 @@
       .select()
       .limit(1)
       .single()
-    return data.currency
+    if(error){
+      return 'EUR' 
+    } else {
+      return data.currency
+    }
   }
   const getAutoInvest = async () => {
     const { data, error } = await supabase
@@ -45,7 +53,11 @@
       .select()
       .limit(1)
       .single()
-    return data.autoInvest
+    if(error){
+      return 1 
+    } else {
+      return data.autoInvest
+    }
   }
   const currency = await getCurrency()
   const accountBalance = await getAccountBalance()
