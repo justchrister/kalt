@@ -18,13 +18,16 @@
       .eq('userId', user.value.id)
       .limit(1)
       .single()
-    if(data) ok.log('success', 'Got preferred language: ', data.language)
-    if(error) ok.log('error', 'Could not get preferred language', error)
+    if(error) {
+      ok.log('error', 'Could not get preferred language', error)
+    } else {
+      if(data) ok.log('success', 'Got preferred language: ', data.language)
+    }
     return data.language
   }
   const getLanguageDetails = async () => {
     const { data, error } = await supabase
-      .from('languages')
+      .from('sys_languages')
       .select()
       .eq('available', true)
       .eq('iso', language)
