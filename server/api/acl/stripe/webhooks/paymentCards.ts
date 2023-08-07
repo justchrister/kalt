@@ -8,10 +8,10 @@ export default defineEventHandler(async (event) => {
   const topic = 'paymentCards';
   const body = await readBody(event);
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
-  if (body.message_read) return 'message already read';
+  if (body.record.message_read) return 'message already read';
 
-  const message = await sub(supabase, topic).entity(body.message_entity);
-  await sub(supabase, topic).read(service, body.message_id);  
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);  
 
   const json = {
     'userId': message.userId,
