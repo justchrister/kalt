@@ -30,7 +30,7 @@ EXECUTE FUNCTION "replicate_userPreferences_getUser"();
 
 -- Set up webhook function 
 
-CREATE OR REPLACE FUNCTION "webhook_userPreferences_getAccountBalance"()
+CREATE OR REPLACE FUNCTION "webhook_userPreferences_getUser"()
 RETURNS TRIGGER AS $$
 DECLARE 
   response RECORD;
@@ -49,10 +49,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create webhook trigger
-CREATE TRIGGER "webhook_userPreferences_getAccountBalance"
+CREATE TRIGGER "webhook_userPreferences_getUser"
 AFTER INSERT ON "sub_userPreferences_getUser"
 FOR EACH ROW
-EXECUTE FUNCTION "webhook_userPreferences_getAccountBalance"(NEW);
+EXECUTE FUNCTION "webhook_userPreferences_getUser"(NEW);
 
 -- Enable RLS
 ALTER TABLE "sub_userPreferences_getUser" ENABLE ROW LEVEL SECURITY;
