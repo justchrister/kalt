@@ -1,11 +1,11 @@
 <template>
-  <main><!--
+  <main>
     <block margin="2" >
       <navbar-tabs :hidePfp="true"/>
     </block>
     <block margin="2" >
       <profile-card />
-    </block>-->
+    </block>
     <block margin="2" >
       <select-currency />
     </block>
