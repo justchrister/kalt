@@ -21,26 +21,10 @@
     title: 'select currency'
   })
 
-  const getPreferredCurrency = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('currency')
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error) {
-      return 'Not found'
-    } else {
-      return data.currency
-    }
-  }
-
-  const currency = await getPreferredCurrency();
   const { data, error } = await supabase
     .from('sys_currencies')
     .select()
     .eq('enabled', true)
-    .neq('iso', currency)
     
   const updateProfile = async (iso) => {
     const { error, data } = await pub(supabase, {
@@ -81,12 +65,4 @@
   span:hover{
     cursor:pointer;
   }
-  /*
-  .dark-mode li{
-    border-color:$light;
-    &:hover{
-      background:$dark;
-    }
-  }
-  */
 </style>
