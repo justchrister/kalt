@@ -3,6 +3,9 @@
     <nuxt-link to="/cards" v-if="card">
       <card :number="data.number" :default="true" />
     </nuxt-link>
+    <nuxt-link to="/cards" v-else>
+      card is missing, add one
+    </nuxt-link>
   </div>
 </template>
 <script setup>
