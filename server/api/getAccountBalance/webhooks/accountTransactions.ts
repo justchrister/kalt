@@ -8,10 +8,10 @@ export default defineEventHandler( async (event) => {
   const topic = 'accountTransactions';
   const query = getQuery(event);
   const body = await readBody(event);
-  if(body.message_read) return 'message already read';
+  if(body.record.message_read) return 'message already read';
 
-  const message = await sub(supabase, topic).entity(body.message_entity);
-  await sub(supabase, topic).read(service, body.message_id);
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topic).read(service, body.record.message_id);
 
   const getPreferredCurrency = async () => {
     const {data, error} = await supabase
