@@ -8,7 +8,7 @@ export default defineEventHandler( async (event) => {
   const service = 'autoMatchOrders'
   const body = await readBody(event)
   
-  const originalOrder = body.record
+  const originalOrder = body.record.record
   const ticker = originalOrder.ticker
   const quantity = parseFloat(originalOrder.quantity)
   const quantityInverted = ok.invertInt(originalOrder.quantity)
