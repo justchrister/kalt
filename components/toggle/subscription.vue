@@ -24,8 +24,8 @@
       sender:'components/toggle/subscription.vue',
       entity: user.value.id
     }).userSubscriptions({
-      'userId': user.value.id,
-      'active': isOn.value
+      userId: user.value.id,
+      active: isOn.value
     });
   }
 </script>
