@@ -53,8 +53,12 @@
       .from('getPaymentCardDefault')
       .select()
       .eq('userId', user.value.id)
-    if(error) return false
-    if(data) return true
+    if(error) {
+      ok.log('', 'Failed to get default card')
+      return false
+    } else {
+      return true
+    }
   }
   const defaultCard = await getPaymentCardDefault();
   if(defaultCard){
