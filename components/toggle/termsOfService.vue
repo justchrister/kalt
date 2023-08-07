@@ -21,11 +21,17 @@
   const updateTermsOfService = async () => {
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
-    const { error, data } = await pub(supabase, {
-      sender:'components/toggle/termsOfService.vue'
+    const { error } = await pub(supabase, {
+      sender:'components/toggle/termsOfService.vue',
+      entity: user.value.id
     }).userPreferences({
-      'userId': user.value.id,
-      "termsOfService": isOn.value
+      userId: user.value.id,
+      termsOfService: isOn.value
     });
+    if(error) {
+      ok.log('error', 'Error updating user preferences: ', error)
+    } else {
+      ok.log('success', 'Updated user preferences')
+    }
   }
 </script>
