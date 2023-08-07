@@ -23,15 +23,16 @@
     isOn.value = toggledValue
     
     const { error } = await pub(supabase, {
-      sender:'components/toggle/performanceUpdates.vue'
+      sender:'components/toggle/performanceUpdates.vue',
+      entity: user.value.id
     }).userPreferences({
-      'userId': user.value.id,
-      'performanceUpdates': isOn.value
+      userId: user.value.id,
+      performanceUpdates: isOn.value
     })
-    if(error){
+    if(error) {
       ok.log('error', 'Error updating user preferences: ', error)
     } else {
-      ok.log('success', 'Updated user preferences: ', isOn.value)
+      ok.log('success', 'Updated user preferences')
     }
   }
 </script>
