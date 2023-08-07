@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_userDetails"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_userDetails_acl_stripe"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_userDetails_acl_stripe"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/acl/stripe/webhooks/userDetails',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_userDetails_acl_stripe"
-AFTER INSERT ON "sub_userDetails_acl_stripe"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_userDetails_acl_stripe"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_userDetails_acl_stripe" ENABLE ROW LEVEL SECURITY;
