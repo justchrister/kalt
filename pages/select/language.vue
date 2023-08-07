@@ -31,7 +31,6 @@
       return 'XXX'
     } else {
       return data.language
-
     }
   }
 
