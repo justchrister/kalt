@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_userPreferences"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_userPreferences_getAccountBalance"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_userPreferences_getAccountBalance"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/getAccountBalance/webhooks/userPreferences',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_userPreferences_getAccountBalance"
-AFTER INSERT ON "sub_userPreferences_getAccountBalance"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_userPreferences_getAccountBalance"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_userPreferences_getAccountBalance" ENABLE ROW LEVEL SECURITY;
