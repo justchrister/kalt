@@ -1,10 +1,11 @@
 <template>
-  <div class="input-wrapper" :id="props.on">
+  <div class="input-wrapper">
     <div class="text">
       {{ props.text }}
     </div>
-    <div class="toggle-wrap">
-      <div class="toggle"></div>
+    <div class="toggle-wrap" :id="props.on">
+      <span id="off"> off </span>
+      <span id="on"> on </span>
     </div>
   </div>
 </template>
@@ -24,42 +25,32 @@ const props = defineProps({
 $clamp:clamp($unit-min*1.8, $unit*1.8, $unit-max*1.8);
 .input-wrapper {
   display: grid; 
-  grid-template-columns: 1fr $clamp-3;
+  grid-template-columns: 1fr $clamp-12;
   gap: 2% clamp(calc($unit-min/2), calc($unit/2), calc($unit-max/2));
-}
-.toggle-wrap,
-.toggle{
-  width:$clamp;
-  height:$clamp;
-  border-radius:$clamp;
 }
 .text{
   height:$clamp;
   display:inline-block;
 }
 .toggle-wrap{
-  width:$clamp-3;
-  border:1px solid $dark;
-  display:inline-block;
-  &:hover{
-    background:white;
+  text-align:right;
+  span{
+    margin-left:$clamp-2;
+    border:$border;
+    padding:0 $clamp-0-5;
+    &#on:hover,
+    &#off:hover{
+      cursor:pointer;
+      background:white;
+      border: $border;
+      border-color:$dark;
+    }
   }
-}
-.toggle{
-  box-sizing:border-box;
-  background:$dark;
-  border:2px solid $light;
-}
-.input-wrapper#true .toggle{
-  float:right;
-}
-.input-wrapper:hover{
-  cursor:pointer;
-  .toggle-wrap{
-    border:1px solid $dark;
-  }
-  .toggle{
-    background:$dark;
+  #on{ border-color:transparent; }
+  #off{ border-color:$dark; }
+  &#true{
+    #on{ border-color:$dark; }
+    #off{ border-color:transparent; }
   }
 }/*
 .dark-mode{
