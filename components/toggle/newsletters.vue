@@ -40,7 +40,7 @@
     if(error) {
       ok.log('error', 'Error updating user preferences: ', error)
     } else {
-      ok.log('success', 'Updated user preferences: ', isOn.value)
+      ok.log('success', 'Updated user preferences')
     }
   }
 </script>
