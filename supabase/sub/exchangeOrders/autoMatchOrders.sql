@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_exchangeOrders"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_exchangeOrders_autoMatchOrders"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_exchangeOrders_autoMatchOrders"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/autoMatchOrders/webhooks/exchangeOrders',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_exchangeOrders_autoMatchOrders"
-AFTER INSERT ON "sub_exchangeOrders_autoMatchOrders"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_exchangeOrders_autoMatchOrders"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_exchangeOrders_autoMatchOrders" ENABLE ROW LEVEL SECURITY;
