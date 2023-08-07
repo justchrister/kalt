@@ -46,8 +46,6 @@
         <li>
           <nuxt-link to="/accounts/transactions" @click="toggleMenu()"> Transactions </nuxt-link>
         </li>
-      </ul>
-      <ul class="col-3" v-if="signedIn">
         <li>
           <nuxt-link to="/portfolio" @click="toggleMenu()"> Invest </nuxt-link>
         </li>
@@ -151,15 +149,9 @@ ul li:before{
     }
   }
 }
-.menu ul.col-2,
-.menu ul.col-3{
-  margin-top:$clamp-3;
-}
 .menu ul.col-2{
-  margin-left:$clamp-20;
-}
-.menu ul.col-3{
-  margin-left:$clamp-39;
+  margin-top:$clamp-3;
+  margin-left:$clamp-18;
 }
 
 button,
