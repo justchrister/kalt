@@ -1,19 +1,29 @@
 <template>
-  <div class="profile-card" @click="navigateTo('/profile/edit')">
-    <div class="image" :id="data.profilePicture">
-    </div>
-    <div class="details">
-      <div class="name">
-        {{ data.firstName }} {{ data.lastName }} 
-      </div>
-      <div class="edit">
-        edit
-      </div>
-      <div class="bio">
-        <div class="birthdate">
-          {{ calculateAge(data.birthdate) }} years old — {{ data.city }}, {{ data.country }}
+  <div>
+    <div class="profile-card" @click="navigateTo('/profile/edit')" v-if="profileSetUp">
+        <div class="image" :id="data.profilePicture">
         </div>
+        <div class="details">
+          <div class="name">
+            {{ data.firstName }} {{ data.lastName }} 
+          </div>
+          <div class="edit">
+            edit
+          </div>
+          <div class="bio">
+            <div class="birthdate">
+              {{ calculateAge(data.birthdate) }} years old — {{ data.city }}, {{ data.country }}
+            </div>
+          </div>
       </div>
+    </div>
+    <div class="set-up-profile-card" @click="navigateTo('/profile/edit')"  v-else>
+      <span>
+      Let's set up your profile! <omoji emoji="😃" /> 
+      </span>
+      <span>
+        →
+      </span>
     </div>
   </div>
 </template>
@@ -24,6 +34,14 @@
     .select()
     .limit(1)
     .single()
+  const isProfileSetUp = async (data) => {
+    if(data.firstName == null || data.lastName == null || data.birthdate == null || data.city == null || data.country == null){
+      return false
+    } else {
+      return true
+    }
+  }
+  const profileSetUp = await isProfileSetUp(data)
   function calculateAge(birthday) {
     const birthDate = new Date(birthday);
     const currentDate = new Date();
@@ -103,5 +121,14 @@
   .birthdate{
     font-size:80%;
     text-decoration:none;
+  }
+  .set-up-profile-card{
+    background:$green-20;
+    border:$border;
+    padding:$clamp-1 $clamp-1 $clamp-1 $clamp-2;
+    display:grid;
+
+    grid-gap: $clamp;
+    grid-template-columns: 1fr $clamp-2;
   }
 </style>
