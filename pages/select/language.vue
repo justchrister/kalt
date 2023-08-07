@@ -20,26 +20,10 @@
     title: 'select language'
   })
 
-  const getPreferredLanguage = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('language')
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error){
-      return 'XXX'
-    } else {
-      return data.language
-    }
-  }
-
-  const language = await getPreferredLanguage();
   const { data, error } = await supabase
     .from('sys_languages')
     .select()
     .eq('available', true)
-    .neq('iso', language)
   if(error)ok.log('error', 'could not get languages', error)
 
   const updateProfile = async (iso) => {
