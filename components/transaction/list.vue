@@ -11,7 +11,7 @@
       />
     </block>
     <block v-else>
-      <h3> Cant make money, if you dont invest money <omoji emoji="😉"/> </h3>
+      <h1 class="add-top-padding"> Cant make money, if you dont invest money <omoji emoji="😉"/> </h1>
     </block>
     <block margin="none">
       <cta />
@@ -61,4 +61,7 @@ const props = defineProps({
   .dark-mode .transactions-header{
     border-color:$light;
   }*/
+  .add-top-padding{
+    padding-top:$clamp-8;
+  }
 </style>
