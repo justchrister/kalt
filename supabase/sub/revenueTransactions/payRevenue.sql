@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_revenueTransactions"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_revenueTransactions_payRevenue"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_revenueTransactions_payRevenue"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/payRevenue/webhooks/revenueTransactions',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_revenueTransactions_payRevenue"
-AFTER INSERT ON "sub_revenueTransactions_payRevenue"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_revenueTransactions_payRevenue"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_revenueTransactions_payRevenue" ENABLE ROW LEVEL SECURITY;
