@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_paymentCards"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_paymentCards_getPaymentCards"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_paymentCards_getPaymentCards"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/getPaymentCards/webhooks/paymentCards',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_paymentCards_getPaymentCards"
-AFTER INSERT ON "sub_paymentCards_getPaymentCards"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_paymentCards_getPaymentCards"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_paymentCards_getPaymentCards" ENABLE ROW LEVEL SECURITY;
