@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_accountTransactions"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_accountTransactions_autoInvest"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_accountTransactions_autoInvest"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/autoInvest/webhooks/accountTransactions',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_accountTransactions_autoInvest"
-AFTER INSERT ON "sub_accountTransactions_autoInvest"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_accountTransactions_autoInvest"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_accountTransactions_autoInvest" ENABLE ROW LEVEL SECURITY;
