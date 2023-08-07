@@ -16,7 +16,12 @@ export default defineEventHandler( async (event) => {
   const { data, error } = await supabase
     .from(service)
     .upsert(json)
+    .eq('userId', json.userId)
+    .select()
 
-  if(data) return data
-  if(error) return error
+  if(error) {
+    return error
+  } else {
+    return data
+  }
 });
