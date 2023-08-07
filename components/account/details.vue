@@ -40,33 +40,6 @@
 <script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const getAccountBalance = async () => {
-    const { data, error } = await supabase
-      .from('getAccountBalance')
-      .select()
-      .limit(1)
-      .single()
-    return ok.formatCurrency(data.amount, data.currency)
-  }
-  const getCurrency = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .limit(1)
-      .single()
-    return data.currency
-  }
-  const getAutoInvest = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .limit(1)
-      .single()
-    return data.autoInvest
-  }
-  const currency = await getCurrency()
-  const accountBalance = await getAccountBalance()
-  const autoInvest = await getAutoInvest()
 </script>
 <style scoped lang="scss">
   .card{
