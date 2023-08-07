@@ -13,20 +13,20 @@
   const user = useSupabaseUser()
   const val = ref(100)
 
-  const postUserPreference = async () => {
-    const autoInvest = val.value/100;
-    const { error, data } = await pub(supabase, {
+  const postUserPreference = async (autoInvestRate) => {
+    const autoInvest = autoInvestRate/100;
+    pub(supabase, {
       sender:'components/select/autoInvest.vue',
       entity: user.value.id
     }).userPreferences({
-      'userId': user.value.id,
-      'autoInvest': autoInvest
+      userId: user.value.id,
+      autoInvest: autoInvest
     });
-    if(error) ok.log('error', 'could not update auto-invest', error)
+    ok.log('', 'updated auto-invest: '+autoInvestRate)
   }
 
 
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from('getUser')
     .select('autoInvest')
     .eq('userId', user.value.id)
@@ -40,16 +40,16 @@
       val.value=100
     } else {
       val.value+=10
-      await postUserPreference();
     }
+    postUserPreference(val.value);
   }
   const remove = async () => {
     if(val.value<=0){
       val.value=0
     } else {
       val.value-=10
-      await postUserPreference();
-    }
+    }    
+    postUserPreference(val.value);
   }
 </script>
 <style scoped lang="scss">
