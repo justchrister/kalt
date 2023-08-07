@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
     }
   }
   if(body){
-    const days = await getDays(body.userId);
+    const days = await getDays(body.record.userId);
     await addValueToday(days);
   }
   if(!body){
