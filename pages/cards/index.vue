@@ -26,12 +26,13 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-
   const { data, error } = await supabase
     .from('getPaymentCards')
     .select()
     .eq('userId', user.value.id)
+    .gte('number', 1)
     .order('default', { ascending: false })
+  
   if(1>data.length) {
     ok.log('warn', 'no cards found')
     await navigateTo('cards/add')
@@ -41,16 +42,19 @@
   } else {
     ok.log('success', 'got payment cards', data)
   }
-  
   const setDefault = async (id) => {
-    const { error, data } = await pub(supabase, {
+    const { error } = await pub(supabase, {
       sender: 'pages/cards/index.vue',
       entity: id
     }).paymentCards({
       'userId': user.value.id,
       'default': true
     });
-    if(error) ok.log('error', 'could not set default card', error)
+    if(error) {
+      ok.log('error', 'could not set default card', error)
+    } else {
+      ok.log('', 'set default card: '+id)
+    }
   }
 </script>
 <style scoped lang="scss">
