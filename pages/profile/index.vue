@@ -17,13 +17,13 @@
     </block><!--
     <block margin="2" >
       <select-color-scheme />
-    </block>
+    </block>-->
     <block margin="2" >
       <label> Legal stuff</label>
       <toggle-performance-updates />
       <toggle-newsletters />
       <toggle-terms-of-service />
-    </block>-->
+    </block>
   </main>
 </template>
 
