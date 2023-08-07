@@ -1,10 +1,10 @@
 --- create the table, with default values
 CREATE TABLE "getPaymentCardDefault" (
   "userId"            uuid        PRIMARY KEY, 
-  "lastFourDigits"    CHAR(4),
-  "month"             CHAR(2),
-  "number"            CHAR(16),
-  "year"              CHAR(2)
+  "lastFourDigits"    numeric,
+  "month"             numeric,
+  "number"            numeric,
+  "year"              numeric
 );
 
 ALTER TABLE "getPaymentCardDefault" ENABLE ROW LEVEL SECURITY;
