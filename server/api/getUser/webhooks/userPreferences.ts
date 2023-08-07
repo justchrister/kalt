@@ -10,7 +10,8 @@ export default defineEventHandler( async (event) => {
   if(body.message_read) return 'message already read'
   
   const message = await sub(supabase, topic).entity(body.message_entity);
-  await sub(supabase, topic).read(service, body.message_id);  
+  await sub(supabase, topic).read(service, body.message_id);
+    
   const json = await ok.cleanMessage(message)
 
   const { data, error } = await supabase

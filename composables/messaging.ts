@@ -57,10 +57,16 @@ export const sub = (client: any, topic: any) => {
     },
     read: async (service: any, id: any) => {
       const subscription = 'sub_'+topic+'_'+service
-      const { error} = await client
+      const { error, data } = await client
         .from(subscription)
         .update({ message_read: true })
         .eq('message_id', id)
+        .select()
+      if(error) {
+        ok.log('', error)
+      } else {
+        ok.log('', data)
+      }
     }
   }
 }
