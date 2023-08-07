@@ -10,20 +10,17 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const hasDefaultCard = ref(false)
   const getDefaultCard = async () => {
-    const { data } = await supabase
+    const { error, data } = await supabase
       .from('getPaymentCardDefault')
       .select()
       .limit(1)
       .single()
-    if(data) {
-      return data
-    } else {
+    if(error) {
       return false
+    } else {
+      return data
     }
   }
   const card = await getDefaultCard();
-  if(data) hasDefaultCard.value = true
-  if(error) ok.log('error', 'Failed to fetch default card')
 </script>
