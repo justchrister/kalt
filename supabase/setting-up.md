@@ -10,6 +10,7 @@
 9. Run sub/*.sql 
 10. Run services/*.sql
 11. Run acl/*/*.sql
+12. Create webhooks (see below)
 
 ## Email templates
 
@@ -74,3 +75,82 @@ Subject: Kalt — Password reset
 <p>Simply follow this link to reset your password:</p>
 <p><a href="{{ .ConfirmationURL }}">Reset password</a></p>
 ```
+
+
+## Create the following webhooks:
+
+Name: webhook_accountTransactions_autoInvest
+URL: https://ka.lt/api/autoInvest/webhooks/accountTransactions
+Table: sub_accountTransactions_autoInvest
+
+Name: webhook_accountTransactions_getAccountBalance
+URL: https://ka.lt/api/getAccountBalance/webhooks/accountTransactions
+Table: sub_accountTransactions_getAccountBalance
+
+Name: webhook_accountTransactions_getAccountTransactions
+URL: https://ka.lt/api/getAccountTransactions/webhooks/accountTransactions
+Table: sub_accountTransactions_getAccountTransactions
+
+Name: webhook_accountTransactions_payments
+URL: https://ka.lt/api/payments/webhooks/accountTransactions
+Table: sub_accountTransactions_payments
+
+Name: webhook_exchangeOrders_autoMatchOrders
+URL: https://ka.lt/api/autoMatchOrders/webhooks/exchangeOrders
+Table: sub_exchangeOrders_autoMatchOrders
+
+Name: webhook_exchangeOrders_getUserPortfolio
+URL: https://ka.lt/api/getUserPortfolio/webhooks/exchangeOrders
+Table: sub_exchangeOrders_getUserPortfolio
+
+Name: webhook_exchangeOrders_payRevenue
+URL: https://ka.lt/api/payRevenue/webhooks/exchangeOrders
+Table: sub_exchangeOrders_payRevenue
+
+Name: webhook_linkedBankAccounts_getLinkedBankAccount
+URL: https://ka.lt/api/getLinkedBankAccount/webhooks/linkedBankAccount
+Table: sub_linkedBankAccounts_getLinkedBankAccount
+
+Name: webhook_paymentCards_acl_stripe
+URL: https://ka.lt/api/acl/stripe/webhooks/paymentCards
+Table: sub_paymentCards_acl_stripe
+
+Name: webhook_paymentCards_getPaymentCardDefault
+URL: https://ka.lt/api/getPaymentCardDefault/webhooks/paymentCards
+Table: sub_paymentCards_getPaymentCardDefault
+
+Name: webhook_paymentCards_getPaymentCards
+URL: https://ka.lt/api/getPaymentCards/webhooks/paymentCards
+Table: sub_paymentCards_getPaymentCards
+
+Name: webhook_paymentsPending_acl_stripe
+URL: https://ka.lt/api/acl/stripe/webhooks/paymentsPending
+Table: sub_paymentsPending_acl_stripe
+
+Name: webhook_revenueTransactions_payRevenue
+URL: https://ka.lt/api/payRevenue/webhooks/revenueTransactions
+Table: sub_revenueTransactions_payRevenue
+
+Name: webhook_userDetails_acl_stripe
+URL: https://ka.lt/api/acl/stripe/webhooks/userDetails
+Table: sub_userDetails_acl_stripe
+
+Name: webhook_userDetails_getUser
+URL: https://ka.lt/api/getUser/webhooks/userDetails
+Table: sub_userDetails_getUser
+
+Name: webhook_userPreferences_getAccountBalance
+URL: https://ka.lt/api/getAccountBalance/webhooks/userPreferences
+Table: sub_userPreferences_getAccountBalance
+
+Name: webhook_userPreferences_getUser
+URL: https://ka.lt/api/getUser/webhooks/userPreferences
+Table: sub_userPreferences_getUser
+
+Name: webhook_userPreferences_getUserPortfolio
+URL: https://ka.lt/api/getUserPortfolio/webhooks/userPreferences
+Table: sub_userPreferences_getUserPortfolio
+
+Name: webhook_userSubscriptions_getUserSubscriptions
+URL: https://ka.lt/api/getUserSubscriptions/webhooks/userSubscriptions
+Table: sub_userSubscriptions_getUserSubscriptions
