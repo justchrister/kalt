@@ -21,8 +21,7 @@ export default defineEventHandler(async (event) => {
       'lastFourDigits': message.lastFourDigits,
       'number': message.number,
       'month': message.month,
-      'year': message.year,
-      'cvc': message.cvc
+      'year': message.year
     })
     .select();
   
