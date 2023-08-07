@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_userPreferences"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_userPreferences_getUserPortfolio"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_userPreferences_getUserPortfolio"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/getUserPortfolio/webhooks/userPreferences',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_userPreferences_getUserPortfolio"
-AFTER INSERT ON "sub_userPreferences_getUserPortfolio"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_userPreferences_getUserPortfolio"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_userPreferences_getUserPortfolio" ENABLE ROW LEVEL SECURITY;
