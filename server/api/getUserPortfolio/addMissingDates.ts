@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
       await addDays(users[i].userId);
     }
   } else {
-    await addDays(body.userId);
+    await addDays(body.record.userId);
   }
   return 'dates added'
 });
