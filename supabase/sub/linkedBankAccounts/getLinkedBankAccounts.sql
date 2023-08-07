@@ -27,32 +27,5 @@ AFTER INSERT ON "topic_linkedBankAccounts"
 FOR EACH ROW
 EXECUTE FUNCTION "replicate_linkedBankAccounts_getLinkedBankAccount"();
 
-
--- Set up webhook function 
-
-CREATE OR REPLACE FUNCTION "webhook_linkedBankAccounts_getLinkedBankAccount"()
-RETURNS TRIGGER AS $$
-DECLARE 
-  response RECORD;
-  payload TEXT;
-BEGIN
-  -- Convert row data to json then to string format
-  payload := row_to_json(NEW)::text;
-  SELECT * INTO response FROM http_post(
-    'https://ka.lt/api/getLinkedBankAccount/webhooks/linkedBankAccount',
-    payload,
-    'application/json'
-  );
-  RAISE NOTICE 'API Response: %', response.content;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create webhook trigger
-CREATE TRIGGER "webhook_linkedBankAccounts_getLinkedBankAccount"
-AFTER INSERT ON "sub_linkedBankAccounts_getLinkedBankAccount"
-FOR EACH ROW
-EXECUTE FUNCTION "webhook_linkedBankAccounts_getLinkedBankAccount"(NEW);
-
 -- Enable RLS
 ALTER TABLE "sub_linkedBankAccounts_getLinkedBankAccount" ENABLE ROW LEVEL SECURITY;
