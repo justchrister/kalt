@@ -24,19 +24,34 @@
       IBAN
     </div>
     <div class="right">
-      {{ok.formatIBAN(linkedBankAccount.iban)}}
+      <span v-if="linkedBankAccount.iban">
+        {{ok.formatIBAN(linkedBankAccount.iban)}}
+      </span>
+      <span v-else>
+        not found
+      </span>
     </div>
     <div>
       Bank code (BIC/SWIFT)
     </div>
     <div class="right">
-      {{ok.formatBankCode(linkedBankAccount.bankCode)}}
+      <span v-if="linkedBankAccount.bankCode">
+        {{ok.formatBankCode(linkedBankAccount.bankCode)}}
+      </span>
+      <span v-else>
+        not found
+      </span>
     </div>
     <div>
       Reference text
     </div>
     <div class="right">
-      {{linkedBankAccount.reference}}
+      <span v-if="linkedBankAccount.reference">
+        {{linkedBankAccount.reference}}
+      </span>
+      <span v-else>
+        not found
+      </span>
     </div>
   </div>
 </template>
