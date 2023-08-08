@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrap">
     <label for="iban">IBAN</label>
-    <input type="text" v-model="iban" v-maska data-maska="@@## **** **** ***" @input="updateIBAN()"/>
+    <input type="text" v-model="iban" v-maska data-maska="@@## **** **** ***" @input="updateIBAN()" placeholder="IT68 D030 0203 2800 0420 0162 854"/>
   </div>
 </template>
 <script setup>
