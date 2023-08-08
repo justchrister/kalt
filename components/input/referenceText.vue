@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrap">
     <label for="reference">Reference text</label>
-    <input type="text" v-model="reference" @input="updateReference()"/>
+    <input type="text" v-model="reference" @input="updateReference()" placeholder="My best investment ever"/>
   </div>
 </template>
 <script setup>
