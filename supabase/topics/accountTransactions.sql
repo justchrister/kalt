@@ -8,15 +8,15 @@ CREATE TABLE "topic_accountTransactions" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
     --- 
-    "userId"      uuid                            NOT NULL,
-    "amount"      numeric,
-    "currency"    CHAR(3)                                         REFERENCES sys_currencies(iso),
-    "type"        "accountTransactions_types",
-    "subType"     "accountTransactions_subTypes",
-    "status"      "accountTransactions_statuses"  NOT NULL,
-    "autoInvest"  DECIMAL(5, 4) 
-                  CHECK ("autoInvest" >= 0 
-                  AND "autoInvest" <= 1)          NOT NULL
+    "userId"              uuid                            NOT NULL,
+    "amount"              numeric,
+    "currency"            text                                         REFERENCES sys_currencies(iso),
+    "type"                "accountTransactions_types",
+    "subType"             "accountTransactions_subTypes",
+    "status"              "accountTransactions_statuses"  NOT NULL,
+    "autoInvest"          DECIMAL(5, 4) 
+                          CHECK ("autoInvest" >= 0 
+                          AND "autoInvest" <= 1)          NOT NULL
 );
 
 --- add row level security
