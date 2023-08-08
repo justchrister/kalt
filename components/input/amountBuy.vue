@@ -44,10 +44,10 @@ const user = useSupabaseUser()
   const amount = ref(10);
   const updatePaymentAmount = async () => { 
     if(amount.value){
-      const { error, data } = await pub(supabase, {
+      const { error } = await pub(supabase, {
         sender:'components/input/amountBuy.vue',
         entity: props.uuid,
-      }).accountTransaction({
+      }).accountTransactions({
         userId: user.value.id,
         amount: ok.toInt(amount.value),
         currency: currency,
