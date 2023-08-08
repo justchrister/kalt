@@ -27,11 +27,14 @@
     const { data, error } = await supabase
       .from('getAccountBalance')
       .select()
+      .eq('userId', user.value.id)
       .limit(1)
       .single()
-    if(error){
-      return ok.formatCurrency(0, 'EUR')
+    if(error || !data.amount){
+      ok.log('error', 'could not get account balance', error)
+      return "0 €"
     } else {
+      ok.log('success', 'got account balance', data)
       return ok.formatCurrency(data.amount, data.currency)
     }
   }
