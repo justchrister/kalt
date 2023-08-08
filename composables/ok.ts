@@ -178,9 +178,8 @@ export const ok = {
     return uuidv4()
   },
   getEntity: async (supabase, topic, entity_id) => {
-    const topicKebab = ok.camelToKebab(topic)
     const { data, error } = await supabase
-      .from(topicKebab)
+      .from(topic)
       .select()
       .eq('message_entity', entity_id)
       .order('message_sent', { ascending: true })
