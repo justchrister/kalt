@@ -38,7 +38,7 @@
           <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/portfolio" @click="toggleMenu()"> Profile </nuxt-link>
+          <nuxt-link to="/profile" @click="toggleMenu()"> Profile </nuxt-link>
         </li>
         <li>
           <nuxt-link to="/accounts" @click="toggleMenu()"> Accounts </nuxt-link>
@@ -47,10 +47,10 @@
           <nuxt-link to="/accounts/transactions" @click="toggleMenu()"> Transactions </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/portfolio" @click="toggleMenu()"> Invest </nuxt-link>
+          <nuxt-link to="/invest" @click="toggleMenu()"> Invest </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/portfolio" @click="toggleMenu()"> Cards </nuxt-link>
+          <nuxt-link to="/cards" @click="toggleMenu()"> Cards </nuxt-link>
         </li>
       </ul>
     </nav>
