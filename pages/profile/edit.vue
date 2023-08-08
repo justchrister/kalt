@@ -6,7 +6,7 @@
         <select-profile-picture />
         <input-first-name :initial="data.firstName" :userId="user.id"/>
         <input-last-name :initial="data.lastName" :userId="user.id"/>
-        <input-country :initial="data.country" :userId="user.id"/>
+        <select-country/>
         <input-city :initial="data.city" :userId="user.id"/>
         <input-postal-code :initial="data.postalCode" :userId="user.id"/>
         <input-address-line :initial="data.address_line_1" :userId="user.id"/>
