@@ -7,6 +7,7 @@
       <input-iban :initialValue="linkedBankAccount.iban"/>
       <input-bank-code :initialValue="linkedBankAccount.bankCode"/>
       <input-reference-text :initialValue="linkedBankAccount.reference"/>
+      <button @click="navigateTo('/accounts')"> done </button>
     </block>
   </main>
 </template>
@@ -43,8 +44,7 @@
   
 </script>
 <style scoped lang="scss">
-  
+  button{
+    margin-top: $clamp-2;
+  }
 </style>
-
-
-linked_bank_accounts
