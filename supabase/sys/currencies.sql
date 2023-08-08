@@ -1,6 +1,6 @@
 -- create table
 create table public.sys_currencies (
-  iso           CHAR(3) primary key,
+  "iso"         text primary key,
   "name"        text,
   "usedIn"      text,
   "enabled"     boolean
