@@ -32,6 +32,9 @@ export const pub = (client: any, meta: any) => {
     exchangeRates: async (content: exchangeRate) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchangeRates');
     },
+    accountTransactions: async (content: accountTransaction) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_accountTransactions');
+    },
     paymentCards: async (content: paymentCard) => {
       return await createJsonAndPublish(client, meta, content, 'topic_paymentCards');
     },
