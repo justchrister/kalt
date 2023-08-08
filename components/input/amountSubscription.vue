@@ -47,17 +47,14 @@
   const updatePaymentAmount = async () => { 
     if(initialAmount==ok.toInt(amount.value)) return
     if(previousValue==ok.toInt(amount.value)) return
-    ok.log('', previousValue)
     previousValue = ok.toInt(amount.value)
-    ok.log('', previousValue)
-    const { error } = await supabase
-      .from('userSubscriptions')
-      .insert({
-        message_entity:user.value.id,
-        userId:user.value.id,
-        message_sender: 'components/input/amountSubscription.vue',
-        amount: ok.toInt(amount.value)
-    })
+    const { error, data } = await pub(supabase, {
+      sender:'components/input/amountSubscription.vue',
+      entity: user.value.id
+    }).userSubscriptions({
+      userId:user.value.id,
+      amount: ok.toInt(amount.value)
+    });
     if(error) ok.log('error', 'could not update amount', error)
     if(!error) ok.log('success', 'updated amount 🥰')
     initialAmount = null;
