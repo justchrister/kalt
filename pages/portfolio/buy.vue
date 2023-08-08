@@ -30,7 +30,7 @@
     const { error, data } = await pub(supabase, {
       sender: 'pages/portfolio/buy.vue',
       entity: uuid
-    }).accountTransaction({
+    }).accountTransactions({
       userId: user.value.id,
       type: 'deposit',
       subType: 'card',
