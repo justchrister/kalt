@@ -8,7 +8,7 @@
       v-model="addressLine1"
       placeholder="Address line"
       id="address-line"
-      :class="'atom address-line '+state"
+      :class="state"
       @input="updateProfile()"
     />
   </div>
@@ -31,7 +31,7 @@
     const { error, data } = await pub(supabase, {
       sender:'components/input/addressLine.vue',
       entity: user.value.id
-    }).topic_userDetails({
+    }).userDetails({
       userId: user.value.id,
       addressLine1: addressLine1.value,   
     });
