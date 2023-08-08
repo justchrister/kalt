@@ -232,22 +232,32 @@ insert into public.sys_countries (name, iso2, iso3) values
   ('Algeria','DZ','DZA');
 
 
+UPDATE sys_countries
+SET enabled = true
+WHERE iso2 = 'NO';
+
+UPDATE sys_countries
+SET enabled = true
+WHERE iso2 = 'SE';
+
+UPDATE sys_countries
+SET enabled = true
+WHERE iso2 = 'DK';
+
+UPDATE sys_countries
+SET enabled = true
+WHERE iso2 = 'FR';
+
+UPDATE sys_countries
+SET enabled = true
+WHERE iso2 = 'DE';
 ---
+ALTER TABLE "sys_countries" ENABLE ROW LEVEL SECURITY;
 
-
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"sys_countries"'
-      AND policyname = 'AUTH — Select'
-  ) THEN
-    CREATE POLICY "AUTH — Select" ON public."sys_countries"
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (true);
-  END IF;
-END
-$$;
+CREATE POLICY "AUTH — Select"
+ON public."sys_countries"
+FOR SELECT 
+TO authenticated 
+USING (
+  true
+);
