@@ -39,13 +39,12 @@
       .eq('userId', user.value.id)
       .limit(1)
       .single()
-    if(data) {
-      ok.log('success', 'Got user subscription: ', data)
-      return data
-    }
     if(error) {
       ok.log('error', 'Failed to get user subscription: ', error)
       return error
+    } else {
+      ok.log('success', 'Got user subscription: ', data)
+      return data
     }
   }
   const getPaymentCardDefault = async () => {
@@ -68,5 +67,5 @@
     await navigateTo('/cards')
   }
   const subscription = await getUserSubscription();
-
+  
 </script>
