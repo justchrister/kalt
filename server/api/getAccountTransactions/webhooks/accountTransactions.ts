@@ -35,7 +35,7 @@ export default defineEventHandler( async (event) => {
         "currency": transaction.currency,
         "date": transaction.message_sent,
         "type": transaction.type,
-        "sub_type": transaction.subType
+        "subType": transaction.subType
       })
       .select()
       .limit(1)
