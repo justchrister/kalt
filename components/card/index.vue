@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div :class="checkBrand(props.number)"></div>
-    <div class="details">  {{ "•••• •••• •••• " + props.number.toString().slice(-4) }}  </div>
+    <div class="details">  {{ "•••• •••• •••• " + fourDigits }}  </div>
     <div :class="'default '+props.default"> <span> set </span> default  </div>
   </div>
 </template>
@@ -24,8 +24,8 @@
     if(firstDigit==='4') return "logo visa"
     if(firstDigit==='6') return "logo"
     return "ehm what?"
-  }
-
+  };
+  const fourDigits = props.number.toString().slice(-4);
 </script>
 <style scoped lang="scss">
   .card{
