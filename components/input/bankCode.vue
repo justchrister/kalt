@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrap">
     <label for="bankCode">Bank code (swift/bic)</label>
-    <input type="text" v-model="bankCode" v-maska data-maska="@@@@ @@ ** ***" @input="updateBankCode()"/>
+    <input type="text" v-model="bankCode" v-maska data-maska="@@@@ @@ ** ***" @input="updateBankCode()" placeholder="KALT NO 11 234"/>
   </div>
 </template>
 <script setup>
