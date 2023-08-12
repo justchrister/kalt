@@ -6,11 +6,13 @@
       <span @click="remove()">-</span>
       <span @click="add()">+</span>
     </div>
+    <info-box type="info" :text="'You only have '+val+' shares to sell' " v-if="notify"/>
   </div>
 </template>
 
 <script setup>
 const state = ref('loading')
+const notify = ref(false)
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
   const props = defineProps({
@@ -43,14 +45,20 @@ const user = useSupabaseUser()
       .order('date', { ascending: false })
       .limit(1)
       .single()
-    return data.quantityToday
+    if(error || !data) {
+      return 0
+    } else {
+      return data.quantityToday
+    }
   }
   const max = await getMax();
   const val = ref(0)
   const add = async () => { 
     if(val.value>=max){
       val.value=max
+      notify.value=true
     } else {
+      notify.value=false
       val.value+=1
       await updateSellOrder();
     }

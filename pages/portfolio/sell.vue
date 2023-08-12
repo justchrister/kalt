@@ -1,13 +1,18 @@
 
 <template>
   <main>
-    <block>
+    <block  v-if="max>0">
       <h3>Sell shares</h3>
       <p>Selling shares will directly effect your portfolio performance negatively and the positive impact on the environemnt.</p>
       <form @submit.prevent="publishSellOrder()">
         <input-amount-sell :uuid="uuid"/>
         <button> sell <loading-icon v-if="loading" /> </button>
       </form>
+    </block>
+    <block v-else>
+      <h1> You have no shares to sell <omoji emoji="🙃"/></h1>
+      <h1> Let's change that <omoji emoji="✨"/> </h1>
+      <button @click="navigateTo('/portfolio/buy')"> invest in something that matters </button>
     </block>
   </main>
 </template>
@@ -39,6 +44,7 @@
     }
   }
 
+  const max = await getMax();
   const publishSellOrder = async () => {
     loading.value = true
     const hasShares = await getMax();
