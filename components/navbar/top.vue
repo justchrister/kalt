@@ -60,24 +60,27 @@
 </template>
 
 <script setup>
-    const route = useRoute()
-    const signedIn = ref(false)
-    const supabase = useSupabaseClient()
-    const user = useSupabaseUser()
-    if(user.value) signedIn.value = true
-    if(!user.value) signedIn.value = false
-    const toggleMenu = async () => { 
-        document.getElementsByTagName("body")[0].classList.toggle("show-menu");
+  const route = useRoute()
+  const signedIn = ref(false)
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+  const toggleMenu = async () => { 
+    document.getElementsByTagName("body")[0].classList.toggle("show-menu");
+    if(user.value) {
+      signedIn.value = true
+    } else {
+      signedIn.value = false
     }
-    const toggleMenuOff = async () => { 
-        document.getElementsByTagName("body")[0].classList.remove("show-menu");
+  }
+  const toggleMenuOff = async () => { 
+    document.getElementsByTagName("body")[0].classList.remove("show-menu");
+  }
+  const props = defineProps({
+    pageTitle: {
+      type: String,
+      required: false
     }
-    const props = defineProps({
-        pageTitle: {
-            type: String,
-            required: false
-        }
-    })
+  })
 </script>
 <style scoped lang="scss">
 
