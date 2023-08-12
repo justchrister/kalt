@@ -10,10 +10,10 @@
         The ongoing global energy crisis and the urgent need for accelerated advancement in the fossil-free energy adoption highlights the importance of innovative solutions to combat the devastating effects of climate change and meet increasing energy demands. This whitepaper aims to explore ways in which global financial markets can drive rapid growth in the development, deployment, and adoption of fossil-free energy sources worldwide.
       </p>
       <p>
-        We propose the introduction of a new investment instrument designed to incentivize investors to become active stakeholders in their investment. This instrument must enable rapid deployment and scaling of renewable energy sites globally, create liquidity in investments that traditionally require capital lock-up for years, and transparency as a core characteristic.
+        We propose the introduction of a new investment instrument designed to incentivize investors to become active stakeholders in their investment. This instrument must enable rapid deployment and scaling of fossil-free energy sites globally, create liquidity in investments that traditionally require capital lock-up for years, and transparency as a core characteristic.
       </p>
       <p>
-        To support this investment instrument, the energy infrastructure must be designed for easy and rapid scalability, while maintaining high quality and durability. A streamlined manufacturing, shipping, and deployment process is essential, with each node in the system being a self-contained unit that can be effortlessly relocated or upgraded. Moreover, a robust and innovative approach is necessary for identifying the highest-yield areas to deploy these energy nodes. This will ensure the most efficient and effective use of resources in expanding the global renewable energy infrastructure.
+        To support this investment instrument, the energy infrastructure must be designed for easy and rapid scalability, while maintaining high quality and durability. A streamlined manufacturing, shipping, and deployment process is essential, with each node in the system being a self-contained unit that can be effortlessly relocated or upgraded. Moreover, a robust and innovative approach is necessary for identifying the highest-yield areas to deploy these energy nodes. This will ensure the most efficient and effective use of resources in expanding the global fossil-free energy infrastructure.
       </p>
     </block>
     <block margin="half">
@@ -46,13 +46,13 @@
     <block margin="half">
       <h2>The solution</h2>
       <p>
-        We have developed a transparent and scalable product that allows investors to contribute to renewable energy generation while receiving instant dividends. Our business model streamlines the process of identifying high-potential solar energy sites, manufacturing and deploying self-contained solar panel units, and connecting them to the grid. This reduces capital commitment and generates revenue that exceeds operating costs.
+        We have developed a transparent and scalable product that allows investors to contribute to fossil-free energy generation while receiving instant dividends. Our business model streamlines the process of identifying high-potential solar energy sites, manufacturing and deploying self-contained solar panel units, and connecting them to the grid. This reduces capital commitment and generates revenue that exceeds operating costs.
       </p>
       <p>
         Investors can purchase Direct Dividend Shares (DDS) in our Direct Dividend Global Index Fund (DDF), a high-frequency dividend fund with payouts as frequent as daily, hourly, or even by the minute. This intuitive investment object, combined with a minimalist, functionality-first Scandinavian design user interface, makes it easy for investors to understand their investment and its impact.
       </p>
       <p>
-        Our solution empowers individuals to make a tangible impact on the energy crisis while benefiting from the financial rewards of renewable energy investments. By accelerating the transition to a more sustainable future, we enable investors to readily support the growth of clean energy infrastructure worldwide.
+        Our solution empowers individuals to make a tangible impact on the energy crisis while benefiting from the financial rewards of fossil-free energy investments. By accelerating the transition to a more sustainable future, we enable investors to readily support the growth of clean energy infrastructure worldwide.
       </p>
     </block>
     <block margin="none">

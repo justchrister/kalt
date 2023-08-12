@@ -7,14 +7,14 @@
     </block>
       <block>
       <h1 class="sans-serif">
-        Estimating the avocado equivalent in terms of CO2 emissions savings from renewable energy generation
+        Estimating the avocado equivalent in terms of CO2 emissions savings from fossil-free energy generation
       </h1>
       <p>
         To create a rough estimate of the conversion from KWh generated from renewable energies to the emissions associated with producing, shipping, and recycling avocadoes, we follow these steps:
       </p>
       <ol>
         <li>
-          Calculate the emissions saved by generating renewable energy. On average, 1 KWh of electricity generates about {{Co2}} kg of CO2 emissions. So, {{KWh}} KWh of renewable energy would save approximately <code>{{KWh}} × {{Co2}} = {{avoidedEmission}} kg</code> of CO2 emissions. <a href="#citations"><sup>1</sup></a>
+          Calculate the emissions saved by generating fossil-free energy. On average, 1 KWh of electricity generates about {{Co2}} kg of CO2 emissions. So, {{KWh}} KWh of fossil-free energy would save approximately <code>{{KWh}} × {{Co2}} = {{avoidedEmission}} kg</code> of CO2 emissions. <a href="#citations"><sup>1</sup></a>
         </li>
         <li>
           Determine the emissions associated with one avocado. According to a study, the production, shipping, and disposal of one avocado is responsible for roughly 2 kg of CO2 generated emissions. <a href="#citations"><sup>2</sup></a>
@@ -24,7 +24,7 @@
         </li>
       </ol>
       <p>
-        Based on this rough estimate, generating {{KWh}} KWh of renewable energy is equivalent to the emissions associated with producing, shipping, and recycling about {{avocadoEquivalent}} avocadoes. Keep in mind this is an extremely rough estimate, based on averages, that does not account for where the avocado was produced or where you live. The actual emissions associated with producing, shipping, and recycling an avocado can vary widely. But this is a good starting point for understanding the emissions associated with renewable energy generation, and the impact you are having. 
+        Based on this rough estimate, generating {{KWh}} KWh of fossil-free energy is equivalent to the emissions associated with producing, shipping, and recycling about {{avocadoEquivalent}} avocadoes. Keep in mind this is an extremely rough estimate, based on averages, that does not account for where the avocado was produced or where you live. The actual emissions associated with producing, shipping, and recycling an avocado can vary widely. But this is a good starting point for understanding the emissions associated with fossil-free energy generation, and the impact you are having. 
       </p>
     </block>
     <block>

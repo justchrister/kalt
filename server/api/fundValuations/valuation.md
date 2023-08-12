@@ -13,7 +13,7 @@ this is a very simplified approach to valuation. By no means an adequate solutio
 Market risk, the specific industry risk, and any company-specific risks
 
 ## premium rate
-Legislation promoting renewable energy, increased demand, etc
+Legislation promoting fossil-free energy, increased demand, etc
 
 ## risks not accounted for explicitly
 However, are accounted for to some extent in the discount rate

@@ -12,7 +12,7 @@
         We offer an accessible platform for investing in clean, green, fossil-free energy, empowering you to make money while making a difference. Our goal is to accelerate the global transition to sustainable energy sources, fostering a better future for our planet.
       </p>
       <p>
-        By investing with us, you directly contribute to the development and deployment of fossil-free energy alternatives. Together, we can create a more sustainable world while enjoying the financial benefits of supporting renewable energy solutions.
+        By investing with us, you directly contribute to the development and deployment of fossil-free energy alternatives. Together, we can create a more sustainable world while enjoying the financial benefits of supporting fossil-free energy solutions.
       </p>
       <p>
       <!--

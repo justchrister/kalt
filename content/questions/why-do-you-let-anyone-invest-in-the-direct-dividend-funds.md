@@ -1,3 +1,3 @@
 # Why do you let anyone invest in the direct dividend funds? 
 
-We believe that everyone should have access to this kind of investment opportunity. This way, you don't have to be a millionaire to invest in renewable energy, and you can feel good knowing that your money is making a difference for families in developing regions, for the environment, and generating you a passive income.
+We believe that everyone should have access to this kind of investment opportunity. This way, you don't have to be a millionaire to invest in fossil-free energy, and you can feel good knowing that your money is making a difference for families in developing regions, for the environment, and generating you a passive income.
