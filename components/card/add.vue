@@ -107,19 +107,9 @@
       return
     }
     ok.log('', user.value.id)
-    /*
-    const { error } = await supabase
-      .from('topic_paymentCards')
-      .insert({
-        'message_sender': 'components/card/add.vue',
-        'userId': user.value.id,
-        'number': numberInt,
-        'month': month.value,
-        'year': year.value,
-        'cvc': cvc.value,
-        'default': true
-      })*/
-    const { error } = await pub(supabase, {sender:'components/card/add.vue'}).paymentCards({
+    const { error } = await pub(supabase, {
+      sender:'components/card/add.vue'
+    }).paymentCards({
       'userId': user.value.id,
       'lastFourDigits': lastFourDigits,
       'number': numberInt,
@@ -159,9 +149,9 @@
   grid-template-columns: 
     $clamp-2 
     1fr
-    $clamp-4 
-    $clamp-4 
-    $clamp-5; 
+    $clamp-4-5 
+    $clamp-4-5
+    $clamp-6; 
   gap: 0px; 
   border:$border;
   padding:$clamp 
