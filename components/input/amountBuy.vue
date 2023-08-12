@@ -37,7 +37,12 @@ const user = useSupabaseUser()
       .eq('userId', user.value.id)
       .limit(1)
       .single()
-    return data.currency
+    if(error){
+      return 'EUR'
+    } else{
+      return data.currency
+    }
+    
   }
 
   const currency = await getPreferredCurrency();
