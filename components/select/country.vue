@@ -20,10 +20,11 @@
       .single()
     if(error) {
       ok.log('error', 'Could not get preferred country', error)
+      return ''
     } else {
       if(data) ok.log('success', 'Got preferred country: ', data.country)
+      return data.country
     }
-    return data.country
   }
   const getcountryDetails = async () => {
     const { data, error } = await supabase
@@ -34,7 +35,7 @@
       .single()
     if(data) return data
     if(error) return {
-      iso: '?', name: 'Add your country'
+      name: 'Add your country'
     }
   }
 
