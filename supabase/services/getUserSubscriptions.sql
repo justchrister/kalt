@@ -1,5 +1,5 @@
 --- create the table, with default values
-CREATE TABLE "getUserSubscription" (
+CREATE TABLE "getUserSubscriptions" (
   "userId"             uuid        PRIMARY KEY, 
   "amount"             numeric,
   "currency"           CHAR(3)     default 'EUR',
@@ -7,10 +7,10 @@ CREATE TABLE "getUserSubscription" (
   "days"               integer[]
 );
 
-ALTER TABLE "getUserSubscription" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "getUserSubscriptions" ENABLE ROW LEVEL SECURITY;
 
 --- Create RLS policy
-CREATE POLICY "SELF — Select" ON "public"."getUserSubscription"
+CREATE POLICY "SELF — Select" ON "public"."getUserSubscriptions"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (auth.uid() = "userId");
