@@ -37,11 +37,10 @@ const props = defineProps({
       .not('amount', 'is', null)
       .order('date', { ascending: false })
       .limit(props.limit || 200)
-    if (data){
+    if (data && data.length>0){
       ok.log('success', 'got transactions for '+user.value.id)
       return data
-    } 
-    if (error){
+    } else {
       ok.log('error', 'could not get transactions for '+user.value.id)
       return null
     }
