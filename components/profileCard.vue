@@ -35,7 +35,7 @@
     .limit(1)
     .single()
   const isProfileSetUp = async (data) => {
-    if(data.firstName == null || data.lastName == null || data.birthdate == null || data.city == null || data.country == null){
+    if(!data || data.firstName == null || data.lastName == null || data.birthdate == null || data.city == null || data.country == null){
       return false
     } else {
       return true
