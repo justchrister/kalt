@@ -18,3 +18,10 @@ CREATE TABLE "topic_requestAccess" (
 
 --- add row level security
 ALTER TABLE "topic_requestAccess" ENABLE ROW LEVEL SECURITY;
+
+
+CREATE POLICY "policy_name"
+    ON public."topic_requestAccess"
+    FOR INSERT 
+    TO public
+    WITH CHECK (true);
