@@ -4,13 +4,13 @@
     <block>
       <form @submit.prevent="updateProfile">
         <select-profile-picture />
-        <input-first-name :initial="data.firstName" :userId="user.id"/>
-        <input-last-name :initial="data.lastName" :userId="user.id"/>
+        <input-first-name :initial="initial.firstName" :userId="user.id"/>
+        <input-last-name :initial="initial.lastName" :userId="user.id"/>
         <select-country/>
-        <input-city :initial="data.city" :userId="user.id"/>
-        <input-postal-code :initial="data.postalCode" :userId="user.id"/>
-        <input-address-line :initial="data.address_line_1" :userId="user.id"/>
-        <input-birthdate :initial="data.birthdate" :userId="user.id"/>
+        <input-city :initial="initial.city" :userId="user.id"/>
+        <input-postal-code :initial="initial.postalCode" :userId="user.id"/>
+        <input-address-line :initial="initial.address_line_1" :userId="user.id"/>
+        <input-birthdate :initial="initial.birthdate" :userId="user.id"/>
       </form>
     </block>
   </main>
@@ -27,14 +27,34 @@
 
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  
-  const { data, error } = await supabase
-    .from('getUser')
-    .select()
-    .limit(1)
-    .single()
-  if(error) ok.log("error", "Could not get user account", error)
-  if(data) ok.log('success', 'Got user object: ', data)
+
+  const getInitialValues = async () => {
+    const { data, error } = await supabase
+      .from('getUser')
+      .select()
+      .limit(1)
+      .single() 
+    if(data){
+      return {
+        firstName: data.firstName || '',
+        lastName: data.lastName || '',
+        city: data.city || '',
+        postalCode: data.postalCode || '',
+        address_line_1: data.address_line_1 || '',
+        birthdate: data.birthdate || ''
+      }
+    } else {
+      return {
+        firstName: '',
+        lastName: '',
+        city: '',
+        postalCode: '',
+        address_line_1: '',
+        birthdate: ''
+      }
+    }
+  }
+  const initial = await getInitialValues();
 </script>
 <style scoped lang="scss">
   .grid-col-3,
