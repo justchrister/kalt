@@ -20,10 +20,11 @@
       .single()
     if(error) {
       ok.log('error', 'Could not get preferred language', error)
+      return 'ENG'
     } else {
       if(data) ok.log('success', 'Got preferred language: ', data.language)
+      return data.language
     }
-    return data.language
   }
   const getLanguageDetails = async () => {
     const { data, error } = await supabase
@@ -33,8 +34,14 @@
       .eq('iso', language)
       .limit(1)
       .single()
-    if(data) return data
-    if(error) return {iso: '?', name: 'Could not get language details'}
+    if(data && data.iso && data.name) {
+      return data
+    } else {
+      return {
+        iso: '?',
+        name: 'Could not get language details'
+      }
+    }
   }
 
 const language = await getPreferredLanguage();
