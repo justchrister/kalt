@@ -6,14 +6,16 @@
 <script setup>
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const isOn = ref()
+  const isOn = ref(true)
   const { data, error } = await supabase
     .from('getUser')
     .select()
     .limit(1)
     .single()
-  if(data) isOn.value = data.termsOfService;
-  ok.log('success', 'Got user preference: ', data.termsOfService)
+  if(data) {
+    isOn.value = data.termsOfService;
+    ok.log('success', 'Got user preference: ', data.termsOfService)
+  }
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
