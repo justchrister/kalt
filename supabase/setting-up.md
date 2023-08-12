@@ -154,3 +154,7 @@ Table: sub_userPreferences_getUserPortfolio
 Name: webhook_userSubscriptions_getUserSubscriptions
 URL: https://ka.lt/api/getUserSubscriptions/webhooks/userSubscriptions
 Table: sub_userSubscriptions_getUserSubscriptions
+
+Name: webhook_userPreferences_getUserSubscriptions
+URL: https://ka.lt/api/getUserSubscriptions/webhooks/userPreferences
+Table: sub_userPreferences_getUserSubscriptions
