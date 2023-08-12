@@ -33,7 +33,7 @@
           </label>
           <input type="text" v-model="country">
           <button>
-            request invite <loading-icon v-if="loading" />
+            request invite ↗ <loading-icon v-if="loading" />
           </button>
         </form>
       </block>
@@ -78,5 +78,8 @@
 <style scoped lang="scss">
   input{
     margin-bottom:$clamp-0-5;
+  }
+  button{
+    margin-top:$clamp-1-5;
   }
 </style>
