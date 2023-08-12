@@ -1,8 +1,7 @@
 <template>
   <div>
-    <nuxt-link to="/cards">
-      <card :number="card.number" :default="true" v-if="card"/>
-      <div class="missing-card" v-else> card is missing, add one</div>
+    <nuxt-link to="/cards" v-if="defaultCard">
+      <card :number="defaultCard" :default="true"/>
     </nuxt-link>
   </div>
 
@@ -10,17 +9,36 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const { error, data:card } = await supabase
-    .from('getPaymentCardDefault')
-    .select()
-    .eq('userId', user.value.id)
-    .limit(1)
-    .single()
-  if(error) {
-    ok.log('', 'Failed to get default card', error)
-  } else {
-    ok.log('success', 'Got default card', card)
+  const getPaymentCardDefault = async () => {
+    const { data, error } = await supabase
+      .from('getPaymentCardDefault')
+      .select()
+      .eq('userId', user.value.id)
+      .limit(1)
+      .single()
+    if(data) {
+      ok.log('', 'Got default card: ', data)
+      if(data.number){
+        return data.number
+      } else {
+        ok.log('', 'Failed to get default card',data)
+        return false
+      }
+    }
+    if(error) {
+      ok.log('', 'Failed to get default card')
+      ok.log('', error)
+      return false
+    }
   }
+  const defaultCard = await getPaymentCardDefault();
+  if(defaultCard){
+    ok.log('', 'User has default card')
+  } else {
+    ok.log('error', 'User does not have default card')
+    await navigateTo('/cards')
+  }
+
 </script>
 <style scoped lang="scss">
   
