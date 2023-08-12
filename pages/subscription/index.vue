@@ -34,7 +34,7 @@
   })
   const getUserSubscription = async () => {
     const { data, error } = await supabase
-      .from('getUserSubscription')
+      .from('getUserSubscriptions')
       .select()
       .eq('userId', user.value.id)
       .limit(1)

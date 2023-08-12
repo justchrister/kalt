@@ -11,7 +11,7 @@ TRUNCATE TABLE "getPaymentCardDefault";
 TRUNCATE TABLE "getPaymentCards";
 TRUNCATE TABLE "getUser";
 TRUNCATE TABLE "getUserPortfolio";
-TRUNCATE TABLE "getUserSubscription";
+TRUNCATE TABLE "getUserSubscriptions";
 TRUNCATE TABLE "payments";
 TRUNCATE TABLE "paymentsSubscriptionsProcessing";
 TRUNCATE TABLE "payRevenue";

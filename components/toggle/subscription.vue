@@ -8,7 +8,7 @@
   const user = useSupabaseUser()
   const isOn = ref()
   const { data, error } = await supabase
-    .from('getUserSubscription')
+    .from('getUserSubscriptions')
     .select()
     .limit(1)
     .single()
