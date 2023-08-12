@@ -12,8 +12,11 @@
     .select()
     .limit(1)
     .single()
-  if(data) isOn.value = data.performance_updates;
-  ok.log('success', 'Got user preference: ', data.performance_updates)
+  
+  if(data && data.performanceUpdates) {
+    isOn.value = data.performanceUpdates;
+    ok.log('success', 'Got user preference: ', data.performanceUpdates)
+  }
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
