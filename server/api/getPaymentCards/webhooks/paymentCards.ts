@@ -12,20 +12,31 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);
-
-  const { data, error } = await supabase
-    .from(service)
-    .upsert({
-      'userId': message.userId,
-      'lastFourDigits': message.lastFourDigits,
-      'number': message.number,
-      'cardId': message.cardId,
-      'month': message.month,
-      'year': message.year,
-      'default': message.default,
-      'cvc': message.cvc    
-    })
-    .select();
-  if(data) return data;
-  if(error) return error;
+  const insertCard = async () => {
+    const { data, error } = await supabase
+      .from(service)
+      .upsert({
+        'userId': message.userId,
+        'cardId': message.message_entity,
+        'lastFourDigits': message.lastFourDigits,
+        'number': message.number,
+        'month': message.month,
+        'year': message.year,
+        'default': message.default,
+        'cvc': message.cvc    
+      })
+      .select();
+    return true
+    
+  }
+  const setDefault = async () => {
+    const { data, error } = await supabase
+      .from(service)
+      .update({ default: false })
+      .eq('userId', message.userId)
+      .neq('cardId', message.cardId)
+  }
+  const data = await insertCard();
+  if(message.default) await setDefault();
+  return true
 });
