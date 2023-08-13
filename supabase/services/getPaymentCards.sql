@@ -20,23 +20,3 @@ CREATE POLICY "SELF — Select" ON "public"."getPaymentCards"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (auth.uid() = "userId");
-
-
---- Set default funciton
-CREATE OR REPLACE FUNCTION "getPaymentCards_setDefaultCard"()
-RETURNS TRIGGER AS $$
-BEGIN
-    IF NEW."default" THEN
-        UPDATE "getPaymentCards"
-        SET "default" = false
-        WHERE "userId" = NEW."userId" AND "cardId" <> NEW."cardId";
-    END IF;
-
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE TRIGGER "getPaymentCards_setDefaultCard"
-BEFORE INSERT OR UPDATE OF "default" ON "getPaymentCards"
-FOR EACH ROW
-EXECUTE FUNCTION "getPaymentCards_setDefaultCard"();
