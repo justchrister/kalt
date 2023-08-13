@@ -7,7 +7,7 @@
       <h1> Transaction successful <omoji emoji="✨" /></h1>
       <p> You have successfully invested in the future of fossil-free energy. Sit back, relax, and let the markets do its magic. We will keep you upated. </p>
       <nuxt-link to="/portfolio"> 
-        <button> Back to portfolio </button>
+        <button> back to portfolio </button>
       </nuxt-link> 
     </block>
   </main>
