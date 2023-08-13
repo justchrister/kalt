@@ -130,10 +130,6 @@
   const datas = ref([]);
   let color = '#202124';
 
-  const colorMode = useColorMode()
-  if(colorMode.value=='dark') {
-    color = '#FCF9F2'
-  }
   const chartData = computed(() => ({
     labels: labels.value.slice(-props.days),
     datasets: [{
