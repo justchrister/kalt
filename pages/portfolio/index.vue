@@ -3,7 +3,7 @@
   <main>
     <navbar-tabs />
     <frame-wrap>
-      <chart-base :days="days"/>
+      <chart-portfolio :days="days"/>
     </frame-wrap>
     <block margin="none">
       <nav class="filters">
