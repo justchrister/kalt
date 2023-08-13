@@ -1,6 +1,6 @@
 <template>
   <div>
-  <label>country: </label>
+  <label>Country: </label>
   <nuxt-link to="/select/country">
     <span class="iso">{{countryDetails.iso2}}</span>
     <span>{{countryDetails.name}}</span>
