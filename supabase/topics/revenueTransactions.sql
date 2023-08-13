@@ -21,4 +21,4 @@ ALTER TABLE "topic_revenueTransactions" ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "HQ — Insert" ON public."topic_revenueTransactions"
   AS PERMISSIVE FOR INSERT
   TO authenticated
-  WITH CHECK (auth.uid() = 'f1359334-a0f2-4b43-a6cc-06a86b8e4d49');
+  WITH CHECK (auth.uid() = 'ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4');

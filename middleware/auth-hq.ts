@@ -3,7 +3,7 @@ export default defineNuxtRouteMiddleware(() => {
   if (!user.value) {
     return navigateTo('/auth')
   } else {
-    if(user.value.id==='f1359334-a0f2-4b43-a6cc-06a86b8e4d49'){
+    if(user.value.id==='ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4'){
     } else{
       return navigateTo('/portfolio')
     }
