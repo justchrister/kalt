@@ -51,14 +51,14 @@
   };
   const create = async () => {
     if(!val.value) return
-    const { error, data } = await pub(supabase, {"sender":"pages/hq/register-shares.vue"}).revenueTransaction({
+    const { error, data } = await pub(supabase, {
+      "sender":"pages/hq/register-shares.vue"
+    }).exchangeOrder({
       userId: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
-      amount: val.value*1.2,
-      currency: 'EUR',
-      type: 'deposit',
-      subType: 'new_shares',
-      status: 'complete',
-      autoInvest: 1
+      quantity: val.value*1.2,
+      ticker: 'ddf.gi',
+      type: 'sell',
+      status: 'pending'
     });
     if(error){
       ok.log('error', 'could not create transaction', error)
