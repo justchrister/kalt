@@ -9,7 +9,7 @@
         <select-country/>
         <input-city :initial="initial.city" :userId="user.id"/>
         <input-postal-code :initial="initial.postalCode" :userId="user.id"/>
-        <input-address-line :initial="initial.address_line_1" :userId="user.id"/>
+        <input-address-line :initial="initial.addressLine1" :userId="user.id"/>
         <input-birthdate :initial="initial.birthdate" :userId="user.id"/>
       </form>
     </block>
@@ -40,7 +40,7 @@
         lastName: data.lastName || '',
         city: data.city || '',
         postalCode: data.postalCode || '',
-        address_line_1: data.address_line_1 || '',
+        addressLine1: data.addressLine1 || '',
         birthdate: data.birthdate || ''
       }
     } else {
@@ -49,7 +49,7 @@
         lastName: '',
         city: '',
         postalCode: '',
-        address_line_1: '',
+        addressLine1: '',
         birthdate: ''
       }
     }
