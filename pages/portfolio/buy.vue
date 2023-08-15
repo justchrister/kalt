@@ -27,7 +27,7 @@
 
   const completeTransaction = async () => {
     loading.value = true
-    const { error, data } = await pub(supabase, {
+    const { error } = await pub(supabase, {
       sender: 'pages/portfolio/buy.vue',
       entity: uuid
     }).accountTransactions({
