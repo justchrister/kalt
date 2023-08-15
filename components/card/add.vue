@@ -108,7 +108,8 @@
     }
     ok.log('', user.value.id)
     const { error } = await pub(supabase, {
-      sender:'components/card/add.vue'
+      sender:'components/card/add.vue',
+      entity: ok.uuid()
     }).paymentCards({
       'userId': user.value.id,
       'lastFourDigits': lastFourDigits,
