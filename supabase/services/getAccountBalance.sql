@@ -2,7 +2,7 @@
 CREATE TABLE "getAccountBalance" (
   "userId"       uuid        NOT NULL PRIMARY KEY,
   "amount"       numeric,
-  "currency"     CHAR(3)
+  "currency"     text     REFERENCES sys_currencies(iso)
 );
 
 --- Add row level security
