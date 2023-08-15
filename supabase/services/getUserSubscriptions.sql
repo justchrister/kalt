@@ -2,7 +2,7 @@
 CREATE TABLE "getUserSubscriptions" (
   "userId"             uuid        PRIMARY KEY, 
   "amount"             numeric,
-  "currency"           CHAR(3)     default 'EUR',
+  "currency"           text     default 'EUR'      REFERENCES sys_currencies(iso),,
   "active"             boolean     default false,
   "days"               integer[]
 );
