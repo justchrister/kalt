@@ -22,10 +22,9 @@ export default defineEventHandler(async (event) => {
     'year': message.year,
     'cvc': message.cvc
   } as any;
-
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripeUserIds')
+      .from('acl_stripe_userIds')
       .select()
       .eq('userId', message.userId)
       .limit(1)
