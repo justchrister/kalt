@@ -18,7 +18,7 @@ CREATE TABLE "topic_userPreferences" (
     "colorScheme"           text,
     "profilePicture"        text,
     "language"              text,
-    "currency"              text
+    "currency"              text                                            REFERENCES sys_currencies(iso)
 );
 
 --- add row level security
