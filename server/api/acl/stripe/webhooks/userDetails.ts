@@ -23,8 +23,14 @@ export default defineEventHandler(async (event) => {
       .eq('userId', message.userId)
       .limit(1)
       .single()
-    if(data) return data
-    else return false
+    
+    if(error) {
+      ok.log('', 'nah, user dont exist ')
+      return false
+    } else {
+      ok.log('success', 'user exists: '+data.stripeUserId)
+      return data
+    } 
   }
   const userExists = await checkIfUserExists();
 
@@ -53,20 +59,23 @@ export default defineEventHandler(async (event) => {
     if(error){
       ok.log('error', error)
     } else {
-      ok.log('success', 'assigned stripe id: '+data)
+      ok.log('success', 'assigned stripe id: '+data.stripeUserId)
       return data
     }
   }
+  
   const updateStripeUserDetails = async (stripeId) => {
     const updatedUser = await stripe.customers.update(
       stripeId, {
         name: message.firstName+' '+message.lastName,
       }
     );
+    return updatedUser
   }
+
   if(userExists) {
     const updatedUser = await updateStripeUserDetails(userExists.stripeUserId);
-    return "user already exists"
+    return updatedUser
   }
   if(!userExists) {
     const createdUser = await createUser();
