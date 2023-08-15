@@ -28,7 +28,8 @@
     
   const updateProfile = async (iso) => {
     const { error, data } = await pub(supabase, {
-      sender:"pages/select/country.vue"
+      sender:"pages/select/country.vue",
+      entity: user.value.id
     }).userDetails({
       userId: user.value.id,
       country: iso
