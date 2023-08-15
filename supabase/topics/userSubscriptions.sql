@@ -12,7 +12,7 @@ CREATE TABLE "topic_userSubscriptions" (
 --
     "userId"         uuid, 
     "amount"         numeric,
-    "currency"       CHAR(3),
+    "currency"       text                                                    REFERENCES sys_currencies(iso),
     "active"         boolean,
     "days"           integer[]
 );
