@@ -8,14 +8,15 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
   if(meta.entity) json['message_entity'] = meta.entity;
   if(meta.sent) json['message_sent'] = meta.sent;
   if(meta.sender) json['message_sender'] = meta.sender;
+  ok.log('', json)
   const { error } = await client.from(topic).insert(json);
   return { error };
-}
+};
 
 export const pub = (client: any, meta: any) => {
   return {
     accountTransactions: async (content: accountTransaction) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_accountTransaction');
+      return await createJsonAndPublish(client, meta, content, 'topic_accountTransactions');
     },
     exchangeOrders: async (content: exchangeOrder) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchangeOrder');
