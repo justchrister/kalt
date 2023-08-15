@@ -31,7 +31,7 @@
     state.value = 'loading'
     const { error, data } = await pub(supabase, {
       sender: 'components/input/lastName.vue',
-      message_entity: user.value.id
+      entity: user.value.id
     }).userDetails({
       userId: user.value.id,
       lastName: lastName.value
