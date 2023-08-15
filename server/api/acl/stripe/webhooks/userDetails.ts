@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
-  
+  return message
   if(!message.firstName) return "no first name"
   if(!message.lastName) return "no last name"
 
