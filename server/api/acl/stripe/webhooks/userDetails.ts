@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
       ok.log('', 'nah, user dont exist ')
       return false
     } else {
-      ok.log('success', 'user exists:  '+data.stripeUserId)
+      ok.log('success', 'user exists: '+data.stripeUserId)
       return data
     } 
   }
