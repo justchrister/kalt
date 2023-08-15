@@ -12,13 +12,13 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
-  return message
+
   if(!message.firstName) return "no first name"
   if(!message.lastName) return "no last name"
 
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripeUserIds')
+      .from('acl_stripe_userIds')
       .select()
       .eq('userId', message.userId)
       .limit(1)
@@ -44,14 +44,18 @@ export default defineEventHandler(async (event) => {
 
   const assignStripeId = async (userId, stripeUserId) => {
     const { data, error } = await supabase
-      .from('acl_stripeUserIds')
+      .from('acl_stripe_userIds')
       .insert({
-        "userId": userId,
-        "stripeUserId": stripeUserId
+        userId: userId,
+        stripeUserId: stripeUserId
       })
       .select()
-    ok.log('success', 'assigned stripe id: '+data)
-    return data
+    if(error){
+      ok.log('error', error)
+    } else {
+      ok.log('success', 'assigned stripe id: '+data)
+      return data
+    }
   }
   const updateStripeUserDetails = async (stripeId) => {
     const updatedUser = await stripe.customers.update(
