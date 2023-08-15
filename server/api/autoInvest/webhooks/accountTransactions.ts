@@ -7,13 +7,12 @@ export default defineEventHandler(async (event) => {
   const service = 'autoInvest';
   const topicSub = 'accountTransactions';
   const topicPub = 'exchangeOrders';
-  const query = getQuery(event);
   const body = await readBody(event);
   
   if (body.record.message_read) return 'message already read';
 
-  const message = await sub(supabase, topic).entity(body.record.message_entity);
-  await sub(supabase, topic).read(service, body.record.message_id);  
+  const message = await sub(supabase, topicSub).entity(body.record.message_entity);
+  await sub(supabase, topicSub).read(service, body.record.message_id);  
 
   const transactionComplete = (status) => {
     if(status==='complete') return true
@@ -36,14 +35,14 @@ export default defineEventHandler(async (event) => {
       return data.price
     }
   }
-  const assetPrice = await ok.getAssetPrice(message.currency, 'gi.ddf');
-
-  const topicPubKebab = ok.camelToKebab(topicPub);
+  const assetPrice = await getAssetPrice(message.currency, 'gi.ddf');
 
   const createExchangeOrder = async () => {
     const quantity = message.amount * message.autoInvest * assetPrice;
     if(json.quantity===0) return 'thats not a transaction ;)'
-    const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/webhooks/accountTransactions.ts'}).exchangeOrder({
+    const { error, data } = await pub(supabase, {
+      sender:'server/api/autoInvest/webhooks/accountTransactions.ts'
+    }).exchangeOrder({
       'ticker': 'gi.ddf',
       'type': 'buy',
       'status': 'pending',
