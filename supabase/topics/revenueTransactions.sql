@@ -10,9 +10,9 @@ CREATE TABLE "topic_revenueTransactions" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
     -- 
-    "ticker"              tickers     NOT NULL, 
+    "ticker"              tickers                         NOT NULL, 
     "amount"              numeric,
-    "currency"            text
+    "currency"            text                                            REFERENCES sys_currencies(iso)
 );
 
 --- add row level security
