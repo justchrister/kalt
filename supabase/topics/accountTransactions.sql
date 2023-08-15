@@ -10,7 +10,7 @@ CREATE TABLE "topic_accountTransactions" (
     --- 
     "userId"              uuid                            NOT NULL,
     "amount"              numeric,
-    "currency"            text                                         REFERENCES sys_currencies(iso),
+    "currency"            text                                            REFERENCES sys_currencies(iso),
     "type"                "accountTransactions_types",
     "subType"             "accountTransactions_subTypes",
     "status"              "accountTransactions_statuses"  NOT NULL,
