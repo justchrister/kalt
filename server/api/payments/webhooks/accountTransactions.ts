@@ -6,8 +6,6 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'payments';
   const topic = 'accountTransactions';
-  const serviceKebab = ok.camelToKebab(service);
-  const topicKebab = ok.camelToKebab(topic);
   const query = getQuery(event);
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
@@ -16,7 +14,7 @@ export default defineEventHandler( async (event) => {
   await sub(supabase, topic).read(service, body.record.message_id);  
 
   if(message.type != 'deposit'){
-    ok.log('error', 'wrong transaction type')
+    ok.log('error', 'wrong transaction type', message)
     return 'wrong transaction type'
   } 
   if (message.subType != 'card' && message.subType != 'subscription') {
@@ -27,12 +25,11 @@ export default defineEventHandler( async (event) => {
     ok.log('error', 'wrong transaction status')
     return 'wrong transaction status'
   }
-  
   const deletePayment = async () => {
     const { error } = await supabase
       .from('paymentsPending')
       .delete()
-      .eq('message_id', message.transaction_id)
+      .eq('message_id', message.transactionId)
     if(error) return false
     else return true;
   }
@@ -41,6 +38,7 @@ export default defineEventHandler( async (event) => {
     json.status = 'processing';
     json.message_id = ok.uuid();
     json.message_sender = 'server/api/payments/webhooks/accountTransactions.ts';
+    json.message_sent = null;
     const { data, error } = await supabase
       .from('topic_accountTransactions')
       .insert(json)
@@ -51,7 +49,7 @@ export default defineEventHandler( async (event) => {
     const { data, error } = await supabase
       .from('payments')
       .select()
-      .eq('transaction_id', id)
+      .eq('transactionId', id)
       .limit(1)
       .single()
     if(error) {
@@ -73,7 +71,7 @@ export default defineEventHandler( async (event) => {
         userId: message.userId,
         amount: message.amount,
         currency: message.currency,
-        transaction_id: message.message_entity
+        transactionId: message.message_entity
       })
       .select()
     if(error) return error;
