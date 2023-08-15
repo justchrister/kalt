@@ -2,7 +2,7 @@
 CREATE TABLE "getAssetPrice" (
   "ticker"            tickers        NOT NULL,
   "date"              date           NOT NULL,
-  "currency"          CHAR(3)        NOT NULL,
+  "currency"          text         NOT NULL     REFERENCES sys_currencies(iso),
   "price"             numeric,
   
   PRIMARY KEY (ticker, currency, date)
