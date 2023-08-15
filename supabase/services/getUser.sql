@@ -16,7 +16,7 @@ CREATE TABLE "getUser" (
     "colorScheme"         text,
     "profilePicture"      text                      DEFAULT 'alt1',
     "language"            text,
-    "currency"            text
+    "currency"            text     REFERENCES sys_currencies(iso),
 );
 
 --- add row level security
