@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
       ok.log('', 'nah, user dont exist ')
       return false
     } else {
-      ok.log('success', 'user exists: '+data.stripeUserId)
+      ok.log('success', 'user exists:  '+data.stripeUserId)
       return data
     } 
   }
@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
       return data
     }
   }
-  
+
   const updateStripeUserDetails = async (stripeId) => {
     const updatedUser = await stripe.customers.update(
       stripeId, {
