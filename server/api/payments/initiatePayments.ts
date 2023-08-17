@@ -10,11 +10,10 @@ export default defineEventHandler( async (event) => {
       .update({ processing: true})
       .select()
       .eq('processing', false)
-    if(data){
+    if(data && data.length > 0){
       ok.log('success', 'found payment pending processing in table ', data)
       return data
-    }
-    if(error){
+    } else {
       ok.log('error', 'could not find payment pending processing in table ')
       return false
     }
@@ -24,25 +23,19 @@ export default defineEventHandler( async (event) => {
       .from('payments')
       .update({ processing: false})
       .select()
-      .eq('transaction_id', id)    
+      .eq('transactionId', id)    
   }
   const createPendingPayments = async (payment) => {
-    const json = {
-      message_id: ok.uuid(),
-      message_entity: ok.uuid(),
-      transaction_id: payment.transaction_id,
+    const { error, data } = await pub(supabase, {
+      sender:'server/api/payments/initiatePayments.ts'
+    }).paymentsPending({
+      transactionId: payment.transactionId,
       amount: payment.amount,
       currency: payment.currency,
       userId: payment.userId,
-      message_sender: 'server/api/payments/initiatePayments.ts'
-    };
-
-    const { data, error } = await supabase
-      .from('paymentsPending')
-      .insert(json)
-      .select()
+    });
     if(error) {
-      const returnedToProcessing = await returnToProcessing(payment.transaction_id);
+      await returnToProcessing(payment.transactionId);
       ok.log('error', 'could not create pending payment', error)
       return error
     }
@@ -52,10 +45,10 @@ export default defineEventHandler( async (event) => {
     }
   }
   const paymentsPendingProcessing = await getPaymentsPendingProcessing()
+  if(!paymentsPendingProcessing) return 'no payments pending processing'
 
   for (let i = 0; i < paymentsPendingProcessing.length; i++) {
-    const payment = paymentsPendingProcessing[i];
-    const paymentIntent = await createPendingPayments(payment)
+    await createPendingPayments(paymentsPendingProcessing[i])
   }
   return 'successfully processed all payments pending processing'
 });
