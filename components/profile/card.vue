@@ -123,6 +123,10 @@
     text-decoration:none;
   }
   .set-up-profile-card{
+    &:hover{
+      cursor:pointer;
+      background:$green-10;
+    }
     background:$green-20;
     border:$border;
     padding:$clamp-1 $clamp-1 $clamp-1 $clamp-2;
