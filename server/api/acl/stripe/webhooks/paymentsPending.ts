@@ -39,7 +39,7 @@ export default defineEventHandler( async (event) => {
     }
   }
   const updatePaymentPendingStatus = async (status) => {
-    const { error, data } = await pub(supabase, {
+    const { error } = await pub(supabase, {
       entity: message.message_entity,
       sender: 'service/api/acl/stripe/webhooks/paymentsPending.ts'
     }).paymentsPending({
@@ -48,14 +48,14 @@ export default defineEventHandler( async (event) => {
       provider: 'stripe',
       status: status
     });
-    if(data) {
-      ok.log('success', 'updated payment pending status')
-      return 'success'
-    }
     if(error){
       ok.log('error', 'error updating payment pending status', error)
       return 'error'
-    } 
+    } else {
+      ok.log('success', 'updated payment pending status')
+      return 'success'
+
+    }
   }
   const updateTransactionStatus = async (status) => {
     const { error, data } = await pub(supabase, {
