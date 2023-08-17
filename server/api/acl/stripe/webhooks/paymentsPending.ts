@@ -61,14 +61,14 @@ export default defineEventHandler( async (event) => {
     const { error, data } = await pub(supabase, {
       sender:'server/api/acl/stripe/webhooks/paymentsPending.ts',
       message_entity: message.transaction_id
-    }).accountTransaction({
+    }).accountTransactions({
       userId: message.userId,
       status: status
     });
   }
   const getCustomerId = async (userId) => {
     const { data, error } = await supabase
-      .from('acl_stripeUserIds')
+      .from('acl_stripe_userIds')
       .select()
       .eq('userId', userId)
       .limit(1)
