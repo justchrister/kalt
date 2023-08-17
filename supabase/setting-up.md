@@ -11,6 +11,7 @@
 10. Run services/*.sql
 11. Run acl/*/*.sql
 12. Create webhooks (see below)
+11. [Enable SSL enforcement](https://supabase.com/docs/guides/platform/ssl-enforcement) 
 
 ## Email templates
 
