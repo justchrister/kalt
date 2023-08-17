@@ -16,7 +16,7 @@ CREATE TABLE "topic_accountTransactions" (
     "status"              "accountTransactions_statuses"  NOT NULL,
     "autoInvest"          DECIMAL(5, 4) 
                           CHECK ("autoInvest" >= 0 
-                          AND "autoInvest" <= 1)          NOT NULL
+                          AND "autoInvest" <= 1)
 );
 
 --- add row level security
