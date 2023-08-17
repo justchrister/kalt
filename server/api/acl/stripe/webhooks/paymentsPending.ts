@@ -65,6 +65,9 @@ export default defineEventHandler( async (event) => {
       userId: message.userId,
       status: status
     });
+    if(error){
+      ok.log('error', 'error updating transaction status', error)
+    }
   }
   const getCustomerId = async (userId) => {
     const { data, error } = await supabase
