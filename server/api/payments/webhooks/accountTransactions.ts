@@ -36,7 +36,6 @@ export default defineEventHandler( async (event) => {
   const updateTransaction = async () => {
     let json = message;
     json.status = 'processing';
-    json.message_id = ok.uuid();
     json.message_sender = 'server/api/payments/webhooks/accountTransactions.ts';
     json.message_sent = null;
     const { data, error } = await supabase
