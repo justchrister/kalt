@@ -31,6 +31,8 @@ export default defineEventHandler( async (event) => {
     }).paymentsPending({
       transactionId: payment.transactionId,
       amount: payment.amount,
+      status: 'pending',
+      provider: 'stripe',
       currency: payment.currency,
       userId: payment.userId,
     });
