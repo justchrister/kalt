@@ -13,14 +13,14 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topicSub).entity(body.record.message_entity);
   await sub(supabase, topicSub).read(service, body.record.message_id);  
-
+  ok.log('', 'message:', message)
   const transactionComplete = (status) => {
     if(status==='complete') return true
     return false
   }
   if(!transactionComplete(message.status)) return 'wrong payment status'
 
-  const getAssetPrice = async (currency, ticker) => {
+  const getAssetPrice = async (currency , ticker) => {
     const { data, error } = await supabase
       .from('getAssetPrice')
       .select()
@@ -30,7 +30,8 @@ export default defineEventHandler(async (event) => {
       .limit(1)
       .single();
     if(error) {
-      return error
+      ok.log('error', 'could not find asset price', error)
+      return null
     } else {
       return data.price
     }
@@ -39,24 +40,26 @@ export default defineEventHandler(async (event) => {
 
   const createExchangeOrder = async () => {
     const quantity = message.amount * message.autoInvest * assetPrice;
-    if(json.quantity===0) return 'thats not a transaction ;)'
-    const { error, data } = await pub(supabase, {
+    if(quantity===0 || !assetPrice) return null
+    const { error } = await pub(supabase, {
       sender:'server/api/autoInvest/webhooks/accountTransactions.ts'
-    }).exchangeOrder({
-      'ticker': 'gi.ddf',
-      'type': 'buy',
-      'status': 'pending',
-      'userId': message.userId,
-      'quantity': quantity
+    }).exchangeOrders({
+      ticker: 'gi.ddf',
+      type: 'buy',
+      status: 'open',
+      userId: message.userId,
+      quantity: quantity
     });
     if(error){
       return error
     } else {
-      return data
+      return 'data'
     }
-  }
+  };
   const createWithdrawTransaction = async () => {
-    const { error, data } = await pub(supabase, {sender:'server/api/autoInvest/accountTransactions.ts'}).accountTransaction({
+    const { error } = await pub(supabase, {
+      sender:'server/api/autoInvest/accountTransactions.ts'
+    }).accountTransactions({
       'userId': message.userId,
       'amount': -message.amount * message.autoInvest,
       'currency': message.currency,
@@ -68,10 +71,11 @@ export default defineEventHandler(async (event) => {
     if(error){
       return error
     } else {
-      return data
+      return 'data'
     }
-  }
+  };
   const exchangeOrder = await createExchangeOrder();
+  if(!exchangeOrder) return 'exchangeOrder'
   const withdrawTransaction = await createWithdrawTransaction();
   return {
     'exchangeOrder': exchangeOrder,
