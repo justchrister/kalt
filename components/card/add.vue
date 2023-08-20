@@ -124,13 +124,8 @@
       loading.value=false
     } else {
       loading.value=false
-      goBack()
+      await navigateTo('/cards/success')
     }
-  }
-  
-  const router = useRouter()
-  const goBack = () => {
-    router.go(-1)
   }
   const checkBrand = (brand_id) => {
     if(brand_id){
