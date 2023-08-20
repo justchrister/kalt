@@ -1,12 +1,19 @@
 <template>
   <main>
-      
+    <block>
+      <fund ticker="art.ddf" :checkable="true"/>
+    </block>
+    <block>
+      <fund ticker="ffe.ddf" :checkable="true"/>
+    </block>
+    <block>
+      <fund ticker="gi.ddf" :checkable="true"/>
+    </block>
   </main>
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Funds',
-    middleware: 'auth'
+    pagename: 'Funds'
   })
   useHead({
     title: 'Funds',
