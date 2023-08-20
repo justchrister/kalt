@@ -4,106 +4,103 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const topic = 'exchangeOrders'
   const service = 'autoMatchOrders'
   const body = await readBody(event)
   
-  const originalOrder = body.record.record
+  const originalOrder = body.record
   const ticker = originalOrder.ticker
-  const quantity = parseFloat(originalOrder.quantity)
   const quantityInverted = ok.invertInt(originalOrder.quantity)
 
   let orderTypeInverted='buy'
-  if(originalOrder.order_type==='buy'){
+  if(originalOrder.orderType==='buy'){
     orderTypeInverted='sell'
   }
+
   const getFulfiller = async () => {
-    const { data, error } = await supabase
-      .from(serviceKebab)
+    const { data, } = await supabase
+      .from(service)
       .select()
-      .gte('quantity_absolute', originalOrder.quantity_absolute)
-      .eq('order_type', orderTypeInverted)
+      .gte('quantityAbsolute', originalOrder.quantityAbsolute)
+      .eq('orderType', orderTypeInverted)
       .eq('ticker', ticker)
       .limit(1)
       .single()
-    return data
+    if(data){
+      return data
+    } else {
+      return null
+    }
   }
-
+  
   const fulfillingOrder = await getFulfiller()
   if (!fulfillingOrder) return 'no fulfilling order available'
 
-  const publishMessage = async (entity, json) => {
-    if (!json.quantity) return 'cant create an order without a quanitity here'
-    const { error, data } = await pub(supabase, {
-      entity: entity,
-      sender:'server/api/autoMatchOrders/match.ts'
-    }).exchangeOrder(json);
+  if(fulfillingOrder.quantityAbsolute===originalOrder.quantityAbsolute){
+    await pub(supabase, {
+      sender:'server/api/autoMatchOrders/match.ts',
+      entity: originalOrder.entity
+    }).exchangeOrders({
+      userId: originalOrder.userId,
+      status: 'fulfilled',
+      fulfilledBy: fulfillingOrder.entity
+    });
 
-    if(error) return error
-    return data
-  }
+    await pub(supabase, {
+      sender:'server/api/autoMatchOrders/match.ts',
+      entity: fulfillingOrder.entity
+    }).exchangeOrders({
+      userId: fulfillingOrder.userId,
+      status: 'fulfilled',
+      fulfilledBy: originalOrder.entity
+    });
 
-  if(fulfillingOrder.quantity_absolute===originalOrder.quantity_absolute){
-    await publishMessage(originalOrder.message_entity, {
-      'status': 'fulfilled',
-      'userId': originalOrder.userId,
-      'ticker': ticker,
-      'quantity': originalOrder.quantity,
-      'message_sender': service,
-      'fulfilled_by_id': fulfillingOrder.message_entity
-    })
-    await publishMessage(fulfillingOrder.message_entity, {
-      'status': 'fulfilled',
-      'userId': fulfillingOrder.userId,
-      'ticker': fulfillingOrder.ticker,
-      'quantity': fulfillingOrder.quantity,
-      'order_type': fulfillingOrder.order_type,
-      'message_sender': service,
-      'fulfilled_by_id': originalOrder.message_entity
-    })
-  }
-  if (fulfillingOrder.quantity_absolute >=  originalOrder.quantity_absolute) {
+  } else if (fulfillingOrder.quantityAbsolute >=  originalOrder.quantityAbsolute) {
     const newOrderId1 = ok.uuid();
     const newOrderId2 = ok.uuid();
-    await publishMessage(originalOrder.message_entity,{
-      'status': 'fulfilled',
-      'userId': originalOrder.userId,
-      'ticker': ticker,
-      'order_type': originalOrder.order_type,
-      'quantity': originalOrder.quantity,
-      'message_sender': service,
-      'fulfilled_by_id': newOrderId1
-    })
-    await publishMessage(fulfillingOrder.message_entity, {
-      'status': 'split',
-      'userId': fulfillingOrder.userId,
-      'ticker': ticker,
-      'quantity': fulfillingOrder.quantity,
-      'order_type': fulfillingOrder.order_type,
-      'message_sender': service,
-      'split_into': [
+
+    await pub(supabase, {
+      sender:'server/api/autoMatchOrders/match.ts',
+      entity: originalOrder.entity
+    }).exchangeOrders({
+      userId: originalOrder.userId,
+      status: 'fulfilled',
+      fulfilledBy: newOrderId1
+    });
+
+    await pub(supabase, {
+      sender:'server/api/autoMatchOrders/match.ts',
+      entity: fulfillingOrder.entity
+    }).exchangeOrders({
+      userId: fulfillingOrder.userId,
+      status: 'split',
+      splitInto: [
         newOrderId1,
         newOrderId2
       ]
-    })
-    await publishMessage(newOrderId1, {
-      'status': 'fulfilled',
-      'userId': fulfillingOrder.userId,
-      'ticker': fulfillingOrder.ticker,
-      'quantity': quantityInverted,
-      'order_type': fulfillingOrder.order_type,
-      'message_sender': service,
-      'fulfilled_by_id': originalOrder.message_entity
-    })
-    
-    await publishMessage(newOrderId2, {
-      'status': 'open',
-      'userId': fulfillingOrder.userId,
-      'ticker': fulfillingOrder.ticker,
-      'quantity': fulfillingOrder.quantity+originalOrder.quantity,
-      'order_type': fulfillingOrder.order_type,
-      'message_sender': service
-    })
+    });
+
+    await pub(supabase, {
+      sender:'server/api/autoMatchOrders/match.ts',
+      entity: newOrderId1
+    }).exchangeOrders({
+      status: 'fulfilled',
+      partOf: fulfillingOrder.entity,
+      userId: fulfillingOrder.userId,
+      quantity: quantityInverted,
+      type: fulfillingOrder.orderType,
+      fulfilledBy: originalOrder.entity
+    });
+
+    await pub(supabase, {
+      sender:'server/api/autoMatchOrders/match.ts',
+      entity: newOrderId2
+    }).exchangeOrders({
+      status: 'open',
+      partOf: fulfillingOrder.entity,
+      userId: fulfillingOrder.userId,
+      quantity: fulfillingOrder.quantity+originalOrder.quantity,
+      type: fulfillingOrder.orderType
+    });
   }
   return 'Orders processed';
 });
