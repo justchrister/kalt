@@ -40,22 +40,22 @@
   const val = ref(0)
   const loading = ref(false)
   const add = async () => { 
-    val.value+=1
+    val.value+=10
   }
   const remove = async () => {
     if(val.value<=0){
       val.value=0
     } else {
-      val.value-=1
+      val.value-=10
     }
   };
   const create = async () => {
     if(!val.value) return
     const { error, data } = await pub(supabase, {
-      "sender":"pages/hq/register-shares.vue"
+      sender: "pages/hq/register-shares.vue"
     }).exchangeOrder({
       userId: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
-      quantity: val.value*1.2,
+      quantity: -(val.value*1.2), // neeeds to be negative???
       ticker: 'gi.ddf',
       type: 'sell',
       status: 'open'
