@@ -10,7 +10,7 @@ CREATE TABLE "topic_exchangeOrders" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
 --
-    "userId"              uuid            NOT NULL,
+    "userId"              uuid,
     "quantity"            numeric,
     "ticker"              "tickers",
     "type"                "exchangeOrders_types",
@@ -24,36 +24,22 @@ CREATE TABLE "topic_exchangeOrders" (
 --- add row level security
 ALTER TABLE "topic_exchangeOrders" ENABLE ROW LEVEL SECURITY;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"topic_exchangeOrders"'
-      AND policyname = 'SELF — Insert'
-  ) THEN
-    CREATE POLICY "SELF — Insert" ON public."topic_exchangeOrders"
-      AS PERMISSIVE FOR INSERT
-      TO authenticated
-      WITH CHECK (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Insert" ON public."topic_exchangeOrders"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = "userId");
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = '"topic_exchangeOrders"'
-      AND policyname = 'SELF — Select'
-  ) THEN
-    CREATE POLICY "SELF — Select" ON public."topic_exchangeOrders"
-      AS PERMISSIVE FOR SELECT
-      TO authenticated
-      USING (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Select" ON public."topic_exchangeOrders"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "userId");
+
+CREATE POLICY "HQ — Insert" ON public."topic_exchangeOrders"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  USING (auth.uid() = 'ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4');
+
+CREATE POLICY "HQ — Select" ON public."topic_exchangeOrders"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = 'ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4');
