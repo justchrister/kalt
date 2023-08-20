@@ -6,9 +6,7 @@
     <block>
       <h1> Transaction successful <omoji emoji="✨" /></h1>
       <p> You have successfully invested in the future of fossil-free energy. Sit back, relax, and let the markets do its magic. We will keep you upated. </p>
-      <nuxt-link to="/portfolio"> 
-        <button> back to portfolio </button>
-      </nuxt-link> 
+      <button @click="goBack()"> ← back </button>
     </block>
   </main>
 </template>
@@ -25,7 +23,26 @@
     }]
   })
   
+  const router = useRouter()
+  const goBack = () => {
+    router.go(-2)
+  }
+  setTimeout(goBack, 10000)
 </script>
 <style scoped lang="scss">
   
+  button{
+    background: $blue-80;
+    background: linear-gradient(90deg, $blue-80 0%, $blue-80 50%, $light 50%, $light 100%);
+    background-size: 200% 200%;
+    animation: loading 10s;
+    &:hover{
+      cursor: pointer;
+      background: white;
+    }
+  }
+  @keyframes loading {
+    from {background-position:100% 50%}
+    to {background-position:0% 50%}
+  }
 </style>
