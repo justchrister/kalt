@@ -56,9 +56,9 @@
     }).exchangeOrder({
       userId: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
       quantity: val.value*1.2,
-      ticker: 'ddf.gi',
+      ticker: 'gi.ddf',
       type: 'sell',
-      status: 'pending'
+      status: 'open'
     });
     if(error){
       ok.log('error', 'could not create transaction', error)
