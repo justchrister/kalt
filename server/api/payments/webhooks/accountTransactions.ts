@@ -33,17 +33,16 @@ export default defineEventHandler( async (event) => {
     if(error) return false
     else return true;
   }
-  const updateTransaction = async () => {
-    let json = message;
-    json.status = 'processing';
-    json.message_sender = 'server/api/payments/webhooks/accountTransactions.ts';
-    json.message_sent = null;
-    const { data, error } = await supabase
-      .from('topic_accountTransactions')
-      .insert(json)
-      .select()
-    return data
+
+  const updateTransaction = async (entity) => {
+    const { error } = await pub(supabase, {
+      sender:'server/api/payments/webhooks/accountTransactions.ts',
+      entity: entity
+    }).accountTransactions({
+      status: 'processing'
+    });
   }
+
   const paymentExists = async (id) => {
     const { data, error } = await supabase
       .from('payments')
@@ -75,9 +74,9 @@ export default defineEventHandler( async (event) => {
       .select()
     if(error) return error;
     if(data) {
-      await updateTransaction();
+      await updateTransaction(message.message_entity);
       return data
-    };
+    }
   }
   
   if(message.status='failed' || 'complete' ) {
