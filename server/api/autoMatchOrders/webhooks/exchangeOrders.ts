@@ -5,35 +5,33 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'autoMatchOrders';
-  const serviceKebab = ok.camelToKebab(service);
   const topic = 'exchangeOrders';
-  const query = getQuery(event);
   const body = await readBody(event);
   
   if (body.record.message_read) return 'message already read';
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
-
+  
   if (message.status !== 'open') {
     const { error } = await supabase
-      .from(serviceKebab)
+      .from(service)
       .delete()
       .eq('message_entity', message.message_entity);
     return 'removed';
   }
 
   let json = {
-    'message_entity': message.message_entity,
+    'entity': message.message_entity,
     'userId': message.userId,
     'ticker': message.ticker,
-    'order_type': message.order_type,
+    'orderType': message.type,
     'quantity': message.quantity,
-    'quantity_absolute': message.quantity_absolute
+    'quantityAbsolute': Math.abs(message.quantity)
   };
 
   const { data, error } = await supabase
-    .from(serviceKebab)
+    .from(service)
     .upsert(json)
     .select();
 
