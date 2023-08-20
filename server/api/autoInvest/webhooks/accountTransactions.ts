@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
   const assetPrice = await getAssetPrice(message.currency, 'gi.ddf');
 
   const createExchangeOrder = async () => {
-    const quantity = message.amount * message.autoInvest * assetPrice;
+    const quantity = (message.amount * message.autoInvest) / assetPrice;
     if(quantity===0 || !assetPrice) return null
     const { error } = await pub(supabase, {
       sender:'server/api/autoInvest/webhooks/accountTransactions.ts'
