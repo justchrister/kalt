@@ -30,18 +30,21 @@ export default defineEventHandler( async (event) => {
           to: currencies[j], 
           value: null
         });
+        ok.log('', 'created the currency pair '+currencies[i]+' → '+currencies[j])
       }
     }
     return pairs;
   }
   const getRate = async (iso) => {
     if(iso=='NOK') return 1;
+    ok.log('', 'getting exchange rate for '+iso+' → NOK')
     const { data, error} = await ok.fetch('get', 'https://data.norges-bank.no/api/data/EXR/B.'+iso+'.NOK.SP?format=sdmx-json&lastNObservations=1&locale=no')
     if(error) {
-      ok.log('error', 'could not get rate for '+iso, error.message)
+      ok.log('error', 'could not get rate for '+iso+' → NOK')
       return null
     }
     if(data){
+      ok.log('success', 'got the rate for '+iso+' → NOK: ', data.data.dataSets[0].series["0:0:0:0"].observations["0"][0])
       return data.data.dataSets[0].series["0:0:0:0"].observations["0"][0]
     }
   }
@@ -51,17 +54,22 @@ export default defineEventHandler( async (event) => {
     const rate = (fromRate/toRate) || 1;
     if(!fromRate) return;
     if(!toRate) return;
-    const { error, data } = await pub(supabase, {sender:'server/api/acl/updateExchangeRates.ts'}).exchangeRates({
+    const { error } = await pub(supabase, {
+      sender:'server/api/acl/updateExchangeRates.ts'
+    }).exchangeRates({
       from: pair.from,
       to: pair.to,
       rate: rate
     });
-    if(data){
-      ok.log('', 'updated exchange rate '+pair.from+' → '+pair.to+' to '+rate)
-      return data
-    }
     if(error){
       ok.log('', 'error: ', error)
+    } else {
+      ok.log('', 'updated exchange rate '+pair.from+' → '+pair.to+' to '+rate)
+      return {
+        'from': pair.from,
+        'to': pair.to,
+        'rate': rate
+      }
     }
   }
   const currencies = await getCurrencies()
