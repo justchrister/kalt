@@ -36,12 +36,12 @@ export default defineEventHandler( async (event) => {
     'userId': message.userId,
     'date': date,
     'ticker': message.ticker,
-    'quantity_change': 0
+    'quantityChange': 0
   };
 
   for (let i = 0; i < dailyOrders.length; i++) {
     const order = dailyOrders[i];
-    json.quantity_change += order.quantity;
+    json.quantityChange += order.quantity;
   };
 
   const { data, error} = await supabase

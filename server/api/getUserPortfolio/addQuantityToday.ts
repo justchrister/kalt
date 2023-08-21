@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   const getDays = async (user) => {
     const { data, error } = await supabase
       .from('getUserPortfolio')
-      .select('userId, quantity_change, date, ticker')
+      .select('userId, quantityChange, date, ticker')
       .eq('userId', user)
       .order('date', { ascending: true })
     if (data) return data
@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     let quantityToday = 0;
     for (let i = 0; i < days.length; i++) {
       const current = days[i];
-      quantityToday += current.quantity_change
+      quantityToday += current.quantityChange
       const { data, error } = await supabase
         .from('getUserPortfolio')
         .update({ "quantityToday": quantityToday })
