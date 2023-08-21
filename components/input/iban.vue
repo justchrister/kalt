@@ -22,7 +22,7 @@
   const updateIBAN = async () => {
     const { error, data } = await pub(supabase, {sender:'components/input/iban.vue'}).linkedBankAccounts({
       userId: user.value.id,
-      bankCode: iban.value
+      iban: iban.value
     });
     if(error) {
       ok.log('error', 'error updating IBAN', error)
