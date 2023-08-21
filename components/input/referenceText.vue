@@ -24,7 +24,7 @@
       sender:'components/input/referenceText.vue'
     }).linkedBankAccounts({
       userId: user.value.id,
-      bankCode: reference.value
+      reference: reference.value
     });
     if(error) {
       ok.log('error', 'error updating reference', error)
