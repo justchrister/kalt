@@ -10,8 +10,8 @@ CREATE TABLE "topic_exchangeRates" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
 --
-    "from"                CHAR(3)         NOT NULL,
-    "to"                  CHAR(3)         NOT NULL,
+    "from"                text                            NOT NULL        REFERENCES sys_currencies(iso),
+    "to"                  text                            NOT NULL        REFERENCES sys_currencies(iso),
     "rate"                numeric
 );
 
