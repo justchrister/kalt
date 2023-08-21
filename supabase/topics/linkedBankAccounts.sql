@@ -11,8 +11,7 @@ CREATE TABLE "topic_linkedBankAccounts" (
     "message_sender"      text                            NOT NULL,
 -- 
     "userId"              uuid                            NOT NULL,
-    "name"                text,
-    "email"               text,
+    "reference"           text,
     "iban"                text,
     "bankCode"            text
 );
