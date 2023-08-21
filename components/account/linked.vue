@@ -61,7 +61,7 @@
 
   const getLinkedBankAccount = async () => {
     const { data, error } = await supabase
-      .from('getLinkedBankAccounts')
+      .from('getLinkedBankAccount')
       .select()
       .eq('userId', user.value.id)
       .limit(1)
