@@ -1,11 +1,9 @@
 --- create the table, with default values
 CREATE TABLE "getLinkedBankAccount" (
   "userId"        uuid      NOT NULL,
-  "name"          text,
-  "email"         text,
+  "reference"     text,
   "iban"          text,
   "bankCode"      text,
-
   PRIMARY KEY ("userId", "iban")
 );
 
