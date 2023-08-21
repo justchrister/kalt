@@ -21,6 +21,7 @@
 
   const updateReference = async () => {
     const { error, data } = await pub(supabase, {
+      entity: user.value.id,
       sender:'components/input/referenceText.vue'
     }).linkedBankAccounts({
       userId: user.value.id,
