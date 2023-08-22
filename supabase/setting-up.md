@@ -159,3 +159,11 @@ Table: sub_userSubscriptions_getUserSubscriptions
 Name: webhook_userPreferences_getUserSubscriptions
 URL: https://ka.lt/api/getUserSubscriptions/webhooks/userPreferences
 Table: sub_userPreferences_getUserSubscriptions
+
+Name: webhook_payments_initiatePayments
+URL: https://ka.lt/api/payments/initiatePayments
+Table: payments
+
+Name: webhook_autoMatchOrders_match
+URL: https://ka.lt/api/autoMatchOrders/match
+Table: autoMatchOrders
