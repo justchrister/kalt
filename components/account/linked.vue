@@ -71,7 +71,7 @@
       return data
     }
     if(error) {
-      ok.log('', 'no linked bank account', error)
+      ok.log('', 'no linked bank account')
       return false
     }
   }
