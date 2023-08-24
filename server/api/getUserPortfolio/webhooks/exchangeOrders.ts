@@ -12,7 +12,7 @@ export default defineEventHandler( async (event) => {
   
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);
-
+  if(message.status != 'fulfilled') return 'order not fulfilled';
   const date = new Date(message.message_sent);
   const dateFrom = date;
   dateFrom.setHours(0, 0, 0, 0);
@@ -40,14 +40,14 @@ export default defineEventHandler( async (event) => {
   const getFulfilledEntities = async (entries) => {
     let entities = [];
     for (let i = 0; i < entries.length; i++) {
-      const entity = await sub(supabase, topic).entity(entries[i]);
-      entries.push(entity);
+      const entity = await sub(supabase, topic).entity(entries[i].message_entity);
+      entities.push(entity);
     }
     return entities
   }
-  const fulfilledOrders= await getFulfilledOrders();
+  const fulfilledOrders = await getFulfilledOrders();
   const fulfilledEntities = await getFulfilledEntities(fulfilledOrders);
-  return fulfilledEntities;
+
   // get all distinct entities
   const json = {
     'userId': message.userId,
@@ -56,11 +56,12 @@ export default defineEventHandler( async (event) => {
     'quantityChange': 0
   };
 
-  for (let i = 0; i < dailyOrders.length; i++) {
-    const order = dailyOrders[i];
+  for (let i = 0; i < fulfilledEntities.length; i++) {
+    if(fulfilledEntities[i].ticker != message.ticker) continue;
+    if(fulfilledEntities[i].userId != message.userId) continue;
+    const order = fulfilledEntities[i];
     json.quantityChange += order.quantity;
   };
-
   const { data, error} = await supabase
     .from('getUserPortfolio')
     .upsert(json)
