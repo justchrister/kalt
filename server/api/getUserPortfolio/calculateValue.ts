@@ -21,7 +21,11 @@ export default defineEventHandler(async (event) => {
       .eq('userId', user)
       .limit(1)
       .single();
-    return data.currency;
+    if(error){
+      return 'EUR'
+    } else {
+      return data.currency;
+    }
   };
   const getUserPortfolio = async (user) => {
     const { data, error } = await supabase
@@ -49,11 +53,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const calculateAndAdd = async (user) => {
-    
-    const currency = await getUserCurrency(user);
-    const portfolio = await getUserPortfolio(user);
-    const assetPrice = await getAssetPrice(currency, 'gi.ddf');
+  const calculateValues = async (user, portfolio, assetPrice, currency) => {
     const array = []
     let value = 0;
     for (let i = 0; i < portfolio.length; i++) {
@@ -62,28 +62,36 @@ export default defineEventHandler(async (event) => {
         'userId': user,
         'date': portfolio[i].date,
         'ticker': portfolio[i].ticker,
-        'value_currency': currency,
+        'valueCurrency': currency,
         'value': value
       })
     }
-    for (let i = 0; i < array.length; i++) {
+    return array
+  }
+
+  const calculateAndAdd = async (user) => {
+    const currency = await getUserCurrency(user);
+    const portfolio = await getUserPortfolio(user);
+    const assetPrice = await getAssetPrice(currency, 'gi.ddf');
+    const calculatedValue = await calculateValues(user, portfolio, assetPrice, currency);
+    for (let i = 0; i < calculatedValue.length; i++) {
       const { data, error } = await supabase
         .from('getUserPortfolio')
-        .update(array[i])
-        .eq('ticker', array[i].ticker)
-        .eq('date', array[i].date)
-        .eq('userId', array[i].userId)
+        .update(calculatedValue[i])
+        .eq('ticker', calculatedValue[i].ticker)
+        .eq('date', calculatedValue[i].date)
+        .eq('userId', calculatedValue[i].userId)
         .select()
     }
   }
   if(body){
-    const calculated = await calculateAndAdd(body.record.userId);
-    return array
+    await calculateAndAdd(body.record.userId);
+    return 'array'
   }
   if(!body){
     const users = await getUsers();
     for (let i = 0; i < users.length; i++) {
-      const calculated = await calculateAndAdd(users[i].userId);
+      await calculateAndAdd(users[i].userId);
     }
     return 'updated for all'
   }
