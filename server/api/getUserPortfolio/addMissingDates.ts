@@ -15,8 +15,11 @@ export default defineEventHandler(async (event) => {
       .order('date', { ascending: true })
       .limit(1)
       .single();
-    if(error) ok.log('error', 'could not get first invest date for '+userId+': ', error)
-    return new Date(data.date)
+    if(error) {
+      ok.log('error', 'could not get first invest date for '+userId+': ', error)
+    } else {
+      return new Date(data.date)
+    }
   }
   const insertDate = async (date, userId) => {
     const { data, error } = await supabase
@@ -30,6 +33,10 @@ export default defineEventHandler(async (event) => {
   const addDays = async (userId) => {
     const start = await getFirstInvestDate(userId);
     const end = new Date();
+    if (start.toISOString().slice(0, 10) === end.toISOString().slice(0, 10)) {
+      ok.log('', 'Start and end dates are the same!');
+      return
+    }
     while (start <= end) {
       await insertDate(start, userId);
       start.setDate(start.getDate() + 1);
