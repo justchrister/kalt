@@ -13,7 +13,8 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topicSub).entity(body.record.message_entity);
   await sub(supabase, topicSub).read(service, body.record.message_id);  
-  ok.log('', 'message:', message)
+  if(message.autoInvest===0 || !message.autoInvest) return 'autoInvest is 0'
+  
   const transactionComplete = (status) => {
     if(status==='complete') return true
     return false
