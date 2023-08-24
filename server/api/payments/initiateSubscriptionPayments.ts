@@ -5,7 +5,6 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'chargeSubscriptions';
-  const serviceKebab = ok.camelToKebab(service);
   const topic = 'userSubscriptions';
   const body = await readBody(event);
   
@@ -27,7 +26,7 @@ export default defineEventHandler(async (event) => {
       .single()
 
     if(data) {
-      if(data.processing_id == processingId) {
+      if(data.processingId == processingId) {
         ok.log('', 'being processed by this instance')
         return 'me'
       } else {
@@ -45,7 +44,7 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('payments_subscriptionsProcessing')
       .insert({
-        processing_id: processingId,
+        processingId: processingId,
       })
       .select()
   }
@@ -54,7 +53,7 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('payments_subscriptionsProcessing')
       .delete()
-      .eq('processing_id', processingId)
+      .eq('processingId', processingId)
       .select()
     if(data){
       ok.log('', 'removed as processing') 
@@ -89,13 +88,12 @@ export default defineEventHandler(async (event) => {
       .limit(1)
       .single()
   
-    if(data) {
+    if(error) {
+      ok.log('', 'could not find transaction, not charged yet')
+      return 'not charged'
+    } else {
       ok.log('', 'found transaction, already charged')
       return 'already charged'
-    }
-    if(error) {
-      ok.log('', 'could not find transaction, not charged')
-      return 'not charged'
     }
   }
 
@@ -103,22 +101,20 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('topic_accountTransactions')
       .insert({
-        message_id: ok.uuid(),
-        message_entity: ok.uuid(),
         message_sender: 'server/api/payments/initiateSubscriptionPayments.ts',
         userId: userId,
         status: 'pending',
         type: 'deposit',
         subType: 'subscription',
         amount: amount,
-        currency: currency
+        currency: currency,
+        autoInvest: 1
       })
       .select()
-    if(data){
-      ok.log('success', 'created transaction'+data.transaction_id)
-    }
     if(error){
       ok.log('error', 'could not create transaction', error)
+    } else {
+      ok.log('success', 'created transaction', data)
     }
   }
   const getChargableDays = async () => {
@@ -145,8 +141,7 @@ export default defineEventHandler(async (event) => {
 
   let subscriptions = [];
   for (let i = 0; i < users.length; i++) {
-    let subscription = null
-    subscription = await ok.getEntity(supabase, topic, users[i].userId);
+    const subscription = await sub(supabase, topic).entity(users[i].userId);
     const transaction = await getTransactions(users[i].userId);
     if(transaction=='not charged') {
       subscriptions.push(subscription)
@@ -156,18 +151,19 @@ export default defineEventHandler(async (event) => {
     }
   }
   const chargeableDays = await getChargableDays();  
-  console.log(chargeableDays) // it logs [ '16' ]
+  ok.log('', 'subscriptions: ', subscriptions);
+  ok.log('', 'days to be charged: ', chargeableDays);
   let charges = [];
   for (let i = 0; i < subscriptions.length; i++) {
     if(subscriptions[i].active == true) {
       const user = users.find(u => u.userId === subscriptions[i].userId);
       const userCurrency = user ? user.currency : null;
-      for (let j = 0; j < subscriptions[i].days_of_month.length; j++) {
-        if(chargeableDays.includes(subscriptions[i].days_of_month[j])) {
+      for (let j = 0; j < subscriptions[i].days.length; j++) {
+        if(chargeableDays.includes(subscriptions[i].days[j])) {
           ok.log('success', 'chargeable day for', subscriptions[i]);
           charges.push({
             userId: subscriptions[i].userId,
-            day: subscriptions[i].days_of_month[j],
+            day: subscriptions[i].days[j],
             amount: subscriptions[i].amount,
             currency: userCurrency,
           });
@@ -175,7 +171,7 @@ export default defineEventHandler(async (event) => {
       }
     }
   }
-
+  ok.log('', 'to be charged: ', charges)
   inProcessing = await checkIfInProcessing();
   if(inProcessing == 'me') {
     for (let i = 0; i < charges.length; i++) {
@@ -184,7 +180,7 @@ export default defineEventHandler(async (event) => {
     await removeAsProcessing();
     return charges
   } else {
-    return 'already processing'
+    return 'not being processed by me'
   }
   
 });
