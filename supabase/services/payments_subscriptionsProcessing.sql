@@ -1,7 +1,7 @@
 --- create the table, with default values
-CREATE TABLE "paymentsSubscriptionsProcessing" (
+CREATE TABLE "payments_subscriptionsProcessing" (
   "processingId"  uuid          NOT NULL    PRIMARY KEY,
   "timestampz"    timestamptz   NOT NULL    DEFAULT now()
 );
 
-ALTER TABLE "paymentsSubscriptionsProcessing" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "payments_subscriptionsProcessing" ENABLE ROW LEVEL SECURITY;
