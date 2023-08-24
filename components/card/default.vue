@@ -17,7 +17,7 @@
       .limit(1)
       .single()
     if(data) {
-      ok.log('', 'Got default card: ', data)
+      ok.log('', 'Got default card: •••• •••• •••• '+data.lastFourDigits)
       if(data.number){
         return data.number
       } else {
@@ -32,9 +32,7 @@
     }
   }
   const defaultCard = await getPaymentCardDefault();
-  if(defaultCard){
-    ok.log('', 'User has default card')
-  } else {
+  if(!defaultCard) {
     ok.log('error', 'User does not have default card')
     await navigateTo('/cards')
   }
