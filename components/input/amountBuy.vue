@@ -47,7 +47,12 @@ const user = useSupabaseUser()
 
   const currency = await getPreferredCurrency();
   const amount = ref(10);
+  let initialAmount = props.amount;
+  let previousValue;
   const updatePaymentAmount = async () => { 
+    if(initialAmount==ok.toInt(amount.value)) return
+    if(previousValue==ok.toInt(amount.value)) return
+    previousValue = ok.toInt(amount.value)
     if(amount.value){
       const { error } = await pub(supabase, {
         sender:'components/input/amountBuy.vue',
