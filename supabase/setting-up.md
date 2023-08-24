@@ -167,3 +167,11 @@ Table: payments
 Name: webhook_autoMatchOrders_match
 URL: https://ka.lt/api/autoMatchOrders/match
 Table: autoMatchOrders
+
+Name: webhook_getUserPortfolio_addQuantityToday
+URL: https://ka.lt/api/getUserPortfolio/addQuantityToday
+Table: getUserPortfolio
+
+Name: webhook_getUserPortfolio_calculateValue
+URL: https://ka.lt/api/getUserPortfolio/calculateValue
+Table: getUserPortfolio
