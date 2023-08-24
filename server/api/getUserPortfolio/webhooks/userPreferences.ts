@@ -4,10 +4,8 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 // this one should get the new currency and replace that in the value_currency column
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const query = getQuery(event)
   const service = 'getUserPortfolio';
   const topic = 'userPreferences';
-  const ticker = 'gi.ddf';
   const body = await readBody(event)
   if(body.record.message_read) return 'message already read'
   
@@ -16,9 +14,8 @@ export default defineEventHandler( async (event) => {
 
   const { data, error } = await supabase
     .from('getUserPortfolio')
-    .update({ 'value_currency': message.currency })
+    .update({ 'valueCurrency': message.currency })
     .eq('userId', message.userId)
-    .eq('ticker', ticker)
     .select();
 
   if(data) return data
