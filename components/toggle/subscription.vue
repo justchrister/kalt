@@ -14,8 +14,13 @@
     .single()
   if(data) isOn.value = data.active;
   const toggleValue = async () => {
-    if(isOn.value) return false
-    else return true
+    if(isOn.value) {
+      ok.log('', 'Subscription toggled off')
+      return false
+    } else {
+      ok.log('', 'Subscription toggled on')
+      return true
+    }
   }
   const toggleSubscription = async () => {
     const toggledValue = await toggleValue()
