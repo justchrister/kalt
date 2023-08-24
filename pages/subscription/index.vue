@@ -43,7 +43,7 @@
       ok.log('error', 'Failed to get user subscription: ', error)
       return error
     } else {
-      ok.log('', 'Got user subscription: ', data)
+      ok.log('', 'Got user subscription: '+data.amount+' '+data.currency+' on '+data.days)
       return data
     }
   }
@@ -60,9 +60,7 @@
     }
   }
   const defaultCard = await getPaymentCardDefault();
-  if(defaultCard){
-    ok.log('', 'User has default card')
-  } else {
+  if(!defaultCard){
     ok.log('error', 'User does not have default card')
     await navigateTo('/cards')
   }
