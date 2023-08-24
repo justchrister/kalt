@@ -40,7 +40,12 @@
   if(error) {
     ok.log('error', 'could not get payment cards', error)
   } else {
-    ok.log('success', 'got payment cards', data)
+    let cardArray= [];
+    for (let i = 0; i < data.length; i++) {
+      const card = data[i];
+      cardArray.push('•••• •••• •••• '+card.lastFourDigits)
+    }
+    ok.log('success', 'got payment cards:', cardArray)
   }
   const setDefault = async (id) => {
     const { error } = await pub(supabase, {
