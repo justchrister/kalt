@@ -38,7 +38,7 @@ const props = defineProps({
       .order('date', { ascending: false })
       .limit(props.limit || 200)
     if (data && data.length>0){
-      ok.log('success', 'got transactions for '+user.value.id)
+      ok.log('success', 'got transactions for '+user.value.id+':', data)
       return data
     } else {
       ok.log('error', 'could not get transactions for '+user.value.id)
