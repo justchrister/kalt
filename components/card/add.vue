@@ -127,14 +127,14 @@
       await navigateTo('/cards/success')
     }
   }
-  const checkBrand = (brand_id) => {
-    if(brand_id){
-      let first_digit = brand_id.toString().slice(0,  1);
-      if(first_digit==='2') return "logo mastercard"
-      if(first_digit==='3') return "logo amex"
-      if(first_digit==='5') return "logo mastercard"
-      if(first_digit==='4') return "logo visa"
-      if(first_digit==='6') return "logo"
+  const checkBrand = (brand) => {
+    if(brand){
+      let firstDigit = brand.toString().slice(0,  1);
+      if(firstDigit==='2') return "logo mastercard"
+      if(firstDigit==='3') return "logo amex"
+      if(firstDigit==='5') return "logo mastercard"
+      if(firstDigit==='4') return "logo visa"
+      if(firstDigit==='6') return "logo"
       return "ehm what?"
     }
   }
