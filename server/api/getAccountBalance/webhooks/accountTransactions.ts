@@ -34,12 +34,16 @@ export default defineEventHandler( async (event) => {
   }
 
   const getTransactions = async () => {
+    let transactionEntities = [];
     const { data, error } = await supabase
       .from('topic_accountTransactions')
       .select()
       .eq('status', 'complete')
       .eq('userId', message.userId);
-    return data
+    for (let i = 0; i < data.length; i++) {
+      transactionEntities.push(await sub(supabase, topic).entity(data[i].message_entity))
+    }
+    return transactionEntities
   }
   const transactions = await getTransactions();
   if(!transactions) return 'no transactions found';
@@ -52,8 +56,8 @@ export default defineEventHandler( async (event) => {
       preferredCurrency
     );
     json.amount += parseFloat(amountConverted);
+    ok.log('', transaction.amount)
   }
-  ok.log('', transactions)
   if(!json.amount) json.amount=0;
   const { data, error } = await supabase
     .from('getAccountBalance')
