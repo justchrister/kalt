@@ -141,11 +141,16 @@
         data: datas.value.slice(-props.days)
       }]
   }))
+  let toLog = []
   const { data, error } = await supabase
     .from('getUserPortfolio')
     .select()
     .eq('userId', user.value.id)
     .order('date', { ascending: true })
+  for (let i = 0; i < data.length; i++) {
+    toLog.push(data[i].date+' '+data[i].value+' '+data[i].valueCurrency)
+  }
+  ok.log('', toLog)
   if(error) ok.log('error', 'could not getUserPortfolio: ', error)
 
   const getUser = async () => {
@@ -169,7 +174,15 @@
     labels.value.push(data[i].date)
     datas.value.push(data[i].value)
   }
-  const hoveredValue = ref(new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(datas.value[datas.value.length - props.days]));
+  const idkWhatToCallIt = ref(props.days);
+  if(props.days>datas.value.length){
+    idkWhatToCallIt.value = (datas.value.length-1)
+  }
+  const hoveredValue = ref(
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(
+      datas.value[idkWhatToCallIt.value]
+    )
+  );
 
   const updateHoveredValue = (x) => {
     hoveredValue.value = x;
