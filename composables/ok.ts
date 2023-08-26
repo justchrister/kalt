@@ -193,8 +193,11 @@ export const ok = {
       .eq('to', to)
       .limit(1)
       .single()
-    if(data) return amount*data.rate
-    if(error) return amount
+    if(error) {
+      return amount
+    } else {
+      return amount*data.rate
+    }
   },
   cleanMessage: async (message) => {
     const json = Object.entries(message).reduce((acc, [key, value]) => {
