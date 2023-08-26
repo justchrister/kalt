@@ -31,7 +31,7 @@
     if(data){
       return {
         'value': data.value,
-        'currency': data.value_currency
+        'currency': data.valueCurrency
       }
     } else {
       return {
@@ -44,7 +44,7 @@
   const getExchangeRate = async (from) => {
     if(from === 'EUR') return 1
     const { data, error } = await supabase
-      .from('exchange_rates')
+      .from('topic_exchangeRates')
       .select()
       .eq('from', )
       .eq('to', 'EUR')
