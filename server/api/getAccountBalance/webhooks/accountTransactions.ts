@@ -6,7 +6,6 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'getAccountBalance';
   const topic = 'accountTransactions';
-  const query = getQuery(event);
   const body = await readBody(event);
   if(body.record.message_read) return 'message already read';
 
@@ -20,18 +19,22 @@ export default defineEventHandler( async (event) => {
       .eq('userId', message.userId)
       .limit(1)
       .single()
-    return data.currency
+    if(error){
+      return 'EUR'
+    } {
+      return data.currency
+    }
   }
   const preferredCurrency = await getPreferredCurrency();
   
   let json = {
     "userId": message.userId,
-    "amount": null,
+    "amount": 0,
     "currency": preferredCurrency
   }
 
   const getTransactions = async () => {
-      const { data, error } = await supabase
+    const { data, error } = await supabase
       .from(topic)
       .select()
       .eq('status', 'complete')
@@ -55,6 +58,5 @@ export default defineEventHandler( async (event) => {
     .from('getAccountBalance')
     .upsert(json)
     .select()
-  if(data) return data
-  if(error) return error
+  return { data, error }
 });
