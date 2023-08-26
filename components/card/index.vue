@@ -16,8 +16,8 @@
       required: true
     }
   })
-  const checkBrand = (brand_id) => {
-    let firstDigit = brand_id.toString().slice(0,  1);
+  const checkBrand = (brand) => {
+    let firstDigit = brand.toString().slice(0,  1);
     if(firstDigit==='2') return "logo mastercard"
     if(firstDigit==='3') return "logo amex"
     if(firstDigit==='5') return "logo mastercard"
