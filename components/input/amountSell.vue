@@ -30,7 +30,7 @@ const user = useSupabaseUser()
       }).exchangeOrder({
         userId: user.value.id,
         quantity: -val.value,
-        order_type: 'sell',
+        type: 'sell',
       });
       if(error) ok.log('error', 'could not update quantity', error)
       if(!error) ok.log('success', 'updated quantity')
