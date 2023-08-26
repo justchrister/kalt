@@ -177,11 +177,11 @@ export const ok = {
   uuid(){
     return uuidv4()
   },
-  getEntity: async (supabase, topic, entity_id) => {
+  getEntity: async (supabase, topic, entity) => {
     const { data, error } = await supabase
       .from(topic)
       .select()
-      .eq('message_entity', entity_id)
+      .eq('message_entity', entity)
       .order('message_sent', { ascending: true })
     return ok.combineJson(data)
   },
