@@ -13,7 +13,17 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topicSub).entity(body.record.message_entity);
   await sub(supabase, topicSub).read(service, body.record.message_id);  
-  if(message.autoInvest===0 || !message.autoInvest) return 'autoInvest is 0'
+  if (message.autoInvest === 0 || message.autoInvest === null || message.autoInvest === undefined) {
+    return 'autoInvest is 0 or undefined';
+  }
+  
+  if (message.subtype === 'autoInvested') {
+    return 'already autoInvested';
+  }
+  
+  if (message.type !== 'deposit') {
+    return 'not a deposit';
+  }
   
   const transactionComplete = (status) => {
     if(status==='complete') return true
