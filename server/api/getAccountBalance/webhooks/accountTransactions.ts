@@ -35,14 +35,14 @@ export default defineEventHandler( async (event) => {
 
   const getTransactions = async () => {
     const { data, error } = await supabase
-      .from(topic)
+      .from('topic_accountTransactions')
       .select()
       .eq('status', 'complete')
       .eq('userId', message.userId);
     return data
   }
   const transactions = await getTransactions();
-
+  if(!transactions) return 'no transactions found';
   for (let i = 0; i < transactions.length; i++) {
     const transaction = transactions[i];
     const amountConverted = await ok.convertCurrency(
@@ -53,7 +53,8 @@ export default defineEventHandler( async (event) => {
     );
     json.amount += parseFloat(amountConverted);
   }
-
+  ok.log('', transactions)
+  if(!json.amount) json.amount=0;
   const { data, error } = await supabase
     .from('getAccountBalance')
     .upsert(json)
