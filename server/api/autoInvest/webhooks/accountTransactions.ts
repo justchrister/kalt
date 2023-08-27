@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
       quantity: quantity
     });
     if(error){
-      return error
+      return null
     } else {
       return 'data'
     }
@@ -81,11 +81,26 @@ export default defineEventHandler(async (event) => {
       return 'data'
     }
   };
+
+  const updateTransaction = async () => {
+    const { error } = await pub(supabase, {
+      sender:'server/api/autoInvest/accountTransactions.ts',
+      entity: message.message_entity,
+    }).accountTransactions({
+      'userId': message.userId,
+      'status': 'complete',
+      'autoInvest': 0,
+      'subType': 'autoInvested',
+    });
+    if(error){
+      return error
+    } else {
+      return 'data'
+    }
+  };
   const exchangeOrder = await createExchangeOrder();
-  if(!exchangeOrder) return 'exchangeOrder'
+  if(!exchangeOrder) return exchangeOrder
   const withdrawTransaction = await createWithdrawTransaction();
-  return {
-    'exchangeOrder': exchangeOrder,
-    'withdrawTransaction': withdrawTransaction
-  }
+  const updatedTransaction = await updateTransaction();
+  return { exchangeOrder, withdrawTransaction, updatedTransaction };
 });
