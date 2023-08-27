@@ -16,21 +16,15 @@ export default defineEventHandler(async (event) => {
   if (message.autoInvest === 0 || message.autoInvest === null || message.autoInvest === undefined) {
     return 'autoInvest is 0 or undefined';
   }
-  
   if (message.subtype === 'autoInvested') {
     return 'already autoInvested';
   }
-  
   if (message.type !== 'deposit') {
     return 'not a deposit';
   }
-  
-  const transactionComplete = (status) => {
-    if(status==='complete') return true
-    return false
+  if(message.status!=='complete') {
+    return 'wrong payment status'
   }
-  if(!transactionComplete(message.status)) return 'wrong payment status'
-
   const getAssetPrice = async (currency , ticker) => {
     const { data, error } = await supabase
       .from('getAssetPrice')
