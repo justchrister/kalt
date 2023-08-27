@@ -12,7 +12,12 @@ export default defineEventHandler(async (event) => {
   if (body.record.message_read) return 'message already read';
 
   const message = await sub(supabase, topicSub).entity(body.record.message_entity);
-  await sub(supabase, topicSub).read(service, body.record.message_id);  
+  await sub(supabase, topicSub).read(service, body.record.message_id);
+
+  if(message.status!=='complete') {
+    return 'wrong payment status'
+  }
+  
   if (message.autoInvest === 0 || message.autoInvest === null || message.autoInvest === undefined) {
     return 'autoInvest is 0 or undefined';
   }
@@ -21,9 +26,6 @@ export default defineEventHandler(async (event) => {
   }
   if (message.type !== 'deposit') {
     return 'not a deposit';
-  }
-  if(message.status!=='complete') {
-    return 'wrong payment status'
   }
   const getAssetPrice = async (currency , ticker) => {
     const { data, error } = await supabase
