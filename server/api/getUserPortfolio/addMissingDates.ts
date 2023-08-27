@@ -7,41 +7,36 @@ export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
 
-  const getFirstInvestDate = async (userId) => {
+// generate an array of dates going back 90 days
+// try an upsert for all dates at once
+
+
+
+  const generateDates = async (userId) => {
+    const array = [];
+    const today = new Date();
+    for (let i = 0; i < 99; i++) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      array.push(
+        {
+          'date': date,
+          'ticker': 'gi.ddf',
+          'userId': userId,
+          'value': 0,
+          'valueCurrency': 'EUR'
+        }
+      )
+    }
+    return array
+  }
+
+
+  const insertDate = async (json) => {
     const { data, error } = await supabase
       .from('getUserPortfolio')
-      .select('date')
-      .eq('userId', userId)
-      .order('date', { ascending: true })
-      .limit(1)
-      .single();
-    if(error) {
-      ok.log('error', 'could not get first invest date for '+userId+': ', error)
-    } else {
-      return new Date(data.date)
-    }
+      .insert(json)
   }
-  const insertDate = async (date, userId) => {
-    const { data, error } = await supabase
-    .from('getUserPortfolio')
-    .insert({
-      'date': date,
-      'ticker': 'gi.ddf',
-      'userId': userId
-    })
-  }
-  const addDays = async (userId) => {
-    const start = await getFirstInvestDate(userId);
-    const end = new Date();
-    if (start.toISOString().slice(0, 10) === end.toISOString().slice(0, 10)) {
-      ok.log('', 'Start and end dates are the same!');
-      return
-    }
-    while (start <= end) {
-      await insertDate(start, userId);
-      start.setDate(start.getDate() + 1);
-    };
-  };
   const getUsers = async () => {
     const { data, error } = await supabase
       .from('getUser')
@@ -50,14 +45,13 @@ export default defineEventHandler(async (event) => {
     if(error) ok.log('error', 'could not get all users: ', error)
     return data
   };
-  if(!body){
-    const users = await getUsers();
-    console.log(users)
-    for (let i = 0; i < users.length; i++) {
-      await addDays(users[i].userId);
+
+  const users = await getUsers();
+  for (let i = 0; i < users.length; i++) {
+    const dates = await generateDates(users[i].userId);
+    for (let j = 0; j < dates.length; j++) {
+      await insertDate(dates[j])
     }
-  } else {
-    await addDays(body.record.userId);
   }
   return 'dates added'
 });
