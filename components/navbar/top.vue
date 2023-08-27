@@ -154,7 +154,12 @@ ul li:before{
 }
 .menu ul.col-2{
   margin-top:$clamp-3;
-  margin-left:$clamp-18;
+  margin-left:$clamp-25;
+  padding-left:0;
+  li::before{
+    content:'';
+    display:none;
+  }
 }
 
 button,
