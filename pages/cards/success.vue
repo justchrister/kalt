@@ -22,12 +22,12 @@
       content: 'Make money, make a difference.'
     }]
   })
-  
-  const router = useRouter()
+
   const goBack = () => {
-    router.go(-2)
+    clearTimeout(timer1)
+    navigateTo('/cards')
   }
-  setTimeout(goBack, 10000)
+  var timer1 = setTimeout(goBack, 10000)  
 
 </script>
 <style scoped lang="scss">
