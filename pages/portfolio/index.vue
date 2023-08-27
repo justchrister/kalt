@@ -35,6 +35,7 @@
     <block>
       <cta :showDivest="true"/>
     </block>
+    <!--
     <block>
       <h3>Impact in numbers <omoji emoji="😮"/></h3>
       <p> Your investments has decreased your carbon footprint by 90 tonnes of Co2, in other words: </p>
@@ -44,7 +45,7 @@
         <impact type="plane" />
         <impact type="avocado"/>
       </div>
-    </block>
+    </block>-->
   </main>
 </template>
 <script setup>
