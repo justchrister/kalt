@@ -34,7 +34,7 @@
       ok.log('error', 'could not get account balance', error)
       return "0 €"
     } else {
-      ok.log('success', 'got account balance', data)
+      ok.log('success', 'got account balance: '+data.amount+' '+data.currency)
       return ok.formatCurrency(data.amount, data.currency)
     }
   }
