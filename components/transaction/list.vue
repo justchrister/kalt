@@ -19,13 +19,13 @@
     </div>
 </template>
 <script setup>
-const props = defineProps({
+  const props = defineProps({
     limit: {
       type: Number,
       required: false 
     }
   })
-
+  
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
   const getTransactions = async () => {
