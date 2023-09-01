@@ -194,6 +194,10 @@
     const firstValue = datas.value[datas.value.length - props.days] || datas.value[0];
     const lastValue = x;
     const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
+
+    if(rawPercentageChange === Infinity) return percentageChange.value = 99.9;
+    if (isNaN(rawPercentageChange)) return percentageChange.value = 0;
+
     percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
     percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
   }
