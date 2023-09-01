@@ -7,11 +7,6 @@ export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
 
-// generate an array of dates going back 90 days
-// try an upsert for all dates at once
-
-
-
   const generateDates = async (userId) => {
     const array = [];
     const today = new Date();
