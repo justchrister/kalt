@@ -4,29 +4,16 @@ import { ok } from '~/composables/ok';
 import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const body = await readBody(event);
 
   const getUsers = async () => {
     const { data, error } = await supabase
       .from('getUser')
-      .select('userId')
+      .select('userId, currency')
     if(data) ok.log('success', 'got all users: ', data)
     if(error) ok.log('error', 'could not get all users: ', error)
     return data
   };
-  const getUserCurrency = async (user) => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('currency')
-      .eq('userId', user)
-      .limit(1)
-      .single();
-    if(error){
-      return 'EUR'
-    } else {
-      return data.currency;
-    }
-  };
+
   const getUserPortfolio = async (user) => {
     const { data, error } = await supabase
       .from('getUserPortfolio')
@@ -34,24 +21,24 @@ export default defineEventHandler(async (event) => {
       .eq('userId', user)
       .eq('ticker', 'gi.ddf')
     return data;
-  }
+  };
 
 
-  const getAssetPrice = async (currency, ticker) => {
+  const getAssetPrice = async () => {
+    const assetPriceIndex = {};
     const { data, error } = await supabase
       .from('getAssetPrice')
       .select()
-      .eq('currency', currency)
-      .eq('ticker', ticker)
       .order('date', { ascending: false })
-      .limit(1)
-      .single();
-    if(error) {
-      return error
+    if(!error){
+      data.forEach(({ ticker, currency, price }) => {
+        assetPriceIndex[`${ticker}_${currency}`] = price;
+      });
+      return assetPriceIndex
     } else {
-      return data.price
+      return error
     }
-  }
+  };
 
   const calculateValues = async (user, portfolio, assetPrice, currency) => {
     const array = []
@@ -67,32 +54,48 @@ export default defineEventHandler(async (event) => {
       })
     }
     return array
+  };
+  const addCalculatedValue = async (json) => {
+    const { data, error } = await supabase
+      .from('getUserPortfolio')
+      .update(json)
+      .eq('ticker', json.ticker)
+      .eq('date', json.date)
+      .eq('userId', json.userId)
+      .select()
+    return {data, error}
   }
+  const assetPrices = await getAssetPrice();
+  ok.log('', 'got asset prices: ', assetPrices)
 
-  const calculateAndAdd = async (user) => {
-    const currency = await getUserCurrency(user);
+  const calculateAndAdd = async (user, currency) => {
+    let inserted = []
     const portfolio = await getUserPortfolio(user);
-    const assetPrice = await getAssetPrice(currency, 'gi.ddf');
+    const assetPrice = assetPrices[`gi.ddf_${currency}`];
     const calculatedValue = await calculateValues(user, portfolio, assetPrice, currency);
     for (let i = 0; i < calculatedValue.length; i++) {
-      const { data, error } = await supabase
-        .from('getUserPortfolio')
-        .update(calculatedValue[i])
-        .eq('ticker', calculatedValue[i].ticker)
-        .eq('date', calculatedValue[i].date)
-        .eq('userId', calculatedValue[i].userId)
-        .select()
+      const {data, error} = await addCalculatedValue(calculatedValue[i])
+      
+      if(data && calculatedValue[i].value !== 0) {
+        inserted.push({
+          'userId': calculatedValue[i].userId,
+          'value': calculatedValue[i].value
+        })
+      }
     }
-  }
-  if(body){
-    await calculateAndAdd(body.record.userId);
-    return 'array'
-  }
-  if(!body){
-    const users = await getUsers();
-    for (let i = 0; i < users.length; i++) {
-      await calculateAndAdd(users[i].userId);
-    }
-    return 'updated for all'
-  }
+    return inserted
+  };
+  const users = await getUsers();
+  let response = [];
+
+  // Convert all calculateAndAdd to promises
+  const allPromises = users.map(user => calculateAndAdd(user.userId, user.currency));
+
+  // Execute promises in parallel
+  const allResults = await Promise.all(allPromises);
+
+  // Combine the results
+  response = allResults.flat();
+
+  return response;
 });
