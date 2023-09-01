@@ -34,11 +34,9 @@ export default defineEventHandler(async (event) => {
       quantityToday += current.quantityChange
       const { data, error } = await supabase
         .from('getUserPortfolio')
-        .update(
-          { 
-            'quantityToday': quantityToday 
-          }
-        )
+        .update({ 
+          'quantityToday': quantityToday 
+        })
         .eq('userId', current.userId)
         .eq('date', current.date)
         .eq('ticker', current.ticker)
