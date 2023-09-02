@@ -1,6 +1,6 @@
 <template>
   <main>
-    <block>
+    <block margin="half">
       <intro-fund text="The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
     </block>
     <block>
@@ -20,7 +20,17 @@
       </criteria-list>
     </block>
     <block>
-      <button> invest now -> </button>
+      By investing in the art fund you can own a piece of all our artworks, and enjoy the benefits of a diversified portfolio of art.
+      <br><br>
+      <button @click="navigateTo('/invest')"> invest now -> </button>
+    </block>
+    <block>
+      <h1>the art</h1>
+      <artwork 
+        title="All colored cast, part II"
+        artist="Jean-Michel Basquiat"
+        image="/art/all-coloured-mockup.webp"
+      />
     </block>
   </main>
 </template>
@@ -38,5 +48,5 @@
   
 </script>
 <style scoped lang="scss">
-  
+
 </style>
