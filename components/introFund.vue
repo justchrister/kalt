@@ -19,13 +19,15 @@
     &:before{
       content:'';
       display:block;
-      width:$clamp-40;
-      height:$clamp-60;
+      width:$clamp-60;
+      height:$clamp-70;
       top:0;
-      transform:translateX(-55%);
+      transform:translateX(-66%);
       position:absolute;
       z-index:-1;
-      background:$red;
+      background:url('/art-fund-background-element.svg') no-repeat;
+      background-size:contain;
+      background-position:right;
     }
   }
   h1{
