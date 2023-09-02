@@ -81,7 +81,7 @@
     width:100%;
     color:$light;
     font-family: $serif;
-    font-size: $big-clamp;
+    font-size: $clamp-3-5;
     line-height: 150%;
     margin-bottom: $clamp-2;
     font-display: optional;
