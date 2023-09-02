@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
 
-  const generateDates = async (userId) => {
+  const generateDates = async (userId, currency) => {
     const array = [];
     const today = new Date();
     for (let i = 0; i < 99; i++) {
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
           'ticker': 'gi.ddf',
           'userId': userId,
           'value': 0,
-          'valueCurrency': 'EUR'
+          'valueCurrency': currency
         }
       )
     }
@@ -35,18 +35,17 @@ export default defineEventHandler(async (event) => {
   const getUsers = async () => {
     const { data, error } = await supabase
       .from('getUser')
-      .select('userId')
-    if(data) ok.log('success', 'got all users: ', data)
-    if(error) ok.log('error', 'could not get all users: ', error)
-    return data
+      .select('userId, currency')
+    return { data, error}
   };
 
-  const users = await getUsers();
+  const { data: users, error} = await getUsers();
+  if(error) return{ 'error': error }
   for (let i = 0; i < users.length; i++) {
-    const dates = await generateDates(users[i].userId);
+    const dates = await generateDates(users[i].userId, users[i].currency);
     for (let j = 0; j < dates.length; j++) {
       await insertDate(dates[j])
     }
   }
-  return 'dates added'
+  return 'dates added for users'
 });
