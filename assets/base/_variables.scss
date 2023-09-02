@@ -86,8 +86,6 @@ $border: $border-width solid $dark;
 $border-radius: 0px;
 
 //clamps
-$big-clamp: clamp($unit-min*3.5, $unit*3.5, $unit-max*3.5);
-
 $clamp-0-2: clamp($unit-min*0.2 , $unit*0.2, $unit-max*0.2);
 $clamp-0-5: clamp($unit-min*0.5 , $unit*0.5, $unit-max*0.5);
 $clamp-0-7: clamp($unit-min*0.7 , $unit*0.7, $unit-max*0.7);
@@ -126,7 +124,24 @@ $clamp-30: clamp($unit-min*30 , $unit*30, $unit-max*30);
 $clamp-35: clamp($unit-min*35 , $unit*35, $unit-max*35);
 $clamp-39: clamp($unit-min*39 , $unit*39, $unit-max*39);
 $clamp-40: clamp($unit-min*40 , $unit*40, $unit-max*40);
+$clamp-41: clamp($unit-min*45 , $unit*45, $unit-max*45);
+$clamp-42: clamp($unit-min*46 , $unit*46, $unit-max*46);
+$clamp-43: clamp($unit-min*47 , $unit*47, $unit-max*47);
+$clamp-44: clamp($unit-min*48 , $unit*48, $unit-max*48);
 $clamp-45: clamp($unit-min*45 , $unit*45, $unit-max*45);
 $clamp-46: clamp($unit-min*46 , $unit*46, $unit-max*46);
 $clamp-47: clamp($unit-min*47 , $unit*47, $unit-max*47);
+$clamp-48: clamp($unit-min*48 , $unit*48, $unit-max*48);
+$clamp-49: clamp($unit-min*49 , $unit*49, $unit-max*49);
+$clamp-50: clamp($unit-min*50 , $unit*50, $unit-max*50);
+$clamp-51: clamp($unit-min*51 , $unit*51, $unit-max*51);
+$clamp-52: clamp($unit-min*52 , $unit*52, $unit-max*52);
+$clamp-53: clamp($unit-min*53 , $unit*53, $unit-max*53);
+$clamp-54: clamp($unit-min*54 , $unit*54, $unit-max*54);
+$clamp-55: clamp($unit-min*55 , $unit*55, $unit-max*55);
+$clamp-56: clamp($unit-min*56 , $unit*56, $unit-max*56);
+$clamp-57: clamp($unit-min*57 , $unit*57, $unit-max*57);
+$clamp-58: clamp($unit-min*58 , $unit*58, $unit-max*58);
+$clamp-59: clamp($unit-min*59 , $unit*59, $unit-max*59);
+$clamp-60: clamp($unit-min*60 , $unit*60, $unit-max*60);
 $clamp-70: clamp($unit-min*70 , $unit*70, $unit-max*70);
