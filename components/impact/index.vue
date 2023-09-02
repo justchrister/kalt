@@ -88,7 +88,7 @@
 </script>
 <style scoped lang="scss">
 .impacts{
-  margin-top:$big-clamp;
+  margin-top:$clamp-3-5;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
