@@ -1,29 +1,35 @@
 <template>
   <main>
-    <intro title="Art fund" paragraph="Invest in an index of high quality art from a variety of artist around the world" />
     <block>
-      <h2>What is the Art fund?</h2>
-      <p>The Art fund is an index of high quality art from a variety of artist around the world. The fund is curated by a team of tastemakers. The art is selected based on three criteria:</p>
-      <ol>
-        <li>
-          The artist has a strong expression.
-        </li>
-        <li>
+      <intro-fund text="The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
+    </block>
+    <block>
+      <criteria-list>
+        <criteria :nr="1">
+          The artist has a strong expression, and is aesthetical.
+        </criteria>
+        <criteria :nr="2">
           The artist has already exhibited in more than 3 countries.
-        </li>
-        <li>
+        </criteria>
+        <criteria :nr="3">
           The artist is represented by a gallery that has a reputation for quality.
-        </li>
-      </ol>
+        </criteria>
+        <criteria :nr="3">
+          The art has seen a 15%+ average increase in value.
+        </criteria>
+      </criteria-list>
+    </block>
+    <block>
+      <button> invest now -> </button>
     </block>
   </main>
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'gi.ddf'
+    pagename: 'Art fund'
   })
   useHead({
-    title: 'gi.ddf',
+    title: 'Art fund',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
@@ -32,16 +38,5 @@
   
 </script>
 <style scoped lang="scss">
-main{ padding-top:0; }
-ol{
-  margin:$clamp-1 0;
-  list-style: decimal-leading-zero;
-}
-li{
-  margin:$clamp-0-5 $clamp-5;
-  &::marker{
-    font-size:85%;
-    font-family:$monospace;
-  }
-}
+  
 </style>
