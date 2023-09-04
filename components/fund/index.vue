@@ -57,7 +57,10 @@
     name: 'Art fund',
     description: 'description'
   };
-
+  if(props.ticker==='ffe.ddf'){
+    fund.name='Fossil-free energy fund'
+    fund.description='description'
+  }
   const checked = ref(true);
   const checkedClass = ref('');
   const checkableClass = ref('');
