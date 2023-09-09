@@ -1,18 +1,18 @@
 <template>
   <main>
     <block margin="half">
-      <intro-fund text="The Fossil-free energy invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
+      <intro-fund text="The fossil-free energy fund invests in energy generating infrastructure, in high impact geographies, low current supply, and high projected growth-by "/>
     </block>
     <block>
       <criteria-list>
         <criteria :nr="1">
-          The area must have high growth potential.
+          The geographical area must have high GDP growth potential
         </criteria>
         <criteria :nr="2">
-          The artist has already exhibited in more than 3 countries.
+          The geographical area must have high energy generation potential
         </criteria>
         <criteria :nr="3">
-          The artist is represented by a gallery that has a reputation for quality.
+          The country must have moderate to low political risk
         </criteria>
         <criteria :nr="3">
           The art has seen a 15%+ average increase in value.
