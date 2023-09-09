@@ -7,11 +7,10 @@ export default defineEventHandler( async (event) => {
   const userId = body.record.id;
 
   const addPortfolioDays = async () => {
-    
+    return 
   }
 
 
 
-  if(data) return data
-  if(error) return error
+  if(data) return 'hello'
 });
