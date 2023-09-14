@@ -1,7 +1,7 @@
 <template>
   <main>
     <block margin="half">
-      <intro-fund text="The fossil-free energy fund invests in energy generating infrastructure, in high impact geographies, low current supply, and high projected growth-by "/>
+      <intro-fund ticker="ffe" text="The fossil-free energy fund invests in energy generating infrastructure, in high impact geographies, low current supply, and high projected growth-by "/>
     </block>
     <block>
       <criteria-list>
@@ -23,14 +23,6 @@
       By investing in the Fossil-free energy you can own a piece of all our artworks, and enjoy the benefits of a diversified portfolio of art.
       <br><br>
       <button @click="navigateTo('/invest')"> invest now -> </button>
-    </block>
-    <block>
-      <h1>the art</h1>
-      <artwork 
-        title="All colored cast, part II"
-        artist="Jean-Michel Basquiat"
-        image="/art/all-coloured-mockup.webp"
-      />
     </block>
   </main>
 </template>
