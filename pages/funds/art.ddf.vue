@@ -1,7 +1,7 @@
 <template>
   <main>
     <block margin="half">
-      <intro-fund text="The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
+      <intro-fund ticker="art" text="The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
     </block>
     <block>
       <criteria-list>
