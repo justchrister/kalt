@@ -1,13 +1,13 @@
 <template>
   <main>
     <block>
-      <fund ticker="art.ddf" :checkable="true"/>
+      <fund ticker="gi.ddf" :checkable="true"/>
     </block>
     <block>
       <fund ticker="ffe.ddf" :checkable="true"/>
     </block>
     <block>
-      <fund ticker="gi.ddf" :checkable="true"/>
+      <fund ticker="art.ddf" :checkable="true"/>
     </block>
   </main>
 </template>
