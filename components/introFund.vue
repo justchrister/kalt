@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section :class="props.ticker">
     <h1>{{ props.text }}</h1>
   </section>
 </template>
@@ -8,6 +8,10 @@
     text: {
       type: String,
       required: true
+    },
+    ticker: {
+      type: String,
+      required: false
     }
   })
 </script>
@@ -25,10 +29,17 @@
       transform:translateX(-66%);
       position:absolute;
       z-index:-1;
-      background:url('/art-fund-background-element.svg') no-repeat;
-      background-size:contain;
-      background-position:right;
     }
+  }
+  section.ffe:before{
+    background:url('/ffe-bg-elem.svg') no-repeat;
+    background-size:contain;
+    background-position:right;
+  }
+  section.art:before{
+    background:url('/art-bg-elem.svg') no-repeat;
+    background-size:contain;
+    background-position:right;
   }
   h1{
     font-size: $clamp-2-5;
