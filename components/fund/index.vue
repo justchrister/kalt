@@ -10,19 +10,7 @@
         <div class="description">
           {{ fund.description}}
         </div>
-        <div v-if="checked" class="read-more-adjust-percentage">
-          <div class="adjust-percent-wrapper">
-            <span style="text-align:center;">{{val}} %</span>
-            <span @click="remove()">-</span>
-            <span @click="add()">+</span>
-          </div>
-          <nuxt-link :to="fund.url">
-            <div class="button">
-              read more ->
-            </div>
-          </nuxt-link>
-        </div>
-        <nuxt-link :to="fund.url" v-else>
+        <nuxt-link :to="fund.url">
           <div class="button">
             read more ->
           </div>
@@ -61,39 +49,10 @@
     fund.name='Fossil-free energy fund'
     fund.description='description'
   }
-  const checked = ref(true);
-  const checkedClass = ref('');
-  const checkableClass = ref('');
-
-  if(props.checkable) checkableClass.value="checkable";
-  if(props.checked) checkedClass.value="checked";
-
-  const checkIt = async () => {
-    if(checked.value){
-      checked.value=false
-      checkedClass.value=''
-    } else {
-      checked.value=true
-      checkedClass.value='checked'
-    }
-  };
-  const max = 100;
-  const val = ref(0)
-  const add = async () => { 
-    if(val.value>=max){
-      val.value=max
-    } else {
-      val.value+=10
-    }
+  if(props.ticker==='gi.ddf'){
+    fund.name='100 Global Vision'
+    fund.description='description'
   }
-  const remove = async () => {
-    if(val.value<=0){
-      val.value=0
-    } else {
-      val.value-=10
-    }
-  }
-
 </script>
 <style scoped lang="scss">
   .wrapper{
