@@ -9,9 +9,9 @@ $unit-min: 8px;
 $unit: calc($sitewidth/55);
 $unit-max: calc($maxsitewidth/55);
 
-$light: #FCF9F2;
+$light: #FEFDFA;
 
-$dark: #202124;
+$dark: #161719;
 $dark-95: mix($dark, $light, 95%);
 $dark-90: mix($dark, $light, 90%);
 $dark-80: mix($dark, $light, 80%);
