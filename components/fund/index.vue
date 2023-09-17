@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="heading">
-      <div :class="checkableClass+' title '+checkedClass" @click="checkIt()">
+      <div :class="' title '+checkedClass" @click="checkIt()">
         {{ fund.name }}
       </div>
     </div>
@@ -67,16 +67,6 @@
     &:hover{
       cursor:pointer;
     }
-  }
-  .title.checkable{
-    padding-left: $clamp-4;
-    background-repeat: no-repeat;
-    background-size: $clamp-2;
-    background-position: $clamp-1;
-    background-image: url('/omoji/check-bg.svg')
-  }
-  .title.checkable.checked{
-    background-image: url('/omoji/check.svg')
   }
   .body-wrapper {
     display: grid;
