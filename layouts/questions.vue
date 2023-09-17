@@ -30,7 +30,7 @@
 }
 .layout.questions p,
 .layout.questions h1{
-  background-color:#fff;
+  background-color:white;
   padding:$clamp $clamp-2;
   border-radius:$clamp;
   font-family: $sans-serif;
