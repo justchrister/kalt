@@ -15,11 +15,11 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Custom Index',
+    pagename: 'Your fund',
     middleware: 'auth'
   })
   useHead({
-    title: 'Custom Index',
+    title: 'Your fund',
     meta: [{
       name: 'description',
       content: 'Make money, make a difference.'
