@@ -35,7 +35,7 @@
 <style scoped lang="scss">
 .tabs{
   display:grid;
-  grid-template-columns: 1fr $clamp-4;
+  grid-template-columns: 1fr $clamp-3;
   grid-gap: $clamp;
   margin-bottom:0;
   nav{
