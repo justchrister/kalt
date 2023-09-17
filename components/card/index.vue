@@ -37,7 +37,7 @@
     overflow:hidden;
   }
   .card:hover{
-    background-color:#fff;
+    background-color:white;
     cursor: pointer;
   }
   .card .logo{
