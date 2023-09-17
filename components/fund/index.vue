@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper" v-if="data">
     <div class="heading">
-      <div :class="' title '+checkedClass" @click="checkIt()">
+      <div class="title" @click="checkIt()">
         {{ data.name }}
       </div>
     </div>
