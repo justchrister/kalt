@@ -62,11 +62,9 @@ input{
   background-repeat:no-repeat;
 }
 
-input:focus{
-  background-color:#fff;
-}
+input:focus,
 input:active{
-  background-color:#fff;
+  background-color: white;
 }
 input.loading{
   background-image:url("/loading.gif");
