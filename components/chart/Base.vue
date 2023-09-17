@@ -128,7 +128,7 @@
   }
   const labels = ref([]);
   const datas = ref([]);
-  let color = '#202124';
+  let color = '#161719';
 
   const chartData = computed(() => ({
     labels: labels.value.slice(-props.days),
