@@ -4,6 +4,7 @@
       <h1>
         Let's invest in the future, today! <omoji emoji="✨" />
       </h1>
+      <select-fund />
       <input-amount-buy />
       <button> Invest </button>
     </block>
