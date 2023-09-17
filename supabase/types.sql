@@ -50,5 +50,8 @@ create type public."tickers" as enum (
     'gi.ddf',
     'mi.ddf',
     'ffe.ddf',
+    'vc.ddf',
+    'smb.ddf',
+    'art.ddf',
     'ah.ddf'
 );
