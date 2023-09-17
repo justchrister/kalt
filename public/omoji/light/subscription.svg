@@ -1,11 +1,11 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="37" y="15" width="22" height="4" transform="rotate(90 37 15)" fill="#FCF9F2"/>
-<rect x="8" y="11" width="26" height="4" transform="rotate(90 8 11)" fill="#FCF9F2"/>
+<rect x="37" y="15" width="22" height="4" transform="rotate(90 37 15)" fill="#FEFDFA"/>
+<rect x="8" y="11" width="26" height="4" transform="rotate(90 8 11)" fill="#FEFDFA"/>
 <mask id="path-3-inside-1_511_148" fill="white">
 <path d="M2 13.3137L13.3137 2.00001L24.6274 13.3137L13.3137 24.6274L2 13.3137Z"/>
 </mask>
-<path d="M24.6274 13.3137L27.4558 16.1421L30.2843 13.3137L27.4558 10.4853L24.6274 13.3137ZM10.4853 4.82844L21.799 16.1421L27.4558 10.4853L16.1421 -0.828415L10.4853 4.82844ZM21.799 10.4853L10.4853 21.799L16.1421 27.4559L27.4558 16.1421L21.799 10.4853Z" fill="#FCF9F2" mask="url(#path-3-inside-1_511_148)"/>
-<rect x="4" y="11" width="17" height="4" fill="#FCF9F2"/>
-<rect x="4" y="33" width="33" height="4" fill="#FCF9F2"/>
-<rect x="28" y="11" width="9" height="4" fill="#FCF9F2"/>
+<path d="M24.6274 13.3137L27.4558 16.1421L30.2843 13.3137L27.4558 10.4853L24.6274 13.3137ZM10.4853 4.82844L21.799 16.1421L27.4558 10.4853L16.1421 -0.828415L10.4853 4.82844ZM21.799 10.4853L10.4853 21.799L16.1421 27.4559L27.4558 16.1421L21.799 10.4853Z" fill="#FEFDFA" mask="url(#path-3-inside-1_511_148)"/>
+<rect x="4" y="11" width="17" height="4" fill="#FEFDFA"/>
+<rect x="4" y="33" width="33" height="4" fill="#FEFDFA"/>
+<rect x="28" y="11" width="9" height="4" fill="#FEFDFA"/>
 </svg>
