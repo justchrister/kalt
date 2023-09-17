@@ -10,13 +10,10 @@
         <div class="name">
           Fossil-free energy fund
         </div>
-        <div class="amount">
-          <div class="input-wrap">
-            <input type="number" v-model="amounts.ffe" @input="adjustAmounts('ffe')"> 
-          </div>
-          <div class="percent">
-            %
-          </div>
+        <div class="amount" @click="adjustAmount('ffe')">
+          <span :class="{ active: amounts.ffe >= 1}"></span>
+          <span :class="{ active: amounts.ffe >= 2}"></span>
+          <span :class="{ active: amounts.ffe >= 3}"></span>
         </div>
       </div>
       <div class="fund">
@@ -27,13 +24,10 @@
         <div class="name">
           Art fund
         </div>
-        <div class="amount">
-          <div class="input-wrap">
-            <input type="number" v-model="amounts.art" @input="adjustAmounts('art')"> 
-          </div>
-          <div class="percent">
-            %
-          </div>
+        <div class="amount" @click="adjustAmount('art')">
+          <span :class="{ active: amounts.art >= 1}"></span>
+          <span :class="{ active: amounts.art >= 2}"></span>
+          <span :class="{ active: amounts.art >= 3}"></span>
         </div>
       </div>
       <div class="fund">
@@ -44,13 +38,10 @@
         <div class="name">
           Affordable housing fund
         </div>
-        <div class="amount">
-          <div class="input-wrap">
-            <input type="number" v-model="amounts.afh" @input="adjustAmounts('afh')"> 
-          </div>
-          <div class="percent">
-            %
-          </div>
+        <div class="amount" @click="adjustAmount('afh')">
+          <span :class="{ active: amounts.ah >= 1}"></span>
+          <span :class="{ active: amounts.ah >= 2}"></span>
+          <span :class="{ active: amounts.ah >= 3}"></span>
         </div>
       </div>
       <div class="fund">
@@ -61,13 +52,24 @@
         <div class="name">
           Small and medium sized business fund
         </div>
-        <div class="amount">
-          <div class="input-wrap">
-            <input type="number" v-model="amounts.smb" min="0" max="100" @input="adjustAmounts('smb')"> 
-          </div>
-          <div class="percent">
-            %
-          </div>
+        <div class="amount" @click="adjustAmount('smb')">
+          <span :class="{ active: amounts.smb >= 1}"></span>
+          <span :class="{ active: amounts.smb >= 2}"></span>
+          <span :class="{ active: amounts.smb >= 3}"></span>
+        </div>
+      </div>
+      <div class="fund">
+        <div class="icon">
+          <span id="art">
+          </span>
+        </div>
+        <div class="name">
+          Venture capital fund
+        </div>
+        <div class="amount" @click="adjustAmount('vc')">
+          <span :class="{ active: amounts.vc >= 1}"></span>
+          <span :class="{ active: amounts.vc >= 2}"></span>
+          <span :class="{ active: amounts.vc >= 3}"></span>
         </div>
       </div>
       <button>
@@ -88,50 +90,25 @@
       content: 'Make money, make a difference.'
     }]
   })
-  
-  const amounts = reactive({
-    ffe: 25,
-    art: 25,
-    afh: 25,
-    smb: 25
-  });
-  let oldAmounts = {
-    ffe: 25,
-    art: 25,
-    afh: 25,
-    smb: 25
-  };
-  const adjustAmounts = (changedKey) => {
-    const total = Object.values(amounts).reduce((a, b) => a + b, 0);
-    const change = amounts[changedKey] - oldAmounts[changedKey];
-    const totalWithoutChanged = 100 - oldAmounts[changedKey];
-    const otherKeys = Object.keys(oldAmounts).filter(key => key !== changedKey);
-    let tot = amounts[changedKey];
-    otherKeys.forEach((key) => {
-      const percent = oldAmounts[key] / totalWithoutChanged;
-      const newAmount = oldAmounts[key] - (change * percent);
-      amounts[key] = newAmount;
-      if (isNaN(amounts[key])) {
-        amounts[key] = 0;
-      }
-    });
-    const finalTotal = Object.values(amounts).reduce((a, b) => a + b, 0);
-    if (finalTotal !== 100 && 100 - finalTotal >= 1) {
-      amounts['art'] += (100 - finalTotal);
+  let amounts = reactive({
+    art: 2,
+    ffe: 3,
+    ah: 1,
+    vc: 0,
+    smb: 1
+  })
+  const adjustAmount = (fund) => {
+    if(amounts[fund]===3){
+      amounts[fund] = 0
+    } else {
+      amounts[fund] = amounts[fund] + 1
     }
-    oldAmounts = {
-      ffe: amounts.ffe,
-      art: amounts.art,
-      afh: amounts.afh,
-      smb: amounts.smb
-    };
-  };
-  
+  }
 </script>
 <style scoped lang="scss">
   .fund{
     display:grid;
-    grid-template-columns: $clamp-4 1fr $clamp-8;
+    grid-template-columns: $clamp-4 1fr $clamp-5;
     border:$border;
     padding:$clamp-1;
     line-height:$clamp-4;
@@ -146,24 +123,17 @@
       background-size:contain;
     }
   }
-  .amount{
-    display:grid;
-    grid-template-columns: 1fr $clamp-4;
+  .amount span{
+    width:$clamp-1;
+    height:$clamp-1;
+    margin-right:$clamp-0-5;
+    display:inline-block;
+    background:url('/omoji/heart-outline.svg') no-repeat center center;
+    background-size:contain;
   }
-  .amount .input-wrap{
-    width:$clamp-5;
-    height:$clamp-4;
-    overflow:hidden;
-    margin:0;
-  }
-  .amount .input-wrap input{
-    width:$clamp-10;
-    text-align:left;
-    border:none;
-  }
-  .amount .percent{
-    height:$clamp-4;
-    line-height:$clamp-4;
+  .amount span.active{
+    background:url('/omoji/heart-filled.svg') no-repeat center center;
+    background-size:contain;
   }
 main{
   padding-top:0;
