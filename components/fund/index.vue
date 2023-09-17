@@ -1,58 +1,42 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="data">
     <div class="heading">
       <div :class="' title '+checkedClass" @click="checkIt()">
-        {{ fund.name }}
+        {{ data.name }}
       </div>
     </div>
     <div class="body-wrapper">
       <div class="body">
         <div class="description">
-          {{ fund.description}}
+          <div>
+          {{ data.description}}
+          </div>
         </div>
-        <nuxt-link :to="fund.url">
+        <nuxt-link :to="'funds/'+ticker">
           <div class="button">
             read more ->
           </div>
         </nuxt-link>
       </div>
-      <div class="symbol" :id="fund.shortTicker"></div>
+      <div class="symbol" :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+const supabase = useSupabaseClient()
   const props = defineProps({
     ticker: {
       type: String,
       required: true
-    },
-    checkable: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    checked: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   });
-
-  let fund = {
-    ticker: props.ticker,
-    shortTicker: props.ticker.split('.')[0],
-    url: '/funds/'+props.ticker,
-    name: 'Art fund',
-    description: 'description'
-  };
-  if(props.ticker==='ffe.ddf'){
-    fund.name='Fossil-free energy fund'
-    fund.description='description'
-  }
-  if(props.ticker==='gi.ddf'){
-    fund.name='100 Global Vision'
-    fund.description='description'
-  }
+  const shortTicker = props.ticker.split('.')[0];
+  const { data, error } = await supabase
+    .from('sys_funds')
+    .select()
+    .eq('ticker', props.ticker)
+    .limit(1)
+    .single();
 </script>
 <style scoped lang="scss">
   .wrapper{
@@ -75,7 +59,22 @@
   }
   .description{
     border-bottom: $border;
+    max-width:$clamp-44;
+    overflow:hidden;
     padding: $clamp-1;
+    white-space: nowrap;
+    div{
+      animation: animate_text 30s linear infinite; /* The animation property */
+    }
+
+  }
+  @keyframes animate_text {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
   }
   a{
     text-decoration: none;
@@ -96,9 +95,6 @@
     background-repeat: no-repeat;
     background-size: contain;
     margin: $clamp-2;
-    &#art{
-      background-image: url('/media/icons/funds/art.svg');
-    }
   }
   .read-more-adjust-percentage{
     display:grid;
