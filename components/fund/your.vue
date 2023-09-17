@@ -1,8 +1,7 @@
 <template>
   <div class="fund" v-if="data">
     <div class="icon">
-      <span id="art">
-      </span>
+      <span :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></span>
     </div>
     <div class="name">
       {{data.name}}
@@ -28,14 +27,14 @@
     .eq('ticker', props.ticker)
     .limit(1)
     .single()
-  ok.log('', data)
+  
   const amount = ref(0)
-
+  const shortTicker = props.ticker.split('.')[0]
   const adjustAmount = () => {
     if(amount.value===3){
       amount.value = 0
     } else {
-      amount.value=+1
+      amount.value= amount.value + 1
     }
   }
 </script>
@@ -43,20 +42,19 @@
   
   .fund{
     display:grid;
-    grid-template-columns: $clamp-4 1fr $clamp-5;
+    grid-template-columns: $clamp-3 1fr $clamp-5;
     border:$border;
-    padding:$clamp-1;
+    padding:$clamp-1 $clamp-1 $clamp-1 $clamp-1-5;
     line-height:$clamp-4;
     margin-bottom:$clamp-1;
   }
-  .icon{
-    #art{
-      height:$clamp-4;
-      width:$clamp-3;
-      display:block; 
-      background:url('/media/icons/funds/art.svg') no-repeat center center;
-      background-size:contain;
-    }
+  .icon span{
+    height:$clamp-4;
+    width:$clamp-2;
+    display:block; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
   }
   .amount span{
     width:$clamp-1;
@@ -65,6 +63,9 @@
     display:inline-block;
     background:url('/omoji/heart-outline.svg') no-repeat center center;
     background-size:contain;
+    &:hover{
+      cursor:pointer;
+    }
   }
   .amount span.active{
     background:url('/omoji/heart-filled.svg') no-repeat center center;
