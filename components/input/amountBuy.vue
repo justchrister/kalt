@@ -96,11 +96,11 @@ const user = useSupabaseUser()
   .currency{
     height:$clamp-4;
     line-height:$clamp-4;
+    border-left:$border;
     text-align:center;
   }
   input{
     border:none;
-    border-right:$border;
   }/*
   .dark-mode{
     .input-group,
