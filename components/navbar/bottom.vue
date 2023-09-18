@@ -25,6 +25,7 @@
           <nuxt-link to="/questions" > Q&A </nuxt-link>
           <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
           <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
+          <a href="mailto:sup@ka.lt"> Contact us </a>
         </ul>
       </div>
     </block>
