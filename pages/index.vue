@@ -25,6 +25,7 @@
       <p>
         By investing in what you believe in, you can be sure that your money is aligned with your values. 
       </p>
+      <pill text="energy" to="funds/ffe.ddf" /> <pill text="art" to="funds/art.ddf"/> <pill text="housing" to="funds/ah.ddf"/> <pill text="startups" to="funds/vc.ddf" /> <pill text="small business" to="funds/smb.ddf" /> 
     </block>
   </main>
 </template>
