@@ -4,7 +4,9 @@
       <span @click="navigateTo('/profile')">← back</span>
       <li v-for="currency of data" :value="currency.iso" :key="currency.iso" @click="updateProfile(currency.iso)">
         <span class="iso">{{currency.iso}}</span>
-        <span>{{currency.name}}</span>
+        <span>{{currency.name}}
+          <span class="icon" v-if="selected==currency.iso"><loading-icon /></span>
+        </span>
       </li>
     </ul>
   </main>
@@ -25,9 +27,11 @@
     .from('sys_currencies')
     .select()
     .eq('enabled', true)
-    
+  const selected = ref();
+
   const updateProfile = async (iso) => {
-    const { error, data } = await pub(supabase, {
+    selected.value = iso;
+    const { error } = await pub(supabase, {
       sender:"pages/select/currency.vue"
     }).userPreferences({
       userId: user.value.id,
@@ -41,6 +45,9 @@
   };
 </script>
 <style scoped lang="scss">
+  .icon{
+    float:right;
+  }
   main{
     max-width:$clamp-35;
     margin:0 auto;
@@ -50,7 +57,7 @@
   }
   li{
     display:grid;
-    grid-template-columns: $clamp-4 4fr $clamp-3;
+    grid-template-columns: $clamp-4 4fr;
     border-bottom:$dark 1px solid;
     padding:$clamp $clamp-2;
     &:hover{
