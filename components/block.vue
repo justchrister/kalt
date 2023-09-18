@@ -34,6 +34,9 @@
     &.margin-double{
       margin-bottom: $clamp-20;
     }
+    &.margin-1{
+      margin-bottom: $clamp-1;
+    }
     &.margin-3{
       margin-bottom: $clamp-3;
     }
