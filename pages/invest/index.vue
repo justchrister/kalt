@@ -1,11 +1,17 @@
 <template>
   <main>
-    <block>
+    <block margin="half">
       <h1>
         Let's invest in the future, today! <omoji emoji="✨" />
       </h1>
-      <select-fund />
+    </block>
+    <block margin="1">
       <input-amount-buy />
+    </block>
+    <block margin="1">
+      <select-fund />
+    </block>
+    <block margin="1">
       <button> Invest </button>
     </block>
   </main>
