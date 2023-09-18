@@ -25,36 +25,18 @@
   })
 </script>
 <style scoped lang="scss">
-.pill{
-  border:$border-width solid $dark;
-  display:inline-block;
-  padding:0px $clamp-2;
-  margin-top:$clamp-2;
-  margin-right:$clamp;
-  &:hover{
-    border-radius:100%;
-    background: linear-gradient(318deg, $light, $green-20, $light,);
-    background-size: 1200% 1200%;
-    -webkit-animation: gradient 4.20s ease infinite;
-    -moz-animation: gradient 4.20s ease infinite;
-    animation: gradient 4.20s ease infinite;
+  .pill{
+    border:$border-width solid $dark;
+    display:inline-block;
+    padding:0px $clamp-1-5;
+    margin-right:$clamp-0-5;
+    border-radius:50%;
+    border-color:$pink;
+    font-size:80%;
+    border-style: dashed;
+    &:hover{
+      border-color:$dark;
+      background-color:white;
+    }
   }
-}
-
-
-@-webkit-keyframes gradient {
-  0%{background-position:0% 10%}
-  50%{background-position:100% 91%}
-  100%{background-position:0% 10%}
-}
-@-moz-keyframes gradient {
-  0%{background-position:0% 10%}
-  50%{background-position:100% 91%}
-  100%{background-position:0% 10%}
-}
-@keyframes gradient {
-  0%{background-position:0% 10%}
-  50%{background-position:100% 91%}
-  100%{background-position:0% 10%}
-}
 </style>
