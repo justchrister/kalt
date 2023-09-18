@@ -25,12 +25,16 @@
 </script>
 <style scoped lang="scss">
 .intro{
-  padding:$clamp-7 0 $clamp-7 0;
+  padding:$clamp-9 0 $clamp-7 0;
   margin-bottom:$clamp-5;
   background:url('/gradientIntro.svg') no-repeat center center;
   background-size:cover;
   h1{
     margin:0;
+  }
+  p{
+    line-height:1.5;
+    padding-top:$clamp-1-5;
   }
 }
 </style>
