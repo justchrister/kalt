@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer id="bottom-menu">
     <block margin="half">
       <div class="section">
         <p>Account</p>
