@@ -6,7 +6,7 @@
         <span class="iso">{{country.iso2}}</span>
         <span>
           {{country.name}}
-          <span class="icon" v-if="selected==country.iso">
+          <span class="icon" v-if="selected==country.iso2">
             <loading-icon />
           </span>
         </span>
@@ -63,7 +63,7 @@
   }
   li{
     display:grid;
-    grid-template-columns: $clamp-4 4fr $clamp-3;
+    grid-template-columns: $clamp-4 4fr ;
     border-bottom:$dark 1px solid;
     padding:$clamp $clamp-2;
     &:hover{
