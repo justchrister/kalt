@@ -9,13 +9,18 @@
         </li>
         <li>
           <nuxt-link to="/subscription" >
-              Subscription
+              Auto-invest
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/accounts" >
-              Accounts
+          <nuxt-link to="/funds/your" >
+              Your fund
           </nuxt-link>
+        </li>
+        <li>
+          <a href="#bottom-menu">
+              more...
+          </a>
         </li>
       </ul>
     <div v-if="!props.hidePfp" class="pfp" @click="navigateTo('/profile')"></div>
