@@ -4,7 +4,12 @@
       <span @click="navigateTo('/profile')">← back</span>
       <li v-for="country of data" :value="country.iso" :key="country.iso" @click="updateProfile(country.iso2)">
         <span class="iso">{{country.iso2}}</span>
-        <span>{{country.name}}</span>
+        <span>
+          {{country.name}}
+          <span class="icon" v-if="selected==country.iso">
+            <loading-icon />
+          </span>
+        </span>
       </li>
     </ul>
   </main>
@@ -26,7 +31,10 @@
     .select()
     .eq('enabled', true)
     
+  const selected = ref();
+
   const updateProfile = async (iso) => {
+    selected.value = iso;
     const { error, data } = await pub(supabase, {
       sender:"pages/select/country.vue",
       entity: user.value.id
@@ -42,6 +50,10 @@
   };
 </script>
 <style scoped lang="scss">
+
+  .icon{
+    float:right;
+  }
   main{
     max-width:$clamp-35;
     margin:0 auto;
