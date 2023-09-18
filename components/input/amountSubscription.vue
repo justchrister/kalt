@@ -89,10 +89,10 @@
     height:$clamp-4;
     line-height:$clamp-4;
     text-align:center;
+    border-left:$border;
   }
   input{
     border:none;
-    border-right:$border;
   }
 /*
   .dark-mode{
