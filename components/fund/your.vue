@@ -1,41 +1,67 @@
 <template>
-  <div class="fund" v-if="data">
+  <div class="fund" v-if="fund">
     <div class="icon">
       <span :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></span>
     </div>
     <div class="name">
-      {{data.name}}
+      {{fund.name}}
     </div>
-    <div class="amount" @click="adjustAmount()">
-      <span :class="{ active: amount >= 1}"></span>
-      <span :class="{ active: amount >= 2}"></span>
-      <span :class="{ active: amount >= 3}"></span>
+    <div class="rate" @click="adjustrate()">
+      <span :class="{ active: rate >= 1}"></span>
+      <span :class="{ active: rate >= 2}"></span>
+      <span :class="{ active: rate >= 3}"></span>
     </div>
   </div>
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
   const props = defineProps({
     ticker: {
       type: String,
       required: true
     }
   })
-  const { data, error } = await supabase
+  
+  const { data:fund, error } = await supabase
     .from('sys_funds')
     .select()
     .eq('ticker', props.ticker)
     .limit(1)
     .single()
-  
-  const amount = ref(0)
-  const shortTicker = props.ticker.split('.')[0]
-  const adjustAmount = () => {
-    if(amount.value===3){
-      amount.value = 0
-    } else {
-      amount.value= amount.value + 1
+  const rate = ref(0)
+  const state = await get(supabase).userDefinedFunds(user.value.id, props.ticker);
+  const shortTicker = props.ticker.split('.')[0] 
+  const logHearts = async () => {
+    if(rate.value===3){
+        ok.log('', shortTicker+' ♥ ♥ ♥')
+    } 
+    if(rate.value===2) {
+      ok.log('', shortTicker+' ♥ ♥')
     }
+    if(rate.value===1) {
+      ok.log('', shortTicker+' ♥')
+    }
+  }
+  if(state){
+    rate.value = state.rate
+    logHearts()
+  }
+  const adjustrate = async () => {
+    if(rate.value===3){
+      rate.value = 0
+    } else {
+      rate.value= rate.value + 1
+    }
+    logHearts()
+    const { } = await pub(supabase, {
+      sender:'components/fund/your.vue',
+      entity: user.value.id
+    }).userDefinedFunds({
+      'userId': user.value.id,
+      'ticker': props.ticker,
+      'rate': rate.value
+    });
   }
 </script>
 <style scoped lang="scss">
@@ -56,7 +82,7 @@
     background-position: center;
     background-size:contain;
   }
-  .amount span{
+  .rate span{
     width:$clamp-1;
     height:$clamp-1;
     margin-right:$clamp-0-5;
@@ -67,7 +93,7 @@
       cursor:pointer;
     }
   }
-  .amount span.active{
+  .rate span.active{
     background:url('/omoji/heart-filled.svg') no-repeat center center;
     background-size:contain;
   }
