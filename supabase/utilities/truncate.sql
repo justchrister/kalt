@@ -4,7 +4,6 @@ TRUNCATE TABLE "acl_stripe_userIds";
 -- Services
 TRUNCATE TABLE "autoMatchOrders";
 TRUNCATE TABLE "getAccountBalance";
-TRUNCATE TABLE "getAccountTransactions";
 TRUNCATE TABLE "getAssetPrice";
 TRUNCATE TABLE "getLinkedBankAccount";
 TRUNCATE TABLE "getPaymentCardDefault";
@@ -18,7 +17,6 @@ TRUNCATE TABLE "payRevenue";
 -- sub
 TRUNCATE TABLE "sub_accountTransactions_autoInvest";
 TRUNCATE TABLE "sub_accountTransactions_getAccountBalance";
-TRUNCATE TABLE "sub_accountTransactions_getAccountTransactions";
 TRUNCATE TABLE "sub_accountTransactions_payments";
 TRUNCATE TABLE "sub_exchangeOrders_autoMatchOrders";
 TRUNCATE TABLE "sub_exchangeOrders_getUserPortfolio";
