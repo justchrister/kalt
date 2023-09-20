@@ -2,7 +2,17 @@
 <template>
   <main>
     <navbar-breadcrumbs parent="Accounts"/>
-    <transaction-list />
+
+    <block margin="none" v-if="transactions">
+      <transaction 
+        v-for="transaction of transactions" 
+        :key="transaction.message_entity" 
+        :type="transaction.type"
+        :amount="transaction.amount"
+        :currency="transaction.currency"
+        :date="transaction.message_sent"
+      />
+    </block>
   </main>
 </template>
 <script setup>
@@ -13,5 +23,9 @@
   useHead({
     title: 'Transactions'
   })
-
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+  
+  const transactions = await get(supabase).accountTransactions(user.value.id);
+  ok.log('', transactions)
 </script>
