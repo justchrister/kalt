@@ -22,7 +22,6 @@
       required: true
     }
   })
-  
   const { data:fund, error } = await supabase
     .from('sys_funds')
     .select()
