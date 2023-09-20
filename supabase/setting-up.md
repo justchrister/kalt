@@ -84,14 +84,6 @@ Name: webhook_accountTransactions_autoInvest
 URL: https://ka.lt/api/autoInvest/webhooks/accountTransactions
 Table: sub_accountTransactions_autoInvest
 
-Name: webhook_accountTransactions_getAccountBalance
-URL: https://ka.lt/api/getAccountBalance/webhooks/accountTransactions
-Table: sub_accountTransactions_getAccountBalance
-
-Name: webhook_accountTransactions_getAccountTransactions
-URL: https://ka.lt/api/getAccountTransactions/webhooks/accountTransactions
-Table: sub_accountTransactions_getAccountTransactions
-
 Name: webhook_accountTransactions_payments
 URL: https://ka.lt/api/payments/webhooks/accountTransactions
 Table: sub_accountTransactions_payments
