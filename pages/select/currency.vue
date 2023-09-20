@@ -32,7 +32,8 @@
   const updateProfile = async (iso) => {
     selected.value = iso;
     const { error } = await pub(supabase, {
-      sender:"pages/select/currency.vue"
+      sender:"pages/select/currency.vue",
+      entity: user.value.id
     }).userPreferences({
       userId: user.value.id,
       currency: iso
