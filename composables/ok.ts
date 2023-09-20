@@ -163,6 +163,33 @@ export const ok = {
     }
     return result
   },
+  combineJsonByEntity(jsonArray) {
+    let result = [];
+    let tempObj = {};
+  
+    if (!jsonArray) return "No input";
+  
+    jsonArray.forEach(jsonObj => {
+      const entity = jsonObj.message_entity;
+  
+      if (!tempObj[entity]) {
+        tempObj[entity] = {};
+      }
+  
+      for (const key in jsonObj) {
+        if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+          tempObj[entity][key] = jsonObj[key];
+        }
+      }
+    });
+  
+    for (const key in tempObj) {
+      result.push(tempObj[key]);
+    }
+  
+    return result;
+  }
+,  
   camelToKebab(string){
     return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
   },
