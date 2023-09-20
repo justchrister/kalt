@@ -29,7 +29,7 @@
         add card <loading-icon v-if="loading" />
       </button>
     </form>
-    <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
+    <notification :type="notification.type" :message="notification.message" v-if="notification.message"/>
   </div>
 </template>
 <script setup>
