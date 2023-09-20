@@ -22,19 +22,12 @@ CREATE TABLE "topic_accountTransactions" (
 --- add row level security
 ALTER TABLE "topic_accountTransactions" ENABLE ROW LEVEL SECURITY;
 
-DO $$
-BEGIN
-  IF NOT EXISTS (
-    SELECT 1
-    FROM pg_policies
-    WHERE schemaname = 'public'
-      AND tablename = 'topic_accountTransactions'
-      AND policyname = 'SELF — Insert'
-  ) THEN
-    CREATE POLICY "SELF — Insert" ON public."topic_accountTransactions"
-      AS PERMISSIVE FOR INSERT
-      TO authenticated
-      WITH CHECK (auth.uid() = "userId");
-  END IF;
-END
-$$;
+CREATE POLICY "SELF — Insert" ON public."topic_accountTransactions"
+  AS PERMISSIVE FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = "userId");
+
+CREATE POLICY "SELF — Select" ON "public"."topic_accountTransactions"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "userId")
