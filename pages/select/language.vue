@@ -32,7 +32,8 @@
   const updateProfile = async (iso) => {
     selected.value = iso;
     const { error, data } = await pub(supabase, {
-      sender:"pages/select/language.vue"
+      sender:"pages/select/language.vue",
+      entity: user.value.id
     }).userPreferences({
       userId: user.value.id,
       language: iso
@@ -69,12 +70,4 @@
     font-family:"Kalt Monospace", monospace;
     font-size:75%;
   }
-  /*
-  .dark-mode li{
-    border-color:$light;
-    &:hover{
-      background:$dark;
-    }
-  }
-  */
 </style>
