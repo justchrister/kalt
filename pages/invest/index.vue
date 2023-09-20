@@ -6,13 +6,13 @@
       </h1>
     </block>
     <block margin="1">
-      <input-amount-buy />
+      <input-amount-buy  :uuid="uuid" />
     </block>
     <block margin="1">
       <select-fund />
     </block>
     <block margin="1">
-      <button> Invest </button>
+      <button @click="completeTransaction()"> Invest <loading-icon v-if="loading" /> </button>
     </block>
   </main>
 </template>
@@ -28,7 +28,31 @@
       content: 'Make money, make a difference.'
     }]
   })
-  
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+  const uuid = ok.uuid();
+  const loading = ref(false)
+  const completeTransaction = async () => {
+    loading.value = true
+    const { error } = await pub(supabase, {
+      sender: 'pages/invest/index.vue',
+      entity: uuid
+    }).accountTransactions({
+      userId: user.value.id,
+      type: 'deposit',
+      subType: 'card',
+      status: 'pending',
+      autoInvest: 1
+    });
+    if(error){
+      ok.log('error', 'could not create transaction', error)
+      loading.value = false
+    } else {
+      ok.log('success', 'transaction created')
+      loading.value = false;
+      navigateTo('/portfolio/success')
+    };
+  }
 </script>
 <style scoped lang="scss">
   
