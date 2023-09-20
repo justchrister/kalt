@@ -2,18 +2,29 @@
   <header>
     <nav class="menu">
       <ul>
-        <li class="logomark" @click="toggleMenuOff()">
-          <nuxt-link to="/portfolio" v-if="signedIn">
-            <div class="logo"></div>
-            <span>Kalt —</span>
-            {{route.meta.pagename}}
-          </nuxt-link>
-          <nuxt-link to="/" v-else> 
-            <div class="logo"></div>
-            <span>Kalt —</span>
-            {{route.meta.pagename}}
-          </nuxt-link>
+        <li class="logomark" @click="logoClick()">
+          <div class="logo"></div>
+          <span>Kalt —</span> {{route.meta.pagename}}
         </li>
+
+        <span v-if="signedIn">
+          <li>
+            <nuxt-link to="/invest" @click="toggleMenu()"> Invest </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/profile" @click="toggleMenu()"> Profile </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/funds/your" @click="toggleMenu()"> Your fund </nuxt-link>
+          </li>
+          <li>
+            <a href="/auth/sign-out" @click="toggleMenu()"> Sign out </a>
+          </li>
+        </span>
+        <span  v-if="!signedIn">
         <li>
           <nuxt-link to="/about" @click="toggleMenu()"> About </nuxt-link>
         </li>
@@ -23,35 +34,13 @@
         <li>
           <nuxt-link to="/funds" @click="toggleMenu()"> Funds </nuxt-link>
         </li>
-        <li v-if="!signedIn">
+        <li>
           <nuxt-link to="/request" @click="toggleMenu()"> Request invite </nuxt-link>
         </li>
-        <li v-if="!signedIn">
+        <li>
           <nuxt-link to="/auth" @click="toggleMenu()"> Sign in </nuxt-link>
         </li>
-        <li v-if="signedIn">
-          <a href="/auth/sign-out" @click="toggleMenu()"> Sign out </a>
-        </li>
-      </ul>
-      <ul class="col-2" v-if="signedIn">
-        <li>
-          <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/profile" @click="toggleMenu()"> Profile </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/accounts" @click="toggleMenu()"> Accounts </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/accounts/transactions" @click="toggleMenu()"> Transactions </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/invest" @click="toggleMenu()"> Invest </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/cards" @click="toggleMenu()"> Cards </nuxt-link>
-        </li>
+      </span>
       </ul>
     </nav>
 
@@ -81,40 +70,40 @@
       required: false
     }
   })
+  const logoClick = async () => {
+    if(signedIn.value) {
+      navigateTo('/portfolio')
+    } else {
+      navigateTo('/')
+    }
+  }
 </script>
 <style scoped lang="scss">
 
-.logo{
-  width:$clamp-2;
-  height:$clamp-2;
-  display:block;
-  position:fixed;
-  top:$border-width;
-  left:$border-width;
-  background:$dark;
-  border-radius:100%;
-  margin: clamp($unit-min*1.4, $unit*1.4, $unit-max*1.4) $clamp;
-  animation-name: example;
-  animation-duration: 12s;
-  animation-delay: 500ms;
-  animation-iteration-count: 99999;
-}
+  .logo{
+    width:$clamp-2;
+    height:$clamp-2;
+    display:block;
+    position:fixed;
+    top:$border-width;
+    left:$border-width;
+    background:$dark;
+    border-radius:100%;
+    margin: clamp($unit-min*1.4, $unit*1.4, $unit-max*1.4) $clamp;
+    animation-name: example;
+    animation-duration: 12s;
+    animation-delay: 500ms;
+    animation-iteration-count: 99999;
+  }
+  .logomark:hover{
+    cursor:pointer;
+    text-decoration: underline;
+  }
   header{
     position:fixed;
     width:100%;
     height:$clamp-5;
   }
-@keyframes example {
-  0% {
-    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-  }
-  33% {
-    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-  }
-  100% {
-    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-  }
-}
 .logomark span{
   font-weight:bold;
   opacity:1;
@@ -190,22 +179,18 @@ button {
   }
 }
 
-  /*
-.dark-mode {
-   .logo{
-    background:$light;
+
+@keyframes example {
+  0% {
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
   }
-   button{
-    color:$light;
-   }
-   .show-menu header{
-    height:$clamp-17;
-   }
-   header{
-    background:$dark-95;
-    border-bottom:$border-width solid $light;
-   }
-}*/
+  33% {
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  }
+}
 </style>
 <style lang="scss">
 .show-menu{
