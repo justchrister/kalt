@@ -37,7 +37,7 @@
         <nuxt-link to="/auth/password">password reset</nuxt-link>
       </link-group>
     </block>
-    <notification-fixed :type="notification.type" :message="notification.message" v-if="notification.message"/>
+    <notification :type="notification.type" :message="notification.message" v-if="notification.message"/>
   </main>
 </template>
 
