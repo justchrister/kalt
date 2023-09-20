@@ -10,7 +10,7 @@
           <nuxt-link to="/subscription" > Subscription </nuxt-link>
           <nuxt-link to="/cards" > Cards </nuxt-link>
           <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
-          <nuxt-link to="/portfolio/buy" > Buy shares </nuxt-link>
+          <nuxt-link to="/invest" > Invest </nuxt-link>
         </ul>
       </div>
     </block>
