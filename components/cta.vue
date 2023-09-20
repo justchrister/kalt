@@ -4,7 +4,7 @@
       <nuxt-link to="/portfolio/sell">
         <button id="sell" tabindex="-1">divest</button>
       </nuxt-link>
-      <nuxt-link to="/portfolio/buy">
+      <nuxt-link to="/invest">
         <button id="buy" tabindex="-1">invest</button>
       </nuxt-link>
     </div>
