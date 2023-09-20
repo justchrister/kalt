@@ -82,20 +82,3 @@ export const sub = (client: any, topic: any) => {
     }
   }
 }
-export const get = (client: any) => {
-  return {
-    userDefinedFunds: async (userId: any, ticker: any) => {
-      const { data, error } = await client 
-        .from('topic_userDefinedFunds')
-        .select()
-        .eq('message_entity', userId)
-        .eq('ticker', ticker)
-        .order('message_sent', { ascending: true })
-      if(error) {
-        return null
-      } else {
-        return ok.combineJson(data)
-      }
-    }
-  }
-}
