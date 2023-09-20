@@ -47,9 +47,22 @@ export const get = (client: any) => {
           performanceUpdates: userPreferencesCombined.performanceUpdates || null,
           colorScheme: userPreferencesCombined.colorScheme || null,
           profilePicture: userDetailsCombined.profilePicture || null,
-          language: userDetailsCombined.language || null,
-          currency: userDetailsCombined.currency || null
+          language: userPreferencesCombined.language || null,
+          currency: userPreferencesCombined.currency || null
         }
+      }
+    },
+    accountTransactions: async (userId: any) => {
+      const { data, error } = await client 
+        .from('topic_accountTransactions')
+        .select()
+        .eq('userId', userId)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        return ok.combineJsonByEntity(data).reverse();
       }
     }
   }
