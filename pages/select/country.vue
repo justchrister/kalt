@@ -21,16 +21,17 @@
     pagename: 'select country',
     middleware: 'auth',
     layout: 'blank'
-  })
+  });
+
   useHead({
     title: 'select country'
-  })
+  });
 
   const { data, error } = await supabase
     .from('sys_countries')
     .select()
     .eq('enabled', true)
-    
+
   const selected = ref();
 
   const updateProfile = async (iso) => {
@@ -50,7 +51,6 @@
   };
 </script>
 <style scoped lang="scss">
-
   .icon{
     float:right;
   }
