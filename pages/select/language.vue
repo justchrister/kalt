@@ -41,7 +41,7 @@
     if(error) {
       ok.log('error', 'failed updating language: ', error)
     } else {
-      navigateTo('/profile')
+      navigateTo('/success')
     }
   };
 </script>
