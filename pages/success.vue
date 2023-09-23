@@ -1,15 +1,22 @@
 <template>
   <main>
     <block>
-      <div class="success-text">Success</div>
-      <span class="shard top-left"></span>
-      <span class="shard top-center-left"></span>
-      <span class="shard top-center-right"></span>
-      <span class="shard top-right"></span>
-      <span class="shard bottom-right"></span>
-      <span class="shard bottom-center-right"></span>
-      <span class="shard bottom-center-left"></span>
-      <span class="shard bottom-left"></span>
+      <div class="wrap">
+        <div class="success-text">successful.</div>
+        <span class="shard top-left"></span>
+        <span class="shard top-center-left"></span>
+        <span class="shard top-center-right"></span>
+        <span class="shard top-right"></span>
+        <span class="shard bottom-right"></span>
+        <span class="shard bottom-center-right"></span>
+        <span class="shard bottom-center-left"></span>
+        <span class="shard bottom-left"></span>
+      </div>
+    </block>
+    <block>
+      <p class="back">
+        Awesome!
+      </p>
     </block>
   </main>
 </template>
@@ -42,17 +49,15 @@
   $base-delay: 700ms;
   $timing-function: steps(2);
   main{
-    .block{
+    .wrap{
       position:relative;
-      font-size:$clamp-5;
+      font-size:$clamp-3;
       text-align:center;
       height:$clamp-30;
       background-image: url('/images/gradients/successAlt.svg');
       background-repeat:no-repeat;
       background-position:center;
       background-size:cover;
-    }
-    .success-text{
       line-height:$clamp-30;
     }
     .shard{
