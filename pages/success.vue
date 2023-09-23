@@ -40,118 +40,94 @@
   $from-sclare: 0.8;
   $duration: 4s;
   $base-delay: 700ms;
-  $timing-function: ease;
+  $timing-function: steps(2);
   main{
-    margin-top:0;
-    padding-top:45vh;
     .block{
+      position:relative;
       font-size:$clamp-5;
       text-align:center;
+      height:$clamp-30;
+      background-image: url('/images/gradients/successAlt.svg');
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:cover;
     }
     .success-text{
-        transform:scale($from-sclare) translateY($clamp-3);
-        opacity:0;
-        animation-name: success-text;
-        animation-duration: $duration;
-        animation-delay: $base-delay - 100ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
+      line-height:$clamp-30;
     }
     .shard{
       position:absolute;
+      display:block;
       width:$clamp-5;
       height:$clamp-5;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
-      top:40vh;
-      left:50vw;
+      animation-duration: $duration;
+      animation-iteration-count: $iteration;
+      animation-timing-function: $timing-function;
       &.top-left{
         transform:scale($from-sclare) translateX($clamp-3) translateY($clamp-3);
         animation-name: top-left;
-        animation-duration: $duration;
         animation-delay: $base-delay + 230ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-n-6;
-        margin-left:$clamp-n-33;
+        top:$clamp-6;
+        left:$clamp-10;
         background-image:url('/images/shards/shard-top-left.svg');
       }
       &.top-center-left{
         transform:scale($from-sclare) translateX(0) translateY($clamp-3); 
         animation-name: top-center-left;
-        animation-duration: $duration;
         animation-delay: $base-delay + 140ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-n-11;
-        margin-left:$clamp-n-14;
+        top:$clamp-4;
+        left:$clamp-19;
         background-image:url('/images/shards/shard-top-center-left.svg');
       }
       &.top-center-right{
         transform:scale($from-sclare) translateX(0) translateY($clamp-3);
         animation-name: top-center-right;
-        animation-duration: $duration;
         animation-delay: $base-delay + 110ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-n-11;
-        margin-left:$clamp-5;
+        top:$clamp-4;
+        left:$clamp-30;
         background-image:url('/images/shards/shard-top-center-right.svg');
       }
       &.top-right{
         transform:scale($from-sclare) translateX($clamp-n-4) translateY($clamp-2-5);
         animation-name: top-right;
-        animation-duration: $duration;
         animation-delay: $base-delay + 270ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-n-4;
-        margin-left:$clamp-14;
+        top:$clamp-8;
+        left:$clamp-40;
         background-image:url('/images/shards/shard-top-right.svg');
       }
       &.bottom-right{
         transform:scale($from-sclare) translateX($clamp-n-1-5) translateY($clamp-n-3);
         animation-name: bottom-right;
-        animation-duration: $duration;
         animation-delay: $base-delay + 210ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-7;
-        margin-left:$clamp-14;
+        top:$clamp-20;
+        left:$clamp-41;
         background-image:url('/images/shards/shard-bottom-right.svg');
       }
       &.bottom-center-right{
         transform:scale($from-sclare) translateX($clamp-n-1-5) translateY($clamp-n-3);
         animation-name: bottom-center-right;
-        animation-duration: $duration;
         animation-delay: $base-delay + 190ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-14;
-        margin-left:$clamp-3;
+        top:$clamp-22;
+        left:$clamp-30;
         background-image:url('/images/shards/shard-bottom-center-right.svg');
       }
       &.bottom-center-left{
         transform:scale($from-sclare) translateX($clamp-1) translateY($clamp-n-3);
         animation-name: bottom-center-left;
-        animation-duration: $duration;
         animation-delay: $base-delay + 130ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-14;
-        margin-left:$clamp-n-15;
+        top:$clamp-20;
+        left:$clamp-15;
         background-image:url('/images/shards/shard-bottom-center-left.svg');
       }
       &.bottom-left{
         transform:scale($from-sclare) translateX($clamp-4) translateY($clamp-n-3);
         animation-name: bottom-left;
-        animation-duration: $duration;
         animation-delay: $base-delay + 170ms;
-        animation-iteration-count: $iteration;
-        animation-timing-function: $timing-function;
-        margin-top:$clamp-8;
-        margin-left:$clamp-n-32;
+        top:$clamp-16;
+        left:$clamp-8;
         background-image:url('/images/shards/shard-bottom-left.svg');
       }
     }
@@ -439,26 +415,6 @@
     }
     100% {
       transform:scale($from-sclare) translateX($clamp-4) translateY($clamp-n-3);
-    }
-  }
-  
-  @keyframes success-text{
-    0% {
-      transform:scale($from-sclare) translateY($clamp-3);
-      opacity:0;
-    }
-    10% {
-      transform:scale(1) translateX(0) translateY(0);
-        opacity:1;
-    }
-    90% {
-      transform:scale(1) translateX(0) translateY(0);
-        opacity:1;
-    }
-    100% {
-
-transform:scale($from-sclare) translateY($clamp-3);
-        opacity:0.5;
     }
   }
 </style>
