@@ -25,7 +25,7 @@
       content: 'Make money, make a difference.'
     }]
   })
-
+/*
   const router = useRouter()
 
   const goBack = () => {
@@ -33,13 +33,14 @@
     router.go(-2)
   }
   var timer1 = setTimeout(goBack, 3000)
-  
+  */
 </script>
 <style scoped lang="scss">
-  $iteration: 1;
+  $iteration: 8888;
   $from-sclare: 0.8;
   $duration: 4s;
   $base-delay: 700ms;
+  $timing-function: ease;
   main{
     margin-top:0;
     padding-top:45vh;
@@ -49,12 +50,12 @@
     }
     .success-text{
         transform:scale($from-sclare) translateY($clamp-3);
-        opacity:0.5;
-
+        opacity:0;
         animation-name: success-text;
         animation-duration: $duration;
         animation-delay: $base-delay - 100ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
     }
     .shard{
       position:absolute;
@@ -71,6 +72,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 230ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-n-6;
         margin-left:$clamp-n-33;
         background-image:url('/images/shards/shard-top-left.svg');
@@ -81,6 +83,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 140ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-n-11;
         margin-left:$clamp-n-14;
         background-image:url('/images/shards/shard-top-center-left.svg');
@@ -91,6 +94,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 110ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-n-11;
         margin-left:$clamp-5;
         background-image:url('/images/shards/shard-top-center-right.svg');
@@ -101,6 +105,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 270ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-n-4;
         margin-left:$clamp-14;
         background-image:url('/images/shards/shard-top-right.svg');
@@ -111,6 +116,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 210ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-7;
         margin-left:$clamp-14;
         background-image:url('/images/shards/shard-bottom-right.svg');
@@ -121,6 +127,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 190ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-14;
         margin-left:$clamp-3;
         background-image:url('/images/shards/shard-bottom-center-right.svg');
@@ -131,6 +138,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 130ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-14;
         margin-left:$clamp-n-15;
         background-image:url('/images/shards/shard-bottom-center-left.svg');
@@ -141,6 +149,7 @@
         animation-duration: $duration;
         animation-delay: $base-delay + 170ms;
         animation-iteration-count: $iteration;
+        animation-timing-function: $timing-function;
         margin-top:$clamp-8;
         margin-left:$clamp-n-32;
         background-image:url('/images/shards/shard-bottom-left.svg');
@@ -154,8 +163,32 @@
     }
     10% {
       transform:scale(1) translateX(0) translateY(0);
+      animation-timing-function: linear;
+    }
+    20% {
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    30% {
+      transform:scale(1) translateX(2px) translateY(-1px);
+    }
+    40% {
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
+    50% {
+      transform:scale(1) translateX(2px) translateY(-1px);
+    }
+    60% {
+      transform:scale(1) translateX(2px) translateY(-2px);
+    }
+    70% {
+      transform:scale(1) translateX(2px) translateY(-3px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
     }
     90% {
+      animation-timing-function: $timing-function;
       transform:scale(1) translateX(0) translateY(0);
     }
     100% {
@@ -169,6 +202,29 @@
     }
     10% {
       transform:scale(1) translateX(0) translateY(0);
+    }
+    20% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(0px) translateY(1px);
+    }
+    30% {
+      transform:scale(1) translateX(-1px) translateY(0px);
+    }
+    40% {
+      transform:scale(1) translateX(-1px) translateY(1px);
+    }
+    50% {
+      transform:scale(1) translateX(0px) translateY(1px);
+    }
+    60% {
+      transform:scale(1) translateX(0px) translateY(2px);
+    }
+    70% {
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
     }
     90% {
       transform:scale(1) translateX(0) translateY(0);
@@ -185,6 +241,29 @@
     10% {
       transform:scale(1) translateX(0) translateY(0);
     }
+    20% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    30% {
+      transform:scale(1) translateX(2px) translateY(1px);
+    }
+    40% {
+      transform:scale(1) translateX(2px) translateY(-1px);
+    }
+    50% {
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
+    60% {
+      transform:scale(1) translateX(1px) translateY(-2px);
+    }
+    70% {
+      transform:scale(1) translateX(2px) translateY(-3px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
     90% {
       transform:scale(1) translateX(0) translateY(0);
     }
@@ -200,6 +279,29 @@
     10% {
       transform:scale(1) translateX(0) translateY(0);
     }
+    20% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(1px);
+    }
+    30% {
+      transform:scale(1) translateX(2px) translateY(1px);
+    }
+    40% {
+      transform:scale(1) translateX(1px) translateY(1px);
+    }
+    50% {
+      transform:scale(1) translateX(2px) translateY(2px);
+    }
+    60% {
+      transform:scale(1) translateX(2px) translateY(2px);
+    }
+    70% {
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
     90% {
       transform:scale(1) translateX(0) translateY(0);
     }
@@ -214,6 +316,29 @@
     }
     10% {
       transform:scale(1) translateX(0) translateY(0);
+    }
+    20% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    30% {
+      transform:scale(1) translateX(2px) translateY(1px);
+    }
+    40% {
+      transform:scale(1) translateX(2px) translateY(-1px);
+    }
+    50% {
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
+    60% {
+      transform:scale(1) translateX(1px) translateY(-2px);
+    }
+    70% {
+      transform:scale(1) translateX(2px) translateY(-3px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
     }
     90% {
       transform:scale(1) translateX(0) translateY(0);
@@ -231,6 +356,29 @@
     10% {
       transform:scale(1) translateX(0) translateY(0);
     }
+    20% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    30% {
+      transform:scale(1) translateX(2px) translateY(1px);
+    }
+    40% {
+      transform:scale(1) translateX(2px) translateY(-1px);
+    }
+    50% {
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
+    60% {
+      transform:scale(1) translateX(1px) translateY(-2px);
+    }
+    70% {
+      transform:scale(1) translateX(2px) translateY(-3px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
     90% {
       transform:scale(1) translateX(0) translateY(0);
     }
@@ -246,6 +394,29 @@
     }
     10% {
       transform:scale(1) translateX(0) translateY(0);
+    }
+    20% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(2px);
+    }
+    30% {
+      transform:scale(1) translateX(2px) translateY(1px);
+    }
+    40% {
+      transform:scale(1) translateX(2px) translateY(-1px);
+    }
+    50% {
+      transform:scale(1) translateX(1px) translateY(-1px);
+    }
+    60% {
+      transform:scale(1) translateX(1px) translateY(-2px);
+    }
+    70% {
+      transform:scale(1) translateX(2px) translateY(-3px);
+    }
+    80% {
+      animation-timing-function: linear;
+      transform:scale(1) translateX(1px) translateY(-1px);
     }
     90% {
       transform:scale(1) translateX(0) translateY(0);
@@ -273,10 +444,8 @@
   
   @keyframes success-text{
     0% {
-      
-
-    transform:scale($from-sclare) translateY($clamp-3);
-        opacity:0.5;
+      transform:scale($from-sclare) translateY($clamp-3);
+      opacity:0;
     }
     10% {
       transform:scale(1) translateX(0) translateY(0);
