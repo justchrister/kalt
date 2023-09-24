@@ -41,7 +41,7 @@
     if(error) {
       ok.log('error', 'failed updating currency: ', error)
     } else {
-      navigateTo('/success')
+      navigateTo('/success/profile')
     }
   };
 </script>
