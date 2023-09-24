@@ -22,6 +22,12 @@
       </p>
     </block>
     <block margin="half">
+      <h4>Equal opportunity</h4>
+      <p>
+        We believe that everyone should have access to this kind of investment opportunity. You should not have to be a millionaire to invest in fossil-free energy, and you can feel good knowing that your money is making a difference for families in developing regions, for the environment, and generating you a passive income.
+      </p>
+    </block>
+    <block margin="half">
       <h4>Agressively optimistic</h4>
       <p>
         Creating Kalt won't be a walk in the park; it demands years of dedication and innovation. We are driven by our mission and determined to stay optimistic, even when faced with immense challenges.
