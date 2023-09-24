@@ -1,3 +1,0 @@
-# Why should I start saving money early?
-
-Saving money early allows you to take advantage of the power of time, which will help you achieve your financial goals more quickly and efficiently. Through Kalt you can harness the power of <a href="how-does-compount-interest-work">compound interest</a> so your investments can grow significantly over time. The earlier you start saving and investing, the greater the impact of <a href="how-does-compount-interest-work">compound interest</a> will be on the overall investment. 
