@@ -46,7 +46,7 @@ export const get = (client: any) => {
           termsOfService: userPreferencesCombined.termsOfService || null,
           performanceUpdates: userPreferencesCombined.performanceUpdates || null,
           colorScheme: userPreferencesCombined.colorScheme || null,
-          profilePicture: userDetailsCombined.profilePicture || null,
+          profilePicture: userPreferencesCombined.profilePicture || null,
           language: userPreferencesCombined.language || null,
           currency: userPreferencesCombined.currency || null
         }
