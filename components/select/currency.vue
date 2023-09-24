@@ -10,22 +10,10 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id)
 
-  const getPreferredCurrency = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('currency')
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error){
-      return 'EUR'
-    } else {
-      return data.currency
-    }
-  }
-  const getCurrencyDetails = async (iso) => {
+  const getCurrencyDetails = async (currency) => {
     const { data, error } = await supabase
       .from('sys_currencies')
       .select()
@@ -44,8 +32,7 @@
     }
   }
 
-  const currency = await getPreferredCurrency();
-  const currencyDetails = await getCurrencyDetails(currency);
+  const currencyDetails = await getCurrencyDetails(user.currency || 'EUR');
 </script>
 <style scoped lang="scss">
   a{
