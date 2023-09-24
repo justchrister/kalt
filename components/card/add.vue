@@ -124,7 +124,7 @@
       loading.value=false
     } else {
       loading.value=false
-      await navigateTo('/cards/success')
+      await navigateTo('/success/cards')
     }
   }
   const checkBrand = (brand) => {
