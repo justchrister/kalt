@@ -14,9 +14,6 @@
         <criteria :nr="3">
           The country must have moderate to low political risk
         </criteria>
-        <criteria :nr="3">
-          The art has seen a 15%+ average increase in value.
-        </criteria>
       </criteria-list>
     </block>
     <block>
