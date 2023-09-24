@@ -10,24 +10,25 @@
       Auto invest
     </div>
     <div class="right">
-      {{ok.toPercent(autoInvest)}}
+      {{ok.toPercent(user.autoInvest)}}
     </div>
     <div>
       Preferred currency
     </div>
     <div class="right">
-      {{currency}}
+      {{user.currency}}
     </div>
   </div>
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  const getAccountBalance = async () => {
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id)
+  const getAccountBalance = async (userId, currency) => {
     const { data, error } = await supabase
       .from('getAccountBalance')
       .select()
-      .eq('userId', user.value.id)
+      .eq('userId', userId)
       .limit(1)
       .single()
     if(error || !data.amount){
@@ -38,33 +39,7 @@
       return ok.formatCurrency(data.amount, data.currency)
     }
   }
-  const getCurrency = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .limit(1)
-      .single()
-    if(error){
-      return 'EUR' 
-    } else {
-      return data.currency
-    }
-  }
-  const getAutoInvest = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .limit(1)
-      .single()
-    if(error){
-      return 1 
-    } else {
-      return data.autoInvest
-    }
-  }
-  const currency = await getCurrency()
-  const accountBalance = await getAccountBalance()
-  const autoInvest = await getAutoInvest()
+  const accountBalance = await getAccountBalance(user.currency)
 </script>
 <style scoped lang="scss">
   .card{
