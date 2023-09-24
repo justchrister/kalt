@@ -50,7 +50,7 @@
     } else {
       ok.log('success', 'transaction created')
       loading.value = false;
-      navigateTo('/portfolio/success')
+      navigateTo('/success/portfolio')
     };
   }
 </script>
