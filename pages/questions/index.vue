@@ -3,11 +3,15 @@
     <intro title="Questions and answers"
     paragraph="Here we try to answer some questions you might have, in simple to understand."/>
     <block>
-      <ContentList path="/questions" v-slot="{ list }">
-          <nuxt-link :to="article._path" v-for="article in list" :key="article._path" >
-            {{ article.title }}
-          </nuxt-link>
-      </ContentList>
+      <chat-link to="/questions/how-does-it-work?">
+        How does it work?
+      </chat-link>
+      <chat-link to="/questions/how-do-you-make-money">
+        How does Kalt make money?
+      </chat-link>
+      <chat-link to="/questions/what-is-residual-income?">
+        What is residual income?
+      </chat-link>
     </block>
   </main>
 </template>
