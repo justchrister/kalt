@@ -46,7 +46,7 @@
     if(error) {
       ok.log('error', 'failed updating country: ', error)
     } else {
-      navigateTo('/success')
+      navigateTo('/success/profile')
     }
   };
 </script>
