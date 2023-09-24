@@ -59,6 +59,7 @@
       ok.log('error', 'could not set default card', error)
     } else {
       ok.log('', 'set default card: '+id)
+      await navigateTo('/success/cards')
     }
   }
 </script>
