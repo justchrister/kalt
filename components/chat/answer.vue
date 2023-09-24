@@ -12,9 +12,9 @@
     display: flex;  // Changed to flex
     justify-content: flex-start;  // Pushes the child to the right
     position:relative;
-    width: $clamp-40;
+    width: $clamp-46;
     min-height:$clamp-6;
-    margin-right: $clamp-18;
+    margin-right: $clamp-12;
   }
   .answer{
     display:inline-block;
