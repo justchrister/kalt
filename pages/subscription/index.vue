@@ -2,22 +2,23 @@
 <template>
   <main>
     <navbar-tabs />
-    <block margin="2">
+    <block margin="1">
       <info-box type="success" text="With automatic investment set to 100% and automatic transfers to Kalt, you can set up a low-cost alternative to subscriptions ✨" />
     </block>
-    <block margin="2">
+    <block margin="1">
       <input-amount-subscription :amount="subscription.amount || 0"/>
     </block>
     <block margin="2">
       <label>Select which days you want to auto-invest</label>
       <calendar-subscription :days="subscription.days || []"/>
     </block>
-    <block margin="2">
-      <label>Select card you want to withdraw:</label>
-      <card-default />
-      <info-box type="info" text="changing default card will change card being charged" />
+    <block margin="1">
+      <select-fund />
     </block>
-    <block margin="2">
+    <block margin="1">
+      <card-default />
+    </block>
+    <block margin="1">
       <toggle-subscription />
     </block>
   </main>
