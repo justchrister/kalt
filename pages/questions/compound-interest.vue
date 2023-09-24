@@ -18,7 +18,8 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Compound interest?'
+    pagename: 'Compound interest?',
+    layout:'focused'
   })
   useHead({
     title: 'Compound interest?',
