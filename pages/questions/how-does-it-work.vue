@@ -2,10 +2,18 @@
   <main>
     <block>
       <chat-question>
-        How does Kalt work?
+        How does this website work?
       </chat-question>
       <chat-answer>
-        U make money
+        You build your own fund by choosing what matters to you. 
+      </chat-answer>
+      <chat-image url="/images/gifs/your-fund.gif">
+      </chat-image>
+      <chat-answer>
+        Just adjust on a scale from one to three hearts
+      </chat-answer>
+      <chat-answer>
+        We invest in a variety of different assets, including art, solar panels, small businesses, and more. 
       </chat-answer>
       <chat-link to="/invest">
         invest now
