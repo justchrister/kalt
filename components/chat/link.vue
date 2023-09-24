@@ -27,9 +27,9 @@
   }
   .link{
     display:inline-block;
-    background: $marine-20;
+    background: $marine-10;
     border: $border;
-    border-color: $marine;
+    border-color: $marine-80;
     border-radius: $clamp-0-5;
     width: auto;
     max-width: $clamp-40;
@@ -39,6 +39,8 @@
   }
   .link:hover{
     cursor: pointer;
-    background:$marine-40;
+    background:$marine-20;
+    border-color:$marine;
+    text-decoration:underline;
   }
 </style>
