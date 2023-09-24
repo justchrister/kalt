@@ -27,7 +27,8 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'What is residual income?'
+    pagename: 'What is residual income?',
+    layout:'focused'
   })
   useHead({
     title: 'What is residual income?',
