@@ -64,6 +64,24 @@ export const get = (client: any) => {
       } else {
         return ok.combineJsonByEntity(data).reverse();
       }
+    },
+    sharesAvailable: async () =>{
+      const { data } = await client
+        .from('topic_exchangeOrders')
+        .select()
+        .order('message_sent', { ascending: true })
+      const combinedArray = await ok.combineJsonByEntity(data).reverse();
+      return combinedArray;
+      let results = {
+
+      }
+    },
+    sharePrices: async () => {
+      const { data:assets } = await client
+        .from('topic_assets')
+        .select()
+        .order('message_sent', { ascending: true })
+      return ok.combineJsonByTicker(assets).reverse();
     }
   }
 }
