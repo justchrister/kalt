@@ -1,4 +1,5 @@
 import { ok } from '~/composables/ok';
+import { get } from '~/composables/get';
 import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server';
 
@@ -8,7 +9,15 @@ export default defineEventHandler(async (event) => {
   const topicSub = 'accountTransactions';
   const topicPub = 'exchangeOrders';
   const body = await readBody(event);
-  
+
+  const assetPrices = await get(supabase).sharePrices();
+  const assetValue = (array, targetTicker) => {
+    const found = array.find(item => item.ticker === targetTicker);
+    return found ? found.value : 'Not found';
+  };
+  return await get(supabase).sharesAvailable()
+  return assetValue(assetPrices, 'art.ddf')
+
   if (body.record.message_read) return 'message already read';
 
   const message = await sub(supabase, topicSub).entity(body.record.message_entity);
@@ -33,9 +42,6 @@ export default defineEventHandler(async (event) => {
   // get users defined autoInvest
   // create orders
   // update transaction (set auto-invest to 0)
-
-  
-
 
   const getAssetPrice = async (currency, ticker) => {
     const { data, error } = await supabase
