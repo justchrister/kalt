@@ -11,12 +11,6 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 
   const assetPrices = await get(supabase).sharePrices();
-  const assetValue = (array, targetTicker) => {
-    const found = array.find(item => item.ticker === targetTicker);
-    return found ? found.value : 'Not found';
-  };
-  return await get(supabase).sharesAvailable()
-  return assetValue(assetPrices, 'art.ddf')
 
   if (body.record.message_read) return 'message already read';
 
@@ -35,9 +29,8 @@ export default defineEventHandler(async (event) => {
   if (message.type !== 'deposit') {
     return 'not a deposit';
   }
-  
-  // get asset prices
-  // create concatonated index
+  return await get(supabase).exchangeRates(message.currency, 'EUR') 
+  return assetPrices['art.ddf'];
   // get users defined fund
   // get users defined autoInvest
   // create orders
