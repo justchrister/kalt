@@ -18,6 +18,7 @@ CREATE TABLE "topic_exchangeOrders" (
     "fulfilledBy"         uuid,
     "splitInto"           uuid[],
     "partOf"              uuid,
+    "origin"              boolean,
     CHECK (("type" = 'buy' AND quantity > 0) OR ("type" = 'sell' AND quantity < 0))
 );
 
