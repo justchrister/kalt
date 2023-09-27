@@ -65,23 +65,51 @@ export const get = (client: any) => {
         return ok.combineJsonByEntity(data).reverse();
       }
     },
-    sharesAvailable: async () =>{
-      const { data } = await client
+    sharePrices: async () => {
+      const { data:originOrders } = await client
         .from('topic_exchangeOrders')
         .select()
         .order('message_sent', { ascending: true })
-      const combinedArray = await ok.combineJsonByEntity(data).reverse();
-      return combinedArray;
-      let results = {
-
-      }
-    },
-    sharePrices: async () => {
-      const { data:assets } = await client
+        .eq('origin', true)
+      
+      const { data: assetList } = await client
         .from('topic_assets')
         .select()
         .order('message_sent', { ascending: true })
-      return ok.combineJsonByTicker(assets).reverse();
+      const assets = ok.combineJsonByKeys(assetList, 'ticker');
+      
+      const shares = {};
+      originOrders.forEach(message => {
+        if (shares[message.ticker]) {
+          shares[message.ticker] -= message.quantity;
+        } else {
+          shares[message.ticker] = -message.quantity;
+        }
+      });
+
+      const result = {};
+      assets.forEach(asset => {
+        const ticker = asset.ticker;
+        if (shares[ticker]) {
+          result[ticker] = asset.value / shares[ticker];
+        }
+      });
+
+      return result;
+    },
+    exchangeRates: async(from, to) => {
+      const { data, error } = await client
+        .from('topic_exchangeRates')
+        .select()
+        .eq('from', from)
+        .eq('to', to)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        return ok.combineJsonByEntity(data).reverse();
+      }
     }
   }
 }
