@@ -125,6 +125,32 @@ export const get = (client: any) => {
       } else {
         return ok.combineJsonByKeys(data, 'ticker')
       }
+    },
+    portfolio: async(userId) => {
+      const { data: orders, error } = await client
+        .from('topic_exchangeOrders')
+        .select()
+        .eq('userId', userId)
+        .order('message_sent', { ascending: true })
+      if(error){
+        return {
+          error: error
+        }
+      } 
+      const fulfilledOrders = [];
+      for (let i = 0; i < orders.length; i++) {
+        if (orders[i].status !== 'fulfilled') {
+          continue;
+        } else {
+          fulfilledOrders.push(orders[i]);
+        }
+      }
+      const combinedFulfilledOrders = [] as any;
+      for (let i = 0; i < fulfilledOrders.length; i++) {
+        const combinedEntity = ok.combineJsonByEntity(fulfilledOrders[i]);
+        combinedFulfilledOrders.push(combinedEntity);
+      }
+      return combinedFulfilledOrders
     }
   }
 }
