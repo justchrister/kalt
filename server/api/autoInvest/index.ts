@@ -6,15 +6,10 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const service = 'autoInvest';
-  const topicSub = 'accountTransactions';
-  const topicPub = 'exchangeOrders';
+  const topic = 'accountTransactions';
   const body = await readBody(event);
 
-
-  if (body.record.message_read) return 'message already read';
-
-  const message = await sub(supabase, topicSub).entity(body.record.message_entity);
-  await sub(supabase, topicSub).read(service, body.record.message_id);
+  const message = await sub(supabase, topic).entity(body.record.message_entity);
 
   if(message.status!=='complete') {
     return 'wrong payment status'
