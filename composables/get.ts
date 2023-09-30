@@ -104,11 +104,26 @@ export const get = (client: any) => {
         .eq('from', from)
         .eq('to', to)
         .order('message_sent', { ascending: true })
+        .limit(1)
+        .single()
       if(error) {
         ok.log('', error)
         return null
       } else {
-        return ok.combineJsonByEntity(data).reverse();
+        return data.rate
+      }
+    },
+    userDefinedFund: async(userId) => {
+      const { data, error } = await client
+        .from('topic_userDefinedFunds')
+        .select()
+        .eq('userId', userId)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        return ok.combineJsonByKeys(data, 'ticker')
       }
     }
   }
