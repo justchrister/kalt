@@ -8,8 +8,11 @@ export default defineEventHandler(async (event) => {
   const service = 'autoInvest';
   const topic = 'accountTransactions';
   const body = await readBody(event);
-
+  
+  if (body.record.message_read) return 'message already read';
+  
   const message = await sub(supabase, topic).entity(body.record.message_entity);
+  await sub(supabase, topicSub).read(service, body.record.message_id);
 
   if(message.status!=='complete') {
     return 'wrong payment status'
