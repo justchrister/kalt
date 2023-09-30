@@ -126,31 +126,28 @@ export const get = (client: any) => {
         return ok.combineJsonByKeys(data, 'ticker')
       }
     },
-    portfolio: async(userId) => {
+    portfolio: async(user) => {
       const { data: orders, error } = await client
         .from('topic_exchangeOrders')
         .select()
-        .eq('userId', userId)
+        .eq('userId', user.userId)
         .order('message_sent', { ascending: true })
       if(error){
         return {
           error: error
         }
-      } 
+      }
       const fulfilledOrders = [];
       for (let i = 0; i < orders.length; i++) {
         if (orders[i].status !== 'fulfilled') {
           continue;
         } else {
-          fulfilledOrders.push(orders[i]);
+          const filtreredArray = orders.filter(message => message.message_entity === orders[i].message_entity);
+          const order = ok.combineJsonByKeys(filtreredArray, 'message_entity');
+          fulfilledOrders.push(...order);
         }
       }
-      const combinedFulfilledOrders = [] as any;
-      for (let i = 0; i < fulfilledOrders.length; i++) {
-        const combinedEntity = ok.combineJsonByEntity(fulfilledOrders[i]);
-        combinedFulfilledOrders.push(combinedEntity);
-      }
-      return combinedFulfilledOrders
+      return fulfilledOrders
     }
   }
 }
