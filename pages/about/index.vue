@@ -33,5 +33,8 @@
   })
   
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id)
+  const portfolio = await get(supabase).portfolio(user.userId)
+  ok.log('success', 'Got portfolio: ', portfolio)
 </script>
