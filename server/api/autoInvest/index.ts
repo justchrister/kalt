@@ -29,9 +29,9 @@ export default defineEventHandler(async (event) => {
     return 'not a deposit';
   }
 
-  const createExchangeOrder = async (userId, quantity, tickerx) => {
+  const createExchangeOrder = async (userId: string, quantity: number, tickerx: tickers) => {
     const { error } = await pub(supabase, {
-      sender:'server/api/autoInvest/webhooks/accountTransactions.ts'
+      sender:'server/api/autoInvest/index.ts'
     }).exchangeOrders({
       ticker: tickerx,
       type: 'buy',
@@ -39,11 +39,21 @@ export default defineEventHandler(async (event) => {
       userId: userId,
       quantity: quantity
     });
-    return
+    if(error) {
+      return
+    } else {
+      return {
+        ticker: tickerx,
+        type: 'buy',
+        status: 'open',
+        userId: userId,
+        quantity: quantity
+      }
+    }
   };
-  const createWithdrawTransaction = async (userId, amount, currency) => {
+  const createWithdrawTransaction = async (userId: string, amount: number, currency: string) => {
     const { error } = await pub(supabase, {
-      sender:'server/api/autoInvest/accountTransactions.ts'
+      sender:'server/api/autoInvest/index.ts'
     }).accountTransactions({
       'userId': userId,
       'amount': -amount,
@@ -53,12 +63,24 @@ export default defineEventHandler(async (event) => {
       'status': 'complete',
       'subType': 'autoInvested',
     });
-    return
+    if(error) {
+      return
+    } else {
+      return {
+        'userId': userId,
+        'amount': -amount,
+        'currency': currency,
+        'autoInvest': 0,
+        'type': 'withdraw',
+        'status': 'complete',
+        'subType': 'autoInvested',
+      }
+    }
   };
 
-  const updateTransaction = async (userId, entity) => {
+  const updateTransaction = async (userId: string, entity: string) => {
     const { error } = await pub(supabase, {
-      sender:'server/api/autoInvest/accountTransactions.ts',
+      sender:'server/api/autoInvest/index.ts',
       entity: entity,
     }).accountTransactions({
       'userId': userId,
@@ -66,40 +88,58 @@ export default defineEventHandler(async (event) => {
       'autoInvest': 0,
       'subType': 'autoInvested',
     });
-    return
+    if(error) {
+      return
+    } else {
+      return {
+        'userId': userId,
+        'status': 'complete',
+        'autoInvest': 0,
+        'subType': 'autoInvested',
+      }
+    }
   };
 
-  const assetPrices = await get(supabase).sharePrices();
+  let response = {
+    'exchangeOrders': [],
+    'withdrawTransaction': {},
+    'updatedTransaction': {}
+  }
+  const assetPrices = await get(supabase).sharePrices() as any;
   const convertedCurrency = await get(supabase).exchangeRates('EUR', message.currency)
   const user = await get(supabase).user(message.userId);
+  if(!user) return 'user not found'
   const autoInvestRate = user.autoInvest;
   const withdrawAmount = message.amount - (message.amount*(1 - autoInvestRate));
-  /*
+  
   const withdrawTransaction = await createWithdrawTransaction(user.userId, withdrawAmount, message.currency);
+  response.withdrawTransaction = withdrawTransaction || {};
   const updatedTransaction = await updateTransaction(user.userId, message.message_entity);
-*/
+  response.updatedTransaction = updatedTransaction || {};
+
   const userDefinedFund =  await get(supabase).userDefinedFund(user.userId)
 
   let total = 0;
-
-  for (let i = 0; i < userDefinedFund.length; i++) {
-    total += userDefinedFund[i].rate
+  let userDefinedFundPercentage = {} as any;
+  if(userDefinedFund){
+    for (let i = 0; i < userDefinedFund.length; i++) {
+      total += userDefinedFund[i].rate
+    }
+    for (let i = 0; i < userDefinedFund.length; i++) {
+      const ticker = userDefinedFund[i].ticker;
+      userDefinedFundPercentage[ticker]= userDefinedFund[i].rate / total;
+    }
+    for (let i = 0; i < userDefinedFund.length; i++) {
+      const definedFundEntity = userDefinedFund[i];
+      const currencyConvertedSharePrice = assetPrices[definedFundEntity.ticker ] * convertedCurrency;
+      const investQuantity =  (message.amount * autoInvestRate) / currencyConvertedSharePrice;
+      const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, definedFundEntity.ticker);
+      response.exchangeOrders.push(exchangeOrder);
+    }
+  } else {
+    return {
+      'error': 'could not find userDefinedFund'
+    }
   }
-  let userDefinedFundPercentage = {};
-  for (let i = 0; i < userDefinedFund.length; i++) {
-    const ticker = userDefinedFund[i].ticker;
-    userDefinedFundPercentage[ticker] = userDefinedFund[i].rate / total;
-  }
-  
-  for (let i = 0; i < userDefinedFund.length; i++) {
-    const cx = userDefinedFund[i];
-    const currencyConvertedSharePrice = assetPrices[cx.ticker] * convertedCurrency;
-    const investQuantity =  (message.amount * autoInvestRate) / currencyConvertedSharePrice;
-    ok.log('', {
-      currencyConvertedSharePrice,
-      cx,
-      investQuantity
-    })
-  }
-  return 'done'
+  return response
 });
