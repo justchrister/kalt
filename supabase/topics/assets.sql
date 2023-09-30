@@ -17,3 +17,11 @@ CREATE TABLE "topic_assets" (
 
 --- add row level security
 ALTER TABLE "topic_assets" ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "AUTH — Select"
+    ON public."topic_assets"
+    FOR SELECT 
+    TO authenticated 
+    USING (
+        true
+    );
