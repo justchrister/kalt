@@ -1,5 +1,17 @@
 import { ok } from '~/composables/ok'
-
+const filterOnOnlyFulfilledOrders = async (orders) => {
+  const fulfilledOrders = [];
+  for (let i = 0; i < orders.length; i++) {
+    if (orders[i].status !== 'fulfilled') {
+      continue;
+    } else {
+      const filtreredArray = orders.filter(message => message.message_entity === orders[i].message_entity);
+      const order = ok.combineJsonByKeys(filtreredArray, 'message_entity');
+      fulfilledOrders.push(...order);
+    }
+  }
+  return fulfilledOrders;
+}
 export const get = (client: any) => {
   return {
     userDefinedFunds: async (userId: any, ticker: any) => {
@@ -127,6 +139,9 @@ export const get = (client: any) => {
       }
     },
     portfolio: async(user) => {
+      const assetPrices = await get(client).sharePrices() as any;
+      const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
+      ok.log('', 'assetPrices', assetPrices)
       const { data: orders, error } = await client
         .from('topic_exchangeOrders')
         .select()
@@ -137,17 +152,33 @@ export const get = (client: any) => {
           error: error
         }
       }
-      const fulfilledOrders = [];
-      for (let i = 0; i < orders.length; i++) {
-        if (orders[i].status !== 'fulfilled') {
-          continue;
+      const fulfilledOrders = await filterOnOnlyFulfilledOrders(orders);
+
+      const portfolio = [];
+      const dateValueMap = {};  // This will store the summed value for each date
+    
+      for (let i = 0; i < fulfilledOrders.length; i++) {
+        const fulfilledOrder = fulfilledOrders[i];
+        const ticker = fulfilledOrder.ticker;
+        const currencyConvertedSharePrice = assetPrices[ticker] * convertedCurrency;
+        const value = fulfilledOrder.quantity * currencyConvertedSharePrice;
+        const dateObject = new Date(fulfilledOrder.message_sent);
+        const date = dateObject.toISOString().split('T')[0];
+        
+        // Sum up the value for the date
+        if (dateValueMap[date]) {
+          dateValueMap[date] += value;
         } else {
-          const filtreredArray = orders.filter(message => message.message_entity === orders[i].message_entity);
-          const order = ok.combineJsonByKeys(filtreredArray, 'message_entity');
-          fulfilledOrders.push(...order);
+          dateValueMap[date] = value;
         }
       }
-      return fulfilledOrders
+      
+      // Convert the dateValueMap to the desired array format
+      for (const [date, value] of Object.entries(dateValueMap)) {
+        portfolio.push({ date, value });
+      }
+      
+      return portfolio;
     }
   }
 }
