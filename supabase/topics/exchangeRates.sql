@@ -17,3 +17,12 @@ CREATE TABLE "topic_exchangeRates" (
 
 --- add row level security
 ALTER TABLE "topic_exchangeRates" ENABLE ROW LEVEL SECURITY;
+
+
+CREATE POLICY "AUTH — Select"
+    ON public."topic_exchangeRates"
+    FOR SELECT 
+    TO authenticated 
+    USING (
+        true
+    );
