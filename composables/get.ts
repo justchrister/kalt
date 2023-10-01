@@ -141,7 +141,6 @@ export const get = (client: any) => {
     portfolio: async(user) => {
       const assetPrices = await get(client).sharePrices() as any;
       const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
-      ok.log('', 'assetPrices', assetPrices)
       const { data: orders, error } = await client
         .from('topic_exchangeOrders')
         .select()
@@ -153,7 +152,6 @@ export const get = (client: any) => {
         }
       }
       const fulfilledOrders = await filterOnOnlyFulfilledOrders(orders);
-      ok.log('','fulfilledOrders', fulfilledOrders);
       const portfolio = [];
       const dateValueMap = {};
       let value = 0;
@@ -176,15 +174,15 @@ export const get = (client: any) => {
         }
       }
     
-      // Sort the dates to go from earliest to latest
       const sortedDates = Object.keys(dateValueMap).sort();
-      const earliestDate = new Date(sortedDates[0]);
+      const earliestLimit = new Date(latestDate);
+      earliestLimit.setDate(latestDate.getDate() - 365);
+      const earliestDate = new Date(Math.min(earliestLimit, new Date(sortedDates[0])));
       const latestDate = new Date(sortedDates[sortedDates.length - 1]);
     
       let currentDate = earliestDate;
       value = 0;
     
-      // Looping through the date range and filling missing ones
       while (currentDate <= latestDate) {
         const dateStr = currentDate.toISOString().split('T')[0];
         let todaysValueChange = dateValueMap[dateStr] || 0;
@@ -198,7 +196,6 @@ export const get = (client: any) => {
     
         currentDate.setDate(currentDate.getDate() + 1);
       }
-      ok.log('', 'portfolio', portfolio)
       return portfolio;
     }
   }
