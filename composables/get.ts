@@ -156,7 +156,6 @@ export const get = (client: any) => {
       const dateValueMap = {};
       let value = 0;
     
-      // Calculating aggregated values and running total
       for (let i = 0; i < fulfilledOrders.length; i++) {
         const fulfilledOrder = fulfilledOrders[i];
         const ticker = fulfilledOrder.ticker;
@@ -174,28 +173,31 @@ export const get = (client: any) => {
         }
       }
     
+      // Sort the dates to go from earliest to latest
       const sortedDates = Object.keys(dateValueMap).sort();
-      const earliestLimit = new Date(latestDate);
-      earliestLimit.setDate(latestDate.getDate() - 365);
-      const earliestDate = new Date(Math.min(earliestLimit, new Date(sortedDates[0])));
       const latestDate = new Date(sortedDates[sortedDates.length - 1]);
-    
-      let currentDate = earliestDate;
-      value = 0;
-    
+
+      // Ensure it goes back at least 365 days
+      let currentDate = new Date(latestDate);
+      currentDate.setDate(latestDate.getDate() - 365);
+      
+      let runningValue = 0;  // Renamed from 'value' to 'runningValue'
+
+      // Looping through the date range and filling missing ones
       while (currentDate <= latestDate) {
         const dateStr = currentDate.toISOString().split('T')[0];
         let todaysValueChange = dateValueMap[dateStr] || 0;
-    
-        value += todaysValueChange;
-    
+
+        runningValue += todaysValueChange;  // Use 'runningValue' here
+
         portfolio.push({
           date: dateStr,
-          value,
+          value: runningValue,  // And here
         });
-    
+
         currentDate.setDate(currentDate.getDate() + 1);
       }
+
       return portfolio;
     }
   }
