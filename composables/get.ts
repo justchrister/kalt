@@ -153,31 +153,52 @@ export const get = (client: any) => {
         }
       }
       const fulfilledOrders = await filterOnOnlyFulfilledOrders(orders);
-
+      ok.log('','fulfilledOrders', fulfilledOrders);
       const portfolio = [];
-      const dateValueMap = {};  // This will store the summed value for each date
+      const dateValueMap = {};
+      let value = 0;
     
+      // Calculating aggregated values and running total
       for (let i = 0; i < fulfilledOrders.length; i++) {
         const fulfilledOrder = fulfilledOrders[i];
         const ticker = fulfilledOrder.ticker;
         const currencyConvertedSharePrice = assetPrices[ticker] * convertedCurrency;
-        const value = fulfilledOrder.quantity * currencyConvertedSharePrice;
+        const todaysValueChange = fulfilledOrder.quantity * currencyConvertedSharePrice;
         const dateObject = new Date(fulfilledOrder.message_sent);
         const date = dateObject.toISOString().split('T')[0];
-        
-        // Sum up the value for the date
+    
+        value += todaysValueChange;
+    
         if (dateValueMap[date]) {
-          dateValueMap[date] += value;
+          dateValueMap[date] += todaysValueChange;
         } else {
-          dateValueMap[date] = value;
+          dateValueMap[date] = todaysValueChange;
         }
       }
-      
-      // Convert the dateValueMap to the desired array format
-      for (const [date, value] of Object.entries(dateValueMap)) {
-        portfolio.push({ date, value });
+    
+      // Sort the dates to go from earliest to latest
+      const sortedDates = Object.keys(dateValueMap).sort();
+      const earliestDate = new Date(sortedDates[0]);
+      const latestDate = new Date(sortedDates[sortedDates.length - 1]);
+    
+      let currentDate = earliestDate;
+      value = 0;
+    
+      // Looping through the date range and filling missing ones
+      while (currentDate <= latestDate) {
+        const dateStr = currentDate.toISOString().split('T')[0];
+        let todaysValueChange = dateValueMap[dateStr] || 0;
+    
+        value += todaysValueChange;
+    
+        portfolio.push({
+          date: dateStr,
+          value,
+        });
+    
+        currentDate.setDate(currentDate.getDate() + 1);
       }
-      
+      ok.log('', 'portfolio', portfolio)
       return portfolio;
     }
   }
