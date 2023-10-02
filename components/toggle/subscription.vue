@@ -5,7 +5,7 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const isOn = ref()
   const { data, error } = await supabase
     .from('getUserSubscriptions')
@@ -27,9 +27,9 @@
     isOn.value = toggledValue
     const { error, data } = await pub(supabase, {
       sender:'components/toggle/subscription.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userSubscriptions({
-      userId: user.value.id,
+      userId: userId.value.id,
       active: isOn.value
     });
   }
