@@ -9,24 +9,10 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-
-  const getPreferredcountry = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('country')
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error) {
-      ok.log('error', 'Could not get preferred country', error)
-      return ''
-    } else {
-      if(data) ok.log('success', 'Got preferred country: ', data.country)
-      return data.country
-    }
-  }
-  const getcountryDetails = async () => {
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id);
+  
+  const getcountryDetails = async (country) => {
     const { data, error } = await supabase
       .from('sys_countries')
       .select()
@@ -39,8 +25,7 @@
     }
   }
 
-const country = await getPreferredcountry();
-const countryDetails = await getcountryDetails();
+  const countryDetails = await getCountryDetails(user.country);
 </script>
 <style scoped lang="scss">
   div{
