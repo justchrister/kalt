@@ -29,9 +29,9 @@
     colorMode.preference = colorScheme;
     const { error, data } = await pub(supabase, {
       sender:'components/select/colorScheme.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      'userId': user.value.id,
+      'userId': userId.value.id,
       'colorScheme': colorScheme
     });
     if(error) ok.log('error', 'could not update color scheme', error)
