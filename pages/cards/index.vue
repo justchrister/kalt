@@ -25,11 +25,11 @@
   })
 
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const { data, error } = await supabase
     .from('getPaymentCards')
     .select()
-    .eq('userId', user.value.id)
+    .eq('userId', userId.value.id)
     .gte('number', 1)
     .order('default', { ascending: false })
   
@@ -52,7 +52,7 @@
       sender: 'pages/cards/index.vue',
       entity: id
     }).paymentCards({
-      'userId': user.value.id,
+      'userId': userId.value.id,
       'default': true
     });
     if(error) {
