@@ -8,12 +8,12 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const getPaymentCardDefault = async () => {
     const { data, error } = await supabase
       .from('getPaymentCardDefault')
       .select()
-      .eq('userId', user.value.id)
+      .eq('userId', userId.value.id)
       .limit(1)
       .single()
     if(data) {
