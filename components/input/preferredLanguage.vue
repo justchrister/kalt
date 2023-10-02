@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const { data: languages } = await supabase.from('languages').select('iso6393, name')
 
   const language = ref(props.initial)
@@ -28,9 +28,9 @@
     state.value = 'loading'
     const { error, data } = await pub(supabase, {
       sender:'components/input/preferredLanguage.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPrefrences({
-      userId: user.value.id,
+      userId: userId.value.id,
       language: language.value
     });
     if(error){
