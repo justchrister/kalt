@@ -88,7 +88,7 @@
 
     const { error, data } = await pub(supabase, {
       sender:'components/calendarSubscription.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userSubscriptions({
       'userId': userId.value.id,
       'days': days.value
