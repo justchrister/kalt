@@ -9,23 +9,9 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-
-  const getPreferredLanguage = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('language')
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error) {
-      ok.log('error', 'Could not get preferred language', error)
-      return 'ENG'
-    } else {
-      if(data) ok.log('success', 'Got preferred language: ', data.language)
-      return data.language
-    }
-  }
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id);
+  
   const getLanguageDetails = async () => {
     const { data, error } = await supabase
       .from('sys_languages')
@@ -44,8 +30,7 @@
     }
   }
 
-const language = await getPreferredLanguage();
-const languageDetails = await getLanguageDetails();
+  const languageDetails = await getLanguageDetails(user.language);
 </script>
 <style scoped lang="scss">
   div{
