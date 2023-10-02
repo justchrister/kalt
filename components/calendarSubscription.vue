@@ -71,7 +71,7 @@
 
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const props = defineProps({
     days: {
       type: Array,
@@ -90,7 +90,7 @@
       sender:'components/calendarSubscription.vue',
       entity: user.value.id
     }).userSubscriptions({
-      'userId': user.value.id,
+      'userId': userId.value.id,
       'days': days.value
     });
 
