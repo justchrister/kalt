@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" v-if="data">
+  <div class="wrap" v-if="portfolio && user">
     <div class="chart-sizer">
       <Line
         :options="chartOptions"
@@ -42,7 +42,9 @@
     })
 
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id);
+  const currency = user.currency || 'EUR';
 
   ChartJS.register(
     CategoryScale,
@@ -126,61 +128,36 @@
       }
     }
   }
-  const labels = ref([]);
-  const datas = ref([]);
   let color = '#161719';
 
+  const labels = [];
+  const data = [];
+  const portfolio = await get(supabase).portfolio(user)
+  for (let i = 0; i < portfolio.length; i++) {
+    data.push(portfolio[i].value)
+    labels.push(portfolio[i].date)
+  }
+
   const chartData = computed(() => ({
-    labels: labels.value.slice(-props.days),
+    labels: labels.slice(-props.days),
     datasets: [{
         label: "",
         borderColor: color,
         pointBackgroundColor: color,
         pointBorderWidth: 0,
         pointBorderColor: color,
-        data: datas.value.slice(-props.days)
+        data: data.slice(-props.days)
       }]
   }))
-  let toLog = []
-  const { data, error } = await supabase
-    .from('getUserPortfolio')
-    .select()
-    .eq('userId', user.value.id)
-    .order('date', { ascending: true })
-  for (let i = 0; i < data.length; i++) {
-    toLog.push(data[i].date+' '+data[i].value+' '+data[i].valueCurrency)
-  }
-  ok.log('', toLog)
-  if(error) ok.log('error', 'could not getUserPortfolio: ', error)
+  ok.log('', data)
 
-  const getUser = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error) {
-      ok.log('error', 'could not getUser: '+error.message)
-      return error
-    } else{
-      return data
-    }
-  }
-  const userObject = await getUser()
-  const currency = userObject.currency || 'EUR';
-
-  for (let i = 0; i < data.length; i++) {
-    labels.value.push(data[i].date)
-    datas.value.push(data[i].value)
-  }
   const idkWhatToCallIt = ref(props.days);
-  if(props.days>datas.value.length){
-    idkWhatToCallIt.value = (datas.value.length-1)
+  if(props.days>data.length){
+    idkWhatToCallIt.value = (data.length-1)
   }
   const hoveredValue = ref(
     new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(
-      datas.value[idkWhatToCallIt.value]
+      data[idkWhatToCallIt.value]
     )
   );
 
@@ -188,10 +165,10 @@
     hoveredValue.value = x;
   }
   const percentageChange = ref(
-    datas.value[datas.value.length - 1]
+    data[data.length - 1]
   )
   const updatePercentageChange = (x) => {
-    const firstValue = datas.value[datas.value.length - props.days] || datas.value[0];
+    const firstValue = data[data.length - props.days] || data[0];
     const lastValue = x;
     const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
 
