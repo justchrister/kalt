@@ -9,9 +9,9 @@
   const isOn = ref(true)
   const user = await get(supabase).user(userId.value.id);
   
-  if(data && data.performanceUpdates) {
-    isOn.value = data.performanceUpdates;
-    ok.log('success', 'Got user preference: ', data.performanceUpdates)
+  if(user && user.performanceUpdates) {
+    isOn.value = user.performanceUpdates;
+    ok.log('success', 'Got user preference: ', user.performanceUpdates)
   }
   const toggleValue = async () => {
     if(isOn.value){
