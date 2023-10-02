@@ -14,7 +14,7 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   definePageMeta({
     middleware: 'auth',
     layout: 'blank'
@@ -33,9 +33,9 @@
     selected.value = iso;
     const { error, data } = await pub(supabase, {
       sender:"pages/select/language.vue",
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      userId: user.value.id,
+      userId: userId.value.id,
       language: iso
     });
     if(error) {
