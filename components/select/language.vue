@@ -12,7 +12,7 @@
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id);
   
-  const getLanguageDetails = async () => {
+  const getLanguageDetails = async (language) => {
     const { data, error } = await supabase
       .from('sys_languages')
       .select()
