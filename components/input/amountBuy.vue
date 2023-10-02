@@ -23,29 +23,15 @@
 <script setup lang="ts">
 const state = ref('loading')
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+const userId = useSupabaseUser()
   const props = defineProps({
     uuid: {
       type: String,
       required: true
     }
   })
-  const getPreferredCurrency = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select('currency')
-      .eq('userId', user.value.id)
-      .limit(1)
-      .single()
-    if(error){
-      return 'EUR'
-    } else{
-      return data.currency
-    }
-    
-  }
+  const user = await get(supabase).user(userId.value.id)
 
-  const currency = await getPreferredCurrency();
   const amount = ref(10);
   let initialAmount = props.amount;
   let previousValue;
@@ -58,9 +44,9 @@ const user = useSupabaseUser()
         sender:'components/input/amountBuy.vue',
         entity: props.uuid,
       }).accountTransactions({
-        userId: user.value.id,
+        userId: user.userId,
         amount: ok.toInt(amount.value),
-        currency: currency,
+        currency: user.currency,
         type: 'deposit',
         subType: 'card',
         status: 'incomplete',
