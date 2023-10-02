@@ -57,30 +57,21 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  const profilePicture = ref()
+  const userId = useSupabaseUser()
+  const user = get(supabase).user(userId.value.id);
+  const profilePicture = ref(user.profilePicture)
 
   const setProfilePicture = async (selectedProfilePicture) => {
     profilePicture.value = selectedProfilePicture;
     const { error, data } = await pub(supabase, {
       sender:'components/select/profilePicture.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      'userId': user.value.id,
+      'userId': userId.value.id,
       'profilePicture': selectedProfilePicture
     });
     if(error) ok.log('error', 'could not update profile picture', error)
   };
-  const { data, error } = await supabase
-    .from('getUser')
-    .select()
-    .limit(1)
-    .single()
-
-  if (data) {
-    profilePicture.value = data.profilePicture;
-  }
-  if(error) ok.log('error', 'could not get profile picture', error)
 
 </script>
 <style scoped lang="scss">
