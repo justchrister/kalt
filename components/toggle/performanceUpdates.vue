@@ -5,13 +5,9 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const isOn = ref(true)
-  const { data, error } = await supabase
-    .from('getUser')
-    .select()
-    .limit(1)
-    .single()
+  const user = await get(supabase).user(userId.value.id);
   
   if(data && data.performanceUpdates) {
     isOn.value = data.performanceUpdates;
@@ -30,9 +26,9 @@
     
     const { error } = await pub(supabase, {
       sender:'components/toggle/performanceUpdates.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      userId: user.value.id,
+      userId: userId.value.id,
       performanceUpdates: isOn.value
     })
     if(error) {
