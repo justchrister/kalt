@@ -38,8 +38,8 @@
   })
   let signedIn = false
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  if(user.value) signedIn = true
+  const userId = useSupabaseUser()
+  if(userId.value) signedIn = true
 </script>
 <style scoped lang="scss">
 .cta{
