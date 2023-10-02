@@ -5,17 +5,10 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  const isOn = ref(true)
-  const { data, error } = await supabase
-    .from('getUser')
-    .select()
-    .limit(1)
-    .single()
-  if(data) {
-    isOn.value = data.termsOfService;
-    ok.log('success', 'Got user preference: ', data.termsOfService)
-  }
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id);
+  const isOn = ref(user.termsOfService || true)
+  
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
@@ -25,9 +18,9 @@
     isOn.value = toggledValue
     const { error } = await pub(supabase, {
       sender:'components/toggle/termsOfService.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      userId: user.value.id,
+      userId: userId.value.id,
       termsOfService: isOn.value
     });
     if(error) {
