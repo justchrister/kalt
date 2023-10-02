@@ -111,7 +111,7 @@ $monospace:
 // Borders
 $border-width: .2px;
 $border: $border-width solid $dark;
-$border-radius: 0px;
+$border-radius: 0;
 
 //clamps
 $clamp-0-2: clamp($unit-min*0.2, $unit*0.2, $unit-max*0.2);
