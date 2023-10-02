@@ -24,8 +24,7 @@
     title: 'Transactions'
   })
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   
-  const transactions = await get(supabase).accountTransactions(user.value.id);
-  ok.log('', transactions)
+  const transactions = await get(supabase).accountTransactions(userId.value.id);
 </script>
