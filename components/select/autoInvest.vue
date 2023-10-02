@@ -2,7 +2,7 @@
   <div class="input-wrap">
     <label>Select reinvestment ratio (%): </label>
     <div class="wrapper">
-      <span>{{val}}%</span>
+      <span>{{percent}}%</span>
       <span @click="remove()">-</span>
       <span @click="add()">+</span>
     </div>
