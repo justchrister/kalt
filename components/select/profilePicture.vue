@@ -58,7 +58,7 @@
 <script setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
-  const user = get(supabase).user(userId.value.id);
+  const user = await get(supabase).user(userId.value.id);
   const profilePicture = ref(user.profilePicture)
 
   const setProfilePicture = async (selectedProfilePicture) => {
