@@ -10,46 +10,39 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-  const val = ref(100)
+  const userId = useSupabaseUser()
+  const percent = ref(100)
+  const user = await get(supabase).user(userId.value.id);
+
+  if(user) percent.value = user.autoInvest*100
 
   const postUserPreference = async (autoInvestRate) => {
     const autoInvest = autoInvestRate/100;
     pub(supabase, {
       sender:'components/select/autoInvest.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      userId: user.value.id,
+      userId: userId.value.id,
       autoInvest: autoInvest
     });
     ok.log('', 'updated auto-invest: '+autoInvestRate)
   }
 
-
-  const { data } = await supabase
-    .from('getUser')
-    .select('autoInvest')
-    .eq('userId', user.value.id)
-    .limit(1)
-    .single()
-    
-
-  if(data) val.value = data.autoInvest*100
   const add = async () => { 
-    if(val.value>=100){
-      val.value=100
+    if(percent.value>=100){
+      percent.value=100
     } else {
-      val.value+=10
+      percent.value+=10
     }
-    postUserPreference(val.value);
+    postUserPreference(percent.value);
   }
   const remove = async () => {
-    if(val.value<=0){
-      val.value=0
+    if(percent.value<=0){
+      percent.value=0
     } else {
-      val.value-=10
+      percent.value-=10
     }    
-    postUserPreference(val.value);
+    postUserPreference(percent.value);
   }
 </script>
 <style scoped lang="scss">
