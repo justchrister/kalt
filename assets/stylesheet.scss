@@ -54,6 +54,7 @@ input{
   padding:clamp($unit-min/2, $unit/2, $unit-max/2) 
           clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   border: $border;
+  border-radius: $border-radius;
   height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
   @include font-body;
   box-sizing:border-box;
