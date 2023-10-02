@@ -3,18 +3,6 @@
   "installCommand": "npm install",
   "crons": [
     {
-      "path": "/api/getUserPortfolio/addMissingDates",
-      "schedule": "10 * * * *"
-    },
-    {
-      "path": "/api/getUserPortfolio/addQuantityToday",
-      "schedule": "15 * * * *"
-    },
-    {
-      "path": "/api/getUserPortfolio/calculateValue",
-      "schedule": "20 * * * *"
-    },
-    {
       "path": "/api/payments/initiatePayments",
       "schedule": "25 * * * *"
     },
@@ -25,10 +13,6 @@
     {
       "path": "/api/acl/norgesbank/updateExchangeRates",
       "schedule": "35 * * * *"
-    },
-    {
-      "path": "/api/fundValuations/calculate",
-      "schedule": "20 04 * * *"
     }
   ]
 }
