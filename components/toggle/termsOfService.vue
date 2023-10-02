@@ -7,8 +7,8 @@
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id);
-  const isOn = ref(user.termsOfService || true)
-  
+  const isOn = ref(user.termsOfService || true) // pretty sure this is a good simplification, but might just be that if user.termsOfService is set to false, it will be set to true due to the falsely triggering the or operator
+
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
