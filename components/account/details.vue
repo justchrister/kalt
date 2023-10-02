@@ -33,13 +33,13 @@
       Reference
     </div>
     <div class="right">
-      {{user.email}}
+      {{userId.email}}
     </div>
   </div>
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
 </script>
 <style scoped lang="scss">
   .card{
