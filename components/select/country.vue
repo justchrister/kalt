@@ -12,7 +12,7 @@
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id);
   
-  const getcountryDetails = async (country) => {
+  const getCountryDetails = async (country) => {
     const { data, error } = await supabase
       .from('sys_countries')
       .select()
