@@ -9,7 +9,7 @@
   const isOn = ref()
   const user = await get(supabase).user(userId.value.id);
   isOn.value = user.newsletters;
-  
+
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
@@ -20,9 +20,9 @@
     
     const { error } = await pub(supabase, {
       sender: 'components/toggle/newsletters.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      userId: user.value.id,
+      userId: userId.value.id,
       newsletters: isOn.value
     });
     if(error) {
