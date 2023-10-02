@@ -21,13 +21,13 @@
     title: 'Accounts'
   })
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
 
   const getLinkedBankAccount = async () => {
     const { data, error } = await supabase
       .from('getLinkedBankAccount')
       .select()
-      .eq('userId', user.value.id)
+      .eq('userId', userId.value.id)
       .limit(1)
       .single()
     if(data) {
