@@ -49,7 +49,7 @@
     title: 'Hello'
   })
   const loading = ref(false)
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const supabase = useSupabaseClient()
   const client = useSupabaseAuthClient()
 
@@ -88,7 +88,7 @@
     }
   }
   watchEffect(async () => {
-    if (user.value) {
+    if (userId.value) {
       await navigateTo("/portfolio");
       loading.value = false
     }
