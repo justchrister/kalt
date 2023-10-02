@@ -6,12 +6,12 @@
 <script setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
-  const isOn = ref(true)
   const user = await get(supabase).user(userId.value.id);
+  const isOn = ref(user.performanceUpdates || true)
   
   if(user && user.performanceUpdates) {
     isOn.value = user.performanceUpdates;
-    ok.log('success', 'Got user preference: ', user.performanceUpdates)
+    ok.log('success', 'Got user preference on performanceUpdates: ', user.performanceUpdates)
   }
   const toggleValue = async () => {
     if(isOn.value){
