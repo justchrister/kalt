@@ -14,7 +14,7 @@
 const state = ref('loading')
 const notify = ref(false)
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+const userId = useSupabaseUser()
   const props = defineProps({
     uuid: {
       type: String,
@@ -28,7 +28,7 @@ const user = useSupabaseUser()
         sender:'components/input/amountSell.vue',
         entity: props.uuid
       }).exchangeOrder({
-        userId: user.value.id,
+        userId: userId.value.id,
         quantity: -val.value,
         type: 'sell',
       });
