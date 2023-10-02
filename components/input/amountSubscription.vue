@@ -42,9 +42,9 @@
     previousValue = ok.toInt(amount.value)
     const { error, data } = await pub(supabase, {
       sender:'components/input/amountSubscription.vue',
-      entity: user.value.id
+      entity: userId.value.id
     }).userSubscriptions({
-      userId:user.value.id,
+      userId:userId.value.id,
       amount: ok.toInt(amount.value)
     });
     if(error) ok.log('error', 'could not update amount', error)
