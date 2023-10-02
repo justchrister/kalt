@@ -26,35 +26,16 @@
   })
 
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
-
-  const getInitialValues = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .limit(1)
-      .single() 
-    if(data){
-      return {
-        firstName: data.firstName || '',
-        lastName: data.lastName || '',
-        city: data.city || '',
-        postalCode: data.postalCode || '',
-        addressLine1: data.addressLine1 || '',
-        birthdate: data.birthdate || ''
-      }
-    } else {
-      return {
-        firstName: '',
-        lastName: '',
-        city: '',
-        postalCode: '',
-        addressLine1: '',
-        birthdate: ''
-      }
-    }
+  const userId = useSupabaseUser()
+  const user = get(supabase).user(userId.value.id)
+  const initial = {
+    firstName: user.firstName || '',
+    lastName: user.lastName || '',
+    city: user.city || '',
+    postalCode: user.postalCode || '',
+    addressLine1: user.addressLine1 || '',
+    birthdate: user.birthdate || ''
   }
-  const initial = await getInitialValues();
 </script>
 <style scoped lang="scss">
   .grid-col-3,
