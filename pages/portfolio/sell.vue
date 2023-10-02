@@ -27,34 +27,24 @@
     title: 'Invest'
   })
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const uuid = ok.uuid();
 
   const getMax = async () => {
-    const { data, error } = await supabase
-      .from('getUserPortfolio')
-      .select('quantityToday')
-      .order('date', { ascending: false })
-      .limit(1)
-      .single()
-    if(error){
-      return null
-    } else {
-      return data.quantityToday
-    }
+    const portfolio = await get(supabase).portfolio(userId.value.id)
+    return portfolio[0].value
   }
 
   const max = await getMax();
   const publishSellOrder = async () => {
     loading.value = true
-    const hasShares = await getMax();
-    if(!hasShares) return false;
-    if(!user.value) return false;
+    if(!max) return false;
+    if(!userId.value) return false;
     const { error, data } = await pub(supabase, {
       sender: 'pages/portfolio/sell.vue',
       entity: uuid
     }).accountTransaction({
-      userId: user.value.id,
+      userId: userId.value.id,
       status: 'open'
     } as accountTransaction);
     if(error){
