@@ -23,7 +23,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
 
   const props = defineProps({
     amount: {
@@ -31,17 +31,9 @@
       required: false
     }
   })
-  
-  const getCurrency = async () => {
-    const { data } = await supabase
-      .from('getUser')
-      .select('currency')
-      .limit(1)
-      .single()
-    return data.currency
-  }
+  const user = await get(supabase).user(userId.value.id)
   const amount =  ref(props.amount)
-  const currency = await getCurrency()
+
   let initialAmount = props.amount
   let previousValue;
   const updatePaymentAmount = async () => { 
@@ -66,7 +58,7 @@
       const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
       return Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: currency
+        currency: user.currency
       }).format(val)
         .slice(0, sub ? -sub : undefined)
     }
