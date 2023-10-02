@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="profile-card" @click="navigateTo('/profile/edit')" v-if="profileSetUp">
-        <div class="image" :id="data.profilePicture">
+        <div class="image" :id="user.profilePicture">
         </div>
         <div class="details">
           <div class="name">
-            {{ data.firstName }} {{ data.lastName }} 
+            {{ user.firstName }} {{ user.lastName }} 
           </div>
           <div class="edit">
             edit
           </div>
           <div class="bio">
             <div class="birthdate">
-              {{ calculateAge(data.birthdate) }} years old — {{ data.city }}, {{ data.country }}
+              {{ calculateAge(user.birthdate) }} years old — {{ user.city }}, {{ user.country }}
             </div>
           </div>
       </div>
@@ -29,19 +29,16 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const { data, error } = await supabase
-    .from('getUser')
-    .select()
-    .limit(1)
-    .single()
-  const isProfileSetUp = async (data) => {
-    if(!data || data.firstName == null || data.lastName == null || data.birthdate == null || data.city == null || data.country == null){
+  const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id);
+  const isProfileSetUp = async (user) => {
+    if(!user || user.firstName == null || user.lastName == null || user.birthdate == null || user.city == null || user.country == null){
       return false
     } else {
       return true
     }
   }
-  const profileSetUp = await isProfileSetUp(data)
+  const profileSetUp = await isProfileSetUp(user)
   function calculateAge(birthday) {
     const birthDate = new Date(birthday);
     const currentDate = new Date();
