@@ -12,7 +12,7 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const currency = ref(props.initial)
 
   const { data: currencies, error: currenciesError} = await supabase
@@ -30,9 +30,9 @@
     state.value = 'loading'
     const { error, data } = await pub(supabase, {
       sender:'components/input/preferredCurrency.vue', 
-      entity: user.value.id
+      entity: userId.value.id
     }).userPreferences({
-      userId: user.value.id,
+      userId: userId.value.id,
       currency: currency.value
     });
     if(error){
