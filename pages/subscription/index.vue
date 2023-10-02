@@ -25,7 +25,7 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   definePageMeta({
     pagename: 'Subscription',
     middleware: 'auth'
@@ -37,7 +37,7 @@
     const { data, error } = await supabase
       .from('getUserSubscriptions')
       .select()
-      .eq('userId', user.value.id)
+      .eq('userId', userId.value.id)
       .limit(1)
       .single()
     if(error) {
@@ -52,7 +52,7 @@
     const { data, error } = await supabase
       .from('getPaymentCardDefault')
       .select()
-      .eq('userId', user.value.id)
+      .eq('userId', userId.value.id)
     if(error) {
       ok.log('', 'Failed to get default card')
       return false
