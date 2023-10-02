@@ -5,23 +5,11 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const isOn = ref()
-  const getPreference = async () => {
-    const { data, error } = await supabase
-      .from('getUser')
-      .select()
-      .limit(1)
-      .single()
-    if(error){
-      ok.log('error', 'Error getting user preferences: ', error)
-      return true
-    } else {
-      ok.log('success', 'Got user preference: ', data.newsletters)
-      return data.newsletters
-    }
-  }
-  isOn.value = await getPreference();
+  const user = await get(supabase).user(userId.value.id);
+  isOn.value = user.newsletters;
+  
   const toggleValue = async () => {
     if(isOn.value) return false
     else return true
