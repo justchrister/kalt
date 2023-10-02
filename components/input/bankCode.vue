@@ -6,7 +6,7 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const user = useSupabaseUser()
+  const userId = useSupabaseUser()
   const props = defineProps({
     initialValue: {
       type: String,
@@ -20,10 +20,10 @@
   }
   const updateBankCode = async () => {
     const { error, data } = await pub(supabase, {
-      entity: user.value.id,
+      entity: userId.value.id,
       sender:'components/input/bankCode.vue'
     }).linkedBankAccounts({
-      userId: user.value.id,
+      userId: userId.value.id,
       bankCode: bankCode.value
     });
     if(error) {
