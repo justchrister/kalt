@@ -34,7 +34,7 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
+  const userId = useSupabaseUser();
   const number = ref();
   const month = ref();
   const year = ref();
@@ -106,12 +106,11 @@
       ok.log(notification.value.type, notification.value.message)
       return
     }
-    ok.log('', user.value.id)
     const { error } = await pub(supabase, {
       sender:'components/card/add.vue',
       entity: ok.uuid()
     }).paymentCards({
-      'userId': user.value.id,
+      'userId': userId.value.id,
       'lastFourDigits': lastFourDigits,
       'number': numberInt,
       'month': month.value,
