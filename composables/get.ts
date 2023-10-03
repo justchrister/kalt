@@ -199,6 +199,20 @@ export const get = (client: any) => {
       }
 
       return portfolio;
+    },
+    subscription: async(userId) => {
+      const { data, error } = await client
+        .from('topic_userSubscriptions')
+        .select()
+        .eq('userId', userId)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        const combined = ok.combineJson(data)
+        return ok.cleanMessage(combined)
+      }
     }
   }
 }
