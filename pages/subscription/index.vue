@@ -33,21 +33,7 @@
   useHead({
     title: 'Subscription'
   })
-  const getUserSubscription = async () => {
-    const { data, error } = await supabase
-      .from('getUserSubscriptions')
-      .select()
-      .eq('userId', userId.value.id)
-      .limit(1)
-      .single()
-    if(error) {
-      ok.log('error', 'Failed to get user subscription: ', error)
-      return error
-    } else {
-      ok.log('', 'Got user subscription: '+data.amount+' '+data.currency+' on '+data.days)
-      return data
-    }
-  }
+
   const getPaymentCardDefault = async () => {
     const { data, error } = await supabase
       .from('getPaymentCardDefault')
@@ -65,6 +51,7 @@
     ok.log('error', 'User does not have default card')
     await navigateTo('/cards')
   }
-  const subscription = await getUserSubscription();
+  const subscription = await get(supabase).subscription(userId.value.id);
+  ok.log('', subscription)
   
 </script>
