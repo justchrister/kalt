@@ -15,7 +15,7 @@
         v-model="amount"
         @input="updatePaymentAmount"
       />
-      <div class="currency">{{ currency }}</div>
+      <div class="currency">{{ user.currency }}</div>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ const userId = useSupabaseUser()
     }
   })
   const user = await get(supabase).user(userId.value.id)
-
+  
   const amount = ref(10);
   let initialAmount = props.amount;
   let previousValue;
@@ -64,7 +64,7 @@ const userId = useSupabaseUser()
       const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
       return Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: currency
+        currency: user.currency
       }).format(val)
         .slice(0, sub ? -sub : undefined)
     }
