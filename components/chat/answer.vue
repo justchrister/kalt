@@ -3,18 +3,17 @@
     <div class="answer">
       <slot></slot>
     </div>
+    <span></span>
   </div>
 </template>
 <script setup>
 </script>
 <style scoped lang="scss">
   .answer-wrap{
-    display: flex;  // Changed to flex
-    justify-content: flex-start;  // Pushes the child to the right
+    display: grid;  // Changed to flex
+    grid-template-columns: 1fr $clamp-12 ;
     position:relative;
-    width: $clamp-46;
     min-height:$clamp-6;
-    margin-right: $clamp-12;
   }
   .answer{
     display:inline-block;
