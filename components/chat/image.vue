@@ -4,6 +4,7 @@
       <img :src="props.url" alt="">
       <slot></slot>
     </div>
+    <span></span>
   </div>
 </template>
 <script setup>
@@ -17,12 +18,10 @@ const props = defineProps({
 </script>
 <style scoped lang="scss">
   .image-wrap{
-    display: flex;  // Changed to flex
-    justify-content: flex-start;  // Pushes the child to the right
+    display: grid;  // Changed to flex
+    grid-template-columns: 1fr $clamp-20;
     position:relative;
-    width: $clamp-40;
     min-height:$clamp-6;
-    margin-right: $clamp-20;
   }
   .image{
     display:inline-block;
@@ -36,6 +35,7 @@ const props = defineProps({
     margin-right: auto;  // Pushes to the right
     padding: $clamp-1;
   }
+
   img{
     max-width:100%;
     opacity:0;
