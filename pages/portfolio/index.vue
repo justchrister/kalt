@@ -24,8 +24,16 @@
                 :class="{ active: days === 90 }">
               3 months
             </li>
-            <li @click="days=100"
-                :class="{ active: days === 100 }">
+            <li @click="days=180"
+                :class="{ active: days === 180 }">
+              6 months
+            </li>
+            <li @click="days=365"
+                :class="{ active: days === 365 }">
+              1 year
+            </li>
+            <li @click="days=3650"
+                :class="{ active: days === 3650 }">
               max
             </li>
           </ul>
@@ -62,7 +70,7 @@
 
 .filters{
   margin-top:$clamp-5;
-  height:$clamp-4;
+  height:$clamp-5;
   overflow-x:scroll;
   overflow-y:hidden;
   &::-webkit-scrollbar {
