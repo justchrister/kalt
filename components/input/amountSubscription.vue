@@ -15,7 +15,7 @@
         v-model="amount"
         @input="updatePaymentAmount"
       />
-      <div class="currency">{{ currency }}</div>
+      <div class="currency">{{ user.currency }}</div>
     </div>
   </div>
 </template>
