@@ -1,5 +1,6 @@
 <template>
   <div class="question-wrap">
+    <span></span>
     <div class="question">
       <slot></slot>
     </div>
@@ -9,12 +10,10 @@
 </script>
 <style scoped lang="scss">
   .question-wrap{
-    display: flex;  // Changed to flex
-    justify-content: flex-end;  // Pushes the child to the right
+    display: grid;  // Changed to flex
+    grid-template-columns: $clamp-12 1fr;
     position:relative;
-    width: $clamp-46;
     min-height:$clamp-6;
-    margin-left: $clamp-12;
   }
   .question{
     display:inline-block;
