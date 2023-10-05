@@ -194,6 +194,5 @@ SET enabled = true
 WHERE iso = 'SEK';
 
 CREATE POLICY "PUBLIC — Select"
-  ON public."sys_currencies"
-  AS PERMISSIVE FOR SELECT
-  TO public;
+  ON public.sys_currencies
+  FOR SELECT USING (true);
