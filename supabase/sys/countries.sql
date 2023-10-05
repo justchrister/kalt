@@ -255,6 +255,5 @@ WHERE iso2 = 'DE';
 ALTER TABLE "sys_countries" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "PUBLIC — Select"
-  ON public."sys_countries"
-  AS PERMISSIVE FOR SELECT
-  TO public;
+  ON public.sys_countries
+  FOR SELECT USING (true);
