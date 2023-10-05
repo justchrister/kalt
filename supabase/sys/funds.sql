@@ -16,14 +16,7 @@ insert into public."sys_funds" ("ticker", "name", "description") values
   ('vc.ddf', 'Venture capital', 'The venture capital fund invests in early stage startups with high growth potential, and a clear path to profitability.'),
   ('smb.ddf', 'Small and medium sized businesses', 'The small and medium sized businesses fund invests in small and medium sized businesses with high growth potential, and a clear path to profitability.');
 
-CREATE POLICY "AUTH — Select"
-  ON public."sys_funds"
-  FOR SELECT 
-  TO authenticated 
-  USING (true);
-
 CREATE POLICY "PUBLIC — Select"
   ON public."sys_funds"
   AS PERMISSIVE FOR SELECT
-  TO public
-  WITH CHECK (true);
+  TO public;
