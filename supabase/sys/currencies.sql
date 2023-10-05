@@ -198,3 +198,10 @@ CREATE POLICY "AUTH — Select" ON public."sys_currencies"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (true);
+
+
+CREATE POLICY "PUBLIC — Select"
+  ON public."sys_currencies"
+  AS PERMISSIVE FOR SELECT
+  TO public
+  WITH CHECK (true);
