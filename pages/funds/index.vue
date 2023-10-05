@@ -21,7 +21,8 @@
   const { data, error } = await supabase
     .from('sys_funds')
     .select()
-    .neq('ticker', 'gi.ddf')
+  if(data) ok.log('', data)
+  if(error) ok.log('', error)
 </script>
 <style scoped lang="scss">
   main{
