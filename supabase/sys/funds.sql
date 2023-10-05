@@ -17,6 +17,5 @@ insert into public."sys_funds" ("ticker", "name", "description") values
   ('smb.ddf', 'Small and medium sized businesses', 'The small and medium sized businesses fund invests in small and medium sized businesses with high growth potential, and a clear path to profitability.');
 
 CREATE POLICY "PUBLIC — Select"
-  ON public."sys_funds"
-  AS PERMISSIVE FOR SELECT
-  TO public;
+  ON public.sys_funds
+  FOR SELECT USING (true);
