@@ -22,5 +22,4 @@ CREATE POLICY "AUTH — Select"
 CREATE POLICY "PUBLIC — Select"
   ON public."sys_languages"
   AS PERMISSIVE FOR SELECT
-  TO public
-  WITH CHECK (true);
+  TO public;
