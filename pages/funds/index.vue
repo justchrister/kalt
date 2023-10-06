@@ -4,6 +4,9 @@
     <block v-for="fund of data" :key="fund.ticker" margin="half">
       <fund :ticker="fund.ticker"/>
     </block>
+    <block>
+      <cta/>
+    </block>
   </main>
 </template>
 <script lang="ts" setup>
@@ -21,6 +24,7 @@
   const { data, error } = await supabase
     .from('sys_funds')
     .select()
+    .eq('active', true)
   if(data) ok.log('', data)
   if(error) ok.log('', error)
 </script>
