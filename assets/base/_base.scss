@@ -72,7 +72,7 @@ a{
     outline: none;
   }
   &::selection {
-    background-color: $blue-20;
+    background-color: rgba($blue, 0.2);
   }
 }
 
