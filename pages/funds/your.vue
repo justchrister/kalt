@@ -5,7 +5,6 @@
       <fund-your ticker="ffe.ddf"/>
       <fund-your ticker="art.ddf"/>
       <fund-your ticker="ah.ddf"/>
-      <fund-your ticker="smb.ddf"/>
       <fund-your ticker="vc.ddf"/>
       <button @click="navigateTo('/invest')">
         invest now
