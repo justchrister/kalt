@@ -63,41 +63,41 @@
     grid-template-columns: $clamp-4 4fr;
   }
   .image{
-    background-image:url('/media/images/pfp-4.png');
+    background-image:url('/images/pfp/4.png');
     border-radius:$clamp-4;
     height:$clamp-4;
     background-size:contain;
     background-repeat: no-repeat;
     width:$clamp-4;
     &#alt1{
-      background-image:url('/media/images/pfp-1.png');
+      background-image:url('/images/pfp/1.png');
     }
     &#alt2{
-      background-image:url('/media/images/pfp-2.png');
+      background-image:url('/images/pfp/2.png');
     }
     &#alt3{
-      background-image:url('/media/images/pfp-3.png');
+      background-image:url('/images/pfp/3.png');
     }
     &#alt4{
-      background-image:url('/media/images/pfp-4.png');
+      background-image:url('/images/pfp/4.png');
     }
     &#alt5{
-      background-image:url('/media/images/pfp-5.png');
+      background-image:url('/images/pfp/5.png');
     }
     &#alt6{
-      background-image:url('/media/images/pfp-6.png');
+      background-image:url('/images/pfp/6.png');
     }
     &#alt7{
-      background-image:url('/media/images/pfp-7.png');
+      background-image:url('/images/pfp/7.png');
     }
     &#alt8{
-      background-image:url('/media/images/pfp-8.png');
+      background-image:url('/images/pfp/8.png');
     }
     &#alt9{
-      background-image:url('/media/images/pfp-9.png');
+      background-image:url('/images/pfp/9.png');
     }
     &#alt10{
-      background-image:url('/media/images/pfp-10.png');
+      background-image:url('/images/pfp/10.png');
     }
   }
   .details{
