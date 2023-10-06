@@ -1,7 +1,7 @@
 <template>
   <main>
     <block margin="half">
-      <intro-fund ticker="art" text="The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
+      <intro-fund ticker="art" text="The fund strategically allocates capital in development of affordable housing around the world. By doing so, we yield a stable return on the investments, but also contributes to social good by combating housing inequality."/>
     </block>
     <block>
       <criteria-list>
