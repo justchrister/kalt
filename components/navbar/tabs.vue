@@ -70,7 +70,7 @@
   .pfp{
     background-image:url('/images/pfp/4.png');
     height:$clamp-3;
-    background-size:contain;
+    background-size:cover;
     background-repeat: no-repeat;
     width:$clamp-3;
     border-radius:100%;
