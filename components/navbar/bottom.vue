@@ -7,6 +7,7 @@
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/profile" > Profile </nuxt-link>
           <nuxt-link to="/accounts" > Accounts </nuxt-link>
+          <nuxt-link to="/funds/your" > Your fund </nuxt-link>
           <nuxt-link to="/subscription" > Subscription </nuxt-link>
           <nuxt-link to="/cards" > Cards </nuxt-link>
           <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
@@ -22,6 +23,7 @@
           <nuxt-link to="/about/values" > Our values </nuxt-link>
           <nuxt-link to="/about/whitepaper" > Whitepaper </nuxt-link>
           <nuxt-link to="/jobs" > Jobs </nuxt-link>
+          <nuxt-link to="/funds" > Funds </nuxt-link>
           <nuxt-link to="/questions" > Q&A </nuxt-link>
           <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
           <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
