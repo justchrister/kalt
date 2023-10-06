@@ -39,6 +39,10 @@ export default defineNuxtConfig({
       ],
       meta: [
         { 
+          name: 'title', 
+          content: 'Kalt — Make money, make a difference.' 
+        },
+        { 
           name: 'description', 
           content: 'Make money, make a difference.' 
         },
@@ -47,11 +51,7 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1, maximum-scale=1"
         },
         { 
-          name: 'og:image',
-          content: 'https://ka.lt/images/meta.png' 
-        },
-        { 
-          name: 'twitter:image',
+          name: 'image',
           content: 'https://ka.lt/images/meta.png' 
         }
       ],
