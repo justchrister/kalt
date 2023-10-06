@@ -9,10 +9,13 @@
         Be the change you want to see in the world
       </h1>
       <p>
-        We offer an accessible platform for investing in clean, green, fossil-free energy, empowering you to make money while making a difference. Our goal is to accelerate the global transition to sustainable energy sources, fostering a better future for our planet.
+        Invest in what matters most to you, whether that be affordable housing for low income families, clean fossil-free energy, or contemporary art. 
       </p>
       <p>
-        By investing with us, you directly contribute to the development and deployment of fossil-free energy alternatives. Together, we can create a more sustainable world while enjoying the financial benefits of supporting fossil-free energy solutions.
+        By investing with us, you can directly contribute to the development and deployment of fossil-free energy alternatives, or give families in empowerished areas a chance to have a safe home. 
+      </p>
+      <p>
+        The best part? You can do all this, while making money on a daily basis. 
       </p>
       <p>
         Read <nuxt-link to="questions/how-does-it-work">how it works</nuxt-link> or <nuxt-link to="about/values">our values and goals</nuxt-link>
@@ -20,6 +23,10 @@
     </block>
     <block>
       <cta />
+    </block>
+    <block>
+      <h2> Impact investing </h2>
+      <p> We believe the only way to have actual impact is to use the market forces to make a change. The issues we are facing require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a return on investment </p>
     </block>
   </main>
 </template>
