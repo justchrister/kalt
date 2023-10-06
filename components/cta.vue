@@ -16,10 +16,6 @@
         <button id="sign-in" tabindex="-1">sign in</button>
       </nuxt-link>
     </div>
-    <div class="link-group">
-      <nuxt-link to="/questions/how-does-it-work" v-if="!signedIn">How it works</nuxt-link>
-      <nuxt-link to="/questions/how-does-it-work" v-if="!signedIn">About us</nuxt-link>
-    </div>
   </div>
 </template>
 
