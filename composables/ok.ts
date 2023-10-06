@@ -267,7 +267,7 @@ export const ok = {
   convertCurrency: async (supabase, amount, from, to) => {
     const { data, error } = await supabase
       .from('topic_exchangeRates')
-      .select('value')
+      .select('rate')
       .eq('from', from)
       .eq('to', to)
       .limit(1)
