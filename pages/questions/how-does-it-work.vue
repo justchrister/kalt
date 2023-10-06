@@ -13,7 +13,31 @@
         Just adjust on a scale from one to three hearts
       </chat-answer>
       <chat-answer>
-        We invest in a variety of different assets, including art, solar panels, small businesses, and more. 
+        Based on your selection we invest in a variety of different assets, including art, solar panels, small businesses, and more. 
+      </chat-answer>
+      <chat-link to="/funds/your">
+        build your own fund today
+      </chat-link>
+      <chat-question>
+        How much money can I expect to earn?
+      </chat-question>
+      <chat-answer>
+        Of course it will vary, but you can expect a 10-16% return on a yearly basis
+      </chat-answer>
+      <chat-answer>
+        That means, if you auto-invest <convert-to-user-currency :amount="100"/> every month, you will have between <convert-to-user-currency :amount="22000"/> and <convert-to-user-currency :amount="25000"/> in ten years.
+      </chat-answer>
+      <chat-link to="/subscription">
+        set up auto-investments today
+      </chat-link>
+      <chat-link to="/questions/compound-interest">
+        learn more about compound interest
+      </chat-link>
+      <chat-question>
+        How often can I earn money?
+      </chat-question>
+      <chat-answer>
+        That also varies, but we aim to pay out dividends on a daily basis
       </chat-answer>
       <chat-link to="/invest">
         invest now
