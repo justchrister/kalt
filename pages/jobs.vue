@@ -21,6 +21,9 @@
             Opportunity to work on cutting-edge AI projects and applications
           </li>
           <li>
+            Work on things that actually matter to you
+          </li>
+          <li>
             Mentorship and continuous learning opportunities
           </li>
           <li>
