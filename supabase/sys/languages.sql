@@ -22,3 +22,4 @@ CREATE POLICY "AUTH — Select"
 CREATE POLICY "PUBLIC — Select"
   ON public.sys_languages
   FOR SELECT USING (true);
+  
