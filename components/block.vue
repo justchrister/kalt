@@ -37,11 +37,11 @@
     &.margin-1{
       margin-bottom: $clamp-1;
     }
-    &.margin-3{
-      margin-bottom: $clamp-3;
-    }
     &.margin-2{
       margin-bottom: $clamp-2;
+    }
+    &.margin-3{
+      margin-bottom: $clamp-3;
     }
     &.margin-none{
       margin-bottom: 0;
