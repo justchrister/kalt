@@ -22,9 +22,19 @@
     </block>
     <block margin="half">
       <div class="section">
-        <p>About</p>
+        <p>Auth</p>
         <ul>
-          <nuxt-link to="/about" > About us </nuxt-link>
+          <nuxt-link to="/request" > Request invite </nuxt-link>
+          <nuxt-link to="/auth" > Sign in </nuxt-link>
+          <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
+        </ul>
+      </div>
+    </block>
+    <block margin="half">
+      <div class="section">
+        <p>Us</p>
+        <ul>
+          <nuxt-link to="/about" > About </nuxt-link>
           <nuxt-link to="/about/values" > Our values </nuxt-link>
           <nuxt-link to="/about/whitepaper" > Whitepaper </nuxt-link>
           <nuxt-link to="/jobs" > Jobs </nuxt-link>
@@ -40,16 +50,6 @@
           <nuxt-link to="/questions" > Questions and answers </nuxt-link>
           <nuxt-link to="/questions/how-does-it-work" > How it works </nuxt-link>
           <nuxt-link to="/questions/how-do-you-make-money" > How we make money </nuxt-link>
-        </ul>
-      </div>
-    </block>
-    <block margin="half">
-      <div class="section">
-        <p>Auth</p>
-        <ul>
-          <nuxt-link to="/request" > Request invite </nuxt-link>
-          <nuxt-link to="/auth" > Sign in </nuxt-link>
-          <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
         </ul>
       </div>
     </block>
