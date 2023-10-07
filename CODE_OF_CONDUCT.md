@@ -12,10 +12,7 @@ Encouraged behaviors:
 - Prioritizing community well-being
 
 Unacceptable behaviors:
-- Sexualized language or imagery, unwanted advances
-- Trolling, insulting comments, personal or political attacks
 - Harassment, public or private
-- Disclosing private information without consent
 - Unprofessional or inappropriate conduct
 
 ## Leadership Responsibilities
