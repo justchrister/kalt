@@ -16,9 +16,6 @@
       <chat-answer>
         This income keeps coming in for years, giving you a long-term and predictable stream of cash flow. 
       </chat-answer>
-      <chat-answer>
-        Plus, it's not just good for your wallet, it's good for the planet too. Solar energy is a sustainable and clean source of power that helps reduce our dependence on fossil fuels. And with our platform, it's easy to invest in solar and make a positive impact on the world.
-      </chat-answer>
       <chat-link to="/invest">
         invest now
       </chat-link>
@@ -34,7 +31,7 @@
     title: 'What is residual income?',
     meta: [{
       name: 'description',
-      content: 'Make money, make a difference.'
+      content: 'Invest in the future, today.'
     }]
   })
   
