@@ -45,6 +45,14 @@ export default defineNuxtConfig({
           name: 'description', 
           content: 'Make money, make a difference.' 
         },
+        { 
+          name: 'og:description', 
+          content: 'Make money, make a difference.' 
+        },
+        { 
+          name: 'twitter:description', 
+          content: 'Make money, make a difference.' 
+        },
         {
           name: "viewport",
           content: "width=device-width, initial-scale=1, maximum-scale=1"
@@ -55,6 +63,10 @@ export default defineNuxtConfig({
         },
         { 
           name: 'og:image',
+          content: 'https://ka.lt/images/meta.png' 
+        },
+        { 
+          name: 'twitter:image',
           content: 'https://ka.lt/images/meta.png' 
         }
       ],
