@@ -25,7 +25,7 @@
         Of course it will vary, but you can expect a 10-16% return on a yearly basis
       </chat-answer>
       <chat-answer>
-        That means, if you auto-invest <convert-to-user-currency :amount="100"/> every month, you will have between <convert-to-user-currency :amount="22000"/> and <convert-to-user-currency :amount="25000"/> in ten years.
+        That means, if you auto-invest 100 every month, you will have between 22 000 and 25 000 in ten years.
       </chat-answer>
       <chat-link to="/subscription">
         set up auto-investments today
