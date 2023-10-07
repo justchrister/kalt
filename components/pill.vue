@@ -28,12 +28,12 @@
   .pill{
     border:$border-width solid $dark;
     display:inline-block;
-    padding:0px $clamp-1-5;
+    padding:0px $clamp-1;
     margin-right:$clamp-0-5;
-    border-radius:50%;
-    border-color:$pink;
-    font-size:80%;
-    border-style: dashed;
+    border-radius:$clamp-0-5;
+    background:$dark-5;
+    border-color:$dark;
+    font-size:75%;
     &:hover{
       border-color:$dark;
       background-color:white;
