@@ -25,7 +25,7 @@
     title: 'How does Kalt make money?',
     meta: [{
       name: 'description',
-      content: 'Make money, make a difference.'
+      content: 'Invest in the future, today.'
     }]
   })
   
