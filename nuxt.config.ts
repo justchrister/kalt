@@ -42,16 +42,24 @@ export default defineNuxtConfig({
           content: 'Kalt — Make money, make a difference.' 
         },
         { 
+          name: 'og:title', 
+          content: 'Kalt — Make money, make a difference.' 
+        },
+        { 
+          name: 'twitter:title', 
+          content: 'Kalt — Make money, make a difference.' 
+        },
+        { 
           name: 'description', 
-          content: 'Make money, make a difference.' 
+          content: 'Invest in the future, today.' 
         },
         { 
           name: 'og:description', 
-          content: 'Make money, make a difference.' 
+          content: 'Invest in the future, today.' 
         },
         { 
           name: 'twitter:description', 
-          content: 'Make money, make a difference.' 
+          content: 'Invest in the future, today.'
         },
         {
           name: "viewport",
