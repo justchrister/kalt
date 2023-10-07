@@ -53,6 +53,10 @@ export default defineNuxtConfig({
         { 
           name: 'image',
           content: 'https://ka.lt/images/meta.png' 
+        },
+        { 
+          name: 'og:image',
+          content: 'https://ka.lt/images/meta.png' 
         }
       ],
     }
