@@ -26,7 +26,7 @@
     title: 'HQ',
     meta: [{
       name: 'description',
-      content: 'Make money, make a difference.'
+      content: 'Invest in the future, today.'
     }]
   })
   
