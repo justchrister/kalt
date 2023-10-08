@@ -34,7 +34,7 @@
     const { error, data } = await pub(supabase, {
       sender:"pages/select/language.vue",
       entity: userId.value.id
-    }).userPreferences({
+    }).user({
       userId: userId.value.id,
       language: iso
     });
