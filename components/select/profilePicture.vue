@@ -66,7 +66,7 @@
     const { error, data } = await pub(supabase, {
       sender:'components/select/profilePicture.vue',
       entity: userId.value.id
-    }).userPreferences({
+    }).user({
       'userId': userId.value.id,
       'profilePicture': selectedProfilePicture
     });
