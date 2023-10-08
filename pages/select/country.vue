@@ -39,7 +39,7 @@
     const { error, data } = await pub(supabase, {
       sender:"pages/select/country.vue",
       entity: userId.value.id
-    }).userDetails({
+    }).user({
       userId: userId.value.id,
       country: iso
     });
