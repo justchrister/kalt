@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" v-if="portfolio && user">
+  <div class="wrap">
     <div class="chart-sizer">
       <Line
         :options="chartOptions"
@@ -129,24 +129,28 @@
     }
   }
   let color = '#161719';
+  const labels = ref([]);
+  const data = ref([]);
+  const fetchPortfolio = async () => {
+    const portfolio = await get(supabase).portfolio(user);
+    for (let i = 0; i < portfolio.length; i++) {
+      data.value.push(portfolio[i].value);
+      labels.value.push(portfolio[i].date);
+    }
+  };
 
-  const labels = [];
-  const data = [];
-  const portfolio = await get(supabase).portfolio(user)
-  for (let i = 0; i < portfolio.length; i++) {
-    data.push(portfolio[i].value)
-    labels.push(portfolio[i].date)
-  }
+  fetchPortfolio(); // This will run the fetching in the background
+
 
   const chartData = computed(() => ({
-    labels: labels.slice(-props.days),
+    labels: labels.value.slice(-props.days),
     datasets: [{
         label: "",
         borderColor: color,
         pointBackgroundColor: color,
         pointBorderWidth: 0,
         pointBorderColor: color,
-        data: data.slice(-props.days)
+        data: data.value.slice(-props.days)
       }]
   }))
   ok.log('', data)
@@ -160,24 +164,25 @@
       data[idkWhatToCallIt.value]
     )
   );
-
   const updateHoveredValue = (x) => {
     hoveredValue.value = x;
-  }
+  };
+
   const percentageChange = ref(
-    data[data.length - 1]
-  )
+    data.value[data.value.length - 1] // Correctly use `.value` here
+  );
+
   const updatePercentageChange = (x) => {
-    const firstValue = data[data.length - props.days] || data[0];
+    const firstValue = data.value[data.value.length - props.days] || data.value[0]; // Again, use `.value`
     const lastValue = x;
     const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
 
-    if(rawPercentageChange === Infinity) return percentageChange.value = 99.9;
+    if (rawPercentageChange === Infinity) return percentageChange.value = 99.9;
     if (isNaN(rawPercentageChange)) return percentageChange.value = 0;
 
     percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
     percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
-  }
+  };
 </script>
 <style scoped lang="scss">
 
