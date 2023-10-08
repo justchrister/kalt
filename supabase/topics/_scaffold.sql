@@ -11,5 +11,5 @@ CREATE TABLE "topic_<<topic_name>>" (
     "message_sender"   text        NOT NULL
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_<<topic_name>>" ENABLE ROW LEVEL SECURITY;
