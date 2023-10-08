@@ -1,8 +1,8 @@
 <template>
   <main>
     <navbar-tabs />
-    <block margin="half">
-      <div v-for="card of data" :key="card.cardId" class="card" @click="setDefault(card.cardId)">
+    <block margin="half" v-if="cards">
+      <div v-for="card of cards" :key="card.cardId" class="card" @click="setDefault(card.cardId)">
         <card :number="card.number" :default="card.default" />
       </div>
     </block>
@@ -26,26 +26,12 @@
 
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
-  const { data, error } = await supabase
-    .from('getPaymentCards')
-    .select()
-    .eq('userId', userId.value.id)
-    .gte('number', 1)
-    .order('default', { ascending: false })
+  const user = await get(supabase).user(userId.user.id)
+  const cards = await get(supabase).paymentCards(user)
   
-  if(1>data.length) {
+  if(1>cards.length) {
     ok.log('warn', 'no cards found')
     await navigateTo('cards/add')
-  }
-  if(error) {
-    ok.log('error', 'could not get payment cards', error)
-  } else {
-    let cardArray= [];
-    for (let i = 0; i < data.length; i++) {
-      const card = data[i];
-      cardArray.push('•••• •••• •••• '+card.lastFourDigits)
-    }
-    ok.log('success', 'got payment cards:', cardArray)
   }
   const setDefault = async (id) => {
     const { error } = await pub(supabase, {
