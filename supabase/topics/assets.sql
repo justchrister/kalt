@@ -15,13 +15,11 @@ CREATE TABLE "topic_assets" (
     "name"                text
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_assets" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "AUTH — Select"
-    ON public."topic_assets"
-    FOR SELECT 
-    TO authenticated 
-    USING (
-        true
-    );
+  ON public."topic_assets"
+  FOR SELECT 
+  TO authenticated 
+  USING (true);
