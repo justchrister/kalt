@@ -1,7 +1,7 @@
 <template>
   <main>
     <navbar-tabs />
-    <block margin="half" v-if="cards">
+    <block margin="1" v-if="cards">
       <div v-for="card of cards" :key="card.message_entity" class="card" @click="setDefault(card.message_entity)">
         <card :number="card.number" :default="card.default" />
       </div>
