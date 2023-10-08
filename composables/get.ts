@@ -29,7 +29,7 @@ export const get = (client: any) => {
     },
     user: async (userId: any) => {
       const { data } = await client 
-        .from('topic_user')
+        .from('topic_users')
         .select()
         .eq('message_entity', userId)
         .order('message_sent', { ascending: true })
