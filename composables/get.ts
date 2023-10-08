@@ -175,17 +175,20 @@ export const get = (client: any) => {
     
       // Sort the dates to go from earliest to latest
       const sortedDates = Object.keys(dateValueMap).sort();
-      const latestDate = new Date(sortedDates[sortedDates.length - 1]);
+      
+      const latestDate = new Date();
+      latestDate.setHours(0, 0, 0, 0);
+      
 
       // Ensure it goes back at least 365 days
-      let currentDate = new Date(latestDate);
-      currentDate.setDate(latestDate.getDate() - 365);
+      let firstDate = new Date(latestDate);
+      firstDate.setDate(latestDate.getDate() - 365);
       
       let runningValue = 0;  // Renamed from 'value' to 'runningValue'
 
       // Looping through the date range and filling missing ones
-      while (currentDate <= latestDate) {
-        const dateStr = currentDate.toISOString().split('T')[0];
+      while (firstDate <= latestDate) {
+        const dateStr = firstDate.toISOString().split('T')[0];
         let todaysValueChange = dateValueMap[dateStr] || 0;
 
         runningValue += todaysValueChange;  // Use 'runningValue' here
@@ -195,7 +198,7 @@ export const get = (client: any) => {
           value: runningValue,  // And here
         });
 
-        currentDate.setDate(currentDate.getDate() + 1);
+        firstDate.setDate(firstDate.getDate() + 1);
       }
 
       return portfolio;
