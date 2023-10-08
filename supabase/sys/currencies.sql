@@ -6,7 +6,7 @@ create table public.sys_currencies (
   "enabled"     boolean
 );
 
---- add row level security
+--- row level security
 ALTER TABLE sys_currencies ENABLE ROW LEVEL SECURITY;
 
 -- insert values
