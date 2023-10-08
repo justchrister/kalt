@@ -19,7 +19,7 @@ CREATE TABLE "getUser" (
     "currency"            text     REFERENCES sys_currencies(iso),
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "getUser" ENABLE ROW LEVEL SECURITY;
 -- adding check to ensure its only numbers 
 ALTER TABLE "getUser" ADD CONSTRAINT postalCode_numeric_check CHECK ("postalCode" ~ '^[0-9]*$');
