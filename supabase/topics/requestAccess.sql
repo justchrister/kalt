@@ -16,7 +16,7 @@ CREATE TABLE "topic_requestAccess" (
     "country"             text
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_requestAccess" ENABLE ROW LEVEL SECURITY;
 
 
