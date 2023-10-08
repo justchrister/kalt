@@ -20,10 +20,15 @@ CREATE TABLE "topic_paymentCards" (
     "default"             boolean
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_paymentCards" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "SELF — Insert" ON public."topic_paymentCards"
   AS PERMISSIVE FOR INSERT
   TO authenticated
   WITH CHECK (auth.uid() = "userId");
+
+CREATE POLICY "SELF — Select" ON "public"."topic_paymentCards"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "userId")
