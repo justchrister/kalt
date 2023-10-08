@@ -17,7 +17,7 @@ CREATE TABLE "topic_userSubscriptions" (
     "days"           integer[]
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_userSubscriptions" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "SELF — Insert" ON public."topic_userSubscriptions"
