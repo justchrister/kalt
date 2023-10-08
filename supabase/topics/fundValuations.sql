@@ -16,5 +16,5 @@ CREATE TABLE "topic_fundValuations" (
     "shareValuation"      numeric
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_fundValuations" ENABLE ROW LEVEL SECURITY;
