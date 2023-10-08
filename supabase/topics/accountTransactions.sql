@@ -19,7 +19,7 @@ CREATE TABLE "topic_accountTransactions" (
                           AND "autoInvest" <= 1)
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_accountTransactions" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "SELF — Insert" ON public."topic_accountTransactions"
