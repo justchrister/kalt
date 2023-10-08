@@ -16,7 +16,7 @@ CREATE TABLE "topic_linkedBankAccounts" (
     "bankCode"            text
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_linkedBankAccounts" ENABLE ROW LEVEL SECURITY;
 
 DO $$
