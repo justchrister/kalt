@@ -5,5 +5,5 @@ CREATE TABLE "payRevenue" (
   "currency"    text                    REFERENCES sys_currencies(iso)
 );
 
---- Add row level security
+--- row level security
 ALTER TABLE "payRevenue" ENABLE ROW LEVEL SECURITY;
