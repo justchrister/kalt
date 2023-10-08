@@ -15,7 +15,7 @@ CREATE TABLE "topic_revenueTransactions" (
     "currency"            text                                            REFERENCES sys_currencies(iso)
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_revenueTransactions" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "HQ — Insert" ON public."topic_revenueTransactions"
