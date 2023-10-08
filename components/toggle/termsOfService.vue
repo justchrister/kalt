@@ -19,7 +19,7 @@
     const { error } = await pub(supabase, {
       sender:'components/toggle/termsOfService.vue',
       entity: userId.value.id
-    }).userPreferences({
+    }).user({
       userId: userId.value.id,
       termsOfService: isOn.value
     });
