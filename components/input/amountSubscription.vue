@@ -24,6 +24,7 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id)
 
   const props = defineProps({
     amount: {
@@ -31,7 +32,6 @@
       required: false
     }
   })
-  const user = await get(supabase).user(userId.value.id)
   const amount =  ref(props.amount)
 
   let initialAmount = props.amount
