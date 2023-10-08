@@ -240,7 +240,8 @@ export const get = (client: any) => {
         ok.log('', error)
         return null
       } else {
-        return ok.combineJsonByEntity(data).reverse();
+        const combined = ok.combineJsonByEntity(data)
+        return combined
       }
     },
     defaultPaymentCard: async (user) => {
@@ -254,8 +255,8 @@ export const get = (client: any) => {
         ok.log('', error)
         return null
       } else {
-        const combined = ok.combineJsonByEntity(data);
-        ok.log('', combined[0])
+        const combined = ok.combineJsonByKeys(data, 'message_entity');
+        ok.log('', combined)
         return combined[0];
       }
     }
