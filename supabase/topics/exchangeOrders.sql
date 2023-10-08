@@ -46,5 +46,4 @@ CREATE POLICY "HQ — Select" ON public."topic_exchangeOrders"
   USING (auth.uid() = 'ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4');
 
 --- Indexes
-
 CREATE INDEX "index_topic_exchangeOrders_userId_message_sent" ON public."topic_exchangeOrders" USING btree ("userId", "message_sent");
