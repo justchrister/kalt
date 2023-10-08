@@ -24,22 +24,7 @@
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id)
-  const getAccountBalance = async (userId, currency) => {
-    const { data, error } = await supabase
-      .from('getAccountBalance')
-      .select()
-      .eq('userId', userId)
-      .limit(1)
-      .single()
-    if(error || !data.amount){
-      ok.log('error', 'could not get account balance', error)
-      return "0 €"
-    } else {
-      ok.log('success', 'got account balance: '+data.amount+' '+data.currency)
-      return ok.formatCurrency(data.amount, data.currency)
-    }
-  }
-  const accountBalance = await getAccountBalance(user.currency)
+  const accountBalance = await get(supabase).accountBalance(user)
 </script>
 <style scoped lang="scss">
   .card{
