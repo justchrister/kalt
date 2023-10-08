@@ -31,7 +31,7 @@
     const { error, data } = await pub(supabase, {
       sender:'components/input/preferredCurrency.vue', 
       entity: userId.value.id
-    }).userPreferences({
+    }).user({
       userId: userId.value.id,
       currency: currency.value
     });
