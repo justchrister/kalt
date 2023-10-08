@@ -15,7 +15,7 @@ CREATE TABLE "topic_userDefinedFunds" (
                           AND "rate" <= 3)
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_userDefinedFunds" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "SELF — Insert" ON public."topic_userDefinedFunds"
@@ -27,3 +27,8 @@ CREATE POLICY "SELF — Select" ON "public"."topic_userDefinedFunds"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (auth.uid() = "userId")
+
+
+--- Indexes
+
+CREATE INDEX "index_topic_userDefinedFunds_message_entity_ticker_message_sent" ON public."topic_userDefinedFunds" USING btree ("message_entity", "ticker", "message_sent");
