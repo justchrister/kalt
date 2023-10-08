@@ -137,7 +137,7 @@ export const get = (client: any) => {
       const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
       const { data: orders, error } = await client
         .from('topic_exchangeOrders')
-        .select()
+        .select('userId, message_sent, message_entity, quantity, status, ticker', )
         .eq('userId', user.userId)
         .order('message_sent', { ascending: true })
       if(error){
