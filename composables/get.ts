@@ -216,6 +216,24 @@ export const get = (client: any) => {
         const combined = ok.combineJson(data)
         return ok.cleanMessage(combined)
       }
+    },
+    accountBalance: async(user) => {
+      const { data, error } = await client
+        .from('topic_accountTransactions')
+        .select()
+        .eq('userId', user.userId)
+        .eq('status', 'complete')
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('warn', error)
+        return ok.formatCurrency(0, user.currency)
+      } else {
+        let result = 0;
+        for (let i = 0; i < data.length; i++) {
+          result += data[i].amount
+        }
+        return ok.formatCurrency(result, user.currency)
+      }
     }
   }
 }
