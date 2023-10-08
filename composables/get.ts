@@ -230,18 +230,49 @@ export const get = (client: any) => {
       }
     },
     paymentCards: async (user) => {
-      ok.log('', user)
       const { data, error } = await client
         .from('topic_paymentCards')
         .select()
         .eq('userId', user.userId)
-        .order('message_sent', { ascending: true })
-      if(error) {
-        ok.log('', error)
-        return null
+        .order('message_sent', { ascending: true });
+
+      if (error) {
+        ok.log('', error);
+        return null;
       } else {
-        const combined = ok.combineJsonByEntity(data)
-        return combined
+        let defaultCard;
+        const combined = data.reduce((acc, card) => {
+          const entity = card.message_entity;
+
+          if (!acc[entity]) {
+            acc[entity] = {};
+          }
+
+          for (const key in card) {
+            if (card[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+              acc[entity][key] = card[key];
+            }
+          }
+
+          if (card.default) {
+            defaultCard = acc[entity];
+          }
+
+          return acc;
+        }, {});
+
+        // Set all cards' 'default' to false except for the last default card
+        for (const entity in combined) {
+          combined[entity].default = (combined[entity] === defaultCard);
+        }
+
+        const sortedCards = Object.values(combined).sort((a, b) => {
+          if (a === defaultCard) return -1;
+          if (b === defaultCard) return 1;
+          return new Date(b.message_sent) - new Date(a.message_sent);
+        });
+
+        return sortedCards;
       }
     },
     defaultPaymentCard: async (user) => {
