@@ -21,7 +21,7 @@
     pub(supabase, {
       sender:'components/select/autoInvest.vue',
       entity: userId.value.id
-    }).userPreferences({
+    }).user({
       userId: userId.value.id,
       autoInvest: autoInvest
     });
