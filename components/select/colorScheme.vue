@@ -30,7 +30,7 @@
     const { error, data } = await pub(supabase, {
       sender:'components/select/colorScheme.vue',
       entity: userId.value.id
-    }).user({
+    }).users({
       'userId': userId.value.id,
       'colorScheme': colorScheme
     });
