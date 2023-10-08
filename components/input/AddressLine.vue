@@ -31,7 +31,7 @@
     const { error, data } = await pub(supabase, {
       sender:'components/input/addressLine.vue',
       entity: userId.value.id
-    }).userDetails({
+    }).user({
       userId: userId.value.id,
       addressLine1: addressLine1.value,   
     });
