@@ -5,7 +5,7 @@ create table public."sys_funds" (
 );
 
 
---- add row level security
+--- row level security
 ALTER TABLE "sys_funds" ENABLE ROW LEVEL SECURITY;
 
 insert into public."sys_funds" ("ticker", "name", "description") values 
