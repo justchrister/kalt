@@ -15,7 +15,7 @@ CREATE TABLE "topic_exchangeRates" (
     "rate"                numeric
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_exchangeRates" ENABLE ROW LEVEL SECURITY;
 
 
