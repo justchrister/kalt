@@ -18,5 +18,5 @@ CREATE TABLE "topic_paymentsPending" (
     "provider"            "paymentProviders"              NOT NULL
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_paymentsPending" ENABLE ROW LEVEL SECURITY;
