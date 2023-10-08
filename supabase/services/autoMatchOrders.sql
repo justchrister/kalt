@@ -8,5 +8,5 @@ CREATE TABLE "autoMatchOrders" (
   "orderType"         "exchangeOrders_types"    NOT NULL
 );
 
---- Add row level security
+--- row level security
 ALTER TABLE "autoMatchOrders" ENABLE ROW LEVEL SECURITY;
