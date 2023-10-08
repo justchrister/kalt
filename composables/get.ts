@@ -28,39 +28,33 @@ export const get = (client: any) => {
       }
     },
     user: async (userId: any) => {
-      const { data:userPreferences } = await client 
-        .from('topic_userPreferences')
+      const { data } = await client 
+        .from('topic_user')
         .select()
         .eq('message_entity', userId)
         .order('message_sent', { ascending: true })
-      const { data:userDetails } = await client 
-        .from('topic_userDetails')
-        .select()
-        .eq('message_entity', userId)
-        .order('message_sent', { ascending: true })
-      const userDetailsCombined =ok.combineJson(userDetails);
-      const userPreferencesCombined =ok.combineJson(userPreferences);
-      if(!userDetails || !userPreferences) {
+      const userCombined =ok.combineJson(data);
+      if(!userCombined) {
         return null
       } else {
         return {
           userId: userId,
-          firstName: userDetailsCombined.firstName || null,
-          lastName: userDetailsCombined.lastName || null,
-          country: userDetailsCombined.country || null,
-          city: userDetailsCombined.city || null,
-          postalCode: userDetailsCombined.postalCode || null,
-          birthdate: userDetailsCombined.birthdate || null,
-          addressLine1: userDetailsCombined.addressLine1 || null,
-          addressLine2: userDetailsCombined.addressLine2 || null,
-          autoInvest: userPreferencesCombined.autoInvest || null,
-          newsletters: userPreferencesCombined.newsletters || null,
-          termsOfService: userPreferencesCombined.termsOfService || null,
-          performanceUpdates: userPreferencesCombined.performanceUpdates || null,
-          colorScheme: userPreferencesCombined.colorScheme || null,
-          profilePicture: userPreferencesCombined.profilePicture || null,
-          language: userPreferencesCombined.language || null,
-          currency: userPreferencesCombined.currency || null
+          firstName: userCombined.firstName || null,
+          lastName: userCombined.lastName || null,
+          country: userCombined.country || null,
+          city: userCombined.city || null,
+          postalCode: userCombined.postalCode || null,
+          birthdate: userCombined.birthdate || null,
+          addressLine1: userCombined.addressLine1 || null,
+          addressLine2: userCombined.addressLine2 || null,
+          autoInvest: userCombined.autoInvest || null,
+          newsletters: userCombined.newsletters || null,
+          termsOfService: userCombined.termsOfService || null,
+          performanceUpdates: userCombined.performanceUpdates || null,
+          colorScheme: userCombined.colorScheme || null,
+          profilePicture: userCombined.profilePicture || null,
+          language: userCombined.language || null,
+          currency: userCombined.currency || null
         }
       }
     },
@@ -233,6 +227,34 @@ export const get = (client: any) => {
           result += data[i].amount
         }
         return ok.formatCurrency(result, user.currency)
+      }
+    },
+    paymentCards: async (user) => {
+      ok.log('', user)
+      const { data, error } = await client
+        .from('topic_paymentCards')
+        .select()
+        .eq('userId', user.userId)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        return ok.combineJsonByEntity(data).reverse();
+      }
+    },
+    defaultPaymentCard: async (user) => {
+      const { data, error } = await client
+        .from('topic_paymentCards')
+        .select()
+        .eq('userId', user.userId)
+        .eq('default', true)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        return ok.combineJsonByEntity(data).reverse();
       }
     }
   }
