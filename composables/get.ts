@@ -33,7 +33,7 @@ export const get = (client: any) => {
         .select()
         .eq('message_entity', userId)
         .order('message_sent', { ascending: true })
-      const userCombined =ok.combineJson(data);
+      const userCombined = ok.combineJson(data);
       if(!userCombined) {
         return null
       } else {
@@ -53,8 +53,8 @@ export const get = (client: any) => {
           performanceUpdates: userCombined.performanceUpdates || null,
           colorScheme: userCombined.colorScheme || null,
           profilePicture: userCombined.profilePicture || null,
-          language: userCombined.language || null,
-          currency: userCombined.currency || null
+          language: userCombined.language || 'EN',
+          currency: userCombined.currency || 'EUR'
         }
       }
     },
@@ -254,7 +254,9 @@ export const get = (client: any) => {
         ok.log('', error)
         return null
       } else {
-        return ok.combineJsonByEntity(data).reverse();
+        const combined = ok.combineJsonByEntity(data);
+        ok.log('', combined[0])
+        return combined[0];
       }
     }
   }
