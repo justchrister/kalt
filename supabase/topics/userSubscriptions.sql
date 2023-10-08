@@ -29,3 +29,9 @@ CREATE POLICY "SELF — Select" ON public."topic_userSubscriptions"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (auth.uid() = "userId");
+
+
+
+--- Indexes
+
+CREATE INDEX "index_topic_userSubscriptions_userId_message_sent" ON public."topic_userSubscriptions" USING btree ("userId", "message_sent")
