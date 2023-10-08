@@ -22,7 +22,7 @@ CREATE TABLE "topic_exchangeOrders" (
     CHECK (("type" = 'buy' AND quantity > 0) OR ("type" = 'sell' AND quantity < 0))
 );
 
---- add row level security
+--- row level security
 ALTER TABLE "topic_exchangeOrders" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "SELF — Insert" ON public."topic_exchangeOrders"
