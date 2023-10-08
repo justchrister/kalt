@@ -43,4 +43,4 @@ CREATE POLICY "SELF — Select" ON "public"."topic_users"
   USING (auth.uid() = "userId")
 
 --- indexes
-CREATE INDEX "index_topic_users_userId_message_sent" ON public."topic_users" USING btree ("userId", "message_sent");
+CREATE INDEX "index_topic_users_message_entity_message_sent" ON public."topic_users" USING btree ("message_entity", "message_sent");
