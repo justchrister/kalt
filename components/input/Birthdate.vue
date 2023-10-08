@@ -32,7 +32,7 @@
     const { error, data } = await pub(supabase, {
       entity: userId.value.id,
       sender:'components/input/birthdate.vue'
-    }).user({
+    }).users({
       userId: userId.value.id,
       birthdate: birthdate.value, 
     });
