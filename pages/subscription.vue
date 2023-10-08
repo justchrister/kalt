@@ -26,6 +26,7 @@
 <script setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id)
   definePageMeta({
     pagename: 'Subscription',
     middleware: 'auth'
@@ -34,19 +35,7 @@
     title: 'Subscription'
   })
 
-  const getPaymentCardDefault = async () => {
-    const { data, error } = await supabase
-      .from('getPaymentCardDefault')
-      .select()
-      .eq('userId', userId.value.id)
-    if(error) {
-      ok.log('', 'Failed to get default card')
-      return false
-    } else {
-      return true
-    }
-  }
-  const defaultCard = await getPaymentCardDefault();
+  const defaultCard = await get(supabase).defaultPaymentCard(user);
   if(!defaultCard){
     ok.log('error', 'User does not have default card')
     await navigateTo('/cards')
