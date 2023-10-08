@@ -137,6 +137,10 @@
       data.value.push(portfolio[i].value);
       labels.value.push(portfolio[i].date);
     }
+    updatePercentageChange(data.value[data.value.length - 1])
+    hoveredValue.value = new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(
+      data.value[data.value.length - 1]
+    )
   };
 
   fetchPortfolio(); // This will run the fetching in the background
@@ -155,13 +159,9 @@
   }))
   ok.log('', data)
 
-  const idkWhatToCallIt = ref(props.days);
-  if(props.days>data.length){
-    idkWhatToCallIt.value = (data.length-1)
-  }
   const hoveredValue = ref(
     new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(
-      data[idkWhatToCallIt.value]
+      data.value[data.value.length - 1]
     )
   );
   const updateHoveredValue = (x) => {
@@ -169,11 +169,11 @@
   };
 
   const percentageChange = ref(
-    data.value[data.value.length - 1] // Correctly use `.value` here
+    data.value[data.value.length - 1]
   );
 
   const updatePercentageChange = (x) => {
-    const firstValue = data.value[data.value.length - props.days] || data.value[0]; // Again, use `.value`
+    const firstValue = data.value[data.value.length - props.days] || data.value[0];
     const lastValue = x;
     const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
 
