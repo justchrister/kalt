@@ -5,7 +5,7 @@ create table public."sys_languages" (
 );
 
 
---- add row level security
+--- row level security
 ALTER TABLE "sys_languages" ENABLE ROW LEVEL SECURITY;
 
 insert into public."sys_languages" (iso, name, available) values 
