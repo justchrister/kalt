@@ -23,3 +23,7 @@ CREATE POLICY "AUTH — Select"
   FOR SELECT 
   TO authenticated 
   USING (true);
+
+
+--- Indexes 
+CREATE INDEX "index_topic_assets_userId_message_sent" ON public."topic_assets" USING btree ("message_entity", "ticker", "message_sent");
