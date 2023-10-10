@@ -23,6 +23,4 @@ CREATE POLICY "AUTH — Select"
     ON public."topic_exchangeRates"
     FOR SELECT 
     TO authenticated 
-    USING (
-        true
-    );
+    USING (true);
