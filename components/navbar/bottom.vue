@@ -36,7 +36,6 @@
         <ul>
           <nuxt-link to="/about" > About </nuxt-link>
           <nuxt-link to="/about/values" > Our values </nuxt-link>
-          <nuxt-link to="/about/whitepaper" > Whitepaper </nuxt-link>
           <nuxt-link to="/jobs" > Jobs </nuxt-link>
           <nuxt-link to="/funds" > Funds </nuxt-link>
           <a href="mailto:sup@ka.lt"> Contact us </a>
