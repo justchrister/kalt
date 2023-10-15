@@ -12,7 +12,7 @@
           {{ data.description}}
           </div>
         </div>
-        <nuxt-link :to="'funds/'+ticker">
+        <nuxt-link :to="'funds/'+shortTicker">
           <div class="button">
             read more ->
           </div>
