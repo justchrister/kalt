@@ -2,10 +2,10 @@
   <main>
     <intro title="Build your own fund" paragraph="Choose what you want to invest in both through your subscription and when completing single investments." />
     <block>
-      <fund-your ticker="ffe.ddf"/>
-      <fund-your ticker="art.ddf"/>
-      <fund-your ticker="ah.ddf"/>
-      <fund-your ticker="vc.ddf"/>
+      <fund-your ticker="ffe"/>
+      <fund-your ticker="art"/>
+      <fund-your ticker="ah"/>
+      <fund-your ticker="vc"/>
       <button @click="navigateTo('/invest')">
         invest now
       </button>
