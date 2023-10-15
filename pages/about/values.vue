@@ -2,7 +2,7 @@
   <main class="values">
     <intro 
       title="Our values and goals"
-      paragraph="All humans are our stakeholders, we try to find a slightly better solution to each challenge we find. Trying to make a slightly better world for everyone at each turn." />
+      paragraph="Our mission is to empower individuals to maximize their positive impact on the world by providing accessible and meaningful investment opportunities that align with their values. Through innovation and technology, we strive to create a platform that enables anyone to actively contribute to a sustainable future while achieving financial success by investing in what truly matters to them." />
     <block margin="half">
       <h4>Maximize impact</h4>
       <p>
