@@ -107,7 +107,30 @@ export const ok = {
     if (i < 10) {i = "0" + i}
     return i;
   },
-
+  validateCard(num){
+    let sum = 0;
+    let isEven = false;
+  
+    // Remove any non-numeric characters and reverse the string
+    const cardNumber = String(num).replace(/\D/g, "").split("").reverse().join("");
+  
+    for (let n = 0; n < cardNumber.length; n++) {
+      let digit = parseInt(cardNumber.charAt(n));
+  
+      if (isEven) {
+        digit *= 2;
+  
+        if (digit > 9) {
+          digit -= 9;
+        }
+      }
+  
+      sum += digit;
+      isEven = !isEven;
+    }
+  
+    return sum % 10 === 0;
+  },
   prettyCurrency(amount) {
     let amountRounded = (Math.ceil(amount * 10) / 10).toFixed(1);
     const formatter = new Intl.NumberFormat('en-US', {
