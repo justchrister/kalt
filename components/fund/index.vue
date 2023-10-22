@@ -83,8 +83,9 @@ const supabase = useSupabaseClient()
     text-decoration: none;
   }
   .button{
-    padding: $clamp-1;
     text-align: center;
+    height:$clamp-5;
+    line-height:$clamp-4-5;
     &:hover{
       cursor: pointer;
       text-decoration: underline;
@@ -99,40 +100,5 @@ const supabase = useSupabaseClient()
     background-repeat: no-repeat;
     background-size: contain;
     margin: $clamp-2;
-  }
-  .read-more-adjust-percentage{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-
-  }
-  .adjust-percent-wrapper{
-    display:grid;
-    grid-template-columns: 1fr $clamp-5 $clamp-5;
-    user-select: none;
-    span{
-      display:inline-block;
-      border:none;
-      border-left:$border;
-      padding:$clamp-1 0;
-      min-width:$clamp-4;
-      box-sizing: border-box;
-      user-select: none;
-      height:100%;
-      text-align:center;
-      &:hover{
-        cursor: pointer;
-        background:white;
-      }
-      &:first-child{
-        border-left:none;
-        text-align: left;
-        padding-left: $clamp-2;
-      }
-    }
-    button:hover,
-    button:active,
-    button:focus{
-      border-radius:0;
-    }
   }
 </style>
