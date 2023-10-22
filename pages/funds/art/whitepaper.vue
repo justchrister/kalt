@@ -1,7 +1,7 @@
 <template>
   <main>
     <block>
-      <h1>Whitepaper: A comprehensive methodology for predicting the future value of art</h1>
+      <h1>Whitepaper: The comprehensive methodology for predicting the future value of art</h1>
     </block>
 
     <block margin="half">
@@ -18,9 +18,9 @@
     </block>
 
     <block margin="half">
-      <h2>Methodology: An Objective Approach to Art Valuation and Investment</h2>
+      <h2>Methodology: An objective approach to art valuation and investment</h2>
 
-      <h3>Quantitative Assessment of Art's Intrinsic Value</h3>
+      <h3>Quantitative assessment of art's intrinsic value</h3>
       <p>
         Art valuation demands a rigorous and objective approach that transcends subjective opinions. Our methodology is deeply rooted in data-driven analysis and statistical models, ensuring a systematic and transparent approach to valuation. It draws strength from empirical evidence, statistical rigor, and data-driven insights, all working in concert to assess art's value within the dynamic art market landscape while respecting the unique qualities inherent in each artwork.
       </p>
