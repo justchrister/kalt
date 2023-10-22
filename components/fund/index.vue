@@ -54,6 +54,8 @@ const supabase = useSupabaseClient()
   }
   .body-wrapper {
     display: grid;
+    max-width: $clamp-55;
+    overflow:hidden;
     height: $clamp-9;
     grid-template-columns: 1fr $clamp-9;
   }
@@ -63,6 +65,7 @@ const supabase = useSupabaseClient()
     overflow:hidden;
     padding: $clamp-1;
     white-space: nowrap;
+    max-width:$clamp-46;
     div{
       animation: animate_text 30s linear infinite; /* The animation property */
     }
@@ -90,6 +93,7 @@ const supabase = useSupabaseClient()
   .body{
     border-right: $border;
     height: $clamp-9;
+    max-width:$clamp-46;
   }
   .symbol{
     background-repeat: no-repeat;
