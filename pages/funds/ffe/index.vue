@@ -14,11 +14,34 @@
         <criteria :nr="3">
           The country must have moderate to low political risk
         </criteria>
+        <criteria :nr="4">
+          Abundant availability of renewable energy resources.
+        </criteria>
+        <criteria :nr="5">
+          Proximity to major energy demand centers.
+        </criteria>
+        <criteria :nr="6">
+          Supportive regulatory framework for renewable energy.
+        </criteria>
+        <criteria :nr="7">
+          Adequate infrastructure for transportation and grid connectivity.
+        </criteria>
       </criteria-list>
     </block>
     <block>
-      By investing with us, you directly contribute to the development and deployment of fossil-free energy alternatives. Together, we can create a more sustainable world while enjoying the financial benefits of supporting fossil-free energy solutions.
-      <br><br>
+      <h2> Our thesis </h2>
+      <p>
+        In a world confronting a pressing climate crisis and an escalating call for sustainable solutions, our vision transcends conventional investment paradigms. We envision a future where fossil-free energy investment acts as a catalyst for magnifying impact—an impact that not only generates financial returns but also propels positive change to new heights.
+      </p>
+      <p>
+        Fossil-free energy assets stand as a potent conduit for this amplification of impact. They symbolize an unwavering commitment to a cleaner, greener, and more sustainable world. This journey towards a sustainable energy landscape is characterized by innovation, resilience, and the steadfast belief that our investments can be a driving force for global good.
+      </p>
+      <p>
+        By participating in our fossil-free energy fund, you become an integral part of this transformative journey. Each investment not only promises financial growth but also contributes to the magnification of impact—a future where the positive influence on the environment, communities, and economies resonates far beyond the sum of its parts.
+      </p>
+      <p>
+        Incorporating fossil-free energy investments into your portfolio isn't just a strategic move; it's a declaration of purpose. It's an opportunity to lead the way in impact investing, where the effects of your investments ripple outward, creating a wave of positive change that reverberates globally. Together, we can accelerate the transition to a world powered by clean, renewable sources, where every investment adds value and amplifies impact for a brighter and more sustainable future.
+      </p>
       <button @click="navigateTo('/invest')"> invest now -> </button>
     </block>
   </main>
