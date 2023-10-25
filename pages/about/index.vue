@@ -1,8 +1,8 @@
 <template>
   <main>
     <frame-wrap>
-      <frame-image src="/media/images/architecture/brutalist-house-in-affligem.jpg" />
-      <frame-image src="/media/images/eddy-mercx-1970.jpg" />
+      <frame-image src="/images/architecture/brutalist-house-in-affligem.jpg" />
+      <frame-image src="/images/eddy-mercx-1970.jpg" />
     </frame-wrap>
     <block margin="half">
       <h1>
