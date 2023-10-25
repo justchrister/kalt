@@ -2,8 +2,8 @@
 <template>
   <main>
     <frame-wrap>
-      <frame-image src="/media/images/audun-alvestad/waiting-room.png" />
-      <frame-image src="/media/images/apollo-celebration.jpg" />
+      <frame-image src="/images/audun-alvestad/waiting-room.png" />
+      <frame-image src="/images/apollo-celebration.jpg" />
     </frame-wrap>
     <block margin="half">
       <h1> One small step for you, a big step for mankind. <omoji emoji="✨" /> </h1>
