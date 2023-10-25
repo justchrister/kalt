@@ -12,8 +12,8 @@
       </nuxt-link>
     </block>
     <frame-wrap>
-      <frame-image src="/media/images/frontpage.webp" />
-      <frame-video src="/media/videos/film.mp4" />
+      <frame-image src="/images/frontpage.webp" />
+      <frame-video src="/videos/film.mp4" />
     </frame-wrap>
     <block>
       <h1>
