@@ -94,19 +94,22 @@
     background-position: center;
     background-size:contain;
   }
+  .rate:hover{
+      cursor:pointer;
+    }
   .rate span{
     width:$clamp-1;
     height:$clamp-1;
     margin-right:$clamp-0-5;
     display:inline-block;
-    background:url('/omoji/heart-outline.svg') no-repeat center center;
+    background:url('/omoji/heart-outline.png') no-repeat center center;
     background-size:contain;
     &:hover{
       cursor:pointer;
     }
   }
   .rate span.active{
-    background:url('/omoji/heart-filled.svg') no-repeat center center;
+    background:url('/omoji/heart-filled.png') no-repeat center center;
     background-size:contain;
   }
 </style>
