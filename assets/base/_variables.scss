@@ -297,3 +297,24 @@ $clamp-n-77: clamp($unit-n-min*77, $unit-n*77, $unit-n-max*77);
 $clamp-n-78: clamp($unit-n-min*78, $unit-n*78, $unit-n-max*78);
 $clamp-n-79: clamp($unit-n-min*79, $unit-n*79, $unit-n-max*79);
 
+// clamps without min values
+
+$clamp-1-no-min:     clamp(1px, $unit,     $unit-max);
+$clamp-2-5-no-min:   clamp(1px, $unit*2.5, $unit-max*2.5);
+$clamp-3-no-min:     clamp(1px, $unit*3,   $unit-max*3);
+$clamp-4-no-min:     clamp(1px, $unit*4,   $unit-max*4);
+$clamp-5-no-min:     clamp(1px, $unit*5,   $unit-max*5);
+$clamp-6-no-min:     clamp(1px, $unit*6,   $unit-max*6);
+$clamp-8-no-min:     clamp(1px, $unit*8,   $unit-max*8);
+$clamp-10-no-min:    clamp(1px, $unit*10,  $unit-max*10);
+$clamp-15-no-min:    clamp(1px, $unit*15,  $unit-max*15);
+$clamp-16-no-min:    clamp(1px, $unit*16,  $unit-max*16);
+$clamp-19-no-min:    clamp(1px, $unit*19,  $unit-max*19);
+$clamp-20-no-min:    clamp(1px, $unit*20,  $unit-max*20);
+$clamp-22-no-min:    clamp(1px, $unit*22,  $unit-max*22);
+$clamp-30-no-min:    clamp(1px, $unit*30,  $unit-max*30);
+$clamp-40-no-min:    clamp(1px, $unit*40,  $unit-max*40);
+$clamp-41-no-min:    clamp(1px, $unit*41,  $unit-max*41);
+$clamp-n-3-no-min:   clamp(1px, $unit-n*3, $unit-n-max*3);
+$clamp-n-4-no-min:   clamp(1px, $unit-n*4, $unit-n-max*4);
+$clamp-n-1-5-no-min: clamp(1px, $unit-n*6, $unit-n-max*1.5);
