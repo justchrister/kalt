@@ -1,7 +1,7 @@
 <template>
   <div class="wrap" :id="props.type">
     <div class="notify">
-      {{props.message}}
+      {{ props.message }}
     </div>
   </div>
 </template>
@@ -13,9 +13,10 @@
     },
     message: {
       type: String,
-      required: true
+      required: false
     }
   })
+  ok.log('', props.type)
 </script>
 <style scoped lang="scss">
   .wrap{
