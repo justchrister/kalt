@@ -5,6 +5,7 @@
         <div :class="checkBrand(number)"></div>
         <input 
           type="text" 
+          id="number"
           :class="{ 'error-field': numberError }" 
           v-model="number" 
           minlength="19"
@@ -219,5 +220,13 @@
   .error-field{
     color:$red;
     background:$red-20;
+  }
+  #number{
+
+    transition: margin-left 0.5s;
+  }
+  .error-field#number{
+    margin-left:$clamp;
+    transition: margin-left 0.5s;
   }
 </style>
