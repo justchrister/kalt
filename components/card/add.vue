@@ -206,19 +206,15 @@
   }
   .logo.discover{ 
     background-image: url('/media/icons/discover.svg');
-    background-size:40%;
   }
   .logo.dinersclub{ 
-    background-image: url('/media/icons/dinersclub.svg');
-    background-size:40%;
-  }dinersclub
+    background-image: url('/media/icons/dinersclub.png');
+  }
   .logo.jcb{ 
     background-image: url('/media/icons/jcb.svg');
-    background-size:40%;
   }
   .logo.unionpay{ 
     background-image: url('/media/icons/unionpay.svg');
-    background-size:40%;
   }
   .error-field{
     color:$red;
