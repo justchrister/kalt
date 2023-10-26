@@ -16,15 +16,21 @@
       required: true
     }
   })
+
   const checkBrand = (brand) => {
-    let firstDigit = brand.toString().slice(0,  1);
-    if(firstDigit==='2') return "logo mastercard"
-    if(firstDigit==='3') return "logo amex"
-    if(firstDigit==='5') return "logo mastercard"
-    if(firstDigit==='4') return "logo visa"
-    if(firstDigit==='6') return "logo"
-    return "ehm what?"
-  };
+    if(brand){
+      let firstDigit = brand.toString().slice(0,  1);
+      if(firstDigit==='1') return "logo amex"
+      if(firstDigit==='2') return "logo mastercard"
+      if(firstDigit==='3') return "logo amex"
+      if(firstDigit==='4') return "logo visa"
+      if(firstDigit==='5') return "logo mastercard"
+      if(firstDigit==='6') return "logo discover"
+      if(firstDigit==='8') return 'logo jcb'
+      if(firstDigit==='9') return 'logo unionpay'
+      return "logo"
+    }
+  }
   const fourDigits = props.number.toString().slice(-4);
 </script>
 <style scoped lang="scss">
@@ -47,7 +53,7 @@
     background-size: contain;
     display:inline-block;
     background-repeat: no-repeat;
-    background-position: center left;
+    background-position: center center;
     box-sizing: border-box;
     vertical-align: top
   }
@@ -61,11 +67,21 @@
   .card .logo.amex{ 
     background-image: url('/media/icons/amex.svg');
   }
-  .card .logo.plus{ 
-    background-image: url('/omoji/plus.svg');
+  .card .logo.discover{ 
+    background-image: url('/media/icons/discover.svg');
     background-size:40%;
   }
-
+  .card .logo.jcb{ 
+    background-image: url('/media/icons/jcb.svg');
+    background-size:40%;
+  }
+  .card .logo.unionpay{ 
+    background-image: url('/media/icons/unionpay.svg');
+    background-size:40%;
+  }
+  
+  
+  
   .card .details{
     width:clamp($unit-min*15, $unit*15, $unit-max*15);
     height:$clamp-4;
