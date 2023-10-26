@@ -58,28 +58,27 @@
     vertical-align: top
   }
 
-  .card .logo.visa{ 
+  .logo.visa{ 
     background-image: url('/media/icons/visa.svg');
   }
-  .card .logo.mastercard{ 
+  .logo.mastercard{ 
     background-image: url('/media/icons/mastercard.svg');
   }
-  .card .logo.amex{ 
+  .logo.amex{ 
     background-image: url('/media/icons/amex.svg');
   }
-  .card .logo.discover{ 
+  .logo.discover{ 
     background-image: url('/media/icons/discover.svg');
-    background-size:40%;
   }
-  .card .logo.jcb{ 
+  .logo.dinersclub{ 
+    background-image: url('/media/icons/dinersclub.png');
+  }
+  .logo.jcb{ 
     background-image: url('/media/icons/jcb.svg');
-    background-size:40%;
   }
-  .card .logo.unionpay{ 
+  .logo.unionpay{ 
     background-image: url('/media/icons/unionpay.svg');
-    background-size:40%;
   }
-  
   
   
   .card .details{
@@ -129,13 +128,13 @@
     text-decoration:none;
   }/*
   .dark-mode{
-    .card .logo.visa{ 
+    .logo.visa{ 
       background-image: url('/media/icons/visa-light.svg');
     }
-    .card .logo.mastercard{ 
+    .logo.mastercard{ 
       background-image: url('/media/icons/mastercard.svg');
     }
-    .card .logo.amex{ 
+    .logo.amex{ 
       background-image: url('/media/icons/amex.svg');
     }
     .card{
