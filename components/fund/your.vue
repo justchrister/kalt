@@ -55,7 +55,7 @@
       }
     }
   }
-  if(state){
+  if(state && state.rate){
     rate.value = state.rate
     logHearts()
   }
@@ -63,7 +63,7 @@
     if(rate.value===3){
       rate.value = 0
     } else {
-      rate.value= rate.value + 1
+      rate.value = rate.value + 1
     }
     logHearts()
     const { } = await pub(supabase, {
