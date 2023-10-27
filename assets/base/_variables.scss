@@ -25,6 +25,17 @@ $dark-20: mix($dark, $light, 20%);
 $dark-10: mix($dark, $light, 10%);
 $dark-5: mix($dark, $light, 5%);
 
+$test-color: #586BA4;
+$test-color-95: mix($test-color, $light, 95%);
+$test-color-90: mix($test-color, $light, 90%);
+$test-color-80: mix($test-color, $light, 80%);
+$test-color-60: mix($test-color, $light, 60%);
+$test-color-40: mix($test-color, $light, 40%);
+$test-color-20: mix($test-color, $light, 20%);
+$test-color-10: mix($test-color, $light, 10%);
+$test-color-5: mix($test-color, $light, 5%);
+$test-color-2: mix(#F0F3F6, $light, 5%);
+
 $blue: #5FB0FC;
 $blue-80: mix($blue, $light, 80%);
 $blue-60: mix($blue, $light, 60%);
@@ -300,6 +311,8 @@ $clamp-n-79: clamp($unit-n-min*79, $unit-n*79, $unit-n-max*79);
 // clamps without min values
 
 $clamp-1-no-min:     clamp(1px, $unit,     $unit-max);
+$clamp-1-5-no-min:   clamp(1px, $unit*1.5, $unit-max*1.5);
+$clamp-2-no-min:     clamp(1px, $unit*2,   $unit-max*2);
 $clamp-2-5-no-min:   clamp(1px, $unit*2.5, $unit-max*2.5);
 $clamp-3-no-min:     clamp(1px, $unit*3,   $unit-max*3);
 $clamp-4-no-min:     clamp(1px, $unit*4,   $unit-max*4);
