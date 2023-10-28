@@ -1,10 +1,15 @@
 <template>
   <div class="input-wrap">
     <label for="iban">IBAN</label>
-    <input type="text" v-model="iban" v-maska data-maska="@@## **** **** ***" @input="updateIBAN()" placeholder="IT68 D030 0203 2800 0420 0162 854"/>
+    <input type="text" 
+           v-model="iban" 
+           v-maska data-maska="@@## **** **** **** **** **** **** **** **** **** **** ****" 
+           @input="updateIBAN()" 
+           placeholder="IT68 D030 0203 2800 0420 0162 854"
+           :class="state"/>
   </div>
 </template>
-<script setup>
+<script lang="ts" setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const props = defineProps({
@@ -14,12 +19,14 @@
       default: null
     }
   })
+  const state = ref('')
   const iban = ref(props.initialValue)
   if(props.initialValue) {
     ok.log('success', 'initial value: '+props.initialValue)
   }
 
   const updateIBAN = async () => {
+    state.value = 'loading'
     const { error, data } = await pub(supabase, {
       entity: userId.value.id,
       sender:'components/input/iban.vue'
@@ -28,8 +35,10 @@
       iban: iban.value
     });
     if(error) {
+      state.value = 'error'
       ok.log('error', 'error updating IBAN', error)
     } else{
+      state.value = 'success'
       ok.log('success', 'updated IBAN: '+iban.value)
     }
   }
