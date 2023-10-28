@@ -1,7 +1,7 @@
 <template>
   <main>
     <intro title="Invests in early stage startups, with decreased risk." text=""/>
-    <block>
+    <block margin="half">
       <criteria-list2>
         <criteria :nr="1">
           A feasible path to profitability.
@@ -26,7 +26,7 @@
         </criteria>
       </criteria-list2>
     </block>
-    <block margin="2">
+    <block margin="half">
       <h2> Our thesis </h2>
       <p>
         In the dynamic world of venture capital, we operate at the speed of opportunity, embracing ventures that epitomize innovation, sustainability, and profitability. Central to our investment philosophy is the belief in the catalytic power of innovation. We actively seek ventures that chart a feasible path to profitability, underpinned by pioneering technology, forward-thinking applications of technology, or groundbreaking business practices. The caliber of the founding team, with their qualifications and experience, remains pivotal in shaping a venture's potential for success.
@@ -34,14 +34,13 @@
       <p>
         In our pursuit of impact-driven investments, alignment with our overarching objectives and mission is non-negotiable. We place a premium on ventures that exhibit a strong focus on sustainability and responsible practices, recognizing their capacity to create lasting change. Our thesis hinges on agile investment, assessing market dynamics, growth potential, and target audience analysis at the speed of opportunity. These criteria reflect our commitment to fostering innovation, sustainability, and ethical responsibility in the ventures we support. Together, we aim to not only fuel growth but also drive meaningful change, shaping a future where innovation, sustainability, and profitability coalesce.
       </p>
-      <br><br>
       <button @click="navigateTo('/invest')"> invest now -> </button>
     </block>
     <block margin="2">
       <h2> Ventures </h2>
       <venture-list>
         <venture-shield id="tillit"/>
-        <venture-shield id="venture with really loong name "/>
+        <venture-shield id="empress"/>
       </venture-list>
     </block>
   </main>
