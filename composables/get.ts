@@ -71,6 +71,20 @@ export const get = (client: any) => {
         return ok.combineJsonByEntity(data).reverse();
       }
     },
+    linkedBankAccount: async (user: any) => {
+      const { data, error } = await client
+        .from('topic_linkedBankAccounts')
+        .select()
+        .eq('userId', user.userId)
+        .order('message_sent', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        ok.log('', data)
+        return ok.combineJsonByEntity(data);
+      }
+    },
     sharePrices: async () => {
       const { data:originOrders } = await client
         .from('topic_exchangeOrders')
