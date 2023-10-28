@@ -43,6 +43,14 @@ const userId = useSupabaseUser()
       type: Number,
       required: true
     },
+    portfolio: {
+      type: Number,
+      required: true
+    },
+    account: {
+      type: Number,
+      required: true
+    },
     currency: {
       type: String,
       required: true
@@ -87,10 +95,10 @@ const userId = useSupabaseUser()
     }
   }
   const setToAccountBalance = async () => {
-    amount.value = props.max
+    amount.value = props.portfolio
   }
   const setToPortfolioValue = async () => {
-    amount.value = props.max
+    amount.value = props.account
   }
 </script>
 <style scoped lang="scss">
