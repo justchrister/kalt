@@ -81,8 +81,8 @@ export const get = (client: any) => {
         ok.log('', error)
         return null
       } else {
-        ok.log('', data)
-        return ok.combineJsonByEntity(data);
+        const combined = ok.combineJsonByKeys(data, 'message_entity');
+        return combined[0];
       }
     },
     sharePrices: async () => {
