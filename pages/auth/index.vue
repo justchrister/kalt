@@ -37,7 +37,9 @@
         <nuxt-link to="/auth/password">password reset</nuxt-link>
       </link-group>
     </block>
-    <notification :type="notification.type" :message="notification.message" v-if="notification.message"/>
+    <span v-if="notification" @click="setNotification(null)">
+      <banner-notification color="yellow" :message="notification"/>
+    </span>
   </main>
 </template>
 
@@ -55,36 +57,37 @@
 
   const email = ref('')
   const password = ref('')
-  const notification = ref({
-    type: null, 
-    message: null
-  });
+  const notification = ref(null);
+
+  const setNotification = async (message) => {
+    ok.log('error', message)
+    notification.value=message
+    loading.value=false
+    return
+  }
   const signIn = async () => {
     loading.value = true
-    const {data, error} = await client.auth.signInWithPassword({
-      email: email.value,
-      password: password.value,
-    })
-    if(error) {
-      loading.value = false
-      ok.log('error', 'could not sign in '+email.value+': ', error);
 
-      if(password.value.length<8){
-        ok.log('error', 'password too short');
-        notification.value={
-          type: 'error',
-          message: 'Password too short'
-        }
-      } else{
-        notification.value={
-          type: 'error',
-          message: error.message
-        }
-        ok.log('error', 'could not sign in '+email.value+': ', error)
+    if(!email.value){
+      setNotification ('Please enter the email');
+    } else if(!password.value){
+      setNotification ('Please enter the password');
+    } else if(password.value.length<8){
+      setNotification ('Password too short');
+    } else if(!email.value.includes('@')){
+      setNotification ('Please enter a valid email');
+    } else {
+      const {data, error} = await client.auth.signInWithPassword({
+        email: email.value,
+        password: password.value,
+      })
+
+      if(error) {
+        loading.value = false
+        setNotification (error.message);
+      } else if(data){
+        ok.log('success', 'signed in ' + email.value + ' successfully');
       }
-    }
-    if(data){
-      ok.log('success', 'signed in ' + email.value + ' successfully');
     }
   }
   watchEffect(async () => {
