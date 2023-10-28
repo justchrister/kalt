@@ -1,12 +1,30 @@
 <template>
-  <div class="blkkk">
-    <label>Select quantity: </label>
-    <div class="wrapper">
-      <span>{{val}}</span>
-      <span @click="remove()">-</span>
-      <span @click="add()">+</span>
+  <div>
+    <div class="input-wrap">
+      <label for="amount"> 
+        Select amount: 
+      </label>
+      <div class="input-group">
+        <input
+          v-maska:[options]
+          data-maska="0.99"
+          data-maska-tokens="0:\d:multiple|9:\d:optional"
+          type="text"
+          placeholder="Amount"
+          id="amount"
+          class="amount"
+          v-model="amount"
+          @input="updateSellOrder"
+        />
+        <div class="currency">{{ currency }}</div>
+      </div>
+      <div class="pills">
+        <pill text="+ account balance" @click="setToAccountBalance()"/>
+        <pill text="+ portfolio value" @click="setToPortfolioValue()"/>
+        
+      </div>
     </div>
-    <info-box type="info" :text="'You only have '+val+' shares to sell' " v-if="notify"/>
+    <info-box type="info" :text="'You only have '+amount+' shares to sell' " v-if="notify"/>
   </div>
 </template>
 
@@ -14,23 +32,40 @@
 const state = ref('loading')
 const notify = ref(false)
 const supabase = useSupabaseClient()
+const amount = ref(0);
 const userId = useSupabaseUser()
   const props = defineProps({
     uuid: {
       type: String,
       required: true
+    },
+    max: {
+      type: Number,
+      required: true
+    },
+    currency: {
+      type: String,
+      required: true
     }
   })
 
-  const updateSellOrder = async () => { 
-    if(val.value>0){
+
+  const updateSellOrder = async () => {
+    const amountInt = ok.toInt(amount.value)
+    if(amountInt>props.max){
+      notify.value = true
+      return false
+    } else {
+      notify.value = false
+    }
+    if(amountInt>0){
       const { error, data } = await pub(supabase, {
         sender:'components/input/amountSell.vue',
         entity: props.uuid
-      }).exchangeOrder({
+      }).accountTransactions({
         userId: userId.value.id,
-        quantity: -val.value,
-        type: 'sell',
+        amount: -amountInt,
+        type: 'withdraw',
       });
       if(error) ok.log('error', 'could not update quantity', error)
       if(!error) ok.log('success', 'updated quantity')
@@ -38,77 +73,48 @@ const userId = useSupabaseUser()
       return false
     }
   }
-  const getMax = async () => {
-    const { data, error } = await supabase
-      .from('getUserPortfolio')
-      .select('quantityToday')
-      .order('date', { ascending: false })
-      .limit(1)
-      .single()
-    if(error || !data) {
-      return 0
-    } else {
-      return data.quantityToday
+
+  const options = {
+    preProcess: val => val.replace(/[$,]/g, ''),
+    postProcess: val => {
+      if (!val) return ''
+      const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
+      return Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: props.currency
+      }).format(val)
+        .slice(0, sub ? -sub : undefined)
     }
   }
-  const max = await getMax();
-  const val = ref(0)
-  const add = async () => { 
-    if(val.value>=max){
-      val.value=max
-      notify.value=true
-    } else {
-      notify.value=false
-      val.value+=1
-      await updateSellOrder();
-    }
+  const setToAccountBalance = async () => {
+    amount.value = props.max
   }
-  const remove = async () => {
-    if(val.value<=0){
-      val.value=0
-    } else {
-      val.value-=1
-      await updateSellOrder();
-    }
-    
+  const setToPortfolioValue = async () => {
+    amount.value = props.max
   }
 </script>
 <style scoped lang="scss">
   label{
     display:block;
   }
-  .wrapper{
-    display:grid;
-    grid-template-columns: 1fr $clamp-5 $clamp-5;
-    border:$border;   
-    user-select: none;
+  .input-group{
+    border:$border;
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 0% 0%;
+    grid-auto-flow: row;
+    grid-template-columns: 6fr 1fr;
   }
-  span{
-    display:inline-block;
-    border:none;
+  .currency{
+    height:$clamp-4;
+    line-height:$clamp-4;
     border-left:$border;
-    padding:$clamp-1 0;
-    min-width:$clamp-4;
-    box-sizing: border-box;
-    user-select: none;
-    height:100%;
     text-align:center;
-    &:hover{
-      cursor: pointer;
-      background:white;
-    }
-    &:first-child{
-      border-left:none;
-      text-align: left;
-      padding-left: $clamp-2;
-    }
   }
-  button:hover,
-  button:active,
-  button:focus{
-    border-radius:0;
+  input{
+    border:none;
   }
-  .blkkk{
-    margin-top:$clamp;
+  .pills{
+    margin-top:$clamp-0-5;
   }
 </style>
