@@ -2,10 +2,11 @@
 <template>
   <main>
     <block v-if="max>0">
-      <h3>Withdraw from account</h3>
+      <h1>Withdraw from account</h1>
       <p>Selling shares will directly effect your portfolio performance negatively and the positive impact on the environemnt.</p>
       <form @submit.prevent="publishSellOrder()">
-        <input-amount-sell :uuid="uuid" :max="max" :currency="user.currency"/>
+        <input-amount-sell :uuid="uuid" :max="max" :portfolio="portfolioMax" :account="accountMax" :currency="user.currency"/>
+        <account-linked-card />
         <button> sell <loading-icon v-if="loading" /> </button>
       </form>
     </block>
@@ -20,7 +21,6 @@
   const loading = ref(false)
   definePageMeta({
     pagename: 'Divest',
-    layout: 'focused',
     middleware: 'auth'
   })
   useHead({
@@ -32,12 +32,19 @@
 
   const uuid = ok.uuid();
 
-  const getMax = async () => {
+  const getPortfolioMax = async () => {
     const portfolio = await get(supabase).portfolio(user) as any || [] as any;
-    return portfolio[portfolio.length - 1].value
+    return Math.floor(portfolio[portfolio.length - 1].value)
+  }
+  const getAccountMax = async () => {
+    const account = await get(supabase).accountBalance(user) as any || 0 as number;
+    const accountInt = ok.toInt(account)
+    return Math.floor(accountInt)
   }
 
-  const max = await getMax();
+  const portfolioMax = await getPortfolioMax();
+  const accountMax = await getAccountMax();
+  const max = portfolioMax + accountMax;
   ok.log('', max)
   const publishSellOrder = async () => {
     loading.value = true
