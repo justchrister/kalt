@@ -44,7 +44,7 @@
     if(!max) return false;
     if(!userId.value) return false;
     const { error, data } = await pub(supabase, {
-      sender: 'pages/portfolio/sell.vue',
+      sender: 'pages/sell.vue',
       entity: uuid
     }).accountTransaction({
       userId: userId.value.id,
