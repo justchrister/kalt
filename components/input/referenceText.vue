@@ -1,7 +1,11 @@
 <template>
   <div class="input-wrap">
     <label for="reference">Reference text</label>
-    <input type="text" v-model="reference" @input="updateReference()" placeholder="My best investment ever"/>
+    <input type="text" 
+           v-model="reference" 
+           @input="updateReference()" 
+           placeholder="My best investment ever"
+           :class="state"/>
   </div>
 </template>
 <script setup>
@@ -14,12 +18,14 @@
       default: null
     }
   })
+  const state = ref('')
   const reference = ref(props.initialValue)
   if(props.initialValue) {
     ok.log('success', 'initial value: '+props.initialValue)
   }
 
   const updateReference = async () => {
+    state.value = 'loading'
     const { error, data } = await pub(supabase, {
       entity: userId.value.id,
       sender:'components/input/referenceText.vue'
@@ -28,8 +34,10 @@
       reference: reference.value
     });
     if(error) {
+      state.value = 'error'
       ok.log('error', 'error updating reference', error)
     } else{
+      state.value = 'success'
       ok.log('success', 'updated reference: '+reference.value)
     }
   }
