@@ -3,10 +3,10 @@
     <block margin="none">
       <h3>Edit linked bank account</h3>
     </block>
-    <block><!--
+    <block>
       <input-iban :initialValue="linkedBankAccount.iban"/>
       <input-bank-code :initialValue="linkedBankAccount.bankCode"/>
-      <input-reference-text :initialValue="linkedBankAccount.reference"/>-->
+      <input-reference-text :initialValue="linkedBankAccount.reference"/>
       <button @click="navigateTo('/accounts')"> done </button>
     </block>
   </main>
@@ -23,11 +23,9 @@
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id);
-  const { data, error } = await supabase
-    .from('topic_linkedBankAccounts')
-    .select()
-    .eq('userId', user.userId)
-  ok.log('', data)
+  const linkedBankAccount = await get(supabase).linkedBankAccount(user);
+  ok.log('', linkedBankAccount)
+  
 </script>
 <style scoped lang="scss">
   button{
