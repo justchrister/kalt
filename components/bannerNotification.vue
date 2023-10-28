@@ -1,6 +1,8 @@
 <template>
-  <div class="wrap-notification" :id="props.color">
-    {{ props.message }} <span id="x">x</span>
+  <div class="wrap">
+    <div class="notification" :id="props.color">
+      {{ props.message }} <span id="x">x</span>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -16,11 +18,19 @@
   })
 </script>
 <style scoped lang="scss">
+.wrap{
+  position:fixed;
+  height:$clamp-4;
+  width:100vw;
+  bottom:0;
+  left:0;
+  position:fixed;
+  bottom:$clamp-4;
+  z-index:8999;
+}
   
-  .wrap-notification{
-    position:fixed;
-    bottom:$clamp-4;
-    z-index:8999;
+  .notification{
+    position:relative;
     box-sizing: border-box;
     width:$sitewidth;
     max-width: $maxsitewidth; 
