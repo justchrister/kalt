@@ -19,7 +19,7 @@
       <card-default />
     </block>
     <block margin="1">
-      <toggle-subscription />
+      <toggle-subscription :on="subscription.active"/>
     </block>
   </main>
 </template>
