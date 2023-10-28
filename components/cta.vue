@@ -1,7 +1,7 @@
 <template>
   <div class="cta">
     <div class="button-group" v-if="signedIn">
-      <nuxt-link to="/portfolio/sell">
+      <nuxt-link to="/sell">
         <button id="sell" tabindex="-1">divest</button>
       </nuxt-link>
       <nuxt-link to="/invest">
