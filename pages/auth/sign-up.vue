@@ -35,7 +35,9 @@
         <nuxt-link to="/auth/password">forgot password</nuxt-link>
       </link-group>
     </block>
-    <notification :type="notification.type" :message="notification.message" v-if="notification.message"/>
+    <span v-if="notification" @click="setNotification(null)">
+      <banner-notification color="yellow" :message="notification"/>
+    </span>
   </main>
 </template>
 
@@ -51,27 +53,35 @@
 
   const email = ref('')
   const password = ref('')
+  const notification = ref(null);
 
-  const notification = ref({
-    type: null, 
-    message: null
-  });
+  const setNotification = async (message) => {
+    ok.log('error', message)
+    notification.value=message
+    loading.value=false
+    return
+  }
 
   const signUp = async () => {
-    const { user, error } = await client.auth.signUp({
-      email: email.value,
-      password: password.value
-    })
-    if(error){
-      loading.value=false;
-      notification.value = {
-        type: 'error',
-        message: error.message
-      }
+    loading.value = true
+    if(!email.value){
+      setNotification('Please enter your email')
+    } else if (!password.value){
+      setNotification('Please enter your password')
+    } else if (password.value.length < 8){
+      setNotification('Password must be at least 8 characters')
     } else {
-      await navigateTo('/profile')
+      const { user, error } = await client.auth.signUp({
+        email: email.value,
+        password: password.value
+      })
+      if(error){
+        setNotification(error.message)
+      } else {
+        loading.value=false;
+        await navigateTo('/profile')
+      }
     }
-    
   }
 </script>
 
