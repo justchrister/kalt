@@ -4,15 +4,16 @@
   </div>
 </template>
 <script setup>
+  const props = defineProps({
+    on: {
+      type: Boolean,
+      required: false
+    }
+  })
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const isOn = ref()
-  const { data, error } = await supabase
-    .from('getUserSubscriptions')
-    .select()
-    .limit(1)
-    .single()
-  if(data) isOn.value = data.active;
+  if(props.on) isOn.value = props.on
   const toggleValue = async () => {
     if(isOn.value) {
       ok.log('', 'Subscription toggled off')
