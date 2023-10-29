@@ -1,9 +1,10 @@
 <template>
   <main>
+    <intro-fund title="Join us in accelerating the global transition to fossil-free energy sources" gradient="4"/>
     <block margin="half">
-      <intro-fund ticker="ffe" text="Our goal is to accelerate the global transition to sustainable energy sources, fostering a better future for our planet. "/>
+      <intro-block-fund text="We global transition to sustainable energy sources, fostering a better future for our planet. "/>
     </block>
-    <block>
+    <block margin="half">
       <criteria-list>
         <criteria :nr="1">
           The geographical area must have high GDP growth potential
@@ -29,7 +30,7 @@
       </criteria-list>
     </block>
     <block>
-      <h2> Our thesis </h2>
+      <h2> The thesis </h2>
       <p>
         In a world confronting a pressing climate crisis and an escalating call for sustainable solutions, our vision transcends conventional investment paradigms. We envision a future where fossil-free energy investment acts as a catalyst for magnifying impact—an impact that not only generates financial returns but also propels positive change to new heights.
       </p>
@@ -60,5 +61,11 @@
   
 </script>
 <style scoped lang="scss">
+main{
+  padding-top:0;
+}
+button{
+  background:$test-color-5;
+}
 
 </style>
