@@ -21,10 +21,10 @@ export default defineEventHandler(async (event) => {
     return 'autoInvest is 0 or undefined';
   }
   if (message.subtype === 'autoInvested') {
-    return 'already autoInvested';
+    return 'already autoDivested';
   }
-  if (message.type !== 'deposit') {
-    return 'not a deposit';
+  if (message.type !== 'withdrawal') {
+    return 'not a withdrawal';
   }
 
   const createExchangeOrder = async (userId: string, quantity: number, tickerx: tickers) => {
