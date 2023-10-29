@@ -1,11 +1,11 @@
 <template>
   <main>
-    <intro-fund-3 title="A safer way of investing in early stage startups." gradient="2"/>
+    <intro-fund title="A safer way of investing in early stage startups." gradient="2"/>
     <block margin="half">
-      <intro-fund text="The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in."/>
+      <intro-block-fund text="The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in."/>
     </block>
     <block margin="half">
-      <criteria-list2>
+      <criteria-list>
         <criteria :nr="1">
           A feasible path to profitability.
         </criteria>
@@ -27,7 +27,7 @@
         <criteria :nr="7">
           Ventures should adhere to ethical and responsible business conduct.
         </criteria>
-      </criteria-list2>
+      </criteria-list>
     </block>
     <block margin="half">
       <h2> The thesis </h2>
