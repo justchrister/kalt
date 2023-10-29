@@ -44,6 +44,15 @@ create type public."paymentsPending_statuses" as enum (
 create type public."paymentProviders" as enum (
     'stripe'
 );
+create type public."withdrawalsPending_statuses" as enum (
+    'pending',
+    'processing',
+    'failed',
+    'complete'
+);
+create type public."transferProviders" as enum (
+    'wise'
+);
 
 
 create type public."tickers" as enum (
