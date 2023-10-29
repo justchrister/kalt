@@ -1,50 +1,45 @@
 <template>
-  <section :class="props.ticker">
-    <h1>{{ props.text }}</h1>
+  <section :class="'gradient-'+props.gradient">
+    <block margin="none">
+      <h1 class="sans-serif no-margin">{{props.title}}</h1>
+    </block>
   </section>
 </template>
-<script setup lang="ts">
+<script setup>
   const props = defineProps({
-    text: {
+    title: {
       type: String,
       required: true
     },
-    ticker: {
+    gradient: {
       type: String,
       required: false
     }
   })
 </script>
 <style scoped lang="scss">
-  section{
-    background-color:$light;
-    padding: $clamp-1-5 $clamp-2;
-    border:$border;
-    &:before{
-      content:'';
-      display:block;
-      width:$clamp-60;
-      height:$clamp-70;
-      top:0;
-      transform:translateX(-66%);
-      position:absolute;
-      z-index:-1;
-    }
+section{
+  padding:$clamp-9 0 $clamp-7 0;
+  margin-bottom:$clamp-5;
+  &.gradient-2{
+    background:url('/gradient-2.jpg') no-repeat center center;
+    background-size:cover;
   }
-  section.ffe:before{
-    background:url('/ffe-bg-elem.svg') no-repeat;
-    background-size:contain;
-    background-position:right;
+  &.gradient-3{
+    background:url('/gradient-3.jpg') no-repeat center center;
+    background-size:cover;
   }
-  section.art:before{
-    background:url('/art-bg-elem.svg') no-repeat;
-    background-size:contain;
-    background-position:right;
+  &.gradient-4{
+    background:url('/gradient-4.jpg') no-repeat center center;
+    background-size:cover;
   }
   h1{
-    font-size: $clamp-2-5;
     margin:0;
-    padding:0;
+    color:$dark-90;
   }
-
+  p{
+    line-height:1.5;
+    padding-top:$clamp-1-5;
+  }
+}
 </style>
