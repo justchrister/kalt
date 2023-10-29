@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Invests in early stage startups, with decreased risk." text=""/>
+    <intro-fund-3 title="Invests in early stage startups, with decreased risk."/>
     <block margin="half">
       <criteria-list2>
         <criteria :nr="1">
