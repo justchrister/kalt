@@ -2,7 +2,7 @@
   <main>
     <intro-fund-3 title="A safer way of investing in early stage startups." gradient="2"/>
     <block margin="half">
-      <intro-fund ticker="" text="The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in."/>
+      <intro-fund text="The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in."/>
     </block>
     <block margin="half">
       <criteria-list2>
