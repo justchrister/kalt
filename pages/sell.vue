@@ -60,7 +60,6 @@
     if(!userId.value) return false;
     loading.value = true
     const currentWithdrawTransaction = await sub(supabase, 'accountTransactions').entity(uuid);
-    ok.log('', currentWithdrawTransaction)
     if(Math.abs(currentWithdrawTransaction.amount)>max){
       setNotification ('Withdrawal amount exceeds max available')
       loading.value = false;
@@ -75,10 +74,11 @@
       autoInvest: 1
     });
     if(error){
-      ok.log('error', 'could not create exchange order: ', error)
+      ok.log('error', 'could not create withdraw transaction: ', error.message)
+      setNotification ('Could not create withdraw transaction: '+error.message)
       loading.value = false
     } else {
-      ok.log('success', 'exchange order created: ')
+      ok.log('success', 'Withdraw transaction created')
       loading.value = false;
     };
   }
