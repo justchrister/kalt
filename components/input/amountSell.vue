@@ -19,18 +19,20 @@
         <div class="currency">{{ currency }}</div>
       </div>
       <div class="pills">
-        <pill text="+ account balance" @click="setToAccountBalance()"/>
-        <pill text="+ portfolio value" @click="setToPortfolioValue()"/>
+        set to: <pill text="account balance" @click="setToAccountBalance()"/>
+        <pill text="portfolio value" @click="setToPortfolioValue()"/>
         
       </div>
     </div>
-    <info-box type="info" :text="'You only have '+amount+' shares to sell' " v-if="notify"/>
+    <info-box type="info" :text="'You only have '+max+' available for withdrawal' " v-if="notify"/>
+    <info-box type="warning" :text="'If you withdraw more than your account balance of '+account+' it will trigger an automatic sale of shares' " v-if="notify2"/>
+    
   </div>
 </template>
 
 <script setup>
-const state = ref('loading')
 const notify = ref(false)
+const notify2 = ref(false)
 const supabase = useSupabaseClient()
 const amount = ref(0);
 const userId = useSupabaseUser()
@@ -59,21 +61,27 @@ const userId = useSupabaseUser()
 
 
   const updateSellOrder = async () => {
-    const amountInt = ok.toInt(amount.value)
-    if(amountInt>props.max){
+    const amountFloat = ok.toFloat(amount.value)
+    if(amountFloat>props.max){
       notify.value = true
-      return false
     } else {
       notify.value = false
     }
-    if(amountInt>0){
+    if(amountFloat>props.account){
+      notify2.value = true
+    } else {
+      notify2.value = false
+    }
+    if(amountFloat>0){
+    ok.log('', amountFloat)
       const { error, data } = await pub(supabase, {
         sender:'components/input/amountSell.vue',
         entity: props.uuid
       }).accountTransactions({
         userId: userId.value.id,
-        amount: -amountInt,
-        type: 'withdraw',
+        amount: -amountFloat,
+        status: 'incomplete',
+        type: 'withdraw'
       });
       if(error) ok.log('error', 'could not update quantity', error)
       if(!error) ok.log('success', 'updated quantity')
@@ -95,10 +103,10 @@ const userId = useSupabaseUser()
     }
   }
   const setToAccountBalance = async () => {
-    amount.value = props.portfolio
+    amount.value = props.account
   }
   const setToPortfolioValue = async () => {
-    amount.value = props.account
+    amount.value = props.portfolio
   }
 </script>
 <style scoped lang="scss">
