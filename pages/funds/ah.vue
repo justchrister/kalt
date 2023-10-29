@@ -1,9 +1,10 @@
 <template>
   <main>
+    <intro-fund title="Combat housing inequality, through our fund." gradient="3"/>
     <block margin="half">
-      <intro-fund ticker="art" text="The fund strategically allocates capital in development of affordable housing around the world. By doing so, we yield a stable return on the investments, but also contributes to social good by combating housing inequality."/>
+      <intro-block-fund text="The fund strategically allocates capital in development of affordable housing around the world. In locations that yield a stable return on the investments, but also contributes to social good by combating housing inequality. All based on a set of criteria. "/>
     </block>
-    <block margin="2">
+    <block margin="half">
       <criteria-list>
         <criteria :nr="1">
           The project should be in a location with demand for affordable housing, supported by demographic and economic data.
@@ -22,7 +23,7 @@
         </criteria>
       </criteria-list>
     </block>
-    <block margin="2">
+    <block margin="half">
       The Affordable Housing Fund by Kalt strategically allocates capital to development projects around the world. Our focus is fourfold: invest in areas with high demand for affordable housing, seek projects that offer stable or growing yields, prioritize eco-friendly initiatives, and aim for a strong social impact that includes communal spaces for community engagement. By aligning with these criteria, we not only secure a stable return on investments but also contribute to social good by combating housing inequality.
     </block>
     <block>
@@ -54,4 +55,11 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: $clamp-1;
   }
+  main{
+    padding-top:0;
+  }
+  button{
+    background:$test-color-5;
+  }
+
 </style>
