@@ -1,6 +1,9 @@
 <template>
   <main>
-    <intro-fund-3 title="Invests in early stage startups, with decreased risk."/>
+    <intro-fund-3 title="A safer way of investing in early stage startups." gradient="2"/>
+    <block margin="half">
+      <intro-fund ticker="" text="The venture capital fund gives you access to a wide range of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in."/>
+    </block>
     <block margin="half">
       <criteria-list2>
         <criteria :nr="1">
@@ -27,7 +30,7 @@
       </criteria-list2>
     </block>
     <block margin="half">
-      <h2> Our thesis </h2>
+      <h2> The thesis </h2>
       <p>
         In the dynamic world of venture capital, we operate at the speed of opportunity, embracing ventures that epitomize innovation, sustainability, and profitability. Central to our investment philosophy is the belief in the catalytic power of innovation. We actively seek ventures that chart a feasible path to profitability, underpinned by pioneering technology, forward-thinking applications of technology, or groundbreaking business practices. The caliber of the founding team, with their qualifications and experience, remains pivotal in shaping a venture's potential for success.
       </p>
