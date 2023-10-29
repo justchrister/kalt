@@ -1,24 +1,38 @@
 <template>
-  <div class="intro">
+  <section :class="'gradient-'+props.gradient">
     <block margin="none">
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
     </block>
-  </div>
+  </section>
 </template>
 <script setup>
   const props = defineProps({
     title: {
       type: String,
       required: true
+    },
+    gradient: {
+      type: String,
+      required: false
     }
   })
 </script>
 <style scoped lang="scss">
-.intro{
+section{
   padding:$clamp-9 0 $clamp-7 0;
   margin-bottom:$clamp-5;
-  background:url('/gradient-2.jpg') no-repeat center center;
-  background-size:cover;
+  &.gradient-2{
+    background:url('/gradient-2.jpg') no-repeat center center;
+    background-size:cover;
+  }
+  &.gradient-3{
+    background:url('/gradient-3.jpg') no-repeat center center;
+    background-size:cover;
+  }
+  &.gradient-4{
+    background:url('/gradient-4.jpg') no-repeat center center;
+    background-size:cover;
+  }
   h1{
     margin:0;
     color:$dark-90;
