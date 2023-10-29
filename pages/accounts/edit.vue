@@ -7,7 +7,7 @@
       <input-iban :initialValue="linkedBankAccount.iban"/>
       <input-bank-code :initialValue="linkedBankAccount.bankCode"/>
       <input-reference-text :initialValue="linkedBankAccount.reference"/>
-      <button @click="navigateTo('/accounts')"> done </button>
+      <button @click="router.go(-1)"> done </button>
     </block>
   </main>
 </template>
@@ -26,6 +26,7 @@
   const linkedBankAccount = await get(supabase).linkedBankAccount(user);
   ok.log('', linkedBankAccount)
   
+  const router = await useRouter()
 </script>
 <style scoped lang="scss">
   button{
