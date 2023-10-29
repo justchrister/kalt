@@ -42,6 +42,14 @@ export const ok = {
     const pattern = /[^0-9]/g;
     return parseInt(input.replace(pattern, ''));
   },
+  toFloat (input) {
+    // Remove all characters that are not digits, dots, or dashes
+    const cleanedInput = input.replace(/[^\d.,-]/g, '');
+  
+    // Remove commas if they exist
+    const withoutCommas = cleanedInput.replace(/,/g, '');
+    return parseFloat(withoutCommas);
+  },
   toChar(input){
     const pattern = /[^0-9]/g;
     return input.replace(pattern, '');
