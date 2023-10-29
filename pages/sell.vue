@@ -3,8 +3,7 @@
   <main>
     <block v-if="max>0">
       <h1>Withdraw from account</h1>
-      <p>Selling shares will directly effect your portfolio performance negatively and the positive impact on the environemnt.</p>
-      <form @submit.prevent="publishSellOrder()">
+      <form @submit.prevent="completeWithdrawTransaction()">
         <input-amount-sell :uuid="uuid" :max="max" :portfolio="portfolioMax" :account="accountMax" :currency="user.currency"/>
         <account-linked-card />
         <button> sell <loading-icon v-if="loading" /> </button>
@@ -15,6 +14,9 @@
       <h1> Let's change that <omoji emoji="✨"/> </h1>
       <button @click="navigateTo('/portfolio/buy')"> invest in something that matters </button>
     </block>
+    <span v-if="notification" @click="setNotification(null)">
+      <banner-notification color="yellow" :message="notification"/>
+    </span>
   </main>
 </template>
 <script lang="ts" setup>
@@ -31,6 +33,7 @@
   const user = await get(supabase).user(userId.value.id) as any || '' as any;
 
   const uuid = ok.uuid();
+  const notification = ref();
 
   const getPortfolioMax = async () => {
     const portfolio = await get(supabase).portfolio(user) as any || [] as any;
@@ -38,18 +41,33 @@
   }
   const getAccountMax = async () => {
     const account = await get(supabase).accountBalance(user) as any || 0 as number;
-    const accountInt = ok.toInt(account)
-    return Math.floor(accountInt)
+    return ok.toFloat(account)
   }
 
+  const setNotification = async (message) => {
+    ok.log('error', message)
+    notification.value=message
+    loading.value=false
+    return
+  }
+  
   const portfolioMax = await getPortfolioMax();
   const accountMax = await getAccountMax();
   const max = portfolioMax + accountMax;
   ok.log('', max)
-  const publishSellOrder = async () => {
-    loading.value = true
+  const completeWithdrawTransaction = async () => {
     if(!max) return false;
     if(!userId.value) return false;
+    loading.value = true
+    const currentWithdrawTransaction = await sub(supabase, 'accountTransactions').entity(uuid);
+    ok.log('', currentWithdrawTransaction)
+    if(Math.abs(currentWithdrawTransaction.amount)>max){
+      setNotification ('Withdrawal amount exceeds max available')
+      loading.value = false;
+      return false;
+    } else {
+      return
+    }
     const { error, data } = await pub(supabase, {
       sender: 'pages/sell.vue',
       entity: uuid
