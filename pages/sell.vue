@@ -65,16 +65,15 @@
       setNotification ('Withdrawal amount exceeds max available')
       loading.value = false;
       return false;
-    } else {
-      return
     }
     const { error, data } = await pub(supabase, {
       sender: 'pages/sell.vue',
       entity: uuid
-    }).accountTransaction({
+    }).accountTransactions({
       userId: userId.value.id,
-      status: 'open'
-    } as accountTransaction);
+      status: 'pending',
+      autoInvest: 1
+    });
     if(error){
       ok.log('error', 'could not create exchange order: ', error)
       loading.value = false
