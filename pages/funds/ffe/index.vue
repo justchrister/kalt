@@ -61,11 +61,10 @@
   
 </script>
 <style scoped lang="scss">
-main{
-  padding-top:0;
-}
-button{
-  background:$test-color-5;
-}
-
+  main{
+    padding-top:0;
+  }
+  button{
+    background:$test-color-5;
+  }
 </style>
