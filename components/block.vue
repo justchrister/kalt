@@ -43,6 +43,9 @@
     &.margin-3{
       margin-bottom: $clamp-3;
     }
+    &.margin-4{
+      margin-bottom: $clamp-4;
+    }
     &.margin-none{
       margin-bottom: 0;
     }
