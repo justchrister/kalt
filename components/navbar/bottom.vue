@@ -1,11 +1,11 @@
 <template>
   <footer id="bottom-menu">
-    <block margin="none">
-      <h2>
+    <block margin="3">
+      <h3>
         more...
-      </h2>
+      </h3>
     </block>
-    <block margin="half">
+    <block margin="2">
       <div class="section">
         <p>You</p>
         <ul>
@@ -20,17 +20,17 @@
         </ul>
       </div>
     </block>
-    <block margin="half">
+    <block margin="2">
       <div class="section">
         <p>Auth</p>
         <ul>
-          <nuxt-link to="/request" > Request invite </nuxt-link>
+          <nuxt-link to="/request" > Sign up </nuxt-link>
           <nuxt-link to="/auth" > Sign in </nuxt-link>
-          <nuxt-link to="/auth/sign-out" > Sign out 👋 </nuxt-link>
+          <nuxt-link to="/auth/sign-out" > Sign out </nuxt-link>
         </ul>
       </div>
     </block>
-    <block margin="half">
+    <block margin="2">
       <div class="section">
         <p>Us</p>
         <ul>
@@ -42,7 +42,7 @@
         </ul>
       </div>
     </block>
-    <block margin="half">
+    <block margin="2">
       <div class="section">
         <p>Content</p>
         <ul>
@@ -52,7 +52,7 @@
         </ul>
       </div>
     </block>
-    <block margin="half">
+    <block margin="2">
       <div class="section">
         <p>Legal</p>
         <ul>
@@ -80,7 +80,8 @@
     gap: $clamp-1;
     padding-top:$clamp-1;
     border-top:$border;
-    border-color:$light;
+    border-color:$dark-80;
+    border-style: dashed;
   }
   p{
     margin-top:0;
@@ -116,7 +117,7 @@
     line-height:clamp($unit-min*8, $unit*8, $unit-max*8);
     text-align:center;
   }
-  h2{
+  h3{
     color:$light;
   }
 </style>
