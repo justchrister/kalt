@@ -9,18 +9,6 @@
       </nuxt-link>
     </div>
     <div>
-      Name
-    </div>
-    <div class="right">
-      Christer Bjørnstad
-    </div>
-    <div>
-      E-mail
-    </div>
-    <div class="right">
-      christer@ka.lt
-    </div>
-    <div>
       IBAN
     </div>
     <div class="right">
@@ -61,24 +49,9 @@
 <script setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
+  const user = await get(supabase).user(userId.value.id);
+  const linkedBankAccount = await get(supabase).linkedBankAccount(user);
 
-  const getLinkedBankAccount = async () => {
-    const { data, error } = await supabase
-      .from('getLinkedBankAccount')
-      .select()
-      .eq('userId', userId.value.id)
-      .limit(1)
-      .single()
-    if(data) {
-      ok.log('success', 'got linked bank account', data)
-      return data
-    }
-    if(error) {
-      ok.log('', 'no linked bank account')
-      return false
-    }
-  }
-  const linkedBankAccount = await getLinkedBankAccount()
 </script>
 <style scoped lang="scss">
   .card{
@@ -87,6 +60,7 @@
     padding: $clamp-1 $clamp-2;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin:$clamp-1-5 0 $clamp-1 0;
   }
   .bold{
     font-weight: bold;
