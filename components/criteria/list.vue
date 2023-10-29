@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span></span>
+    <strong>criteria</strong>
     <span>
       <slot></slot>
     </span>
