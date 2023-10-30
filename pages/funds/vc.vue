@@ -7,35 +7,32 @@
     <block margin="half">
       <criteria-list>
         <criteria :nr="1">
-          A feasible path to profitability.
+          A clear path to profitability.
         </criteria>
         <criteria :nr="2">
-          An evaluation of the qualifications and experience of the venture's founding team.
+          An extraordinary founding team.
         </criteria>
         <criteria :nr="3">
-          It must incorporate innovative technology, application, or business practices.
+          Innovative technology or business practices.
         </criteria>
         <criteria :nr="4">
-          Ventures must align closely with our overarching objectives and mission.
+          Alignment with our objectives and mission.
         </criteria>
         <criteria :nr="5">
-          Consideration for ventures with a strong focus on sustainability and responsible practices.
-        </criteria>
-        <criteria :nr="6">
-          An analysis of the market, growth potential, and target audience for the venture.
-        </criteria>
-        <criteria :nr="7">
-          Ventures should adhere to ethical and responsible business conduct.
+          Market potential and target audience analysis.
         </criteria>
       </criteria-list>
     </block>
     <block margin="half">
       <h2> The thesis </h2>
       <p>
-        In the dynamic world of venture capital, we operate at the speed of opportunity, embracing ventures that epitomize innovation, sustainability, and profitability. Central to our investment philosophy is the belief in the catalytic power of innovation. We actively seek ventures that chart a feasible path to profitability, underpinned by pioneering technology, forward-thinking applications of technology, or groundbreaking business practices. The caliber of the founding team, with their qualifications and experience, remains pivotal in shaping a venture's potential for success.
+        Our investment strategy is driven by the potential for meaningful change. If no compelling investment opportunities meet our criteria, we simply don't invest. 
       </p>
       <p>
-        In our pursuit of impact-driven investments, alignment with our overarching objectives and mission is non-negotiable. We place a premium on ventures that exhibit a strong focus on sustainability and responsible practices, recognizing their capacity to create lasting change. Our thesis hinges on agile investment, assessing market dynamics, growth potential, and target audience analysis at the speed of opportunity. These criteria reflect our commitment to fostering innovation, sustainability, and ethical responsibility in the ventures we support. Together, we aim to not only fuel growth but also drive meaningful change, shaping a future where innovation, sustainability, and profitability coalesce.
+        In the dynamic world of venture capital, we look for outstanding startups that combine innovation, sustainability, and profitability. We invest in companies with strong growth prospects in specific market segments, led by capable founding teams committed to responsible business and impactful outcomes. 
+      </p>
+      <p>
+        With this approach, we don't just aim for financial growth; we are driving meaningful change, shaping a future where innovation, sustainability, and profitability coalesce. The criteria for us to consider an investment reflect our commitment to fostering innovation, sustainability, and ethical responsibility in the ventures we support.
       </p>
       <button @click="navigateTo('/invest')"> invest now -> </button>
     </block>
