@@ -1,30 +1,24 @@
 <template>
   <main>
-    <intro-fund title="Join us in accelerating the global transition to fossil-free energy sources" gradient="4"/>
+    <intro-fund title="Accelerate the transition to fossil-free energy" gradient="4"/>
     <block margin="half">
       <intro-block-fund text="We global transition to sustainable energy sources, fostering a better future for our planet. "/>
     </block>
     <block margin="half">
       <criteria-list>
         <criteria :nr="1">
-          The geographical area must have high GDP growth potential
+          Proximity to major energy demand centers, or with high GDP growth potential.
         </criteria>
         <criteria :nr="2">
-          The geographical area must have high energy generation potential
+          The geographical area must have high energy generation potential.
         </criteria>
         <criteria :nr="3">
-          The country must have moderate to low political risk
+          The country must have moderate to low political risk.
         </criteria>
         <criteria :nr="4">
-          Abundant availability of renewable energy resources.
-        </criteria>
-        <criteria :nr="5">
-          Proximity to major energy demand centers.
-        </criteria>
-        <criteria :nr="6">
           Supportive regulatory framework for renewable energy.
         </criteria>
-        <criteria :nr="7">
+        <criteria :nr="5">
           Adequate infrastructure for transportation and grid connectivity.
         </criteria>
       </criteria-list>
