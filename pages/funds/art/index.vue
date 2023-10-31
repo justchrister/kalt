@@ -24,16 +24,13 @@
     <block margin="half">
       <h2> The thesis </h2>
       <p>
-        Art by iconic artists like Monet or Picasso are rare, adding a built-in value that stands the test of time. In an era where wealth is growing for the affluent, their appetite for tangible and meaningful assets like art is becoming increasingly clear.
+        As wealth concentrates among the affluent, real, touchable luxury assets like art become even more lucrative. Art by iconic artists like Monet, Basquiat, and Picasso are rare, adding a built-in value that stands the test of time. 
       </p>
       <p>
-        Art offers something unique: it's not only a financial asset but also a status symbol and a source of emotional enrichment. The growing demand from wealthy investors is a key factor that's likely to push the value of art even higher.
+        With our proprietary quantitive model for investing in art, based on historic appreciation as well as seemingly subjective characteristics of the specific artworks (made objective by AI). 
       </p>
       <p>
-        Including art in your investment portfolio is not just a wise choice, but a forward-thinking strategy. Unlike traditional financial assets like stocks and bonds, art adds a dimension of tangible ownership and emotional engagement that's unmatched.
-      </p>
-      <p>
-        By investing in the art fund you can own a piece of all the artworks in our portfolio, and enjoy the benefits of a diversified portfolio of art.
+        By investing in our art fund, you're not just buying into art; you're securing a share in a well-researched, diversified portfolio of timeless works. It's not just about financial growth—it's about becoming part of a legacy of value, in a market that's traditionally less volatile than stocks and bonds.
       </p>
       <button @click="navigateTo('/invest')"> invest now -> </button>
     </block>
@@ -68,8 +65,5 @@
 <style scoped lang="scss">
   main{
     padding-top:0;
-  }
-  button{
-    background:$test-color-5;
   }
 </style>
