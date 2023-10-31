@@ -58,8 +58,4 @@
   main{
     padding-top:0;
   }
-  button{
-    background:$test-color-5;
-  }
-
 </style>
