@@ -1,8 +1,8 @@
 <template>
   <main>
-    <intro-fund title="Accelerate the transition to fossil-free energy" gradient="4"/>
+    <intro-fund title="Accelerate the transition to fossil-free energy" gradient="3"/>
     <block margin="half">
-      <intro-block-fund text="We global transition to sustainable energy sources, fostering a better future for our planet. "/>
+      <intro-block-fund text="The  global transition to sustainable energy sources, fostering a better future for our planet. "/>
     </block>
     <block margin="half">
       <criteria-list>
