@@ -3,7 +3,7 @@
     <div class="icon"></div>
     <div> Your fund </div>
     <div class="link"> 
-      <nuxt-link to="funds/your">
+      <nuxt-link to="/funds/your">
         adjust
       </nuxt-link>
     </div>
