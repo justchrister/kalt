@@ -2,7 +2,7 @@
   <main>
     <intro-fund title="Accelerate the transition to fossil-free energy" gradient="3"/>
     <block margin="half">
-      <intro-block-fund text="The  global transition to sustainable energy sources, fostering a better future for our planet. "/>
+      <intro-block-fund text="The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."/>
     </block>
     <block margin="half">
       <criteria-list>
