@@ -16,7 +16,7 @@
         <criteria :nr="3">
           Represented by a reputable gallery.
         </criteria>
-        <criteria :nr="3">
+        <criteria :nr="4">
           Comparable art has appreciated by 15% or more in value.
         </criteria>
       </criteria-list>
