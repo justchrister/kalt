@@ -27,8 +27,7 @@
         As wealth concentrates among the affluent, real, touchable luxury assets like art become even more lucrative. Art by iconic artists like Monet, Basquiat, and Picasso are rare, adding a built-in value that stands the test of time. 
       </p>
       <p>
-        With our proprietary quantitive model for investing in art, based on historic appreciation as well as seemingly subjective characteristics of the specific artworks (made objective by AI). 
-      </p>
+        With our proprietary quantitative model for investing in art, we can predict the future price appreciation of art based on comparative artworks. The model is based on historic appreciation as well as seemingly subjective characteristics of the specific artworks (made objective by AI <omoji emoji="✨"/>).
       <p>
         By investing in our art fund, you're not just buying into art; you're securing a share in a well-researched, diversified portfolio of timeless works. It's not just about financial growth—it's about becoming part of a legacy of value, in a market that's traditionally less volatile than stocks and bonds.
       </p>
