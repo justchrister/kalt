@@ -24,7 +24,7 @@
     <block margin="half">
       <h2> The thesis </h2>
       <p>
-        As wealth concentrates among the affluent, real, touchable luxury assets like art become even more lucrative. Art by iconic artists like Monet, Basquiat, and Picasso are rare, adding a built-in value that stands the test of time. 
+        As wealth concentrates among the affluent, tangible luxury assets like art become even more lucrative. Art by iconic artists like Monet, Basquiat, and Picasso are rare, adding a built-in value that stands the test of time. 
       </p>
       <p>
         With our proprietary quantitative model for investing in art, we can predict the future price appreciation of art based on comparative artworks. The model is based on historic appreciation as well as seemingly subjective characteristics of the specific artworks (made objective by AI <omoji emoji="✨"/>).
