@@ -7,19 +7,19 @@
     <block margin="half">
       <criteria-list>
         <criteria :nr="1">
-          The project should be in a location with demand for affordable housing, supported by demographic and economic data.
+          In a location with demand for affordable housing.
         </criteria>
         <criteria :nr="2">
-          The project must hacve clear indicators that it is likely to provide a stable or growing yield.
+          The project must hacve clear indicators of future returns.
         </criteria>
         <criteria :nr="3">
-          Must have measurable positive impact the community and include communal social spaces for residents to socialize and engage.
+          Must have measurable positive impact the community.
         </criteria>
         <criteria :nr="4">
           Should include communal social spaces for residents to socialize and engage.
         </criteria>
         <criteria :nr="5">
-          Preference is given to projects that aligning with our broader sustainability goals.
+          Projects should aligning with our broader sustainability goals.
         </criteria>
       </criteria-list>
     </block>
