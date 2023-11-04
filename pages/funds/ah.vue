@@ -7,7 +7,7 @@
     <block margin="half">
       <criteria-list>
         <criteria :nr="1">
-          In a location with demand for affordable housing.
+          In a location with demand for affordable housing. 
         </criteria>
         <criteria :nr="2">
           The project must hacve clear indicators of future returns.
