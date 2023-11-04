@@ -24,7 +24,19 @@
       </criteria-list>
     </block>
     <block margin="half">
-      The Affordable Housing Fund by Kalt strategically allocates capital to development projects around the world. Our focus is fourfold: invest in areas with high demand for affordable housing, seek projects that offer stable or growing yields, prioritize eco-friendly initiatives, and aim for a strong social impact that includes communal spaces for community engagement. By aligning with these criteria, we not only secure a stable return on investments but also contribute to social good by combating housing inequality.
+      <h2>The thesis</h2>
+      <p>
+        In the cities of tomorrow, affordable and quality housing will be critical. As more people move into urban areas, the need for accessible housing is set to rise sharply. This kind of development is key to a city's growth, ensuring that everyone, regardless of income, has a place to call home. This isn't just about planning for numbers, but nurturing community spirit and diversity that make cities special and liveable.
+      </p>
+      <p>
+        Affordable housing also means thinking about the environment and the economy. It encourages energy-efficient living, lessens the impact on the environment, and keeps key workers living close to their jobs. Creating spaces where neighbors can connect and support each other turns housing into communities, laying the groundwork for cities that can face the future with confidence.
+      </p>
+      <p>
+        Affordable housing stands as a solid investment opportunity. Its essence as a fundamental need provides a constant demand, offering a buffer against market volatility and ensuring a stable return on investment. In an economic landscape that is often unpredictable, the affordable housing market offers a unique combination of social impact and financial prudence. The demand increases during volatile times. 
+      </p>
+      <p>
+        As we build these homes, we must blend innovation with compassion. Tomorrow's affordable housing should be synonymous with lasting quality and respect for the environment, embracing smart technology and sustainable design. This isn't just building for shelter, but carefully crafting the backdrop of everyday life for a thriving city. It's a commitment to a future where everyone has a stake in their community and the urban environment as a whole.
+      </p>
     </block>
     <block>
       <div class="button-group">
@@ -38,10 +50,10 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Art fund'
+    pagename: 'Affordable housing'
   })
   useHead({
-    title: 'Art fund',
+    title: 'Affordable housing',
     meta: [{
       name: 'description',
       content: 'Invest in the future, today.'
