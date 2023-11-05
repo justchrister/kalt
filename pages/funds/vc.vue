@@ -43,6 +43,13 @@
         <venture-shield id="empress"/>
       </venture-list>
     </block>
+    <block>
+      <div class="button-group">
+        <button @click="navigateTo('/subscription')"> auto investments -> </button>
+        <button @click="navigateTo('/invest')"> invest now -> </button>
+      </div>
+      <select-fund />
+    </block>
   </main>
 </template>
 <script lang="ts" setup>
@@ -59,6 +66,11 @@
   
 </script>
 <style scoped lang="scss">
+.button-group{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: $clamp-1;
+}
   main{
     padding-top:0;
   }
