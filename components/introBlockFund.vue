@@ -31,16 +31,6 @@
       z-index:-1;
     }
   }
-  section.ffe:before{
-    background:url('/ffe-bg-elem.svg') no-repeat;
-    background-size:contain;
-    background-position:right;
-  }
-  section.art:before{
-    background:url('/art-bg-elem.svg') no-repeat;
-    background-size:contain;
-    background-position:right;
-  }
   h1{
     font-size: $clamp-2-5;
     margin:0;
