@@ -17,9 +17,11 @@
       </criteria-list>
     </block>
     <block>
-      By investing in the Fossil-free energy you can own a piece of all our artworks, and enjoy the benefits of a diversified portfolio of art.
-      <br><br>
-      <button @click="navigateTo('/invest')"> invest now -> </button>
+      <div class="button-group">
+        <button @click="navigateTo('/subscription')"> auto investments -> </button>
+        <button @click="navigateTo('/invest')"> invest now -> </button>
+      </div>
+      <select-fund />
     </block>
   </main>
 </template>
@@ -37,5 +39,10 @@
   
 </script>
 <style scoped lang="scss">
+.button-group{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: $clamp-1;
+}
 
 </style>
