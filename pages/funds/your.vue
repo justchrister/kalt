@@ -6,9 +6,12 @@
       <fund-your ticker="art"/>
       <fund-your ticker="ah"/>
       <fund-your ticker="vc"/>
-      <button @click="navigateTo('/invest')">
-        invest now
-      </button>
+      <block>
+        <div class="button-group">
+          <button @click="navigateTo('/subscription')"> auto investments -> </button>
+          <button @click="navigateTo('/invest')"> invest now -> </button>
+        </div>
+      </block>
     </block>
   </main>
 </template>
@@ -40,7 +43,12 @@
   }
 </script>
 <style scoped lang="scss">
-main{
-  padding-top:0;
-}
+  .button-group{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: $clamp-1;
+  }
+  main{
+    padding-top:0;
+  }
 </style>
