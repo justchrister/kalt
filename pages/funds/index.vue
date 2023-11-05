@@ -5,7 +5,11 @@
       <fund-2 :ticker="fund.ticker"/>
     </block>
     <block>
-      <cta/>
+      <div class="button-group">
+        <button @click="navigateTo('/subscription')"> auto investments -> </button>
+        <button @click="navigateTo('/invest')"> invest now -> </button>
+      </div>
+      <select-fund />
     </block>
   </main>
 </template>
@@ -29,6 +33,11 @@
   if(error) ok.log('', error)
 </script>
 <style scoped lang="scss">
+.button-group{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: $clamp-1;
+}
   main{
     padding-top:0;
   }
