@@ -27,6 +27,14 @@ export default defineEventHandler(async (event) => {
     return 'not a withdrawal';
   }
 
+  const doesItRequireDivesting = async () => {
+    const user = await get(supabase).user(message.userId);
+    return await get(supabase).accountBalance(user);
+  }
+  return doesItRequireDivesting();
+  // Does it require divesting?
+  // If yes, then sell the funds
+  // If
   const createExchangeOrder = async (userId: string, quantity: number, tickerx: tickers) => {
     const { error } = await pub(supabase, {
       sender:'server/api/autoInvest/index.ts'
