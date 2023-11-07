@@ -108,7 +108,7 @@ export default defineEventHandler(async (event) => {
         subType: 'subscription',
         amount: amount,
         currency: currency,
-        autoInvest: 1
+        autoVest: 1
       })
       .select()
     if(error){
