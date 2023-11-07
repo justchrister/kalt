@@ -50,7 +50,7 @@ const userId = useSupabaseUser()
         type: 'deposit',
         subType: 'card',
         status: 'incomplete',
-        autoInvest: 1
+        autoVest: 1
       });
       if(error) ok.log('error', 'could not update amount', error)
       if(!error) ok.log('success', 'updated amount')
