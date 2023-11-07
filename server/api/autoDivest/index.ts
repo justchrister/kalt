@@ -5,147 +5,53 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const service = 'autoInvest';
+  const service = 'autoDivest';
   const topic = 'accountTransactions';
   const body = await readBody(event);
   
   if (body.record.message_read) return 'message already read';
   
   const message = await sub(supabase, topic).entity(body.record.message_entity);
-  await sub(supabase, topicSub).read(service, body.record.message_id);
-
-  if(message.status!=='complete') {
+  await sub(supabase, topic).read(service, body.record.message_id);
+  if(message.status!=='pending') {
     return 'wrong payment status'
   }
-  if (message.autoInvest === 0 || message.autoInvest === null || message.autoInvest === undefined) {
-    return 'autoInvest is 0 or undefined';
+  if (message.autoVest === 0 || message.autoVest === null || message.autoVest === undefined) {
+    return 'autoVest is 0 or undefined';
   }
-  if (message.subtype === 'autoInvested') {
+  if (message.subtype === 'autoVested') {
     return 'already autoDivested';
   }
-  if (message.type !== 'withdrawal') {
+  if (message.type !== 'withdraw') {
     return 'not a withdrawal';
   }
 
   const doesItRequireDivesting = async () => {
     const user = await get(supabase).user(message.userId);
-    return await get(supabase).accountBalance(user);
+    const accountBalance = await get(supabase).accountBalance(user);
+    const accountBalanceFloat = ok.toFloat(accountBalance);
+    const check = accountBalanceFloat + message.amount;
+    if(check>=0) {
+      return false
+    } else {
+      return check
+    }
   }
-  return doesItRequireDivesting();
-  // Does it require divesting?
-  // If yes, then sell the funds
-  // If
-  const createExchangeOrder = async (userId: string, quantity: number, tickerx: tickers) => {
-    const { error } = await pub(supabase, {
-      sender:'server/api/autoInvest/index.ts'
-    }).exchangeOrders({
-      ticker: tickerx,
-      type: 'buy',
-      status: 'open',
-      userId: userId,
-      quantity: quantity
-    });
-    if(error) {
-      return
-    } else {
-      return {
-        ticker: tickerx,
-        type: 'buy',
-        status: 'open',
-        userId: userId,
-        quantity: quantity
-      }
-    }
-  };
-  const createWithdrawTransaction = async (userId: string, amount: number, currency: string) => {
-    const { error } = await pub(supabase, {
-      sender:'server/api/autoInvest/index.ts'
+  const requiresDivesting = await doesItRequireDivesting();
+  if(requiresDivesting===false) {
+    // set to auto invest 0
+    return await pub(supabase, {
+      sender:'server/api/autoDivest/index.ts',
+      entity: message.message_entity
     }).accountTransactions({
-      'userId': userId,
-      'amount': -amount,
-      'currency': currency,
-      'autoInvest': 0,
-      'type': 'withdraw',
-      'status': 'complete',
-      'subType': 'autoInvested',
+      userId: message.userId,
+      autoVest: 0
     });
-    if(error) {
-      return
-    } else {
-      return {
-        'userId': userId,
-        'amount': -amount,
-        'currency': currency,
-        'autoInvest': 0,
-        'type': 'withdraw',
-        'status': 'complete',
-        'subType': 'autoInvested',
-      }
-    }
-  };
-
-  const updateTransaction = async (userId: string, entity: string) => {
-    const { error } = await pub(supabase, {
-      sender:'server/api/autoInvest/index.ts',
-      entity: entity,
-    }).accountTransactions({
-      'userId': userId,
-      'status': 'complete',
-      'autoInvest': 0,
-      'subType': 'autoInvested',
-    });
-    if(error) {
-      return
-    } else {
-      return {
-        'userId': userId,
-        'status': 'complete',
-        'autoInvest': 0,
-        'subType': 'autoInvested',
-      }
-    }
-  };
-
-  let response = {
-    'exchangeOrders': [],
-    'withdrawTransaction': {},
-    'updatedTransaction': {}
-  }
-  const assetPrices = await get(supabase).sharePrices() as any;
-  const convertedCurrency = await get(supabase).exchangeRates('EUR', message.currency)
-  const user = await get(supabase).user(message.userId);
-  if(!user) return 'user not found'
-  const autoInvestRate = user.autoInvest;
-  const withdrawAmount = message.amount - (message.amount*(1 - autoInvestRate));
-  
-  const withdrawTransaction = await createWithdrawTransaction(user.userId, withdrawAmount, message.currency);
-  response.withdrawTransaction = withdrawTransaction || {};
-  const updatedTransaction = await updateTransaction(user.userId, message.message_entity);
-  response.updatedTransaction = updatedTransaction || {};
-
-  const userDefinedFund =  await get(supabase).userDefinedFund(user.userId)
-
-  let total = 0;
-  let userDefinedFundPercentage = {} as any;
-  if(userDefinedFund){
-    for (let i = 0; i < userDefinedFund.length; i++) {
-      total += userDefinedFund[i].rate
-    }
-    for (let i = 0; i < userDefinedFund.length; i++) {
-      const ticker = userDefinedFund[i].ticker;
-      userDefinedFundPercentage[ticker]= userDefinedFund[i].rate / total;
-    }
-    for (let i = 0; i < userDefinedFund.length; i++) {
-      const definedFundEntity = userDefinedFund[i];
-      const currencyConvertedSharePrice = assetPrices[definedFundEntity.ticker ] * convertedCurrency;
-      const investQuantity =  (message.amount * autoInvestRate) / currencyConvertedSharePrice;
-      const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, definedFundEntity.ticker);
-      response.exchangeOrders.push(exchangeOrder);
-    }
   } else {
-    return {
-      'error': 'could not find userDefinedFund'
-    }
+    // get the user fund
+    // create sell orders for all of them
+    // set autoVest to 0
+    // let it start a withdrawal
+    return 'hey'
   }
-  return response
 });
