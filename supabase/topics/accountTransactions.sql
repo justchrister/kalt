@@ -13,10 +13,10 @@ CREATE TABLE "topic_accountTransactions" (
     "currency"            text                                            REFERENCES sys_currencies(iso),
     "type"                "accountTransactions_types",
     "subType"             "accountTransactions_subTypes",
-    "status"              "accountTransactions_statuses"  NOT NULL,
-    "autoInvest"          DECIMAL(5, 4) 
-                          CHECK ("autoInvest" >= 0 
-                          AND "autoInvest" <= 1)
+    "status"              "accountTransactions_statuses",
+    "autoVest"          DECIMAL(5, 4) 
+                          CHECK ("autoVest" >= 0 
+                          AND "autoVest" <= 1)
 );
 
 --- row level security
