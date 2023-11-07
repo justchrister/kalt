@@ -11,7 +11,7 @@ declare global {
         birthdate?: Date;
         addressLine1?: string;
         addressLine2?: string;
-        autoInvest?: number;
+        autoVest?: number;
         newsletters?: boolean;
         termsOfService?: boolean;
         performanceUpdates?: boolean;
