@@ -15,7 +15,7 @@ TRUNCATE TABLE "payments";
 TRUNCATE TABLE "paymentsSubscriptionsProcessing";
 TRUNCATE TABLE "payRevenue";
 -- sub
-TRUNCATE TABLE "sub_accountTransactions_autoInvest";
+TRUNCATE TABLE "sub_accountTransactions_autoVest";
 TRUNCATE TABLE "sub_accountTransactions_getAccountBalance";
 TRUNCATE TABLE "sub_accountTransactions_payments";
 TRUNCATE TABLE "sub_exchangeOrders_autoMatchOrders";
