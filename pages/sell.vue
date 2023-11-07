@@ -71,7 +71,7 @@
     }).accountTransactions({
       userId: userId.value.id,
       status: 'pending',
-      autoInvest: 1
+      autoVest: 1
     });
     if(error){
       ok.log('error', 'could not create withdraw transaction: ', error.message)
