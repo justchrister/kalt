@@ -20,8 +20,8 @@ export default defineEventHandler(async (event) => {
   if (message.autoVest === 0 || message.autoVest === null || message.autoVest === undefined) {
     return 'autoVest is 0 or undefined';
   }
-  if (message.subtype === 'autoVested') {
-    return 'already autoVested';
+  if (message.subtype === 'autoInvested') {
+    return 'already autoInvested';
   }
   if (message.type !== 'deposit') {
     return 'not a deposit';
@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
       'autoVest': 0,
       'type': 'withdraw',
       'status': 'complete',
-      'subType': 'autoVested',
+      'subType': 'autoInvested',
     });
     if(error) {
       return
@@ -71,7 +71,7 @@ export default defineEventHandler(async (event) => {
         'autoVest': 0,
         'type': 'withdraw',
         'status': 'complete',
-        'subType': 'autoVested',
+        'subType': 'autoInvested',
       }
     }
   };
@@ -84,7 +84,7 @@ export default defineEventHandler(async (event) => {
       'userId': userId,
       'status': 'complete',
       'autoVest': 0,
-      'subType': 'autoVested',
+      'subType': 'autoInvested',
     });
     if(error) {
       return
@@ -93,7 +93,7 @@ export default defineEventHandler(async (event) => {
         'userId': userId,
         'status': 'complete',
         'autoVest': 0,
-        'subType': 'autoVested',
+        'subType': 'autoInvested',
       }
     }
   };
