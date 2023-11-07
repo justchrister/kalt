@@ -8,6 +8,6 @@ declare global {
         type?: AccountTransactionsTypes;
         subType?: AccountTransactionsSubTypes;
         status?: AccountTransactionsStatuses;
-        autoInvest?: number; // DECIMAL(5, 4)
+        autoVest?: number; // DECIMAL(5, 4)
     }
 }
