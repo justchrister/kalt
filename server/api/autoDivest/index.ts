@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   if (message.autoVest === 0 || message.autoVest === null || message.autoVest === undefined) {
     return 'autoVest is 0 or undefined';
   }
-  if (message.subtype === 'autoVested') {
+  if (message.subtype === 'autoInvested') {
     return 'already autoDivested';
   }
   if (message.type !== 'withdraw') {
