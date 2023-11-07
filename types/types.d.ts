@@ -17,7 +17,7 @@ declare global {
     wireTransfer = 'wireTransfer',
     dividend = 'dividend',
     subscription = 'subscription',
-    autoVested = 'autoVested',
+    autoInvested = 'autoInvested',
     newShares = 'newShares',
     autoWithdraw = 'autoWithdraw'
   }
