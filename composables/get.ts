@@ -47,7 +47,7 @@ export const get = (client: any) => {
           birthdate: userCombined.birthdate || null,
           addressLine1: userCombined.addressLine1 || null,
           addressLine2: userCombined.addressLine2 || null,
-          autoInvest: userCombined.autoInvest || null,
+          autoVest: userCombined.autoVest || null,
           newsletters: userCombined.newsletters || null,
           termsOfService: userCombined.termsOfService || null,
           performanceUpdates: userCombined.performanceUpdates || null,
