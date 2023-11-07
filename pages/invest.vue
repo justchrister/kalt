@@ -42,7 +42,7 @@
       type: 'deposit',
       subType: 'card',
       status: 'pending',
-      autoInvest: 1
+      autoVest: 1
     });
     if(error){
       ok.log('error', 'could not create transaction', error)
