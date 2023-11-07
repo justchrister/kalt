@@ -14,18 +14,18 @@
   const percent = ref(100)
   const user = await get(supabase).user(userId.value.id);
 
-  if(user) percent.value = user.autoInvest*100
+  if(user) percent.value = user.autoVest*100
 
-  const postUserPreference = async (autoInvestRate) => {
-    const autoInvest = autoInvestRate/100;
+  const postUserPreference = async (autoVestRate) => {
+    const autoVest = autoVestRate/100;
     pub(supabase, {
-      sender:'components/select/autoInvest.vue',
+      sender:'components/select/autoVest.vue',
       entity: userId.value.id
     }).users({
       userId: userId.value.id,
-      autoInvest: autoInvest
+      autoVest: autoVest
     });
-    ok.log('', 'updated auto-invest: '+autoInvestRate)
+    ok.log('', 'updated auto-invest: '+autoVestRate)
   }
 
   const add = async () => { 
