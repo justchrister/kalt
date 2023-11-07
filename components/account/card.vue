@@ -10,7 +10,7 @@
       Auto invest
     </div>
     <div class="right">
-      {{ok.toPercent(user.autoInvest)}}
+      {{ok.toPercent(user.autoVest)}}
     </div>
     <div>
       Preferred currency
