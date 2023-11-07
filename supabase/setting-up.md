@@ -80,9 +80,9 @@ Subject: Kalt — Password reset
 
 ## Create the following webhooks:
 
-Name: webhook_accountTransactions_autoInvest
-URL: https://ka.lt/api/autoInvest/webhooks/accountTransactions
-Table: sub_accountTransactions_autoInvest
+Name: webhook_accountTransactions_autoVest
+URL: https://ka.lt/api/autoVest/webhooks/accountTransactions
+Table: sub_accountTransactions_autoVest
 
 Name: webhook_accountTransactions_payments
 URL: https://ka.lt/api/payments/webhooks/accountTransactions
