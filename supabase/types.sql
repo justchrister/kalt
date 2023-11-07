@@ -14,7 +14,7 @@ create type public."accountTransactions_subTypes" as enum (
     'wireTransfer',
     'dividend',
     'subscription',
-    'autoVested',
+    'autoInvested',
     'newShares',
     'autoWithdraw'
 );
