@@ -8,17 +8,19 @@ export default defineEventHandler(async (event) => {
   const service = 'autoDivest';
   const topic = 'accountTransactions';
   const body = await readBody(event);
-  
   if (body.record.message_read) return 'message already read';
   
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);
+  const user = await get(supabase).user(message.userId);
+/*
   if(message.status!=='pending') {
     return 'wrong payment status'
-  }
+  }*/
+  /*
   if (message.autoVest === 0 || message.autoVest === null || message.autoVest === undefined) {
     return 'autoVest is 0 or undefined';
-  }
+  }*/
   if (message.subtype === 'autoInvested') {
     return 'already autoDivested';
   }
@@ -48,7 +50,16 @@ export default defineEventHandler(async (event) => {
       autoVest: 0
     });
   } else {
-    // get the user fund
+    await pub(supabase, {
+      sender:'server/api/autoDivest/index.ts',
+      entity: message.message_entity
+    }).accountTransactions({
+      userId: message.userId,
+      autoVest: 0,
+      status: 'awaitingDivesting'
+    });
+    const portfolio = await get(supabase).portfolio(user);
+    return portfolio
     // create sell orders for all of them
     // set autoVest to 0
     // let it start a withdrawal
