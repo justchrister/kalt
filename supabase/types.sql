@@ -2,6 +2,7 @@ create type public."accountTransactions_statuses" as enum (
     'incomplete',
     'pending',
     'processing',
+    'awaitingDivesting',
     'complete',
     'failed'
 );
