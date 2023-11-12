@@ -163,7 +163,7 @@ span.⚡ {
 
 /* frame */
 span.🖼️ {
-  background-image:url('../omoji/frame.svg');
+  background-image:url('../omoji/frame-w-flower.svg');
 }
 </style>
 
