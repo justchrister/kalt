@@ -39,6 +39,13 @@
   }
   .content strong{
     color:$dark-90;
+    font-size:$clamp-1-5-no-min;
+  }
+  .content strong span{
+    float:right;
+  }
+  .wrap:hover{
+    cursor:crosshair;
   }
 
 </style>
