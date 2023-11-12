@@ -1,12 +1,12 @@
 
 <template>
   <main>
-    <block margin="double">
-      <h1 class="sans-serif" style="font-size: 300%;">
+    <block margin="double" width="wide">
+      <h1 style="font-size: 250%;text-align:center;">
         Invest in the <strong>future</strong>, today.
       </h1>
       <nuxt-link to="/request">
-        <h1 class="sans-serif" style="font-size: 300%;">
+        <h1 style="font-size: 250%;text-align:center;">
           start →
         </h1>
       </nuxt-link>
