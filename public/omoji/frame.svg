@@ -1,0 +1,20 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_952_99)">
+<g clip-path="url(#clip1_952_99)">
+<rect x="39" y="3" width="34" height="38" transform="rotate(90 39 3)" fill="#FEFDFA" stroke="#161719" stroke-width="2"/>
+<rect x="35" y="7" width="26" height="30" transform="rotate(90 35 7)" fill="#FEFDFA" stroke="#161719" stroke-width="2"/>
+<line x1="35.3536" y1="33.6464" x2="41.3536" y2="39.6464" stroke="#161719"/>
+<line x1="5.35355" y1="33.3536" x2="-0.646447" y2="39.3536" stroke="#161719"/>
+<line x1="4.64645" y1="6.35355" x2="-1.35355" y2="0.353552" stroke="#161719"/>
+<line x1="34.6464" y1="6.64645" x2="40.6464" y2="0.646447" stroke="#161719"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_952_99">
+<rect width="40" height="40" fill="white"/>
+</clipPath>
+<clipPath id="clip1_952_99">
+<rect width="36" height="40" fill="white" transform="translate(40 2) rotate(90)"/>
+</clipPath>
+</defs>
+</svg>
