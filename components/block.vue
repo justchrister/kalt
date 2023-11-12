@@ -52,6 +52,10 @@
     &.width-small{
       max-width: $clamp-35;
     }
+
+    &.width-wide{
+      max-width:$maxsitewidth*1.2; 
+    }
     
   }
 </style>
