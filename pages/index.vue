@@ -35,13 +35,13 @@
       </promo-block>
       <promo-block 
         icon="⚡"
-        title="Impactful investing">
-        We only invest in companies and assets that align with our, and hopefully your values.
+        title="Impact investing">
+        The companies and assets we invest in always align with your values.
       </promo-block>
       <promo-block 
         icon="🖼️"
         title="Curated assets">
-        All investments are carefully selected by our team of experts using quantitative investment strategies.
+        All investments are carefully selected using quantitative investment strategies.
       </promo-block>
     </promo-block-list>
   </main>
