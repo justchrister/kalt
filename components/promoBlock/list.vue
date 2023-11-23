@@ -17,12 +17,17 @@
   min-width: 500px;
   max-width: $maxsitewidth*1.2;
   margin:0 auto;
-  padding:$clamp-5 $clamp-4;
+  padding:$clamp-5 0;
 }
 .scroll-wrap{
   width: $sitewidth;
   max-width: $maxsitewidth*1.2;
+  padding:0 $clamp-4;
   overflow-y: scroll;
   margin:0 auto;
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
 }
 </style>
