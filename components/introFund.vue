@@ -22,15 +22,15 @@ section{
   padding:$clamp-9 0 $clamp-7 0;
   margin-bottom:$clamp-5;
   &.gradient-2{
-    background:url('/gradient-2.jpg') no-repeat center center;
+    background:url('/gradient-2-min.jpg') no-repeat center center;
     background-size:cover;
   }
   &.gradient-3{
-    background:url('/gradient-3.jpg') no-repeat center center;
+    background:url('/gradient-3-min.jpg') no-repeat center center;
     background-size:cover;
   }
   &.gradient-4{
-    background:url('/gradient-4.jpg') no-repeat center center;
+    background:url('/gradient-4-min.jpg') no-repeat center center;
     background-size:cover;
   }
   h1{
