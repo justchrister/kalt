@@ -27,7 +27,7 @@
 .intro{
   padding:$clamp-9 0 $clamp-7 0;
   margin-bottom:$clamp-5;
-  background-image:url('/gradient-2.jpg');
+  background-image:url('/gradient-2-min.jpg');
   background-size:cover;
   background-repeat:no-repeat;
   h1{
