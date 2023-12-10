@@ -1,5 +1,5 @@
 import { ok } from '~/composables/ok'
-const filterOnOnlyFulfilledOrders = async (orders) => {
+const filterOnOnlyFulfilledOrders = async (orders: any) => {
   const fulfilledOrders = [];
   for (let i = 0; i < orders.length; i++) {
     if (orders[i].status !== 'fulfilled') {
@@ -33,7 +33,7 @@ export const get = (client: any) => {
         .select()
         .eq('message_entity', userId)
         .order('message_sent', { ascending: true })
-      const userCombined = ok.combineJson(data);
+      const userCombined = ok.combineJson(data) as any;
       if(!userCombined) {
         return null
       } else {
@@ -243,7 +243,7 @@ export const get = (client: any) => {
         return ok.formatCurrency(result, user.currency)
       }
     },
-    paymentCards: async (user) => {
+    paymentCards: async (user: any) => {
       const { data, error } = await client
         .from('topic_paymentCards')
         .select()
@@ -304,6 +304,13 @@ export const get = (client: any) => {
         ok.log('', combined)
         return combined[0];
       }
+    },
+    data: async(type: any) => {
+      const { data, error } = await client
+        .from('data')
+        .select()
+        .eq('type', type)
+      return data
     }
   }
 }
