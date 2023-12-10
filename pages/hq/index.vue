@@ -15,6 +15,16 @@
           </li>
         </ul>
       </block>
+      <block>
+        <h1>Classify</h1>
+        <ul>
+          <li>
+            <nuxt-link to="/hq/classify/art">
+              Art
+            </nuxt-link>
+          </li>
+        </ul>
+      </block>
   </main>
 </template>
 <script lang="ts" setup>
