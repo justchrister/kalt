@@ -85,6 +85,7 @@
       if(error) {
         loading.value = false
         setNotification (error.message);
+        ok.log('error', error)
       } else if(data){
         ok.log('success', 'signed in ' + email.value + ' successfully');
       }
