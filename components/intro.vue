@@ -4,6 +4,7 @@
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
       <p v-if="props.paragraph">{{props.paragraph}}</p>
     </block>
+    <navbar-tabs />
   </div>
 </template>
 <script setup>
