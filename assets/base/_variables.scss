@@ -98,6 +98,14 @@ $pink-60: mix($pink, $light, 60%);
 $pink-40: mix($pink, $light, 40%);
 $pink-20: mix($pink, $light, 20%);
 
+// Bezier curves
+
+$easing-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+$easing-in: cubic-bezier(0.42, 0, 1, 1);
+$easing-out: cubic-bezier(0, 0, 0.58, 1);
+$fast-curve: cubic-bezier(0.55, 0, 0.1, 1);
+
+
 // Fonts 
 
 $serif : 
