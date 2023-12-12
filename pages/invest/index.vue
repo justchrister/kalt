@@ -1,18 +1,18 @@
 <template>
   <main>
-    <block margin="half">
-      <h1>
-        Let's invest in the future, today! <omoji emoji="✨" />
-      </h1>
-    </block>
-    <block margin="1">
-      <input-amount-buy  :uuid="uuid" />
-    </block>
-    <block margin="1">
-      <select-fund />
-    </block>
-    <block margin="1">
-      <button @click="completeTransaction()"> Invest <loading-icon v-if="loading" /> </button>
+    <block>
+      <div class="wrapper">
+        <div class="column" @click="navigateTo('/invest/onetime')"> 
+          <div class="title">One time investment</div>
+          <div class="explainer"> Invest a single amount in your personalized fund</div>
+          <div class="link"> Start -> </div>
+        </div>
+        <div class="column" @click="navigateTo('/invest/auto')"> 
+          <div class="title">Automatic investments</div>
+          <div class="explainer">Set up a daily, weekly, or monthly recurring investment</div>
+          <div class="link"> Start -> </div>
+        </div>
+      </div>
     </block>
   </main>
 </template>
@@ -28,32 +28,26 @@
       content: 'Invest in the future, today.'
     }]
   })
-  const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const uuid = ok.uuid();
-  const loading = ref(false)
-  const completeTransaction = async () => {
-    loading.value = true
-    const { error } = await pub(supabase, {
-      sender: 'pages/invest/index.vue',
-      entity: uuid
-    }).accountTransactions({
-      userId: userId.value.id,
-      type: 'deposit',
-      subType: 'card',
-      status: 'pending',
-      autoVest: 1
-    });
-    if(error){
-      ok.log('error', 'could not create transaction', error)
-      loading.value = false
-    } else {
-      ok.log('success', 'transaction created')
-      loading.value = false;
-      navigateTo('/success/portfolio')
-    };
-  }
+  
 </script>
 <style scoped lang="scss">
-  
+  .wrapper{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: $clamp-1;
+    .column{
+      border: 1px solid $dark-40;
+      border-radius: 3px;
+      padding: $clamp-1 $clamp-1-5;
+      height:$clamp-20;
+      text-align: left;
+      .title{
+
+      margin-bottom:$clamp-1;
+      }
+      .link{
+        text-align:right;
+      }
+    }
+  }
 </style>
