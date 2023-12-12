@@ -6,7 +6,10 @@
       <input-amount-subscription :amount="subscription.amount || 0"/>
     </block>
     <block margin="2">
-      <label>Select which days you want to auto-invest</label>
+      <intervalSelector type="daily" />
+      <intervalSelector type="weekly" />
+      <intervalSelector type="monthly" />
+      
     </block>
     <block margin="1">
       <select-fund />
@@ -15,7 +18,8 @@
       <card-default />
     </block>
     <block margin="1">
-      <toggle-subscription :on="subscription.active"/>
+      <button class="half"> save </button>
+      <span class="center">stop automatic investments</span>
     </block>
   </main>
 </template>
@@ -40,3 +44,5 @@
   ok.log('', subscription)
   
 </script>
+<style scoped lang="scss">
+</style>
