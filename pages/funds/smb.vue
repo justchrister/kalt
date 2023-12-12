@@ -18,8 +18,8 @@
     </block>
     <block>
       <div class="button-group">
-        <button @click="navigateTo('/subscription')"> auto investments -> </button>
         <button @click="navigateTo('/invest')"> invest now -> </button>
+        <button @click="navigateTo('/invest/auto')"> auto investments -> </button>
       </div>
       <select-fund />
     </block>
