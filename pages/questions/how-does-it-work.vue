@@ -27,7 +27,7 @@
       <chat-answer>
         That means, if you auto-invest 100 every month, you will have between 22 000 and 25 000 in ten years.
       </chat-answer>
-      <chat-link to="/subscription">
+      <chat-link to="/invest/auto">
         set up auto-investments today
       </chat-link>
       <chat-link to="/questions/compound-interest">
