@@ -37,11 +37,8 @@
       <chat-answer>
         The best part, you don't have to do anything.
       </chat-answer>
-      <chat-link to="/subscription">
+      <chat-link to="/invest/auto">
         Set up automatic investments
-      </chat-link>
-      <chat-link to="/invest">
-        invest now
       </chat-link>
     </block>
   </main>
