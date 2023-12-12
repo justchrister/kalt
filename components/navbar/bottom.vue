@@ -11,7 +11,7 @@
         <ul>
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/funds/your" > Your fund </nuxt-link>
-          <nuxt-link to="/subscription" > Auto-invest </nuxt-link>
+          <nuxt-link to="/invest/auto" > Auto-invest </nuxt-link>
           <nuxt-link to="/profile" > Profile </nuxt-link>
           <nuxt-link to="/accounts" > Accounts </nuxt-link>
           <nuxt-link to="/invest" > Invest now </nuxt-link>
