@@ -1,6 +1,15 @@
 <template>
-  <div class="intervalSelector" v-if="title">
+  <div :class="{'intervalSelector': true, 'selected': props.selected}" v-if="title">
     <div class="title"> {{title}} </div>
+    <div :class="{'monthDays start': true, 'selected': startOfMonth}" v-if="type==='monthly'" @click="setInnerInterval('start')">
+      1st
+    </div>
+    <div :class="{'monthDays middle': true, 'selected': middleOfMonth}"  v-if="type==='monthly'" @click="setInnerInterval('middle')">
+      15th
+    </div>
+    <div :class="{'monthDays end': true, 'selected': endOfMonth}" v-if="type==='monthly'" @click="setInnerInterval('end')">
+      30th
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -8,20 +17,44 @@
     type: {
       type: String,
       required: true
+    },
+    selected:{
+      type: Boolean,
+      required: false,
+      default: false
     }
   })
-  const selectTitle = (type) => {
+  const selectTitle = (type: any) => {
     if(type==='daily') return 'Daily';
     if(type==='weekly') return 'Weekly';
     if(type==='biweekly') return 'Bi-weekly';
     if(type==='monthly') return 'Monthly';
     return 'Unknown'
   }
+  const startOfMonth = ref(false);
+  const middleOfMonth = ref(false);
+  const endOfMonth = ref(true);
   const title = selectTitle(props.type);
+  const setInnerInterval = async (innerInterval: any) => {
+    if(innerInterval==='start'){
+      startOfMonth.value = true;
+      middleOfMonth.value = false;
+      endOfMonth.value = false;
+    } else if (innerInterval==='middle'){
+      startOfMonth.value = false;
+      middleOfMonth.value = true;
+      endOfMonth.value = false;
+    } else if (innerInterval==='end'){
+      startOfMonth.value = false;
+      middleOfMonth.value = false;
+      endOfMonth.value = true;
+    }
+  }
 </script>
 <style scoped lang="scss">
 .intervalSelector{
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr $clamp-4 $clamp-4 $clamp-4;
   width: 100%;
   height: $clamp-6;
   border: $border;
@@ -31,13 +64,70 @@
   padding: $clamp-1 $clamp-1-5;
   background-color:$test-color-1;
   border-radius:2px;
-  transition: border-color 0.2s ease-in-out;
+  transition: border-color 150ms $easing-in;
+  
 }
+
 .intervalSelector:hover{
   background-color:$test-color-2;
   border-color:$dark-60;
-
-  transition: border-color 0.2s ease-in-out;
+  transition: border-color 150ms $easing-in;
+  cursor: pointer;
 }
-  
+.intervalSelector.selected{
+  background-color:$test-color-5;
+  border-color:$dark-60;
+  transition: border-color 150ms $easing-in;
+}
+.intervalSelector.selected .monthDays{
+  color:$dark;
+  transform:translateY(0);
+  &.start{
+    transition: transform 150ms 80ms $easing-in;
+  }
+  &.middle{
+    transition: transform 150ms 50ms $easing-in;
+  }
+  &.end{
+    transition: transform 150ms 20ms $easing-in;
+  }
+  &:hover{
+    &:after{
+      background-color:$dark-80;
+    }
+  }
+  &:after{
+    display:block;
+  }
+}
+.monthDays{
+  font-size:75%;
+  color:$dark-60;
+  transform:translateY($clamp-0-5);
+  text-align:center;
+  &:after{
+    display: none;
+    content:'';
+    width: $clamp-0-5;
+    height: $clamp-0-5;
+    border:$border;
+    border-radius:100%;
+    margin:auto;
+  }
+  &.selected{
+
+    &:after{
+      background:$dark;
+    }
+  }
+  &.start{
+    transition: transform 150ms 20ms $easing-in;
+  }
+  &.middle{
+    transition: transform 150ms 50ms $easing-in;
+  }
+  &.end{
+    transition: transform 150ms 80ms $easing-in;
+  }
+}
 </style>
