@@ -10,9 +10,11 @@ CREATE TABLE "topic_requestAccess" (
     "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "message_sender"      text                            NOT NULL,
 -- 
-    "email"               text                            NOT NULL,
+    "email"               text,
     "firstName"           text,
     "lastName"            text,
+    "monthlyInvestFrom"   numeric,
+    "monthlyInvestTo"     numeric
     "country"             text
 );
 
