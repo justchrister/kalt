@@ -24,7 +24,7 @@
       <div class="section">
         <p>Auth</p>
         <ul>
-          <nuxt-link to="/request" > Sign up </nuxt-link>
+          <nuxt-link to="/invite/request" > Sign up </nuxt-link>
           <nuxt-link to="/auth" > Sign in </nuxt-link>
           <nuxt-link to="/auth/sign-out" > Sign out </nuxt-link>
         </ul>
