@@ -35,7 +35,7 @@
           <nuxt-link to="/funds" @click="toggleMenu()"> Funds </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/request" @click="toggleMenu()"> Sign up </nuxt-link>
+          <nuxt-link to="/invite/request" @click="toggleMenu()"> Sign up </nuxt-link>
         </li>
         <li>
           <nuxt-link to="/auth" @click="toggleMenu()"> Sign in </nuxt-link>
