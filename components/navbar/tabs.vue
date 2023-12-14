@@ -8,7 +8,7 @@
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/subscription" >
+          <nuxt-link to="/invest/auto" >
               Auto-invest
           </nuxt-link>
         </li>
