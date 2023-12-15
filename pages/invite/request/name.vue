@@ -40,7 +40,7 @@
     } else {
       ok.log('success', 'requested access')
     }
-    navigateTo('/invite/request/name')
+    navigateTo('/invite/request/country')
   }
   
 </script>
