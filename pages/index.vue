@@ -5,7 +5,7 @@
       <h1 style="font-size: 250%;text-align:center;">
         Invest in the <strong>future</strong>, today.
       </h1>
-      <nuxt-link to="/invite/request">
+      <nuxt-link to="/invite/request/amount">
         <h1 style="font-size: 250%;text-align:center;">
           start →
         </h1>
