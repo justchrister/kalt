@@ -170,15 +170,15 @@
   .card{
     display: grid; 
     grid-template-columns: 
-      $clamp-2 
+      sizer(2) 
       1fr
-      $clamp-4-5 
-      $clamp-4-5
-      $clamp-6; 
+      sizer(4.5) 
+      sizer(4.5)
+      sizer(6); 
     gap: 0px; 
     border:$border;
-    padding:$clamp 
-            $clamp-2 ;
+    padding:sizer(1) 
+            sizer(2) ;
   }
   input{
     display:inline-block;
@@ -189,7 +189,7 @@
     }
   }
   button{
-    margin-top:$clamp-2;
+    margin-top:sizer(2);
   }
   .logo{
     background-size:contain;
@@ -226,7 +226,7 @@
     transition: margin-left 0.5s;
   }
   .error-field#number{
-    margin-left:$clamp;
+    margin-left:sizer(1);
     transition: margin-left 0.5s;
   }
 </style>
