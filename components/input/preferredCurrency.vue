@@ -45,6 +45,6 @@
 </script>
 <style scoped lang="scss">
 .input-wrap{
-  margin-top: $clamp;
+  margin-top: sizer(1);
 }
 </style>
