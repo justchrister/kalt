@@ -39,8 +39,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-bottom:$clamp-2;
-    padding-bottom:$clamp;
+    margin-bottom:sizer(2);
+    padding-bottom:sizer(1);
     border-bottom:1px solid black;
   }
   /*
