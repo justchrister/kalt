@@ -9,7 +9,7 @@
   div{
     display:grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: $clamp-1;
-    gap: $clamp-1;
+    grid-gap: sizer(1);
+    gap: sizer(1);
   }
 </style>
