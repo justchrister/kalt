@@ -46,7 +46,7 @@
   .button-group{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: $clamp-1;
+    grid-column-gap: sizer(1);
   }
   main{
     padding-top:0;
