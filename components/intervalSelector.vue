@@ -54,28 +54,28 @@
 <style scoped lang="scss">
 .intervalSelector{
   display: grid;
-  grid-template-columns: 1fr $clamp-4 $clamp-4 $clamp-4;
+  grid-template-columns: 1fr sizer(4) sizer(4) sizer(4);
   width: 100%;
-  height: $clamp-6;
+  height: sizer(6);
   border: $border;
   border-color:$dark-40;
   box-sizing: border-box;
-  margin-bottom:$clamp-1;
-  padding: $clamp-1 $clamp-1-5;
-  background-color:$test-color-1;
+  margin-bottom:sizer(1);
+  padding: sizer(1) sizer(1.5);
+  background-color:primaryColor(1);
   border-radius:2px;
   transition: border-color 150ms $easing-in;
   
 }
 
 .intervalSelector:hover{
-  background-color:$test-color-2;
+  background-color:primaryColor(2);
   border-color:$dark-60;
   transition: border-color 150ms $easing-in;
   cursor: pointer;
 }
 .intervalSelector.selected{
-  background-color:$test-color-5;
+  background-color:primaryColor(5);
   border-color:$dark-60;
   transition: border-color 150ms $easing-in;
 }
@@ -103,13 +103,13 @@
 .monthDays{
   font-size:75%;
   color:$dark-60;
-  transform:translateY($clamp-0-5);
+  transform:translateY(sizer(0.5));
   text-align:center;
   &:after{
     display: none;
     content:'';
-    width: $clamp-0-5;
-    height: $clamp-0-5;
+    width: sizer(0.5);
+    height: sizer(0.5);
     border:$border;
     border-radius:100%;
     margin:auto;
