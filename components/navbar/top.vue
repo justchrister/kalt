@@ -81,15 +81,15 @@
 <style scoped lang="scss">
 
   .logo{
-    width:$clamp-2;
-    height:$clamp-2;
+    width:sizer(2);
+    height:sizer(2);
     display:block;
     position:fixed;
     top:$border-width;
     left:$border-width;
     background:$dark;
     border-radius:100%;
-    margin: clamp($unit-min*1.4, $unit*1.4, $unit-max*1.4) $clamp;
+    margin: sizer(1.4) sizer(1);
     animation-name: example;
     animation-duration: 12s;
     animation-delay: 500ms;
@@ -102,7 +102,7 @@
   header{
     position:fixed;
     width:100%;
-    height:$clamp-5;
+    height:sizer(5);
   }
 .logomark span{
   font-weight:bold;
@@ -121,9 +121,9 @@ ul li:before{
   position: fixed;
   z-index: 3;
   margin: 0;
-  height: $clamp-4;
+  height: sizer(4);
   overflow:hidden;
-  padding: $clamp $clamp-2 $clamp $clamp-4;
+  padding: sizer(1) sizer(2) sizer(1) sizer(4);
   li.logomark{
     opacity:1;
     pointer-events : all;
@@ -142,8 +142,8 @@ ul li:before{
   }
 }
 .menu ul.col-2{
-  margin-top:$clamp-3;
-  margin-left:$clamp-25;
+  margin-top:sizer(3);
+  margin-left:sizer(25);
   padding-left:0;
   li::before{
     content:'';
@@ -154,14 +154,14 @@ ul li:before{
 button,
 li {
   font-family: $sans-serif;
-  font-size:$clamp-2;
+  font-size:sizer(2);
   font-weight:normal;
   line-height: 150%;
   font-display: optional;
 }
 button {
-  padding: $clamp;
-  right: $clamp;
+  padding: sizer(1);
+  right: sizer(1);
   position: fixed;
   top: $border-width;
   width: auto;
