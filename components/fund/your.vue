@@ -80,15 +80,15 @@
   
   .fund{
     display:grid;
-    grid-template-columns: $clamp-3 1fr $clamp-5;
+    grid-template-columns: sizer(3) 1fr sizer(5);
     border:$border;
-    padding:$clamp-1 $clamp-1 $clamp-1 $clamp-1-5;
-    line-height:$clamp-4;
-    margin-bottom:$clamp-1;
+    padding:sizer(1) sizer(1) sizer(1) sizer(1.5);
+    line-height:sizer(4);
+    margin-bottom:sizer(1);
   }
   .icon span{
-    height:$clamp-4;
-    width:$clamp-2;
+    height:sizer(4);
+    width:sizer(2);
     display:block; 
     background-repeat: no-repeat;
     background-position: center;
@@ -98,9 +98,9 @@
     cursor:pointer;
   }
   .rate span{
-    width:$clamp-1;
-    height:$clamp-1;
-    margin-right:$clamp-0-5;
+    width:sizer(1);
+    height:sizer(1);
+    margin-right:sizer(0.5);
     display:inline-block;
     background:url('/omoji/heart-outline.svg') no-repeat center center;
     background-size:contain;
