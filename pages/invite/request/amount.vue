@@ -85,14 +85,14 @@
   
 .choice{
   display: grid;
-  grid-template-columns: 1fr $clamp-4 $clamp-4 $clamp-4;
+  grid-template-columns: 1fr sizer(4) sizer(4) sizer(4);
   width: 100%;
-  height: $clamp-6;
+  height: sizer(6);
   border: $border;
   border-color:$dark-40;
   box-sizing: border-box;
-  margin-bottom:$clamp-1;
-  padding: $clamp-1 $clamp-1-5;
+  margin-bottom:sizer(1);
+  padding: sizer(1) sizer(1.5);
   background-color:$test-color-1;
   border-radius:2px;
   transition: border-color 150ms $easing-in;
