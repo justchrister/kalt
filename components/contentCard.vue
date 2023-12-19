@@ -31,11 +31,11 @@ const props = defineProps({
 <style scoped lang="scss">
   .content-card{
     border:$border;
-    padding:$clamp;
-    margin:$clamp auto;
+    padding:sizer(1);
+    margin:sizer(1) auto;
     max-width:calc($maxsitewidth/1.5);
     width:calc($sitewidth/1.5);
-    border-radius:$clamp;
+    border-radius:sizer(1);
   }
   .number{
     font-family:$monospace;
