@@ -12,17 +12,17 @@
 .wrap{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap:$clamp-2;
+  column-gap:sizer(2);
   width: $sitewidth;
   min-width: 500px;
   max-width: $maxsitewidth*1.2;
   margin:0 auto;
-  padding:$clamp-5 0;
+  padding:sizer(5) 0;
 }
 .scroll-wrap{
   width: $sitewidth;
   max-width: $maxsitewidth*1.2;
-  padding:0 $clamp-4;
+  padding:0 sizer(4);
   overflow-y: scroll;
   margin:0 auto;
   &::-webkit-scrollbar {
