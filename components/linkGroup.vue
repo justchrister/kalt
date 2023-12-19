@@ -10,10 +10,10 @@
   
   .link-group{
     width:100%;
-    margin: $clamp;
+    margin: sizer(1);
     text-align:center;
   }
   .link-group a{
-    margin: $clamp;
+    margin: sizer(1);
   }
 </style>
