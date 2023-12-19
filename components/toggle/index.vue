@@ -24,10 +24,10 @@ const props = defineProps({
 <style scoped lang="scss">
 .input-wrapper {
   display: grid; 
-  grid-template-columns: 1fr $clamp-12;
+  grid-template-columns: 1fr sizer(12);
 }
 .text{
-  height:$clamp;
+  height:sizer(1);
   display:inline-block;
 }
 .toggle-wrap{
@@ -39,7 +39,7 @@ const props = defineProps({
   }
   span{
     margin:0;
-    width:$clamp-5;
+    width:sizer(5);
     text-align:center;
     border:$border;
   }
