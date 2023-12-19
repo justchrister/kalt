@@ -11,20 +11,20 @@
 <style scoped lang="scss">
   .question-wrap{
     display: grid;  // Changed to flex
-    grid-template-columns: $clamp-12 1fr;
+    grid-template-columns: sizer(12) 1fr;
     position:relative;
-    min-height:$clamp-6;
+    min-height:sizer(6);
   }
   .question{
     display:inline-block;
     background: $green-20;
     border: $border;
     border-color: $green;
-    border-radius: $clamp-0-5;
+    border-radius: sizer(0.5);
     width: auto;
-    max-width: $clamp-40;
-    margin: $clamp-1 0;
+    max-width: sizer(40);
+    margin: sizer(1) 0;
     margin-left: auto;  // Pushes to the right
-    padding: $clamp-1;
+    padding: sizer(1);
   }
 </style>
