@@ -6,8 +6,8 @@
     background-image: url('/loading.gif');
     background-size:contain;
     background-repeat:no-repeat;
-    width:$clamp;
-    height:$clamp;
+    width:sizer(1);
+    height:sizer(1);
     display:inline-block;
   }
 </style>
