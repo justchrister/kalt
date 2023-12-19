@@ -78,12 +78,12 @@
   ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: $clamp;
+    grid-gap: sizer(1);
   }
   li {
     border: $border;
     display: block;
-    height:$clamp-6;
+    height:sizer(6);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
