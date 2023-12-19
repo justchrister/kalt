@@ -76,15 +76,15 @@
   }
   .wrapper{
     display:grid;
-    grid-template-columns: 1fr $clamp-5 $clamp-5;
+    grid-template-columns: 1fr sizer(5) sizer(5);
     border:$border;   
     user-select: none;
     span{
       display:inline-block;
       border:none;
       border-left:$border;
-      padding:$clamp-1 0;
-      min-width:$clamp-4;
+      padding:sizer(1) 0;
+      min-width:sizer(4);
       box-sizing: border-box;
       user-select: none;
       height:100%;
@@ -96,7 +96,7 @@
       &:first-child{
         border-left:none;
         text-align: left;
-        padding-left: $clamp-2;
+        padding-left: sizer(2);
       }
     }
     button:hover,
