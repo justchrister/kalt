@@ -18,13 +18,13 @@
 <style scoped lang="scss">
   section{
     background-color:$light;
-    padding: $clamp-1-5 $clamp-2;
+    padding: sizer(1.5) sizer(2);
     border:$border;
     &:before{
       content:'';
       display:block;
-      width:$clamp-60;
-      height:$clamp-70;
+      width:sizer(60);
+      height:sizer(70);
       top:0;
       transform:translateX(-66%);
       position:absolute;
@@ -32,7 +32,7 @@
     }
   }
   h1{
-    font-size: $clamp-2-5;
+    font-size: sizer(2.5);
     margin:0;
     padding:0;
   }
