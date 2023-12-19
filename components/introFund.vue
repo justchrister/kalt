@@ -19,8 +19,8 @@
 </script>
 <style scoped lang="scss">
 section{
-  padding:$clamp-9 0 $clamp-7 0;
-  margin-bottom:$clamp-5;
+  padding:sizer(9) 0 sizer(7) 0;
+  margin-bottom:sizer(5);
   &.gradient-2{
     background:url('/gradient-2-min.jpg') no-repeat center center;
     background-size:cover;
@@ -39,7 +39,7 @@ section{
   }
   p{
     line-height:1.5;
-    padding-top:$clamp-1-5;
+    padding-top:sizer(1.5);
   }
 }
 </style>
