@@ -20,12 +20,12 @@
 <style scoped lang="scss">
 .wrap{
   position:fixed;
-  height:$clamp-4;
+  height:sizer(4);
   width:100vw;
   bottom:0;
   left:0;
   position:fixed;
-  bottom:$clamp-4;
+  bottom:sizer(4);
   z-index:8999;
 }
   
@@ -35,7 +35,7 @@
     width:$sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:$clamp $clamp-2;
+    padding:sizer(1) sizer(2);
   }
   #yellow{
     background: $yellow-20;
