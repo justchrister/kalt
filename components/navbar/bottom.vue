@@ -68,8 +68,8 @@
   footer{
     position:relative;
     background:$dark;
-    padding:$clamp-4 0 $clamp-2 0;
-    margin:$clamp-4 auto 0 auto;
+    padding:sizer(4) 0 sizer(2) 0;
+    margin:sizer(4) auto 0 auto;
 
     border-top: $light solid 1px;
     color:$light;
@@ -77,8 +77,8 @@
   .section{
     display: grid; 
     grid-template-columns: 1fr 5fr; 
-    gap: $clamp-1;
-    padding-top:$clamp-1;
+    gap: sizer(1);
+    padding-top:sizer(1);
     border-top:$border;
     border-color:$dark-80;
     border-style: dashed;
@@ -89,7 +89,7 @@
   }
   ul{
     display: grid;
-    gap: $clamp-0-5 $clamp-1;
+    gap: sizer(0.5) sizer(1);
     grid-template-columns: 1fr 1fr 1fr;
   }
   a{
@@ -103,14 +103,14 @@
     background-image:url('/media/insignia/insignia-light.svg');
     background-size:contain;
     background-repeat:no-repeat;
-    margin-top:$clamp-5;
+    margin-top:sizer(5);
     background-position: center center;
     width:100%;
     color:$light;
     font-family: $serif;
-    font-size: $clamp-3-5;
+    font-size: sizer(3.5);
     line-height: 150%;
-    margin-bottom: $clamp-2;
+    margin-bottom: sizer(2);
     font-display: optional;
     font-size: 150%;
     height:clamp($unit-min*8, $unit*8, $unit-max*8);
