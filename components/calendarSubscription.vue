@@ -119,11 +119,11 @@
       border: $border;
       display:inline-block;
       border-radius:$border-radius;
-      height:$clamp-1-5-no-min;
-      line-height:$clamp-1;
-      padding:$clamp-1-no-min
-              $clamp-1-no-min
-              $clamp-2-no-min
+      height:sizer(1.5);
+      line-height:sizer(1);
+      padding:sizer(1);
+              sizer(1);
+              sizer(2)
               0;
       text-align:right;
       margin: clamp(calc($unit-min/3), calc($unit/3), calc($unit-max/3)) 0;
