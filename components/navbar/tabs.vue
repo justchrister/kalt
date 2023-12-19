@@ -43,8 +43,8 @@
 <style scoped lang="scss">
 .tabs{
   display:grid;
-  grid-template-columns: 1fr $clamp-3;
-  grid-gap: $clamp;
+  grid-template-columns: 1fr sizer(3);
+  grid-gap: sizer(1);
   margin-bottom:0;
   nav{
     width:100%;
@@ -55,7 +55,7 @@
   }
   ul li{
     display:inline-block;
-    margin-left: $clamp-2;
+    margin-left: sizer(2);
     padding: 0;
     line-height:1.5;
     margin-right:0;
@@ -69,10 +69,10 @@
   }
   .pfp{
     background-image:url('/images/pfp/4.png');
-    height:$clamp-3;
+    height:sizer(3);
     background-size:cover;
     background-repeat: no-repeat;
-    width:$clamp-3;
+    width:sizer(3);
     border-radius:100%;
     cursor:pointer;
     border:$border;
