@@ -14,16 +14,16 @@
 <style scoped lang="scss">
   section{
     border: $border;
-    padding: $clamp-1-5 $clamp-2 $clamp-1-5 $clamp-1;
-    max-height: $clamp-3;
+    padding: sizer(1.5) sizer(2) sizer(1.5) sizer(1);
+    max-height: sizer(3);
     overflow:hidden;
     display:grid;
-    grid-template-columns: $clamp-3 1fr $clamp-6;
-    line-height:$clamp-2;
+    grid-template-columns: sizer(3) 1fr sizer(6);
+    line-height:sizer(2);
   }
   .icon{
-    height:$clamp-2;
-    width:$clamp-2;
+    height:sizer(2);
+    width:sizer(2);
     display:block; 
     background-repeat: no-repeat;
     background-position: center;
