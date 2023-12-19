@@ -50,17 +50,17 @@
     float:right;
   }
   main{
-    max-width:$clamp-35;
+    max-width:sizer(35);
     margin:0 auto;
   }
   ul{
-    padding:$clamp $clamp-2;
+    padding:sizer(1) sizer(2);
   }
   li{
     display:grid;
-    grid-template-columns: $clamp-4 4fr;
+    grid-template-columns: sizer(4) 4fr;
     border-bottom:$dark 1px solid;
-    padding:$clamp $clamp-2;
+    padding:sizer(1) sizer(2);
     &:hover{
       cursor: pointer;
       background:white;
