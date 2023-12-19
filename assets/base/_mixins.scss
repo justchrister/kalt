@@ -5,13 +5,13 @@
   font-family: $serif;
   font-size: $big-clamp;
   line-height: 150%;
-  margin-bottom: $clamp-2;
+  margin-bottom: sizer(2);
   font-display: optional;
 }
 
 @mixin font-body {
   font-family: $sans-serif;
-  font-size: $clamp-1-5;
+  font-size: sizer(1.5);
   font-weight:normal;
   line-height: 150%;
   font-display: optional;
@@ -19,7 +19,7 @@
 
 @mixin font-monospace {
   font-family: $monospace;
-  font-size: $clamp-2;
+  font-size: sizer(2);
   font-weight: normal;
   line-height: 100%;
   font-display: optional;
@@ -27,7 +27,7 @@
 
 @mixin font-logotype {
   font-family: $sans-serif;
-  font-size: $clamp-2;
+  font-size: sizer(2);
   font-weight: bold;
   line-height: 100%;
 }
@@ -41,5 +41,5 @@
 
 @mixin hovering {
   background:white;
-  box-shadow: 0px 0px $clamp-1 0px rgba($dark,0.05);
+  box-shadow: 0px 0px sizer(1) 0px rgba($dark,0.05);
 }
