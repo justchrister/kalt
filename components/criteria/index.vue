@@ -15,10 +15,10 @@
 <style scoped lang="scss">
 div{
   display:grid;
-  grid-template-columns: $clamp-3-5 1fr;
+  grid-template-columns: sizer(3.5) 1fr;
 }
   span{
-    width:$clamp-3;
+    width:sizer(3);
     display:inline-block;
   }
 </style>
