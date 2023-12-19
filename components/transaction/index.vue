@@ -43,8 +43,8 @@
 <style scoped lang="scss">
   .transaction {
     display: grid; 
-    grid-template-columns: $clamp 1fr 1fr $clamp-4; 
-    gap: $clamp;
+    grid-template-columns: sizer(1) 1fr 1fr sizer(4); 
+    gap: sizer(1);
     border-bottom:$border;
     *{
       font-family:$monospace;
@@ -56,7 +56,7 @@
     text-align:right;
   }
   .date span{
-    padding-right:$clamp-2;
+    padding-right:sizer(2);
     border-right:$border;
   }
   .dark-mode .transaction{
