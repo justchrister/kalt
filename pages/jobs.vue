@@ -122,14 +122,14 @@
   main{padding-top:0;}
   ul{
     li{
-      padding-left:$clamp-1;
-      margin-top:$clamp-0-5;
+      padding-left:sizer(1);
+      margin-top:sizer(0.5);
     }
     li:before{
       content:'—';
     }
   }
   h2{
-    margin-bottom:$clamp-1;
+    margin-bottom:sizer(1);
   }
 </style>
