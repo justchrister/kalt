@@ -53,12 +53,12 @@
   ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: $clamp;
+    grid-gap: sizer(1);
   }
   li {
     border: $border;
     display: block;
-    height: $clamp-8;
+    height: sizer(8);
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -78,15 +78,15 @@
       display:block;
       content: '';
       position:relative;
-      top:$clamp-0-5;
-      right:$clamp-0-5;
+      top:sizer(0.5);
+      right:sizer(0.5);
       float:right;
-      width:$clamp-1-5;
-      height:$clamp-1-5;
+      width:sizer(1.5);
+      height:sizer(1.5);
       background-color:$green;
       background-image:url('omoji/check.svg');
       background-size:cover;
-      border-radius:$clamp-2;
+      border-radius:sizer(2);
     }
   }
 </style>
