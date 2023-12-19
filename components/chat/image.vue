@@ -19,21 +19,21 @@ const props = defineProps({
 <style scoped lang="scss">
   .image-wrap{
     display: grid;  // Changed to flex
-    grid-template-columns: 1fr $clamp-20;
+    grid-template-columns: 1fr sizer(20);
     position:relative;
-    min-height:$clamp-6;
+    min-height:sizer(6);
   }
   .image{
     display:inline-block;
     border: $border;
     background-size:cover;
     border-color: $dark-20;
-    border-radius: $clamp-0-5;
+    border-radius: sizer(0.5);
     width: auto;
-    max-width: $clamp-40;
-    margin: $clamp-1 0;
+    max-width: sizer(40);
+    margin: sizer(1) 0;
     margin-right: auto;  // Pushes to the right
-    padding: $clamp-1;
+    padding: sizer(1);
   }
 
   img{
