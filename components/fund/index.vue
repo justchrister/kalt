@@ -44,8 +44,8 @@ const supabase = useSupabaseClient()
     border: $border;
   }
   .title {
-    height: $clamp-2-5;
-    padding: $clamp-1;
+    height: sizer(2.5);
+    padding: sizer(1);
     font-weight: 600;
     border-bottom: $border;
     &:hover{
@@ -54,18 +54,18 @@ const supabase = useSupabaseClient()
   }
   .body-wrapper {
     display: grid;
-    max-width: $clamp-55;
+    max-width: sizer(55);
     overflow:hidden;
-    height: $clamp-9;
-    grid-template-columns: 1fr $clamp-9;
+    height: sizer(9);
+    grid-template-columns: 1fr sizer(9);
   }
   .description{
     border-bottom: $border;
-    max-width:$clamp-44;
+    max-width:sizer(44);
     overflow:hidden;
-    padding: $clamp-1;
+    padding: sizer(1);
     white-space: nowrap;
-    max-width:$clamp-46;
+    max-width:sizer(46);
     div{
       animation: animate_text 30s linear infinite; /* The animation property */
     }
@@ -84,8 +84,8 @@ const supabase = useSupabaseClient()
   }
   .button{
     text-align: center;
-    height:$clamp-5;
-    line-height:$clamp-4-5;
+    height:sizer(5);
+    line-height:sizer(4.5);
     &:hover{
       cursor: pointer;
       text-decoration: underline;
@@ -93,12 +93,12 @@ const supabase = useSupabaseClient()
   }
   .body{
     border-right: $border;
-    height: $clamp-9;
-    max-width:$clamp-46;
+    height: sizer(9);
+    max-width:sizer(46);
   }
   .symbol{
     background-repeat: no-repeat;
     background-size: contain;
-    margin: $clamp-2;
+    margin: sizer(2);
   }
 </style>
