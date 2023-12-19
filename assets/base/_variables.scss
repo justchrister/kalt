@@ -1,17 +1,9 @@
-// Defining the units that define all the clamps to ensure they 
-// all are defined the same way.
-
-
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
 
 $unit-min: 8px;
 $unit: calc($sitewidth/55);
 $unit-max: calc($maxsitewidth/55);
-
-$unit-n-min: -8px;
-$unit-n: calc(($sitewidth/55) - (($sitewidth/55)*2));
-$unit-n-max: calc(($maxsitewidth/55) - (($maxsitewidth/55)*2));
 
 $light: #FEFDFA;
 
@@ -136,6 +128,7 @@ $monospace:
 $border-width: .2px;
 $border: $border-width solid $dark-80;
 $border-radius: 0;
+
 @function sizer($multiplier){
     @return clamp(1px, $unit*$multiplier, $unit-max*$multiplier);
 }
