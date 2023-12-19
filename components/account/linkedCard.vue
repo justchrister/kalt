@@ -57,10 +57,10 @@
   .card{
     box-sizing: border-box;
     border:$border;
-    padding: $clamp-1 $clamp-2;
+    padding: sizer(1) sizer(2);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin:$clamp-1-5 0 $clamp-1 0;
+    margin:sizer(1.5) 0 sizer(1) 0;
   }
   .bold{
     font-weight: bold;
@@ -74,8 +74,8 @@
   .not-linked{
     box-sizing: border-box;
     border:$border;
-    padding: $clamp-1 $clamp-2 $clamp-1 $clamp-1;
-    margin:$clamp-1-5 0 0 0;
+    padding: sizer(1) sizer(2) sizer(1) sizer(1);
+    margin:sizer(1.5) 0 0 0;
     &:hover{
       cursor:pointer;
     }
