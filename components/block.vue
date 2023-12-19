@@ -29,28 +29,28 @@
     margin:0 auto clamp($unit-min*10, $unit*10, $unit-max*10) auto;
 
     &.margin-half{
-      margin-bottom: $clamp-5;
+      margin-bottom: sizer(5);
     }
     &.margin-double{
-      margin-bottom: $clamp-20;
+      margin-bottom: sizer(20);
     }
     &.margin-1{
-      margin-bottom: $clamp-1;
+      margin-bottom: sizer(1);
     }
     &.margin-2{
-      margin-bottom: $clamp-2;
+      margin-bottom: sizer(2);
     }
     &.margin-3{
-      margin-bottom: $clamp-3;
+      margin-bottom: sizer(3);
     }
     &.margin-4{
-      margin-bottom: $clamp-4;
+      margin-bottom: sizer(4);
     }
     &.margin-none{
       margin-bottom: 0;
     }
     &.width-small{
-      max-width: $clamp-35;
+      max-width: sizer(35);
     }
 
     &.width-wide{
