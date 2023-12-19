@@ -69,8 +69,8 @@
 <style scoped lang="scss">
 
 .filters{
-  margin-top:$clamp-5;
-  height:$clamp-5;
+  margin-top:sizer(5);
+  height:sizer(5);
   overflow-x:scroll;
   overflow-y:hidden;
   &::-webkit-scrollbar {
@@ -80,8 +80,8 @@
 }
 .overflow-wrap{
   position: relative;
-  width:$clamp-70;
-  height:$clamp-6;
+  width:sizer(70);
+  height:sizer(6);
 }
 
 ul{
@@ -99,7 +99,7 @@ li{
   border:$border;
   padding:0;
   font-size:85%;
-  margin-right: $clamp;
+  margin-right: sizer(1);
   border-radius:$border-radius;
   position:relative;
   &:before{
