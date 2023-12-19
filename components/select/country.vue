@@ -29,12 +29,12 @@
 </script>
 <style scoped lang="scss">
   div{
-    margin:$clamp 0 0 0 ;
+    margin:sizer(1) 0 0 0 ;
   }
   a{
-    padding:$clamp $clamp-2;
+    padding:sizer(1) sizer(2);
     display:grid;
-    grid-template-columns: $clamp-4 4fr $clamp;
+    grid-template-columns: sizer(4) 4fr sizer(1);
     border:$border;
     text-decoration:none;
     &:hover{
