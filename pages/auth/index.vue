@@ -100,9 +100,9 @@
 </script>
 <style scoped lang="scss">
   button{
-    margin-top:$clamp-2;
+    margin-top:sizer(2);
   }
   a{
-    margin:0 $clamp-0-5;
+    margin:0 sizer(0.5);
   }
 </style>
