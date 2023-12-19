@@ -34,16 +34,16 @@
   .wrapper{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: $clamp-1;
+    grid-column-gap: sizer(1);
     .column{
       border: 1px solid $dark-40;
       border-radius: 3px;
-      padding: $clamp-1 $clamp-1-5;
-      height:$clamp-20;
+      padding: sizer(1) sizer(1.5);
+      height:sizer(20);
       text-align: left;
       .title{
 
-      margin-bottom:$clamp-1;
+      margin-bottom:sizer(1);
       }
       .link{
         text-align:right;
