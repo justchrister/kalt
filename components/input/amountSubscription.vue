@@ -78,8 +78,8 @@
     grid-template-columns: 6fr 1fr;
   }
   .currency{
-    height:$clamp-4;
-    line-height:$clamp-4;
+    height:sizer(4);
+    line-height:sizer(4);
     text-align:center;
     border-left:$border;
   }
