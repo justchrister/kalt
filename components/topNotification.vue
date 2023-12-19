@@ -16,12 +16,12 @@
 <style scoped lang="scss">
 .wrap{
   position:fixed;
-  height:$clamp-4;
-  width:$clamp-40;
+  height:sizer(4);
+  width:sizer(40);
   bottom:top;
-  right:$clamp-3;
+  right:sizer(3);
   position:fixed;
-  top:$clamp-4;
+  top:sizer(4);
   z-index:8999;
 }
   
@@ -31,7 +31,7 @@
     width:$sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:$clamp $clamp-2;
+    padding:sizer(1) sizer(2);
     background:$test-color-5;
     border-color: $test-color;
     color: $test-color;
