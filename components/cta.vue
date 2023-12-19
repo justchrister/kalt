@@ -40,22 +40,22 @@
 <style scoped lang="scss">
 .cta{
   text-align: center;
-  margin:$clamp 0;
+  margin:sizer(1) 0;
 }
 .button-group{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: $clamp;
+  grid-gap: sizer(1);
 }
 a{
   text-decoration: none;
 }
 .link-group{
-  margin-top:$clamp;
+  margin-top:sizer(1);
   text-align:left;
 }
 .link-group a {
-  margin-right:$clamp-1-5;
+  margin-right:sizer(1.5);
   text-decoration:underline;
 }
 </style>
