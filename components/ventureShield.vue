@@ -14,7 +14,7 @@
 </script>
 <style scoped lang="scss">
   div{
-    width:$clamp-10;
+    width:sizer(10);
     text-align:center;
     display:inline-block;
   }
@@ -22,9 +22,9 @@
     background-position: center;
     background-size:contain;
     background-repeat:no-repeat;
-    height:$clamp-6;
-    width:$clamp-6;
-    margin:0 $clamp-2;
+    height:sizer(6);
+    width:sizer(6);
+    margin:0 sizer(2);
   }
   #tillit .logo{
     background-image:url('/ventures/tillit.svg');
@@ -33,6 +33,6 @@
     background-image:url('/ventures/empress.png');
   }
   .name{
-    font-size:$clamp-1;
+    font-size:sizer(1);
   }
 </style>
