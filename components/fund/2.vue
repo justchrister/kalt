@@ -35,18 +35,18 @@
   .fund{
     text-decoration:none;
     display:grid;
-    grid-template-columns: $clamp-3 1fr $clamp-10;
+    grid-template-columns: sizer(3) 1fr sizer(10);
     border:$border;
-    padding:$clamp-1 $clamp-1 $clamp-1 $clamp-1-5;
-    line-height:$clamp-4;
+    padding:sizer(1) sizer(1) sizer(1) sizer(1.5);
+    line-height:sizer(4);
   }
   .rate,
   .name{
     text-decoration:none;
   }
   .icon span{
-    height:$clamp-4;
-    width:$clamp-2;
+    height:sizer(4);
+    width:sizer(2);
     display:block; 
     background-repeat: no-repeat;
     background-position: center;
