@@ -59,16 +59,16 @@
   .profile-card{
     border-radius:3px;
     display:grid;
-    grid-gap: $clamp;
-    grid-template-columns: $clamp-4 4fr;
+    grid-gap: sizer(1);
+    grid-template-columns: sizer(4) 4fr;
   }
   .image{
     background-image:url('/images/pfp/4.png');
-    border-radius:$clamp-4;
-    height:$clamp-4;
+    border-radius:sizer(4);
+    height:sizer(4);
     background-size:contain;
     background-repeat: no-repeat;
-    width:$clamp-4;
+    width:sizer(4);
     &#alt1{
       background-image:url('/images/pfp/1.png');
     }
@@ -102,8 +102,8 @@
   }
   .details{
     display:grid;
-    grid-gap: 0px $clamp;
-    grid-template-columns: 4fr $clamp-3;
+    grid-gap: 0px sizer(1);
+    grid-template-columns: 4fr sizer(3);
   }
 
   .profile-card:hover{
@@ -126,10 +126,10 @@
     }
     background:$green-20;
     border:$border;
-    padding:$clamp-1 $clamp-1 $clamp-1 $clamp-2;
+    padding:sizer(1) sizer(1) sizer(1) sizer(2);
     display:grid;
 
-    grid-gap: $clamp;
-    grid-template-columns: 1fr $clamp-2;
+    grid-gap: sizer(1);
+    grid-template-columns: 1fr sizer(2);
   }
 </style>
