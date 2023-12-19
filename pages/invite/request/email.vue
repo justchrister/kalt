@@ -42,6 +42,6 @@
 </script>
 <style scoped lang="scss">
   input{
-    margin-bottom:$clamp-1;
+    margin-bottom:sizer(1);
   }
 </style>
