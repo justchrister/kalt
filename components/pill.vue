@@ -28,9 +28,9 @@
   .pill{
     border:$border-width solid $dark;
     display:inline-block;
-    padding:0px $clamp-1;
-    margin-right:$clamp-0-5;
-    border-radius:$clamp-0-5;
+    padding:0px sizer(1);
+    margin-right:sizer(0.5);
+    border-radius:sizer(0.5);
     background:$dark-5;
     border-color:$dark;
     font-size:75%;
