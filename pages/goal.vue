@@ -7,7 +7,7 @@
     <block>
       <span> GOAL 1 </span><span class="hide">—</span>
       <h2>2x market returns</h2>
-      <p>Without performance, an investment is merely a donation, is our guiding principle. We aim to give twice the returns that you would get by investing in an index fund. Our strategy is designed to create a powerful synergy between financial gain and impactful change. Your investments do more than grow — they thrive.</p>
+      <p>Without performance, an investment is merely a donation, is our guiding principle. We aim to double the returns that you would get by investing in an index fund. By applying the  Our strategy is designed to create a powerful synergy between financial gain and impactful change. Your investments do more than grow — they thrive.</p>
     </block>
     <block>
       <span> GOAL 2 </span><span class="hide">—</span>
@@ -36,7 +36,7 @@ definePageMeta({
 </script>
 <style scoped lang="scss">
   span{
-    font-size: $clamp-1-5;
+    font-size: sizer(1.5);
     font-weight: 600;
     color: $dark-80;
   }
