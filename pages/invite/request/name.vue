@@ -46,11 +46,11 @@
 </script>
 <style scoped lang="scss">
   input{
-    margin-bottom:$clamp-1;
+    margin-bottom:sizer(1);
   }
   .inputGroup{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: $clamp-1;
+    grid-column-gap: sizer(1);
   }
 </style>
