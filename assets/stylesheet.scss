@@ -14,14 +14,14 @@
 
 p.links{
   a:first-child{
-    margin-right:$clamp-2
+    margin-right:sizer(2)
   }
 }
 
 
 // Page wrapper
 main{
-  padding-top: $clamp-15;
+  padding-top: sizer(15);
   min-height:100vh;
   box-sizing:border-box;
 }
@@ -29,7 +29,7 @@ select{
   width:100%;
   display:inline-block;
   padding:clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
-          $clamp-1-5
+          sizer(1.5)
           clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
           clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   border: $border;
@@ -44,7 +44,7 @@ select:focus{
 }
 select.loading{
   background-image:url("/loading.gif");
-  background-size: $clamp;
+  background-size: sizer(1);
   background-position:95% center;
   background-repeat:no-repeat;
 }
@@ -58,8 +58,8 @@ input{
   height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
   @include font-body;
   box-sizing:border-box;
-  background-size: $clamp;
-  background-position:right $clamp center;
+  background-size: sizer(1);
+  background-position:right sizer(1) center;
   background-repeat:no-repeat;
 }
 
@@ -81,14 +81,14 @@ input.error{
 }
 
 .input-wrap{
-  margin-top: $clamp;
+  margin-top: sizer(1);
 }
 input[type="checkbox" i]  {
   width:auto;
   height:auto;
 }
 input[type="checkbox" i] + label{
-  font-size:$clamp-1-5;
+  font-size:sizer(1.5);
 }
 
 a:focus button{
@@ -101,7 +101,7 @@ a:hover button{
 }
 button {
   border-radius: 0px;
-  margin-bottom:$clamp;
+  margin-bottom:sizer(1);
   width: 100%;
   padding: 2% 0;
   background:transparent;
@@ -118,5 +118,5 @@ button {
 label{
   @include font-body;
   font-size: clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
-  margin:$clamp-0-5 0;
+  margin:sizer(0.5) 0;
 }
