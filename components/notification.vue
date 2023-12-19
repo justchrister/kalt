@@ -23,7 +23,7 @@
     position:fixed;
     width:100vw;
     bottom:0;
-    padding:$clamp 0;
+    padding:sizer(1) 0;
     border-top:$border;
     z-index:2;
     left: 0;
@@ -34,7 +34,7 @@
     width:$sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:$clamp 0;
+    padding:sizer(1) 0;
   }
   #warn{
     background: $yellow-20;
