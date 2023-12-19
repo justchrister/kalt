@@ -37,9 +37,9 @@
   .card{
     border:$border;
     border-radius:$border-radius;
-    padding:$clamp 0 $clamp $clamp-2;
-    margin:$clamp 0;
-    max-height:$clamp-4;
+    padding:sizer(1) 0 sizer(1) sizer(2);
+    margin:sizer(1) 0;
+    max-height:sizer(4);
     overflow:hidden;
   }
   .card:hover{
@@ -47,8 +47,8 @@
     cursor: pointer;
   }
   .card .logo{
-    width:$clamp-4;
-    height:$clamp-4;
+    width:sizer(4);
+    height:sizer(4);
     background: transparent;
     background-size: contain;
     display:inline-block;
@@ -83,19 +83,19 @@
   
   .card .details{
     width:clamp($unit-min*15, $unit*15, $unit-max*15);
-    height:$clamp-4;
-    line-height:$clamp-4;
-    padding-left:$clamp-2;
+    height:sizer(4);
+    line-height:sizer(4);
+    padding-left:sizer(2);
     display:inline-block;
     vertical-align: center;
   }
   .card .default{
     width:clamp($unit-min*8, $unit*8, $unit-max*8);
-    height:$clamp-4;
-    line-height:$clamp-4;
+    height:sizer(4);
+    line-height:sizer(4);
     display:block;
     float:right;
-    padding-right:$clamp-2;
+    padding-right:sizer(2);
     text-align:right;
   }
   .card .default.true span{
