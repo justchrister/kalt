@@ -24,18 +24,18 @@
 </script>
 <style scoped lang="scss">
 .wrapper{
-  margin:$clamp-2 0 $clamp-10 0;
+  margin:sizer(2) 0 sizer(10) 0;
 }
 .image{
   width:100%;
-  height:$clamp-35;
+  height:sizer(35);
   background-size:contain;
   background-position:center;
   
   background-repeat: no-repeat;
 
 }
-  p{padding-top:$clamp-2;
+  p{padding-top:sizer(2);
     text-align:center;
   }
 </style>
