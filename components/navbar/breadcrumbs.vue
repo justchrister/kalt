@@ -22,7 +22,7 @@
     text-transform: lowercase;
     text-transform: uppercase;
     font-family: 'Kalt Monospace', monospace;
-    font-size:$clamp;
+    font-size:sizer(1);
   }
   a{
     text-decoration:none;
