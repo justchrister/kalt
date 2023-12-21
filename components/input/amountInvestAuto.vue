@@ -76,6 +76,7 @@
     gap: 0% 0%;
     grid-auto-flow: row;
     grid-template-columns: 6fr 1fr;
+    @include hoverable; 
   }
   .currency{
     height:sizer(4);
@@ -86,11 +87,4 @@
   input{
     border:none;
   }
-/*
-  .dark-mode{
-    .input-group,
-    input{
-      border-color:$light;
-    }
-  }*/
 </style>

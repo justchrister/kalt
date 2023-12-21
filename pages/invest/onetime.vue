@@ -6,7 +6,7 @@
       </h1>
     </block>
     <block margin="1">
-      <input-amount-buy  :uuid="uuid" />
+      <input-amount-invest  :uuid="uuid" />
     </block>
     <block margin="1">
       <select-fund />

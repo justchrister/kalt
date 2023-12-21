@@ -3,7 +3,7 @@
   <main>
     <intro title="Build your own fund" paragraph="Choose what you want to invest in both through your subscription and when completing single investments." />
     <block margin="1">
-      <input-amount-subscription :amount="subscription.amount || 0"/>
+      <input-amount-invest-auto :amount="subscription.amount || 0"/>
     </block>
     <block margin="2">
       <intervalSelector type="daily" :selected="dailySelected" @click="select('daily')"/>
