@@ -1,11 +1,9 @@
 <template>
-  <section>
+  <section @click="navigateTo('/funds/your')">
     <div class="icon"></div>
     <div> Your fund </div>
     <div class="link"> 
-      <nuxt-link to="/funds/your">
-        adjust
-      </nuxt-link>
+        customize
     </div>
   </section>
 </template>
@@ -13,13 +11,20 @@
 </script>
 <style scoped lang="scss">
   section{
-    border: $border;
     padding: sizer(1.5) sizer(2) sizer(1.5) sizer(1);
     max-height: sizer(3);
     overflow:hidden;
     display:grid;
-    grid-template-columns: sizer(3) 1fr sizer(6);
+    grid-template-columns: sizer(3) 1fr sizer(10);
     line-height: sizer(2);
+    @include border;
+    @include hoverable;
+  }
+  section:hover{
+    @include hovering;
+    .link{
+      color:$dark;
+    }
   }
   .icon{
     height: sizer(2);
@@ -31,9 +36,13 @@
     background-image: url('/media/icons/funds/your.svg');
   }
   .link{
-    color: $blue;
     text-align:right;
-
+    font-size:75%;
+    color: $dark-60;
+    :after{
+      display:inline;
+      content:'->';
+    }
   }
   
 </style>
