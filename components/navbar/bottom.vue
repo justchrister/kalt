@@ -11,12 +11,9 @@
         <ul>
           <nuxt-link to="/portfolio" > Portfolio </nuxt-link>
           <nuxt-link to="/funds/your" > Your fund </nuxt-link>
-          <nuxt-link to="/invest/auto" > Auto-invest </nuxt-link>
+          <nuxt-link to="/invest/" > Invest </nuxt-link>
           <nuxt-link to="/profile" > Profile </nuxt-link>
           <nuxt-link to="/accounts" > Accounts </nuxt-link>
-          <nuxt-link to="/invest" > Invest now </nuxt-link>
-          <nuxt-link to="/cards" > Cards </nuxt-link>
-          <nuxt-link to="/accounts/transactions" > Transactions </nuxt-link>
         </ul>
       </div>
     </block>
@@ -35,9 +32,9 @@
         <p>Us</p>
         <ul>
           <nuxt-link to="/about" > About </nuxt-link>
-          <nuxt-link to="/about/values" > Our values </nuxt-link>
-          <nuxt-link to="/jobs" > Jobs </nuxt-link>
           <nuxt-link to="/funds" > Funds </nuxt-link>
+          <nuxt-link to="/jobs" > Jobs </nuxt-link>
+          <nuxt-link to="/mission" > Mission </nuxt-link>
           <a href="mailto:sup@ka.lt"> Contact us </a>
         </ul>
       </div>
