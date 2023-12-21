@@ -35,16 +35,15 @@
 </script>
 <style scoped lang="scss">
   .card{
-    border: $border;
-    border-radius: $border-radius;
     padding: sizer(1) 0 sizer(1) sizer(2);
     margin: sizer(1) 0;
     max-height: sizer(4);
     overflow:hidden;
+    @include border;
+    @include hoverable;
   }
   .card:hover{
-    background-color:white;
-    cursor: pointer;
+    @include hovering;
   }
   .card .logo{
     width: sizer(4);
