@@ -26,9 +26,6 @@ $blue-20: mix($blue, $light, 20%);
 $blue-10: mix($blue, $light, 10%);
 $blue-5: mix($blue, $light, 5%);
 $primary: #586BA4;
-@function primaryColor($mix){
-    @return mix($primary, $light, $mix);
-}
 
 $marine: #586BA4;
 $marine-80: mix($marine, $light, 80%);
@@ -112,17 +109,22 @@ $monospace:
     "Courier New",
     Monospace;
 
-// Borders
+// borders
 $border-width: .2px;
 $border: $border-width solid $dark-80;
-$border-radius: 0;
+$border-radius: 2px;
+
+// functions
 
 @function sizer($multiplier){
-    @return clamp(1px, $unit*$multiplier, $unit-max*$multiplier);
+  @return clamp(1px, $unit*$multiplier, $unit-max*$multiplier);
 }
 
+@function primaryColor($mix){
+  @return mix($primary, $light, $mix);
+}
 
-// Fonts
+// mixins
 
 @mixin font-display {
     font-family: $serif;
@@ -164,7 +166,7 @@ $border-radius: 0;
   
 
   @mixin border{
-    border-radius:2px;
+    border-radius:$border-radius;
     border: $border;
     border-color: $dark-40;
   }
@@ -183,5 +185,4 @@ $border-radius: 0;
     background-color:primaryColor(5%);
     border-color: $dark-60;
     transition: border-color 150ms $easing-in;
-    cursor: pointer; 
   }
