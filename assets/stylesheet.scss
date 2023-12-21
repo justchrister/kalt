@@ -1,6 +1,5 @@
 @import 'base/fonts';
-@import 'base/variables';
-@import 'base/mixins';
+@import 'base/utils';
 @import 'base/base';
 
 
@@ -119,3 +118,4 @@ label{
   font-size: clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
   margin:sizer(0.5) 0;
 }
+
