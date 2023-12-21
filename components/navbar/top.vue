@@ -15,9 +15,6 @@
             <nuxt-link to="/portfolio" @click="toggleMenu()"> Portfolio </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/profile" @click="toggleMenu()"> Profile </nuxt-link>
-          </li>
-          <li>
             <nuxt-link to="/funds/your" @click="toggleMenu()"> Your fund </nuxt-link>
           </li>
           <li>
