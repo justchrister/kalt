@@ -93,20 +93,20 @@
   box-sizing: border-box;
   margin-bottom:sizer(1);
   padding: sizer(1) sizer(1.5);
-  background-color:primaryColor(1);
+  background-color:primaryColor(1%);
   border-radius:2px;
   transition: border-color 150ms $easing-in;
   
 }
 
 .choice:hover{
-  background-color:primaryColor(2);
+  background-color:primaryColor(2%);
   border-color:$dark-60;
   transition: border-color 150ms $easing-in;
   cursor: pointer;
 }
 .choice.selected{
-  background-color:primaryColor(5);
+  background-color:primaryColor(5%);
   border-color:$dark-60;
   transition: border-color 150ms $easing-in;
 }
