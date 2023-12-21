@@ -3,13 +3,17 @@
     <block>
       <div class="wrapper">
         <div class="column" @click="navigateTo('/invest/onetime')"> 
-          <div class="title">One time investment</div>
-          <div class="explainer"> Invest a single amount in your personalized fund</div>
+          <div class="text">
+            <div class="title">One time investment</div>
+            <div class="explainer"> Invest a single amount in your personalized fund</div>
+          </div>
           <div class="link"> Start -> </div>
         </div>
         <div class="column" @click="navigateTo('/invest/auto')"> 
-          <div class="title">Automatic investments</div>
-          <div class="explainer">Set up a daily, weekly, or monthly recurring investment</div>
+          <div class="text">
+            <div class="title">Automatic investments</div>
+            <div class="explainer">Set up a daily, weekly, or monthly recurring investment</div>
+          </div>
           <div class="link"> Start -> </div>
         </div>
       </div>
@@ -36,17 +40,22 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: sizer(1);
     .column{
-      border: 1px solid $dark-40;
-      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include border;
+      @include hoverable;
       padding: sizer(1) sizer(1.5);
       height: sizer(20);
       text-align: left;
       .title{
-
-      margin-bottom: sizer(1);
+        margin-bottom: sizer(1);
       }
       .link{
         text-align:right;
+      }
+      &:hover{
+        @include hovering;
       }
     }
   }
