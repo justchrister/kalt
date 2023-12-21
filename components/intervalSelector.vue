@@ -1,7 +1,7 @@
 <template>
   <div :class="{'intervalSelector': true, 'selected': props.selected}" v-if="title">
     <div class="title"> {{title}} </div>
-    <div :class="{'monthDays start': true, 'selected': startOfMonth}" v-if="type==='monthly'" @click="setInnerInterval('start')">
+    <div :class="{'monthDays beginning': true, 'selected': beginningOfMonth}" v-if="type==='monthly'" @click="setInnerInterval('beginning')">
       1st
     </div>
     <div :class="{'monthDays middle': true, 'selected': middleOfMonth}"  v-if="type==='monthly'" @click="setInnerInterval('middle')">
@@ -31,21 +31,21 @@
     if(type==='monthly') return 'Monthly';
     return 'Unknown'
   }
-  const startOfMonth = ref(false);
+  const beginningOfMonth = ref(false);
   const middleOfMonth = ref(false);
   const endOfMonth = ref(true);
   const title = selectTitle(props.type);
   const setInnerInterval = async (innerInterval: any) => {
-    if(innerInterval==='start'){
-      startOfMonth.value = true;
+    if(innerInterval==='beginning'){
+      beginningOfMonth.value = true;
       middleOfMonth.value = false;
       endOfMonth.value = false;
     } else if (innerInterval==='middle'){
-      startOfMonth.value = false;
+      beginningOfMonth.value = false;
       middleOfMonth.value = true;
       endOfMonth.value = false;
     } else if (innerInterval==='end'){
-      startOfMonth.value = false;
+      beginningOfMonth.value = false;
       middleOfMonth.value = false;
       endOfMonth.value = true;
     }
@@ -72,7 +72,7 @@
 .intervalSelector.selected .monthDays{
   color:$dark;
   transform:translateY(0);
-  &.start{
+  &.beginning{
     transition: transform 150ms 80ms $easing-in;
   }
   &.middle{
@@ -110,7 +110,7 @@
       background:$dark;
     }
   }
-  &.start{
+  &.beginning{
     transition: transform 150ms 20ms $easing-in;
   }
   &.middle{
