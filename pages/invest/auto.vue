@@ -18,8 +18,10 @@
       <card-default />
     </block>
     <block margin="1">
-      <button class="half"> save </button>
-      <span class="center">stop automatic investments</span>
+      <link-group>
+        <span class="center">add a button thing that says "activate" if the user is yet to have activated it, it should check that all requirements are fulfilled (card, fund set up). when clicked, it should change to "activating" with a loading icon beside it. When finished it should say "activated". Always with a text underneath that says "changes are saved automatically"</span> *
+        <span class="center">Beneath it there should be a text that says deactivate</span>
+      </link-group>
     </block>
   </main>
 </template>
