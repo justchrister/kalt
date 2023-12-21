@@ -1,11 +1,12 @@
 
 <template>
   <main>
-    <intro title="Build your own fund" paragraph="Choose what you want to invest in both through your subscription and when completing single investments." />
+    <intro title="Automatic investments" paragraph="Wealth is built over time, its always better to invest steadily than a single sum one time." />
     <block margin="1">
       <input-amount-invest-auto :amount="subscription.amount || 0"/>
     </block>
     <block margin="2">
+      <label> Select interval: </label>
       <intervalSelector type="daily" :selected="dailySelected" @click="select('daily')"/>
       <intervalSelector type="weekly" :selected="weeklySelected" @click="select('weekly')"/>
       <intervalSelector type="monthly" :selected="monthlySelected" @click="select('monthly')"/>
