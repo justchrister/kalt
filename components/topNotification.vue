@@ -32,7 +32,7 @@
     max-width: $maxsitewidth; 
     margin:auto;
     padding:sizer(1) sizer(2);
-    background:primaryColor(5);
+    background:primaryColor(5%);
     border-color: $test-color;
     color: $test-color;
   }
