@@ -57,27 +57,17 @@
   grid-template-columns: 1fr sizer(4) sizer(4) sizer(4);
   width: 100%;
   height: sizer(6);
-  border: $border;
-  border-color:$dark-40;
   box-sizing: border-box;
   margin-bottom:sizer(1);
   padding: sizer(1) sizer(1.5);
-  background-color:primaryColor(1);
-  border-radius:2px;
-  transition: border-color 150ms $easing-in;
-  
+  @include border;
 }
 
 .intervalSelector:hover{
-  background-color:primaryColor(2);
-  border-color:$dark-60;
-  transition: border-color 150ms $easing-in;
-  cursor: pointer;
+  @include hovering;
 }
 .intervalSelector.selected{
-  background-color:primaryColor(5);
-  border-color:$dark-60;
-  transition: border-color 150ms $easing-in;
+  @include selected;
 }
 .intervalSelector.selected .monthDays{
   color:$dark;
