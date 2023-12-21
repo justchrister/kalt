@@ -49,11 +49,10 @@ select.loading{
 input{
   width:100%;
   display:inline-block;
-  padding:clamp($unit-min/2, $unit/2, $unit-max/2) 
-          clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
+  padding:sizer(0.5) sizer(1.2);
   border: $border;
   border-radius: $border-radius;
-  height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
+  height:sizer(3.8);
   @include font-body;
   box-sizing:border-box;
   background-size: sizer(1);
@@ -63,7 +62,7 @@ input{
 
 input:focus,
 input:active{
-  background-color: white;
+  @include selected;
 }
 input.loading{
   background-image:url("/loading.gif");
