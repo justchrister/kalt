@@ -16,9 +16,7 @@
         @input="updatePaymentAmount"
       />
       <div class="currency">
-        <label for="amount"> 
-          {{ user.currency }}
-        </label>
+        {{ user.currency }}
       </div>
     </div>
   </div>
