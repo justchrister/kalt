@@ -64,11 +64,11 @@
   }
   .image{
     background-image:url('/images/pfp/4.png');
-    border-radius:sizer(4);
-    height:sizer(4);
+    border-radius: sizer(4);
+    height: sizer(4);
     background-size:contain;
     background-repeat: no-repeat;
-    width:sizer(4);
+    width: sizer(4);
     &#alt1{
       background-image:url('/images/pfp/1.png');
     }
@@ -122,11 +122,11 @@
   .set-up-profile-card{
     &:hover{
       cursor:pointer;
-      background:$green-10;
+      background: $green-10;
     }
-    background:$green-20;
-    border:$border;
-    padding:sizer(1) sizer(1) sizer(1) sizer(2);
+    background: $green-20;
+    border: $border;
+    padding: sizer(1) sizer(1) sizer(1) sizer(2);
     display:grid;
 
     grid-gap: sizer(1);

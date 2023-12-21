@@ -29,13 +29,13 @@
 </script>
 <style scoped lang="scss">
   div{
-    margin:sizer(1) 0 0 0 ;
+    margin: sizer(1) 0 0 0 ;
   }
   a{
-    padding:sizer(1) sizer(2);
+    padding: sizer(1) sizer(2);
     display:grid;
     grid-template-columns: sizer(4) 4fr sizer(1);
-    border:$border;
+    border: $border;
     text-decoration:none;
     &:hover{
       cursor: pointer;
@@ -48,9 +48,9 @@
   }
 /*
   .dark-mode a{
-    border-color:$light;
+    border-color: $light;
     &:hover{
-      background:$dark;
+      background: $dark;
     }
   }*/
 </style>

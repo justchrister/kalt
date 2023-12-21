@@ -22,7 +22,7 @@
     justify-content: flex-start;  // Pushes the child to the right
     position:relative;
     width: sizer(40);
-    min-height:sizer(6);
+    min-height: sizer(6);
     margin-right: sizer(18);
   }
   .link{
@@ -39,8 +39,8 @@
   }
   .link:hover{
     cursor: pointer;
-    background:$marine-20;
-    border-color:$marine;
+    background: $marine-20;
+    border-color: $marine;
     text-decoration:underline;
   }
 </style>

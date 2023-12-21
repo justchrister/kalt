@@ -24,18 +24,18 @@
 </script>
 <style scoped lang="scss">
 .wrapper{
-  margin:sizer(2) 0 sizer(10) 0;
+  margin: sizer(2) 0 sizer(10) 0;
 }
 .image{
   width:100%;
-  height:sizer(35);
+  height: sizer(35);
   background-size:contain;
   background-position:center;
   
   background-repeat: no-repeat;
 
 }
-  p{padding-top:sizer(2);
+  p{padding-top: sizer(2);
     text-align:center;
   }
 </style>

@@ -80,7 +80,7 @@
 <style scoped lang="scss">
   .card{
     box-sizing: border-box;
-    border:$border;
+    border: $border;
     padding: sizer(1) sizer(2);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,10 +92,10 @@
     text-align: right;
   }
   a{
-    color:$blue;
+    color: $blue;
   }
   /*
   .dark-mode .card{
-    border-color:$light;
+    border-color: $light;
   }*/
 </style>

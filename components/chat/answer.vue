@@ -13,7 +13,7 @@
     display: grid;  // Changed to flex
     grid-template-columns: 1fr sizer(12) ;
     position:relative;
-    min-height:sizer(6);
+    min-height: sizer(6);
   }
   .answer{
     display:inline-block;

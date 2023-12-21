@@ -23,9 +23,9 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-  font-family:$sans-serif;
+  font-family: $sans-serif;
 	vertical-align: baseline;
-  color:$dark;
+  color: $dark;
 }
 strong{
   font-weight:bold;
@@ -36,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	background:$light;
+	background: $light;
   // ensuring that if a user doubleclicks on say, the menu, it doesnt zoom in.
 	touch-action: manipulation; 
 	overflow-x: hidden;

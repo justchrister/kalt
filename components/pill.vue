@@ -26,16 +26,16 @@
 </script>
 <style scoped lang="scss">
   .pill{
-    border:$border-width solid $dark;
+    border: $border-width solid $dark;
     display:inline-block;
     padding:0px sizer(1);
-    margin-right:sizer(0.5);
-    border-radius:sizer(0.5);
-    background:$dark-5;
-    border-color:$dark;
+    margin-right: sizer(0.5);
+    border-radius: sizer(0.5);
+    background: $dark-5;
+    border-color: $dark;
     font-size:75%;
     &:hover{
-      border-color:$dark;
+      border-color: $dark;
       background-color:white;
     }
   }

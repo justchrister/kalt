@@ -26,8 +26,8 @@
 </script>
 <style scoped lang="scss">
 .intro{
-  padding:sizer(9) 0 sizer(7) 0;
-  margin-bottom:sizer(5);
+  padding: sizer(9) 0 sizer(7) 0;
+  margin-bottom: sizer(5);
   background-image:url('/gradient-2-min.jpg');
   background-size:cover;
   background-repeat:no-repeat;
@@ -36,7 +36,7 @@
   }
   p{
     line-height:1.5;
-    padding-top:sizer(1.5);
+    padding-top: sizer(1.5);
   }
 }
 </style>

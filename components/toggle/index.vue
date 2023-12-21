@@ -27,7 +27,7 @@ const props = defineProps({
   grid-template-columns: 1fr sizer(12);
 }
 .text{
-  height:sizer(1);
+  height: sizer(1);
   display:inline-block;
 }
 .toggle-wrap{
@@ -39,14 +39,14 @@ const props = defineProps({
   }
   span{
     margin:0;
-    width:sizer(5);
+    width: sizer(5);
     text-align:center;
-    border:$border;
+    border: $border;
   }
   #on{ border-color:transparent; }
-  #off{ border-color:$dark; }
+  #off{ border-color: $dark; }
   &#true{
-    #on{ border-color:$dark; }
+    #on{ border-color: $dark; }
     #off{ border-color:transparent; }
   }
 }

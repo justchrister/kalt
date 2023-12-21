@@ -15,7 +15,11 @@
         v-model="amount"
         @input="updatePaymentAmount"
       />
-      <div class="currency">{{ user.currency }}</div>
+      <div class="currency">
+        <label for="amount"> 
+          {{ user.currency }}
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -70,19 +74,22 @@
 
 <style scoped lang="scss">
   .input-group{
-    border:$border;
     display: grid;
     grid-template-rows: 1fr;
     gap: 0% 0%;
     grid-auto-flow: row;
     grid-template-columns: 6fr 1fr;
-    @include hoverable; 
+    @include border;
+    @include hoverable;
+    &:hover{
+      @include hovering;
+    }
   }
   .currency{
-    height:sizer(4);
-    line-height:sizer(4);
+    height: sizer(4);
+    line-height: sizer(4);
     text-align:center;
-    border-left:$border;
+    border-left: $border;
   }
   input{
     border:none;

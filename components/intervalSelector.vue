@@ -58,7 +58,7 @@
   width: 100%;
   height: sizer(6);
   box-sizing: border-box;
-  margin-bottom:sizer(1);
+  margin-bottom: sizer(1);
   padding: sizer(1) sizer(1.5);
   @include border;
 }
@@ -70,7 +70,7 @@
   @include selected;
 }
 .intervalSelector.selected .monthDays{
-  color:$dark;
+  color: $dark;
   transform:translateY(0);
   &.beginning{
     transition: transform 150ms 80ms $easing-in;
@@ -83,7 +83,7 @@
   }
   &:hover{
     &:after{
-      background-color:$dark-80;
+      background-color: $dark-80;
     }
   }
   &:after{
@@ -92,7 +92,7 @@
 }
 .monthDays{
   font-size:75%;
-  color:$dark-60;
+  color: $dark-60;
   transform:translateY(sizer(0.5));
   text-align:center;
   &:after{
@@ -100,14 +100,14 @@
     content:'';
     width: sizer(0.5);
     height: sizer(0.5);
-    border:$border;
+    border: $border;
     border-radius:100%;
     margin:auto;
   }
   &.selected{
 
     &:after{
-      background:$dark;
+      background: $dark;
     }
   }
   &.beginning{

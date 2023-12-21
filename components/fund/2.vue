@@ -36,17 +36,17 @@
     text-decoration:none;
     display:grid;
     grid-template-columns: sizer(3) 1fr sizer(10);
-    border:$border;
-    padding:sizer(1) sizer(1) sizer(1) sizer(1.5);
-    line-height:sizer(4);
+    border: $border;
+    padding: sizer(1) sizer(1) sizer(1) sizer(1.5);
+    line-height: sizer(4);
   }
   .rate,
   .name{
     text-decoration:none;
   }
   .icon span{
-    height:sizer(4);
-    width:sizer(2);
+    height: sizer(4);
+    width: sizer(2);
     display:block; 
     background-repeat: no-repeat;
     background-position: center;

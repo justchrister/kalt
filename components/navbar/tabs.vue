@@ -69,13 +69,13 @@
   }
   .pfp{
     background-image:url('/images/pfp/4.png');
-    height:sizer(3);
+    height: sizer(3);
     background-size:cover;
     background-repeat: no-repeat;
-    width:sizer(3);
+    width: sizer(3);
     border-radius:100%;
     cursor:pointer;
-    border:$border;
+    border: $border;
     float:right;
     &#alt1{
     background-image:url('/images/pfp/1.png');

@@ -83,7 +83,7 @@
   li {
     border: $border;
     display: block;
-    height:sizer(6);
+    height: sizer(6);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

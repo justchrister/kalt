@@ -17,7 +17,7 @@
 .layout.focused .back-button{
   padding: sizer(1) 0 0 sizer(1);
   font-family: $sans-serif;
-  font-size:sizer(2);
+  font-size: sizer(2);
   font-weight:300;
   line-height: 150%;
   font-display: optional;

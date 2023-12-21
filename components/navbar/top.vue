@@ -81,13 +81,13 @@
 <style scoped lang="scss">
 
   .logo{
-    width:sizer(2);
-    height:sizer(2);
+    width: sizer(2);
+    height: sizer(2);
     display:block;
     position:fixed;
-    top:$border-width;
-    left:$border-width;
-    background:$dark;
+    top: $border-width;
+    left: $border-width;
+    background: $dark;
     border-radius:100%;
     margin: sizer(1.4) sizer(1);
     animation-name: example;
@@ -102,7 +102,7 @@
   header{
     position:fixed;
     width:100%;
-    height:sizer(5);
+    height: sizer(5);
   }
 .logomark span{
   font-weight:bold;
@@ -142,8 +142,8 @@ ul li:before{
   }
 }
 .menu ul.col-2{
-  margin-top:sizer(3);
-  margin-left:sizer(25);
+  margin-top: sizer(3);
+  margin-left: sizer(25);
   padding-left:0;
   li::before{
     content:'';
@@ -154,7 +154,7 @@ ul li:before{
 button,
 li {
   font-family: $sans-serif;
-  font-size:sizer(2);
+  font-size: sizer(2);
   font-weight:normal;
   line-height: 150%;
   font-display: optional;

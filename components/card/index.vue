@@ -35,11 +35,11 @@
 </script>
 <style scoped lang="scss">
   .card{
-    border:$border;
-    border-radius:$border-radius;
-    padding:sizer(1) 0 sizer(1) sizer(2);
-    margin:sizer(1) 0;
-    max-height:sizer(4);
+    border: $border;
+    border-radius: $border-radius;
+    padding: sizer(1) 0 sizer(1) sizer(2);
+    margin: sizer(1) 0;
+    max-height: sizer(4);
     overflow:hidden;
   }
   .card:hover{
@@ -47,8 +47,8 @@
     cursor: pointer;
   }
   .card .logo{
-    width:sizer(4);
-    height:sizer(4);
+    width: sizer(4);
+    height: sizer(4);
     background: transparent;
     background-size: contain;
     display:inline-block;
@@ -83,19 +83,19 @@
   
   .card .details{
     width:clamp($unit-min*15, $unit*15, $unit-max*15);
-    height:sizer(4);
-    line-height:sizer(4);
-    padding-left:sizer(2);
+    height: sizer(4);
+    line-height: sizer(4);
+    padding-left: sizer(2);
     display:inline-block;
     vertical-align: center;
   }
   .card .default{
     width:clamp($unit-min*8, $unit*8, $unit-max*8);
-    height:sizer(4);
-    line-height:sizer(4);
+    height: sizer(4);
+    line-height: sizer(4);
     display:block;
     float:right;
-    padding-right:sizer(2);
+    padding-right: sizer(2);
     text-align:right;
   }
   .card .default.true span{
@@ -138,10 +138,10 @@
       background-image: url('/media/icons/amex.svg');
     }
     .card{
-      border-color:$light;
+      border-color: $light;
     }
     .card:hover{
-      background-color:$dark;
+      background-color: $dark;
   }
   }*/
 </style>

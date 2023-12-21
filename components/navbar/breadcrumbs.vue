@@ -22,7 +22,7 @@
     text-transform: lowercase;
     text-transform: uppercase;
     font-family: 'Kalt Monospace', monospace;
-    font-size:sizer(1);
+    font-size: sizer(1);
   }
   a{
     text-decoration:none;
@@ -31,6 +31,6 @@
     }
   }
   #slash{
-    color:$dark-60;
+    color: $dark-60;
   }
 </style>

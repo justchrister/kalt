@@ -67,25 +67,25 @@
 <style scoped lang="scss">
   footer{
     position:relative;
-    background:$dark;
-    padding:sizer(4) 0 sizer(2) 0;
-    margin:sizer(4) auto 0 auto;
+    background: $dark;
+    padding: sizer(4) 0 sizer(2) 0;
+    margin: sizer(4) auto 0 auto;
 
     border-top: $light solid 1px;
-    color:$light;
+    color: $light;
   }
   .section{
     display: grid; 
     grid-template-columns: 1fr 5fr; 
     gap: sizer(1);
-    padding-top:sizer(1);
-    border-top:$border;
-    border-color:$dark-80;
+    padding-top: sizer(1);
+    border-top: $border;
+    border-color: $dark-80;
     border-style: dashed;
   }
   p{
     margin-top:0;
-    color:$light;
+    color: $light;
   }
   ul{
     display: grid;
@@ -93,7 +93,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
   a{
-    color:$light;
+    color: $light;
     text-decoration: none;
     &:hover{
       text-decoration: underline;
@@ -103,10 +103,10 @@
     background-image:url('/media/insignia/insignia-light.svg');
     background-size:contain;
     background-repeat:no-repeat;
-    margin-top:sizer(5);
+    margin-top: sizer(5);
     background-position: center center;
     width:100%;
-    color:$light;
+    color: $light;
     font-family: $serif;
     font-size: sizer(3.5);
     line-height: 150%;
@@ -118,6 +118,6 @@
     text-align:center;
   }
   h3{
-    color:$light;
+    color: $light;
   }
 </style>

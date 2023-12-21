@@ -41,7 +41,7 @@
 </script>
 <style scoped lang="scss">
   input{
-    margin-bottom:sizer(1);
+    margin-bottom: sizer(1);
   }
   .inputGroup{
     display: grid;

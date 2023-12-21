@@ -81,14 +81,14 @@
   .fund{
     display:grid;
     grid-template-columns: sizer(3) 1fr sizer(5);
-    border:$border;
-    padding:sizer(1) sizer(1) sizer(1) sizer(1.5);
-    line-height:sizer(4);
-    margin-bottom:sizer(1);
+    border: $border;
+    padding: sizer(1) sizer(1) sizer(1) sizer(1.5);
+    line-height: sizer(4);
+    margin-bottom: sizer(1);
   }
   .icon span{
-    height:sizer(4);
-    width:sizer(2);
+    height: sizer(4);
+    width: sizer(2);
     display:block; 
     background-repeat: no-repeat;
     background-position: center;
@@ -98,9 +98,9 @@
     cursor:pointer;
   }
   .rate span{
-    width:sizer(1);
-    height:sizer(1);
-    margin-right:sizer(0.5);
+    width: sizer(1);
+    height: sizer(1);
+    margin-right: sizer(0.5);
     display:inline-block;
     background:url('/omoji/heart-outline.svg') no-repeat center center;
     background-size:contain;

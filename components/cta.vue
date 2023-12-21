@@ -40,7 +40,7 @@
 <style scoped lang="scss">
 .cta{
   text-align: center;
-  margin:sizer(1) 0;
+  margin: sizer(1) 0;
 }
 .button-group{
   display:grid;
@@ -51,11 +51,11 @@ a{
   text-decoration: none;
 }
 .link-group{
-  margin-top:sizer(1);
+  margin-top: sizer(1);
   text-align:left;
 }
 .link-group a {
-  margin-right:sizer(1.5);
+  margin-right: sizer(1.5);
   text-decoration:underline;
 }
 </style>

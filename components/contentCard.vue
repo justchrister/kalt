@@ -30,49 +30,49 @@ const props = defineProps({
 </script>
 <style scoped lang="scss">
   .content-card{
-    border:$border;
-    padding:sizer(1);
-    margin:sizer(1) auto;
+    border: $border;
+    padding: sizer(1);
+    margin: sizer(1) auto;
     max-width:calc($maxsitewidth/1.5);
     width:calc($sitewidth/1.5);
-    border-radius:sizer(1);
+    border-radius: sizer(1);
   }
   .number{
-    font-family:$monospace;
+    font-family: $monospace;
   }
   .content{
     font-size:75%;
   }
   #green{
-    border-color:$green;
-    background:$green-20;
+    border-color: $green;
+    background: $green-20;
   }
   #blue{
-    border-color:$blue;
-    background:$blue-20;
+    border-color: $blue;
+    background: $blue-20;
   }
   #pink{
-    border-color:$pink;
-    background:$pink-20;
+    border-color: $pink;
+    background: $pink-20;
   }
   /*
   .dark-mode{
     .number,
     .content,
     .title{
-      color:$dark;
+      color: $dark;
     }
     #green{
-      border-color:$green;
-      background:$green-80;
+      border-color: $green;
+      background: $green-80;
     }
     #blue{
-      border-color:$blue;
-      background:$blue-80;
+      border-color: $blue;
+      background: $blue-80;
     }
     #pink{
-      border-color:$pink;
-      background:$pink-80;
+      border-color: $pink;
+      background: $pink-80;
     }
 
   }*/

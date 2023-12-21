@@ -56,11 +56,11 @@
 <style scoped lang="scss">
   .card{
     box-sizing: border-box;
-    border:$border;
+    border: $border;
     padding: sizer(1) sizer(2);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin:sizer(1.5) 0 sizer(1) 0;
+    margin: sizer(1.5) 0 sizer(1) 0;
   }
   .bold{
     font-weight: bold;
@@ -69,13 +69,13 @@
     text-align: right;
   }
   a{
-    color:$blue;
+    color: $blue;
   }
   .not-linked{
     box-sizing: border-box;
-    border:$border;
+    border: $border;
     padding: sizer(1) sizer(2) sizer(1) sizer(1);
-    margin:sizer(1.5) 0 0 0;
+    margin: sizer(1.5) 0 0 0;
     &:hover{
       cursor:pointer;
     }

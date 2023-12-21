@@ -48,10 +48,10 @@
 <style scoped lang="scss">
 /*
   .dark-mode button{
-    color:$light;
-    border-color:$light;
+    color: $light;
+    border-color: $light;
   }
   .dark-mode button:hover{
-    background:$dark;
+    background: $dark;
   }*/
 </style>

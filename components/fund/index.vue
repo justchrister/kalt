@@ -61,11 +61,11 @@ const supabase = useSupabaseClient()
   }
   .description{
     border-bottom: $border;
-    max-width:sizer(44);
+    max-width: sizer(44);
     overflow:hidden;
     padding: sizer(1);
     white-space: nowrap;
-    max-width:sizer(46);
+    max-width: sizer(46);
     div{
       animation: animate_text 30s linear infinite; /* The animation property */
     }
@@ -84,8 +84,8 @@ const supabase = useSupabaseClient()
   }
   .button{
     text-align: center;
-    height:sizer(5);
-    line-height:sizer(4.5);
+    height: sizer(5);
+    line-height: sizer(4.5);
     &:hover{
       cursor: pointer;
       text-decoration: underline;
@@ -94,7 +94,7 @@ const supabase = useSupabaseClient()
   .body{
     border-right: $border;
     height: sizer(9);
-    max-width:sizer(46);
+    max-width: sizer(46);
   }
   .symbol{
     background-repeat: no-repeat;

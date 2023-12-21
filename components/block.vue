@@ -54,7 +54,7 @@
     }
 
     &.width-wide{
-      max-width:$maxsitewidth*1.2; 
+      max-width: $maxsitewidth*1.2; 
     }
     
   }

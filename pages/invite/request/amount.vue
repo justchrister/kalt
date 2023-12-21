@@ -89,9 +89,9 @@
   width: 100%;
   height: sizer(6);
   border: $border;
-  border-color:$dark-40;
+  border-color: $dark-40;
   box-sizing: border-box;
-  margin-bottom:sizer(1);
+  margin-bottom: sizer(1);
   padding: sizer(1) sizer(1.5);
   background-color:primaryColor(1%);
   border-radius:2px;
@@ -101,13 +101,13 @@
 
 .choice:hover{
   background-color:primaryColor(2%);
-  border-color:$dark-60;
+  border-color: $dark-60;
   transition: border-color 150ms $easing-in;
   cursor: pointer;
 }
 .choice.selected{
   background-color:primaryColor(5%);
-  border-color:$dark-60;
+  border-color: $dark-60;
   transition: border-color 150ms $easing-in;
 }
 

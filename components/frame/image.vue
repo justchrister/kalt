@@ -20,13 +20,13 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color:$blue-20;
-  border-radius:$border-radius;
+  background-color: $blue-20;
+  border-radius: $border-radius;
 }
 .image:first-child {
   height: 50vw;
   max-height: 418px;
-  margin-right:sizer(1);
+  margin-right: sizer(1);
 }
 .image:first-child:only-child{
   margin-right:0px;

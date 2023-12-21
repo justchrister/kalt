@@ -114,7 +114,7 @@ const userId = useSupabaseUser()
     display:block;
   }
   .input-group{
-    border:$border;
+    border: $border;
     display: grid;
     grid-template-rows: 1fr;
     gap: 0% 0%;
@@ -122,15 +122,15 @@ const userId = useSupabaseUser()
     grid-template-columns: 6fr 1fr;
   }
   .currency{
-    height:sizer(4);
-    line-height:sizer(4);
-    border-left:$border;
+    height: sizer(4);
+    line-height: sizer(4);
+    border-left: $border;
     text-align:center;
   }
   input{
     border:none;
   }
   .pills{
-    margin-top:sizer(0.5);
+    margin-top: sizer(0.5);
   }
 </style>

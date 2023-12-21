@@ -16,22 +16,22 @@
 <style scoped lang="scss">
 .wrap{
   position:fixed;
-  height:sizer(4);
-  width:sizer(40);
+  height: sizer(4);
+  width: sizer(40);
   bottom:top;
-  right:sizer(3);
+  right: sizer(3);
   position:fixed;
-  top:sizer(4);
+  top: sizer(4);
   z-index:8999;
 }
   
   .notification{
     position:relative;
     box-sizing: border-box;
-    width:$sitewidth;
+    width: $sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:sizer(1) sizer(2);
+    padding: sizer(1) sizer(2);
     background:primaryColor(5%);
     border-color: $test-color;
     color: $test-color;

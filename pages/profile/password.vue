@@ -46,5 +46,5 @@
   }
 </script>
 <style scoped lang="scss">
-  button{margin-top:sizer(2);}
+  button{margin-top: sizer(2);}
 </style>

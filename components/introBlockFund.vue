@@ -17,14 +17,14 @@
 </script>
 <style scoped lang="scss">
   section{
-    background-color:$light;
+    background-color: $light;
     padding: sizer(1.5) sizer(2);
-    border:$border;
+    border: $border;
     &:before{
       content:'';
       display:block;
-      width:sizer(60);
-      height:sizer(70);
+      width: sizer(60);
+      height: sizer(70);
       top:0;
       transform:translateX(-66%);
       position:absolute;

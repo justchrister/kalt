@@ -39,13 +39,13 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-bottom:sizer(2);
-    padding-bottom:sizer(1);
+    margin-bottom: sizer(2);
+    padding-bottom: sizer(1);
     border-bottom:1px solid black;
   }
   /*
   .dark-mode main a{
-    border-color:$light;
+    border-color: $light;
   }
   */
 </style>

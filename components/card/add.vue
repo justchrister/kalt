@@ -176,8 +176,8 @@
       sizer(4.5)
       sizer(6); 
     gap: 0px; 
-    border:$border;
-    padding:sizer(1) 
+    border: $border;
+    padding: sizer(1) 
             sizer(2) ;
   }
   input{
@@ -189,7 +189,7 @@
     }
   }
   button{
-    margin-top:sizer(2);
+    margin-top: sizer(2);
   }
   .logo{
     background-size:contain;
@@ -218,15 +218,15 @@
     background-image: url('/media/icons/unionpay.svg');
   }
   .error-field{
-    color:$red;
-    background:$red-20;
+    color: $red;
+    background: $red-20;
   }
   #number{
 
     transition: margin-left 0.5s;
   }
   .error-field#number{
-    margin-left:sizer(1);
+    margin-left: sizer(1);
     transition: margin-left 0.5s;
   }
 </style>

@@ -50,17 +50,17 @@
     float:right;
   }
   main{
-    max-width:sizer(35);
+    max-width: sizer(35);
     margin:0 auto;
   }
   ul{
-    padding:sizer(1) sizer(2);
+    padding: sizer(1) sizer(2);
   }
   li{
     display:grid;
     grid-template-columns: sizer(4) 4fr;
-    border-bottom:$dark 1px solid;
-    padding:sizer(1) sizer(2);
+    border-bottom: $dark 1px solid;
+    padding: sizer(1) sizer(2);
     &:hover{
       cursor: pointer;
       background:white;

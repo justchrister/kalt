@@ -21,7 +21,7 @@ const props = defineProps({
     display: grid;  // Changed to flex
     grid-template-columns: 1fr sizer(20);
     position:relative;
-    min-height:sizer(6);
+    min-height: sizer(6);
   }
   .image{
     display:inline-block;

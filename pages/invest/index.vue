@@ -39,11 +39,11 @@
       border: 1px solid $dark-40;
       border-radius: 3px;
       padding: sizer(1) sizer(1.5);
-      height:sizer(20);
+      height: sizer(20);
       text-align: left;
       .title{
 
-      margin-bottom:sizer(1);
+      margin-bottom: sizer(1);
       }
       .link{
         text-align:right;

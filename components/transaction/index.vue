@@ -45,9 +45,9 @@
     display: grid; 
     grid-template-columns: sizer(1) 1fr 1fr sizer(4); 
     gap: sizer(1);
-    border-bottom:$border;
+    border-bottom: $border;
     *{
-      font-family:$monospace;
+      font-family: $monospace;
       font-size:85%;
     }
   }
@@ -56,10 +56,10 @@
     text-align:right;
   }
   .date span{
-    padding-right:sizer(2);
-    border-right:$border;
+    padding-right: sizer(2);
+    border-right: $border;
   }
   .dark-mode .transaction{
-    border-color:$light;
+    border-color: $light;
   }
 </style>

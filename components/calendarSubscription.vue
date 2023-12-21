@@ -104,7 +104,7 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       gap: 1% 1%;
       grid-auto-flow: row;
-      max-width:$maxsitewidth;
+      max-width: $maxsitewidth;
     input{
       display:none;
     }
@@ -118,10 +118,10 @@
     input[type="checkbox"] + label{
       border: $border;
       display:inline-block;
-      border-radius:$border-radius;
-      height:sizer(1.5);
-      line-height:sizer(1);
-      padding:sizer(1);
+      border-radius: $border-radius;
+      height: sizer(1.5);
+      line-height: sizer(1);
+      padding: sizer(1);
               sizer(1);
               sizer(2)
               0;
@@ -130,20 +130,20 @@
     }
     input[type="checkbox"]:checked + label {
         text-decoration:underline;
-        border-radius:$border-radius;
+        border-radius: $border-radius;
         background: $green-20;
     }
   }
   /*
     .dark-mode .component.calendar input[type="checkbox"]:checked + label {
         background: $green-60;
-        color:$dark;
+        color: $dark;
     }
     .dark-mode .component.calendar label:hover{
-      background:$dark;
+      background: $dark;
     }
     .dark-mode .component.calendar input[type="checkbox"] + label{
-      border-color:$light;
+      border-color: $light;
     }
   */
 </style>

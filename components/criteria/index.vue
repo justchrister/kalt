@@ -18,7 +18,7 @@ div{
   grid-template-columns: sizer(3.5) 1fr;
 }
   span{
-    width:sizer(3);
+    width: sizer(3);
     display:inline-block;
   }
 </style>

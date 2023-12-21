@@ -19,11 +19,11 @@
     overflow:hidden;
     display:grid;
     grid-template-columns: sizer(3) 1fr sizer(6);
-    line-height:sizer(2);
+    line-height: sizer(2);
   }
   .icon{
-    height:sizer(2);
-    width:sizer(2);
+    height: sizer(2);
+    width: sizer(2);
     display:block; 
     background-repeat: no-repeat;
     background-position: center;
@@ -31,7 +31,7 @@
     background-image: url('/media/icons/funds/your.svg');
   }
   .link{
-    color:$blue;
+    color: $blue;
     text-align:right;
 
   }

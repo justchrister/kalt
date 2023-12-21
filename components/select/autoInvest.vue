@@ -52,15 +52,15 @@
   .wrapper{
     display:grid;
     grid-template-columns: 1fr sizer(5) sizer(5);
-    border:$border;   
+    border: $border;   
     user-select: none;
   }
   span{
     display:inline-block;
     border:none;
-    border-left:$border;
-    padding:sizer(1);
-    min-width:sizer(4);
+    border-left: $border;
+    padding: sizer(1);
+    min-width: sizer(4);
     box-sizing: border-box;
     user-select: none;
     height:100%;
@@ -72,7 +72,7 @@
     &:first-child{
       background:transparent;
       border-left:none;
-      width:sizer(7);
+      width: sizer(7);
     }
   }
   button:hover,
@@ -81,17 +81,17 @@
     border-radius:0;
   }
   .input-wrap{
-    margin-top:sizer(1);
+    margin-top: sizer(1);
   }
 
 /*
   .dark-mode span{
-    border-color:$light;
+    border-color: $light;
     &:hover{
-      background:$dark;
+      background: $dark;
     }
   }
   .dark-mode .wrapper{
-    border-color:$light;
+    border-color: $light;
   }*/
 </style>

@@ -69,8 +69,8 @@
 <style scoped lang="scss">
 
 .filters{
-  margin-top:sizer(5);
-  height:sizer(5);
+  margin-top: sizer(5);
+  height: sizer(5);
   overflow-x:scroll;
   overflow-y:hidden;
   &::-webkit-scrollbar {
@@ -80,8 +80,8 @@
 }
 .overflow-wrap{
   position: relative;
-  width:sizer(70);
-  height:sizer(6);
+  width: sizer(70);
+  height: sizer(6);
 }
 
 ul{
@@ -90,17 +90,17 @@ ul{
   width:auto;
 }
 .live-bullet{
-  color:$red;
+  color: $red;
 }
 li{
   display:inline-block;
   width:clamp($unit-min*7.5, $unit*7.5, $unit-max*7.5);
   text-align:center;
-  border:$border;
+  border: $border;
   padding:0;
   font-size:85%;
   margin-right: sizer(1);
-  border-radius:$border-radius;
+  border-radius: $border-radius;
   position:relative;
   &:before{
     display: none;
@@ -115,11 +115,11 @@ li{
 }
 /*
   .dark-mode li{
-    border-color:$light;
+    border-color: $light;
   }
   .dark-mode li.active,
   .dark-mode li:hover{
-    background:$dark;
+    background: $dark;
   }
   */
 </style>

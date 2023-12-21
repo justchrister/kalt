@@ -175,7 +175,7 @@ export const ok = {
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
     const ms = String(date.getUTCMilliseconds()).padStart(3, '0');
-    const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`;
+    const timestamptz = `${year}-${month}-${day}T${hours}: ${minutes}: ${seconds}.${ms}Z`;
     return timestamptz;
   },
   combineJson(jsonArray){

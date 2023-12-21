@@ -87,7 +87,7 @@
 
 <style scoped lang="scss">
   button{
-    margin-top:sizer(2);
+    margin-top: sizer(2);
   }
   a{
     margin:0 sizer(0.5);

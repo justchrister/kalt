@@ -73,14 +73,14 @@
   .wrapper{
     display:grid;
     grid-template-columns: 1fr sizer(5) sizer(5);
-    border:$border;   
+    border: $border;   
     user-select: none;
     span{
       display:inline-block;
       border:none;
-      border-left:$border;
-      padding:sizer(1) 0;
-      min-width:sizer(4);
+      border-left: $border;
+      padding: sizer(1) 0;
+      min-width: sizer(4);
       box-sizing: border-box;
       user-select: none;
       height:100%;

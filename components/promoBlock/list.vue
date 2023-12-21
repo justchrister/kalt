@@ -12,12 +12,12 @@
 .wrap{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap:sizer(2);
+  column-gap: sizer(2);
   width: $sitewidth;
   min-width: 500px;
   max-width: $maxsitewidth*1.2;
   margin:0 auto;
-  padding:sizer(5) 0;
+  padding: sizer(5) 0;
 }
 .scroll-wrap{
   width: $sitewidth;

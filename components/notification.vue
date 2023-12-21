@@ -23,29 +23,29 @@
     position:fixed;
     width:100vw;
     bottom:0;
-    padding:sizer(1) 0;
-    border-top:$border;
+    padding: sizer(1) 0;
+    border-top: $border;
     z-index:2;
     left: 0;
     right: 0;
   }
   .notify{
     box-sizing: border-box;
-    width:$sitewidth;
+    width: $sitewidth;
     max-width: $maxsitewidth; 
     margin:auto;
-    padding:sizer(1) 0;
+    padding: sizer(1) 0;
   }
   #warn{
     background: $yellow-20;
-    border-top-color:$yellow;
+    border-top-color: $yellow;
   }
   #success{
-    background:$green-20;
+    background: $green-20;
     border-top-color: $green;
   }
   #error{
-    background:$red-20;
+    background: $red-20;
     border-top-color: $red;
   }
 </style>

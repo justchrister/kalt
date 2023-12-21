@@ -30,6 +30,6 @@
 </script>
 <style scoped lang="scss">
   button{
-    margin-top:sizer(1);
+    margin-top: sizer(1);
   }
 </style>

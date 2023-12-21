@@ -78,15 +78,15 @@
       display:block;
       content: '';
       position:relative;
-      top:sizer(0.5);
-      right:sizer(0.5);
+      top: sizer(0.5);
+      right: sizer(0.5);
       float:right;
-      width:sizer(1.5);
-      height:sizer(1.5);
-      background-color:$green;
+      width: sizer(1.5);
+      height: sizer(1.5);
+      background-color: $green;
       background-image:url('omoji/check.svg');
       background-size:cover;
-      border-radius:sizer(2);
+      border-radius: sizer(2);
     }
   }
 </style>

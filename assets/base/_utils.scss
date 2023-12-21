@@ -166,7 +166,7 @@ $border-radius: 0;
   @mixin border{
     border-radius:2px;
     border: $border;
-    border-color:$dark-40;
+    border-color: $dark-40;
   }
 
   @mixin hoverable {
@@ -175,13 +175,13 @@ $border-radius: 0;
   }
   @mixin hovering {
     background-color:primaryColor(2%);
-    border-color:$dark-60;
+    border-color: $dark-60;
     transition: border-color 150ms $easing-in;
     cursor: pointer;
   }
   @mixin selected {
     background-color:primaryColor(5%);
-    border-color:$dark-60;
+    border-color: $dark-60;
     transition: border-color 150ms $easing-in;
     cursor: pointer; 
   }

@@ -12,7 +12,7 @@
 
 p.links{
   a:first-child{
-    margin-right:sizer(2)
+    margin-right: sizer(2)
   }
 }
 
@@ -75,7 +75,7 @@ input.success{
 input.error{
   background-image:url("omoji/suprised.svg");
   animation-duration: 2s;
-  background-color:$red-20;
+  background-color: $red-20;
 }
 
 .input-wrap{
@@ -86,7 +86,7 @@ input[type="checkbox" i]  {
   height:auto;
 }
 input[type="checkbox" i] + label{
-  font-size:sizer(1.5);
+  font-size: sizer(1.5);
 }
 
 a:focus button{
@@ -99,11 +99,11 @@ a:hover button{
 }
 button {
   border-radius: 0px;
-  margin-bottom:sizer(1);
+  margin-bottom: sizer(1);
   width: 100%;
   padding: 2% 0;
   background:transparent;
-  color:$dark;
+  color: $dark;
   border: $border;
   @include font-body;
   &.square,
@@ -115,7 +115,7 @@ button {
 }
 label{
   @include font-body;
-  font-size: clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
-  margin:sizer(0.5) 0;
+  font-size: sizer(1.2);
+  margin: sizer(0.5) 0;
 }
 
