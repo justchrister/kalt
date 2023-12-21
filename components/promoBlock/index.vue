@@ -31,7 +31,7 @@
     padding:sizer(1) sizer(1.5);
     background:$light;
     box-sizing:border-box;
-    box-shadow: 0 0 sizer(2) 0 $test-color-5;
+    box-shadow: 0 0 sizer(2) 0 primaryColor(5);
   }
   .content p{
     color:$dark-85;
