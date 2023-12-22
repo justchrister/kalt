@@ -18,7 +18,7 @@
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
     
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender: 'components/toggle/newsletters.vue',
       entity: userId.value.id
     }).users({
@@ -28,7 +28,8 @@
     if(error) {
       ok.log('error', 'Error updating user preferences: ', error)
     } else {
-      ok.log('success', 'Updated user preferences')
+      if(isOn.value) ok.log('', 'Subscribed to newsletters')
+      else ok.log('', 'Unsubscribed from newsletters')
     }
   }
 </script>
