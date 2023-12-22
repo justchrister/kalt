@@ -24,7 +24,7 @@
 
   const requestInvite = async () => {
     
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       "sender":"pages/invite/request/index.vue",
       "entity": requestUuid.value
     }).requestAccess({
