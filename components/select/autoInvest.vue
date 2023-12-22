@@ -18,14 +18,18 @@
 
   const postUserPreference = async (autoVestRate) => {
     const autoVest = autoVestRate/100;
-    pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/select/autoVest.vue',
       entity: userId.value.id
     }).users({
       userId: userId.value.id,
       autoVest: autoVest
     });
-    ok.log('', 'updated auto-invest: '+autoVestRate)
+    if(error){
+      ok.log('', 'error updating auto-invest: ', error)
+    } else {
+      ok.log('', 'updated auto-invest: '+autoVestRate)
+    }
   }
 
   const add = async () => { 
