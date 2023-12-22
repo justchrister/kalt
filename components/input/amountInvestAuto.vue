@@ -42,7 +42,7 @@
     if(initialAmount==ok.toInt(amount.value)) return
     if(previousValue==ok.toInt(amount.value)) return
     previousValue = ok.toInt(amount.value)
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/input/amountSubscription.vue',
       entity: userId.value.id
     }).userSubscriptions({
