@@ -51,7 +51,7 @@
   };
   const create = async () => {
     if(!val.value) return
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender: "pages/hq/register-shares.vue"
     }).exchangeOrder({
       userId: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
