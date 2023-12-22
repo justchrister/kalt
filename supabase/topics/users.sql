@@ -19,11 +19,10 @@ CREATE TABLE "topic_users" (
     "birthdate"             date,
     "addressLine1"          text,
     "addressLine2"          text,
-    "autoVest"            numeric                         NOT NULL        DEFAULT 1,
+    "autoVest"              numeric                         NOT NULL        DEFAULT 1,
     "newsletters"           boolean, 
     "termsOfService"        boolean, 
     "performanceUpdates"    boolean, 
-    "colorScheme"           text,
     "profilePicture"        text,
     "language"              text,
     "currency"              text                                            REFERENCES sys_currencies(iso)
