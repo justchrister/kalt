@@ -33,7 +33,7 @@
     margin:auto;
     padding: sizer(1) sizer(2);
     background:primaryColor(5%);
-    border-color: $test-color;
-    color: $test-color;
+    border-color: primaryColor(100%);
+    color: primaryColor(100%);
   }
 </style>
