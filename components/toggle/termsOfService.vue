@@ -7,7 +7,8 @@
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id);
-  const isOn = ref(user.termsOfService || true) // pretty sure this is a good simplification, but might just be that if user.termsOfService is set to false, it will be set to true due to the falsely triggering the or operator
+  const isOn = ref(true) 
+  isOn.value = user.termsOfService;
 
   const toggleValue = async () => {
     if(isOn.value) return false
@@ -16,7 +17,7 @@
   const updateTermsOfService = async () => {
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/toggle/termsOfService.vue',
       entity: userId.value.id
     }).users({
@@ -26,7 +27,8 @@
     if(error) {
       ok.log('error', 'Error updating user preferences: ', error)
     } else {
-      ok.log('success', 'Updated user preferences')
+      if(isOn.value) ok.log('', 'Accepted terms of service')
+      else ok.log('', 'Declined terms of service')
     }
   }
 </script>
