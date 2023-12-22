@@ -5,11 +5,7 @@
       <fund :ticker="fund.ticker"/>
     </block>
     <block>
-      <div class="button-group">
-        <button @click="navigateTo('/invest/auto')"> auto investments -> </button>
-        <button @click="navigateTo('/invest')"> invest now -> </button>
-      </div>
-      <select-fund />
+      <button @click="navigateTo('/invest')"> invest now -> </button>
     </block>
   </main>
 </template>
