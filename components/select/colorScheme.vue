@@ -27,7 +27,7 @@
 
   const setColorScheme = async (colorScheme) => {
     colorMode.preference = colorScheme;
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/select/colorScheme.vue',
       entity: userId.value.id
     }).users({
