@@ -74,7 +74,7 @@ const userId = useSupabaseUser()
     }
     if(amountFloat>0){
     ok.log('', amountFloat)
-      const { error, data } = await pub(supabase, {
+      const error = await pub(supabase, {
         sender:'components/input/amountSell.vue',
         entity: props.uuid
       }).accountTransactions({
