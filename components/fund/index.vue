@@ -1,104 +1,55 @@
 <template>
-  <div class="wrapper" v-if="data">
-    <div class="heading">
-      <div class="title" @click="checkIt()">
-        {{ data.name }}
+    <div class="fund" v-if="fund">
+      <div class="icon">
+        <span :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></span>
+      </div>
+      <div class="name">
+        {{fund.name}}
+      </div>
+      <div class="rate">
+  <nuxt-link :to="`/funds/${shortTicker}`">
+        read more ->
+  </nuxt-link>
       </div>
     </div>
-    <div class="body-wrapper">
-      <div class="body">
-        <div class="description">
-          <div>
-          {{ data.description}}
-          </div>
-        </div>
-        <nuxt-link :to="'funds/'+shortTicker">
-          <div class="button">
-            read more ->
-          </div>
-        </nuxt-link>
-      </div>
-      <div class="symbol" :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></div>
-    </div>
-  </div>
 </template>
 <script setup lang="ts">
-const supabase = useSupabaseClient()
+  const supabase = useSupabaseClient()
+  const userId = useSupabaseUser()
   const props = defineProps({
     ticker: {
       type: String,
       required: true
     }
-  });
-  const shortTicker = props.ticker.split('.')[0];
-  const { data, error } = await supabase
+  })
+  const { data:fund, error } = await supabase
     .from('sys_funds')
     .select()
     .eq('ticker', props.ticker)
     .limit(1)
-    .single();
+    .single()
+  const shortTicker = props.ticker.split('.')[0] 
 </script>
 <style scoped lang="scss">
-  .wrapper{
-    display: block;
+  
+  .fund{
+    text-decoration:none;
+    display:grid;
+    grid-template-columns: sizer(3) 1fr sizer(10);
     border: $border;
+    padding: sizer(1) sizer(1) sizer(1) sizer(1.5);
+    line-height: sizer(4);
   }
-  .title {
-    height: sizer(2.5);
-    padding: sizer(1);
-    font-weight: 600;
-    border-bottom: $border;
-    &:hover{
-      cursor:pointer;
-    }
+  .rate,
+  .name{
+    text-decoration:none;
   }
-  .body-wrapper {
-    display: grid;
-    max-width: sizer(55);
-    overflow:hidden;
-    height: sizer(9);
-    grid-template-columns: 1fr sizer(9);
-  }
-  .description{
-    border-bottom: $border;
-    max-width: sizer(44);
-    overflow:hidden;
-    padding: sizer(1);
-    white-space: nowrap;
-    max-width: sizer(46);
-    div{
-      animation: animate_text 30s linear infinite; /* The animation property */
-    }
-
-  }
-  @keyframes animate_text {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-  a{
-    text-decoration: none;
-  }
-  .button{
-    text-align: center;
-    height: sizer(5);
-    line-height: sizer(4.5);
-    &:hover{
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
-  .body{
-    border-right: $border;
-    height: sizer(9);
-    max-width: sizer(46);
-  }
-  .symbol{
+  .icon span{
+    height: sizer(4);
+    width: sizer(2);
+    display:block; 
     background-repeat: no-repeat;
-    background-size: contain;
-    margin: sizer(2);
+    background-position: center;
+    background-size:contain;
   }
 </style>

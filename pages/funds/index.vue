@@ -2,7 +2,7 @@
   <main v-if="data">
     <intro title="Our direct dividend funds" paragraph="We have a few speciailized funds that let you invest in a variety of different asset classes. By building your own diversified fund you can invest in all of these." />
     <block v-for="fund of data" :key="fund.ticker" margin="2">
-      <fund-2 :ticker="fund.ticker"/>
+      <fund :ticker="fund.ticker"/>
     </block>
     <block>
       <div class="button-group">
