@@ -31,7 +31,7 @@
   const selected = ref();
   const updateProfile = async (iso) => {
     selected.value = iso;
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:"pages/select/language.vue",
       entity: userId.value.id
     }).users({
