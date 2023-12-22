@@ -40,7 +40,7 @@ const userId = useSupabaseUser()
     if(previousValue==ok.toInt(amount.value)) return
     previousValue = ok.toInt(amount.value)
     if(amount.value){
-      const { error } = await pub(supabase, {
+      const error = await pub(supabase, {
         sender:'components/input/amountBuy.vue',
         entity: props.uuid,
       }).accountTransactions({
