@@ -65,7 +65,7 @@
       loading.value = false;
       return false;
     }
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender: 'pages/sell.vue',
       entity: uuid
     }).accountTransactions({
