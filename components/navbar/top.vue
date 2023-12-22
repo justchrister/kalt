@@ -99,7 +99,6 @@
   header{
     position:fixed;
     width:100%;
-    height: sizer(5);
   }
 .logomark span{
   font-weight:bold;
