@@ -26,7 +26,7 @@
   }
   const updateBankCode = async () => {
     state.value = 'loading'
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       entity: userId.value.id,
       sender:'components/input/bankCode.vue'
     }).linkedBankAccounts({
