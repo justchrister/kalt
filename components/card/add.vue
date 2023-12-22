@@ -129,7 +129,7 @@
       setNotification ('CVC is too short 😅')
       markAsWrong('cvc')
     } else {
-      const { error } = await pub(supabase, {
+      const error = await pub(supabase, {
         sender:'components/card/add.vue',
         entity: ok.uuid()
       }).paymentCards({
