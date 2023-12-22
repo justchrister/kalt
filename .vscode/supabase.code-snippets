@@ -32,7 +32,7 @@
 	},
 	"pub": {
 		"prefix": ["/pub"],
-		"body": "const { error, data } = await pub(supabase, {sender:'$1'}).$2({\n\t$0\n});",
+		"body": "const error = await pub(supabase, {sender:'$1'}).$2({\n\t$0\n});",
 		"description": "a snippet to scaffold a pub",
 	}
 }
