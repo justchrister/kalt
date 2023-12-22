@@ -42,7 +42,7 @@
 
   const create = async () => {
     if(!val.value) return false;
-    const { error, data } = await pub(supabase, {"sender":"pages/hq/register-revenue.vue"}).revenueTransaction({
+    const error = await pub(supabase, {"sender":"pages/hq/register-revenue.vue"}).revenueTransaction({
       ticker: 'gi.ddf',
       amount: val.value-(val.value*0.04),
       currency: 'EUR'
