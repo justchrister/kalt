@@ -34,7 +34,7 @@
   const loading = ref(false)
   const completeTransaction = async () => {
     loading.value = true
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender: 'pages/invest/index.vue',
       entity: uuid
     }).accountTransactions({
