@@ -63,7 +63,7 @@
 
   const setProfilePicture = async (selectedProfilePicture) => {
     profilePicture.value = selectedProfilePicture;
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/select/profilePicture.vue',
       entity: userId.value.id
     }).users({
