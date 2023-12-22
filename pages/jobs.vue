@@ -30,62 +30,71 @@
           </li>
         </ul>
       </p>
-    </block>
-    <block>
-      <h2>Working here</h2>
       <p>
         Benefits
         <ul>
           <li>
             Remote only
           </li>
-        </ul>
-        <ul>
+          <li>
+            Co-founder title
+          </li>
           <li>
             5 weeks of vacation
           </li>
-        </ul>
-        <ul>
           <li>
             Clear strategy, following an OKR methodology
           </li>
         </ul>
       </p>
       <p>
-        Your key characteristics:
+        Our tech-stack:
         <ul>
           <li>
-            Bachelor's or higher degree in Mathematics, Statistics, Computer Science, Engineering, or a related field, is cool but not required.
+            Python based ML stack
           </li>
-        </ul>
-        <ul>
           <li>
-            Eager to learn.
+            Node+TS based data-crawlers
           </li>
-        </ul>
-        <ul>
           <li>
-            Knowledge of data structures, algorithms, and software design principles.
+            Nuxt 3 based website
           </li>
-        </ul>
-        <ul>
           <li>
-            Excellent problem-solving and analytical skills.
-          </li>
-        </ul>
-        <ul>
-          <li>
-            Ability to work collaboratively in a team environment and communicate effectively with all stakeholders.
-          </li>
-        </ul>
-        <ul>
-          <li>
-            Ability to work focused and find elegant solutions to complex problems.
+            Supabase + vercel as backend
           </li>
         </ul>
       </p>
       <p>
-        But you are expected to give this your all.
+        Read more on our <a href="https://github.com/justchrister/kalt" target="_blank"> Github page ↗</a>.
+      </p>
+    </block>
+    <block>
+      <h2> You </h2>
+      <p>
+        Your key characteristics:
+        <ul>
+          <li>
+            Focused and eager to build products.
+          </li>
+          <li>
+            Excellent problem-solving and analytical skills.
+          </li>
+          <li>
+            Ability to communicate effectively.
+          </li>
+          <li>
+            Loves working focused.
+          </li>
+          <li>
+            A make it work, make it great attitude.
+          </li>
+          <li>
+            Total dedication to the project.
+          </li>
+          <li>
+            A degree in math, statistics, CS, or engineering, is cool but not required.
+          </li>
+        </ul>
       </p>
     </block>
     <block>
@@ -93,7 +102,7 @@
         Compensation
       </h2>
       <p>
-        All employees are paid a minimum of 65 000 EUR, the same salary the CEO is paid.
+        All employees are paid a minimum of 75 000 EUR, the same salary the CEO is paid.
       </p>
       <p>
         There are also performance based bonuses, which are given out only based on performance not on inherently flawed performance indicators. You choose if this bonus should be in stock or cash.
