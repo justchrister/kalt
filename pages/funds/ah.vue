@@ -37,13 +37,7 @@
       <p>
         As we build these homes, we must blend innovation with compassion. Tomorrow's affordable housing should be synonymous with lasting quality and respect for the environment, embracing smart technology and sustainable design. This isn't just building for shelter, but carefully crafting the backdrop of everyday life for a thriving city. It's a commitment to a future where everyone has a stake in their community and the urban environment as a whole.
       </p>
-    </block>
-    <block>
-      <div class="button-group">
-        <button @click="navigateTo('/invest/auto')"> auto investments -> </button>
-        <button @click="navigateTo('/invest')"> invest now -> </button>
-      </div>
-      <select-fund />
+      <button @click="navigateTo('/invest')"> invest now -> </button>
     </block>
     <!-- insert map here -->
   </main>
