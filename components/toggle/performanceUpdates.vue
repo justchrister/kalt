@@ -7,7 +7,8 @@
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id);
-  const isOn = ref(user.performanceUpdates || true)
+  const isOn = ref(true)
+  isOn.value = user.performanceUpdates;
   
   if(user && user.performanceUpdates) {
     isOn.value = user.performanceUpdates;
@@ -24,7 +25,7 @@
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
     
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/toggle/performanceUpdates.vue',
       entity: userId.value.id
     }).users({
@@ -34,7 +35,8 @@
     if(error) {
       ok.log('error', 'Error updating user preferences: ', error)
     } else {
-      ok.log('success', 'Updated user preferences')
+      if(isOn.value) ok.log('', 'Subscribed to performance updates')
+      else ok.log('', 'Unsubscribed from performance updates')
     }
   }
 </script>
