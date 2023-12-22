@@ -55,7 +55,7 @@ export default defineEventHandler( async (event) => {
     const rate = (fromRate/toRate) || 1;
     if(!fromRate) return null;
     if(!toRate) return null;
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/acl/updateExchangeRates.ts'
     }).exchangeRates({
       from: pair.from,
