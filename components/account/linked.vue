@@ -58,24 +58,8 @@
 <script setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
-
-  const getLinkedBankAccount = async () => {
-    const { data, error } = await supabase
-      .from('getLinkedBankAccount')
-      .select()
-      .eq('userId', userId.value.id)
-      .limit(1)
-      .single()
-    if(data) {
-      ok.log('success', 'got linked bank account', data)
-      return data
-    }
-    if(error) {
-      ok.log('', 'no linked bank account')
-      return false
-    }
-  }
-  const linkedBankAccount = await getLinkedBankAccount()
+  const user = await get(supabase).user(userId.value.id);
+  const linkedBankAccount = await get(supabase).linkedBankAccount(user);
 </script>
 <style scoped lang="scss">
   .card{
