@@ -26,7 +26,7 @@ export default defineEventHandler( async (event) => {
       .eq('transactionId', id)    
   }
   const createPendingPayments = async (payment) => {
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/payments/initiatePayments.ts',
       entity: payment.transactionId
     }).paymentsPending({
