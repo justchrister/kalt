@@ -39,7 +39,7 @@ export default defineEventHandler( async (event) => {
     }
   }
   const updatePaymentPendingStatus = async (status) => {
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       entity: message.message_entity,
       sender: 'service/api/acl/stripe/webhooks/paymentsPending.ts'
     }).paymentsPending({
@@ -58,7 +58,7 @@ export default defineEventHandler( async (event) => {
     }
   }
   const updateTransactionStatus = async (status) => {
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/acl/stripe/webhooks/paymentsPending.ts',
       entity: message.transactionId
     }).accountTransactions({
