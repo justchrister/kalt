@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const createExchangeOrder = async (userId: string, quantity: number, tickerx: tickers) => {
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/autoVest/index.ts'
     }).exchangeOrders({
       ticker: tickerx,
@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
     }
   };
   const createWithdrawTransaction = async (userId: string, amount: number, currency: string) => {
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/autoVest/index.ts'
     }).accountTransactions({
       'userId': userId,
@@ -77,7 +77,7 @@ export default defineEventHandler(async (event) => {
   };
 
   const updateTransaction = async (userId: string, entity: string) => {
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/autoVest/index.ts',
       entity: entity,
     }).accountTransactions({
