@@ -29,7 +29,7 @@
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender: 'components/input/lastName.vue',
       entity: userId.value.id
     }).users({
