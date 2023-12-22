@@ -26,7 +26,7 @@
   const toggleSubscription = async () => {
     const toggledValue = await toggleValue()
     isOn.value = toggledValue
-    const { error, data } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'components/toggle/invest/auto.vue',
       entity: userId.value.id
     }).userSubscriptions({
