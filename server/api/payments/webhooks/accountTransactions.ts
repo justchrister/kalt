@@ -35,7 +35,7 @@ export default defineEventHandler( async (event) => {
   }
 
   const updateTransaction = async (entity) => {
-    const { error } = await pub(supabase, {
+    const error = await pub(supabase, {
       sender:'server/api/payments/webhooks/accountTransactions.ts',
       entity: entity
     }).accountTransactions({
