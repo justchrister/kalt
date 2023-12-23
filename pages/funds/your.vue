@@ -7,10 +7,7 @@
       <fund-your ticker="ah"/>
       <fund-your ticker="vc"/>
       <block>
-        <div class="button-group">
-          <button @click="navigateTo('/invest/auto')"> auto investments -> </button>
-          <button @click="navigateTo('/invest')"> invest now -> </button>
-        </div>
+        <button @click="navigateTo('/invest')"> invest now -> </button>
       </block>
     </block>
   </main>
