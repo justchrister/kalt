@@ -301,6 +301,21 @@ export const get = (client: any) => {
         return null
       } else {
         const combined = ok.combineJsonByKeys(data, 'message_entity');
+        return combined[0];
+      }
+    },
+    paymentCard: async (user) => {
+      const { data, error } = await client
+        .from('topic_paymentCards')
+        .select()
+        .eq('userId', user.userId)
+        .eq('default', true)
+        .order('message_sent', { ascending: false })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        const combined = ok.combineJsonByKeys(data, 'message_entity');
         ok.log('', combined)
         return combined[0];
       }
