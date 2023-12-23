@@ -104,11 +104,11 @@
     width: sizer(1.45);
     height: sizer(1);
     display:inline-block;
-    background:url('/omoji/heart-outline.svg') no-repeat center center;
+    background:url('/omoji/heart-outline.png') no-repeat center center;
     background-size:contain;
   }
   .rate span.active{
-    background:url('/omoji/heart-filled.svg') no-repeat center center;
+    background:url('/omoji/heart-filled.png') no-repeat center center;
     background-size:contain;
     animation: hearbeat 2s linear 1;
   }
