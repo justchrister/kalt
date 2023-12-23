@@ -1,12 +1,12 @@
 <template>
-  <div class="fund" v-if="fund">
+  <div class="fund" v-if="fund" @click="adjustrate()">
     <div class="icon">
       <span :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></span>
     </div>
     <div class="name">
       {{fund.name}}
     </div>
-    <div class="rate" @click="adjustrate()">
+    <div class="rate">
       <span :class="{ active: rate >= 1}"></span>
       <span :class="{ active: rate >= 2}"></span>
       <span :class="{ active: rate >= 3}"></span>
@@ -81,10 +81,15 @@
   .fund{
     display:grid;
     grid-template-columns: sizer(3) 1fr sizer(5);
-    border: $border;
     padding: sizer(1) sizer(1) sizer(1) sizer(1.5);
     line-height: sizer(4);
     margin-bottom: sizer(1);
+    @include border;
+    @include hoverable;
+  }
+  .fund:hover{
+    @include hovering;
+    cursor:pointer;
   }
   .icon span{
     height: sizer(4);
@@ -98,18 +103,30 @@
     cursor:pointer;
   }
   .rate span{
-    width: sizer(1);
+    width: sizer(1.5);
     height: sizer(1);
-    margin-right: sizer(0.5);
     display:inline-block;
     background:url('/omoji/heart-outline.svg') no-repeat center center;
-    background-size:contain;
+    background-size:70%;
     &:hover{
       cursor:pointer;
     }
   }
   .rate span.active{
     background:url('/omoji/heart-filled.svg') no-repeat center center;
-    background-size:contain;
+    background-size:65%;
+    animation: hearbeat 2s linear 1;
+
+  }
+  .name::selection{
+    background-color:transparent;
+  }
+  @keyframes hearbeat {
+    0%, 5%, 10%, 20%, 100% { 
+      transform: scale(1); 
+    }
+    5%, 15% { 
+      transform: scale(1.15);  
+    }
   }
 </style>
