@@ -110,7 +110,7 @@
   .rate span.active{
     background:url('/omoji/heart-filled.png') no-repeat center center;
     background-size:contain;
-    animation: hearbeat 2s linear 1;
+    animation: hearbeat 2s $easing-in-out 1;
   }
   .name::selection{
     background-color:transparent;
