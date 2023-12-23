@@ -100,17 +100,16 @@
     background-size:contain;
   }
   .rate span{
-    width: sizer(1.5);
-    height: sizer(1.5);
+    opacity:0.99;
+    width: sizer(1.45);
+    height: sizer(1);
     display:inline-block;
     background:url('/omoji/heart-outline.svg') no-repeat center center;
     background-size:contain;
-    transform:scale(0.65);
   }
   .rate span.active{
     background:url('/omoji/heart-filled.svg') no-repeat center center;
     background-size:contain;
-    transform:scale(0.65);
     animation: hearbeat 2s linear 1;
   }
   .name::selection{
@@ -118,10 +117,10 @@
   }
   @keyframes hearbeat {
     0%, 5%, 10%, 20%, 100% { 
-      transform: scale(0.65); 
+      transform: scale(1); 
     }
     5%, 15% { 
-      transform: scale(0.75);  
+      transform: scale(1.15);  
     }
   }
 </style>
