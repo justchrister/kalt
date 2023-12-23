@@ -99,34 +99,29 @@
     background-position: center;
     background-size:contain;
   }
-  .rate:hover{
-    cursor:pointer;
-  }
   .rate span{
     width: sizer(1.5);
-    height: sizer(1);
+    height: sizer(1.5);
     display:inline-block;
     background:url('/omoji/heart-outline.svg') no-repeat center center;
-    background-size:70%;
-    &:hover{
-      cursor:pointer;
-    }
+    background-size:contain;
+    transform:scale(0.65);
   }
   .rate span.active{
     background:url('/omoji/heart-filled.svg') no-repeat center center;
-    background-size:65%;
+    background-size:contain;
+    transform:scale(0.65);
     animation: hearbeat 2s linear 1;
-
   }
   .name::selection{
     background-color:transparent;
   }
   @keyframes hearbeat {
     0%, 5%, 10%, 20%, 100% { 
-      transform: scale(1); 
+      transform: scale(0.65); 
     }
     5%, 15% { 
-      transform: scale(1.15);  
+      transform: scale(0.75);  
     }
   }
 </style>
