@@ -15,7 +15,7 @@
       <select-fund />
     </block>
     <block margin="1">
-      <card-default />
+      <card />
     </block>
     <block margin="1">
       <link-group>
@@ -30,11 +30,11 @@
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id)
   definePageMeta({
-    pagename: 'Subscription',
+    pagename: 'Invest',
     middleware: 'auth'
   })
   useHead({
-    title: 'Subscription'
+    title: 'Invest'
   })
   
   const dailySelected = ref(true);
