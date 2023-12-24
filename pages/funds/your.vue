@@ -7,7 +7,7 @@
       <fund-your ticker="ah"/>
       <fund-your ticker="vc"/>
       <block>
-        <button @click="navigateTo('/invest')"> invest now -> </button>
+        <input-button link="/invest">invest now -></input-button>
       </block>
     </block>
   </main>
