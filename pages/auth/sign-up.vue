@@ -24,9 +24,7 @@
             id='password'
           />
         </div>
-        <button>
-          sign up  <loading-icon v-if="loading" />
-        </button>
+        <input-button>sign up <loading-icon v-if="loading" /></input-button>
       </form>
     </block>
     <block>
