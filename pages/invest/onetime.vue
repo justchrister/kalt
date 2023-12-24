@@ -12,7 +12,9 @@
       <select-fund />
     </block>
     <block margin="1">
-      <button @click="completeTransaction()"> Invest <loading-icon v-if="loading" /> </button>
+      <input-button @click="completeTransaction()">
+        Invest <loading-icon v-if="loading" />
+      </input-button>
     </block>
   </main>
 </template>
