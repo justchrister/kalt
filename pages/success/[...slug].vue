@@ -4,9 +4,7 @@
       <success-banner />
     </block>
     <block>
-      <button @click="goBack()">
-        ← back
-      </button>
+      <input-button @click="goBack()">sign in →</input-button>
     </block>
   </main>
 </template>
@@ -28,10 +26,8 @@
     clearTimeout(timer1);
     const url = await generateUrl(); // Wait for the URL to be generated
     if (!url) {
-      ok.log('', 'no url');
       navigateTo('/');
     } else {
-      ok.log('', 'yay url', url);
       navigateTo(url);
     }
   };
