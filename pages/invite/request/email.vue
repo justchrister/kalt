@@ -4,7 +4,7 @@
       <h1>Where should we send the invite?</h1>
 
       <input type="text" placeholder="email" v-model="email" class="next"/>
-      <button class="next" @click="requestInvite()"> Next -> </button>
+      <input-button @click="requestInvite()">next -></input-button>
     </block>
   </main>
 </template>
