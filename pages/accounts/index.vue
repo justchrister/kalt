@@ -3,9 +3,7 @@
     <navbar-tabs/>
     <block margin="2">
       <account-card />
-      <nuxt-link to="accounts/transactions">
-        <button>transactions →</button>
-      </nuxt-link>
+      <input-button link="/accounts/transactions">transactions →</input-button>
     </block>
     <block margin="2">
       <account-details />
