@@ -55,6 +55,13 @@ create type public."transferProviders" as enum (
     'wise'
 );
 
+create type public."autoInvest_intervals" as enum (
+    'daily',
+    'weekly',
+    'monthlyBeginning',
+    'monthlyMiddle',
+    'monthlyEnd'
+);
 
 create type public."tickers" as enum (
     'gi.ddf',
