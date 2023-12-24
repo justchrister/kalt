@@ -32,7 +32,7 @@
       <p>
         By investing in our art fund, you're not just buying into art; you're securing a share in a well-researched, diversified portfolio of timeless works. It's not just about financial growth—it's about becoming part of a legacy of value, in a market that's traditionally less volatile than stocks and bonds.
       </p>
-      <button @click="navigateTo('/invest')"> invest now -> </button>
+      <input-button link="/invest">invest now -></input-button>
     </block>
     <block>
       <h2>The art</h2>
