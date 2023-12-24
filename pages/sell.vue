@@ -6,13 +6,13 @@
       <form @submit.prevent="completeWithdrawTransaction()">
         <input-amount-sell :uuid="uuid" :max="max" :portfolio="portfolioMax" :account="accountMax" :currency="user.currency"/>
         <account-linked-card />
-        <button> sell <loading-icon v-if="loading" /> </button>
+        <input-button>sell <loading-icon v-if="loading" /></input-button>
       </form>
     </block>
     <block v-else>
       <h1> You have nothing to withdraw <omoji emoji="🙃"/></h1>
       <h1> Let's change that <omoji emoji="✨"/> </h1>
-      <button @click="navigateTo('/portfolio/buy')"> invest in something that matters </button>
+      <input-button link="/invest">invest in something that matters</input-button>
     </block>
     <span v-if="notification" @click="setNotification(null)">
       <banner-notification color="yellow" :message="notification"/>
