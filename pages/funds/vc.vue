@@ -34,7 +34,7 @@
       <p>
         With this approach, we don't just aim for financial growth; we are driving meaningful change, shaping a future where innovation, sustainability, and profitability coalesce. The criteria for us to consider an investment reflect our commitment to fostering innovation, sustainability, and ethical responsibility in the ventures we support.
       </p>
-      <button @click="navigateTo('/invest')"> invest now -> </button>
+      <input-button link="/invest">invest now -></input-button>
     </block>
     <block margin="2">
       <h2> Ventures </h2>
@@ -44,10 +44,7 @@
       </venture-list>
     </block>
     <block>
-      <div class="button-group">
-        <button @click="navigateTo('/invest/auto')"> auto investments -> </button>
-        <button @click="navigateTo('/invest')"> invest now -> </button>
-      </div>
+      <input-button link="/invest">invest now -></input-button>
       <select-fund />
     </block>
   </main>
