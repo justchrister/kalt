@@ -15,11 +15,7 @@
             id='email'
           />
         </div>
-        <div class="input-wrap">
-          <button>
-            request new password
-          </button>
-        </div>
+        <input-button>request new password</input-button>
       </form>
       <link-group>
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
