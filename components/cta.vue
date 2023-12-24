@@ -1,24 +1,15 @@
 <template>
   <div class="cta">
     <div class="button-group" v-if="signedIn">
-      <nuxt-link to="/sell">
-        <button id="sell" tabindex="-1">divest</button>
-      </nuxt-link>
-      <nuxt-link to="/invest">
-        <button id="buy" tabindex="-1">invest</button>
-      </nuxt-link>
+      <input-button link="/sell">divest</input-button>
+      <input-button link="/invest">invest</input-button>
     </div>
     <div class="button-group" v-if="!signedIn">
-      <nuxt-link to="/auth/sign-up">
-        <button id="sign-up" tabindex="-1">create account</button>
-      </nuxt-link>
-      <nuxt-link to="/auth">
-        <button id="sign-in" tabindex="-1">sign in</button>
-      </nuxt-link>
+      <input-button link="/request/amount">request invite</input-button>
+      <input-button link="/auth">sign in</input-button>
     </div>
   </div>
 </template>
-
 <script setup>
   const props = defineProps({
     showDivest: {
