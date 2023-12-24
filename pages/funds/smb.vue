@@ -17,10 +17,7 @@
       </criteria-list>
     </block>
     <block>
-      <div class="button-group">
-        <button @click="navigateTo('/invest')"> invest now -> </button>
-        <button @click="navigateTo('/invest/auto')"> auto investments -> </button>
-      </div>
+      <input-button link="/invest">invest now -></input-button>
       <select-fund />
     </block>
   </main>
