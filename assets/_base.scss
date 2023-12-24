@@ -108,3 +108,15 @@ p{
   font-size: sizer(1.5);
   line-height: 135%;
 }
+button{
+  background:transparent;
+  &:hover{
+    cursor:pointer;
+  }
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
