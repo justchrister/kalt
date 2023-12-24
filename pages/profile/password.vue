@@ -15,7 +15,7 @@
             id='password'
           />
         </div>
-        <button> Change password </button>
+        <input-button>change password</input-button>
       </form>
     </block>
   </main>
