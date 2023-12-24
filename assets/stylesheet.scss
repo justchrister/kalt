@@ -96,22 +96,6 @@ a:focus button,
 a:hover button{
   cursor: pointer;
 }
-button {
-  border-radius: 0px;
-  margin-bottom: sizer(1);
-  width: 100%;
-  padding: 2% 0;
-  background:transparent;
-  color: $dark;
-  border: $border;
-  @include font-body;
-  &.square,
-  &:focus,
-  &:hover {
-    border-radius:100%;
-    cursor: pointer;
-  }
-}
 label{
   @include font-body;
   font-size: sizer(1.2);
