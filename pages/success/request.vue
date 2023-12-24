@@ -10,9 +10,7 @@
       <p> You are just one step away from investing in the future of fossil-free energy. We will contact you once we have had time to review your request. Thank you for yur patience. </p>
     </block>
     <block margin="half">
-      <nuxt-link to="/auth" >
-          <button tabindex="-1">sign in</button>
-      </nuxt-link>
+      <input-button link="/auth">sign in →</input-button>
     </block>
   </main>
 </template>
