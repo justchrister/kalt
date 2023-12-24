@@ -24,11 +24,7 @@
             id='password'
           />
         </div>
-        <div class="input-wrap">
-          <button>
-            sign in <loading-icon v-if="loading" />
-          </button>
-        </div>
+        <input-button>sign in<loading-icon v-if="loading" /></input-button>
       </form>
     </block>
     <block margin="half">
