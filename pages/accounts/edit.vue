@@ -7,7 +7,7 @@
       <input-iban :initialValue="linkedBankAccount.iban"/>
       <input-bank-code :initialValue="linkedBankAccount.bankCode"/>
       <input-reference-text :initialValue="linkedBankAccount.reference"/>
-      <button @click="router.go(-1)"> done </button>
+      <input-button @click="router.go(-1)">done</input-button>
     </block>
   </main>
 </template>
