@@ -5,7 +5,7 @@
       <fund :ticker="fund.ticker"/>
     </block>
     <block>
-      <button @click="navigateTo('/invest')"> invest now -> </button>
+      <input-button link="/invest">invest now -></input-button>
     </block>
   </main>
 </template>
