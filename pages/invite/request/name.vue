@@ -6,7 +6,7 @@
         <input type="text" placeholder="First name" v-model="firstName" class="next"/>
         <input type="text" placeholder="Last name" v-model="lastName" class="next"/>
       </div>
-      <button class="next" @click="requestInvite()"> Next -> </button>
+      <input-button @click="requestInvite()">next -></input-button>
     </block>
   </main>
 </template>
