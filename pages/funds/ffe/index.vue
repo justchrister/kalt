@@ -37,7 +37,7 @@
       <p>
         Incorporating fossil-free energy investments into your portfolio isn't just a strategic move; it's a declaration of purpose. It's an opportunity to lead the way in impact investing, where the effects of your investments ripple outward, creating a wave of positive change that reverberates globally. Together, we can accelerate the transition to a world powered by clean, renewable sources, where every investment adds value and amplifies impact for a brighter and more sustainable future.
       </p>
-      <button @click="navigateTo('/invest')"> invest now -> </button>
+      <input-button link="/invest">invest now -></input-button>
     </block>
   </main>
 </template>
