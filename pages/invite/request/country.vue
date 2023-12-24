@@ -3,7 +3,7 @@
     <block>
       <h1>Where do you live?</h1>
       <input type="text" placeholder="Country" v-model="country" class="next"/>
-      <button class="next" @click="requestInvite()"> Next -> </button>
+      <input-button @click="requestInvite()">next -></input-button>
     </block>
   </main>
 </template>
