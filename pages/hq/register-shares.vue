@@ -17,9 +17,7 @@
         total: {{val*1*1.2}} EUR
       </div>
       <div>
-        <button @click="create()">
-          create
-        </button>
+        <input-button @click="create()">create</input-button>
       </div>
     </block>
   </main>
