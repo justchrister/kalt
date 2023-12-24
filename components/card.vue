@@ -131,12 +131,6 @@
     const expiry = new Date(Date.UTC(fullYear, month.value - 1, 1));
     const today = new Date();
     const expired = expiry < new Date(today.getFullYear(), today.getMonth(), 1);
-
-    ok.log('', {
-      expiry,
-      today,
-      expired
-    })
     const validCard = await ok.validateCard(numberInt)
     if(!validCard){
       setNotification ('Card number is invalid 😅')
