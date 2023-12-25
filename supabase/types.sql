@@ -32,6 +32,7 @@ create type public."exchangeOrders_types" as enum (
 );
 create type public."exchangeOrders_statuses" as enum (
     'open',
+    'processing',
     'fulfilled',
     'cancelled',
     'split'
