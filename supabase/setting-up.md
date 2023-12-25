@@ -13,6 +13,9 @@
 12. Create webhooks (see below)
 11. [Enable SSL enforcement](https://supabase.com/docs/guides/platform/ssl-enforcement) 
 
+## Encryption
+1. Enable pgsodium `create extension pgsodium;`
+
 ## Email templates
 
 ### Confirm signup
@@ -80,21 +83,21 @@ Subject: Kalt — Password reset
 
 ## Create the following webhooks:
 
-Name: webhook_accountTransactions_autoVest
-URL: https://ka.lt/api/autoVest/webhooks/accountTransactions
-Table: sub_accountTransactions_autoVest
+Name: webhook_accountTransactions_exchange_autoOrder
+URL: https://ka.lt/api/exchange/autoOrder
+Table: sub_accountTransactions_exchange_autoOrder
 
 Name: webhook_accountTransactions_payments
 URL: https://ka.lt/api/payments/webhooks/accountTransactions
 Table: sub_accountTransactions_payments
 
-Name: webhook_exchangeOrders_autoMatchOrders
-URL: https://ka.lt/api/autoMatchOrders/webhooks/exchangeOrders
-Table: sub_exchangeOrders_autoMatchOrders
+Name: webhook_exchange_match
+URL: https://ka.lt/api/exchange/match
+Table: sub_exchange_match
 
 Name: webhook_exchangeOrders_payRevenue
 URL: https://ka.lt/api/payRevenue/webhooks/exchangeOrders
-Table: sub_exchangeOrders_payRevenue
+Table: sub_exchange_payRevenue
 
 Name: webhook_paymentCards_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/paymentCards
