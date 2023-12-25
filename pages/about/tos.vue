@@ -23,6 +23,12 @@
       <p>Everything you see on our Platform is owned by us or used with permission. You can use it for personal, non-commercial purposes. Any other use is not allowed without our written consent.</p>
     </block>
     <block margin="half">
+      <h2>Market volatility and withdrawal suspension clause:</h2>
+      <p>
+        In recognition of the unpredictable nature of financial markets and other extraordinary circumstances beyond our control, we reserve the right to temporarily suspend withdrawals and divesting activities for up to a period of 12 months. This action may be deemed necessary in situations where market volatility reaches levels that significantly impair the orderly function of trading or other critical operational aspects. Such measures are intended to protect the interests of our clients and the integrity of our operations during times of extreme market stress or other force majeure events. During such periods, we will endeavor to provide timely communications and support to our clients, and we will resume normal operations as soon as it is feasible and safe to do so. This clause is intended to provide a safeguard against extraordinary market conditions or other significant events that could adversely affect the ability to process transactions in a fair and orderly manner.
+      </p>
+    </block>
+    <block margin="half">
       <h2>Your responsibilities</h2>
       <p>-> You won't post any content that violates someone else's rights or breaks the law.</p>
       <p>-> You won't use the Platform to send spam or scam others.</p>
