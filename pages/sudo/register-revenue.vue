@@ -41,7 +41,7 @@
   const create = async () => {
     if(!val.value) return false;
     const error = await pub(supabase, {"sender":"pages/hq/register-revenue.vue"}).revenueTransaction({
-      ticker: 'gi.ddf',
+      ticker: 'ffe',
       amount: val.value-(val.value*0.04),
       currency: 'EUR'
     });
