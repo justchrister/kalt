@@ -13,7 +13,7 @@
       <select-currency />
     </block>
     <block margin="2" >
-      <select-auto-invest />
+      <select-auto-invest-rate />
     </block>
     <block margin="2" >
       <select-language />
