@@ -276,6 +276,33 @@ export const ok = {
   
     return result;
   },
+  merge(jsonArray, ...keysToMergeOn) {
+    let result = [];
+    let tempObj = {};
+  
+    if (!jsonArray) return "No input";
+  
+    jsonArray.forEach(jsonObj => {
+      // Create a composite key using the keysToMergeOn
+      const compositeKey = keysToMergeOn.map(key => jsonObj[key]).join('|');
+  
+      if (!tempObj[compositeKey]) {
+        tempObj[compositeKey] = {};
+      }
+  
+      for (const key in jsonObj) {
+        if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+          tempObj[compositeKey][key] = jsonObj[key];
+        }
+      }
+    });
+  
+    for (const key in tempObj) {
+      result.push(tempObj[key]);
+    }
+  
+    return result;
+  },
   camelToKebab(string){
     return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
   },
