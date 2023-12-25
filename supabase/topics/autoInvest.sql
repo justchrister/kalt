@@ -13,7 +13,8 @@ CREATE TABLE "topic_autoInvest" (
     "userId"                 uuid, 
     "amount"                 numeric,
     "active"                 boolean,
-    "interval"               "autoInvest_intervals"
+    "interval"               "autoInvest_intervals", 
+    "lastCharged"            timestamptz
 );
 
 --- row level security
