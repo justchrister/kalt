@@ -46,6 +46,9 @@ export const pub = (client: any, meta: any) => {
     },
     userDefinedFunds: async (content: userDefinedFund) => {
       return await createJsonAndPublish(client, meta, content, 'topic_userDefinedFunds');
+    },
+    autoInvest: async (content: autoInvest) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_autoInvest');
     }
   }
 }
