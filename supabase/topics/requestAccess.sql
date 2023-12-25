@@ -14,7 +14,7 @@ CREATE TABLE "topic_requestAccess" (
     "firstName"           text,
     "lastName"            text,
     "monthlyInvestFrom"   numeric,
-    "monthlyInvestTo"     numeric
+    "monthlyInvestTo"     numeric,
     "country"             text
 );
 
