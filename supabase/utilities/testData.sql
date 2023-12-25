@@ -1,7 +1,7 @@
-insert into public."topic_exchangeOrders" ("message_sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
+insert into public."topic_exchange" ("message_sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
   ('setup script',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', -100, 'art.ddf', 'sell', 'open', null, null, null, true);
 
-insert into public."topic_exchangeOrders" ("message_sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
+insert into public."topic_exchange" ("message_sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
   ('setup script',  'DDF00003-9933-4eaf-886b-e6e7e5b0205a', -20, 'vc.ddf', 'sell', 'open', null, null, null, true);
 
 insert into public."topic_assets" ("message_sender", "ticker", "value", "name")
