@@ -115,6 +115,9 @@ export const ok = {
     if (i < 10) {i = "0" + i}
     return i;
   },
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
   validateCard(num){
     let sum = 0;
     let isEven = false;
