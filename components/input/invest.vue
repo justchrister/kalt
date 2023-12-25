@@ -62,6 +62,8 @@
         state.value = 'error'
       } else {
         ok.log('success', 'updated amount 🥰')
+
+        await ok.sleep(200)
         state.value = 'success'
       }
     }
