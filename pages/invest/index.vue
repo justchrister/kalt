@@ -5,14 +5,14 @@
         <div class="column" @click="navigateTo('/invest/onetime')"> 
           <div class="text">
             <div class="title">One time investment</div>
-            <div class="explainer"> Invest a single amount in your personalized fund</div>
+            <div class="explainer"> Invest a single amount in your personalized fund. Useful when sending larger amounts.</div>
           </div>
           <div class="link"> Start -> </div>
         </div>
         <div class="column" @click="navigateTo('/invest/auto')"> 
           <div class="text">
             <div class="title">Automatic investments</div>
-            <div class="explainer">Set up a daily, weekly, or monthly recurring investment</div>
+            <div class="explainer">Set up a daily, weekly, or monthly recurring investment. Useful for building a strong long-term portfolio. </div>
           </div>
           <div class="link"> Start -> </div>
         </div>
@@ -50,6 +50,7 @@
       text-align: left;
       .title{
         margin-bottom: sizer(1);
+        font-weight:600;
       }
       .link{
         text-align:right;
