@@ -1,8 +1,8 @@
 # Setting up a new instance
 1. Enable the HTTP extension (databases->extensions->toggle http)
 2. Disable confirm email (auth->providers->expand email)
-3. Add redirect URL (localhost for dev, test.ka.lt for test, and ka.lt for prod)
-4. Add site URL (localhost for dev, test.ka.lt for test, and ka.lt for prod)
+3. Add redirect URL (localhost for dev and ka.lt for prod)
+4. Add site URL (localhost for dev and ka.lt for prod)
 5. Change email templates (see below)
 6. Run types.sql
 7. Run sys/*.sql
@@ -91,14 +91,6 @@ Name: webhook_accountTransactions_payments
 URL: https://ka.lt/api/payments/webhooks/accountTransactions
 Table: sub_accountTransactions_payments
 
-Name: webhook_exchange_match
-URL: https://ka.lt/api/exchange/match
-Table: sub_exchange_match
-
-Name: webhook_exchangeOrders_payRevenue
-URL: https://ka.lt/api/payRevenue/webhooks/exchangeOrders
-Table: sub_exchange_payRevenue
-
 Name: webhook_paymentCards_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/paymentCards
 Table: sub_paymentCards_acl_stripe
@@ -107,18 +99,14 @@ Name: webhook_paymentsPending_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/paymentsPending
 Table: sub_paymentsPending_acl_stripe
 
-Name: webhook_revenueTransactions_payRevenue
-URL: https://ka.lt/api/payRevenue/webhooks/revenueTransactions
-Table: sub_revenueTransactions_payRevenue
-
 Name: webhook_users_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/users
 Table: sub_users_acl_stripe
 
-Name: webhook_payments_initiatePayments
-URL: https://ka.lt/api/payments/initiatePayments
+Name: webhook_payments_initiate
+URL: https://ka.lt/api/payments/initiate
 Table: payments
 
-Name: webhook_autoMatchOrders_match
-URL: https://ka.lt/api/autoMatchOrders/match
-Table: autoMatchOrders
+Name: webhook_exchanges_match
+URL: https://ka.lt/api/exchange/match
+Table: exchange
