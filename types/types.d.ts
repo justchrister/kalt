@@ -46,6 +46,13 @@ declare global {
   const enum paymentProviders {
     stripe = 'stripe'
   }
+  const enum autoInvestIntervals {
+    daily = 'daily',
+    weekly = 'weekly',
+    monthlyBeginning = 'monthlyBeginning',
+    monthlyMiddle = 'monthlyMiddle',
+    monthlyEnd = 'monthlyEnd'
+  }
   const enum tickers {
     gi_ddf = 'gi.ddf',
     mi_ddf = 'mi.ddf',
