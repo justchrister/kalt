@@ -3,7 +3,7 @@
   <main>
     <intro title="Automatic investments" paragraph="Wealth is built over time, its always better to invest steadily than a single sum one time." />
     <block margin="1">
-      <input-amount-invest-auto :amount="autoInvest.amount || 0"/>
+      <input-invest :initialAmount="autoInvest.amount" type="autoInvest"/>
     </block>
     <block margin="2">
       <label> Select interval: </label>
@@ -18,10 +18,16 @@
       <card />
     </block>
     <block margin="1">
-      <link-group>
-        <span class="center">add a button thing that says "activate" if the user is yet to have activated it, it should check that all requirements are fulfilled (card, fund set up). when clicked, it should change to "activating" with a loading icon beside it. When finished it should say "activated". Always with a text underneath that says "changes are saved automatically"</span> *
-        <span class="center">Beneath it there should be a text that says deactivate</span>
-      </link-group>
+      <input-button @click="toggleAutoInvestments(true)">
+        {{ activeText }}
+      </input-button>
+      <div class="center-text">
+        <span class="deactivate" @click="toggleAutoInvestments(false)">pause automation</span>
+         •
+        <span>changes are saved automatically</span>
+      </div>
+      <div class="center-text">
+      </div>
     </block>
   </main>
 </template>
@@ -54,11 +60,83 @@
       selectedInterval.value = interval;
     }
   }
-  ok.log('', autoInvest);
 
+  const updateAutoInvestments = async (activeStatus) => {
+    const error = await pub(supabase, {
+      sender:'pages/invest/auto.vue',
+      entity: userId.value.id
+    }).autoInvest({
+      userId:userId.value.id,
+      active: activeStatus
+    });
+    if(error) {
+      ok.log('error', 'could not update autoInvestments'+ error)
+      return 'error'
+    } else{
+      if(activeStatus){
+        active.value=true
+      } else {
+        active.value=false
+      }
+      ok.log('success', 'updated autoInvestments 🥰')
+      return 'success'
+    }
+  }
+  const active=ref(autoInvest.active || false)
+  const activeText = ref(autoInvest.active ? 'active' : 'activate')
+
+  const toggleAutoInvestments = async (status) => {
+    // on
+    if(active.value && status){
+      activeText.value = 'active'
+      return
+    } else if(!active.value && status){
+      activeText.value = 'activating'
+      const updated = await updateAutoInvestments(true)
+      await ok.sleep(200)
+      if(updated==='success'){
+        activeText.value = 'active'
+      } else {
+        activeText.value = 'activate'
+      }
+    }
+    // off
+    if(!status && active.value){
+      activeText.value = 'pausing'
+      const updated = await updateAutoInvestments(false)
+      await ok.sleep(200)
+      if(updated==='success'){
+        activeText.value = 'activate'
+      } else {
+        activeText.value = 'active'
+      }
+    }
+  }
+  ok.log('', autoInvest);
+/*
+
+    if(currentValue==='activating' || currentValue==='deactivating'){
+      return
+    } else if(currentValue==='activate'){
+    } else if(currentValue==='activated'){
+      await updateAutoInvestments(false)
+      activeText.value = 'deactivating'
+      if(updated==='success'){
+        activeText.value = 'paused'
+      } else {
+        activeText.value = 'activated'
+      }
+    }
+*/
 </script>
 <style scoped lang="scss">
-main{
-  padding-top:0;
-}
+  main{
+    padding-top:0;
+  }
+  .deactivate{
+    text-decoration:underline;
+    &:hover{
+      cursor:pointer;
+    }
+  }
 </style>
