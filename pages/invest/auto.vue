@@ -20,6 +20,7 @@
     <block margin="1">
       <input-button @click="toggleAutoInvestments(true)">
         {{ activeText }}
+        <loading-icon v-if="activeText==='activating' || activeText==='pausing'" />
       </input-button>
       <div class="center-text">
         <span class="deactivate" @click="toggleAutoInvestments(false)">pause automation</span>
