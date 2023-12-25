@@ -29,6 +29,12 @@
       </p>
     </block>
     <block margin="half">
+      <h2>Asset allocation clause:</h2>
+      <p>
+        We endeavor to manage our clients' investments in accordance with their chosen fund allocations. However, it is important to understand that there may not always be a precise one-to-one correspondence between the allocation percentages defined by users and the actual composition of assets in their accounts. This discrepancy can arise due to a variety of factors, including but not limited to, market fluctuations, timing of order execution, liquidity constraints, and regulatory requirements. These factors may necessitate adjustments in asset allocation and may lead to temporary disparities between your specified preferences and the actual holdings. Our commitment is to closely align your portfolio with your specified preferences within the constraints of practical market realities, while maintaining the flexibility needed to adapt to changing market conditions and to safeguard your interests.
+      </p>
+    </block>
+    <block margin="half">
       <h2>Your responsibilities</h2>
       <p>-> You won't post any content that violates someone else's rights or breaks the law.</p>
       <p>-> You won't use the Platform to send spam or scam others.</p>
