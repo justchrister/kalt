@@ -9,8 +9,8 @@ CREATE TABLE "topic_userDefinedFunds" (
     "message_sender"      text                            NOT NULL,
     --- 
     "userId"              uuid                            NOT NULL,
-    "rate"                tickers,
-    "ticker"              text                                            REFERENCES sys_funds(ticker), 
+    "rate"                numeric,
+    "ticker"              tickers                                         REFERENCES sys_funds(ticker), 
                           CHECK ("rate" >= 0 
                           AND "rate" <= 3)
 );
