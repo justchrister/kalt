@@ -109,4 +109,4 @@ Table: payments
 
 Name: webhook_exchanges_match
 URL: https://ka.lt/api/exchange/match
-Table: exchange
+Table: sub_exchange_match
