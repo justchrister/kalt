@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
       {invoice_settings: {default_payment_method: cardId}}
     );
     const { data, error } = await supabase
-      .from('acl_stripe_defaultCardIds')
+      .from('acl_stripe')
       .upsert({
         userId: json.userId,
         stripeCardId: cardId
@@ -81,9 +81,9 @@ export default defineEventHandler(async (event) => {
   }
   const checkIfCardExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripeCardIds')
+      .from('acl_stripe')
       .select()
-      .eq('cardId', message.cardId)
+      .eq('stripeCardId', message.stripeCardId)
       .limit(1)
       .single()
     if(data) return data.stripeCardId
