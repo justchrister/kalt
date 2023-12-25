@@ -72,13 +72,13 @@
       return "logo"
     }
   }
-  const number = ref(defaultCard.number || '');
+  const number = ref(defaultCard?.number || '');
   const numberError = ref(false);
-  const month = ref(defaultCard.month || '');
+  const month = ref(defaultCard?.month || '');
   const monthError = ref(false);
-  const year = ref(defaultCard.year || '');
+  const year = ref(defaultCard?.year || '');
   const yearError = ref(false);
-  const cvc = ref(defaultCard.cvc || '');
+  const cvc = ref(defaultCard?.cvc || '');
   const cvcError = ref(false);
   const loading = ref(false);
   const notification = ref();
@@ -123,7 +123,6 @@
   }
   const saveCard = async () => {
     loading.value = true;
-    const lastFourDigits = number.value.slice(-4)
     const numberInt = ok.toInt(number.value);
     const cvcInt = ok.toInt(cvc.value);
     const yearPrefix = new Date().getFullYear().toString().slice(0, 2); 
