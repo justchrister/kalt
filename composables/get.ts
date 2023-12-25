@@ -27,6 +27,39 @@ export const get = (client: any) => {
         return ok.combineJson(data)
       }
     },
+    openExchangeOrder: async (ticker: any, orderType: any, quantityAbsolute: any) => {
+      const { data, error } = await client
+        .from('topic_exchange')
+        .select()
+        .eq('ticker', ticker)
+        .eq('orderType', orderType)
+        .order('message_sent', { ascending: true })
+      if(error){
+        return error
+      } else {
+        const combined = ok.combineJsonByKeys(data, 'message_entity');
+        const unfulfilledOrders = combined.filter(message => message.status === 'open');
+        const ordersWithQuantityAbsolute = unfulfilledOrders.map(message => {
+          message.quantityAbsolute = Math.abs(message.quantity);
+          return message;
+        });
+        const order = ordersWithQuantityAbsolute.find(message => message.quantityAbsolute >= quantityAbsolute);
+        return order;
+      }
+    },
+    processingExchangeOrder: async (orderId: any) => {
+      const { data, error } = await client
+        .from('topic_exchange')
+        .select()
+        .eq('message_entity', orderId)
+        .order('message_sent', { ascending: true })
+      if(error){
+        return 'error'
+      } else {
+        const combined = ok.combineJsonByKeys(data, 'message_entity');
+        return combined[0];
+      }
+    },
     user: async (userId: any) => {
       const { data } = await client 
         .from('topic_users')
@@ -87,7 +120,7 @@ export const get = (client: any) => {
     },
     sharePrices: async () => {
       const { data:originOrders } = await client
-        .from('topic_exchangeOrders')
+        .from('topic_exchange')
         .select()
         .order('message_sent', { ascending: true })
         .eq('origin', true)
@@ -150,7 +183,7 @@ export const get = (client: any) => {
       const assetPrices = await get(client).sharePrices() as any;
       const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
       const { data: orders, error } = await client
-        .from('topic_exchangeOrders')
+        .from('topic_exchange')
         .select('userId, message_sent, message_entity, quantity, status, ticker', )
         .eq('userId', user.userId)
         .order('message_sent', { ascending: true })
