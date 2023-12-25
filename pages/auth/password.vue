@@ -18,7 +18,6 @@
         <input-button>request new password <loading-icon v-if="loading"/></input-button>
       </form>
       <link-group>
-        <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
         <nuxt-link to="/auth/">sign in</nuxt-link>
       </link-group>
     </block>
