@@ -51,8 +51,9 @@
       loading.value = false
     } else {
       ok.log('success', 'transaction created')
+      ok.sleep(250)
       loading.value = false;
-      navigateTo('/success/portfolio')
+      navigateTo('/portfolio')
     };
   }
 </script>
