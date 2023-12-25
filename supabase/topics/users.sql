@@ -29,7 +29,7 @@ CREATE TABLE "topic_users" (
 );
 
 --- row level security
-ALTER TABLE "topic_userPreferences" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "topic_users" ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "SELF — Insert" ON public."topic_users"
   AS PERMISSIVE FOR INSERT
@@ -39,7 +39,7 @@ CREATE POLICY "SELF — Insert" ON public."topic_users"
 CREATE POLICY "SELF — Select" ON "public"."topic_users"
   AS PERMISSIVE FOR SELECT
   TO authenticated
-  USING (auth.uid() = "userId")
+  USING (auth.uid() = "userId");
 
 --- indexes
 CREATE INDEX "index_topic_users_message_entity_message_sent" ON public."topic_users" USING btree ("message_entity", "message_sent");
