@@ -15,7 +15,7 @@ export default defineEventHandler( async (event) => {
   
   const getPortfolio = async () => {
     const { data, error } = await supabase
-      .from('topic_exchangeOrders')
+      .from('topic_exchange')
       .select()
       .eq('userId', message.userId)
       .eq('status', 'fulfilled')
