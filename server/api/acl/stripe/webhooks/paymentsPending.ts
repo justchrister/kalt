@@ -8,7 +8,7 @@ export default defineEventHandler( async (event) => {
   const body = await readBody(event);
   const topic = 'paymentsPending';
   const service = 'aclStripe';
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY) as Stripe;
   if (body.record.message_read) return 'message already read';
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
@@ -33,12 +33,12 @@ export default defineEventHandler( async (event) => {
       
       ok.log('success', charge);
       return 'success'
-    } catch (error) {
+    } catch (error: any) {
       ok.log('error', 'failed to charge '+customerId+' / '+message.userId+': ', error.statusCode+': '+error.raw.message);
       return 'error'
     }
   }
-  const updatePaymentPendingStatus = async (status) => {
+  const updatePaymentPendingStatus = async (status: string) => {
     const error = await pub(supabase, {
       entity: message.message_entity,
       sender: 'service/api/acl/stripe/webhooks/paymentsPending.ts'
@@ -47,7 +47,7 @@ export default defineEventHandler( async (event) => {
       transactionId: message.transactionId,
       provider: 'stripe',
       status: status
-    });
+    } as paymentsPending);
     if(error){
       ok.log('error', 'error updating payment pending status', error)
       return 'error'
@@ -57,7 +57,7 @@ export default defineEventHandler( async (event) => {
 
     }
   }
-  const updateTransactionStatus = async (status) => {
+  const updateTransactionStatus = async (status: string) => {
     const error = await pub(supabase, {
       sender:'server/api/acl/stripe/webhooks/paymentsPending.ts',
       entity: message.transactionId
@@ -69,26 +69,15 @@ export default defineEventHandler( async (event) => {
       ok.log('error', 'error updating transaction status', error)
     }
   }
-  const getCustomerId = async (userId) => {
+  const getStripeIds = async (userId: string) => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripe')
       .select()
       .eq('userId', userId)
       .limit(1)
       .single()
     if(data){
-      return data.stripeUserId
-    }
-  }
-  const getDefaultCard = async (userId) => {
-    const { data, error } = await supabase
-      .from('acl_stripe_defaultCardIds')
-      .select()
-      .eq('userId', userId)
-      .limit(1)
-      .single()
-    if(data){
-      return data.stripeCardId
+      return data as any
     }
   }
 
@@ -97,10 +86,9 @@ export default defineEventHandler( async (event) => {
   if(paymentPendingStatus=='success') await updateTransactionStatus('processing')
   if(paymentPendingStatus=='error') return 'failed to set as processing'
 
-  const stripeDefaultCardId = await getDefaultCard(message.userId);
-  const stripeCustomerId = await getCustomerId(message.userId)
+  const stripeIds = await getStripeIds(message.userId);
 
-  const charge = await chargeCard(stripeCustomerId, stripeDefaultCardId)
+  const charge = await chargeCard(stripeIds?.stripeCustomerId, stripeIds?.stripeCardId)
 
   if(charge=='success') await updatePaymentPendingStatus('complete')
   if(charge=='success') await updateTransactionStatus('complete')
