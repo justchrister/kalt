@@ -34,7 +34,7 @@
   })
   const innerInterval = ref();
 
-  const updateAutoInvestInterval = async (selectedInterval: any, push: boolean) => {
+  const updateAutoInvestInterval = async (selectedInterval: any) => {
     let interval = selectedInterval;
     if(selectedInterval === 'monthlyBeginning') {
       innerInterval.value = 'monthlyBeginning';
@@ -51,21 +51,18 @@
       innerInterval.value = 'monthlyMiddle';
       interval = innerInterval.value;
     }
-    if(push){
-      const error = await pub(supabase, {
-        sender:'pages/invest/auto.vue',
-        entity: user.userId
-      }).autoInvest({
-        userId: user.userId,
-        interval: interval
-      });
-      if(error) {
-        ok.log('error', error)
-      } else {
-        ok.log('success', 'autoInvestInterval was updated to: '+interval)
-      }
+    
+    const error = await pub(supabase, {
+      sender:'pages/invest/auto.vue',
+      entity: user.userId
+    }).autoInvest({
+      userId: user.userId,
+      interval: interval
+    });
+    if(error) {
+      ok.log('error', error)
     } else {
-      return
+      ok.log('success', 'autoInvestInterval was updated to: '+interval)
     }
   }
   const isSelected = ref(props.selected === props.type || false);
