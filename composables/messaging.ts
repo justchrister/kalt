@@ -18,7 +18,7 @@ export const pub = (client: any, meta: any) => {
       return await createJsonAndPublish(client, meta, content, 'topic_accountTransactions');
     },
     exchangeOrders: async (content: exchangeOrder) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_exchangeOrders');
+      return await createJsonAndPublish(client, meta, content, 'topic_exchange');
     },
     userSubscriptions: async (content: userSubscription) => {
       return await createJsonAndPublish(client, meta, content, 'topic_userSubscriptions');
@@ -27,7 +27,7 @@ export const pub = (client: any, meta: any) => {
       return await createJsonAndPublish(client, meta, content, 'topic_users');
     },
     exchangeOrder: async (content: exchangeOrder) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_exchangeOrders');
+      return await createJsonAndPublish(client, meta, content, 'topic_exchange');
     },
     exchangeRates: async (content: exchangeRate) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchangeRates');
