@@ -22,15 +22,14 @@
       required: true
     }
   })
-  const longTicker = props.ticker+'.ddf'
   const { data:fund, error } = await supabase
     .from('sys_funds')
     .select()
-    .eq('ticker', longTicker)
+    .eq('ticker', props.ticker)
     .limit(1)
     .single()
   const rate = ref(0)
-  const state = await get(supabase).userDefinedFunds(userId.value.id, longTicker);
+  const state = await get(supabase).userDefinedFunds(userId.value.id, props.ticker);
   const shortTicker = props.ticker.split('.')[0] 
   const logHearts = async () => {
     if(rate.value===3){
@@ -71,7 +70,7 @@
       entity: userId.value.id
     }).userDefinedFunds({
       'userId': userId.value.id,
-      'ticker': longTicker,
+      'ticker': props.ticker,
       'rate': rate.value
     });
   }
