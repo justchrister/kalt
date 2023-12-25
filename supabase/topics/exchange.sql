@@ -13,8 +13,8 @@ CREATE TABLE "topic_exchange" (
     "userId"              uuid,
     "quantity"            numeric,
     "ticker"              "tickers",
-    "type"                "exchangeOrders_types",
-    "status"              "exchangeOrders_statuses",
+    "type"                "exchangeOrder_types",
+    "status"              "exchangeOrder_statuses",
     "fulfilledBy"         uuid,
     "splitInto"           uuid[],
     "partOf"              uuid,
@@ -35,16 +35,6 @@ CREATE POLICY "SELF — Select" ON public."topic_exchange"
   AS PERMISSIVE FOR SELECT
   TO authenticated
   USING (auth.uid() = "userId");
-
-CREATE POLICY "HQ — Insert" ON public."topic_exchange"
-  AS PERMISSIVE FOR INSERT
-  TO authenticated
-  USING (auth.uid() = 'ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4');
-
-CREATE POLICY "HQ — Select" ON public."topic_exchange"
-  AS PERMISSIVE FOR SELECT
-  TO authenticated
-  USING (auth.uid() = 'ae7aa0e5-cabe-4c62-b80c-fd8cc061a4c4');
 
 --- Indexes 
 CREATE INDEX "index_topic_exchange_userId_message_sent" ON public."topic_exchange" USING btree ("userId", "message_sent");
