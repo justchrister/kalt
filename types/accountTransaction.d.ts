@@ -4,7 +4,7 @@ declare global {
     interface accountTransaction {
         userId?: string; // UUID
         amount?: number; // numeric
-        currency?: string; // CHAR(3) - references currencies(iso)
+        currency?: string; // references currencies(iso)
         type?: AccountTransactionsTypes;
         subType?: AccountTransactionsSubTypes;
         status?: AccountTransactionsStatuses;
