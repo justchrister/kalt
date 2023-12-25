@@ -246,6 +246,10 @@ WHERE iso2 = 'DK';
 
 UPDATE sys_countries
 SET enabled = true
+WHERE iso2 = 'FI';
+
+UPDATE sys_countries
+SET enabled = true
 WHERE iso2 = 'FR';
 
 UPDATE sys_countries
