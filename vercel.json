@@ -3,12 +3,12 @@
   "installCommand": "npm install",
   "crons": [
     {
-      "path": "/api/payments/initiatePayments",
+      "path": "/api/payments/initiate",
       "schedule": "25 * * * *"
     },
     {
-      "path": "/api/payments/initiateSubscriptionPayments",
-      "schedule": "30 * * * *"
+      "path": "/api/invest/auto",
+      "schedule": "0 * * * *"
     },
     {
       "path": "/api/acl/norgesbank/updateExchangeRates",
