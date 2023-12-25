@@ -1,61 +1,59 @@
+drop type public."accountTransactions_statuses";
 create type public."accountTransactions_statuses" as enum (
     'incomplete',
     'pending',
     'processing',
-    'awaitingDivesting',
     'complete',
     'failed'
 );
+drop type public."accountTransactions_types";
 create type public."accountTransactions_types" as enum (
     'deposit',
     'withdraw'
 );
+drop type public."accountTransactions_subTypes";
 create type public."accountTransactions_subTypes" as enum (
     'card',
     'wireTransfer',
     'dividend',
-    'subscription',
-    'autoInvested',
-    'newShares',
-    'autoWithdraw'
+    'internal'
 );
-
+drop type public."paymentCards_statuses";
 create type public."paymentCards_statuses" as enum (
     'incomplete',
     'active',
     'rejected',
     'expired'
 );
-create type public."exchangeOrders_types" as enum (
+drop type public."exchangeOrder_types";
+create type public."exchangeOrder_types" as enum (
     'buy',
     'sell'
 );
-create type public."exchangeOrders_statuses" as enum (
+drop type public."exchangeOrder_statuses";
+create type public."exchangeOrder_statuses" as enum (
     'open',
     'processing',
     'fulfilled',
     'cancelled',
     'split'
 );
+drop type public."paymentsPending_statuses";
 create type public."paymentsPending_statuses" as enum (
     'pending',
     'processing',
     'failed',
     'complete'
 );
+drop type public."paymentProviders";
 create type public."paymentProviders" as enum (
     'stripe'
 );
-create type public."withdrawalsPending_statuses" as enum (
-    'pending',
-    'processing',
-    'failed',
-    'complete'
-);
+drop type public."transferProviders";
 create type public."transferProviders" as enum (
     'wise'
 );
-
+drop type public."autoInvest_intervals";
 create type public."autoInvest_intervals" as enum (
     'daily',
     'weekly',
@@ -63,13 +61,11 @@ create type public."autoInvest_intervals" as enum (
     'monthlyMiddle',
     'monthlyEnd'
 );
-
+drop type public."tickers";
 create type public."tickers" as enum (
-    'gi.ddf',
-    'mi.ddf',
-    'ffe.ddf',
-    'vc.ddf',
-    'smb.ddf',
-    'art.ddf',
-    'ah.ddf'
+    'ffe',
+    'vc',
+    'smb',
+    'art',
+    'ah'
 );
