@@ -15,7 +15,7 @@
             id='email'
           />
         </div>
-        <input-button>request new password</input-button>
+        <input-button>request new password <loading-icon v-if="loading"/></input-button>
       </form>
       <link-group>
         <nuxt-link to="/auth/sign-up">sign up</nuxt-link>
@@ -34,7 +34,7 @@
     title: 'Password reset'
   })
   const supabase = useSupabaseClient()
-
+  const loading = ref(false)
   const notification = ref({
     type: null, 
     message: null
@@ -42,18 +42,21 @@
   const redirectTo = window.location.origin + '/profile/password';
   const email = ref('')
   const requestPassword = async () => {
+    if(loading.value) return
+    loading.value = true
     const { error } = await supabase.auth.resetPasswordForEmail(
       email.value, {
         redirectTo: redirectTo,
     })
-    if(error) {
-      ok.log('error', 'password reset did not work? ' + error.message)
+    await ok.sleep(200);
+    if(!error){
+      navigateTo('/success/password')
+    } else {
+      ok.log('error', 'password reset did not work? ' + error)
       notification.value={
         type: 'error',
         message: error.message
       }
-    } else {
-      navigateTo('/auth/lobby')
     }
   }
 </script>
