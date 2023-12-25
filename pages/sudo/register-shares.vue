@@ -54,7 +54,7 @@
     }).exchangeOrder({
       userId: 'DDF00001-9933-4eaf-886b-e6e7e5b0205a',
       quantity: -(val.value*1.2), // neeeds to be negative???
-      ticker: 'gi.ddf',
+      ticker: 'gi',
       type: 'sell',
       status: 'open'
     });
