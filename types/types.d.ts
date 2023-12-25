@@ -54,9 +54,10 @@ declare global {
     monthlyEnd = 'monthlyEnd'
   }
   const enum tickers {
-    gi_ddf = 'gi.ddf',
-    mi_ddf = 'mi.ddf',
-    ffe_ddf = 'ffe.ddf',
-    ah_ddf = 'ah.ddf'
+    ffe = 'ffe',
+    vc  = 'vc',
+    art = 'art',
+    ah  = 'ah',
+    smb = 'smb'
   }
 }
