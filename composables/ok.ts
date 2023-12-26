@@ -282,16 +282,19 @@ export const ok = {
   
     return result;
   },
-  merge(jsonArray, ...keysToMergeOn) {
-    let result = [];
-    let tempObj = {};
+  merge(jsonArray: any[], ...keysToMergeOn: string[]) {
+    let result: any[] = [];
+    let tempObj: {[key: string]: any} = {};
   
-    if (!jsonArray) return "No input";
+    if (!jsonArray || jsonArray.length === 0) {
+      return {
+        result: [],
+        single: () => null,
+      };
+    }
   
     jsonArray.forEach(jsonObj => {
-      // Create a composite key using the keysToMergeOn
       const compositeKey = keysToMergeOn.map(key => jsonObj[key]).join('|');
-  
       if (!tempObj[compositeKey]) {
         tempObj[compositeKey] = {};
       }
@@ -303,11 +306,14 @@ export const ok = {
       }
     });
   
-    for (const key in tempObj) {
-      result.push(tempObj[key]);
-    }
+    result = Object.values(tempObj);
   
-    return result;
+    return {
+      result: result,
+      single: function() {
+        return this.result.length > 0 ? this.result[0] : null;
+      }
+    };
   },
   camelToKebab(string){
     return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
