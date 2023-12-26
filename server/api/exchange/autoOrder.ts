@@ -84,7 +84,7 @@ export default defineEventHandler(async (event) => {
       'autoVest': 0
     }
     const error = await pub(supabase, {
-      sender:'server/api/autoVest/index.ts',
+      sender:'server/api/exchange/autoOrder.ts',
       entity: entity,
     }).accountTransactions(json);
     if(error) {
