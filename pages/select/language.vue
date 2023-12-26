@@ -41,12 +41,14 @@
     if(error) {
       ok.log('error', 'failed updating language: ', error)
     } else {
-      navigateTo('/success/profile')
+      await ok.sleep(200);
+      navigateTo('/profile')
     }
   };
 </script>
 <style scoped lang="scss">
-  .icon{
+
+.icon{
     float:right;
   }
   main{
@@ -58,16 +60,20 @@
   }
   li{
     display:grid;
-    grid-template-columns: sizer(4) 4fr;
-    border-bottom: $dark 1px solid;
+    grid-template-columns: sizer(4) 4fr ;
     padding: sizer(1) sizer(2);
+    margin: sizer(1) 0;
+    @include border;
+    @include hoverable;
     &:hover{
-      cursor: pointer;
-      background:white;
+      @include hovering;
     }
   }
   .iso{
     font-family:"Kalt Monospace", monospace;
     font-size:75%;
+  }
+  span:hover{
+    cursor:pointer;
   }
 </style>
