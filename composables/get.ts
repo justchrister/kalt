@@ -27,12 +27,12 @@ export const get = (client: any) => {
         return ok.combineJson(data)
       }
     },
-    openExchangeOrder: async (ticker: any, orderType: any, quantityAbsolute: any) => {
+    openExchangeOrder: async (ticker: any, type: any, quantityAbsolute: any) => {
       const { data, error } = await client
         .from('topic_exchange')
         .select()
         .eq('ticker', ticker)
-        .eq('orderType', orderType)
+        .eq('type', type)
         .order('message_sent', { ascending: true })
       if(error){
         return error
@@ -54,10 +54,10 @@ export const get = (client: any) => {
         .eq('message_entity', orderId)
         .order('message_sent', { ascending: true })
       if(error){
+        ok.log('', error)
         return 'error'
       } else {
-        const combined = ok.combineJsonByKeys(data, 'message_entity');
-        return combined[0];
+        return ok.merge(data, 'message_entity').single()
       }
     },
     user: async (userId: any) => {
@@ -151,6 +151,7 @@ export const get = (client: any) => {
       return result;
     },
     exchangeRates: async(from, to) => {
+      if(from===to) return 1;
       const { data, error } = await client
         .from('topic_exchangeRates')
         .select()
@@ -160,7 +161,7 @@ export const get = (client: any) => {
         .limit(1)
         .single()
       if(error) {
-        ok.log('', error)
+        ok.log('', 'could not get exchange rates: ', error)
         return null
       } else {
         return data.rate
