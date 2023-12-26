@@ -17,96 +17,80 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const service = 'autoVest';
+  const service = 'autoOrder';
   const topic = 'accountTransactions';
   const body = await readBody(event);
   
   if (body.record.message_read) return 'message already read';
   
   const message = await sub(supabase, topic).entity(body.record.message_entity);
-  await sub(supabase, topicSub).read(service, body.record.message_id);
+  await sub(supabase, topic).read(service, body.record.message_id);
 
   if(message.status!=='complete') {
     return 'wrong payment status'
   }
-  if (message.autoVest === 0 || message.autoVest === null || message.autoVest === undefined) {
-    return 'autoVest is 0 or undefined';
-  }
-  if (message.subtype === 'autoInvested') {
-    return 'already autoInvested';
-  }
   if (message.type !== 'deposit') {
     return 'not a deposit';
   }
+  if (message.autoVest === 0 || message.autoVest === null || message.autoVest === undefined) {
+    return 'autoVest is 0 or undefined';
+  }
+  if (message.status === 'vested') {
+    return 'already autoInvested';
+  }
 
   const createExchangeOrder = async (userId: string, quantity: number, tickerx: tickers) => {
-    const error = await pub(supabase, {
-      sender:'server/api/autoVest/index.ts'
-    }).exchangeOrders({
+    const json ={
       ticker: tickerx,
       type: 'buy',
       status: 'open',
       userId: userId,
       quantity: quantity
-    });
+    }
+    const error = await pub(supabase, {
+      sender:'server/api/exchange/autoOrder.ts'
+    }).exchangeOrders(json);
     if(error) {
-      return
+      ok.log('error', error)
+      return error
     } else {
-      return {
-        ticker: tickerx,
-        type: 'buy',
-        status: 'open',
-        userId: userId,
-        quantity: quantity
-      }
+      return {json}
     }
   };
   const createWithdrawTransaction = async (userId: string, amount: number, currency: string) => {
-    const error = await pub(supabase, {
-      sender:'server/api/autoVest/index.ts'
-    }).accountTransactions({
+    const json = {
       'userId': userId,
       'amount': -amount,
       'currency': currency,
       'autoVest': 0,
       'type': 'withdraw',
-      'status': 'complete',
-      'subType': 'autoInvested',
-    });
+      'subType': 'internal',
+      'status': 'complete'
+    }
+    const error = await pub(supabase, {
+      sender:'server/api/exchange/autoOrder.ts'
+    }).accountTransactions(json);
     if(error) {
       return
     } else {
-      return {
-        'userId': userId,
-        'amount': -amount,
-        'currency': currency,
-        'autoVest': 0,
-        'type': 'withdraw',
-        'status': 'complete',
-        'subType': 'autoInvested',
-      }
+      return json
     }
   };
 
   const updateTransaction = async (userId: string, entity: string) => {
+    const json = {
+      'userId': userId,
+      'status': 'vested',
+      'autoVest': 0
+    }
     const error = await pub(supabase, {
       sender:'server/api/autoVest/index.ts',
       entity: entity,
-    }).accountTransactions({
-      'userId': userId,
-      'status': 'complete',
-      'autoVest': 0,
-      'subType': 'autoInvested',
-    });
+    }).accountTransactions(json);
     if(error) {
       return
     } else {
-      return {
-        'userId': userId,
-        'status': 'complete',
-        'autoVest': 0,
-        'subType': 'autoInvested',
-      }
+      return json
     }
   };
 
@@ -116,6 +100,7 @@ export default defineEventHandler(async (event) => {
     'updatedTransaction': {}
   }
   const assetPrices = await get(supabase).sharePrices() as any;
+  ok.log('', assetPrices)
   const convertedCurrency = await get(supabase).exchangeRates('EUR', message.currency)
   const user = await get(supabase).user(message.userId);
   if(!user) return 'user not found'
@@ -143,8 +128,10 @@ export default defineEventHandler(async (event) => {
       const definedFundEntity = userDefinedFund[i];
       const currencyConvertedSharePrice = assetPrices[definedFundEntity.ticker ] * convertedCurrency;
       const investQuantity =  (message.amount * autoVestRate) / currencyConvertedSharePrice;
-      const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, definedFundEntity.ticker);
-      response.exchangeOrders.push(exchangeOrder);
+      if(investQuantity){
+        const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, definedFundEntity.ticker);
+        response.exchangeOrders.push(exchangeOrder);
+      }
     }
   } else {
     return {
