@@ -65,7 +65,7 @@ export const sub = (client: any, topic: any) => {
       if(error) {
         return error
       } else {
-        return ok.combineJson(data)
+        return ok.merge(data, 'message_entity').single()
       }
     },
     read: async (service: any, id: any) => {
