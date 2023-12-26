@@ -50,14 +50,14 @@ input{
   width:100%;
   display:inline-block;
   padding:sizer(0.5) sizer(1.2);
-  border: $border;
-  border-radius: $border-radius;
   height:sizer(3.8);
-  @include font-body;
   box-sizing:border-box;
   background-size: sizer(1);
   background-position:right sizer(1) center;
   background-repeat:no-repeat;
+  @include font-body;
+  @include border; 
+  @include hoverable; 
 }
 
 input:focus,
