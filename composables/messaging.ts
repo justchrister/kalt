@@ -9,6 +9,7 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
   if(meta.sent) json['message_sent'] = meta.sent;
   if(meta.sender) json['message_sender'] = meta.sender;
   const { error } = await client.from(topic).insert(json);
+  if(error) ok.log('error', error);
   return error;
 };
 
