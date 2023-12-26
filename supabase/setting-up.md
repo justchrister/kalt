@@ -91,6 +91,10 @@ Name: webhook_accountTransactions_payments
 URL: https://ka.lt/api/payments/webhooks/accountTransactions
 Table: sub_accountTransactions_payments
 
+Name: webhook_accountTransactions_acl_stripe
+URL: https://ka.lt/api/acl/stripe/webhooks/accountTransactions
+Table: sub_accountTransactions_acl_stripe
+
 Name: webhook_paymentCards_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/paymentCards
 Table: sub_paymentCards_acl_stripe
@@ -107,6 +111,6 @@ Name: webhook_payments_initiate
 URL: https://ka.lt/api/payments/initiate
 Table: payments
 
-Name: webhook_exchanges_match
+Name: webhook_exchange_match
 URL: https://ka.lt/api/exchange/match
 Table: sub_exchange_match
