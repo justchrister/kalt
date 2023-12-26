@@ -39,11 +39,11 @@
     padding: sizer(1) sizer(2);
     display:grid;
     grid-template-columns: sizer(4) 4fr sizer(1);
-    border: $border;
     text-decoration:none;
+    @include border;
+    @include hoverable;
     &:hover{
-      cursor: pointer;
-      background:white;
+      @include hovering;
     }
   }
   .iso{
