@@ -115,7 +115,7 @@ export const ok = {
     if (i < 10) {i = "0" + i}
     return i;
   },
-  sleep(ms) {
+  sleep: async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
   validateCard(num){
