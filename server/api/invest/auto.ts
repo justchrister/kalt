@@ -1,17 +1,18 @@
 import { ok } from '~/composables/ok'
+import { get } from '~/composables/get'
 import { pub } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const gracePeriod = 2;
   const mockAsTodayIs = {
     'dd': 1,
     'mm': 1,
     'yyyy': 2024
   }
-  const shouldMock = false;
+  const testing = true;
 
+  const gracePeriod = testing ? 0 : 2;
   const { data, error} = await supabase
     .from('topic_autoInvest')
     .select()
@@ -20,10 +21,9 @@ export default defineEventHandler( async (event) => {
   if(error) return;
   
   const merged = ok.merge(data, 'message_entity') as autoInvest[];
-
   const active = merged.filter((entry: autoInvest) => entry.active)
 
-  const now = shouldMock ? new Date(mockAsTodayIs.yyyy, mockAsTodayIs.mm - 1, mockAsTodayIs.dd) : new Date();
+  const now = testing ? new Date(mockAsTodayIs.yyyy, mockAsTodayIs.mm - 1, mockAsTodayIs.dd) : new Date();
   const gracePeriodHoursAgo = new Date(now.getTime() - gracePeriod*60*60*1000);
   const twentyFourHoursAgo = new Date(now.getTime() - 24*60*60*1000);
   const oneWeekAgo = new Date(now.getTime() - 7*24*60*60*1000);
