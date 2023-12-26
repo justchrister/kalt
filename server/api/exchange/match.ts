@@ -1,4 +1,5 @@
 import { ok } from '~/composables/ok'
+import { get } from '~/composables/get'
 import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server'
 
@@ -12,100 +13,86 @@ export default defineEventHandler( async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
   await sub(supabase, topic).read(service, body.record.message_id);  
-
+ 
   if (message.status !== 'open') {
     return 'not open for processing';
   }
 
-  const originalOrder = {
-    quantityInverted: ok.invertInt(message.quantity),
-    quantityAbsolute: Math.abs(message.quantity),
-    orderTypeInverted: message.orderType === 'buy' ? 'sell' : 'buy',
-    ...message
-  } as any ;
-  
-  const fulfillingOrder = await get(supabase).openExchangeOrder(originalOrder.ticker, originalOrder.orderType, originalOrder.quantityAbsolute) as any;
-  if (!fulfillingOrder) return 'no fulfilling order available'
-  // set status to processing to prevent double processing
-  // sleep for 500ms, then verify that its being processed by "me" uuid
-  // if not, then return 'one of the orders are already being processed'
-  // if yes, then continue
-
-  const setAsProcessing = async (order: string, me: string) => {
+  const toggleAsProcessing = async (order: string, me: string, on: boolean) => {
     const error = await pub(supabase, {
       sender:'server/api/match/match.ts',
       entity: order
     }).exchangeOrders({
-      status: 'processing',
-      processedBy: me
+      status: on ? 'processing' : 'open',
+      processingBy: on ? me : null
     } as any );
     if(error) {
-      return 'error'
+      return false
     } else {
-      return {
-        status: 'processing',
-        processedBy: me
-      }
+      return true
     }
   }
-  const originalOrderIsProcessing = await setAsProcessing(originalOrder.entity, me);
-  const fulfillingOrderIsProcessing = await setAsProcessing(fulfillingOrder.entity, me);
-  if(originalOrderIsProcessing==='error' || fulfillingOrderIsProcessing==='error') {
-    return 'error'
-  }
+  const isSetAsProcessing = await toggleAsProcessing(message.message_entity, me, true) as boolean;
+  if(!isSetAsProcessing) return 'error';
+
+  const originalOrder = {
+    quantityInverted: ok.invertInt(message.quantity),
+    quantityAbsolute: Math.abs(message.quantity),
+    typeInverted: message.type === 'buy' ? 'sell' : 'buy',
+    ...message
+  } as any ;
+  
+  const fulfillingOrder = await get(supabase).openExchangeOrder(originalOrder.ticker, originalOrder.typeInverted, originalOrder.quantityAbsolute) as any;
+  if (!fulfillingOrder) return 'no fulfilling order available'
+
+  const fulfillingOrderisSetAsProcessing = await toggleAsProcessing(fulfillingOrder.message_entity, me, true);
+  if(!fulfillingOrderisSetAsProcessing) return 'error';
+  
   await ok.sleep(500);
+
   const amIProcessing = async (order: string, me:string) => {
     const exchangeOrder = await get(supabase).processingExchangeOrder(order);
+    ok.log('', exchangeOrder)
     if(exchangeOrder==='error'){
       return false
     } 
-    if(exchangeOrder.processedBy===me) {
+    if(exchangeOrder.processingBy===me) {
       return true
     } else {
       return false
     }
   }
+  ok.log('', 'originalORder: ', originalOrder)
+  ok.log('', 'fulfillingOrder:', fulfillingOrder)
   // check if both orders are processing
-  const amIProcessingOriginalOrder = await amIProcessing(originalOrder.entity, me);
-  const amIProcessingFulfillingOrder = await amIProcessing(fulfillingOrder.entity, me);
+  const amIProcessingOriginalOrder = await amIProcessing(originalOrder.message_entity, me);
+  const amIProcessingFulfillingOrder = await amIProcessing(fulfillingOrder.message_entity, me);
   if(!amIProcessingOriginalOrder || !amIProcessingFulfillingOrder ) {
     if(amIProcessingOriginalOrder) {
-      await pub(supabase, {
-        sender:'server/api/match/match.ts',
-        entity: originalOrder.entity
-      }).exchangeOrders({
-        status: 'open',
-        processedBy: null
-      } as any );
+      await toggleAsProcessing(originalOrder.message_entity, me, false);
     }
     if(amIProcessingFulfillingOrder) {
-      await pub(supabase, {
-        sender:'server/api/match/match.ts',
-        entity: fulfillingOrder.entity
-      }).exchangeOrders({
-        status: 'open',
-        processedBy: null
-      } as any );
+      await toggleAsProcessing(fulfillingOrder.message_entity, me, false);
     }
     return 'one of the orders are already being processed'
   }
   if(fulfillingOrder.quantityAbsolute===originalOrder.quantityAbsolute){
     await pub(supabase, {
       sender:'server/api/match/match.ts',
-      entity: originalOrder.entity
+      entity: originalOrder.message_entity
     }).exchangeOrders({
       userId: originalOrder.userId,
       status: 'fulfilled',
-      fulfilledBy: fulfillingOrder.entity
+      fulfilledBy: fulfillingOrder.message_entity
     } as any );
 
     await pub(supabase, {
       sender:'server/api/match/match.ts',
-      entity: fulfillingOrder.entity
+      entity: fulfillingOrder.message_entity
     }).exchangeOrders({
       userId: fulfillingOrder.userId,
       status: 'fulfilled',
-      fulfilledBy: originalOrder.entity
+      fulfilledBy: originalOrder.message_entity
     } as any );
 
   } else if (fulfillingOrder.quantityAbsolute >=  originalOrder.quantityAbsolute) {
@@ -114,7 +101,7 @@ export default defineEventHandler( async (event) => {
 
     await pub(supabase, {
       sender:'server/api/match/match.ts',
-      entity: originalOrder.entity
+      entity: originalOrder.message_entity
     }).exchangeOrders({
       userId: originalOrder.userId,
       status: 'fulfilled',
@@ -123,7 +110,7 @@ export default defineEventHandler( async (event) => {
 
     await pub(supabase, {
       sender:'server/api/match/match.ts',
-      entity: fulfillingOrder.entity
+      entity: fulfillingOrder.message_entity
     }).exchangeOrders({
       userId: fulfillingOrder.userId,
       status: 'split',
@@ -138,11 +125,11 @@ export default defineEventHandler( async (event) => {
       entity: newOrderId1
     }).exchangeOrders({
       status: 'fulfilled',
-      partOf: fulfillingOrder.entity,
+      partOf: fulfillingOrder.message_entity,
       userId: fulfillingOrder.userId,
       quantity: originalOrder.quantityInverted,
       type: fulfillingOrder.orderType,
-      fulfilledBy: originalOrder.entity
+      fulfilledBy: originalOrder.message_entity
     } as any );
 
     await pub(supabase, {
@@ -150,8 +137,9 @@ export default defineEventHandler( async (event) => {
       entity: newOrderId2
     }).exchangeOrders({
       status: 'open',
-      partOf: fulfillingOrder.entity,
+      partOf: fulfillingOrder.message_entity,
       userId: fulfillingOrder.userId,
+      ticker: fulfillingOrder.ticker,
       quantity: fulfillingOrder.quantity+originalOrder.quantity,
       type: fulfillingOrder.orderType
     } as any);
