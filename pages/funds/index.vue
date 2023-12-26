@@ -24,7 +24,6 @@
   const { data, error } = await supabase
     .from('sys_funds')
     .select()
-    .eq('active', true)
   if(data) ok.log('', data)
   if(error) ok.log('', error)
 </script>
