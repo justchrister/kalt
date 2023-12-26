@@ -6,7 +6,7 @@ declare global {
     amount?: number;
     active?: boolean;
     interval?: autoInvestIntervals;
-    charged?: string;
+    lastCharged?: string;
 
     message_entity?: string;
     message_id?: string;
