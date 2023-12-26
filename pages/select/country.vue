@@ -46,7 +46,8 @@
     if(error) {
       ok.log('error', 'failed updating country: ', error)
     } else {
-      navigateTo('/success/profile')
+      await ok.sleep(200);
+      navigateTo('/profile/edit')
     }
   };
 </script>
@@ -64,11 +65,12 @@
   li{
     display:grid;
     grid-template-columns: sizer(4) 4fr ;
-    border-bottom: $dark 1px solid;
     padding: sizer(1) sizer(2);
+    margin: sizer(1) 0;
+    @include border;
+    @include hoverable;
     &:hover{
-      cursor: pointer;
-      background:white;
+      @include hovering;
     }
   }
   .iso{
