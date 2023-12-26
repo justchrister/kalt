@@ -24,13 +24,21 @@ export default defineEventHandler(async (event) => {
   } as any;
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripe')
       .select()
       .eq('userId', message.userId)
       .limit(1)
       .single()
-    if(data) return data
-    else return false
+    if(error){
+      ok.log('error', 'could not check if user exists: '+ error.message)
+      return false
+    } else if(data) {
+      ok.log('', 'user exists: '+data.stripeUserId)
+      return data
+    } else {
+      ok.log('', 'user does not exist ')
+      return false
+    }
   }
   const addCard = async () => {
     const paymentMethod = await stripe.paymentMethods.create({
