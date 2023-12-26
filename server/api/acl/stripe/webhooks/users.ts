@@ -2,23 +2,24 @@ import { ok } from '~/composables/ok';
 import { sub, pub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server';
 import Stripe from 'stripe';
+
 export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
-  const topic = 'userDetails';
+  const topic = 'users';
   const service = 'aclStripe';
   const body = await readBody(event);
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
   if (body.record.message_read) return 'message already read';
 
   const message = await sub(supabase, topic).entity(body.record.message_entity);
-  await sub(supabase, topic).read(service, body.record.message_id);  
-
+  await sub(supabase, topic).read(service, body.record.message_id);
+  ok.log('',message)
   if(!message.firstName) return "no first name"
   if(!message.lastName) return "no last name"
 
   const checkIfUserExists = async () => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripe')
       .select()
       .eq('userId', message.userId)
       .limit(1)
@@ -44,13 +45,18 @@ export default defineEventHandler(async (event) => {
         userId: message.userId
       }
     });
-    ok.log('succes', 'created user:', user)
-    if (user) return user;
+    if (user) {
+      ok.log('succes', 'created user:', user)
+      return user;
+    } else {
+      ok.log('error', 'could not create user')
+      return;
+    }
   };
 
   const assignStripeId = async (userId, stripeUserId) => {
     const { data, error } = await supabase
-      .from('acl_stripe_userIds')
+      .from('acl_stripe')
       .insert({
         userId: userId,
         stripeUserId: stripeUserId
@@ -64,7 +70,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const updateStripeUserDetails = async (stripeId) => {
+  const updateStripeUser = async (stripeId) => {
     const updatedUser = await stripe.customers.update(
       stripeId, {
         name: message.firstName+' '+message.lastName,
@@ -74,7 +80,7 @@ export default defineEventHandler(async (event) => {
   }
 
   if(userExists) {
-    const updatedUser = await updateStripeUserDetails(userExists.stripeUserId);
+    const updatedUser = await updateStripeUser(userExists.stripeUserId);
     return updatedUser
   }
   if(!userExists) {
