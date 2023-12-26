@@ -10,7 +10,7 @@ export default defineEventHandler( async (event) => {
     'mm': 1,
     'yyyy': 2024
   }
-  const testing = true;
+  const testing = false;
 
   const gracePeriod = testing ? 0 : 2;
   const { data, error} = await supabase
