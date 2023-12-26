@@ -15,7 +15,7 @@
             id='password'
           />
         </div>
-        <input-button>change password</input-button>
+        <input-button>change password <loading-icon v-if="loading"/></input-button>
       </form>
     </block>
   </main>
@@ -31,16 +31,19 @@
 
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
-
+  const loading = ref(false)
   const password = ref('')
   const resetPassword = async () => {
+    loading.value=true
     const { data, error } = await supabase.auth.updateUser({
       password: password.value
     })
+    await ok.sleep(200);
     if(error){
+      loading.value=false
       ok.log('error', 'password not changed', error)
     } else{
-      // await navigateTo("/portfolio")
+      await navigateTo("/portfolio")
       ok.log('success', 'changed password')
     }
   }
