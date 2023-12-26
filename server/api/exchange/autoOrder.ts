@@ -104,43 +104,42 @@ export default defineEventHandler(async (event) => {
   const convertedCurrency = await get(supabase).exchangeRates('EUR', message.currency)
   const user = await get(supabase).user(message.userId);
   if(!user) return 'user not found'
-  const autoVestRate = user.autoVest;
+  const autoVestRate = user.autoVest || 1;
   const withdrawAmount = message.amount - (message.amount*(1 - autoVestRate));
   
-  const userDefinedFund =  await get(supabase).userDefinedFund(user.userId)
-  if(!userDefinedFund) return 'userDefinedFund not found'
 
-  //const withdrawTransaction = await createWithdrawTransaction(user.userId, withdrawAmount, message.currency);
-  //response.withdrawTransaction = withdrawTransaction || {};
-  //const updatedTransaction = await updateTransaction(user.userId, message.message_entity);
-  //response.updatedTransaction = updatedTransaction || {};
+  const withdrawTransaction = await createWithdrawTransaction(user.userId, withdrawAmount, message.currency);
+  response.withdrawTransaction = withdrawTransaction || {};
+  const updatedTransaction = await updateTransaction(user.userId, message.message_entity);
+  response.updatedTransaction = updatedTransaction || {};
 
   const calculateAllocationPercentage = (userFund:any) => {
-    ok.log('', userFund)
     const total = userFund.reduce((total:any, { rate }) => total + rate, 0);
-    let userDefinedFundPercentage = {} as any;
+    let userDefinedFundPercentage = []
     for (let i = 0; i < userFund.length; i++) {
       const ticker = userFund[i].ticker;
-      userDefinedFundPercentage[ticker]= userFund[i].rate / total;
+      const allocation = userFund[i].rate / total;
+      userDefinedFundPercentage.push({
+        'ticker': ticker,
+        'allocation': allocation
+      })
     }
     return userDefinedFundPercentage
   }
 
+  const userDefinedFund =  await get(supabase).userDefinedFund(user.userId)
+  if(!userDefinedFund) return 'userDefinedFund not found'
+
   const allocationPercentage = calculateAllocationPercentage(userDefinedFund)
+
   for (let i = 0; i < allocationPercentage.length; i++) {
-    const definedFundEntity = allocationPercentage[i];
-    const currencyConvertedSharePrice = assetPrices[definedFundEntity.ticker] * convertedCurrency;
-    const investQuantity =  (message.amount * autoVestRate) / currencyConvertedSharePrice;
-    response.exchangeOrders.push({
-      'q': investQuantity,
-      'c': currencyConvertedSharePrice,
-      'a': autoVestRate
-    })
-      /*
-    if(investQuantity){
-      const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, definedFundEntity.ticker);
-      response.exchangeOrders.push(exchangeOrder);
-    }*/
+    const entry = allocationPercentage[i];
+    if(entry.allocation===0 || !entry.allocation) continue;
+    const currencyConvertedSharePrice = assetPrices[entry.ticker] * convertedCurrency;
+    const investQuantity =  (message.amount * autoVestRate * entry.allocation) / currencyConvertedSharePrice;
+    ok.log('', 'investQuantity '+entry.ticker+': ', investQuantity)
+    const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, entry.ticker);
+    response.exchangeOrders.push(exchangeOrder);
   }
   return allocationPercentage
 });
