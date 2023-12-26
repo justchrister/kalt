@@ -170,15 +170,21 @@ export const ok = {
     return year+'-'+ok.addZero(month)+'-'+ok.addZero(day)
   },
   timestamptz(dd = null, mm = null, yyyy = null) {
-    const date = dd && mm && yyyy ? new Date(yyyy, mm - 1, dd) : new Date();
+    // Create the date object
+    const date = dd && mm && yyyy ? new Date(Date.UTC(yyyy, mm - 1, dd)) : new Date();
+  
+    // Extract and format the components of the date
     const year = date.getUTCFullYear();
-    const month = dd || mm || yyyy ? String(date.getUTCMonth() + 1).padStart(2, '0') : String(new Date().getUTCMonth() + 1).padStart(2, '0');
-    const day = dd || mm || yyyy ? String(date.getUTCDate()).padStart(2, '0') : String(new Date().getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date.getUTCDate()).padStart(2, '0');
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
     const ms = String(date.getUTCMilliseconds()).padStart(3, '0');
-    const timestamptz = `${year}-${month}-${day}T${hours}: ${minutes}: ${seconds}.${ms}Z`;
+  
+    // Format the timestamp
+    const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`;
+  
     return timestamptz;
   },
   combineJson(jsonArray){
