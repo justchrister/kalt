@@ -43,7 +43,8 @@
       loading.value=false
       ok.log('error', 'password not changed', error)
     } else{
-      await navigateTo("/portfolio")
+      loading.value=false
+      navigateTo('/auth')
       ok.log('success', 'changed password')
     }
   }
