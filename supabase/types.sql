@@ -4,6 +4,7 @@ create type public."accountTransactions_statuses" as enum (
     'pending',
     'processing',
     'complete',
+    'vested',
     'failed'
 );
 drop type public."accountTransactions_types";
@@ -37,13 +38,6 @@ create type public."exchangeOrder_statuses" as enum (
     'fulfilled',
     'cancelled',
     'split'
-);
-drop type public."paymentsPending_statuses";
-create type public."paymentsPending_statuses" as enum (
-    'pending',
-    'processing',
-    'failed',
-    'complete'
 );
 drop type public."paymentProviders";
 create type public."paymentProviders" as enum (
