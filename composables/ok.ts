@@ -283,21 +283,15 @@ export const ok = {
     return result;
   },
   merge(jsonArray: any[], ...keysToMergeOn: string[]) {
-    let result: any[] = [];
-    let tempObj: {[key: string]: any} = {};
-  
+    let tempObj: { [key: string]: any } = {};
+
     if (!jsonArray || jsonArray.length === 0) {
-      return {
-        result: [],
-        single: () => null,
-      };
+      return [];
     }
   
     jsonArray.forEach(jsonObj => {
       const compositeKey = keysToMergeOn.map(key => jsonObj[key]).join('|');
-      if (!tempObj[compositeKey]) {
-        tempObj[compositeKey] = {};
-      }
+      tempObj[compositeKey] = tempObj[compositeKey] || {};
   
       for (const key in jsonObj) {
         if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
@@ -306,14 +300,19 @@ export const ok = {
       }
     });
   
-    result = Object.values(tempObj);
+    const mergedArray = Object.values(tempObj);
   
-    return {
-      result: result,
-      single: function() {
-        return this.result.length > 0 ? this.result[0] : null;
-      }
-    };
+    // Extending the Array prototype to include the single method
+    Object.defineProperty(mergedArray, 'single', {
+      value: function() {
+        return this[0] || null;
+      },
+      writable: true,
+      enumerable: false,
+      configurable: true
+    });
+  
+    return mergedArray;
   },
   camelToKebab(string){
     return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
