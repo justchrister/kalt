@@ -4,8 +4,7 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
-  const gracePeriod = 0;
-  const retries = 3;
+  const gracePeriod = 2;
   const mockAsTodayIs = {
     'dd': 1,
     'mm': 1,
@@ -13,7 +12,6 @@ export default defineEventHandler( async (event) => {
   }
   const shouldMock = false;
 
-  
   const { data, error} = await supabase
     .from('topic_autoInvest')
     .select()
@@ -35,7 +33,7 @@ export default defineEventHandler( async (event) => {
 
   const notAdjustedRecently = active.filter((entry: autoInvest) => new Date(entry.message_sent as string) < gracePeriodHoursAgo)
 
-  const createTransaction = async (userId: string, amount: number, autoInvestEntity: string) => {
+  const createTransaction = async (userId: string, amount: number, autoInvestEntity: string, currency: string) => {
       const errorTransaction = await pub(supabase, {
         sender:'server/api/invest/auto.ts'
       }).accountTransactions({
@@ -43,6 +41,7 @@ export default defineEventHandler( async (event) => {
         type: 'deposit',
         subType: 'card',
         amount,
+        currency,
         status: 'pending',
         autoVest: 1
       } as accountTransaction );
@@ -68,30 +67,37 @@ export default defineEventHandler( async (event) => {
         ok.log('success', 'updated auto invest')
       }
   }
+  const shouldCharge = (interval: string, lastCharged: Date) => {
+    const today = now.getDate()
 
+    switch (true) {
+      case interval === 'daily' && lastCharged < twentyFourHoursAgo:
+      case interval === 'weekly' && lastCharged < oneWeekAgo:
+      case interval === 'monthlyBeginning' && today === beginningOfMonth.getDate() && lastCharged < beginningOfMonth:
+      case interval === 'monthlyMiddle' && today === middleOfMonth.getDate() && lastCharged < middleOfMonth:
+      case interval === 'monthlyEnd' && today === endOfMonth.getDate() && lastCharged < endOfMonth:
+        return true
+      default: 
+        return false
+    }
+  }
+  let charged = []
   for (const entry of notAdjustedRecently) {
+    const user = await get(supabase).user(entry.userId);
+    const userId = entry.userId as string;
+    const currency = user?.currency as string || 'EUR';
+    const entity = entry.message_entity as string;
+    const interval = entry.interval as string;
+    const amount = entry.amount as number;
+
     const lastChargedDate = new Date(entry.lastCharged as string);
     const lastCharged = isNaN(lastChargedDate.getTime()) ? new Date(Date.UTC(1999, 0, 1)) : lastChargedDate;
-    if(entry.interval==='daily' && lastCharged < twentyFourHoursAgo) {
-      await createTransaction(entry.userId as string, entry.amount as number, entry.message_entity as string)
-    }
-    if(entry.interval==='weekly' && lastCharged < oneWeekAgo) {
-      await createTransaction(entry.userId as string, entry.amount as number, entry.message_entity as string)
-    }
-    if (entry.interval?.startsWith('monthly')) {
-      if (entry.interval.endsWith('Beginning') && now.getDate() === beginningOfMonth.getDate() && lastCharged < beginningOfMonth) {
-        await createTransaction(entry.userId as string, entry.amount as number, entry.message_entity as string);
-      }
-      if (entry.interval.endsWith('Middle') && now.getDate() === middleOfMonth.getDate() && lastCharged < middleOfMonth) {
-        await createTransaction(entry.userId as string, entry.amount as number, entry.message_entity as string);
-      }
-      if (entry.interval.endsWith('End') && now.getDate() === endOfMonth.getDate() && lastCharged < endOfMonth) {
-        await createTransaction(entry.userId as string, entry.amount as number, entry.message_entity as string);
-      }
+    
+    if(shouldCharge(interval, lastCharged)){
+      charged.push(entry)
+      await createTransaction(userId, amount, entity, currency)
     }
   }
 
-  return {
-    'tried charging: ': notAdjustedRecently
-  }
+  return charged
 });
