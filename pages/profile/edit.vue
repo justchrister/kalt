@@ -15,11 +15,11 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
   const supabase = useSupabaseClient();
   const auth = useSupabaseUser();
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
 
   definePageMeta({
     pagename: 'Edit',
