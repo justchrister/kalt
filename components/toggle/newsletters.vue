@@ -3,10 +3,10 @@
     <toggle text="Monthly newsletter" :on="isOn" @click="updateNewsletters()"/>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
 
   const isOn = ref()
   isOn.value = user.newsletters;
