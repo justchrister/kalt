@@ -61,10 +61,12 @@ export const ok = {
     return int*100 + '%'
   },
   formatIBAN(iban) {
+    if(!iban) return null
     const formattedIBAN = iban.match(/.{1,4}/g).join(' ');
     return formattedIBAN;
   },
   formatBankCode(bic) {
+    if(!bic) return null
     const formattedBIC = bic.replace(/(.{4})(.{3})(.*)/, '$1 $2 $3');
     return formattedBIC;
   },
@@ -313,17 +315,6 @@ export const ok = {
     });
   
     return mergedArray;
-  },
-  camelToKebab(string){
-    return string.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
-  },
-  convertKeysToCamelCase(object) {
-    const result = {};
-    for (const key in object) {
-      const camelKey = kebabToCamel(key);
-      result[camelKey] = object[key];
-    }
-    return result;
   },
   uuid(){
     return uuidv4()
