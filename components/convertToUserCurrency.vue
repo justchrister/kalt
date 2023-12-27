@@ -12,7 +12,7 @@
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth) || null;
+  const user = await get(supabase).user(auth.value) || null;
 
   const formattedAmount = ref();
   if(!user){

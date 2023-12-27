@@ -16,16 +16,15 @@
 </template>
 
 <script setup lang="ts">
-
-  const supabase = useSupabaseClient();
-  const auth = useSupabaseUser();
-  const user = await get(supabase).user(auth) as user;
-
   definePageMeta({
     pagename: 'Edit',
     middleware: 'auth'
   })
   useHead({ title: 'Edit' })
+
+  const supabase = useSupabaseClient();
+  const auth = useSupabaseUser();
+  const user = await get(supabase).user(auth.value) as user;
 
 </script>
 <style scoped lang="scss">

@@ -6,9 +6,9 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth) as user;
+  const user = await get(supabase).user(auth.value) as user;
   const isOn = ref(true) 
-  isOn.value = user.termsOfService;
+  isOn.value = user.termsOfService || true;
 
   const toggleValue = async () => {
     if(isOn.value) return false

@@ -12,7 +12,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const percent = ref(100)
-  const user = await get(supabase).user(auth) as user;
+  const user = await get(supabase).user(auth.value) as user;
 
   if(user) percent.value = user.autoVest*100
 

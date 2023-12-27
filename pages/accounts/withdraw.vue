@@ -30,7 +30,7 @@
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser() as any || '' as any
-  const user = await get(supabase).user(auth) as user;
+  const user = await get(supabase).user(auth.value) as user;
 
   const uuid = ok.uuid();
   const notification = ref();

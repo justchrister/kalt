@@ -26,7 +26,7 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth)
+  const user = await get(supabase).user(auth.value)
 
   const props = defineProps({
     initialAmount: {

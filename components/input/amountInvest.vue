@@ -30,7 +30,7 @@ const auth = useSupabaseUser()
       required: true
     }
   })
-  const user = await get(supabase).user(auth)
+  const user = await get(supabase).user(auth.value)
   
   const amount = ref(10);
   let initialAmount = props.amount;

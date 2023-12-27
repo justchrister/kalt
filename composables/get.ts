@@ -61,8 +61,9 @@ export const get = (client: any) => {
       }
     },
     user: async (auth: any) => {
-      let userId = auth?.value.userId;
-      if(!auth.value.$ssupabase_user){
+      let userId = auth.id;
+      if(!auth.id){
+        ok.log('', 'im here')
         userId = auth;
       }
       const { data } = await client 
@@ -84,7 +85,7 @@ export const get = (client: any) => {
           birthdate: userCombined.birthdate || null,
           addressLine1: userCombined.addressLine1 || null,
           addressLine2: userCombined.addressLine2 || null,
-          autoVest: userCombined.autoVest || null,
+          autoVest: userCombined.autoVest || 1,
           newsletters: userCombined.newsletters || null,
           termsOfService: userCombined.termsOfService || null,
           performanceUpdates: userCombined.performanceUpdates || null,

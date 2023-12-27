@@ -11,7 +11,7 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth)
+  const user = await get(supabase).user(auth.value)
 
   const getCurrencyDetails = async (currency) => {
     const { data, error } = await supabase

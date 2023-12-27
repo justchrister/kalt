@@ -7,7 +7,7 @@
       <input-iban :initialValue="linkedBankAccount.iban"/>
       <input-bank-code :initialValue="linkedBankAccount.bankCode"/>
       <input-reference-text :initialValue="linkedBankAccount.reference"/>
-      <input-button @click="router.go(-1)">done</input-button>
+      <input-button link="/profile">done</input-button>
     </block>
   </main>
 </template>
@@ -22,11 +22,10 @@
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth) as user;
+  const user = await get(supabase).user(auth.value) as user;
   const linkedBankAccount = await get(supabase).linkedBankAccount(user);
   ok.log('', linkedBankAccount)
   
-  const router = await useRouter()
 </script>
 <style scoped lang="scss">
   button{

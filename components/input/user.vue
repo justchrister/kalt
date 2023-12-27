@@ -15,11 +15,6 @@
 </template>
 
 <script setup lang="ts">
-  const state = ref('loading')
-  const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const content = ref(props.initial || null)
-
   const props = defineProps({
     initial: {
       type: String,
@@ -30,6 +25,11 @@
       required: false
     }
   })
+
+  const state = ref('loading')
+  const supabase = useSupabaseClient()
+  const userId = useSupabaseUser()
+  const content = ref(props.initial || null)
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
