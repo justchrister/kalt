@@ -41,7 +41,7 @@
     </block>
   </main>
 </template>
-<script setup>
+<script setup lang="ts">
   definePageMeta({
     pagename: 'Our values',
     middleware: 'default'
