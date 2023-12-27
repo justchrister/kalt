@@ -38,7 +38,7 @@
       required: true
     }
   })
-  const amount =  ref(props.initialAmount || 200)
+  const amount =  ref(props.initialAmount || '')
 
   let initialAmount = amount.value
   let previousValue;
@@ -58,7 +58,6 @@
       });
       if(error) {
         ok.log('error', 'could not update amount', error)
-        //notification
         state.value = 'error'
       } else {
         ok.log('success', 'updated amount 🥰')
