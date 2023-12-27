@@ -5,7 +5,7 @@
   </span>
   </block>
 </template>
-<script setup>
+<script setup lang="ts">
   const route = useRoute()
   const props = defineProps({
     parent: {
