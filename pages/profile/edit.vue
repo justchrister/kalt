@@ -3,38 +3,30 @@
     <navbar-breadcrumbs parent="profile"/>
     <block>
       <select-profile-picture />
-      <input-user :initial="initial.firstName" id="firstName"/>
-      <input-user :initial="initial.lastName" id="lastName"/>
+      <input-user :initial="user.firstName" id="firstName"/>
+      <input-user :initial="user.lastName" id="lastName"/>
       <select-country/>
-      <input-user :initial="initial.city" id="city"/>
-      <input-user :initial="initial.postalCode" id="postalCode"/>
-      <input-user :initial="initial.addressLine1" id="addressLine1"/>
-      <input-birthdate :initial="initial.birthdate" :userId="user.id"/>
+      <input-user :initial="user.city" id="city"/>
+      <input-user :initial="user.postalCode" id="postalCode"/>
+      <input-user :initial="user.addressLine1" id="addressLine1"/>
+      <input-birthdate :initial="user.birthdate" :userId="user.id"/>
       <input-button link="/profile">done</input-button>
     </block>
   </main>
 </template>
 
 <script setup>
+
+  const supabase = useSupabaseClient();
+  const auth = useSupabaseUser();
+  const user = await get(supabase).user(auth);
+
   definePageMeta({
     pagename: 'Edit',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Edit'
-  })
+  useHead({ title: 'Edit' })
 
-  const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id)
-  const initial = {
-    firstName: user.firstName || '',
-    lastName: user.lastName || '',
-    city: user.city || '',
-    postalCode: user.postalCode || '',
-    addressLine1: user.addressLine1 || '',
-    birthdate: user.birthdate || ''
-  }
 </script>
 <style scoped lang="scss">
   .grid-col-3,
