@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="bold transfer">
-      Deposit transfer details
+      Deposit details
     </div>
     <div>
     </div>
