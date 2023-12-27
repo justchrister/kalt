@@ -5,9 +5,10 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
+
   const isOn = ref()
-  const user = await get(supabase).user(userId.value.id);
   isOn.value = user.newsletters;
 
   const toggleValue = async () => {
@@ -20,9 +21,9 @@
     
     const error = await pub(supabase, {
       sender: 'components/toggle/newsletters.vue',
-      entity: userId.value.id
+      entity: user?.id
     }).users({
-      userId: userId.value.id,
+      userId: user?.id,
       newsletters: isOn.value
     });
     if(error) {
