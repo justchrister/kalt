@@ -30,12 +30,16 @@
       <div class="center-text">
       </div>
     </block>
+    <span v-if="notification" @click="setNotification(null)">
+      <banner-notification color="yellow" :message="notification"/>
+    </span>
   </main>
 </template>
 <script setup>
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const user = await get(supabase).user(userId.value.id)
+  const notification = ref();
   definePageMeta({
     pagename: 'Invest',
     middleware: 'auth'
@@ -44,8 +48,17 @@
     title: 'Invest'
   })
   
+  const setNotification = async (message) => {
+    if(message) {
+      ok.log('warn', message)
+    }
+    notification.value=message
+    loading.value=false
+    return
+  }
+
   const autoInvest = await get(supabase).autoInvest(userId.value.id);
-  const selectedInterval = ref(autoInvest.interval || 'daily')
+  const selectedInterval = ref(autoInvest.interval)
   const selectInterval = async (interval) => {
     if(interval === 'monthly'){
       if(autoInvest.type === 'monthlyBeginning') {
@@ -87,6 +100,10 @@
   const activeText = ref(autoInvest.active ? 'active' : 'activate')
 
   const toggleAutoInvestments = async (status) => {
+    if(await userHasCard()){
+      setNotification ('Payment card number is too short')
+      return
+    }
     // on
     if(active.value && status){
       activeText.value = 'active'
