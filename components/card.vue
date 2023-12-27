@@ -50,8 +50,8 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id)
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth) as user;
   const defaultCard = await get(supabase).paymentCard(user);
   const edit = ref(false);
   if(!defaultCard) {
@@ -162,7 +162,7 @@
         sender:'components/card/add.vue',
         entity: ok.uuid()
       }).paymentCards({
-        'userId': userId.value.id,
+        'userId': user.id,
         'number': numberInt,
         'month': month.value,
         'year': year.value,
