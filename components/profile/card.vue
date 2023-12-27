@@ -27,10 +27,10 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
   const isProfileSetUp = async (user) => {
     if(!user || user.firstName == null || user.lastName == null || user.birthdate == null || user.city == null || user.country == null){
       return false
