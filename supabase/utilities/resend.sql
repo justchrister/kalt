@@ -9,7 +9,7 @@ DECLARE
 BEGIN
   EXECUTE format('DELETE FROM %I', sub);
   EXECUTE format('
-    INSERT INTO %I (message_id, message_entity, message_sender, message_sent)
-    SELECT message_id, message_entity, message_sender, message_sent
+    INSERT INTO %I (event, id, sender, timestamp)
+    SELECT event, id, sender, timestamp
     FROM %I', sub, topic_table);
 END $$;

@@ -5,10 +5,10 @@
 --- create the table, with default values
 CREATE TABLE "topic_exchange" (
 -- meta information used for processing
-    "message_id"          uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    "message_entity"      uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
-    "message_sent"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
-    "message_sender"      text                            NOT NULL,
+    "event"          uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "id"      uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
+    "timestamp"        timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
+    "sender"      text                            NOT NULL,
 --
     "userId"              uuid,
     "quantity"            numeric,
@@ -37,4 +37,4 @@ CREATE POLICY "SELF — Select" ON public."topic_exchange"
   USING (auth.uid() = "userId");
 
 --- Indexes 
-CREATE INDEX "index_topic_exchange_userId_message_sent" ON public."topic_exchange" USING btree ("userId", "message_sent");
+CREATE INDEX "index_topic_exchange_userId_timestamp" ON public."topic_exchange" USING btree ("userId", "timestamp");

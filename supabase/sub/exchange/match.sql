@@ -4,10 +4,10 @@
 
 --- create the table, with default values
 CREATE TABLE "sub_exchange_match" (
-    "message_id"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    "message_entity"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
-    "message_sent"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
-    "message_sender"      text          NOT NULL,
+    "event"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
+    "id"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
+    "timestamp"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
+    "sender"      text          NOT NULL,
     "message_read"        boolean       NOT NULL  DEFAULT FALSE
 );
 
@@ -15,8 +15,8 @@ CREATE TABLE "sub_exchange_match" (
 CREATE OR REPLACE FUNCTION "replicate_exchange_match"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO "sub_exchange_match" (message_id, message_entity, message_sender, message_sent)
-  VALUES (NEW.message_id, NEW.message_entity, NEW.message_sender, NEW.message_sent);
+  INSERT INTO "sub_exchange_match" (event, id, sender, timestamp)
+  VALUES (NEW.event, NEW.id, NEW.sender, NEW.timestamp);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
