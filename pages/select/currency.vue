@@ -11,7 +11,7 @@
     </ul>
   </main>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   definePageMeta({
