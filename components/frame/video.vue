@@ -6,7 +6,7 @@
     Your browser does not support the video tag.
   </video>
 </template>
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
     src: {
       type: String,
