@@ -39,7 +39,7 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
 </script>
 <style scoped lang="scss">
   .card{
