@@ -10,9 +10,9 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const percent = ref(100)
-  const user = await get(supabase).user(userId.value.id);
+  const user = await get(supabase).user(auth);
 
   if(user) percent.value = user.autoVest*100
 
@@ -20,9 +20,9 @@
     const autoVest = autoVestRate/100;
     const error = await pub(supabase, {
       sender:'components/select/autoVest.vue',
-      entity: userId.value.id
+      entity: user?.id
     }).users({
-      userId: userId.value.id,
+      userId: user?.id,
       autoVest: autoVest
     });
     if(error){
