@@ -1,7 +1,7 @@
 <template>
   <div class="image" :style="'background-image:url('+props.src+');'"></div>
 </template>
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
     src: {
       type: String,
