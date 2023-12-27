@@ -3,6 +3,7 @@ export { user };
 declare global {
     interface user {
         userId?: string;
+        id?: string;
         firstName?: string;
         lastName?: string;
         email?: string;
