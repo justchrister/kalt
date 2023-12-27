@@ -1,65 +1,52 @@
 <template>
-  <div class="card">
+  <div class="card" @click="navigateTo('/accounts/edit')">
     <div class="bold">
-      Linked bank account details
+      Withdrawal details
     </div>
-    <div class="right">
-      <nuxt-link to="accounts/edit">
-        change
-      </nuxt-link>
+    <div class="right link">
+      edit →
     </div>
     <div>
       Name
     </div>
     <div class="right">
-      Christer Bjørnstad
-    </div>
-    <div>
-      E-mail
-    </div>
-    <div class="right">
-      christer@ka.lt
+      {{ name }}
     </div>
     <div>
       IBAN
     </div>
     <div class="right">
-      <span v-if="linkedBankAccount.iban">
-        {{ok.formatIBAN(linkedBankAccount.iban)}}
-      </span>
-      <span v-else>
-        not found
-      </span>
+      {{ iban }}
     </div>
     <div>
       Bank code (BIC/SWIFT)
     </div>
     <div class="right">
-      <span v-if="linkedBankAccount.bankCode">
-        {{ok.formatBankCode(linkedBankAccount.bankCode)}}
-      </span>
-      <span v-else>
-        not found
-      </span>
+      {{ bankCode }}
     </div>
     <div>
       Reference text
     </div>
     <div class="right">
-      <span v-if="linkedBankAccount.reference">
-        {{linkedBankAccount.reference}}
-      </span>
-      <span v-else>
-        not found
-      </span>
+      {{ reference  }}
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
-  const linkedBankAccount = await get(supabase).linkedBankAccount(user);
+  ok.log('', userId)
+  const user = await get(supabase).user(userId?.value?.id) as user;
+
+  const name = user?.firstName + ' ' + user?.lastName|| 'not found'
+
+  const account = await get(supabase).linkedBankAccount(userId?.value?.id) as account;
+
+  const reference = account?.reference || 'not found'
+  const iban = ok.formatIBAN(account?.iban) || 'not found'
+  const bankCode = ok.formatBankCode(account?.bankCode) || 'not found'
+  console.log(reference)
+  
 </script>
 <style scoped lang="scss">
   .card{
@@ -68,7 +55,20 @@
     padding: sizer(1) sizer(2);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @include border;
+    @include hoverable;
+    &:hover{
+      @include hovering;
+      .link{
+        color:$dark;
+      }
+    }
   }
+  .link{
+    color:$dark-80;
+    font-size:75%;
+  }
+
   .bold{
     font-weight: bold;
   }
@@ -78,8 +78,4 @@
   a{
     color: $blue;
   }
-  /*
-  .dark-mode .card{
-    border-color: $light;
-  }*/
 </style>
