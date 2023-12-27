@@ -60,7 +60,11 @@ export const get = (client: any) => {
         return ok.merge(data, 'message_entity').single()
       }
     },
-    user: async (userId: any) => {
+    user: async (auth: any) => {
+      let userId = auth?.value.userId;
+      if(!auth.value.$ssupabase_user){
+        userId = auth;
+      }
       const { data } = await client 
         .from('topic_users')
         .select()
@@ -71,7 +75,7 @@ export const get = (client: any) => {
         return null
       } else {
         return {
-          userId: userId,
+          id: userCombined.userId || null,
           firstName: userCombined.firstName || null,
           lastName: userCombined.lastName || null,
           country: userCombined.country || null,
@@ -91,11 +95,11 @@ export const get = (client: any) => {
         }
       }
     },
-    accountTransactions: async (userId: any) => {
+    accountTransactions: async (user: any) => {
       const { data, error } = await client 
         .from('topic_accountTransactions')
         .select()
-        .eq('userId', userId)
+        .eq('userId', user.id)
         .order('message_sent', { ascending: true })
       if(error) {
         ok.log('', error)
@@ -108,7 +112,7 @@ export const get = (client: any) => {
       const { data, error } = await client
         .from('topic_linkedBankAccounts')
         .select()
-        .eq('userId', user.userId)
+        .eq('userId', user.id)
         .order('message_sent', { ascending: true })
       if(error || data.length === 0 || !data) {
         return null
@@ -184,7 +188,7 @@ export const get = (client: any) => {
       const { data: orders, error } = await client
         .from('topic_exchange')
         .select('userId, message_sent, message_entity, quantity, status, ticker', )
-        .eq('userId', user.userId)
+        .eq('userId', user.id)
         .order('message_sent', { ascending: true })
       if(error){
         return {
@@ -271,11 +275,11 @@ export const get = (client: any) => {
         return ok.cleanMessage(combined) as autoInvest
       }
     },
-    accountBalance: async(user) => {
+    accountBalance: async(user: user) => {
       const { data, error } = await client
         .from('topic_accountTransactions')
         .select()
-        .eq('userId', user.userId)
+        .eq('userId', user.id)
         .eq('status', 'complete')
         .order('message_sent', { ascending: true })
       if(error) {
@@ -289,11 +293,11 @@ export const get = (client: any) => {
         return ok.formatCurrency(result, user.currency)
       }
     },
-    paymentCard: async (user) => {
+    paymentCard: async (user: user) => {
       const { data, error } = await client
         .from('topic_paymentCards')
         .select()
-        .eq('userId', user.userId)
+        .eq('userId', user.id)
         .eq('default', true)
         .order('message_sent', { ascending: false })
       if(error) {
