@@ -8,11 +8,11 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const percent = ref(100)
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
 
   if(user) percent.value = user.autoVest*100
 
