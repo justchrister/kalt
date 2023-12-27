@@ -35,7 +35,7 @@ const notify = ref(false)
 const notify2 = ref(false)
 const supabase = useSupabaseClient()
 const amount = ref(0);
-const userId = useSupabaseUser()
+const auth = useSupabaseUser()
   const props = defineProps({
     uuid: {
       type: String,
@@ -78,7 +78,7 @@ const userId = useSupabaseUser()
         sender:'components/input/amountSell.vue',
         entity: props.uuid
       }).accountTransactions({
-        userId: userId.value.id,
+        userId: auth.value.id,
         amount: -amountFloat,
         status: 'incomplete',
         type: 'withdraw'

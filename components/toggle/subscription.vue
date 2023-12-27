@@ -11,7 +11,7 @@
     }
   })
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const isOn = ref()
   if(props.on) isOn.value = props.on
   const toggleValue = async () => {
@@ -28,9 +28,9 @@
     isOn.value = toggledValue
     const error = await pub(supabase, {
       sender:'components/toggle/invest/auto.vue',
-      entity: userId.value.id
+      entity: auth.value.id
     }).userSubscriptions({
-      userId: userId.value.id,
+      userId: auth.value.id,
       active: isOn.value
     });
   }

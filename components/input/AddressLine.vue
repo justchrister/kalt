@@ -17,7 +17,7 @@
 <script setup lang="ts">
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const addressLine1 = ref(props.initial)
   const props = defineProps({
     initial: {
@@ -30,9 +30,9 @@
     state.value = 'loading'
     const error = await pub(supabase, {
       sender:'components/input/addressLine.vue',
-      entity: userId.value.id
+      entity: auth.value.id
     }).users({
-      userId: userId.value.id,
+      userId: auth.value.id,
       addressLine1: addressLine1.value,   
     });
     if(error){

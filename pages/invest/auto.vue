@@ -57,7 +57,7 @@
     return
   }
 
-  const autoInvest = await get(supabase).autoInvest(userId.value.id);
+  const autoInvest = await get(supabase).autoInvest(user.id);
   const selectedInterval = ref(autoInvest.interval)
   const selectInterval = async (interval) => {
     if(interval === 'monthly'){

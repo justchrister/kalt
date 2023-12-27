@@ -30,7 +30,7 @@
   })
 
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const loading = ref(false)
   const password = ref('')
   const resetPassword = async () => {

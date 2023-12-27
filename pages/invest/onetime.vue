@@ -31,7 +31,7 @@
     }]
   })
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const uuid = ok.uuid();
   const loading = ref(false)
   const completeTransaction = async () => {
@@ -40,7 +40,7 @@
       sender: 'pages/invest/index.vue',
       entity: uuid
     }).accountTransactions({
-      userId: userId.value.id,
+      userId: auth.value.id,
       type: 'deposit',
       subType: 'card',
       status: 'pending',

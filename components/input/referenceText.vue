@@ -10,7 +10,7 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const props = defineProps({
     initialValue: {
       type: String,
@@ -27,10 +27,10 @@
   const updateReference = async () => {
     state.value = 'loading'
     const error = await pub(supabase, {
-      entity: userId.value.id,
+      entity: auth.value.id,
       sender:'components/input/referenceText.vue'
     }).linkedBankAccounts({
-      userId: userId.value.id,
+      userId: auth.value.id,
       reference: reference.value
     });
     if(error) {

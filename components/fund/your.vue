@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const props = defineProps({
     ticker: {
       type: String,
@@ -29,7 +29,7 @@
     .limit(1)
     .single()
   const rate = ref(0)
-  const state = await get(supabase).userDefinedFunds(userId.value.id, props.ticker);
+  const state = await get(supabase).userDefinedFunds(auth.value.id, props.ticker);
   const shortTicker = props.ticker.split('.')[0] 
   const logHearts = async () => {
     if(rate.value===3){
@@ -67,9 +67,9 @@
     logHearts()
     const { } = await pub(supabase, {
       sender:'components/fund/your.vue',
-      entity: userId.value.id
+      entity: auth.value.id
     }).userDefinedFunds({
-      'userId': userId.value.id,
+      'userId': auth.value.id,
       'ticker': props.ticker,
       'rate': rate.value
     });

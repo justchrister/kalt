@@ -17,7 +17,7 @@
 <script setup lang="ts">
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const birthdate = ref(props.initial)
 
   const props = defineProps({
@@ -30,10 +30,10 @@
   const updateProfile = async () => {
     state.value = 'loading'
     const error = await pub(supabase, {
-      entity: userId.value.id,
+      entity: auth.value.id,
       sender:'components/input/birthdate.vue'
     }).users({
-      userId: userId.value.id,
+      userId: auth.value.id,
       birthdate: birthdate.value, 
     });
     if(error){

@@ -57,7 +57,7 @@
   ok.log('', max)
   const completeWithdrawTransaction = async () => {
     if(!max) return false;
-    if(!userId.value) return false;
+    if(!auth.value) return false;
     loading.value = true
     const currentWithdrawTransaction = await sub(supabase, 'accountTransactions').entity(uuid);
     if(Math.abs(currentWithdrawTransaction.amount)>max){

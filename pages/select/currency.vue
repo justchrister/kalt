@@ -13,7 +13,7 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   definePageMeta({
     pagename: 'select currency',
     middleware: 'auth',
@@ -33,9 +33,9 @@
     selected.value = iso;
     const error = await pub(supabase, {
       sender:"pages/select/currency.vue",
-      entity: userId.value.id
+      entity: auth.value.id
     }).users({
-      userId: userId.value.id,
+      userId: auth.value.id,
       currency: iso
     });
     if(error) {

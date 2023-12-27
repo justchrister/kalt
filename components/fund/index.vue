@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
   const props = defineProps({
     ticker: {
       type: String,
