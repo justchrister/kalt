@@ -22,7 +22,7 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   import {
     Chart as ChartJS,
     CategoryScale,
@@ -43,7 +43,7 @@
 
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
   const currency = user.currency || 'EUR';
 
   ChartJS.register(
