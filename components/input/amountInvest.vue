@@ -23,14 +23,14 @@
 <script setup lang="ts">
 const state = ref('loading')
 const supabase = useSupabaseClient()
-const userId = useSupabaseUser()
+const auth = useSupabaseUser()
   const props = defineProps({
     uuid: {
       type: String,
       required: true
     }
   })
-  const user = await get(supabase).user(userId.value.id)
+  const user = await get(supabase).user(auth)
   
   const amount = ref(10);
   let initialAmount = props.amount;
@@ -44,7 +44,7 @@ const userId = useSupabaseUser()
         sender:'components/input/amountBuy.vue',
         entity: props.uuid,
       }).accountTransactions({
-        userId: user.userId,
+        userId: user?.id,
         amount: ok.toInt(amount.value),
         currency: user.currency,
         type: 'deposit',
