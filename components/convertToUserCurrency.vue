@@ -11,11 +11,11 @@
     }
   })
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id) || null;
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth) || null;
 
   const formattedAmount = ref();
-  if(!userId){
+  if(!user){
     formattedAmount.value=ok.formatCurrency(props.amount, 'USD')
   } else {
     formattedAmount.value=ok.formatCurrency(props.amount, user.currency)
