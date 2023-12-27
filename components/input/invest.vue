@@ -25,8 +25,8 @@
 <script setup>
   const state = ref('loading')
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id)
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth)
 
   const props = defineProps({
     initialAmount: {
@@ -51,9 +51,9 @@
     if(props.type==="autoInvest"){
       const error = await pub(supabase, {
         sender:'components/input/invest.vue',
-        entity: userId.value.id
+        entity: user.id
       }).autoInvest({
-        userId:userId.value.id,
+        userId: user.id,
         amount: ok.toInt(amount.value)
       });
       if(error) {
