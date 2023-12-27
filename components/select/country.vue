@@ -9,8 +9,8 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
   
   const getCountryDetails = async (country) => {
     const { data, error } = await supabase
@@ -25,7 +25,7 @@
     }
   }
 
-  const countryDetails = await getCountryDetails(user.country);
+  const countryDetails = await getCountryDetails(user?.country);
 </script>
 <style scoped lang="scss">
   div{
