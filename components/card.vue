@@ -55,7 +55,7 @@
   const defaultCard = await get(supabase).paymentCard(user);
   const edit = ref(false);
   if(!defaultCard) {
-    ok.log('error', 'User does not have default card')
+    ok.log('', 'User does not have default card')
     edit.value=true;
   }
   const checkBrand = (brand) => {
@@ -86,8 +86,6 @@
   const setFourDigits = () => {
     fourDigits.value = number.value.toString().slice(-4);
   }
-
-
 
   const setNotification = async (message) => {
     if(message) {
