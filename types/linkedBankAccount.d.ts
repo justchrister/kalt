@@ -7,5 +7,6 @@ declare global {
         email?: string;
         iban?: string;
         bankCode?: string;
+        reference?: string; 
     }
 }
