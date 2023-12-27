@@ -8,7 +8,7 @@
     {{props.text}}
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
     to: {
       type: String,
