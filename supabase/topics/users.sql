@@ -13,6 +13,7 @@ CREATE TABLE "topic_users" (
     "userId"                uuid                            NOT NULL,
     "firstName"             text,
     "lastName"              text,
+    "email"                 text,
     "country"               text,
     "city"                  text,
     "postalCode"            text,
