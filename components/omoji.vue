@@ -1,7 +1,7 @@
 <template>
   <span :class="emoji">{{emoji}}</span>
 </template>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   emoji: {
     type: String,
