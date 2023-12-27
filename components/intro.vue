@@ -1,6 +1,6 @@
 <template>
   <div class="intro">
-    <block margin="none">
+    <block margin="half">
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
       <p v-if="props.paragraph">{{props.paragraph}}</p>
     </block>
@@ -26,7 +26,7 @@
 </script>
 <style scoped lang="scss">
 .intro{
-  padding: sizer(9) 0 sizer(7) 0;
+  padding: sizer(9) 0 sizer(3) 0;
   margin-bottom: sizer(5);
   background-image:url('/gradient-2-min.jpg');
   background-size:cover;
