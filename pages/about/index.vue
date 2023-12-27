@@ -66,7 +66,7 @@
     </block>
   </main>
 </template>
-<script setup>
+<script setup lang="ts">
   definePageMeta({
     pagename: 'About us',
     middleware: 'default'
