@@ -20,8 +20,8 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id)
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth)
   const props = defineProps({
     type: {
       type: String,
@@ -55,9 +55,9 @@
     
     const error = await pub(supabase, {
       sender:'pages/invest/auto.vue',
-      entity: user.userId
+      entity: user?.id
     }).autoInvest({
-      userId: user.userId,
+      userId: user?.id,
       interval: interval
     });
     if(error) {
