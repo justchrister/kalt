@@ -2,16 +2,15 @@
   <main>
     <navbar-breadcrumbs parent="profile"/>
     <block>
-      <form @submit.prevent="updateProfile">
-        <select-profile-picture />
-        <input-user :initial="initial.firstName" id="firstName"/>
-        <input-user :initial="initial.lastName" id="lastName"/>
-        <select-country/>
-        <input-user :initial="initial.city" id="city"/>
-        <input-user :initial="initial.postalCode" id="postalCode"/>
-        <input-user :initial="initial.addressLine1" id="addressLine1"/>
-        <input-birthdate :initial="initial.birthdate" :userId="user.id"/>
-      </form>
+      <select-profile-picture />
+      <input-user :initial="initial.firstName" id="firstName"/>
+      <input-user :initial="initial.lastName" id="lastName"/>
+      <select-country/>
+      <input-user :initial="initial.city" id="city"/>
+      <input-user :initial="initial.postalCode" id="postalCode"/>
+      <input-user :initial="initial.addressLine1" id="addressLine1"/>
+      <input-birthdate :initial="initial.birthdate" :userId="user.id"/>
+      <input-button link="/profile">done</input-button>
     </block>
   </main>
 </template>
