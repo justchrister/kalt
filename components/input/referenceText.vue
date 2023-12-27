@@ -8,7 +8,7 @@
            :class="state"/>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
   const props = defineProps({
