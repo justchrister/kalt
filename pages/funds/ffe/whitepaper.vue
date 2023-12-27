@@ -108,7 +108,7 @@
     </block>
   </main>
 </template>
-<script setup>
+<script setup lang="ts">
   definePageMeta({
     pagename: 'Whitepaper',
     layout:'blank',
