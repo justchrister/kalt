@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   const router = useRouter()
   const goBack = () => {
     router.go(-1)
