@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const notify = ref(false)
 const notify2 = ref(false)
 const supabase = useSupabaseClient()
