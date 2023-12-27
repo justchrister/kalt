@@ -3,12 +3,12 @@
     <toggle text="Performance updates" :on="isOn" @click="updatePerformanceUpdates()"/>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
   const isOn = ref(true)
-  isOn.value = user.performanceUpdates;
+  isOn.value = user?.performanceUpdates;
   
   if(user && user.performanceUpdates) {
     isOn.value = user.performanceUpdates;
@@ -27,9 +27,9 @@
     
     const error = await pub(supabase, {
       sender:'components/toggle/performanceUpdates.vue',
-      entity: userId.value.id
+      entity: user?.id
     }).users({
-      userId: userId.value.id,
+      userId: user?.id,
       performanceUpdates: isOn.value
     })
     if(error) {
