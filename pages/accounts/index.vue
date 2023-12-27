@@ -15,7 +15,7 @@
     </block>
   </main>
 </template>
-<script setup>
+<script setup lang="ts">
   definePageMeta({
     pagename: 'Accounts',
     middleware: 'auth'
