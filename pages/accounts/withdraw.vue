@@ -29,8 +29,8 @@
     title: 'Divest'
   })
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser() as any || '' as any
-  const user = await get(supabase).user(userId.value.id) as any || '' as any;
+  const auth = useSupabaseUser() as any || '' as any
+  const user = await get(supabase).user(auth) as user;
 
   const uuid = ok.uuid();
   const notification = ref();
@@ -69,7 +69,7 @@
       sender: 'pages/accounts/withdraw.vue',
       entity: uuid
     }).accountTransactions({
-      userId: userId.value.id,
+      userId: user?.id, 
       status: 'pending',
       autoVest: 1
     });

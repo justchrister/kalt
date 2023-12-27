@@ -15,7 +15,7 @@
     </block>
   </main>
 </template>
-<script setup>
+<script setup lang="ts">
   definePageMeta({
     pagename: 'Transactions',
     middleware: 'auth'
@@ -24,7 +24,8 @@
     title: 'Transactions'
   })
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth) as user;
   
-  const transactions = await get(supabase).accountTransactions(userId.value.id);
+  const transactions = await get(supabase).accountTransactions(user);
 </script>

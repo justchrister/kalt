@@ -21,8 +21,8 @@
     title: 'Accounts'
   })
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
   const linkedBankAccount = await get(supabase).linkedBankAccount(user);
   ok.log('', linkedBankAccount)
   

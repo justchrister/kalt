@@ -37,8 +37,8 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id)
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth)
   const notification = ref();
   definePageMeta({
     pagename: 'Invest',
@@ -78,9 +78,9 @@
   const updateAutoInvestments = async (activeStatus) => {
     const error = await pub(supabase, {
       sender:'pages/invest/auto.vue',
-      entity: userId.value.id
+      entity: user?.id
     }).autoInvest({
-      userId:userId.value.id,
+      userId: user?.id,
       active: activeStatus
     });
     if(error) {
@@ -131,21 +131,6 @@
     }
   }
   ok.log('', autoInvest);
-/*
-
-    if(currentValue==='activating' || currentValue==='deactivating'){
-      return
-    } else if(currentValue==='activate'){
-    } else if(currentValue==='activated'){
-      await updateAutoInvestments(false)
-      activeText.value = 'deactivating'
-      if(updated==='success'){
-        activeText.value = 'paused'
-      } else {
-        activeText.value = 'activated'
-      }
-    }
-*/
 </script>
 <style scoped lang="scss">
   main{
