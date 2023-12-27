@@ -7,10 +7,10 @@
     <span>→</span>
   </nuxt-link></div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
   
   const getCountryDetails = async (country) => {
     const { data, error } = await supabase
