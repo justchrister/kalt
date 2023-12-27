@@ -9,8 +9,8 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
   
   const getLanguageDetails = async (language) => {
     const { data, error } = await supabase
