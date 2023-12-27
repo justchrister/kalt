@@ -1,9 +1,6 @@
 <template>
   <div class="cta">
-    <div class="button-group" v-if="signedIn">
-      <input-button link="/sell">divest</input-button>
-      <input-button link="/invest">invest</input-button>
-    </div>
+    <input-button link="/invest" v-if="signedIn">invest</input-button>
     <div class="button-group" v-if="!signedIn">
       <input-button link="/request/amount">request invite</input-button>
       <input-button link="/auth">sign in</input-button>
