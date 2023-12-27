@@ -7,7 +7,7 @@
     <div class="content" v-if="props.content">{{props.content}}</div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   title: {
     type: String,
