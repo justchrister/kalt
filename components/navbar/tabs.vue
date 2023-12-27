@@ -41,7 +41,7 @@
   })
   const supabase = useSupabaseClient();
   const auth = useSupabaseUser();
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth) as user;
 </script>
 <style scoped lang="scss">
 .tabs{
