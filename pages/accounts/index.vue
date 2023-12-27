@@ -8,9 +8,11 @@
     <block margin="2">
       <account-details />
     </block>
+    <!--
     <block margin="2">
       <account-linked />
     </block>
+    -->
   </main>
 </template>
 <script setup>
