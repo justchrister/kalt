@@ -3,7 +3,7 @@
     <toggle text="Subscription active" :on="isOn" @click="toggleSubscription()"/>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
     on: {
       type: Boolean,
