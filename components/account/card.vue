@@ -22,8 +22,8 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id)
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth)
   const accountBalance = await get(supabase).accountBalance(user)
 </script>
 <style scoped lang="scss">
