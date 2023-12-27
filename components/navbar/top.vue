@@ -45,7 +45,7 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
   const route = useRoute()
   const signedIn = ref(false)
   const supabase = useSupabaseClient()
