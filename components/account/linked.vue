@@ -34,13 +34,12 @@
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  ok.log('', userId)
-  const user = await get(supabase).user(userId?.value?.id) as user;
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth) as user;
 
   const name = user?.firstName + ' ' + user?.lastName|| 'not found'
 
-  const account = await get(supabase).linkedBankAccount(userId?.value?.id) as account;
+  const account = await get(supabase).linkedBankAccount(user?.id) as account;
 
   const reference = account?.reference || 'not found'
   const iban = ok.formatIBAN(account?.iban) || 'not found'
