@@ -37,7 +37,7 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
 </script>
