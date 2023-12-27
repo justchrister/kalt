@@ -7,7 +7,7 @@
     <span></span>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
     url: {
       type: String,
