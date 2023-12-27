@@ -29,7 +29,8 @@
     },
     selected:{
       type: String,
-      required: true
+      default: 'notSelected',
+      required: false
     }
   })
   const innerInterval = ref();
