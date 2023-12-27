@@ -1,7 +1,7 @@
 <template>
   <div class="infobox" :id="type"> <omoji emoji="ⓘ" /> {{text}}</div>
 </template>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   type: {
     type: String,
