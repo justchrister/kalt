@@ -22,7 +22,7 @@
           </a>
         </li>
       </ul>
-    <div v-if="!props.hidePfp" class="pfp" :id="user.profilePicture || ''" @click="navigateTo('/profile')"></div>
+    <div v-if="!props.hidePfp" class="pfp" :id="user?.profilePicture || ''" @click="navigateTo('/profile')"></div>
     </nav>
 </template>
 
@@ -40,8 +40,8 @@
     }
   })
   const supabase = useSupabaseClient();
-  const userId = useSupabaseUser();
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser();
+  const user = await get(supabase).user(auth);
 </script>
 <style scoped lang="scss">
 .tabs{
