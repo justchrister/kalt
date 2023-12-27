@@ -1,6 +1,5 @@
 <template>
-  <block margin="none">
-    <nav class="tabs">
+    <nav :class="{'tabs':true, 'show': props.show }" >
       <ul>
         <li>
           <nuxt-link to="/portfolio" >
@@ -25,7 +24,6 @@
       </ul>
     <div v-if="!props.hidePfp" class="pfp" :id="user.profilePicture || ''" @click="navigateTo('/profile')"></div>
     </nav>
-  </block>
 </template>
 
 
@@ -33,6 +31,11 @@
   const props = defineProps({
     hidePfp: {
       type: Boolean,
+      required: false
+    },
+    show: {
+      type: Boolean,
+      default: true,
       required: false
     }
   })
@@ -42,10 +45,17 @@
 </script>
 <style scoped lang="scss">
 .tabs{
+  opacity:0;
+  &.show{
+    opacity:1;
+  }
   display:grid;
   grid-template-columns: 1fr sizer(3);
   grid-gap: sizer(1);
   margin-bottom:0;
+  width: $sitewidth;
+  max-width: $maxsitewidth;
+  margin:0 auto;
   nav{
     width:100%;
     display: inline-block;
