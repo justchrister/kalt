@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const userId = useSupabaseUser()
