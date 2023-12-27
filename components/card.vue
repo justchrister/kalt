@@ -1,11 +1,12 @@
 <template>
   <div>
-
+    <label v-if="!edit">Card to charge:</label>
     <div class="card" @click="edit=true" v-if="!edit">
       <div :class="checkBrand(number)"></div>
       <div class="details">  {{ "•••• •••• •••• " + fourDigits }}  </div>
       <div class="edit"> edit </div>
     </div>
+    <label v-if="edit">Set card to charge: </label>
     <div class="card selected" v-if="edit">
       <div :class="checkBrand(number)"></div>
       <div class="details" @click="removeMarkedAsWrong()"> 
@@ -185,7 +186,7 @@
   
   .card{
     padding: sizer(1) sizer(2);
-    margin: sizer(1) 0;
+    margin: 0 0 sizer(1) 0;
     max-height: sizer(4);
     display:grid;
     grid-template-columns: sizer(4) 1fr sizer(3);
