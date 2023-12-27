@@ -29,8 +29,8 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
   const isProfileSetUp = async (user) => {
     if(!user || user.firstName == null || user.lastName == null || user.birthdate == null || user.city == null || user.country == null){
       return false
