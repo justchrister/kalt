@@ -5,8 +5,8 @@
 </template>
 <script setup>
   const supabase = useSupabaseClient()
-  const userId = useSupabaseUser()
-  const user = await get(supabase).user(userId.value.id);
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth);
   const isOn = ref(true) 
   isOn.value = user.termsOfService;
 
@@ -19,9 +19,9 @@
     isOn.value = toggledValue
     const error = await pub(supabase, {
       sender:'components/toggle/termsOfService.vue',
-      entity: userId.value.id
+      entity: user?.id
     }).users({
-      userId: userId.value.id,
+      userId: user?.id,
       termsOfService: isOn.value
     });
     if(error) {
