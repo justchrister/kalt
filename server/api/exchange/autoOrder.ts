@@ -108,9 +108,9 @@ export default defineEventHandler(async (event) => {
   const withdrawAmount = message.amount - (message.amount*(1 - autoVestRate));
   
 
-  const withdrawTransaction = await createWithdrawTransaction(user.userId, withdrawAmount, message.currency);
+  const withdrawTransaction = await createWithdrawTransaction(user.id, withdrawAmount, message.currency);
   response.withdrawTransaction = withdrawTransaction || {};
-  const updatedTransaction = await updateTransaction(user.userId, message.message_entity);
+  const updatedTransaction = await updateTransaction(user.id, message.message_entity);
   response.updatedTransaction = updatedTransaction || {};
 
   const calculateAllocationPercentage = (userFund:any) => {
@@ -127,7 +127,7 @@ export default defineEventHandler(async (event) => {
     return userDefinedFundPercentage
   }
 
-  const userDefinedFund =  await get(supabase).userDefinedFund(user.userId)
+  const userDefinedFund =  await get(supabase).userDefinedFund(user.id)
   if(!userDefinedFund) return 'userDefinedFund not found'
 
   const allocationPercentage = calculateAllocationPercentage(userDefinedFund)
@@ -138,7 +138,7 @@ export default defineEventHandler(async (event) => {
     const currencyConvertedSharePrice = assetPrices[entry.ticker] * convertedCurrency;
     const investQuantity =  (message.amount * autoVestRate * entry.allocation) / currencyConvertedSharePrice;
     ok.log('', 'investQuantity '+entry.ticker+': ', investQuantity)
-    const exchangeOrder = await createExchangeOrder(user.userId, investQuantity, entry.ticker);
+    const exchangeOrder = await createExchangeOrder(user.id, investQuantity, entry.ticker);
     response.exchangeOrders.push(exchangeOrder);
   }
   return allocationPercentage
