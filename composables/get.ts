@@ -110,12 +110,10 @@ export const get = (client: any) => {
         .select()
         .eq('userId', user.userId)
         .order('message_sent', { ascending: true })
-      if(error) {
-        ok.log('', error)
+      if(error || data.length === 0 || !data) {
         return null
       } else {
-        const combined = ok.combineJsonByKeys(data, 'message_entity');
-        return combined[0];
+        return ok.merge(data, 'message_entity').single();
       }
     },
     sharePrices: async () => {
