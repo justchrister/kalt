@@ -5,7 +5,7 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
     ...content
   };
   if(meta.event) json['event'] = meta.event;
-  if(meta.id) json['id'] = meta.entity;
+  if(meta.id) json['id'] = meta.id;
   if(meta.timestamp) json['timestamp'] = meta.timestamp;
   if(meta.sender) json['sender'] = meta.sender;
   const { error } = await client.from(topic).insert(json);
