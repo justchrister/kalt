@@ -16,6 +16,7 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value);
   const props = defineProps({
     ticker: {
       type: String,
@@ -67,9 +68,8 @@
     logHearts()
     const { } = await pub(supabase, {
       sender:'components/fund/your.vue',
-      entity: auth.value.id
+      id: user.id
     }).userDefinedFunds({
-      'userId': auth.value.id,
       'ticker': props.ticker,
       'rate': rate.value
     });
