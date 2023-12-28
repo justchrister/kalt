@@ -51,9 +51,8 @@
     if(props.type==="autoInvest"){
       const error = await pub(supabase, {
         sender:'components/input/invest.vue',
-        entity: user.id
+        id: user.id
       }).autoInvest({
-        userId: user.id,
         amount: ok.toInt(amount.value)
       });
       if(error) {
