@@ -40,7 +40,7 @@ export default defineEventHandler( async (event) => {
   const createTransaction = async (userId: string, amount: number, autoInvestEntity: string, currency: string) => {
       const errorTransaction = await pub(supabase, {
         sender:'server/api/invest/auto.ts'
-      }).accountTransactions({
+      }).transactions({
         userId,
         type: 'deposit',
         subType: 'card',
@@ -48,7 +48,7 @@ export default defineEventHandler( async (event) => {
         currency,
         status: 'pending',
         autoVest: 1
-      } as accountTransaction );
+      } as transaction );
 
       if(errorTransaction) {
         ok.log('error', errorTransaction)
