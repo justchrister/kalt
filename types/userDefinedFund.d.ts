@@ -2,7 +2,7 @@ export { userDefinedFund };
 
 declare global {
   interface userDefinedFund {
-    userId?: string;
+    id?: string;
     rate?: number;
     ticker?: tickers;
   }
