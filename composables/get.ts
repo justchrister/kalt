@@ -281,16 +281,14 @@ export const get = (client: any) => {
         .from('topic_accountTransactions')
         .select()
         .eq('userId', user.id)
-        .eq('status', 'complete')
         .order('message_sent', { ascending: true })
+      const merged = ok.merge(data, 'message_entity');
       if(error) {
         ok.log('warn', error)
         return ok.formatCurrency(0, user.currency)
       } else {
-        let result = 0;
-        for (let i = 0; i < data.length; i++) {
-          result += data[i].amount
-        }
+        const filtered = merged.filter(message => (message.type === 'deposit' && message.status === 'complete') || (message.type === 'withdrawal' && (message.status === 'complete' || message.status === 'pending')));
+        const result = filtered.reduce((acc, message) => acc + message.amount, 0);
         return ok.formatCurrency(result, user.currency)
       }
     },
