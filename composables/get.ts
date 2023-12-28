@@ -27,6 +27,17 @@ export const get = (client: any) => {
         return ok.combineJson(data)
       }
     },
+    funds: async () => {
+      const { data, error } = await client
+        .from('sys_funds')
+        .select()
+      if(error){
+        ok.log('error', error)
+        return
+      } else {
+        return data
+      }
+    },
     openExchangeOrder: async (ticker: any, type: any, quantityAbsolute: any) => {
       const { data, error } = await client
         .from('topic_exchange')
