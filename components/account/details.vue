@@ -33,21 +33,22 @@
       Reference
     </div>
     <div class="right">
-      {{userId.email}}
+      {{user.email}}
     </div>
   </div>
 </template>
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
 </script>
 <style scoped lang="scss">
   .card{
     box-sizing: border-box;
-    border: $border;
     padding: sizer(1) sizer(2);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @include border;
   }
   .bold{
     font-weight: bold;
