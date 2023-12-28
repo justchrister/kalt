@@ -107,7 +107,7 @@ export const get = (client: any) => {
           performanceUpdates: userCombined.performanceUpdates || null,
           colorScheme: userCombined.colorScheme || null,
           profilePicture: userCombined.profilePicture || null,
-          language: userCombined.language || 'EN',
+          language: userCombined.language || null,
           currency: userCombined.currency || 'EUR'
         }
       }
