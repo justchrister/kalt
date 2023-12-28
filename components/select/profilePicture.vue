@@ -65,9 +65,8 @@
     profilePicture.value = selectedProfilePicture;
     const error = await pub(supabase, {
       sender:'components/select/profilePicture.vue',
-      entity: user?.id
+      id: user?.id
     }).users({
-      userId: user?.id,
       profilePicture: selectedProfilePicture
     });
     if(error) ok.log('error', 'could not update profile picture', error)
