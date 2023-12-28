@@ -19,6 +19,10 @@
   </main>
 </template>
 <script lang="ts" setup>
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = ref(auth.value)
+
   definePageMeta({
     pagename: 'Invest',
     middleware: 'auth'
@@ -30,8 +34,6 @@
       content: 'Invest in the future, today.'
     }]
   })
-  const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
   const uuid = ok.uuid();
   const loading = ref(false)
   const completeTransaction = async () => {
@@ -40,7 +42,7 @@
       sender: 'pages/invest/index.vue',
       entity: uuid
     }).transactions({
-      userId: auth.value.id,
+      userId: user.id,
       type: 'deposit',
       subType: 'card',
       status: 'pending',
