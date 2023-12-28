@@ -24,13 +24,14 @@
 const state = ref('loading')
 const supabase = useSupabaseClient()
 const auth = useSupabaseUser()
+const user = await get(supabase).user(auth.value)
+
   const props = defineProps({
     uuid: {
       type: String,
       required: true
     }
   })
-  const user = await get(supabase).user(auth.value)
   
   const amount = ref(10);
   let initialAmount = props.amount;
@@ -42,9 +43,9 @@ const auth = useSupabaseUser()
     if(amount.value){
       const error = await pub(supabase, {
         sender:'components/input/amountBuy.vue',
-        entity: props.uuid,
+        id: props.uuid,
       }).transactions({
-        userId: user?.id,
+        userId: user.id,
         amount: ok.toInt(amount.value),
         currency: user.currency,
         type: 'deposit',
