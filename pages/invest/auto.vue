@@ -48,7 +48,7 @@
     title: 'Invest'
   })
   
-  const setNotification = async (message) => {
+  const setNotification = async (message: string) => {
     if(message) {
       ok.log('warn', message)
     }
@@ -98,7 +98,9 @@
   }
   const active=ref(autoInvest.active || false)
   const activeText = ref(autoInvest.active ? 'active' : 'activate')
-
+  const userHasCard = async () => {
+    return true
+  }
   const toggleAutoInvestments = async (status) => {
     if(await userHasCard()){
       setNotification ('Payment card number is too short')
