@@ -1,9 +1,9 @@
 -- version 29.7.23
 -- service acl_stripe
--- topic   accountTransactions
+-- topic   transactions
 
 --- create the table, with default values
-CREATE TABLE "sub_accountTransactions_acl_stripe" (
+CREATE TABLE "sub_transactions_acl_stripe" (
     "event"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
     "id"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
     "timestamp"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
@@ -12,20 +12,20 @@ CREATE TABLE "sub_accountTransactions_acl_stripe" (
 );
 
 -- Create the replicate function 
-CREATE OR REPLACE FUNCTION "replicate_accountTransactions_acl_stripe"()
+CREATE OR REPLACE FUNCTION "replicate_transactions_acl_stripe"()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO "sub_accountTransactions_acl_stripe" (event, id, sender, timestamp)
+  INSERT INTO "sub_transactions_acl_stripe" (event, id, sender, timestamp)
   VALUES (NEW.event, NEW.id, NEW.sender, NEW.timestamp);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create replicate trigger
-CREATE TRIGGER "replicate_accountTransactions_acl_stripe"
-AFTER INSERT ON "topic_accountTransactions"
+CREATE TRIGGER "replicate_transactions_acl_stripe"
+AFTER INSERT ON "topic_transactions"
 FOR EACH ROW
-EXECUTE FUNCTION "replicate_accountTransactions_acl_stripe"();
+EXECUTE FUNCTION "replicate_transactions_acl_stripe"();
 
 -- Enable RLS
-ALTER TABLE "sub_accountTransactions_acl_stripe" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "sub_transactions_acl_stripe" ENABLE ROW LEVEL SECURITY;
