@@ -18,6 +18,7 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
   const props = defineProps({
     initial: {
       type: String,
@@ -31,9 +32,8 @@
     state.value = 'loading'
     const error = await pub(supabase, {
       sender:'components/input/addressLine.vue',
-      entity: auth.value.id
+      id: user.id
     }).users({
-      userId: auth.value.id,
       addressLine1: addressLine1.value,   
     });
     if(error){
