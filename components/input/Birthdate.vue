@@ -18,6 +18,7 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
   const birthdate = ref(props.initial)
 
   const props = defineProps({
@@ -30,10 +31,9 @@
   const updateProfile = async () => {
     state.value = 'loading'
     const error = await pub(supabase, {
-      entity: auth.value.id,
+      id: user.id,
       sender:'components/input/birthdate.vue'
     }).users({
-      userId: auth.value.id,
       birthdate: birthdate.value, 
     });
     if(error){
