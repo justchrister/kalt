@@ -59,9 +59,8 @@ export default defineEventHandler( async (event) => {
 
       const errorAutoInvest = await pub(supabase, {
         sender:'server/api/invest/auto.ts',
-        entity: autoInvestEntity
+        id: autoInvestEntity
       }).autoInvest({
-        userId: autoInvestEntity,
         lastCharged: ok.timestamptz()
       } as autoInvest );
 
