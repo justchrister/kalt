@@ -15,8 +15,8 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
 
 export const pub = (client: any, meta: any) => {
   return {
-    accountTransactions: async (content: accountTransaction) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_accountTransactions');
+    transactions: async (content: transaction) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_transactions');
     },
     exchangeOrders: async (content: exchangeOrder) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchange');
