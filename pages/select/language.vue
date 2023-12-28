@@ -15,6 +15,8 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
+
   definePageMeta({
     middleware: 'auth',
     layout: 'blank'
@@ -32,10 +34,9 @@
   const updateProfile = async (iso) => {
     selected.value = iso;
     const error = await pub(supabase, {
-      sender:"pages/select/language.vue",
-      entity: auth.value.id
+      sender: "pages/select/language.vue",
+      id: user.id
     }).users({
-      userId: auth.value.id,
       language: iso
     });
     if(error) {
