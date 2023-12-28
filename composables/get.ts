@@ -47,6 +47,23 @@ export const get = (client: any) => {
         return order;
       }
     },
+    languageDetails: async (iso: any) => {
+      const { data, error } = await client
+        .from('sys_languages')
+        .select()
+        .eq('available', true)
+        .eq('iso', iso || 'ENG')
+        .limit(1)
+        .single()
+      if(error) {
+        return {
+          iso: '?',
+          name: 'Could not get language details'
+        }
+      } else {
+        return data
+      }
+    },
     processingExchangeOrder: async (orderId: any) => {
       const { data, error } = await client
         .from('topic_exchange')
