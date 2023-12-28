@@ -1,7 +1,7 @@
 DO $$ 
 DECLARE 
   service TEXT := 'getAccountTransactions';
-  topic TEXT := 'accountTransactions';
+  topic TEXT := 'transactions';
 
   sub TEXT :=  'sub_'|| topic || '_' || service;
   topic_table TEXT :=  'topic_'|| topic;
