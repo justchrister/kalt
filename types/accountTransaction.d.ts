@@ -1,7 +1,7 @@
-export { accountTransaction };
+export { transaction };
 
 declare global {
-    interface accountTransaction {
+    interface transaction {
         userId?: string; // UUID
         amount?: number; // numeric
         currency?: string; // references currencies(iso)
