@@ -18,6 +18,9 @@
         <input-button>change password <loading-icon v-if="loading"/></input-button>
       </form>
     </block>
+    <span v-if="notification" @click="setNotification(null)">
+      <banner-notification color="yellow" :message="notification"/>
+    </span>
   </main>
 </template>
 
@@ -29,23 +32,36 @@
     title: 'Password'
   })
 
+  const notification = ref(null);
+
+  const setNotification = async (message: string) => {
+    ok.log('error', message)
+    notification.value=message
+    loading.value=false
+    return
+  }
+
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const loading = ref(false)
   const password = ref('')
   const resetPassword = async () => {
     loading.value=true
-    const { data, error } = await supabase.auth.updateUser({
-      password: password.value
-    })
-    await ok.sleep(200);
-    if(error){
-      loading.value=false
-      ok.log('error', 'password not changed', error)
-    } else{
-      loading.value=false
-      navigateTo('/auth')
-      ok.log('success', 'changed password')
+    if (password.value.length < 8){
+      setNotification('Password must be at least 8 characters')
+    } else {
+      const { data, error } = await supabase.auth.updateUser({
+        password: password.value
+      })
+      await ok.sleep(200);
+      if(error){
+        loading.value=false
+        ok.log('error', 'password not changed', error)
+      } else{
+        loading.value=false
+        navigateTo('/auth')
+        ok.log('success', 'changed password')
+      }
     }
   }
 </script>
