@@ -5,10 +5,10 @@
 --- create the table, with default values
 CREATE TABLE "sub_users_acl_stripe" (
     "event"          uuid          NOT NULL  DEFAULT uuid_generate_v4()         PRIMARY KEY,
-    "id"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
-    "timestamp"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
-    "sender"      text          NOT NULL,
-    "read"        boolean       NOT NULL  DEFAULT FALSE
+    "id"             uuid          NOT NULL  DEFAULT uuid_generate_v4(),
+    "timestamp"      timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
+    "sender"         text          NOT NULL,
+    "read"           boolean       NOT NULL  DEFAULT FALSE
 );
 
 -- Create the replicate function 
