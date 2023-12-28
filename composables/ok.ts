@@ -212,14 +212,14 @@ export const ok = {
     if (!jsonArray) return "No input";
   
     jsonArray.forEach(jsonObj => {
-      const entity = jsonObj.message_entity;
+      const entity = jsonObj.id;
   
       if (!tempObj[entity]) {
         tempObj[entity] = {};
       }
   
       for (const key in jsonObj) {
-        if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+        if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
           tempObj[entity][key] = jsonObj[key];
         }
       }
@@ -245,7 +245,7 @@ export const ok = {
       }
   
       for (const key in jsonObj) {
-        if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+        if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
           tempObj[ticker][key] = jsonObj[key];
         }
       }
@@ -272,7 +272,7 @@ export const ok = {
       }
   
       for (const key in jsonObj) {
-        if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+        if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
           tempObj[compositeKey][key] = jsonObj[key];
         }
       }
@@ -306,7 +306,7 @@ export const ok = {
       tempObj[compositeKey] = tempObj[compositeKey] || {};
   
       for (const key in jsonObj) {
-        if (jsonObj[key] !== null && key !== 'message_id' && key !== 'message_sender') {
+        if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
           tempObj[compositeKey][key] = jsonObj[key];
         }
       }
@@ -333,8 +333,8 @@ export const ok = {
     const { data, error } = await supabase
       .from(topic)
       .select()
-      .eq('message_entity', entity)
-      .order('message_sent', { ascending: true })
+      .eq('id', entity)
+      .order('timestamp', { ascending: true })
     return ok.combineJson(data)
   },
   convertCurrency: async (supabase, amount, from, to) => {
@@ -358,10 +358,10 @@ export const ok = {
       }
       return acc;
     }, {});
-    delete json.message_id
-    delete json.message_entity
-    delete json.message_sent
-    delete json.message_sender
+    delete json.event
+    delete json.id
+    delete json.timestamp
+    delete json.sender
     return json
   }
 };
