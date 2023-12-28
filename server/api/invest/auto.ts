@@ -20,11 +20,11 @@ export default defineEventHandler( async (event) => {
   const { data, error} = await supabase
     .from('topic_autoInvest')
     .select()
-    .order('message_sent', { ascending: true });
+    .order('timestamp', { ascending: true });
 
   if(error) return;
   
-  const merged = ok.merge(data, 'message_entity') as autoInvest[];
+  const merged = ok.merge(data, 'id') as autoInvest[];
   const active = merged.filter((entry: autoInvest) => entry.active)
 
   const now = testing ? new Date(mockAsTodayIs.yyyy, mockAsTodayIs.mm - 1, mockAsTodayIs.dd) : new Date();
@@ -35,7 +35,7 @@ export default defineEventHandler( async (event) => {
   const middleOfMonth = new Date(now.getFullYear(), now.getMonth(), 15);
   const endOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0);
 
-  const notAdjustedRecently = active.filter((entry: autoInvest) => new Date(entry.message_sent as string) < gracePeriodHoursAgo)
+  const notAdjustedRecently = active.filter((entry: autoInvest) => new Date(entry.timestamp as string) < gracePeriodHoursAgo)
 
   const createTransaction = async (userId: string, amount: number, autoInvestEntity: string, currency: string) => {
       const errorTransaction = await pub(supabase, {
@@ -90,7 +90,7 @@ export default defineEventHandler( async (event) => {
     const user = await get(supabase).user(entry.userId);
     const userId = entry.userId as string;
     const currency = user?.currency as string || 'EUR';
-    const entity = entry.message_entity as string;
+    const entity = entry.id as string;
     const interval = entry.interval as string;
     const amount = entry.amount as number;
 
