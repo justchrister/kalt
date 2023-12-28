@@ -39,7 +39,7 @@
     const error = await pub(supabase, {
       sender: 'pages/invest/index.vue',
       entity: uuid
-    }).accountTransactions({
+    }).transactions({
       userId: auth.value.id,
       type: 'deposit',
       subType: 'card',
