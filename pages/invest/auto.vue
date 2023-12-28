@@ -30,7 +30,7 @@
       <div class="center-text">
       </div>
     </block>
-    <span v-if="notification" @click="setNotification(null)">
+    <span v-if="notification" @click="setNotification('')">
       <banner-notification color="yellow" :message="notification"/>
     </span>
   </main>
@@ -38,8 +38,9 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value)
+  const user = await get(supabase).user(auth.value) as user;
   const notification = ref();
+  const loading = ref(false);
   definePageMeta({
     pagename: 'Invest',
     middleware: 'auth'
@@ -57,9 +58,9 @@
     return
   }
 
-  const autoInvest = await get(supabase).autoInvest(user.id);
-  const selectedInterval = ref(autoInvest.interval)
-  const selectInterval = async (interval) => {
+  const autoInvest = await get(supabase).autoInvest(user) as autoInvest;
+  const selectedInterval = ref(autoInvest.interval) as autoInvestIntervals;
+  const selectInterval = async (interval: string) => {
     if(interval === 'monthly'){
       if(autoInvest.type === 'monthlyBeginning') {
         selectedInterval.value = 'monthlyBeginning';
@@ -105,7 +106,7 @@
       return false
     }
   }
-  const toggleAutoInvestments = async (status) => {
+  const toggleAutoInvestments = async (status: boolean) => {
     const hasCard =await userHasCard();
     if(!hasCard){
       setNotification ('Please add a payment card')
