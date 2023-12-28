@@ -1,18 +1,18 @@
 export { };
 
 declare global {
-  const enum accountTransactionsStatuses {
+  const enum transactionsStatuses {
     incomplete = 'incomplete',
     pending = 'pending',
     processing = 'processing',
     complete = 'complete',
     failed = 'failed'
   }
-  const enum accountTransactionsTypes {
+  const enum transactionsTypes {
     deposit = 'deposit',
     withdraw = 'withdraw'
   }
-  const enum accountTransactionsSubTypes {
+  const enum transactionsSubTypes {
     card = 'card',
     wireTransfer = 'wireTransfer',
     dividend = 'dividend',
