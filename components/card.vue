@@ -161,9 +161,8 @@
     } else {
       const error = await pub(supabase, {
         sender:'components/card/add.vue',
-        entity: ok.uuid()
+        id: user.id
       }).cards({
-        'userId': user.id,
         'number': numberInt,
         'month': month.value,
         'year': year.value,
