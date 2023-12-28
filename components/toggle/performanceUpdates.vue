@@ -27,9 +27,8 @@
     
     const error = await pub(supabase, {
       sender:'components/toggle/performanceUpdates.vue',
-      entity: user?.id
+      id: user?.id
     }).users({
-      userId: user?.id,
       performanceUpdates: isOn.value
     })
     if(error) {
