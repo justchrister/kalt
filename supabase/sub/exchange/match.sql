@@ -8,7 +8,7 @@ CREATE TABLE "sub_exchange_match" (
     "id"      uuid          NOT NULL  DEFAULT uuid_generate_v4(),
     "timestamp"        timestamptz   NOT NULL  DEFAULT (now() at time zone 'utc'),
     "sender"      text          NOT NULL,
-    "message_read"        boolean       NOT NULL  DEFAULT FALSE
+    "read"        boolean       NOT NULL  DEFAULT FALSE
 );
 
 -- Create the replicate function 
