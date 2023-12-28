@@ -282,11 +282,12 @@ export const get = (client: any) => {
         .eq('userId', user.id)
         .order('message_sent', { ascending: true })
       const merged = ok.merge(data, 'message_entity');
+      ok.log('', merged)
       if(error) {
         ok.log('warn', error)
         return ok.formatCurrency(0, user.currency)
       } else {
-        const filtered = merged.filter(message => (message.type === 'deposit' && message.status === 'complete') || (message.type === 'withdrawal' && (message.status === 'complete' || message.status === 'pending')));
+        const filtered = merged.filter(message => (message.type === 'deposit' && message.status === 'complete') || (message.type === 'withdraw' && (message.status === 'complete' || message.status === 'pending')));
         const result = filtered.reduce((acc, message) => acc + message.amount, 0);
         return ok.formatCurrency(result, user.currency)
       }
