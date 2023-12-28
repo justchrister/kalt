@@ -36,6 +36,7 @@ const notify2 = ref(false)
 const supabase = useSupabaseClient()
 const amount = ref(0);
 const auth = useSupabaseUser()
+const user = await get(supabase).user(auth.value) as user;
   const props = defineProps({
     uuid: {
       type: String,
@@ -76,9 +77,9 @@ const auth = useSupabaseUser()
     ok.log('', amountFloat)
       const error = await pub(supabase, {
         sender:'components/input/amountSell.vue',
-        entity: props.uuid
+        id: props.uuid
       }).transactions({
-        userId: auth.value.id,
+        userId: user.id,
         amount: -amountFloat,
         status: 'incomplete',
         type: 'withdraw'
