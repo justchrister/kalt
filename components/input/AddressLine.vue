@@ -18,13 +18,14 @@
   const state = ref('loading')
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const addressLine1 = ref(props.initial)
   const props = defineProps({
     initial: {
       type: String,
       required: false
     }
   })
+  
+  const addressLine1 = ref(props.initial)
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
