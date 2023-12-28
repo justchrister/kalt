@@ -21,10 +21,10 @@ ALTER TABLE "topic_linkedBankAccounts" ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "SELF — Insert" ON public."topic_linkedBankAccounts"
   AS PERMISSIVE FOR INSERT
   TO authenticated
-  WITH CHECK (auth.uid() = "userId");
+  WITH CHECK (auth.uid() = "id");
 
 
 CREATE POLICY "SELF — Select" ON "public"."topic_linkedBankAccounts"
   AS PERMISSIVE FOR SELECT
   TO authenticated
-  USING (auth.uid() = "userId")
+  USING (auth.uid() = "id")
