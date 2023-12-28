@@ -33,12 +33,12 @@ ALTER TABLE "topic_users" ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "SELF — Insert" ON public."topic_users"
   AS PERMISSIVE FOR INSERT
   TO authenticated
-  WITH CHECK (auth.uid() = "userId" AND auth.uid() = "id");
+  WITH CHECK (auth.uid() = "id");
 
 CREATE POLICY "SELF — Select" ON "public"."topic_users"
   AS PERMISSIVE FOR SELECT
   TO authenticated
-  USING (auth.uid() = "userId");
+  USING (auth.uid() = "id");
 
 --- indexes
 CREATE INDEX "index_topic_users_id_timestamp" ON public."topic_users" USING btree ("id", "timestamp");
