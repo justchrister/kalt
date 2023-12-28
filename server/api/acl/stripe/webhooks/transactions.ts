@@ -43,9 +43,9 @@ export default defineEventHandler( async (event) => {
       return 'error'
     }
   }
-  const updateTransactionStatus = async (status: string, entity: string, userId: string) => {
+  const updateTransactionStatus = async (status: string, id: string, userId: string) => {
     const error = await pub(supabase, {
-      entity: entity,
+      id: id,
       sender: 'service/api/acl/stripe/webhooks/transactions.ts'
     }).transactions({
       userId: userId,
