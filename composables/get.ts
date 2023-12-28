@@ -95,9 +95,9 @@ export const get = (client: any) => {
         }
       }
     },
-    accountTransactions: async (user: any) => {
+    transactions: async (user: any) => {
       const { data, error } = await client 
-        .from('topic_accountTransactions')
+        .from('topic_transactions')
         .select()
         .eq('userId', user.id)
         .order('message_sent', { ascending: true })
@@ -277,7 +277,7 @@ export const get = (client: any) => {
     },
     accountBalance: async(user: user) => {
       const { data, error } = await client
-        .from('topic_accountTransactions')
+        .from('topic_transactions')
         .select()
         .eq('userId', user.id)
         .order('message_sent', { ascending: true })
