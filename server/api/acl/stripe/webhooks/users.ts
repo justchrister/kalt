@@ -4,6 +4,10 @@ import { serverSupabaseServiceRole } from '#supabase/server';
 import Stripe from 'stripe';
 
 export default defineEventHandler(async (event) => {
+
+  const keyPair = await ok.verifyKeyPair(event)
+  if(!keyPair) return 'unauthorized'
+
   const supabase = serverSupabaseServiceRole(event);
   const topic = 'users';
   const service = 'aclStripe';

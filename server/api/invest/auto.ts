@@ -4,6 +4,10 @@ import { pub } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
+
+  const keyPair = await ok.verifyKeyPair(event)
+  if(!keyPair) return 'unauthorized'
+
   const supabase = serverSupabaseServiceRole(event)
   const mockAsTodayIs = {
     'dd': 1,
