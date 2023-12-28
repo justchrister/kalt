@@ -12,6 +12,7 @@
 <script lang="ts" setup>
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
   const props = defineProps({
     initialValue: {
       type: String,
@@ -28,10 +29,9 @@
   const updateIBAN = async () => {
     state.value = 'loading'
     const error = await pub(supabase, {
-      entity: auth.value.id,
+      id: user.id,
       sender:'components/input/iban.vue'
     }).linkedBankAccounts({
-      userId: auth.value.id,
       iban: iban.value
     });
     if(error) {
