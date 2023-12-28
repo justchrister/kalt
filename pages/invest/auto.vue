@@ -99,11 +99,17 @@
   const active=ref(autoInvest.active || false)
   const activeText = ref(autoInvest.active ? 'active' : 'activate')
   const userHasCard = async () => {
-    return true
+    const card = await get(supabase).paymentCard(user);
+    if(card){
+      return true
+    } else {
+      return false
+    }
   }
   const toggleAutoInvestments = async (status) => {
-    if(await userHasCard()){
-      setNotification ('Payment card number is too short')
+    const hasCard =await userHasCard();
+    if(!hasCard){
+      setNotification ('Please add a payment card')
       return
     }
     // on
