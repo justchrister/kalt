@@ -11,7 +11,6 @@ CREATE TABLE "topic_cards" (
     "sender"              text                            NOT NULL,
 -- 
     "userId"              uuid                            NOT NULL,
-    "lastFourDigits"      numeric,
     "year"                numeric,
     "month"               numeric,
     "cvc"                 numeric,
