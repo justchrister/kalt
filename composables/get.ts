@@ -63,7 +63,6 @@ export const get = (client: any) => {
     user: async (auth: any) => {
       let userId = auth.id;
       if(!auth.id){
-        ok.log('', 'im here')
         userId = auth;
       }
       const { data } = await client 
@@ -76,7 +75,7 @@ export const get = (client: any) => {
         return null
       } else {
         return {
-          id: userCombined.userId || null,
+          id: userId || null,
           firstName: userCombined.firstName || null,
           lastName: userCombined.lastName || null,
           country: userCombined.country || null,
