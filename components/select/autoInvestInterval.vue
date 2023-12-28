@@ -55,9 +55,8 @@
     
     const error = await pub(supabase, {
       sender:'pages/invest/auto.vue',
-      entity: user?.id
+      id: user?.id
     }).autoInvest({
-      userId: user?.id,
       interval: interval
     });
     if(error) {
