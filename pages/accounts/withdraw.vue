@@ -79,7 +79,10 @@
       loading.value = false
     } else {
       ok.log('success', 'Withdraw transaction created')
+      await ok.sleep(1000)
+
       loading.value = false;
+      navigateTo('/accounts');
     };
   }
 
