@@ -26,4 +26,4 @@ CREATE POLICY "AUTH — Select"
 
 
 --- Indexes 
-CREATE INDEX "index_topic_assets_userId_timestamp" ON public."topic_assets" USING btree ("id", "ticker", "timestamp");
+CREATE INDEX "index_topic_assets_id_ticker_timestamp" ON public."topic_assets" USING btree ("id", "ticker", "timestamp");
