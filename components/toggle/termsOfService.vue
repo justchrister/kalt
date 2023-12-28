@@ -19,9 +19,8 @@
     isOn.value = toggledValue
     const error = await pub(supabase, {
       sender:'components/toggle/termsOfService.vue',
-      entity: user?.id
+      id: user?.id
     }).users({
-      userId: user?.id,
       termsOfService: isOn.value
     });
     if(error) {
