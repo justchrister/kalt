@@ -2,6 +2,9 @@
   <section :class="'gradient-'+props.gradient">
     <block margin="none">
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
+      <p v-if="props.paragraph">
+        {{ props.paragraph  }}
+      </p>
     </block>
   </section>
 </template>
@@ -10,6 +13,10 @@
     title: {
       type: String,
       required: true
+    },
+    paragraph:{
+      type: String,
+      required: false
     },
     gradient: {
       type: String,
