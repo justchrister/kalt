@@ -55,7 +55,7 @@
   margin-bottom:0;
   width: $sitewidth;
   max-width: $maxsitewidth;
-  margin:0 auto;
+  margin:0 auto sizer(2) auto;
   nav{
     width:100%;
     display: inline-block;
