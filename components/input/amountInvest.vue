@@ -43,7 +43,7 @@ const auth = useSupabaseUser()
       const error = await pub(supabase, {
         sender:'components/input/amountBuy.vue',
         entity: props.uuid,
-      }).accountTransactions({
+      }).transactions({
         userId: user?.id,
         amount: ok.toInt(amount.value),
         currency: user.currency,
