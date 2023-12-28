@@ -83,17 +83,17 @@ Subject: Kalt — Password reset
 
 ## Create the following webhooks:
 
-Name: webhook_accountTransactions_exchange_autoOrder
+Name: webhook_transactions_exchange_autoOrder
 URL: https://ka.lt/api/exchange/autoOrder
-Table: sub_accountTransactions_exchange_autoOrder
+Table: sub_transactions_exchange_autoOrder
 
-Name: webhook_accountTransactions_payments
-URL: https://ka.lt/api/payments/webhooks/accountTransactions
-Table: sub_accountTransactions_payments
+Name: webhook_transactions_payments
+URL: https://ka.lt/api/payments/webhooks/transactions
+Table: sub_transactions_payments
 
-Name: webhook_accountTransactions_acl_stripe
-URL: https://ka.lt/api/acl/stripe/webhooks/accountTransactions
-Table: sub_accountTransactions_acl_stripe
+Name: webhook_transactions_acl_stripe
+URL: https://ka.lt/api/acl/stripe/webhooks/transactions
+Table: sub_transactions_acl_stripe
 
 Name: webhook_paymentCards_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/paymentCards
