@@ -20,9 +20,8 @@
     const autoVest = autoVestRate/100;
     const error = await pub(supabase, {
       sender:'components/select/autoVest.vue',
-      entity: user?.id
+      id: user?.id
     }).users({
-      userId: user?.id,
       autoVest: autoVest
     });
     if(error){
