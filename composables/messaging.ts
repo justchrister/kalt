@@ -4,10 +4,10 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
   const json = {
     ...content
   };
-  if(meta.id) json['message_id'] = meta.id;
-  if(meta.entity) json['message_entity'] = meta.entity;
-  if(meta.sent) json['message_sent'] = meta.sent;
-  if(meta.sender) json['message_sender'] = meta.sender;
+  if(meta.id) json['event'] = meta.id;
+  if(meta.entity) json['id'] = meta.entity;
+  if(meta.sent) json['timestamp'] = meta.sent;
+  if(meta.sender) json['sender'] = meta.sender;
   const { error } = await client.from(topic).insert(json);
   if(error) ok.log('error', error);
   return error;
@@ -33,8 +33,8 @@ export const pub = (client: any, meta: any) => {
     exchangeRates: async (content: exchangeRate) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchangeRates');
     },
-    paymentCards: async (content: paymentCard) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_paymentCards');
+    cards: async (content: card) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_cards');
     },
     paymentsPending: async (content: paymentsPending) => {
       return await createJsonAndPublish(client, meta, content, 'topic_paymentsPending');
@@ -60,20 +60,20 @@ export const sub = (client: any, topic: any) => {
       const { data, error } = await client
         .from('topic_'+topic)
         .select()
-        .eq('message_entity', entity)
-        .order('message_sent', { ascending: true })
+        .eq('id', entity)
+        .order('timestamp', { ascending: true })
       if(error) {
         return error
       } else {
-        return ok.merge(data, 'message_entity').single()
+        return ok.merge(data, 'id').single()
       }
     },
     read: async (service: any, id: any) => {
       const subscription = 'sub_'+topic+'_'+service
       const { error, data } = await client
         .from(subscription)
-        .update({ message_read: true })
-        .eq('message_id', id)
+        .update({ read: true })
+        .eq('event', id)
         .select()
       if(error) {
         ok.log('', error)
