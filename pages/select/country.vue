@@ -17,6 +17,7 @@
 <script setup lang="ts">
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
   definePageMeta({
     pagename: 'select country',
     middleware: 'auth',
@@ -38,9 +39,8 @@
     selected.value = iso;
     const error = await pub(supabase, {
       sender:"pages/select/country.vue",
-      entity: auth.value.id
+      id: user.id
     }).users({
-      userId: auth.value.id,
       country: iso
     });
     if(error) {
