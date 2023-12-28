@@ -1,5 +1,5 @@
-drop type public."transactions_statuses";
-create type public."transactions_statuses" as enum (
+drop type public."transaction_statuses";
+create type public."transaction_statuses" as enum (
     'incomplete',
     'pending',
     'processing',
@@ -7,13 +7,13 @@ create type public."transactions_statuses" as enum (
     'vested',
     'failed'
 );
-drop type public."transactions_types";
-create type public."transactions_types" as enum (
+drop type public."transaction_types";
+create type public."transaction_types" as enum (
     'deposit',
     'withdraw'
 );
-drop type public."transactions_subTypes";
-create type public."transactions_subTypes" as enum (
+drop type public."transaction_subTypes";
+create type public."transaction_subTypes" as enum (
     'card',
     'wireTransfer',
     'dividend',
