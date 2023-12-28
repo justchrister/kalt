@@ -278,11 +278,11 @@ export const get = (client: any) => {
         return ok.cleanMessage(combined)
       }
     },
-    autoInvest: async(userId) => {
+    autoInvest: async(user: user) => {
       const { data, error } = await client
         .from('topic_autoInvest')
         .select()
-        .eq('userId', userId)
+        .eq('id', user.id)
         .order('timestamp', { ascending: true })
       if(error) {
         ok.log('', error)
