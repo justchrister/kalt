@@ -22,15 +22,15 @@ ALTER TABLE "topic_autoInvest" ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "SELF — Insert" ON public."topic_autoInvest"
   AS PERMISSIVE FOR INSERT
   TO authenticated
-  WITH CHECK (auth.uid() = "userId");
+  WITH CHECK (auth.uid() = "id");
 
 CREATE POLICY "SELF — Select" ON public."topic_autoInvest"
   AS PERMISSIVE FOR SELECT
   TO authenticated
-  USING (auth.uid() = "userId");
+  USING (auth.uid() = "id");
 
 
 
 --- Indexes
 
-CREATE INDEX "index_topic_autoInvest_userId_timestamp" ON public."topic_autoInvest" USING btree ("userId", "timestamp")
+CREATE INDEX "index_topic_autoInvest_id_timestamp" ON public."topic_autoInvest" USING btree ("id", "timestamp")
