@@ -27,5 +27,5 @@
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
   
-  const transactions = await get(supabase).accountTransactions(user);
+  const transactions = await get(supabase).transactions(user);
 </script>
