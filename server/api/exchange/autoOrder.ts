@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
 
   const supabase = serverSupabaseServiceRole(event);
   const service = 'autoOrder';
-  const topic = 'accountTransactions';
+  const topic = 'transactions';
   const body = await readBody(event);
   
   if (body.record.message_read) return 'message already read';
@@ -70,10 +70,10 @@ export default defineEventHandler(async (event) => {
       'type': 'withdraw',
       'subType': 'internal',
       'status': 'complete'
-    } as accountTransaction;
+    } as transaction;
     const error = await pub(supabase, {
       sender:'server/api/exchange/autoOrder.ts'
-    }).accountTransactions(json);
+    }).transactions(json);
     if(error) {
       return
     } else {
@@ -86,11 +86,11 @@ export default defineEventHandler(async (event) => {
       'userId': userId,
       'status': 'vested',
       'autoVest': 0
-    } as accountTransaction;
+    } as transaction;
     const error = await pub(supabase, {
       sender:'server/api/exchange/autoOrder.ts',
       entity: entity,
-    }).accountTransactions(json);
+    }).transactions(json);
     if(error) {
       return
     } else {
