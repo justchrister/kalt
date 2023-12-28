@@ -95,9 +95,9 @@ Name: webhook_transactions_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/transactions
 Table: sub_transactions_acl_stripe
 
-Name: webhook_paymentCards_acl_stripe
-URL: https://ka.lt/api/acl/stripe/webhooks/paymentCards
-Table: sub_paymentCards_acl_stripe
+Name: webhook_cards_acl_stripe
+URL: https://ka.lt/api/acl/stripe/webhooks/cards
+Table: sub_cards_acl_stripe
 
 Name: webhook_paymentsPending_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/paymentsPending
