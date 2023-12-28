@@ -21,7 +21,7 @@
       content: 'Invest in the future, today.'
     }]
   })
-  const funds = await get(supabase).funds();
+  const funds = await get(supabase).funds() as fund[];
 </script>
 <style scoped lang="scss">
 .button-group{
