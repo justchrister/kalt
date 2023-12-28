@@ -78,9 +78,8 @@
   const updateAutoInvestments = async (activeStatus) => {
     const error = await pub(supabase, {
       sender:'pages/invest/auto.vue',
-      entity: user?.id
+      id: user?.id
     }).autoInvest({
-      userId: user?.id,
       active: activeStatus
     });
     if(error) {
