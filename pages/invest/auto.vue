@@ -99,7 +99,7 @@
   const active=ref(autoInvest.active || false)
   const activeText = ref(autoInvest.active ? 'active' : 'activate')
   const userHasCard = async () => {
-    const card = await get(supabase).paymentCard(user);
+    const card = await get(supabase).card(user);
     if(card){
       return true
     } else {
