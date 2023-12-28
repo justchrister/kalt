@@ -14,9 +14,8 @@ export default defineEventHandler( async (event) => {
   // get data from on-boarding flow here
   await pub(supabase, {
     sender:'server/api/users/initialize.ts',
-    entity: user.id
+    id: user.id
   }).users({
-    userId: user.id,
     currency: 'EUR',
     language: 'ENG',
     autoVest: 1, 
