@@ -7,7 +7,7 @@
     </block>
     <block margin="2">
       <account-details />
-      <input-button link="/accounts/withdraw">invest →</input-button>
+      <input-button link="/invest">invest →</input-button>
     </block>
     <block margin="2">
       <account-linked />
