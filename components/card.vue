@@ -163,12 +163,13 @@
         sender:'components/card/add.vue',
         id: user.id
       }).cards({
+        'userId': user.id,
         'number': numberInt,
         'month': month.value,
         'year': year.value,
         'cvc': cvc.value,
         'default': true
-      });
+      } as card);
       if(error){
         ok.log('error', 'could not add card', error)
         loading.value=false
