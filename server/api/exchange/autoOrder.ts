@@ -25,10 +25,10 @@ export default defineEventHandler(async (event) => {
   const topic = 'transactions';
   const body = await readBody(event);
   
-  if (body.record.message_read) return 'message already read';
+  if (body.record.read) return 'message already read';
   
-  const message = await sub(supabase, topic).entity(body.record.message_entity);
-  await sub(supabase, topic).read(service, body.record.message_id);
+  const message = await sub(supabase, topic).entity(body.record.id);
+  await sub(supabase, topic).read(service, body.record.event);
 
   if(message.status!=='complete') {
     return 'wrong payment status'
@@ -114,7 +114,7 @@ export default defineEventHandler(async (event) => {
 
   const withdrawTransaction = await createWithdrawTransaction(user.id, withdrawAmount, message.currency);
   response.withdrawTransaction = withdrawTransaction || {};
-  const updatedTransaction = await updateTransaction(user.id, message.message_entity);
+  const updatedTransaction = await updateTransaction(user.id, message.id);
   response.updatedTransaction = updatedTransaction || {};
 
   const calculateAllocationPercentage = (userFund:any) => {
