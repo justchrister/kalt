@@ -53,7 +53,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
-  const defaultCard = await get(supabase).paymentCard(user);
+  const defaultCard = await get(supabase).card(user);
   const edit = ref(false);
   if(!defaultCard) {
     ok.log('', 'User does not have default card')
@@ -162,7 +162,7 @@
       const error = await pub(supabase, {
         sender:'components/card/add.vue',
         entity: ok.uuid()
-      }).paymentCards({
+      }).cards({
         'userId': user.id,
         'number': numberInt,
         'month': month.value,
