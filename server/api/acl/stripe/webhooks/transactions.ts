@@ -5,19 +5,18 @@ import Stripe from 'stripe';
 
 export default defineEventHandler( async (event) => {
   
-  const keyPair = await ok.verifyKeyPair(event)
-  if(!keyPair) return 'unauthorized'
-
+  const keyPair = await ok.verifyKeyPair(event);
+  if(!keyPair) return 'unauthorized';
 
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
   const topic = 'transactions';
   const service = 'aclStripe';
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY) as Stripe;
-  if (body.record.message_read) return 'message already read';
+  if (body.record.read) return 'message already read';
 
-  const message = await sub(supabase, topic).entity(body.record.message_entity);
-  await sub(supabase, topic).read(service, body.record.message_id);
+  const message = await sub(supabase, topic).entity(body.record.id);
+  await sub(supabase, topic).read(service, body.record.event);
   if(message.status !== 'pending') return 'transaction not pending payment';
   if(message.type !== 'deposit') return 'transaction not deposit';
   if(message.subType !== 'card') return 'transaction not card';
@@ -72,7 +71,7 @@ export default defineEventHandler( async (event) => {
     }
   }
 
-  const transactionStatus = await updateTransactionStatus('processing', message.message_entity, message.userId)
+  const transactionStatus = await updateTransactionStatus('processing', message.id, message.userId)
 
   if(transactionStatus=='error') {
     return 'failed to set as processing'
@@ -81,10 +80,10 @@ export default defineEventHandler( async (event) => {
     if(!stripeIds || !stripeIds.stripeUserId || !stripeIds.stripeCardId) return 'no stripe ids found'
     const charge = await chargeCard(stripeIds?.stripeUserId, stripeIds?.stripeCardId)
     if(charge==='success'){
-      await updateTransactionStatus('complete', message.message_entity, message.userId)
+      await updateTransactionStatus('complete', message.id, message.userId)
       return charge
     } else {
-      await updateTransactionStatus('failed', message.message_entity, message.userId)
+      await updateTransactionStatus('failed', message.id, message.userId)
       return 'failed to charge card'
     }
   }
