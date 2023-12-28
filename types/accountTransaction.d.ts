@@ -2,12 +2,12 @@ export { transaction };
 
 declare global {
     interface transaction {
-        userId?: string; // UUID
-        amount?: number; // numeric
-        currency?: string; // references currencies(iso)
+        userId?: string;
+        amount?: number;
+        currency?: string;
         type?: AccountTransactionsTypes;
         subType?: AccountTransactionsSubTypes;
         status?: AccountTransactionsStatuses;
-        autoVest?: number; // DECIMAL(5, 4)
+        autoVest?: number;
     }
 }
