@@ -8,9 +8,9 @@ declare global {
     interval?: autoInvestIntervals;
     lastCharged?: string;
 
-    message_entity?: string;
-    message_id?: string;
-    message_sender?: string;
-    message_sent?: string;
+    id?: string;
+    event?: string;
+    sender?: string;
+    timestamp?: string;
   }
 }
