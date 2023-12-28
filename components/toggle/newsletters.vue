@@ -21,9 +21,8 @@
     
     const error = await pub(supabase, {
       sender: 'components/toggle/newsletters.vue',
-      entity: user?.id
+      id: user?.id
     }).users({
-      userId: user?.id,
       newsletters: isOn.value
     });
     if(error) {
