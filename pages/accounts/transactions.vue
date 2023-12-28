@@ -6,11 +6,11 @@
     <block margin="none" v-if="transactions">
       <transaction 
         v-for="transaction of transactions" 
-        :key="transaction.message_entity" 
+        :key="transaction.id" 
         :type="transaction.type"
         :amount="transaction.amount"
         :currency="transaction.currency"
-        :date="transaction.message_sent"
+        :date="transaction.timestamp"
       />
     </block>
   </main>
