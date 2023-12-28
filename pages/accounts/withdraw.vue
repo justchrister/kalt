@@ -59,7 +59,7 @@
     if(!max) return false;
     if(!auth.value) return false;
     loading.value = true
-    const currentWithdrawTransaction = await sub(supabase, 'accountTransactions').entity(uuid);
+    const currentWithdrawTransaction = await sub(supabase, 'transactions').entity(uuid);
     if(Math.abs(currentWithdrawTransaction.amount)>max){
       setNotification ('Withdrawal amount exceeds max available')
       loading.value = false;
@@ -68,7 +68,7 @@
     const error = await pub(supabase, {
       sender: 'pages/accounts/withdraw.vue',
       entity: uuid
-    }).accountTransactions({
+    }).transactions({
       userId: user?.id, 
       status: 'pending',
       autoVest: 1
