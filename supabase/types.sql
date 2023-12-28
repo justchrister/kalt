@@ -19,8 +19,8 @@ create type public."transactions_subTypes" as enum (
     'dividend',
     'internal'
 );
-drop type public."paymentCards_statuses";
-create type public."paymentCards_statuses" as enum (
+drop type public."cards_statuses";
+create type public."cards_statuses" as enum (
     'incomplete',
     'active',
     'rejected',
