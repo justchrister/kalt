@@ -21,7 +21,7 @@ declare global {
     newShares = 'newShares',
     autoWithdraw = 'autoWithdraw'
   }
-  const enum paymentCardsStatuses {
+  const enum cardsStatuses {
     incomplete = 'incomplete',
     active = 'active',
     rejected = 'rejected',
