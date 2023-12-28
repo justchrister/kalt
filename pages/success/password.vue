@@ -6,8 +6,8 @@
       <frame-image src="/images/apollo-celebration.jpg" />
     </frame-wrap>
     <block margin="half">
-      <h1> One small step for you, a big step for mankind. <omoji emoji="✨" /> </h1>
-      <p> You are just one step away from investing in the future of fossil-free energy. We will contact you once we have had time to review your request. Thank you for yur patience. </p>
+      <h1> We have sent you an email </h1>
+      <p> Simply click the link and set a new password. See you soon! <omoji emoji="✨" /> If you are still experiencing trouble signing in, please <nuxt-link to="/about/contact">contact us</nuxt-link>.</p>
     </block>
     <block margin="half">
       <input-button link="/auth">sign in →</input-button>
