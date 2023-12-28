@@ -81,7 +81,7 @@ export default defineEventHandler(async (event) => {
     }
   };
 
-  const updateTransaction = async (userId: string, entity: string) => {
+  const updateTransaction = async (userId: string, id: string) => {
     const json = {
       'userId': userId,
       'status': 'vested',
@@ -89,7 +89,7 @@ export default defineEventHandler(async (event) => {
     } as transaction;
     const error = await pub(supabase, {
       sender:'server/api/exchange/autoOrder.ts',
-      entity: entity,
+      id: id,
     }).transactions(json);
     if(error) {
       return
