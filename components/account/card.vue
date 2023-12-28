@@ -29,10 +29,10 @@
 <style scoped lang="scss">
   .card{
     box-sizing: border-box;
-    border: $border;
     padding: sizer(1) sizer(2);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @include border;
   }
   .bold{
     font-weight: bold;
