@@ -5,8 +5,8 @@ const filterOnOnlyFulfilledOrders = async (orders: any) => {
     if (orders[i].status !== 'fulfilled') {
       continue;
     } else {
-      const filtreredArray = orders.filter(message => message.message_entity === orders[i].message_entity);
-      const order = ok.combineJsonByKeys(filtreredArray, 'message_entity');
+      const filtreredArray = orders.filter(message => message.id === orders[i].id);
+      const order = ok.combineJsonByKeys(filtreredArray, 'id');
       fulfilledOrders.push(...order);
     }
   }
@@ -18,9 +18,9 @@ export const get = (client: any) => {
       const { data, error } = await client 
         .from('topic_userDefinedFunds')
         .select()
-        .eq('message_entity', userId)
+        .eq('id', userId)
         .eq('ticker', ticker)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error) {
         return null
       } else {
@@ -33,11 +33,11 @@ export const get = (client: any) => {
         .select()
         .eq('ticker', ticker)
         .eq('type', type)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error){
         return error
       } else {
-        const combined = ok.combineJsonByKeys(data, 'message_entity');
+        const combined = ok.combineJsonByKeys(data, 'id');
         const unfulfilledOrders = combined.filter(message => message.status === 'open');
         const ordersWithQuantityAbsolute = unfulfilledOrders.map(message => {
           message.quantityAbsolute = Math.abs(message.quantity);
@@ -51,13 +51,13 @@ export const get = (client: any) => {
       const { data, error } = await client
         .from('topic_exchange')
         .select()
-        .eq('message_entity', orderId)
-        .order('message_sent', { ascending: true })
+        .eq('id', orderId)
+        .order('timestamp', { ascending: true })
       if(error){
         ok.log('', error)
         return 'error'
       } else {
-        return ok.merge(data, 'message_entity').single()
+        return ok.merge(data, 'id').single()
       }
     },
     user: async (auth: any) => {
@@ -68,8 +68,8 @@ export const get = (client: any) => {
       const { data } = await client 
         .from('topic_users')
         .select()
-        .eq('message_entity', userId)
-        .order('message_sent', { ascending: true })
+        .eq('id', userId)
+        .order('timestamp', { ascending: true })
       const userCombined = ok.combineJson(data) as any;
       if(!userCombined) {
         return null
@@ -100,7 +100,7 @@ export const get = (client: any) => {
         .from('topic_transactions')
         .select()
         .eq('userId', user.id)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error) {
         ok.log('', error)
         return null
@@ -113,24 +113,24 @@ export const get = (client: any) => {
         .from('topic_linkedBankAccounts')
         .select()
         .eq('userId', user.id)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error || data.length === 0 || !data) {
         return null
       } else {
-        return ok.merge(data, 'message_entity').single();
+        return ok.merge(data, 'id').single();
       }
     },
     sharePrices: async () => {
       const { data:originOrders } = await client
         .from('topic_exchange')
         .select()
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
         .eq('origin', true)
       
       const { data: assetList } = await client
         .from('topic_assets')
         .select()
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       const assets = ok.combineJsonByKeys(assetList, 'ticker');
       
       const shares = {};
@@ -159,7 +159,7 @@ export const get = (client: any) => {
         .select()
         .eq('from', from)
         .eq('to', to)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
         .limit(1)
         .single()
       if(error) {
@@ -174,7 +174,7 @@ export const get = (client: any) => {
         .from('topic_userDefinedFunds')
         .select()
         .eq('userId', userId)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error) {
         ok.log('', error)
         return null
@@ -187,9 +187,9 @@ export const get = (client: any) => {
       const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
       const { data: orders, error } = await client
         .from('topic_exchange')
-        .select('userId, message_sent, message_entity, quantity, status, ticker', )
+        .select('userId, timestamp, id, quantity, status, ticker', )
         .eq('userId', user.id)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error){
         return {
           error: error
@@ -205,7 +205,7 @@ export const get = (client: any) => {
         const ticker = fulfilledOrder.ticker;
         const currencyConvertedSharePrice = assetPrices[ticker] * convertedCurrency;
         const todaysValueChange = fulfilledOrder.quantity * currencyConvertedSharePrice;
-        const dateObject = new Date(fulfilledOrder.message_sent);
+        const dateObject = new Date(fulfilledOrder.timestamp);
         const date = dateObject.toISOString().split('T')[0];
     
         value += todaysValueChange;
@@ -252,7 +252,7 @@ export const get = (client: any) => {
         .from('topic_userSubscriptions')
         .select()
         .eq('userId', userId)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error) {
         ok.log('', error)
         return null
@@ -266,7 +266,7 @@ export const get = (client: any) => {
         .from('topic_autoInvest')
         .select()
         .eq('userId', userId)
-        .order('message_sent', { ascending: true })
+        .order('timestamp', { ascending: true })
       if(error) {
         ok.log('', error)
         return null
@@ -280,8 +280,8 @@ export const get = (client: any) => {
         .from('topic_transactions')
         .select()
         .eq('userId', user.id)
-        .order('message_sent', { ascending: true })
-      const merged = ok.merge(data, 'message_entity');
+        .order('timestamp', { ascending: true })
+      const merged = ok.merge(data, 'id');
       ok.log('', merged)
       if(error) {
         ok.log('warn', error)
@@ -292,13 +292,13 @@ export const get = (client: any) => {
         return ok.formatCurrency(result, user.currency)
       }
     },
-    paymentCard: async (user: user) => {
+    card: async (user: user) => {
       const { data, error } = await client
-        .from('topic_paymentCards')
+        .from('topic_cards')
         .select()
         .eq('userId', user.id)
         .eq('default', true)
-        .order('message_sent', { ascending: false })
+        .order('timestamp', { ascending: false })
       if(error) {
         ok.log('', error)
         return null
