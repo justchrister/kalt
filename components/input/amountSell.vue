@@ -77,7 +77,7 @@ const auth = useSupabaseUser()
       const error = await pub(supabase, {
         sender:'components/input/amountSell.vue',
         entity: props.uuid
-      }).accountTransactions({
+      }).transactions({
         userId: auth.value.id,
         amount: -amountFloat,
         status: 'incomplete',
