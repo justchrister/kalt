@@ -2,13 +2,13 @@
   <div>
     <label v-if="!edit">Card to charge:</label>
     <div class="card" @click="edit=true" v-if="!edit">
-      <div :class="checkBrand(number)"></div>
+      <div :class="'logo ' + checkBrand(number) || 'mastercard'"></div>
       <div class="details">  {{ "•••• •••• •••• " + fourDigits }}  </div>
       <div class="edit"> edit </div>
     </div>
     <label v-if="edit">Set card to charge: </label>
     <div class="card selected" v-if="edit">
-      <div :class="checkBrand(number)"></div>
+      <div :class="'logo ' + checkBrand(number) || 'mastercard'"></div>
       <div class="details" @click="removeMarkedAsWrong()"> 
         <input 
           type="text" 
@@ -62,15 +62,15 @@
   const checkBrand = (brand) => {
     if(brand){
       let firstDigit = brand.toString().slice(0,  1);
-      if(firstDigit==='1') return "logo amex"
-      if(firstDigit==='2') return "logo mastercard"
-      if(firstDigit==='3') return "logo amex"
-      if(firstDigit==='4') return "logo visa"
-      if(firstDigit==='5') return "logo mastercard"
-      if(firstDigit==='6') return "logo discover"
-      if(firstDigit==='8') return 'logo jcb'
-      if(firstDigit==='9') return 'logo unionpay'
-      return "logo"
+      if(firstDigit==='1') return "amex"
+      if(firstDigit==='2') return "mastercard"
+      if(firstDigit==='3') return "amex"
+      if(firstDigit==='4') return "visa"
+      if(firstDigit==='5') return "mastercard"
+      if(firstDigit==='6') return "discover"
+      if(firstDigit==='8') return 'jcb'
+      if(firstDigit==='9') return 'unionpay'
+      return 'mastercard'
     }
   }
   const number = ref(defaultCard?.number || '');
@@ -207,6 +207,7 @@
     background: transparent;
     background-size: contain;
     display:inline-block;
+    background-image: url('/media/icons/mastercard.svg');
     background-repeat: no-repeat;
     background-position: center center;
     box-sizing: border-box;
