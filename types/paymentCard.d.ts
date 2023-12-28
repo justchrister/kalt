@@ -1,7 +1,7 @@
-export { paymentCard };
+export { card };
 
 declare global {
-    interface paymentCard {
+    interface card {
         userId?: string;
         lastFourDigits?: number;
         year?: number;
