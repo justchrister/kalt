@@ -107,9 +107,9 @@ Name: webhook_users_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/users
 Table: sub_users_acl_stripe
 
-Name: webhook_payments_initiate
-URL: https://ka.lt/api/payments/initiate
-Table: payments
+Name: webhook_auth_users
+URL: https://ka.lt/api/users/initialize
+Table: auth.users
 
 Name: webhook_exchange_match
 URL: https://ka.lt/api/exchange/match
