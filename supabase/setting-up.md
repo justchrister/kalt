@@ -111,6 +111,10 @@ Name: webhook_auth_users
 URL: https://ka.lt/api/users/initialize
 Table: auth.users
 
+Name: webhook_auth_invites
+URL: https://ka.lt/api/invites/initialize
+Table: auth.users
+
 Name: webhook_exchange_match
 URL: https://ka.lt/api/exchange/match
 Table: sub_exchange_match
