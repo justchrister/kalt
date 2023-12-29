@@ -3,9 +3,6 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler( async (event) => {
 
-  const keyPair = await ok.verifyKeyPair(event)
-  if(!keyPair) return 'unauthorized'
-
   const supabase = serverSupabaseServiceRole(event)
   const query = getQuery(event)
   const body = await readBody(event)
@@ -16,14 +13,16 @@ export default defineEventHandler( async (event) => {
       .select()
       .eq('code', query.code)
       .order('timestamp', { ascending: true })
-    ok.log('', data)
     return {data, error}
   }
 
   const useCode = async (id: string) => {
+    if(!id) {
+      return false
+    }
     const json = {
       sender: 'server/api/invites/validate.ts',
-      id, 
+      id: id, 
       code: query.code, 
       used: true 
     } as invite
@@ -33,21 +32,22 @@ export default defineEventHandler( async (event) => {
       .select()
     if(data) return true
     if(!data || error) {
+      ok.log('', error)
       return false
     }
   }
   let status = 'error';
   const { data, error } = await getCodes()
-  if(error) status = 'error'
-  if(data){
-    const merged = ok.merge(data, 'id').single()
-    ok.log('', merged)
-    const setToUsed = await useCode(merged.id)
-    if(merged.used){
+  if(error) {
+    status = 'error'
+  } else if(data){
+    const merged = ok.merge(data, 'id')[0]
+    if(merged?.used){
       status = 'used'
-    } else if(setToUsed){
+    } else if(merged?.id){
+      await useCode(merged?.id)
       status = 'valid'
-    }    
+    }
   }
-  return {status}
+  return { status }
 });
