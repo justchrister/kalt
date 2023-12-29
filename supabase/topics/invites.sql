@@ -11,17 +11,9 @@ CREATE TABLE "topic_invites" (
     "sender"              text                            NOT NULL,
 -- 
     "issuedTo"            text,
-    "monthlyInvestFrom"   numeric,
     "code"                text,
     "used"                boolean
 );
 
 --- row level security
 ALTER TABLE "topic_invites" ENABLE ROW LEVEL SECURITY;
-
-
-CREATE POLICY "policy_name"
-    ON public."topic_invites"
-    FOR INSERT 
-    TO public
-    WITH CHECK (true);
