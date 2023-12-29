@@ -3,19 +3,15 @@
     <div class="icon">
     </div>
     <div class="content">
-      <strong>  {{ props.title }} <omoji :emoji="props.icon" /></strong>
+      <strong>  {{ props.title }}</strong>
       <p>
-      <slot></slot>
+        <slot></slot>
       </p>
     </div>
   </div>
 </template>
 <script setup lang="ts">
   const props = defineProps({
-    icon: {
-      type: String,
-      required: true
-    },
     title: {
       type: String,
       required: true
@@ -40,9 +36,6 @@
   .content strong{
     color: $dark-90;
     font-size: sizer(1.5);
-  }
-  .content strong span{
-    float:right;
   }
   .wrap:hover{
     cursor:crosshair;
