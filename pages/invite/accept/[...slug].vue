@@ -21,8 +21,18 @@
   })
   const route = useRoute()
   const inviteCode = ref(route.params.slug[0] || null)
+  ok.log('', inviteCode.value)
+  const supabase = useSupabaseClient()
+  const { data, error } = await supabase
+    .from('topic_invites')
+    .select()
+    .eq('used', false)
+    .eq('code', inviteCode.value)
+  ok.log('', { data, error })
+
   const startInvite = async () => {
     return
+    navigateTo('/invite/accept/auth')
   }
 </script>
 <style scoped lang="scss">
