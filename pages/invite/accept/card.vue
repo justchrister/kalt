@@ -9,11 +9,11 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'City',
+    pagename: 'Card',
     middleware: 'auth'
   })
   useHead({
-    title: 'City',
+    title: 'Card',
     meta: [{
       name: 'description',
       content: 'Invest in the future, today.'
