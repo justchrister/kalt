@@ -76,6 +76,7 @@
       if(error){
         setNotification(error.message)
       } else {
+        await ok.sleep(800);
         loading.value=false;
         await navigateTo('/invite/accept/name')
       }
