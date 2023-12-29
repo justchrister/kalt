@@ -22,5 +22,6 @@ video {
   flex-grow: 1;
   flex-basis: 0;
   display: inline-block;
+  border-radius: $border-radius;
 }
 </style>
