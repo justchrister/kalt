@@ -87,10 +87,6 @@ Name: webhook_transactions_exchange_autoOrder
 URL: https://ka.lt/api/exchange/autoOrder
 Table: sub_transactions_exchange_autoOrder
 
-Name: webhook_transactions_payments
-URL: https://ka.lt/api/payments/webhooks/transactions
-Table: sub_transactions_payments
-
 Name: webhook_transactions_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/transactions
 Table: sub_transactions_acl_stripe
@@ -98,10 +94,6 @@ Table: sub_transactions_acl_stripe
 Name: webhook_cards_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/cards
 Table: sub_cards_acl_stripe
-
-Name: webhook_paymentsPending_acl_stripe
-URL: https://ka.lt/api/acl/stripe/webhooks/paymentsPending
-Table: sub_paymentsPending_acl_stripe
 
 Name: webhook_users_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/users
