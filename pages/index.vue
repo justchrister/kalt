@@ -28,18 +28,15 @@
       <pill text="energy" to="funds/ffe" /> <pill text="art" to="funds/art"/> <pill text="housing" to="funds/ah"/> <pill text="startups" to="funds/vc" /> 
     </block>
     <promo-block-list>
-      <promo-block 
-        icon="✨"
+      <promo-block
         title="Powered by AI">
         Capital is allocated using proprietary AI to earn you a stable return on your investment.
       </promo-block>
-      <promo-block 
-        icon="⚡"
+      <promo-block
         title="Impact investing">
         The companies and assets we invest in always align with your values.
       </promo-block>
-      <promo-block 
-        icon="🖼️"
+      <promo-block
         title="Curated assets">
         All investments are carefully selected using quantitative investment strategies.
       </promo-block>
