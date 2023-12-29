@@ -172,7 +172,7 @@
     data.value[data.value.length - 1]
   );
 
-  const updatePercentageChange = (x) => {
+  const updatePercentageChange = (x: any) => {
     const firstValue = data.value[data.value.length - props.days] || data.value[0];
     const lastValue = x;
     const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
@@ -183,6 +183,11 @@
     percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
     percentageChange.value = Math.floor(rawPercentageChange * 10) / 10;
   };
+  const calculateProjection = (x: any) => {
+    const magicNumber = 1.006043959;
+    const lastValue = data.value[data.value.length - 1];
+    const rawPercentageChange = ((lastValue - x) / x) * 100;
+  }
 </script>
 <style scoped lang="scss">
 
@@ -194,6 +199,11 @@
     height: 100%;
     width: 100%;
     max-height: 100%;
+    background-image: radial-gradient(circle at 1px 1px, primaryColor(30%) 1px, transparent 0);
+    background-size: sizer(1.3) sizer(1.3);
+    @include hoverable;
+    border-radius: sizer(0.8);
+    margin-bottom: sizer(1);
   }
   .dates{
     font-size:80%;
