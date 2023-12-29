@@ -29,18 +29,15 @@
       <p> We believe the only way to have actual impact is to use the market forces to make a change. The issues we are facing require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a return on investment </p>
     </block>
     <promo-block-list>
-      <promo-block 
-        icon="✨"
+      <promo-block
         title="Powered by AI">
         Capital is allocated using proprietary AI to earn you a stable return on your investment.
       </promo-block>
-      <promo-block 
-        icon="⚡"
+      <promo-block
         title="Impact investing">
         The companies and assets we invest in always align with your values.
       </promo-block>
-      <promo-block 
-        icon="🖼️"
+      <promo-block
         title="Curated assets">
         All investments are carefully selected using quantitative investment strategies.
       </promo-block>
