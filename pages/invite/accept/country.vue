@@ -21,11 +21,11 @@ const supabase = useSupabaseClient()
 const auth = useSupabaseUser()
 const user = await get(supabase).user(auth.value) as user;
   definePageMeta({
-    pagename: 'Legal',
+    pagename: 'Country',
     middleware: 'auth'
   })
   useHead({
-    title: 'Legal',
+    title: 'Country',
     meta: [{
       name: 'description',
       content: 'Invest in the future, today.'
