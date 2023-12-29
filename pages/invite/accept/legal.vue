@@ -2,14 +2,14 @@
   <main>
     <block>
       <h1>Legal</h1>
-      <p>Some legal stuff, you can update the concent at any later point.</p>
+      <p>By clicking accept you agree to our: </p>
       <ul>
-        <li>Terms of Service (you should read this)</li>
-        <li>Performance updates</li>
-        <li>Monthly newsletter</li>
-        <li>Privacy policy (we dont share your data)</li>
+        <li>— Terms of service (you should read this)</li>
+        <li>— Performance updates</li>
+        <li>— Receiving a monthly newsletter</li>
+        <li>— Privacy policy - we dont share your data</li>
       </ul>
-      <input-button link="/invite/accept/auth">accept →</input-button>
+      <input-button link="/invite/accept/country">accept →</input-button>
     </block>
   </main>
 </template>
