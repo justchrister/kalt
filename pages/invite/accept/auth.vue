@@ -24,14 +24,8 @@
             id='password'
           />
         </div>
-        <input-button>sign up <loading-icon v-if="loading" /></input-button>
+        <input-button>next -> <loading-icon v-if="loading" /></input-button>
       </form>
-    </block>
-    <block>
-      <link-group>
-        <nuxt-link to="/auth">sign in</nuxt-link>
-        <nuxt-link to="/auth/password">forgot password</nuxt-link>
-      </link-group>
     </block>
     <span v-if="notification" @click="setNotification(null)">
       <banner-notification color="yellow" :message="notification"/>
