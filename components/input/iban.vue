@@ -21,7 +21,7 @@
     }
   })
   const state = ref('')
-  const iban = ref(props.initialValue)
+  const iban = ref(props.initialValue || null)
   if(props.initialValue) {
     ok.log('success', 'initial value: '+props.initialValue)
   }
