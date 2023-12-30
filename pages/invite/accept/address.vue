@@ -2,8 +2,10 @@
   <main>
     <block>
       <h1> Where <span v-if="user.city">in {{ user.city }}</span> do you live?</h1>
-      <input-user :user="user" id="addressLine1"/>
-      <input-button link="/invite/accept/card">next →</input-button>
+      <form @submit.prevent="navigateTo('/invite/accept/card')">
+        <input-user :user="user" id="addressLine1"/>
+        <input-button link="">next →</input-button>
+      </form>
     </block>
   </main>
 </template>
