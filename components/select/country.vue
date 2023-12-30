@@ -1,7 +1,7 @@
 <template>
   <div>
   <label>Country: </label>
-  <nuxt-link to="/select/country">
+  <nuxt-link to="/profile/edit/country">
     <span class="iso">{{countryDetails.iso2}}</span>
     <span>{{countryDetails.name}}</span>
     <span>→</span>
