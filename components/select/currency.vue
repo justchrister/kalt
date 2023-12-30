@@ -1,7 +1,7 @@
 <template>
   <div>
   <label>Select preferred currency: </label>
-  <nuxt-link to="/select/currency">
+  <nuxt-link to="/profile/edit/currency">
     <span class="iso">{{currencyDetails.iso}}</span>
     <span>{{currencyDetails.name}}</span>
     <span>→</span>
