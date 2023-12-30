@@ -24,9 +24,9 @@
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
   const linkedBankAccount = await get(supabase).linkedBankAccount(user);
-  const iban = linkedBankAccount.iban || null;
-  const reference = linkedBankAccount.reference || null;
-  const bankCode = linkedBankAccount.bankCode || null;
+  const iban = linkedBankAccount?.iban || null;
+  const reference = linkedBankAccount?.reference || null;
+  const bankCode = linkedBankAccount?.bankCode || null;
   
 </script>
 <style scoped lang="scss">
