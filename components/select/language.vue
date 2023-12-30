@@ -1,7 +1,7 @@
 <template>
   <div>
   <label>Language: </label>
-  <nuxt-link to="/select/language">
+  <nuxt-link to="/profile/edit/language">
     <span class="iso">{{languageDetails.iso}}</span>
     <span>{{languageDetails.name}}</span>
     <span>→</span>
