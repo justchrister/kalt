@@ -22,10 +22,10 @@
         How much money can I expect to earn?
       </chat-question>
       <chat-answer>
-        Of course it will vary, but you can expect a 10-16% return on a yearly basis
+        Of course it will vary, but our aim is to beat the market by 2x, meaning a 20% return on a yearly basis
       </chat-answer>
       <chat-answer>
-        That means, if you auto-invest 100 every month, you will have between 22 000 and 25 000 in ten years.
+        That means, if you auto-invest 150,- every month, you will have 47 000,- in ten years
       </chat-answer>
       <chat-link to="/invest/auto">
         set up auto-investments today
