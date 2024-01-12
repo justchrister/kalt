@@ -1,10 +1,13 @@
 <template>
   <div class="input-wrap">
+    <modal title="This feature is not available (yet)" :show="markedAsUnavail">
+      This is the content
+    </modal>
     <label>Select reinvestment ratio (%): </label>
-    <div class="wrapper">
+    <div class="wrapper" @click="markedAsUnavail=true">
       <span>{{percent}}%</span>
-      <span @click="remove()">-</span>
-      <span @click="add()">+</span>
+      <span @click="remove()" class="button">-</span>
+      <span @click="add()" class="button">+</span>
     </div>
   </div>
 </template>
@@ -32,6 +35,8 @@
   }
 
   const add = async () => { 
+    return 
+    // added return so that we dont update it
     if(percent.value>=100){
       percent.value=100
     } else {
@@ -40,6 +45,8 @@
     postUserPreference(percent.value);
   }
   const remove = async () => {
+    return
+    // added return so that we dont update it
     if(percent.value<=0){
       percent.value=0
     } else {
@@ -47,6 +54,7 @@
     }    
     postUserPreference(percent.value);
   }
+  const markedAsUnavail = ref(false)
 </script>
 <style scoped lang="scss">
   label{
@@ -55,8 +63,8 @@
   .wrapper{
     display:grid;
     grid-template-columns: 1fr sizer(5) sizer(5);
-    border: $border;   
     user-select: none;
+    @include border;
   }
   span{
     display:inline-block;
@@ -68,33 +76,17 @@
     user-select: none;
     height:100%;
     text-align:center;
-    &:hover{
-      cursor: pointer;
-      background:white;
-    }
+    @include hoverable;
     &:first-child{
       background:transparent;
       border-left:none;
       width: sizer(7);
     }
-  }
-  button:hover,
-  button:active,
-  button:focus{
-    border-radius:0;
+    &.button:hover{
+      @include hovering;
+    }
   }
   .input-wrap{
     margin-top: sizer(1);
   }
-
-/*
-  .dark-mode span{
-    border-color: $light;
-    &:hover{
-      background: $dark;
-    }
-  }
-  .dark-mode .wrapper{
-    border-color: $light;
-  }*/
 </style>
