@@ -165,5 +165,13 @@ span.⚡ {
 span.🖼️ {
   background-image:url('../omoji/frame-w-flower.svg');
 }
+
+span.✔️ {
+  background-image:url('../omoji/check-no-bg.svg');
+}
+
+span.✅{
+  background-image:url('../omoji/check.svg');
+}
 </style>
 
