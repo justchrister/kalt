@@ -21,11 +21,11 @@ export const pub = (client: any, meta: any) => {
     exchangeOrders: async (content: exchangeOrder) => {
       return await createJsonAndPublish(client, meta, content, 'topic_exchange');
     },
-    userSubscriptions: async (content: userSubscription) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_userSubscriptions');
-    },
     users: async (content: user) => {
       return await createJsonAndPublish(client, meta, content, 'topic_users');
+    },
+    keys: async (content: key) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_keys');
     },
     invites: async (content: invite) => {
       return await createJsonAndPublish(client, meta, content, 'topic_invites');
@@ -38,9 +38,6 @@ export const pub = (client: any, meta: any) => {
     },
     cards: async (content: card) => {
       return await createJsonAndPublish(client, meta, content, 'topic_cards');
-    },
-    paymentsPending: async (content: paymentsPending) => {
-      return await createJsonAndPublish(client, meta, content, 'topic_paymentsPending');
     },
     linkedBankAccounts: async (content: linkedBankAccount) => {
       return await createJsonAndPublish(client, meta, content, 'topic_linkedBankAccounts');
