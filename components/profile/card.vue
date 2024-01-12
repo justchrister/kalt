@@ -5,7 +5,7 @@
         </div>
         <div class="details">
           <div class="name">
-            {{ user.firstName }} {{ user.lastName }} 
+            {{ user.firstName }} {{ user.lastName }}  <kyc-status :user="user"/>
           </div>
           <div class="edit">
             edit
