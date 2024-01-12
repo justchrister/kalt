@@ -1,4 +1,4 @@
-export { user };
+export type { user };
 
 declare global {
     interface user {
