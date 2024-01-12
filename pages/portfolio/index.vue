@@ -40,19 +40,17 @@
         </div>
       </nav>
     </block>
-    <block>
+    <block margin="1">
       <cta :showDivest="true"/>
     </block>
     <!--
-    <block>
-      <h3>Impact in numbers <omoji emoji="😮"/></h3>
-      <p> Your investments has decreased your carbon footprint by 90 tonnes of Co2, in other words: </p>
-      <div class="impacts">
-        <impact type="fiat"/>
-        <impact type="house"/>
-        <impact type="plane" />
-        <impact type="avocado"/>
-      </div>
+    <block margin="1">
+      <label>you</label>
+      <profile-card />
+    </block>
+    <block margin="1">
+      <label>your fund</label>
+      <select-fund />
     </block>-->
   </main>
 </template>
