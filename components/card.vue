@@ -53,6 +53,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
+  const key = await get(supabase).key(user);
   const defaultCard = await get(supabase).card(user);
   const edit = ref(false);
   if(!defaultCard) {
@@ -123,6 +124,7 @@
   const saveCard = async () => {
     loading.value = true;
     const numberInt = ok.toInt(number.value);
+    const numberEncrypted = await encryptClientSide(number, key);
     const cvcInt = ok.toInt(cvc.value);
     const yearPrefix = new Date().getFullYear().toString().slice(0, 2); 
     const fullYear = parseInt(yearPrefix + year.value, 10); 
@@ -152,7 +154,7 @@
       setNotification ('Card is expired 😅')
       markAsWrong('month')
       markAsWrong('year')
-    } else if(!cvc.value){      
+    } else if(!cvc.value){  
       setNotification ('CVC is missing 😅 It can be found on the back of the card')
       markAsWrong('cvc')
     } else if(3>cvcInt.toString().length){      
@@ -164,7 +166,8 @@
         id: user.id
       }).cards({
         'userId': user.id,
-        'number': numberInt,
+        'number': numberEncrypted.content,
+        'numberIv': numberEncrypted.iv,
         'month': month.value,
         'year': year.value,
         'cvc': cvc.value,
