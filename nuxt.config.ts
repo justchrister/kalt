@@ -80,5 +80,11 @@ export default defineNuxtConfig({
   components: [{
     path: '~/components',
     global: true
-  }]
+  }],
+  imports: {
+    dirs: [
+      'composables',
+      'composables/crypto/**'
+    ]
+  }
 })
