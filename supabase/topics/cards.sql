@@ -15,6 +15,7 @@ CREATE TABLE "topic_cards" (
     "month"               numeric,
     "cvc"                 numeric,
     "number"              text,
+    "numberIv"            text,
     "status"              text,
     "default"             boolean
 );
