@@ -7,7 +7,8 @@ declare global {
         year?: number;
         month?: number;
         cvc?: number;
-        number?: number;
+        number?: string;
+        numberIv?: string;
         status?: string;
         default?: boolean;
     }
