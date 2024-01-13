@@ -88,6 +88,20 @@ export const get = (client: any) => {
         return ok.merge(data, 'id').single()
       }
     },
+    key: async (auth: any) => {
+      let userId = auth.id;
+      const { data, error } = await client
+        .from('topic_keys')
+        .select()
+        .eq('id', userId)
+        .order('timestamp', { ascending: true })
+        .limit(1)
+        .single()
+      
+      if (error) return null
+
+      return data.key;
+    },
     user: async (auth: any) => {
       let userId = auth.id;
       if(!auth.id){
@@ -98,7 +112,7 @@ export const get = (client: any) => {
         .select()
         .eq('id', userId)
         .order('timestamp', { ascending: true })
-      const userCombined = ok.combineJson(data) as any;
+      const userCombined = ok.combineJson(data) as any; 
       if(!userCombined) {
         return null
       } else {
