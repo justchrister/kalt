@@ -1,8 +1,10 @@
 import { config } from 'dotenv';
-import { exec } from 'child_process';
+import { promisify } from 'util';
+import { exec as execCallback } from 'child_process';
 import { Resend } from 'resend';
 
 config();
+const exec = promisify(execCallback);
 const resend = new Resend(process.env.RESEND_SEC_ALERTS);
 
 const sendSlackNotification = async (message) => {
@@ -22,20 +24,23 @@ const sendSlackNotification = async (message) => {
 };
 
 const test = false; // Set to false in production
-exec('npm audit --json', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`NPM Audit Failure: ${error}`);
-    console.error('Audit Error Output:', stderr);
-    sendSlackNotification(`NPM Audit Failure: ${stderr}`);
-    if (!test) process.exit(1);
-  } else {
+
+const runAudit = async () => {
+  try {
+    const { stdout } = await exec('npm audit --json');
     const auditResults = JSON.parse(stdout);
     if (auditResults.metadata.vulnerabilities.total > 0 || test) {
       const message = `NPM Audit: ${test ? '1' : auditResults.metadata.vulnerabilities.total} vulnerability found.`;
-      sendSlackNotification(message);
+      await sendSlackNotification(message);
     } else {
       console.log('NPM Audit Success: No issues found');
-      sendSlackNotification('NPM Audit Success: No issues found');
+      await sendSlackNotification('NPM Audit Success: No issues found');
     }
+  } catch (error) {
+    console.error(`NPM Audit Failure: ${error}`);
+    await sendSlackNotification(`NPM Audit Failure: ${error}`);
+    process.exit(1);
   }
-});
+};
+
+runAudit();
