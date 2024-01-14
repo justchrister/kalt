@@ -34,7 +34,6 @@ const runAudit = async () => {
       await sendSlackNotification(message);
     } else {
       console.log('NPM Audit Success: No issues found');
-      await sendSlackNotification('NPM Audit Success: No issues found');
     }
   } catch (error) {
     console.error(`NPM Audit Failure: ${error}`);
