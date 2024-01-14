@@ -29,7 +29,7 @@ As our first line of defence, we have added a web application firewall from Clou
 
 ## Encryption
 
-We implement state-of-the-art encryption methods to safeguard our customers' payment information and personal data. Our system employs AES-256-CBC encryption, recognized for its robustness and security.
+We implement state-of-the-art encryption methods to safeguard our customers' payment information and personal data. Our system employs `AES-256-CBC` encryption, recognized for its robustness and security.
 
 On the server side, we utilize the `Node.js` `crypto` module for both encryption and decryption. During encryption, a unique initialization vector is generated for each session, enhancing security by adding an additional layer of randomness. The text is encrypted using the secret key and initialization vector, resulting in a secure, non-readable format. Conversely, for decryption, the encrypted text is processed alongside the initialization vector and the secret key to retrieve the original data.
 
