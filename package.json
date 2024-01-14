@@ -24,6 +24,7 @@
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "random-words": "^2.0.0",
+    "resend": "^2.1.0",
     "stripe": "^12.9.0",
     "uuid": "^9.0.0",
     "vue-chartjs": "^5.1.0"
