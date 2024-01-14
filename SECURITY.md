@@ -173,7 +173,7 @@ All webhooks should use the authorization header with a 4096 bit `WEBHOOK_SECRET
 The Vercel CRON jobs should be secured with a 4096 bit `CRON_SECRET` key. 
 
 ### Row-level security
-All tables has to have [RLS policies](https://supabase.com/docs/guides/auth/row-level-security) applied to ensure users can only access their own data make the requests
+All tables has to have [RLS policies ↗](https://supabase.com/docs/guides/auth/row-level-security) applied to ensure users can only access their own data make the requests
 
 ### Environment variables and secret management
 
@@ -188,6 +188,9 @@ Secrets should only be shared using Proton Pass, never:
 4. Anywhere but Proton Pass 
 
 [Read more about password sharing with end-to-end encryption ↗](https://proton.me/pass/password-sharing)
+
+Additionally Supabase has [partnered with GitHub ↗](https://github.blog/changelog/2022-03-28-supabase-is-now-a-github-secret-scanning-partner/) to ensure no secrets are leaked through GitHubs [secret scanning programme ↗](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning).
+
 
 #### Test/prod
 All environment variables and secrets should be stored in [Vercels Environment Variables ↗](https://vercel.com/docs/projects/environment-variables)
