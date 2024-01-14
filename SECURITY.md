@@ -227,6 +227,17 @@ We proactively safeguard our systems and data through rigorous and regular penet
 
 Do you want to pen test us? Go ahead :) We appreciate if you let us know in advance, and especially if you have some insights to share: sec@ka.lt
 
+## Incident response
+
+The incident response plan is described in more detail in a seperate internal document, but the short version is: 
+
+1. Triage the impact
+2. Involve the right parties (external experts level 1)
+3. Inform affected customers or partners
+4. Contain
+5. Resolve
+6. Report
+
 ## Other documents of interest
 
 - [Cloudflare data processing addendum (DPA) ↗](https://www.cloudflare.com/cloudflare-customer-dpa/)
