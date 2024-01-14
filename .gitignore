@@ -7,7 +7,5 @@ public/sw.js
 */.DS_Store
 public/.DS_Store
 assets/.DS_Store
-package-lock.json
-/package-lock.json
 */package-lock.*
 .env
