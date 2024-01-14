@@ -15,13 +15,109 @@ The principle of least priveledge is fundamental to our security architecture. I
 
 In practice, this means implementing stringent access controls and regularly reviewing and adjusting these permissions to align with the evolving roles and responsibilities within our organization. By limiting the access rights for any given resource to what is strictly necessary, we significantly reduce the risk of unauthorized access or accidental misuse of sensitive information. This approach not only tightens security but also enhances our system's overall performance by reducing the complexity and potential for error in our access structures. The Principle of Least Privilege is a critical component of our security strategy, reflecting our commitment to maintaining a secure and efficient operating environment.
 
-### Priveledged users (employees)
+## Priveledged users (employees)
 
-we maintain stringent protocols for managing privileged users — employees who are granted elevated access rights due to their role and responsibilities. Recognizing the sensitivity and potential risks associated with handling personal data, we ensure that all privileged users undergo a thorough verification process. This process is designed to assess and confirm their suitability and reliability in managing sensitive information.
+We maintain stringent protocols for managing privileged users — employees who are granted elevated access rights due to their role and responsibilities. Recognizing the sensitivity and potential risks associated with handling personal data, we ensure that all privileged users undergo a thorough verification process. This process is designed to assess and confirm their suitability and reliability in managing sensitive information.
 
 It's important to note that only a select subset of these verified privileged users are granted direct access to personal data and the decryption keys. This selective access is governed by our strict internal policies and is continually monitored and audited to prevent any unauthorized or inappropriate access.
 
-We enforce multi-factor authentication for all privileged users without exception. Multi-factor authentication adds an additional layer of security by requiring two or more independent credentials for user authentication. This means that even if one credential is compromised, unauthorized access is still prevented by the additional authentication requirements. Implementing MFA is a crucial part of our security strategy, significantly enhancing the protection against unauthorized access and ensuring the security of our users' data.
+### Multi-factor authentication for all privileged users
+
+We enforce multi-factor authentication for all privileged users without exception. Multi-factor authentication adds an additional layer of security by requiring two or more independent credentials for user authentication. This means that even if one credential is compromised, unauthorized access is still prevented by the additional authentication requirements. Implementing multi-factor authentication is a crucial part of our security strategy, significantly enhancing the protection against unauthorized access and ensuring the security of our users' data.
+
+
+### Background check of priveledged users
+All priveledged users are background checked, following a very standard process of; 
+1. No criminal record
+2. Close familiy and friends reference interviews
+3. No financial problems
+4. No connection to high-risk nation states (China, Iran, Russia)
+
+
+### Fresh install policy
+Every 12 months all computers are re-installed and re-configured, to ensure they have applied the latest security measures.
+
+### Password policy
+
+All priveledged users must use a different password for all users across all websites, both personal and Kalt based ones. 
+
+#### Proton pass
+
+To ensure you never have to store these password insecurily we use proton pass to simplify the application of unique passwords across services.
+
+#### Have-i-been-pwned
+All e-mails connected to priveledged users, both personal and Kalt, has to be registered at have i been pwned to get notified of potential password leaks. 
+
+[Have i been pwned FAQ ↗](https://haveibeenpwned.com/FAQs)
+
+### E-mail obfuscation
+For solutions like our e-mail service, cloudflare account and other critical solutions, we use e-mail obfuscation to ensure even if there is a leak, it will be harder to see that the account is linked to Kalt. Giving us an additional grace period to ensure we are compromised. 
+
+#### Proton pass
+
+Proton Pass is more than a tool to securely save passwords and automate logging in. It's also an identity manager that generates unique email aliases, preventing your true email address from being used to track you, exposed in data breaches, or targeted for spam.
+
+### Turn off devices when travelling
+When travelling, no matter where, turn off the computer entirely and disable any network connectivity. There has been numerous attempts at stealing data at security checkpoints at airports and other border crossings. 
+
+To ensure no dataleaks at border crossings: 
+1. Disable wifi
+2. Disable bluetooth
+3. Turn all devices off
+
+### Computer security hardening measures on priveledged users
+All computers used by priveledged users are hardened to ensure they are never compromised, currently this process has only been applied to Macbooks, and follow these simple steps:
+
+### VPN on all priveledged users computers
+All priveleded users has to have Proton VPN turned on at all times, using the secure core and kill switch functionality. No matter if they are on their home network or at a café.
+
+Proton VPN establishes an encrypted tunnel between your computer and any one of our VPN servers around the world. This encrypted tunnel is secured with AES-256, and will successfully prevent an adversary who has control over the internet connection that you are using from being able to snoop on your traffic. This means you can safely browse even on public internet networks.
+
+[Learn more about Proton VPN’s threat model ↗](https://protonvpn.com/blog/threat-model/)
+
+#### Displaying file extension names
+1. Open terminal
+2. Run `defaults write NSGlobalDomain AppleShowAllExtensions -bool true;`
+
+#### Enable encryption
+1.  → System settings → Privacy & Security → file vault
+2. Enable file vault
+
+#### Disable spotlight suggestions 
+1.  → System settings → Spotlight
+
+#### Lock mac after 1 minute of inactivity
+1.  → System settings → Privacy & Security
+2. Select advanced (at bottom) 
+3. Select `Log out automatically after inactivity`
+4. Adjust to 1 minute
+
+#### Require admin account to change settings
+1.  → System settings → Privacy & Security → General tab → Advanced
+2. Select `Require an administrator password to access system-wide preferences`
+
+#### Enable firewall
+1.  → System settings → Privacy & Security → Firewall tab
+2. Select `Turn On Firewall`
+3. Select `Then select ‘Firewall Options…`
+4. Ensure these three tick boxes are toggled:
+5. Automatically allow built-in software to receive incoming connection: `[ OFF ]`
+6. Automatically allow downloaded signed software to receive incoming connections: `[ OFF ]`
+7. Enable stealth mode: `[ ON ]`
+
+#### Verify that you are on the latest Mac OS
+1.  → System settings → General
+3. Select software update
+2. Check that you are on the latest version of macOS
+
+#### Remove DNS providers
+Manually configuring your device’s global DNS settings to use a third-party DNS service, such as Google Public DNS, Cloudflare, or OpenNIC, increases the chance of something going wrong, as it is possible the custom settings will override [Proton's DNS leak prevention measures ↗](https://protonvpn.com/support/dns-leaks-privacy/). 
+
+
+#### Disable automatically joining networks
+1.  → System settings → Network
+2. Toggle ask to join networks `[ OFF ]`
+2. Toggle ask to join hotspots `[ OFF ]`
 
 ## Web application firewall
 As our first line of defence, we have added a web application firewall from Cloudflare, it helps protect against common attack patterns and strategies. 
@@ -57,6 +153,41 @@ For client-side operations, we leverage the `Web Crypto API`, ensuring that the 
 
 By implementing these rigorous encryption standards, both server-side and client-side, we ensure the highest level of security for sensitive data, reflecting our commitment to protecting our customers' privacy and security.
 
+## DevOps
+
+### NPM Dependencies
+
+
+### API security
+All PostgREST API requests to our Supabase instance is direected through our WAF. All these API's are authenticated using [Supabase Auth](https://supabase.com/docs/guides/auth), no shared "service accounts" or similar is in use. 
+
+#### Webhooks
+All webhooks should use the authorization header with a 4096 bit `WEBHOOK_SECRET` key. 
+
+#### Cron jobs
+The Vercel CRON jobs should be secured with a 4096 bit `CRON_SECRET` key. 
+
+### Row-level security
+All tables has to have [RLS policies](https://supabase.com/docs/guides/auth/row-level-security) applied to ensure users can only access their own data make the requests
+
+### Environment variables and secret management
+
+#### Dev
+Variables should always be stored in .env files and should never be included in commits.
+
+##### Sharing secrets
+Secrets should only be shared using Proton Pass, never:
+1. In Slack
+2. In Notion
+3. In code.
+4. Anywhere but Proton Pass 
+
+[Read more about password sharing with end-to-end encryption ↗](https://proton.me/pass/password-sharing)
+
+#### Test/prod
+All environment variables and secrets should be stored in [Vercels Environment Variables ↗](https://vercel.com/docs/projects/environment-variables)
+
+
 ## Bug bounty program
 To encourage the identification and reporting of security vulnerabilities, we have established a Bug Bounty Program. If you discover a security vulnerability in our code, we invite you to report it through our Bug Bounty Program. By responsibly disclosing security issues, you help us improve our software and keep our users safe.
 
@@ -85,3 +216,5 @@ We appreciate your efforts in helping us maintain the security of our software a
 ## Penetration testing
 
 We proactively safeguard our systems and data through rigorous and regular penetration testing, conducted quarterly by reputable third-party security firms. This vital aspect of our cybersecurity strategy involves simulating cyber attacks on our systems to identify vulnerabilities and assess the effectiveness of our current security measures. These tests are meticulously planned and executed to mimic a range of attack scenarios, from surface-level web application attacks to deep, system-level intrusions. By engaging external experts, we benefit from an unbiased perspective and specialized expertise, ensuring a comprehensive evaluation of our defenses. The findings from these penetration tests are thoroughly analyzed, and the insights gained are used to fortify our security posture. This practice not only helps us to stay ahead of evolving cyber threats but also demonstrates our commitment to continuous improvement and adherence to the highest standards of data security.
+
+Do you want to pen test us? Go ahead :) We appreciate if you let us know in advance, and especially if you have some insights to share: sec@ka.lt
