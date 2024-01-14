@@ -8,7 +8,7 @@
     </div>
     <label v-if="edit">Set card to charge: </label>
     <div class="card selected" v-if="edit">
-      <div :class="'logo ' + checkBrand(number) || 'mastercard'"></div>
+      <div :class="'logo ' + brand"></div>
       <div class="details" @click="removeMarkedAsWrong()"> 
         <input 
           type="text" 
@@ -55,14 +55,15 @@
   const user = await get(supabase).user(auth.value) as user;
   const key = await get(supabase).key(user);
   const defaultCard = await get(supabase).card(user);
+  ok.log('', defaultCard)
   const edit = ref(false);
   if(!defaultCard) {
     ok.log('', 'User does not have default card')
     edit.value=true;
   }
-  const checkBrand = (brand) => {
+  const checkBrand = (brand: string) => {
     if(brand){
-      let firstDigit = brand.toString().slice(0,  1);
+      let firstDigit = brand.slice(0,  1);
       if(firstDigit==='1') return "amex"
       if(firstDigit==='2') return "mastercard"
       if(firstDigit==='3') return "amex"
@@ -74,7 +75,22 @@
       return 'mastercard'
     }
   }
-  const number = ref(defaultCard?.number || '');
+  const number = ref('');
+  const brand = ref(checkBrand(number.value))
+
+  if(defaultCard && defaultCard.numberIv && defaultCard.number && key){
+    try {
+      const numberDecrypted = await cryptography.decrypt(key, {
+        'iv': defaultCard.numberIv,
+        'content': defaultCard.number
+      });
+      brand.value = checkBrand(numberDecrypted);
+      number.value=numberDecrypted;
+    } catch (error) {
+      ok.log('error', 'could not decrypt card number', error)
+    }
+  }
+  
   const numberError = ref(false);
   const month = ref(defaultCard?.month || '');
   const monthError = ref(false);
@@ -124,7 +140,7 @@
   const saveCard = async () => {
     loading.value = true;
     const numberInt = ok.toInt(number.value);
-    const numberEncrypted = await encryptClientSide(number, key);
+    const numberEncrypted = await cryptography.encrypt(key, number.value);
     const cvcInt = ok.toInt(cvc.value);
     const yearPrefix = new Date().getFullYear().toString().slice(0, 2); 
     const fullYear = parseInt(yearPrefix + year.value, 10); 
@@ -178,7 +194,7 @@
         loading.value=false
       } else {
         loading.value=false
-        setFourDigits(number.value);
+        setFourDigits();
         setNotification(null);
         edit.value=false;
       }
