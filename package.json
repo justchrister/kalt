@@ -3,7 +3,7 @@
   "version": "4.2.0",
   "private": true,
   "scripts": {
-    "prebuild": "node audit.js",
+    "prebuild": "node audit.mjs",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
