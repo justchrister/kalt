@@ -33,7 +33,7 @@ We implement state-of-the-art encryption methods to safeguard our customers' pay
 
 On the server side, we utilize the `Node.js` `crypto` module for both encryption and decryption. During encryption, a unique initialization vector is generated for each session, enhancing security by adding an additional layer of randomness. The text is encrypted using the secret key and initialization vector, resulting in a secure, non-readable format. Conversely, for decryption, the encrypted text is processed alongside the initialization vector and the secret key to retrieve the original data.
 
-For client-side operations, we leverage the `Web Crypto API`, ensuring that the encryption and decryption processes align with the security standards of modern web browsers. This includes the conversion of hex string keys to formats compatible with the Web Crypto API and the use of window.crypto for generating IVs and processing encryption and decryption tasks.
+For client-side operations, we leverage the `Web Crypto API`, ensuring that the encryption and decryption processes align with the security standards of modern web browsers. This includes the conversion of hex string keys to formats compatible with the `Web Crypto API` and the use of `window.crypto` for generating IVs and processing encryption and decryption tasks.
 
 By implementing these rigorous encryption standards, both server-side and client-side, we ensure the highest level of security for sensitive data, reflecting our commitment to protecting our customers' privacy and security.
 
