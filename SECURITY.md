@@ -15,6 +15,11 @@ The principle of least priveledge is fundamental to our security architecture. I
 
 In practice, this means implementing stringent access controls and regularly reviewing and adjusting these permissions to align with the evolving roles and responsibilities within our organization. By limiting the access rights for any given resource to what is strictly necessary, we significantly reduce the risk of unauthorized access or accidental misuse of sensitive information. This approach not only tightens security but also enhances our system's overall performance by reducing the complexity and potential for error in our access structures. The Principle of Least Privilege is a critical component of our security strategy, reflecting our commitment to maintaining a secure and efficient operating environment.
 
+## Secure storage
+We use the Supabase SaaS offering to store all data. They are SOC2 Type 2 compliant, HIPAA compliant, and store all encrypted at rest with AES-256 and in transit via TLS.
+
+For especially sensitive customer data, we apply an additional level of encryption, such as credit card information and know-your-customer data. The encryption keys are rotated at a 12 month interval. 
+
 ## Priveledged users (employees)
 
 We maintain stringent protocols for managing privileged users — employees who are granted elevated access rights due to their role and responsibilities. Recognizing the sensitivity and potential risks associated with handling personal data, we ensure that all privileged users undergo a thorough verification process. This process is designed to assess and confirm their suitability and reliability in managing sensitive information.
@@ -156,7 +161,7 @@ By implementing these rigorous encryption standards, both server-side and client
 ## DevOps
 
 ### NPM Dependencies
-
+To ensure we have no security issues in the app, we audit all NPM dependencies pre-build using the built in npm audit feature, the results are then posted to a Slack channel that is monitored 24/7. 
 
 ### API security
 All PostgREST API requests to our Supabase instance is direected through our WAF. All these API's are authenticated using [Supabase Auth](https://supabase.com/docs/guides/auth), no shared "service accounts" or similar is in use. 
@@ -218,3 +223,10 @@ We appreciate your efforts in helping us maintain the security of our software a
 We proactively safeguard our systems and data through rigorous and regular penetration testing, conducted quarterly by reputable third-party security firms. This vital aspect of our cybersecurity strategy involves simulating cyber attacks on our systems to identify vulnerabilities and assess the effectiveness of our current security measures. These tests are meticulously planned and executed to mimic a range of attack scenarios, from surface-level web application attacks to deep, system-level intrusions. By engaging external experts, we benefit from an unbiased perspective and specialized expertise, ensuring a comprehensive evaluation of our defenses. The findings from these penetration tests are thoroughly analyzed, and the insights gained are used to fortify our security posture. This practice not only helps us to stay ahead of evolving cyber threats but also demonstrates our commitment to continuous improvement and adherence to the highest standards of data security.
 
 Do you want to pen test us? Go ahead :) We appreciate if you let us know in advance, and especially if you have some insights to share: sec@ka.lt
+
+## Other documents of interest
+
+- [Cloudflare data processing addendum (DPA) ↗](https://www.cloudflare.com/cloudflare-customer-dpa/)
+- [What's New at Cloudflare ↗](https://www.cloudflare.com/whats-new/)
+- [About Proton ↗](https://proton.me/about)
+- [Security at Supabase ↗](https://supabase.com/security)
