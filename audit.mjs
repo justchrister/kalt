@@ -22,12 +22,12 @@ const sendSlackNotification = async (message) => {
 };
 
 const test = false; // Set to false in production
-
-exec('npm audit --json', (error, stdout) => {
-  if (error || test) {
-    console.error(`NPM Audit Failure: ${test ? 'Test Error' : error}`);
-    sendSlackNotification(`NPM Audit Failure: ${test ? 'This is a test error message.' : error}`);
-    if (!test) process.exit(1); // Exit with a failure code if not in test mode
+exec('npm audit --json', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`NPM Audit Failure: ${error}`);
+    console.error('Audit Error Output:', stderr);
+    sendSlackNotification(`NPM Audit Failure: ${stderr}`);
+    if (!test) process.exit(1);
   } else {
     const auditResults = JSON.parse(stdout);
     if (auditResults.metadata.vulnerabilities.total > 0 || test) {
