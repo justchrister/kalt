@@ -5,6 +5,24 @@ We are committed to maintaining the security of our software and protecting the 
 
 Our commitment extends beyond mere compliance; it's about fostering a culture of security and privacy that permeates every aspect of our operations. Recognizing the dynamic nature of digital threats, we have established a multi-layered security strategy. This includes not only rigorous protocols and cutting-edge technology but also a proactive approach to potential vulnerabilities. Our comprehensive security measures are meticulously designed to protect our software and, more importantly, the privacy and integrity of our user data. In an era where digital information is both valuable and vulnerable, we strive to be a bastion of trust and reliability for our users, ensuring that their data is safeguarded with the highest standards of security.
 
+## Zero trust model
+
+At the core of our Zero Trust framework is the rigorous authentication and authorization of all users, devices, and network flows. We employ advanced identity verification methods and context-aware access controls that dynamically adapt to varying risk levels. This approach minimizes the attack surface and reduces the potential impact of insider threats. By implementing strict access controls and continuously monitoring network activity, we create a more resilient and responsive security posture that is crucial in defending against sophisticated cyber threats.
+
+## Principle of least privilege
+
+The principle of least priveledge is fundamental to our security architecture. It dictates that every module, user, and application is granted only the minimum levels of access — or permissions — needed to perform their functions. This principle is not just a guideline but an enforced practice in our system design and operations.
+
+In practice, this means implementing stringent access controls and regularly reviewing and adjusting these permissions to align with the evolving roles and responsibilities within our organization. By limiting the access rights for any given resource to what is strictly necessary, we significantly reduce the risk of unauthorized access or accidental misuse of sensitive information. This approach not only tightens security but also enhances our system's overall performance by reducing the complexity and potential for error in our access structures. The Principle of Least Privilege is a critical component of our security strategy, reflecting our commitment to maintaining a secure and efficient operating environment.
+
+### Priveledged users (employees)
+
+we maintain stringent protocols for managing privileged users — employees who are granted elevated access rights due to their role and responsibilities. Recognizing the sensitivity and potential risks associated with handling personal data, we ensure that all privileged users undergo a thorough verification process. This process is designed to assess and confirm their suitability and reliability in managing sensitive information.
+
+It's important to note that only a select subset of these verified privileged users are granted direct access to personal data and the decryption keys. This selective access is governed by our strict internal policies and is continually monitored and audited to prevent any unauthorized or inappropriate access.
+
+We enforce multi-factor authentication for all privileged users without exception. Multi-factor authentication adds an additional layer of security by requiring two or more independent credentials for user authentication. This means that even if one credential is compromised, unauthorized access is still prevented by the additional authentication requirements. Implementing MFA is a crucial part of our security strategy, significantly enhancing the protection against unauthorized access and ensuring the security of our users' data.
+
 ## Web application firewall
 As our first line of defence, we have added a web application firewall from Cloudflare, it helps protect against common attack patterns and strategies. 
 
