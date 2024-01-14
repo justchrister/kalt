@@ -3,6 +3,8 @@
 ## Overview
 We are committed to maintaining the security of our software and protecting the privacy of our users. Since we store a lot of personal data, we have implemented a lot of different security measures in order to ensure none are leaked. 
 
+Our commitment extends beyond mere compliance; it's about fostering a culture of security and privacy that permeates every aspect of our operations. Recognizing the dynamic nature of digital threats, we have established a multi-layered security strategy. This includes not only rigorous protocols and cutting-edge technology but also a proactive approach to potential vulnerabilities. Our comprehensive security measures are meticulously designed to protect our software and, more importantly, the privacy and integrity of our user data. In an era where digital information is both valuable and vulnerable, we strive to be a bastion of trust and reliability for our users, ensuring that their data is safeguarded with the highest standards of security.
+
 ## Web application firewall
 As our first line of defence, we have added a web application firewall from Cloudflare, it helps protect against common attack patterns and strategies. 
 
