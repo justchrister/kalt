@@ -81,3 +81,7 @@ We offer financial rewards for qualifying vulnerability reports. The reward amou
 Please note that we reserve the right to decide whether a vulnerability qualifies for a reward and to modify the Bug Bounty Program at any time.
 
 We appreciate your efforts in helping us maintain the security of our software and protecting our users. Your responsible disclosure and participation in our Bug Bounty Program make a significant difference in ensuring the safety of our community.
+
+## Penetration testing
+
+We proactively safeguard our systems and data through rigorous and regular penetration testing, conducted quarterly by reputable third-party security firms. This vital aspect of our cybersecurity strategy involves simulating cyber attacks on our systems to identify vulnerabilities and assess the effectiveness of our current security measures. These tests are meticulously planned and executed to mimic a range of attack scenarios, from surface-level web application attacks to deep, system-level intrusions. By engaging external experts, we benefit from an unbiased perspective and specialized expertise, ensuring a comprehensive evaluation of our defenses. The findings from these penetration tests are thoroughly analyzed, and the insights gained are used to fortify our security posture. This practice not only helps us to stay ahead of evolving cyber threats but also demonstrates our commitment to continuous improvement and adherence to the highest standards of data security.
