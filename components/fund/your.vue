@@ -1,10 +1,11 @@
 <template>
   <div class="fund" v-if="fund" @click="adjustrate()">
     <div class="icon">
-      <span :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></span>
+      <span :style="{ 'background-image': `url('/media/icons/funds/${props.ticker}.svg')` }"></span>
     </div>
     <div class="name">
       {{fund.name}}
+      <span class="beta" v-if="props.beta">BETA</span>
     </div>
     <div class="rate">
       <span :class="{ active: rate >= 1}"></span>
@@ -21,6 +22,11 @@
     ticker: {
       type: String,
       required: true
+    }, 
+    beta: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   })
   const { data:fund, error } = await supabase
@@ -31,27 +37,26 @@
     .single()
   const rate = ref(0)
   const state = await get(supabase).userDefinedFunds(auth.value.id, props.ticker);
-  const shortTicker = props.ticker.split('.')[0] 
   const logHearts = async () => {
     if(rate.value===3){
-      if(shortTicker.length==3){
-        ok.log('', shortTicker+'       ♥ ♥ ♥')
+      if(props.ticker.length==3){
+        ok.log('', props.ticker+'       ♥ ♥ ♥')
       } else {
-        ok.log('', shortTicker+'        ♥ ♥ ♥')
+        ok.log('', props.ticker+'        ♥ ♥ ♥')
       }
     } 
     if(rate.value===2) {
-      if(shortTicker.length==3){
-        ok.log('', shortTicker+'       ♥ ♥')
+      if(props.ticker.length==3){
+        ok.log('', props.ticker+'       ♥ ♥')
       } else {
-        ok.log('', shortTicker+'        ♥ ♥')
+        ok.log('', props.ticker+'        ♥ ♥')
       }
     }
     if(rate.value===1) {
-      if(shortTicker.length==3){
-        ok.log('', shortTicker+'       ♥')
+      if(props.ticker.length==3){
+        ok.log('', props.ticker+'       ♥')
       } else {
-        ok.log('', shortTicker+'        ♥')
+        ok.log('', props.ticker+'        ♥')
       }
     }
   }
@@ -111,8 +116,19 @@
     background-size:contain;
     animation: hearbeat 2s $easing-in-out 1;
   }
-  .name::selection{
+  .name::selection,
+  .name .beta::selection{
     background-color:transparent;
+  }
+  .name .beta{
+    font-size:55%;
+    line-height: 140%;
+    font-weight:bold;
+    color: primaryColor(90%);
+    padding: sizer(0.1) sizer(0.35);
+    display:inline-block;
+    @include border;
+    @include hoverable;
   }
   @keyframes hearbeat {
     0%, 5%, 10%, 20%, 100% { 
