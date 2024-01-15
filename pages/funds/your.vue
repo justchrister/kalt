@@ -4,8 +4,9 @@
     <block>
       <fund-your ticker="ffe"/>
       <fund-your ticker="art"/>
-      <fund-your ticker="ah"/>
-      <fund-your ticker="vc"/>
+      <fund-your ticker="ah" :beta="true"/>
+      <fund-your ticker="smb" :beta="true"/>
+      <fund-your ticker="vc" :beta="true"/>
       <block>
         <input-button link="/invest">invest now -></input-button>
       </block>
@@ -24,20 +25,6 @@
       content: 'Invest in the future, today.'
     }]
   })
-  let amounts = reactive({
-    art: 2,
-    ffe: 3,
-    ah: 1,
-    vc: 0,
-    smb: 1
-  })
-  const adjustAmount = (fund) => {
-    if(amounts[fund]===3){
-      amounts[fund] = 0
-    } else {
-      amounts[fund] = amounts[fund] + 1
-    }
-  }
 </script>
 <style scoped lang="scss">
   .button-group{
