@@ -23,7 +23,7 @@ const sendSlackNotification = async (message) => {
   }
 };
 
-const test = true; // Set to false in production
+const test = false; // Set to false in production
 
 const runAudit = async () => {
   try {
