@@ -3,7 +3,7 @@
     <div class="icon"></div>
     <div> Your fund </div>
     <div class="link"> 
-        customize
+      customize
     </div>
   </section>
 </template>
