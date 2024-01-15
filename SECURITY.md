@@ -225,7 +225,7 @@ We appreciate your efforts in helping us maintain the security of our software a
 
 We proactively safeguard our systems and data through rigorous and regular penetration testing, conducted quarterly by reputable third-party security firms. This vital aspect of our cybersecurity strategy involves simulating cyber attacks on our systems to identify vulnerabilities and assess the effectiveness of our current security measures. These tests are meticulously planned and executed to mimic a range of attack scenarios, from surface-level web application attacks to deep, system-level intrusions. By engaging external experts, we benefit from an unbiased perspective and specialized expertise, ensuring a comprehensive evaluation of our defenses. The findings from these penetration tests are thoroughly analyzed, and the insights gained are used to fortify our security posture. This practice not only helps us to stay ahead of evolving cyber threats but also demonstrates our commitment to continuous improvement and adherence to the highest standards of data security.
 
-Do you want to pen test us? Go ahead :) We appreciate if you let us know in advance, and especially if you have some insights to share: sec@ka.lt
+Do you want to pen test us? Go ahead. We appreciate if you let us know in advance, and especially if you have some insights to share: sec@ka.lt
 
 ## Incident response
 
