@@ -32,6 +32,7 @@ const runAudit = async () => {
     if (auditResults.metadata.vulnerabilities.total > 0 || test) {
       const message = `NPM Audit: ${test ? '1' : auditResults.metadata.vulnerabilities.total} vulnerability found.`;
       await sendSlackNotification(message);
+      process.exit(1);
     } else {
       console.log('NPM Audit Success: No issues found');
     }
