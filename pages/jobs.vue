@@ -120,8 +120,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Open application',
-    middleware: 'default'
+    pagename: 'Open application'
   })
   useHead({
     title: 'Open application'
