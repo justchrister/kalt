@@ -15,6 +15,6 @@
   useHead({
     title: 'Bye'
   })
-  const client = useSupabaseAuthClient()
-  const { error } = await client.auth.signOut()
+  const supabase = useSupabaseClient()
+  const { error } = await supabase.auth.signOut()
 </script>
