@@ -65,8 +65,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'About us',
-    middleware: 'default'
+    pagename: 'About us'
   })
   useHead({
     title: 'About us'
