@@ -1,7 +1,7 @@
 <template>
   <main>
     <block margin="half">
-      <intro-fund ticker="ffe" text="The fossil-free energy fund invests in energy generating infrastructure, in high impact geographies, low current supply, and high projected growth-by "/>
+      <intro ticker="ffe" text="The fossil-free energy fund invests in energy generating infrastructure, in high impact geographies, low current supply, and high projected growth-by "/>
     </block>
     <block>
       <criteria-list>
