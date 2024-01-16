@@ -48,7 +48,6 @@
 <script setup lang="ts">
   const route = useRoute()
   const signedIn = ref(false)
-  const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const toggleMenu = async () => { 
     document.getElementsByTagName("body")[0].classList.toggle("show-menu");
@@ -57,9 +56,6 @@
     } else {
       signedIn.value = false
     }
-  }
-  const toggleMenuOff = async () => { 
-    document.getElementsByTagName("body")[0].classList.remove("show-menu");
   }
   const props = defineProps({
     pageTitle: {
