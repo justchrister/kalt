@@ -26,15 +26,12 @@ main{
 select{
   width:100%;
   display:inline-block;
-  padding:clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
-          sizer(1.5)
-          clamp($unit-min/1.5, $unit/1.5, $unit-max/1.5) 
-          clamp($unit-min*1.2, $unit*1.2, $unit-max*1.2);
+  padding:sizer(0.6667) sizer(1.5) sizer(0.6667) sizer(1.2);
   border: $border;
   @include font-body;
   box-sizing:border-box;
   background-color:transparent;
-  height:clamp($unit-min*3.8, $unit*3.8, $unit-max*3.8);
+  height:sizer(3.8);
   appearance: none;
 }
 select:focus{
