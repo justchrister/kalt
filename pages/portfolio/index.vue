@@ -92,7 +92,7 @@ ul{
 }
 li{
   display:inline-block;
-  width:clamp($unit-min*7.5, $unit*7.5, $unit-max*7.5);
+  width:sizer(7.5);
   text-align:center;
   border: $border;
   padding:0;
