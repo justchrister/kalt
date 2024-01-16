@@ -74,8 +74,6 @@
         email: email.value,
         password: password.value,
       })
-      ok.log('', 'supabase', supabase)
-
 
       if(error) {
         loading.value = false
