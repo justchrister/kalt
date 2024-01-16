@@ -18,8 +18,6 @@ const sendSlackNotification = async (message) => {
   if (error) {
     console.error('Error sending Slack notification');
     console.log(error)
-  } else {
-    console.log('Slack notification sent');
   }
 };
 
