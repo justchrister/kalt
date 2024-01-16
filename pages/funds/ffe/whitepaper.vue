@@ -57,42 +57,11 @@
     </block>
     <block margin="none">
       <h2>The product</h2>
-      <content-card 
-        title="Deploy high-efficiency monocrystalline solar panels, built for scale."
-        content=""
-        color="blue"
-        :number="1"
-      />
-      <content-card 
-        title="Use AI to identify high-potential solar energy sites."
-        content=""
-        color="blue"
-        :number="2"
-      />
-      <content-card 
-        title="DDF"
-        content=""
-        color="pink"
-        :number="3"
-      />
-      <content-card 
-        title="Let people invest in what they care about"
-        content=""
-        color="green"
-        :number="4"
-      />
-      <content-card 
-        title="Make it easy to understand the impact"
-        content="Giving understandable ways to summarize the impact"
-        color="green"
-        :number="5"
-      />
-      <content-card 
-        title="Pay back profits to investors directly"
-        content=""
-        color="pink"
-        :number="6"
-      />
+      1. Deploy high-efficiency monocrystalline solar panels, built for scale.
+      2. Use AI to identify high-potential solar energy sites.
+      3. Let people invest in what they care about
+      4. Make it easy to understand the impact
+      5. Pay back profits to investors directly
     </block>
     <block>
       <h2>The goal</h2>
