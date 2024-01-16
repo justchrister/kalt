@@ -1,11 +1,12 @@
 <template>
-  <div class="intro">
-    <block margin="half">
+  <section :class="'gradient-'+props.gradient">
+    <block margin="none">
       <h1 class="sans-serif no-margin">{{props.title}}</h1>
-      <p v-if="props.paragraph">{{props.paragraph}}</p>
+      <p v-if="props.paragraph">
+        {{ props.paragraph  }}
+      </p>
     </block>
-    <navbar-tabs />
-  </div>
+  </section>
 </template>
 <script setup lang="ts">
   const props = defineProps({
@@ -13,26 +14,35 @@
       type: String,
       required: true
     },
-    paragraph: {
+    paragraph:{
       type: String,
       required: false
     },
-    color: {
+    gradient: {
       type: String,
       required: false
-    },
-
+    }
   })
 </script>
 <style scoped lang="scss">
-.intro{
-  padding: sizer(9) 0 sizer(3) 0;
+section{
+  padding: sizer(9) 0 sizer(7) 0;
   margin-bottom: sizer(5);
-  background-image:url('/gradient-2-min.jpg');
-  background-size:cover;
-  background-repeat:no-repeat;
+  &.gradient-2{
+    background:url('/gradient-2-min.jpg') no-repeat center center;
+    background-size:cover;
+  }
+  &.gradient-3{
+    background:url('/gradient-3-min.jpg') no-repeat center center;
+    background-size:cover;
+  }
+  &.gradient-4{
+    background:url('/gradient-4-min.jpg') no-repeat center center;
+    background-size:cover;
+  }
   h1{
     margin:0;
+    color: $dark-90;
   }
   p{
     line-height:1.5;
