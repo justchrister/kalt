@@ -26,7 +26,7 @@
   .block {
     width: $sitewidth;
     max-width: $maxsitewidth;
-    margin:0 auto clamp($unit-min*10, $unit*10, $unit-max*10) auto;
+    margin:0 auto sizer(10) auto;
 
     &.margin-half{
       margin-bottom: sizer(5);
