@@ -1,3 +1,4 @@
+import { ok } from '~/composables/ok'
 const minKeyLength = 64;
 
 const keyLengthRequirement = (key:string) => {
