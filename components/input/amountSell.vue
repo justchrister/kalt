@@ -24,8 +24,8 @@
         
       </div>
     </div>
-    <info-box type="info" :text="'You only have '+max+' available for withdrawal' " v-if="notify"/>
-    <info-box type="warning" :text="'If you withdraw more than your account balance of '+account+' it will trigger an automatic sale of shares' " v-if="notify2"/>
+    <span v-if="notify">You only have {{max}} available for withdrawal</span>
+    <span v-if="notify2">If you withdraw more than your account balance of {{account}} it will trigger an automatic sale of shares </span>
     
   </div>
 </template>
