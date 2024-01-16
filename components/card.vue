@@ -7,7 +7,7 @@
       <div class="edit"> edit </div>
     </div>
     <label v-if="edit">Set card to charge: </label>
-    <div class="card selected" v-if="edit">
+    <div class="card editing" v-if="edit">
       <div :class="'logo ' + brand"></div>
       <div class="details" @click="removeMarkedAsWrong()"> 
         <input 
@@ -56,7 +56,7 @@
   const key = await get(supabase).key(user);
   const defaultCard = await get(supabase).card(user);
   ok.log('', defaultCard)
-  const edit = ref(false);
+  const edit = ref(true);
   if(!defaultCard) {
     ok.log('', 'User does not have default card')
     edit.value=true;
@@ -207,6 +207,7 @@
     padding: sizer(1) sizer(2);
     margin: 0 0 sizer(1) 0;
     max-height: sizer(4);
+    max-width: 100%;
     display:grid;
     grid-template-columns: sizer(4) 1fr sizer(3);
     gap: sizer(2);
@@ -214,7 +215,7 @@
     @include border;
     @include hoverable;
   }
-  .card.selected{
+  .card.editing{
     @include selected;
   }
   .card:hover{
@@ -239,15 +240,20 @@
     grid-template-columns: 1fr;
     vertical-align: center;
   }
-  .card.selected .details{
-    width:sizer(36);
-    grid-template-columns: 1fr sizer(5) sizer(5) sizer(6);
+  .card.editing .details{
+    grid-template-columns: sizer(19) sizer(4) sizer(4) sizer(5);
   }
   .card .edit{
     height: sizer(4);
     line-height: sizer(4);
     float:right;
     text-align:right;
+  }
+  input#year,
+  input#month,
+  input#cvc{
+    padding-left:0;
+    padding-right:0;
   }
   input#number,
   input#year,
