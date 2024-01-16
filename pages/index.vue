@@ -45,8 +45,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Homepage',
-    middleware: 'default'
+    pagename: 'Homepage'
   })
   useHead({
     title: 'Kalt'
