@@ -90,6 +90,7 @@ export const get = (client: any) => {
     },
     key: async (auth: any) => {
       let userId = auth.id;
+      if(!auth.id) userId = auth;
       const { data, error } = await client
         .from('topic_keys')
         .select()
