@@ -47,10 +47,7 @@
     title: 'Hello'
   })
   const loading = ref(false)
-  const auth = useSupabaseUser()
   const supabase = useSupabaseClient()
-  const client = useSupabaseAuthClient()
-
   const email = ref('')
   const password = ref('')
   const notification = ref(null);
@@ -73,10 +70,12 @@
     } else if(!email.value.includes('@')){
       setNotification ('Please enter a valid email');
     } else {
-      const {data, error} = await client.auth.signInWithPassword({
+      const {data, error} = await supabase.auth.signInWithPassword({
         email: email.value,
         password: password.value,
       })
+      ok.log('', 'supabase', supabase)
+
 
       if(error) {
         loading.value = false
@@ -84,15 +83,11 @@
         ok.log('error', error)
       } else if(data){
         ok.log('success', 'signed in ' + email.value + ' successfully');
+        await navigateTo("/portfolio");
+        loading.value = false
       }
     }
   }
-  watchEffect(async () => {
-    if (auth.value) {
-      await navigateTo("/portfolio");
-      loading.value = false
-    }
-  })
 </script>
 <style scoped lang="scss">
   button{
