@@ -73,8 +73,7 @@
 <script setup lang="ts">
   definePageMeta({
     pagename: 'Whitepaper: Art fund',
-    layout:'focused',
-    middleware: 'default'
+    layout:'focused'
   })
   useHead({
     title: 'Whitepaper: Art fund'
