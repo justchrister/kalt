@@ -28,20 +28,20 @@
       <h2> Impact investing </h2>
       <p> We believe the only way to have actual impact is to use the market forces to make a change. The issues we are facing require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a return on investment </p>
     </block>
-    <promo-block-list>
-      <promo-block
+    <carousel>
+      <carousel-item
         title="Powered by AI">
         Capital is allocated using proprietary AI to earn you a stable return on your investment.
-      </promo-block>
-      <promo-block
+      </carousel-item>
+      <carousel-item
         title="Impact investing">
         The companies and assets we invest in always align with your values.
-      </promo-block>
-      <promo-block
+      </carousel-item>
+      <carousel-item
         title="Curated assets">
         All investments are carefully selected using quantitative investment strategies.
-      </promo-block>
-    </promo-block-list>
+      </carousel-item>
+    </carousel>
     <block>
       <h2> Questions and answers </h2>
       <p> We believe the only way to have actual impact is to use the market forces to make a change. The issues we are facing require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a return on investment </p>
