@@ -1,13 +1,15 @@
-import { ok } from '~/composables/ok';
-import { pub, sub } from '~/composables/messaging';
-import { serverSupabaseServiceRole } from '#supabase/server';
 import Stripe from 'stripe';
+import { ok } from '~/composables/ok';
+import { get } from '~/composables/get';
+import { pub, sub } from '~/composables/messaging';
+import { cryptography } from '~/composables/cryptography';
+import { serverSupabaseServiceRole } from '#supabase/server';
+
 export default defineEventHandler(async (event) => {
   
   const keyPair = await ok.verifyKeyPair(event)
   if(!keyPair) return 'unauthorized'
 
-  
   const supabase = serverSupabaseServiceRole(event);
   const service = 'aclStripe';
   const topic = 'cards';
@@ -17,12 +19,15 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);  
-
+  const key = await get(supabase).key(message.userId);
+  const decryptedNumber = await cryptography.decrypt(key, {
+    'iv': message.numberIv,
+    'content': message.number
+  });
   const json = {
+    'id': message.id,
     'userId': message.userId,
-    'lastFourDigits': message.lastFourDigits,
-    'number': message.number,
-    'cardId': message.cardId,
+    'number': decryptedNumber,
     'month': message.month,
     'year': message.year,
     'cvc': message.cvc
