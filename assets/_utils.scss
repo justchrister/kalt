@@ -1,8 +1,8 @@
 $sitewidth: 86vw;
 $maxsitewidth: 720px;
-
-$unit: calc($sitewidth/55);
-$unit-max: calc($maxsitewidth/55);
+$columns: 45;
+$unit: calc($sitewidth/$columns);
+$unit-max: calc($maxsitewidth/$columns);
 
 $light: #FEFDFA;
 
