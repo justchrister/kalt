@@ -41,7 +41,7 @@
     title: 'Welcome'
   })
   const loading = ref(false)
-  const client = useSupabaseAuthClient()
+  const supabase = useSupabaseClient()
 
   const email = ref('')
   const password = ref('')
@@ -63,7 +63,7 @@
     } else if (password.value.length < 8){
       setNotification('Password must be at least 8 characters')
     } else {
-      const { user, error } = await client.auth.signUp({
+      const { user, error } = await supabase.auth.signUp({
         email: email.value,
         password: password.value
       })
