@@ -110,8 +110,8 @@
     margin-bottom: sizer(2);
     font-display: optional;
     font-size: 150%;
-    height:clamp($unit-min*8, $unit*8, $unit-max*8);
-    line-height:clamp($unit-min*8, $unit*8, $unit-max*8);
+    height: sizer(8);
+    line-height: sizer(8);
     text-align:center;
   }
   h3{
