@@ -20,6 +20,12 @@ export default defineNuxtConfig({
   htmlAttrs: {
     lang: 'en'
   },
+  supabase: {
+    redirect: false,
+    redirectOptions: {
+      callback: '/portfolio',
+    }
+  },
   app: {
     head: {
       charset: 'utf-8',
