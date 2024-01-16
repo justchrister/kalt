@@ -43,8 +43,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Our values',
-    middleware: 'default'
+    pagename: 'Our values'
   })
   useHead({
     title: 'Our values'
