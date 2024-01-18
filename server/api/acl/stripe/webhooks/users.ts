@@ -11,8 +11,9 @@ export default defineEventHandler(async (event) => {
   const supabase = serverSupabaseServiceRole(event);
   const topic = 'users';
   const service = 'aclStripe';
+  const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
   const body = await readBody(event);
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
+  const stripe = new Stripe(stripeSecret, ''); // your stripe key here
   if (body.record.read) return 'message already read';
 
   const message = await sub(supabase, topic).entity(body.record.id);
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
     const { data, error } = await supabase
       .from('acl_stripe')
       .select()
-      .eq('userId', message.userId)
+      .eq('userId', message.id)
       .limit(1)
       .single()
     
@@ -46,7 +47,7 @@ export default defineEventHandler(async (event) => {
       email: message.email,
       name: message.firstName+' '+message.lastName,
       metadata: { 
-        userId: message.userId
+        userId: message.id
       }
     });
     if (user) {
@@ -58,7 +59,7 @@ export default defineEventHandler(async (event) => {
     }
   };
 
-  const assignStripeId = async (userId, stripeUserId) => {
+  const assignStripeId = async (userId: string, stripeUserId: string) => {
     const { data, error } = await supabase
       .from('acl_stripe')
       .insert({
@@ -74,7 +75,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const updateStripeUser = async (stripeId) => {
+  const updateStripeUser = async (stripeId: string) => {
     const updatedUser = await stripe.customers.update(
       stripeId, {
         name: message.firstName+' '+message.lastName,
@@ -89,7 +90,7 @@ export default defineEventHandler(async (event) => {
   }
   if(!userExists) {
     const createdUser = await createUser();
-    if (createdUser) await assignStripeId(message.userId, createdUser.id);
+    if (createdUser) await assignStripeId(message.id, createdUser.id);
     return "successfully assigned internal userId with stripe userId"
   }
 });
