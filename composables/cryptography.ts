@@ -4,7 +4,6 @@ const minKeyLength = 64;
 const keyLengthRequirement = (key:string) => {
     if (key.length !== minKeyLength) {
         ok.log('error', 'Invalid secret key length: '+key.length)
-        throw new Error("Invalid secret key length. Key must be 32 bytes for AES-256-CBC. This key is: "+ key.length);
     }
 }
 
