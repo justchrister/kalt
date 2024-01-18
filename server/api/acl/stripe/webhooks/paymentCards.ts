@@ -19,7 +19,6 @@ export default defineEventHandler(async (event) => {
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);  
   const key = await get(supabase).key(message.userId);
-  ok.log('', key)
   const decryptedNumber = await cryptography.decrypt(key, {
     'iv': message.numberIv,
     'content': message.number
