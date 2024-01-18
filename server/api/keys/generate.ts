@@ -13,9 +13,11 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
   const user = await get(supabase).user(body.record.id) as user;
-
-  const key = randomBytes(32).toString('hex');
+  const keyExists = await get(supabase).key(user);
+  if(keyExists) return 'key already exists'
   
+  const key = randomBytes(64).toString('hex');
+
   await pub(supabase, {
     sender: 'server/api/keys/generate.ts',
     id: user.id
