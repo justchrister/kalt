@@ -1,21 +1,6 @@
-const minKeyLength = 64;
-
-const keyLengthRequirement = (key:string) => {
-    if (key.length !== minKeyLength) {
-        ok.log('error', 'Invalid secret key length: '+key.length)
-        throw new Error("Invalid secret key length. Key must be 32 bytes for AES-256-CBC. This key is: "+ key.length);
-    } else {
-        console.log('key length ok')
-    }
-}
-
-
-
-// Client-side Encryption and Decryption
 export const encryptClientSide = async (text: string, secretKeyHex: string) => {
-    keyLengthRequirement(secretKeyHex);
+  if(!secretKeyHex || !text ) return;
   const iv = window.crypto.getRandomValues(new Uint8Array(16));
-  // Convert the hex string key to a format suitable for the Web Crypto API
   const secretKey = new Uint8Array(secretKeyHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
 
   const key = await window.crypto.subtle.importKey(
@@ -37,10 +22,9 @@ export const encryptClientSide = async (text: string, secretKeyHex: string) => {
       content: Array.from(new Uint8Array(encrypted)).map(b => b.toString(16).padStart(2, '0')).join('')
   };
 };
-export const decryptClientSide = async (hash: { iv: string, content: string }, secretKeyHex: string): Promise<string> => {
-    keyLengthRequirement(secretKeyHex);
 
-  // Convert hex string to Uint8Array
+export const decryptClientSide = async (hash: { iv: string, content: string }, secretKeyHex: string): Promise<string> => {
+
   const hexStringToUint8Array = (hexString: string) => {
       const length = hexString.length;
       const uint8Array = new Uint8Array(length / 2);
@@ -55,18 +39,18 @@ export const decryptClientSide = async (hash: { iv: string, content: string }, s
   const secretKey = hexStringToUint8Array(secretKeyHex);
 
   const key = await window.crypto.subtle.importKey(
-      "raw",
-      secretKey,
-      { name: "AES-CBC" },
-      false,
-      ["decrypt"]
+    "raw",
+    secretKey,
+    { name: "AES-CBC" },
+    false,
+    ["decrypt"]
   );
 
   const decrypted = await window.crypto.subtle.decrypt(
-      { name: "AES-CBC", iv },
-      key,
-      encryptedData
+    { name: "AES-CBC", iv },
+    key,
+    encryptedData
   );
-    const decoded = await new TextDecoder().decode(decrypted);
+  const decoded = await new TextDecoder().decode(decrypted);
   return decoded;
 };
