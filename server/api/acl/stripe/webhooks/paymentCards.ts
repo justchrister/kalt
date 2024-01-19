@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { ok } from '~/composables/ok';
 import { get } from '~/composables/get';
-import { pub, sub } from '~/composables/messaging';
+import { sub } from '~/composables/messaging';
 import { cryptography } from '~/composables/cryptography';
 import { serverSupabaseServiceRole } from '#supabase/server';
 
