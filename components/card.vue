@@ -55,8 +55,7 @@
   const user = await get(supabase).user(auth.value) as user;
   const key = await get(supabase).key(user);
   const defaultCard = await get(supabase).card(user);
-  ok.log('', defaultCard)
-  const edit = ref(true);
+  const edit = ref(false);
   if(!defaultCard) {
     ok.log('', 'User does not have default card')
     edit.value=true;
@@ -241,13 +240,16 @@
     vertical-align: center;
   }
   .card.editing .details{
-    grid-template-columns: sizer(19) sizer(4) sizer(4) sizer(5);
+    grid-template-columns: sizer(17) sizer(4) sizer(4) sizer(4);
   }
   .card .edit{
     height: sizer(4);
     line-height: sizer(4);
     float:right;
     text-align:right;
+  }
+  input{
+    font-size:85%;
   }
   input#year,
   input#month,
