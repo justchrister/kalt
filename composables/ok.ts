@@ -40,7 +40,8 @@ export const ok = {
   },
   toInt(input){
     const pattern = /[^0-9]/g;
-    return parseInt(input.replace(pattern, ''));
+    const asInt = parseInt(input.replace(pattern, '')) as int;
+    return asInt;
   },
   toFloat (input) {
     // Remove all characters that are not digits, dots, or dashes
