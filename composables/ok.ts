@@ -39,8 +39,9 @@ export const ok = {
     return lastDayOfMonth;
   },
   toInt(input){
+    const toString = input.toString();
     const pattern = /[^0-9]/g;
-    const asInt = parseInt(input.replace(pattern, '')) as int;
+    const asInt = parseInt(toString.replace(pattern, '')) as int;
     return asInt;
   },
   toFloat (input) {
