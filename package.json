@@ -1,17 +1,20 @@
 {
   "name": "kalt",
-  "version": "4.2.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "node audit.mjs",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^1.1.5",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "nuxt": "^3.9.3",
+    "vue": "^3.4.14",
+    "vue-router": "^4.2.5"
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
@@ -20,7 +23,6 @@
     "autoprefixer": "^10.4.13",
     "chart.js": "^4.1.1",
     "maska": "^2.1.7",
-    "nuxt": "^3.3.2",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "random-words": "^2.0.0",
