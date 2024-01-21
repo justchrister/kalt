@@ -47,8 +47,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'How does it work?',
-    layout:'focused'
+    pagename: 'How does it work?'
   })
   useHead({
     title: 'How does it work?',
