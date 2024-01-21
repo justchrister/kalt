@@ -340,13 +340,12 @@ export const get = (client: any) => {
         .from('topic_cards')
         .select()
         .eq('userId', user.id)
-        .eq('default', true)
-        .order('timestamp', { ascending: false })
+        .order('timestamp', { ascending: true })
       if(error) {
         ok.log('', error)
         return null
       } else {
-        const combined = ok.combineJsonByKeys(data, 'number');
+        const combined = ok.merge(data, 'id');
         return combined[0];
       }
     }
