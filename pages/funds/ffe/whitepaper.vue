@@ -79,8 +79,7 @@
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Whitepaper',
-    layout:'blank'
+    pagename: 'Whitepaper'
   })
   useHead({
     title: 'Whitepaper'
