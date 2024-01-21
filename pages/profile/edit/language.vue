@@ -18,8 +18,7 @@
   const user = await get(supabase).user(auth.value) as user;
 
   definePageMeta({
-    middleware: 'auth',
-    layout: 'blank'
+    middleware: 'auth'
   })
   useHead({
     title: 'select language'
