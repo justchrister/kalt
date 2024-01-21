@@ -18,8 +18,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'How does Kalt make money?',
-    layout:'focused'
+    pagename: 'How does Kalt make money?'
   })
   useHead({
     title: 'How does Kalt make money?',
