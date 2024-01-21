@@ -45,8 +45,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'What is a direct dividend fund?',
-    layout:'focused'
+    pagename: 'What is a direct dividend fund?'
   })
   useHead({
     title: 'What is a direct dividend fund?',
