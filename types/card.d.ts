@@ -6,9 +6,9 @@ declare global {
         lastFourDigits?: number;
         year?: number;
         month?: number;
-        cvc?: string;
+        cvc?: string | number;
         cvcIv?: string;
-        number?: string;
+        number?: string | number;
         numberIv?: string;
         brand?: string;
         paymentProviderToken?: string;
