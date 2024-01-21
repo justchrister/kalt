@@ -14,8 +14,7 @@
 <script setup lang="ts">
   definePageMeta({
     pagename: 'Accounts',
-    middleware: 'auth',
-    layout:'focused'
+    middleware: 'auth'
   })
   useHead({
     title: 'Accounts'
