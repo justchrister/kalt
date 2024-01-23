@@ -1,4 +1,5 @@
 import { ok } from '~/composables/ok';
+import { get } from '~/composables/get';
 import { sub, pub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server';
 import Stripe from 'stripe';
@@ -18,79 +19,50 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
-  ok.log('',message)
-  if(!message.firstName) return "no first name"
-  if(!message.lastName) return "no last name"
 
-  const checkIfUserExists = async () => {
-    const { data, error } = await supabase
-      .from('acl_stripe')
-      .select()
-      .eq('userId', message.id)
-      .limit(1)
-      .single()
-    
-    if(error) {
-      ok.log('', 'nah, user dont exist ')
-      return false
-    } else {
-      ok.log('success', 'user exists: '+data.stripeUserId)
-      return data
-    } 
-  }
-  const userExists = await checkIfUserExists();
+  const user = await get(supabase).user(message.id) as user;
 
-  ok.log('','user id: '+message.userId);
-
-  const createUser = async () => {
-    const user = await stripe.customers.create({
-      email: message.email,
-      name: message.firstName+' '+message.lastName,
+  const createUser = async (user) => {
+    const stripeUser = await stripe.customers.create({
+      email: user.email,
+      name: user.firstName+' '+user.lastName,
       metadata: { 
         userId: message.id
       }
     });
-    if (user) {
-      ok.log('succes', 'created user:', user)
-      return user;
+    if (stripeUser) {
+      ok.log('succes', 'created user:', stripeUser)
+      return stripeUser;
     } else {
       ok.log('error', 'could not create user')
       return;
     }
   };
 
-  const assignStripeId = async (userId: string, stripeUserId: string) => {
-    const { data, error } = await supabase
-      .from('acl_stripe')
-      .insert({
-        userId: userId,
-        stripeUserId: stripeUserId
-      })
-      .select()
-    if(error){
-      ok.log('error', error)
-    } else {
-      ok.log('success', 'assigned stripe id: '+data.stripeUserId)
-      return data
-    }
+  const assignStripeId = async (userId: string, paymentProviderId: string) => {
+      await pub(supabase, {
+        sender: 'server/api/acl/stripe/webhooks/users',
+        id: userId
+      }).users({
+        paymentProviderId
+      });
   }
 
-  const updateStripeUser = async (stripeId: string) => {
+  const updateStripeUser = async (user: user) => {
     const updatedUser = await stripe.customers.update(
-      stripeId, {
-        name: message.firstName+' '+message.lastName,
+      user.paymentProviderId, {
+        name: user.firstName+' '+user.lastName,
       }
     );
     return updatedUser
   }
 
-  if(userExists) {
-    const updatedUser = await updateStripeUser(userExists.stripeUserId);
+  if(user.paymentProviderId) {
+    const updatedUser = await updateStripeUser(user);
     return updatedUser
-  }
-  if(!userExists) {
-    const createdUser = await createUser();
-    if (createdUser) await assignStripeId(message.id, createdUser.id);
+  } else {
+    const createdUser = await createUser(user);
+    if (createdUser) await assignStripeId(user.id, createdUser.id);
     return "successfully assigned internal userId with stripe userId"
   }
 });
