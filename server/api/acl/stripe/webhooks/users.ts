@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   await sub(supabase, topic).read(service, body.record.event);
 
   const user = await get(supabase).user(message.id) as user;
-
+  if(!user) return 'could not find user'
   const createUser = async (user) => {
     const stripeUser = await stripe.customers.create({
       email: user.email,
