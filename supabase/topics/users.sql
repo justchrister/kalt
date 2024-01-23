@@ -23,8 +23,8 @@ CREATE TABLE "topic_users" (
     "termsOfService"        boolean,
     "performanceUpdates"    boolean,
     "kycIncome"             boolean,
-    "kycIncome"             boolean,
     "profilePicture"        text,
+    "paymentProviderId"     text,
     "language"              text,
     "currency"              text                                            REFERENCES sys_currencies(iso)
 );
