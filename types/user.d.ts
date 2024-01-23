@@ -18,6 +18,7 @@ declare global {
         performanceUpdates?: boolean;
         profilePicture?: string;
         language?: string;
+        paymentProviderId?: string;
         currency?: string;
     }
 }
