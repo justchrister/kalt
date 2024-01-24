@@ -39,13 +39,13 @@ export default defineEventHandler(async (event) => {
     }
   };
 
-  const assignStripeId = async (userId: string, paymentProviderId: string) => {
-      await pub(supabase, {
-        sender: 'server/api/acl/stripe/webhooks/users',
-        id: userId
-      }).users({
-        paymentProviderId
-      });
+  const updateUser = async (userId: string, paymentProviderId: string) => {
+    await pub(supabase, {
+      sender: 'server/api/acl/stripe/webhooks/users',
+      id: userId
+    }).users({
+      paymentProviderId
+    });
   }
 
   const updateStripeUser = async (user: user) => {
@@ -56,13 +56,34 @@ export default defineEventHandler(async (event) => {
     );
     return updatedUser
   }
+  const createSetupIntent = async (customerID) => {
+    return await stripe.setupIntents.create({
+      customer: customerID,
+    });
+  }
 
   if(user.paymentProviderId) {
     const updatedUser = await updateStripeUser(user);
     return updatedUser
   } else {
     const createdUser = await createUser(user);
-    if (createdUser) await assignStripeId(user.id, createdUser.id);
+    const setupIntent = await createSetupIntent(createdUser?.id);
+    await updateUser(user.id, createdUser.id)
+    if(setupIntent && createdUser) {
+      await pub(supabase{
+        sender: 'server/api/acl/stripe/webhooks/users',
+        id: user.id
+      }).paymentMethods({
+        'provider': 'stripe',
+        'intentToken': setupIntent.client_secret,
+        'authenticationRequested': false
+      })
+      if (createdUser) {
+        ok.log('', 'created setupIntent:', setupIntent)
+        if(setupIntent) {
+        }
+      }
+    }
     return "successfully assigned internal userId with stripe userId"
   }
 });
