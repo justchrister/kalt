@@ -9,7 +9,7 @@
       <input-user :initial="user.city" id="city"/>
       <input-user :initial="user.postalCode" id="postalCode"/>
       <input-user :initial="user.addressLine1" id="addressLine1"/>
-      <input-birthdate :initial="user.birthdate" :userId="user.id"/>
+      <input-birthdate />
       <input-button link="/profile">done <omoji emoji="✔️" /></input-button>
     </block>
   </main>
