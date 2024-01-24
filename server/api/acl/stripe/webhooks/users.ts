@@ -19,12 +19,13 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   if (body.record.read) return 'message already read';
 
-  const message = await sub(supabase, topic).entity(body.record.id);
+  const message = await sub(supabase, topic).message(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
-
+  return message
   if(message.sender==='server/api/acl/stripe/webhooks/users') return 'message from self';
 
   const user = await get(supabase).user(message.id) as user;
+  return user
   if(!user) return 'could not find user'
   const createUser = async (user) => {
     const stripeUser = await stripe.customers.create({
