@@ -20,13 +20,8 @@
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
 
-  const props = defineProps({
-    initial: {
-      type: String,
-      required: false
-    }
-  })
-  const birthdate = ref(props.initial)
+  const birthdate = ref(user.birthdate)
+  ok.log('', 'returned: ',user)
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
