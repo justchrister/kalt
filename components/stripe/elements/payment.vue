@@ -6,14 +6,14 @@
 <script setup lang="ts">
   const props = defineProps({
     user: {
-      type: String,
+      type: Object,
       required: true
     }
   });
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth) as user;
-  const paymentMethod = await get(supabase).paymentMethod(auth)
+  const user = props.user as user;
+  const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
   const appearance = { /* appearance */ };
   const options = {    
     layout: {
@@ -30,7 +30,8 @@
     return await loadStripe('pk_test_51IMoMpDBFB40Q48wJYOe24B4jfH6W3UYyRAduNHLP5o8IER2ML2cAMoxGKdwKkYnGBkFoe1dJzdPxj2cPJjfgg6000tUWGXJvZ');
   };
 
-  const createPaymentElement = async (clientSecret, stripe) => {
+  const createPaymentElement = async (clientSecret: string, stripe: Stripe) => {
+    ok.log('', stripe)
     const elements = stripe.elements({ clientSecret });
     const paymentElement = elements.create('payment', options);
     
@@ -41,7 +42,7 @@
     try {
       const stripe = await loadStripe();
       if (stripe) {
-        await createPaymentElement(paymentIntentToken, stripe);
+        await createPaymentElement(paymentMethod.intentToken, stripe);
       } else {
         console.error('Stripe failed to load');
       }
