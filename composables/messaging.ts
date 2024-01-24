@@ -79,7 +79,7 @@ export const sub = (client: any, topic: any) => {
         .eq('event', id)
         .select()
       if(error) {
-        ok.log('', error)
+        ok.log('error', error)
       } else {
         ok.log('', data)
       }
