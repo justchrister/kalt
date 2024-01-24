@@ -9,16 +9,19 @@ export default defineEventHandler(async (event) => {
   const keyPair = await ok.verifyKeyPair(event)
   if(!keyPair) return 'unauthorized'
 
-  const supabase = serverSupabaseServiceRole(event);
   const topic = 'users';
   const service = 'aclStripe';
+
+  const supabase = serverSupabaseServiceRole(event);
   const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
-  const body = await readBody(event);
   const stripe = new Stripe(stripeSecret, ''); // your stripe key here
+  
+  const body = await readBody(event);
   if (body.record.read) return 'message already read';
 
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
+
   if(message.sender==='server/api/acl/stripe/webhooks/users') return 'message from self';
 
   const user = await get(supabase).user(message.id) as user;
@@ -67,11 +70,16 @@ export default defineEventHandler(async (event) => {
       const updatedUser = await updateStripeUser(user);
       return updatedUser
     }
-    return 'user already exists'
-  } else {
+    return 'user already exists, and no change in customer information'
+  }
+  if(!user.paymentProviderId){
     const createdUser = await createUser(user);
+    if(!createdUser) {
+      return 'could not create user'
+    } else {
+      await updateUser(user.id, createdUser.id)
+    }
     const setupIntent = await createSetupIntent(createdUser?.id);
-    await updateUser(user.id, createdUser.id)
     if(setupIntent && createdUser) {
       await pub(supabase, {
         sender: 'server/api/acl/stripe/webhooks/users',
@@ -81,11 +89,6 @@ export default defineEventHandler(async (event) => {
         'intentToken': setupIntent.client_secret,
         'authenticationRequested': false
       })
-      if (createdUser) {
-        ok.log('', 'created setupIntent:', setupIntent)
-        if(setupIntent) {
-        }
-      }
     }
     return "successfully assigned internal userId with stripe userId"
   }
