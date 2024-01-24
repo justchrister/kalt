@@ -85,7 +85,7 @@ export const get = (client: any) => {
         ok.log('error', error)
         return 'error'
       } else {
-        return ok.merge(data, 'id').single()
+        return ok.merge(data, 'id')[0]
       }
     },
     key: async (auth: any) => {
@@ -113,29 +113,13 @@ export const get = (client: any) => {
         .select()
         .eq('id', userId)
         .order('timestamp', { ascending: true })
-      const userCombined = ok.combineJson(data) as any; 
-      if(!userCombined) {
+      const merged = ok.merge(data, 'id')[0] as any;
+      if(!merged) {
         return null
       } else {
         return {
-          id: userId || null,
-          firstName: userCombined.firstName || null,
-          lastName: userCombined.lastName || null,
-          country: userCombined.country || null,
-          email: auth.email || null,
-          city: userCombined.city || null,
-          postalCode: userCombined.postalCode || null,
-          birthdate: userCombined.birthdate || null,
-          addressLine1: userCombined.addressLine1 || null,
-          addressLine2: userCombined.addressLine2 || null,
-          autoVest: userCombined.autoVest || 1,
-          newsletters: userCombined.newsletters || null,
-          termsOfService: userCombined.termsOfService || null,
-          performanceUpdates: userCombined.performanceUpdates || null,
-          colorScheme: userCombined.colorScheme || null,
-          profilePicture: userCombined.profilePicture || null,
-          language: userCombined.language || null,
-          currency: userCombined.currency || 'EUR'
+          ...merged, 
+          email: auth.email || null
         }
       }
     },
@@ -161,7 +145,7 @@ export const get = (client: any) => {
       if(error || data.length === 0 || !data) {
         return null
       } else {
-        return ok.merge(data, 'id').single();
+        return ok.merge(data, 'id')[0];
       }
     },
     sharePrices: async () => {
