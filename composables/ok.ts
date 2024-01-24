@@ -290,11 +290,11 @@ export const ok = {
     const secretCronKey = 'Bearer ' + process.env.CRON_SECRET;
     const secretWebhookKey = 'Bearer ' + process.env.WEBHOOK_SECRET;
     const incomingKey = event.node.req.headers['authorization'];
-    if (!incomingKey || incomingKey !== secretCronKey || incomingKey !== secretWebhookKey) {
-      return false
-    } else {
-      return true
-    }
+    
+    if(!incomingKey) return false;
+    if(incomingKey === secretCronKey) return true;
+    if(incomingKey === secretWebhookKey) return true;
+    return false;
   },
   merge(jsonArray: any[], ...keysToMergeOn: string[]) {
     let tempObj: { [key: string]: any } = {};
