@@ -315,17 +315,7 @@ export const ok = {
     });
   
     const mergedArray = Object.values(tempObj);
-  
-    // Extending the Array prototype to include the single method
-    Object.defineProperty(mergedArray, 'single', {
-      value: function() {
-        return this[0] || null;
-      },
-      writable: true,
-      enumerable: false,
-      configurable: true
-    });
-  
+
     return mergedArray;
   },
   uuid(){
