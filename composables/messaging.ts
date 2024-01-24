@@ -59,11 +59,23 @@ export const pub = (client: any, meta: any) => {
 
 export const sub = (client: any, topic: any) => {
   return {
-    entity: async (entity: any) => {
+    entity: async (id: any) => {
       const { data, error } = await client
         .from('topic_'+topic)
         .select()
-        .eq('id', entity)
+        .eq('id', id)
+        .order('timestamp', { ascending: true })
+      if(error) {
+        return error
+      } else {
+        return ok.merge(data, 'id')[0]
+      }
+    },
+    message: async (id: any) => {
+      const { data, error } = await client
+        .from('topic_'+topic)
+        .select()
+        .eq('id', id)
         .order('timestamp', { ascending: true })
       if(error) {
         return error
