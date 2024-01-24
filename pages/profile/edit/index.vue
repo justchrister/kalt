@@ -3,12 +3,12 @@
     <navbar-breadcrumbs parent="profile"/>
     <block>
       <select-profile-picture />
-      <input-user :initial="user.firstName" id="firstName"/>
-      <input-user :initial="user.lastName" id="lastName"/>
+      <input-user id="firstName"/>
+      <input-user id="lastName"/>
       <select-country/>
-      <input-user :initial="user.city" id="city"/>
-      <input-user :initial="user.postalCode" id="postalCode"/>
-      <input-user :initial="user.addressLine1" id="addressLine1"/>
+      <input-user id="city"/>
+      <input-user id="postalCode"/>
+      <input-user id="addressLine1"/>
       <input-birthdate />
       <input-button link="/profile">done <omoji emoji="✔️" /></input-button>
     </block>
