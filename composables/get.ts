@@ -335,6 +335,20 @@ export const get = (client: any) => {
         return ok.formatCurrency(result, user.currency)
       }
     },
+    paymentMethod: async (user: user)=>{
+      const { data, error } = await client
+        .from('topic_paymentMethods')
+        .select()
+        .eq('id', user.id)
+        .order('timestamp', { ascending: true })
+      if(error) {
+        ok.log('', error)
+        return null
+      } else {
+        const combined = ok.combineJson(data)
+        return ok.cleanMessage(combined)
+      }
+    },
     card: async (user: user) => {
       const { data, error } = await client
         .from('topic_cards')
