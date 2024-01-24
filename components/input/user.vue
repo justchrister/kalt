@@ -16,13 +16,9 @@
 
 <script setup lang="ts">
   const props = defineProps({
-    initial: {
-      type: String,
-      required: false
-    },
     id: {
       type: String,
-      required: false
+      required: true
     }
   })
 
@@ -30,7 +26,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
-  const content = ref(props.initial || null)
+  const content = ref(user[props.id] || null)
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
