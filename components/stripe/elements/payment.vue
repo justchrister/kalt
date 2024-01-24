@@ -14,6 +14,7 @@
   const auth = useSupabaseUser()
   const user = props.user as user;
   const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
+
   const appearance = { /* appearance */ };
   const options = {    
     layout: {
@@ -31,10 +32,8 @@
   };
 
   const createPaymentElement = async (clientSecret: string, stripe: Stripe) => {
-    ok.log('', stripe)
     const elements = stripe.elements({ clientSecret });
     const paymentElement = elements.create('payment', options);
-    
     paymentElement.mount('#payment-element');
   };
 
