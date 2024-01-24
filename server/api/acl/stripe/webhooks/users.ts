@@ -20,6 +20,7 @@ export default defineEventHandler(async (event) => {
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
   if(message.sender==='server/api/acl/stripe/webhooks/users') return 'message from self';
+
   const user = await get(supabase).user(message.id) as user;
   if(!user) return 'could not find user'
   const createUser = async (user) => {
@@ -62,8 +63,10 @@ export default defineEventHandler(async (event) => {
   }
 
   if(user.paymentProviderId) {
-    const updatedUser = await updateStripeUser(user);
-    return updatedUser
+    if(message.firstName || message.lastName) {
+      const updatedUser = await updateStripeUser(user);
+      return updatedUser
+    }
   } else {
     const createdUser = await createUser(user);
     const setupIntent = await createSetupIntent(createdUser?.id);
