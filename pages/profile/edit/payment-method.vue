@@ -19,7 +19,8 @@
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth)
+  ok.log('', auth.value)
+  const user = await get(supabase).user(auth.value) as user;
   
 </script>
 <style scoped lang="scss">
