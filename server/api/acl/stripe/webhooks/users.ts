@@ -67,6 +67,7 @@ export default defineEventHandler(async (event) => {
       const updatedUser = await updateStripeUser(user);
       return updatedUser
     }
+    return 'user already exists'
   } else {
     const createdUser = await createUser(user);
     const setupIntent = await createSetupIntent(createdUser?.id);
