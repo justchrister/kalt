@@ -32,7 +32,7 @@ export default defineEventHandler( async (event) => {
       .select()
     if(data) return true
     if(!data || error) {
-      ok.log('', error)
+      ok.log('error', error)
       return false
     }
   }
