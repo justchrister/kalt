@@ -49,12 +49,11 @@ export default defineEventHandler(async (event) => {
   }
 
   const updateStripeUser = async (user: user) => {
-    const updatedUser = await stripe.customers.update(
+    return await stripe.customers.update(
       user.paymentProviderId, {
         name: user.firstName+' '+user.lastName,
       }
     );
-    return updatedUser
   }
   const createSetupIntent = async (customerID) => {
     return await stripe.setupIntents.create({
@@ -70,7 +69,7 @@ export default defineEventHandler(async (event) => {
     const setupIntent = await createSetupIntent(createdUser?.id);
     await updateUser(user.id, createdUser.id)
     if(setupIntent && createdUser) {
-      await pub(supabase{
+      await pub(supabase, {
         sender: 'server/api/acl/stripe/webhooks/users',
         id: user.id
       }).paymentMethods({
