@@ -82,7 +82,7 @@ export const get = (client: any) => {
         .eq('id', orderId)
         .order('timestamp', { ascending: true })
       if(error){
-        ok.log('', error)
+        ok.log('error', error)
         return 'error'
       } else {
         return ok.merge(data, 'id').single()
@@ -122,6 +122,7 @@ export const get = (client: any) => {
           firstName: userCombined.firstName || null,
           lastName: userCombined.lastName || null,
           country: userCombined.country || null,
+          email: auth.email || null,
           city: userCombined.city || null,
           postalCode: userCombined.postalCode || null,
           birthdate: userCombined.birthdate || null,
@@ -145,7 +146,7 @@ export const get = (client: any) => {
         .eq('userId', user.id)
         .order('timestamp', { ascending: true })
       if(error) {
-        ok.log('', error)
+        ok.log('error', error)
         return null
       } else {
         return ok.combineJsonByEntity(data).reverse();
@@ -219,7 +220,7 @@ export const get = (client: any) => {
         .eq('userId', userId)
         .order('timestamp', { ascending: true })
       if(error) {
-        ok.log('', error)
+        ok.log('error', error)
         return null
       } else {
         return ok.combineJsonByKeys(data, 'ticker')
@@ -297,7 +298,7 @@ export const get = (client: any) => {
         .eq('userId', userId)
         .order('timestamp', { ascending: true })
       if(error) {
-        ok.log('', error)
+        ok.log('error', error)
         return null
       } else {
         const combined = ok.combineJson(data)
@@ -311,7 +312,7 @@ export const get = (client: any) => {
         .eq('id', user.id)
         .order('timestamp', { ascending: true })
       if(error) {
-        ok.log('', error)
+        ok.log('error', error)
         return null
       } else {
         const combined = ok.combineJson(data)
@@ -336,13 +337,14 @@ export const get = (client: any) => {
       }
     },
     paymentMethod: async (user: user)=>{
+      ok.log('', user.id)
       const { data, error } = await client
         .from('topic_paymentMethods')
         .select()
         .eq('id', user.id)
         .order('timestamp', { ascending: true })
       if(error) {
-        ok.log('', error)
+        ok.log('error', 'failed getting payment method: ', error)
         return null
       } else {
         const combined = ok.combineJson(data)
@@ -356,7 +358,7 @@ export const get = (client: any) => {
         .eq('userId', user.id)
         .order('timestamp', { ascending: true })
       if(error) {
-        ok.log('', error)
+        ok.log('error', error)
         return null
       } else {
         const combined = ok.merge(data, 'id');
