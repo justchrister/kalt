@@ -105,8 +105,12 @@ export const get = (client: any) => {
     },
     user: async (auth: any) => {
       let userId = auth.id;
+      let email = auth.email;
       if(!auth.id){
         userId = auth;
+      }
+      if(!auth.email){
+        email = null;
       }
       const { data } = await client 
         .from('topic_users')
@@ -115,11 +119,14 @@ export const get = (client: any) => {
         .order('timestamp', { ascending: true })
       const merged = ok.merge(data, 'id')[0] as any;
       if(!merged) {
-        return null
+        return {
+          "id": userId,
+          email
+        }
       } else {
         return {
           ...merged, 
-          email: auth.email || null
+          email
         }
       }
     },
