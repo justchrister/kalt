@@ -39,6 +39,9 @@ export const pub = (client: any, meta: any) => {
     cards: async (content: card) => {
       return await createJsonAndPublish(client, meta, content, 'topic_cards');
     },
+    paymentMethods: async (content: paymentMethod) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_paymentMethods');
+    },
     linkedBankAccounts: async (content: linkedBankAccount) => {
       return await createJsonAndPublish(client, meta, content, 'topic_linkedBankAccounts');
     },
