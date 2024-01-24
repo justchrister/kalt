@@ -10,7 +10,10 @@
       required: true
     }
   });
-
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth) as user;
+  const paymentMethod = await get(supabase).paymentMethod(auth)
   const appearance = { /* appearance */ };
   const options = {    
     layout: {
@@ -27,8 +30,8 @@
     return await loadStripe('pk_test_51IMoMpDBFB40Q48wJYOe24B4jfH6W3UYyRAduNHLP5o8IER2ML2cAMoxGKdwKkYnGBkFoe1dJzdPxj2cPJjfgg6000tUWGXJvZ');
   };
 
-  const createPaymentElement = async (stripe) => {
-    const elements = stripe.elements({ clientSecret: 'sk_test_51IMoMpDBFB40Q48wqVYcvcNhM8JFpXn251ImMNRJAChTLZRenDkFealuUbzKkbIZrB3yq1AJwQW4Qh5ErAVg039h00m1LcDY4u' });
+  const createPaymentElement = async (clientSecret, stripe) => {
+    const elements = stripe.elements({ clientSecret });
     const paymentElement = elements.create('payment', options);
     
     paymentElement.mount('#payment-element');
@@ -38,7 +41,7 @@
     try {
       const stripe = await loadStripe();
       if (stripe) {
-        await createPaymentElement(stripe);
+        await createPaymentElement(paymentIntentToken, stripe);
       } else {
         console.error('Stripe failed to load');
       }
