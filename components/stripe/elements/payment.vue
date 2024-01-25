@@ -1,6 +1,9 @@
 <template>
   <div>
     <div id="payment-element"></div>
+    <span v-if="loading">
+      <p class="loading-wrapper">Loading <loading-icon/></p>
+    </span>
   </div>
 </template>
 <script setup lang="ts">
@@ -14,6 +17,8 @@
   const auth = useSupabaseUser()
   const user = props.user as user;
   const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
+
+  const loading = ref(true);
 
   const appearance = { /* appearance */ };
   const options = {    
@@ -42,6 +47,7 @@
       const stripe = await loadStripe();
       if (stripe) {
         await createPaymentElement(paymentMethod.intentToken, stripe);
+        loading.value = false;
       } else {
         console.error('Stripe failed to load');
       }
@@ -52,5 +58,7 @@
 
 </script>
 <style scoped lang="scss">
-  
+  .loading-wrapper{
+    transform: scale(2);
+  }
 </style>
