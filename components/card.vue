@@ -57,7 +57,7 @@
   const defaultCard = await get(supabase).card(user);
   const edit = ref(false);
   if(!defaultCard) {
-    ok.log('', 'User does not have default card')
+    ok.log('warn', 'User does not have default card')
     edit.value=true;
   }
   const checkBrand = (brand: string) => {
