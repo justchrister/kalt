@@ -16,7 +16,6 @@
       required: false
     }
   })
-  ok.log('', props.type)
 </script>
 <style scoped lang="scss">
   .wrap{
