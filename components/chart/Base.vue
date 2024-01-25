@@ -157,7 +157,6 @@
         data: data.value.slice(-props.days)
       }]
   }))
-  ok.log('', data)
 
   const hoveredValue = ref(
     new Intl.NumberFormat('en-US', { style: 'currency', currency: currency}).format(
