@@ -117,17 +117,17 @@ export const get = (client: any) => {
         .select()
         .eq('id', userId)
         .order('timestamp', { ascending: true })
-      const merged = ok.merge(data, 'id')[0] as any;
+      const merged = ok.merge(data, 'id')[0] as user;
       if(!merged) {
         return {
           "id": userId,
           email
-        }
+        } as user
       } else {
         return {
           ...merged, 
           email
-        }
+        } as user
       }
     },
     transactions: async (user: any) => {
