@@ -198,7 +198,7 @@ export const get = (client: any) => {
         .limit(1)
         .single()
       if(error) {
-        ok.log('', 'could not get exchange rates: ', error)
+        ok.log('warn', 'could not get exchange rates')
         return null
       } else {
         return data.rate
