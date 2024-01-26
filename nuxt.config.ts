@@ -17,6 +17,12 @@ export default defineNuxtConfig({
       }
     }
   },
+  runtimeConfig: {
+    // Keys within public, will be also exposed to the client-side
+    public: {
+      STRIPE_PUBLIC_KEY: 'pkey will be replaced'
+    }
+  },
   htmlAttrs: {
     lang: 'en'
   },
