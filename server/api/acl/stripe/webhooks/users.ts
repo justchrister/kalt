@@ -14,8 +14,11 @@ export default defineEventHandler(async (event) => {
 
   const supabase = serverSupabaseServiceRole(event);
   const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
-  const stripe = new Stripe(stripeSecret, ''); // your stripe key here
-  
+  const stripeOptions = {
+    'typescript': true
+  }
+  const stripe = new Stripe(stripeSecret, stripeOptions); // your stripe key here
+
   const body = await readBody(event);
   if (body.record.read) return 'message already read';
 
