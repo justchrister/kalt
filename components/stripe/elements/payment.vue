@@ -52,6 +52,12 @@
         backgroundColor: 'transparent',
         border: '1px solid '+colors.border
       },
+      '.Tab--selected': {
+        borderColor: colors.border,
+      },
+      '.Tab:focus': {
+        borderColor: colors.dark,
+      },
       '.Input': {
         border: '1px solid '+colors.border
       }
