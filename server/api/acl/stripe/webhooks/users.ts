@@ -14,10 +14,8 @@ export default defineEventHandler(async (event) => {
 
   const supabase = serverSupabaseServiceRole(event);
   const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
-  const stripeOptions = {
-    'typescript': true
-  }
-  const stripe = new Stripe(stripeSecret, stripeOptions); // your stripe key here
+  const stripePaymentMethodConfiguration = process.env.STRIPE_PAYMENT_METHOD_CONFIGURATION as string;
+  const stripe = new Stripe(stripeSecret); // your stripe key here
 
   const body = await readBody(event);
   if (body.record.read) return 'message already read';
@@ -27,8 +25,8 @@ export default defineEventHandler(async (event) => {
   if(message.sender==='server/api/acl/stripe/webhooks/users') return 'message from self';
 
   const user = await get(supabase).user(message.id) as user;
-  
   if(!user) return 'could not find user'
+
   const createUser = async (user) => {
     const stripeUser = await stripe.customers.create({
       email: user.email,
@@ -63,16 +61,17 @@ export default defineEventHandler(async (event) => {
     );
   }
   const createSetupIntent = async (customerID: string) => {
-    return await stripe.setupIntents.create({
+    const setupIntent = await stripe.setupIntents.create({
       customer: customerID,
       usage: 'off_session',
       automatic_payment_methods: {
         enabled: true
       },
-      payment_method_configuration: process.env.STRIPE_PAYMENT_METHOD_CONFIGURATION
+      payment_method_configuration: stripePaymentMethodConfiguration
     });
+    ok.log('success', 'created setupIntent: ', setupIntent)
+    return setupIntent;
   }
-
   if(user.paymentProviderId) {
     if(message.firstName || message.lastName) {
       const updatedUser = await updateStripeUser(user);
@@ -98,8 +97,8 @@ export default defineEventHandler(async (event) => {
         'provider': 'stripe',
         'intentToken': setupIntent.client_secret,
         'authenticationRequested': false
-      })
-    }
-    return "successfully assigned internal userId with stripe userId"
-  }
+      });
+    };
+    return "successfully assigned internal userId with stripe userId";
+  };
 });
