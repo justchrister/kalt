@@ -26,10 +26,10 @@
       type: 'tabs',
       defaultCollapsed: false,
     },
+    payment_method_configuration: 'pmc_1M6g5zDBFB40Q48wehke7ZMD',
     mode: 'payment',
     amount: 1099,
-    setup_future_usage: 'off_session',
-    payment_method_configuration: 'pmc_1M6g5zDBFB40Q48wehke7ZMD'
+    setup_future_usage: 'off_session'
    };
   const loadStripe = async () => {
     const { loadStripe } = await import('@stripe/stripe-js');
@@ -38,7 +38,12 @@
 
   const createPaymentElement = async (clientSecret: string, stripe: Stripe) => {
     const elements = stripe.elements({ clientSecret });
-    const paymentElement = elements.create('payment', options);
+    const paymentElement = elements.create('payment', 
+      {
+        paymentMethodOrder: ['apple_pay', 'google_pay', 'card', 'klarna']
+      }
+
+    );
     paymentElement.mount('#payment-element');
   };
 
