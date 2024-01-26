@@ -1,9 +1,8 @@
 <template>
   <div>
     <div id="payment-element"></div>
-    <span v-if="loading"><loading-icon/>
-    </span>
-    <button @click="handleSubmit()">Save default payment method</button>
+    <loading-icon v-if="loading"/>
+    <input-button @click="handleSubmit()"><loading-icon v-if="loading"/> save payment method</input-button>
   </div>
 </template>
 <script setup lang="ts">
@@ -25,7 +24,39 @@
   const stripe = ref(null);
   const paymentElement = ref(null);
   const elementsGroup = ref(null)
-  const appearance = { /* appearance */ };
+
+  const colors = {
+    dark: '#161719',
+    light: '#FEFDFA',
+    border: '#a1a1a0',
+    background: '#fcfcf9'
+  }
+
+  const appearance = { 
+    theme: 'stripe',
+    variables: {
+      fontFamily: 'Sohne, system-ui, sans-serif',
+      fontWeightNormal: '400',
+      borderRadius: '3px',
+      colorBackground: colors.background,
+      colorPrimary: colors.dark,
+      accessibleColorOnColorPrimary: colors.dark,
+      colorText: colors.dark,
+      colorTextSecondary: colors.dark,
+      colorTextPlaceholder: '#727F96',
+      tabIconColor: colors.dark,
+      logoColor: 'dark'
+    },
+    rules: {
+      '.Input, .Block': {
+        backgroundColor: 'transparent',
+        border: '1px solid '+colors.border
+      },
+      '.Input': {
+        border: '1px solid '+colors.border
+      }
+    }
+  };
 
   const options = {
     layout: {
@@ -42,7 +73,7 @@
   };
 
   const createPaymentElement = async (clientSecret: string) => {
-    elementsGroup.value = stripe.value.elements({ clientSecret });
+    elementsGroup.value = stripe.value.elements({ clientSecret, appearance });
     paymentElement.value = elementsGroup.value.create('payment', options);
     if (paymentElement.value) {
       paymentElement.value.mount('#payment-element');
