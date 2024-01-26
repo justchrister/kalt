@@ -16,7 +16,8 @@
   const supabase = useSupabaseClient()
   const runtimeConfig = useRuntimeConfig()
 
-  const stripePublicKey = runtimeConfig.public.STRIPE_PUBLIC_KEY;
+  const stripePublicKey = runtimeConfig.public.STRIPE_PUBLIC_KEY as string;
+  const stripeReturnUrl = runtimeConfig.public.STRIPE_RETURN_URL as string;
   const user = props.user as user;
   const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
 
@@ -59,7 +60,7 @@
     const result = await stripe.value.confirmSetup({
       elements: elementsGroup.value,
       confirmParams: {
-        return_url: process.env.STRIPE_RETURN_URL
+        return_url: stripeReturnUrl
       },
     });
 
