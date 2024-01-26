@@ -17,7 +17,6 @@
   const runtimeConfig = useRuntimeConfig()
 
   const stripePublicKey = runtimeConfig.public.STRIPE_PUBLIC_KEY;
-  console.log(runtimeConfig.public)
   const user = props.user as user;
   const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
 
