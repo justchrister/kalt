@@ -21,7 +21,6 @@
   const user = await get(supabase).user(auth.value) as user;
 
   const birthdate = ref(user.birthdate)
-  ok.log('', 'returned: ',user)
   state.value = ''
   const updateProfile = async () => {
     state.value = 'loading'
