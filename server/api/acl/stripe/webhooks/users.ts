@@ -59,9 +59,14 @@ export default defineEventHandler(async (event) => {
       }
     );
   }
-  const createSetupIntent = async (customerID) => {
+  const createSetupIntent = async (customerID: string) => {
     return await stripe.setupIntents.create({
       customer: customerID,
+      usage: 'off_session',
+      automatic_payment_methods: {
+        enabled: true
+      },
+      payment_method_configuration: 'pmc_1M6g5zDBFB40Q48wehke7ZMD'
     });
   }
 
@@ -80,7 +85,9 @@ export default defineEventHandler(async (event) => {
       await updateUser(user.id, createdUser.id)
     }
     const setupIntent = await createSetupIntent(createdUser?.id);
+    ok.log('', 'i made it here', setupIntent)
     if(setupIntent && createdUser) {
+      ok.log('', 'i made it here even ', setupIntent)
       await pub(supabase, {
         sender: 'server/api/acl/stripe/webhooks/users',
         id: user.id
