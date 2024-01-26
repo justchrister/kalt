@@ -59,9 +59,4 @@
   .loading-wrapper{
     transform: scale(2);
   }
-  #payment-element{
-
-    z-index: -1;
-    position: relative;
-  }
 </style>
