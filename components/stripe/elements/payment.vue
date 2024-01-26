@@ -21,15 +21,13 @@
   const loading = ref(true);
 
   const appearance = { /* appearance */ };
-  const options = {    
+  const options = {
     layout: {
-      type: 'tabs',
+      type: 'accordion',
       defaultCollapsed: false,
-    },
-    payment_method_configuration: 'pmc_1M6g5zDBFB40Q48wehke7ZMD',
-    mode: 'payment',
-    amount: 1099,
-    setup_future_usage: 'off_session'
+      radios: false,
+      spacedAccordionItems: true
+    }
    };
   const loadStripe = async () => {
     const { loadStripe } = await import('@stripe/stripe-js');
@@ -38,12 +36,7 @@
 
   const createPaymentElement = async (clientSecret: string, stripe: Stripe) => {
     const elements = stripe.elements({ clientSecret });
-    const paymentElement = elements.create('payment', 
-      {
-        paymentMethodOrder: ['apple_pay', 'google_pay', 'card', 'klarna']
-      }
-
-    );
+    const paymentElement = elements.create('payment', options );
     paymentElement.mount('#payment-element');
   };
 
@@ -65,5 +58,10 @@
 <style scoped lang="scss">
   .loading-wrapper{
     transform: scale(2);
+  }
+  #payment-element{
+
+    z-index: -1;
+    position: relative;
   }
 </style>
