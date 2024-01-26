@@ -95,94 +95,95 @@
   header{
     position:fixed;
     width:100%;
+    z-index: 2000;
   }
-.logomark span{
-  font-weight:bold;
-  opacity:1;
-}
-ul li.logomark:before{
-  display:none;
-}
-ul li:before{
-  opacity:0;
-  content:'Kalt — ';
-  font-weight:bold;
-  display:inline;
-}
-.menu ul{
-  position: fixed;
-  z-index: 3;
-  margin: 0;
-  height: sizer(4);
-  overflow:hidden;
-  padding: sizer(1) sizer(2) sizer(1) sizer(4);
-  li.logomark{
+  .logomark span{
+    font-weight:bold;
     opacity:1;
-    pointer-events : all;
   }
-  li {
+  ul li.logomark:before{
+    display:none;
+  }
+  ul li:before{
     opacity:0;
-    pointer-events : none;
-    padding: 0;
-    margin-bottom:0;
-    a{
-      text-decoration: none;
-      &:hover{
-        text-decoration:underline;
+    content:'Kalt — ';
+    font-weight:bold;
+    display:inline;
+  }
+  .menu ul{
+    position: fixed;
+    z-index: 3;
+    margin: 0;
+    height: sizer(4);
+    overflow:hidden;
+    padding: sizer(1) sizer(2) sizer(1) sizer(4);
+    li.logomark{
+      opacity:1;
+      pointer-events : all;
+    }
+    li {
+      opacity:0;
+      pointer-events : none;
+      padding: 0;
+      margin-bottom:0;
+      a{
+        text-decoration: none;
+        &:hover{
+          text-decoration:underline;
+        }
       }
     }
   }
-}
-.menu ul.col-2{
-  margin-top: sizer(3);
-  margin-left: sizer(25);
-  padding-left:0;
-  li::before{
-    content:'';
-    display:none;
+  .menu ul.col-2{
+    margin-top: sizer(3);
+    margin-left: sizer(25);
+    padding-left:0;
+    li::before{
+      content:'';
+      display:none;
+    }
   }
-}
 
-button,
-li {
-  font-family: $sans-serif;
-  font-size: sizer(2);
-  font-weight:normal;
-  line-height: 150%;
-  font-display: optional;
-}
-button {
-  padding: sizer(1);
-  right: sizer(1);
-  position: fixed;
-  top: $border-width;
-  width: auto;
-  color: $dark;
-  border: 0;
-  &:hover,
-  &:hover:before{
-    text-decoration: underline;
+  button,
+  li {
+    font-family: $sans-serif;
+    font-size: sizer(2);
+    font-weight:normal;
+    line-height: 150%;
+    font-display: optional;
   }
-  &:before{
-    content:"close ";
-    white-space: pre;
-    display:inline-block;
-    opacity:0;
+  button {
+    padding: sizer(1);
+    right: sizer(1);
+    position: fixed;
+    top: $border-width;
+    width: auto;
+    color: $dark;
+    border: 0;
+    &:hover,
+    &:hover:before{
+      text-decoration: underline;
+    }
+    &:before{
+      content:"close ";
+      white-space: pre;
+      display:inline-block;
+      opacity:0;
+    }
   }
-}
 
 
-@keyframes example {
-  0% {
-    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+  @keyframes example {
+    0% {
+      transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+    }
+    33% {
+      transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+    }
+    100% {
+      transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+    }
   }
-  33% {
-    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-  }
-  100% {
-    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
-  }
-}
 </style>
 <style lang="scss">
 .show-menu{
