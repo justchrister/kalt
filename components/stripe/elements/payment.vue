@@ -1,9 +1,9 @@
 <template>
   <div>
     <div id="payment-element"></div>
-    <span v-if="loading">
-      <p class="loading-wrapper">Loading <loading-icon/></p>
+    <span v-if="loading"><loading-icon/>
     </span>
+    <button @click="handleSubmit()">Save default payment method</button>
   </div>
 </template>
 <script setup lang="ts">
@@ -14,13 +14,19 @@
     }
   });
   const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
+  const runtimeConfig = useRuntimeConfig()
+
+  const stripePublicKey = runtimeConfig.public.STRIPE_PUBLIC_KEY;
+  console.log(runtimeConfig.public)
   const user = props.user as user;
   const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
 
   const loading = ref(true);
-
+  const stripe = ref(null);
+  const paymentElement = ref(null);
+  const elementsGroup = ref(null)
   const appearance = { /* appearance */ };
+
   const options = {
     layout: {
       type: 'accordion',
@@ -29,22 +35,49 @@
       spacedAccordionItems: true
     }
    };
+
   const loadStripe = async () => {
     const { loadStripe } = await import('@stripe/stripe-js');
-    return await loadStripe('pk_test_51IMoMpDBFB40Q48wJYOe24B4jfH6W3UYyRAduNHLP5o8IER2ML2cAMoxGKdwKkYnGBkFoe1dJzdPxj2cPJjfgg6000tUWGXJvZ');
+    return await loadStripe(stripePublicKey);
   };
 
-  const createPaymentElement = async (clientSecret: string, stripe: Stripe) => {
-    const elements = stripe.elements({ clientSecret });
-    const paymentElement = elements.create('payment', options );
-    paymentElement.mount('#payment-element');
+  const createPaymentElement = async (clientSecret: string) => {
+    elementsGroup.value = stripe.value.elements({ clientSecret });
+    paymentElement.value = elementsGroup.value.create('payment', options);
+    if (paymentElement.value) {
+      paymentElement.value.mount('#payment-element');
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!stripe.value || !paymentElement.value) {
+      console.error('Stripe has not been initialized correctly.');
+      return;
+    }
+
+    loading.value = true;
+    ok.log('', paymentElement.value)
+    const result = await stripe.value.confirmSetup({
+      elements: elementsGroup.value,
+      confirmParams: {
+        return_url: process.env.STRIPE_RETURN_URL
+      },
+    });
+
+    if (result.error) {
+      console.error('Error in saving payment method:', result.error.message);
+    } else {
+      console.log('Payment method saved successfully:', result.setupIntent.payment_method);
+    }
+
+    loading.value = false;
   };
 
   onMounted(async () => {
     try {
-      const stripe = await loadStripe();
-      if (stripe) {
-        await createPaymentElement(paymentMethod.intentToken, stripe);
+      stripe.value = await loadStripe();
+      if (stripe.value) {
+        await createPaymentElement(paymentMethod.intentToken);
         loading.value = false;
       } else {
         console.error('Stripe failed to load');
