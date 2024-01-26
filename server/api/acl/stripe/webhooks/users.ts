@@ -66,7 +66,7 @@ export default defineEventHandler(async (event) => {
       automatic_payment_methods: {
         enabled: true
       },
-      payment_method_configuration: 'pmc_1M6g5zDBFB40Q48wehke7ZMD'
+      payment_method_configuration: process.env.STRIPE_PAYMENT_METHOD_CONFIGURATION
     });
   }
 
