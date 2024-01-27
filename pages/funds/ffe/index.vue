@@ -1,8 +1,10 @@
 <template>
   <main>
     <intro title="Accelerate the transition to fossil-free energy" gradient="3"/>
-    <block margin="half">
-      <intro-block-fund text="The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."/>
+    <block margin="half" :border="true">
+      <h3>
+        The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."
+      </h3>
     </block>
     <block margin="half">
       <criteria-list>
