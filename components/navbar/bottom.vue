@@ -31,9 +31,8 @@
       <div class="section">
         <p>Us</p>
         <ul>
-          <nuxt-link to="/about" > About </nuxt-link>
-          <nuxt-link to="/funds" > Funds </nuxt-link>
           <nuxt-link to="/vision" > Vision </nuxt-link>
+          <nuxt-link to="/funds" > Funds </nuxt-link>
           <nuxt-link to="/jobs" > Jobs </nuxt-link>
           <a href="mailto:sup@ka.lt"> Contact us </a>
         </ul>
