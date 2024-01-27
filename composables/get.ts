@@ -38,6 +38,9 @@ export const get = (client: any) => {
         return data
       }
     },
+    defaultPaymentMethod: async (user: user) => {
+      return
+    },
     openExchangeOrder: async (ticker: any, type: any, quantityAbsolute: any) => {
       const { data, error } = await client
         .from('topic_exchange')
@@ -121,12 +124,14 @@ export const get = (client: any) => {
       if(!merged) {
         return {
           "id": userId,
-          email
+          email, 
+          auth
         } as user
       } else {
         return {
           ...merged, 
-          email
+          email, 
+          auth
         } as user
       }
     },
