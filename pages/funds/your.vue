@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Build your own fund" paragraph="Choose what you want to invest in both through your subscription and when completing single investments." />
+    <intro title="Build your own fund" paragraph="Choose what you want to invest in both through your subscription and when completing single investments."/>
     <block>
       <fund-your ticker="ffe"/>
       <fund-your ticker="art"/>
