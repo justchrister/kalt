@@ -1,8 +1,8 @@
 <template>
   <main>
     <intro title="Combat housing inequality, through our fund." gradient="2"/>
-    <block margin="half">
-      <intro-block-fund text="The fund strategically allocates capital in development of affordable housing around the world. In locations that yield a stable return on the investments, but also contributes to social good by combating housing inequality. All based on a set of criteria. "/>
+    <block margin="half" :border="true">
+      <h3>The fund strategically allocates capital in development of affordable housing around the world. In locations that yield a stable return on the investments, but also contributes to social good by combating housing inequality. All based on a set of criteria. </h3>
     </block>
     <block margin="half">
       <criteria-list>
