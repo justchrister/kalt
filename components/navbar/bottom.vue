@@ -52,8 +52,8 @@
       <div class="section">
         <p>Legal</p>
         <ul>
-          <nuxt-link to="/about/tos" > TOS </nuxt-link>
-          <nuxt-link to="/about/gdpr" > GDPR </nuxt-link>
+          <nuxt-link to="/legal/tos" > TOS </nuxt-link>
+          <nuxt-link to="/legal/gdpr" > GDPR </nuxt-link>
         </ul>
       </div>
     </block>
