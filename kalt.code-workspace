@@ -11,7 +11,11 @@
     },
     {
       "path": "../sudo.ka.lt"
+    },
+    {
+      "path": "../img.ka.lt"
     }
+    
   ],
   "settings": {
     "html.autoClosingTags": false,
