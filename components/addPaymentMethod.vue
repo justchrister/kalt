@@ -19,7 +19,7 @@
   const stripeReturnUrl = runtimeConfig.public.STRIPE_RETURN_URL as string;
   const user = props.user as user;
   const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
-
+  const setupIntent = await get(supabase).setupIntent(user) as paymentMethod;
   const loading = ref(true);
   const stripe = ref(null);
   const paymentElement = ref(null);
