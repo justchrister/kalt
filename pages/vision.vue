@@ -112,8 +112,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Vision',
-    middleware: 'auth'
+    pagename: 'Vision'
   })
   useHead({
     title: 'Vision',
