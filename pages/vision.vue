@@ -6,12 +6,16 @@
     </frame-wrap>
     <block>
       <h1> Introduction </h1>
-      <p> We believe the only way to have actual impact is to use the market forces to make a change. The issues we are facing require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a return on investment </p>
-      <p> To guide us towards this improved future, we work in a methodical and structured way. We have defined three goals that we believe are the most important to achieve our mission and broader vision for a more sustainable future. </p>
+      <p> 
+        The only way to have actual lasting impact is to use market forces to drive a change. The issues we are facing require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a return on investment.
+      </p>
+      <p> 
+        To guide us towards this improved future, we work in a methodical and structured way. We have defined three goals that we believe are the most important to achieve our shared mission and broader vision for a more sustainable future.
+      </p>
     </block>
     <block>
       <strong> Vision </strong>
-      <h2> Align capitalism with a sustainable future. </h2>
+      <h2> Building the new era of capitalism, where the goal is beyond financial growth.</h2>
     </block>
     <block>
       <strong> Mission </strong>
