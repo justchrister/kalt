@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Open application"
+    <intro title="Co-founders needed"
     paragraph="We are always looking for talented individuals, both with and without a traditionaal education or relevant work experience."/>
     <block>
       <h2> The company </h2>
