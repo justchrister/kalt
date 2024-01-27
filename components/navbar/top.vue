@@ -23,7 +23,7 @@
         </span>
         <span  v-if="!signedIn">
         <li>
-          <nuxt-link to="/about" @click="toggleMenu()"> About </nuxt-link>
+          <nuxt-link to="/vision" @click="toggleMenu()"> Vision </nuxt-link>
         </li>
         <li>
           <nuxt-link to="/questions/how-does-it-work" @click="toggleMenu()"> How it works </nuxt-link>
