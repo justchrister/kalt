@@ -19,16 +19,16 @@
     </block>
     <block>
       <strong> Mission </strong>
-      <h2> Redifine impact investing </h2>
+      <h2> Redefine impact investing </h2>
       <p> 
-        We want to empower individuals to maximize their positive impact on the world. By providing accessible investment tools and meaningful investment opportunities. Through innovation and technology, we are building the tools for anyone build a purpose-driven portfolio.
+        We want to empower individuals to maximize their positive impact on the world. By providing accessible investment tools and meaningful investment opportunities. Through innovation and technology, we are building the tools for anyone to build a purpose-driven portfolio.
       </p>
     </block>
     <block>
       <strong> Goal 01 </strong>
       <h2> 2x market returns </h2>
       <p>
-        Portfolio performance drive impact, is our guiding principle. To make investing in a sustainable future lucrative, we aim to double the returns of a global index fund. 
+        Portfolio performance driving impact is our guiding principle. To make investing in a sustainable future lucrative, we aim to double the returns of a global index fund. 
       </p>
       <p>
         Our strategy is designed to create a powerful synergy between financial gain and impactful change. Through investing in real assets, you can build real value — we call it wealth with values.
@@ -45,10 +45,10 @@
       <strong> Goal 03 </strong>
       <h2> Make it transparent </h2>
       <p>
-        Transparency is fundamental when making huge promises. It is vital that you both see and understand the impact of your investments. Our commitment is to provide comprehensive and clear updates that details both financial performance and the real-world impact. 
+        Transparency is fundamental when making huge promises. It is vital that you both see and understand the impact of your investments. Our commitment is to provide comprehensive and clear updates that detail both financial performance and the real-world impact. 
       </p>
       <p>
-        This way, you are not only informed but can also appreciate the broader significance of your financial decisions. This is the biggest difference from Kalt and traditional ESG funds.
+        This way, you are not only informed but can also appreciate the broader significance of your financial decisions. This is the biggest difference between Kalt and traditional ESG funds.
       </p>
     </block>
     <block margin="none">
