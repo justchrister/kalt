@@ -1,8 +1,8 @@
 <template>
   <main>
     <intro title="Invest in art from the most famous artists in the world." gradient="3"/>
-    <block margin="half">
-      <intro-block-fund text="The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in."/>
+    <block margin="half" :border="true">
+      <h3>The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in. </h3>
     </block>
     <block margin="half">
       <criteria-list>
