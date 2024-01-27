@@ -33,8 +33,8 @@
         <ul>
           <nuxt-link to="/about" > About </nuxt-link>
           <nuxt-link to="/funds" > Funds </nuxt-link>
+          <nuxt-link to="/vision" > Vision </nuxt-link>
           <nuxt-link to="/jobs" > Jobs </nuxt-link>
-          <nuxt-link to="/mission" > Mission </nuxt-link>
           <a href="mailto:sup@ka.lt"> Contact us </a>
         </ul>
       </div>
@@ -53,7 +53,7 @@
       <div class="section">
         <p>Legal</p>
         <ul>
-          <nuxt-link to="/about/tos" > Terms of service </nuxt-link>
+          <nuxt-link to="/about/tos" > TOS </nuxt-link>
           <nuxt-link to="/about/gdpr" > GDPR </nuxt-link>
         </ul>
       </div>
