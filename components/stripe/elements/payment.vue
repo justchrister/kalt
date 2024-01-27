@@ -93,7 +93,6 @@
     }
 
     loading.value = true;
-    ok.log('', paymentElement.value)
     const result = await stripe.value.confirmSetup({
       elements: elementsGroup.value,
       confirmParams: {
