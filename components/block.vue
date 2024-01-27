@@ -1,5 +1,5 @@
 <template>
-  <div class="block" :class="classes">
+  <div :class="'block '+classes">
     <slot></slot>
   </div>
 </template>
@@ -9,8 +9,8 @@
       type: String,
       required: false
     },
-    width: {
-      type: String,
+    border: {
+      type: Boolean,
       required: false
     }
   })
@@ -18,8 +18,8 @@
   if(props.margin){ 
     classes.value += ' margin-'+props.margin;
   }
-  if(props.width){ 
-    classes.value += ' width-'+props.width;
+  if(props.border){ 
+    classes.value += ' border';
   }
 </script>
 <style scoped lang="scss">
@@ -52,9 +52,12 @@
     &.width-small{
       max-width: sizer(35);
     }
-
     &.width-wide{
       max-width: $maxsitewidth*1.2; 
+    }
+    &.border{
+      padding: sizer(1.5) sizer(2);
+      @include border;
     }
     
   }
