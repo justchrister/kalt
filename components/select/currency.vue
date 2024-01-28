@@ -54,7 +54,7 @@
   .dark-mode a{
     border-color: $light;
     &:hover{
-      background: $dark;
+      background: dark(100%);
     }
   }*/
 </style>
