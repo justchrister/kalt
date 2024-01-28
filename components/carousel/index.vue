@@ -13,8 +13,7 @@
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: sizer(2);
-  width: $sitewidth;
-  min-width: $sitewidth;
+  width: $sitewidth*1.2;
   max-width: $maxsitewidth*1.2;
   margin:0 auto;
   padding: sizer(5) 0;
