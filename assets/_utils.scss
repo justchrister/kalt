@@ -18,7 +18,7 @@ $unit-max: calc($maxsitewidth/$columns);
 $light: #FEFDFA;
 $dark: #161719;
 $primary: #586BA4;
-$green: #99EE99;
+$green: #849184;
 $blue: #5FB0FC;
 $red: #ED6A5A;
 
@@ -76,7 +76,6 @@ $sans-serif:
 
 $monospace:
   "Source Code Pro",
-  "Courier New",
   Monospace;
 
 @mixin font-display {
@@ -128,6 +127,3 @@ $monospace:
   border-color: dark(60%);
   transition: border-color 150ms $easing-in;
 }
-
-
-
