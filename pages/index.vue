@@ -17,7 +17,7 @@
     </frame>
     <block>
       <h1>
-        Make money, make a difference! <omoji emoji="😃" />
+        Make money, make a difference!
       </h1>
       <p>
         Join us in using cutting-edge technology to make your money work for you and the world. With our innovative approach, you can contribute to a sustainable future and generate income while making a positive impact.
