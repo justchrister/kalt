@@ -35,11 +35,11 @@
   } from 'chart.js'
   import { Line } from 'vue-chartjs'
   const props = defineProps({
-      days: {
-        type: Number,
-        required: true
-      }
-    })
+    days: {
+      type: Number,
+      required: true
+    }
+  })
 
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
