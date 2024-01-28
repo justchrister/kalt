@@ -7,9 +7,6 @@
       <profile-card />
     </block>
     <block margin="2" >
-      <card />
-    </block>
-    <block margin="2" >
       <select-currency />
     </block>
     <block margin="2" >
