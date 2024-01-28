@@ -11,10 +11,10 @@
         </h1>
       </nuxt-link>
     </block>
-    <frame-wrap>
+    <frame>
       <frame-image src="/images/frontpage.webp" />
       <frame-video src="/videos/film.mp4" />
-    </frame-wrap>
+    </frame>
     <block>
       <h1>
         Make money, make a difference! <omoji emoji="😃" />
