@@ -36,7 +36,7 @@
     .limit(1)
     .single()
   const rate = ref(0)
-  const state = await get(supabase).userDefinedFund(user, props.ticker);
+  const state = await get(supabase).userDefinedFunds(user, props.ticker);
   ok.log('', state)
   const logHearts = async () => {
     if(rate.value===3){
@@ -63,6 +63,7 @@
   }
   if(state && state.rate){
     rate.value = state.rate
+    ok.log('', 'rate: '+rate.value)
     logHearts()
   }
   const adjustrate = async () => {
