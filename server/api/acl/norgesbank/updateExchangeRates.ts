@@ -42,7 +42,7 @@ export default defineEventHandler( async (event) => {
   const getRate = async (iso) => {
     if(iso=='NOK') return 1;
     ok.log('', 'getting exchange rate for '+iso)
-    const { data, error} = await ok.fetch('get', 'https://data.norges-bank.no/api/data/EXR/B.'+iso+'.NOK.SP?format=sdmx-json&lastNObservations=1&locale=no')
+    const { data, error} = await ok.fetch('https://data.norges-bank.no/api/data/EXR/B.'+iso+'.NOK.SP?format=sdmx-json&lastNObservations=1&locale=no')
     if(error) {
       ok.log('error', 'could not get rate for '+iso)
       return null
