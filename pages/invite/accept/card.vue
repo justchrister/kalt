@@ -2,7 +2,7 @@
   <main>
     <block>
       <h1> Which card would you like to charge?</h1>
-      <card />
+      
       <input-button link="/funds/your">build your fund →</input-button>
     </block>
   </main>
