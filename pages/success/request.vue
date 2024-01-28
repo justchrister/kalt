@@ -1,10 +1,10 @@
 
 <template>
   <main>
-    <frame-wrap>
+    <frame>
       <frame-image src="/images/audun-alvestad/waiting-room.png" />
       <frame-image src="/images/apollo-celebration.jpg" />
-    </frame-wrap>
+    </frame>
     <block margin="half">
       <h1> One small step for you, a big step for mankind. <omoji emoji="✨" /> </h1>
       <p> You are just one step away from investing in the future of fossil-free energy. We will contact you once we have had time to review your request. Thank you for yur patience. </p>
