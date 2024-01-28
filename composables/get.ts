@@ -1,4 +1,5 @@
 import { ok } from '~/composables/ok'
+
 const filterOnOnlyFulfilledOrders = async (orders: any) => {
   const fulfilledOrders = [];
   for (let i = 0; i < orders.length; i++) {
@@ -12,6 +13,7 @@ const filterOnOnlyFulfilledOrders = async (orders: any) => {
   }
   return fulfilledOrders;
 }
+
 export const get = (client: any) => {
   return {
     userDefinedFunds: async (userId: any, ticker: any) => {
@@ -24,7 +26,7 @@ export const get = (client: any) => {
       if(error) {
         return null
       } else {
-        return ok.combineJson(data)
+        return ok.merge(data, 'id')[0]
       }
     },
     funds: async () => {
@@ -145,7 +147,7 @@ export const get = (client: any) => {
         ok.log('error', error)
         return null
       } else {
-        return ok.combineJsonByEntity(data).reverse();
+        return ok.merge(data, 'entity');
       }
     },
     linkedBankAccount: async (user: any) => {
@@ -287,20 +289,6 @@ export const get = (client: any) => {
 
       return portfolio;
     },
-    subscription: async(userId) => {
-      const { data, error } = await client
-        .from('topic_userSubscriptions')
-        .select()
-        .eq('userId', userId)
-        .order('timestamp', { ascending: true })
-      if(error) {
-        ok.log('error', error)
-        return null
-      } else {
-        const combined = ok.combineJson(data)
-        return ok.cleanMessage(combined)
-      }
-    },
     autoInvest: async(user: user) => {
       const { data, error } = await client
         .from('topic_autoInvest')
@@ -311,7 +299,7 @@ export const get = (client: any) => {
         ok.log('error', error)
         return null
       } else {
-        const combined = ok.combineJson(data)
+        const combined = ok.merge(data, 'id')[0];
         return ok.cleanMessage(combined) as autoInvest
       }
     },
@@ -343,7 +331,7 @@ export const get = (client: any) => {
         ok.log('error', 'failed getting payment method: ', error)
         return null
       } else {
-        const combined = ok.combineJson(data)
+        const combined = ok.merge(data, 'id')[0]
         return ok.cleanMessage(combined)
       }
     },
@@ -371,20 +359,6 @@ export const get = (client: any) => {
       } else {
         const combined = ok.merge(data, 'id')[0]
         return combined.intentToken
-      }
-    },
-    card: async (user: user) => {
-      const { data, error } = await client
-        .from('topic_cards')
-        .select()
-        .eq('userId', user.id)
-        .order('timestamp', { ascending: true })
-      if(error) {
-        ok.log('error', error)
-        return null
-      } else {
-        const combined = ok.merge(data, 'id');
-        return combined[0];
       }
     }
   }
