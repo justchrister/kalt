@@ -27,7 +27,7 @@ const props = defineProps({
     display:inline-block;
     border: $border;
     background-size:cover;
-    border-color: $dark-20;
+    border-color: dark(20%);
     border-radius: sizer(0.5);
     width: auto;
     max-width: sizer(40);
