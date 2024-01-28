@@ -198,7 +198,7 @@
     height: 100%;
     width: 100%;
     max-height: 100%;
-    background-image: radial-gradient(circle at 1px 1px, primaryColor(30%) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, primary(30%) 1px, transparent 0);
     background-size: sizer(1.3) sizer(1.3);
     @include hoverable;
     border-radius: sizer(0.8);
