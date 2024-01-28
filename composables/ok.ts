@@ -2,7 +2,7 @@
 import { v4 as uuidv4 } from 'uuid';
 export const ok = {
 
-  async fetch(method, url) {
+  async fetch(url) {
     try {
       const response = await fetch(url);
 
@@ -16,27 +16,6 @@ export const ok = {
     } catch (error) {
       return { data: null, error };
     }
-  },
-  today() {
-    const date = new Date();
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Add 1 because getMonth() starts at 0
-    const year = date.getFullYear().toString();
-    const yearShort = year.slice(-2); // Get last two digits for short year format
-
-    return {
-      toString: () => `${day}.${month}.${yearShort}`,
-      dd: () => day,
-      mm: () => month,
-      yy: () => yearShort,
-      yyyy: () => year
-    }
-  },
-  lastDateOfMonth(){
-    const date = new Date();
-    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate().toString().padStart(2, '0');
-
-    return lastDayOfMonth;
   },
   toInt(input){
     const toString = input.toString();
@@ -122,30 +101,6 @@ export const ok = {
   sleep: async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
-  validateCard(num){
-    let sum = 0;
-    let isEven = false;
-  
-    // Remove any non-numeric characters and reverse the string
-    const cardNumber = String(num).replace(/\D/g, "").split("").reverse().join("");
-  
-    for (let n = 0; n < cardNumber.length; n++) {
-      let digit = parseInt(cardNumber.charAt(n));
-  
-      if (isEven) {
-        digit *= 2;
-  
-        if (digit > 9) {
-          digit -= 9;
-        }
-      }
-  
-      sum += digit;
-      isEven = !isEven;
-    }
-  
-    return sum % 10 === 0;
-  },
   prettyCurrency(amount) {
     let amountRounded = (Math.ceil(amount * 10) / 10).toFixed(1);
     const formatter = new Intl.NumberFormat('en-US', {
@@ -167,12 +122,6 @@ export const ok = {
     const minute = ok.addZero(new Date(dateTime).getMinutes())
     return hour+":"+minute
   },
-  supabaseDate(dateTime) {
-    const day = new Date(dateTime).getDate()
-    const month = new Date(dateTime).getMonth()+1
-    const year = new Date(dateTime).getFullYear()
-    return year+'-'+ok.addZero(month)+'-'+ok.addZero(day)
-  },
   timestamptz(dd = null, mm = null, yyyy = null) {
     // Create the date object
     const date = dd && mm && yyyy ? new Date(Date.UTC(yyyy, mm - 1, dd)) : new Date();
@@ -190,74 +139,6 @@ export const ok = {
     const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`;
   
     return timestamptz;
-  },
-  combineJson(jsonArray){
-    
-    let result = {};
-    if (!jsonArray) return "no input"
-    for (let i = 0; i < jsonArray.length; i++) {
-      let jsonObj = jsonArray[i];
-
-      for (let key in jsonObj) {
-        // Only set the value in result object if it's not null
-        if (jsonObj[key] !== null) {
-          result[key] = jsonObj[key];
-        }
-      }
-    }
-    return result
-  },
-  combineJsonByEntity(jsonArray) {
-    let result = [];
-    let tempObj = {};
-  
-    if (!jsonArray) return "No input";
-  
-    jsonArray.forEach(jsonObj => {
-      const entity = jsonObj.id;
-  
-      if (!tempObj[entity]) {
-        tempObj[entity] = {};
-      }
-  
-      for (const key in jsonObj) {
-        if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
-          tempObj[entity][key] = jsonObj[key];
-        }
-      }
-    });
-  
-    for (const key in tempObj) {
-      result.push(tempObj[key]);
-    }
-  
-    return result;
-  },
-  combineJsonByTicker(jsonArray) {
-    let result = [];
-    let tempObj = {};
-  
-    if (!jsonArray) return "No input";
-  
-    jsonArray.forEach(jsonObj => {
-      const ticker = jsonObj.message_ticker;
-  
-      if (!tempObj[ticker]) {
-        tempObj[ticker] = {};
-      }
-  
-      for (const key in jsonObj) {
-        if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
-          tempObj[ticker][key] = jsonObj[key];
-        }
-      }
-    });
-  
-    for (const key in tempObj) {
-      result.push(tempObj[key]);
-    }
-  
-    return result;
   },
   combineJsonByKeys(jsonArray, ...keysToMergeOn) {
     let result = [];
@@ -321,28 +202,6 @@ export const ok = {
   uuid(){
     return uuidv4()
   },
-  getEntity: async (supabase, topic, entity) => {
-    const { data, error } = await supabase
-      .from(topic)
-      .select()
-      .eq('id', entity)
-      .order('timestamp', { ascending: true })
-    return ok.combineJson(data)
-  },
-  convertCurrency: async (supabase, amount, from, to) => {
-    const { data, error } = await supabase
-      .from('topic_exchangeRates')
-      .select('rate')
-      .eq('from', from)
-      .eq('to', to)
-      .limit(1)
-      .single()
-    if(error) {
-      return amount
-    } else {
-      return amount*data.rate
-    }
-  },
   cleanMessage: async (message) => {
     const json = Object.entries(message).reduce((acc, [key, value]) => {
       if (value !== null) {
@@ -357,9 +216,3 @@ export const ok = {
     return json
   }
 };
-
-export const okclock = (input) => {
-  if (input="now") return Date.now()
-  if (input="today") return Date.now()
-  if (input="tomorrow") return "not supported yet"
-}
