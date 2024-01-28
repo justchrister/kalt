@@ -2,9 +2,9 @@
 <template>
   <main>
     <navbar-tabs />
-    <frame-wrap>
+    <frame>
       <chart-portfolio :days="days"/>
-    </frame-wrap>
+    </frame>
     <block margin="none">
       <nav class="filters">
         <div class="overflow-wrap">
