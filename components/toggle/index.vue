@@ -44,9 +44,9 @@ const props = defineProps({
     border: $border;
   }
   #on{ border-color:transparent; }
-  #off{ border-color: $dark; }
+  #off{ border-color: dark(100%); }
   &#true{
-    #on{ border-color: $dark; }
+    #on{ border-color: dark(100%); }
     #off{ border-color:transparent; }
   }
 }
