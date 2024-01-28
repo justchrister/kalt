@@ -72,17 +72,18 @@
   }
 </script>
 <style scoped lang="scss">
-
+  $logoSize: 1.6;
+  $margins: 1.5;
   .logo{
-    width: sizer(2);
-    height: sizer(2);
+    width: sizer($logoSize);
+    height: sizer($logoSize);
     display:block;
     position:fixed;
-    top: $border-width;
-    left: $border-width;
+    top: 0;
+    left: 0;
     background: dark(100%);
     border-radius:100%;
-    margin: sizer(1.4) sizer(1);
+    margin: sizer(1.69) sizer(1) sizer(2) sizer($margins);
     animation-name: example;
     animation-duration: 12s;
     animation-delay: 500ms;
@@ -116,7 +117,7 @@
     margin: 0;
     height: sizer(4);
     overflow:hidden;
-    padding: sizer(1) sizer(2) sizer(1) sizer(4);
+    padding: sizer(1) sizer(2) sizer(1) sizer(2.5+$margins);
     li.logomark{
       opacity:1;
       pointer-events : all;
@@ -134,15 +135,6 @@
       }
     }
   }
-  .menu ul.col-2{
-    margin-top: sizer(3);
-    margin-left: sizer(25);
-    padding-left:0;
-    li::before{
-      content:'';
-      display:none;
-    }
-  }
 
   button,
   li {
@@ -153,11 +145,11 @@
     font-display: optional;
   }
   button {
-    padding: sizer(1);
-    right: sizer(1);
+    padding: sizer(1) sizer($margins);
     position: fixed;
     top: $border-width;
     width: auto;
+    right:0;
     color: dark(100%);
     border: 0;
     &:hover,
