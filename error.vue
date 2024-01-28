@@ -1,7 +1,7 @@
 <template>
   <main>
     <block>
-      <img src="/error.jpg" alt="" style="max-width:100%"/>
+      <img src="/images/error.jpg" alt="" style="max-width:100%"/>
       <br/>
       <br/>
       <h1 class="sans-serif">Requested page did not exist</h1>
