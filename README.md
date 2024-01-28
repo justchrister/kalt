@@ -1,13 +1,13 @@
-<img src="https://ka.lt/media/intro.svg" alt="" width="100%" height="auto">
+<img src="https://ka.lt/images/github/intro.svg" alt="" width="100%" height="auto">
 
-<img alt="Licence: MIT" src="https://ka.lt/media/shield-licence.svg"> <img alt="" src="https://img.shields.io/website?style=flat-square&down_message=offline&up_message=online&url=https%3A%2F%2Fka.lt"> <img alt="" src="https://img.shields.io/uptimerobot/ratio/m794185416-8ffeb1920e5dc9f7c754d4d3?style=flat-square"> <img alt="" src="https://img.shields.io/github/last-commit/justchrister/kalt?style=flat-square"> <img alt="" src="https://img.shields.io/github/commit-activity/m/justchrister/kalt?style=flat-square">
+<img alt="Licence: MIT" src="https://ka.lt/images/github/shield-licence.svg"> <img alt="" src="https://img.shields.io/website?style=flat-square&down_message=offline&up_message=online&url=https%3A%2F%2Fka.lt"> <img alt="" src="https://img.shields.io/uptimerobot/ratio/m794185416-8ffeb1920e5dc9f7c754d4d3?style=flat-square"> <img alt="" src="https://img.shields.io/github/last-commit/justchrister/kalt?style=flat-square"> <img alt="" src="https://img.shields.io/github/commit-activity/m/justchrister/kalt?style=flat-square">
 
 <h1>Kalt — Make money, make a difference</h1>
 
 Kalt is a startup building a vertically integrated fossil-free energy generator and exchange that lets anyone invest directly in fossil free energy generation, and earn direct dividends from it. 
 
 ## Backend
-<img src="https://ka.lt/media/architecture.svg" alt="" width="100%" height="auto">
+<img src="https://ka.lt/images/github/architecture.svg" alt="" width="100%" height="auto">
 
 ### Ledger
 The backend leverages Supabase (postgres) as a append-only ledger and message queue to enable seamless communication between the microservices. All data is appended to tables where entities are immutable, and most data is read from these _ledgers_/topics directly from super simple functions. Such as `get().user()`.
@@ -30,7 +30,7 @@ The project consists of multiple Nuxt microservices hosted on Vercel, each respo
 
 
 ## Frontend
-<img src="https://ka.lt/media/grids.svg" alt="" width="100%" height="auto">
+<img src="https://ka.lt/images/github/grids.svg" alt="" width="100%" height="auto">
 
 Using the Nuxt framework lets us get the best of both reactive web applications and server-side rendered ones, the navigation is blazing fast, will still having reactive elements. 
 
