@@ -3,7 +3,7 @@
 </template>
 <style scoped lang="scss">
   span{
-    background-image: url('/loading.gif');
+    background-image: url('/images/loading.gif');
     background-size:contain;
     background-repeat:no-repeat;
     width: sizer(1);
