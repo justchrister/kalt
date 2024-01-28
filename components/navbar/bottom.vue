@@ -96,7 +96,7 @@
     }
   }
   .insignia{
-    background-image:url('/media/insignia/insignia-light.svg');
+    background-image:url('/images/insignia/light.svg');
     background-size:contain;
     background-repeat:no-repeat;
     margin-top: sizer(5);
