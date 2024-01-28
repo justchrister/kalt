@@ -112,7 +112,7 @@
   @include selected;
 }
 .intervalSelector.selected .monthDays{
-  color: $dark;
+  color: dark(100%);
   transform:translateY(0);
   &.beginning{
     transition: transform 150ms 80ms $easing-in;
@@ -125,7 +125,7 @@
   }
   &:hover{
     &:after{
-      background-color: $dark-80;
+      background-color: dark(80%);
     }
   }
   &:after{
@@ -134,7 +134,7 @@
 }
 .monthDays{
   font-size:75%;
-  color: $dark-60;
+  color: dark(60%);
   transform:translateY(sizer(0.5));
   text-align:center;
   &:after{
@@ -149,7 +149,7 @@
   &.selected{
 
     &:after{
-      background: $dark;
+      background: dark(100%);
     }
   }
   &.monthlyBeginning{
