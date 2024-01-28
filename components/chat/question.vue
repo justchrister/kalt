@@ -17,9 +17,9 @@
   }
   .question{
     display:inline-block;
-    background: $green-20;
+    background: green(20%);
     border: $border;
-    border-color: $green;
+    border-color: green(100%);
     border-radius: sizer(0.5);
     width: auto;
     max-width: sizer(40);
