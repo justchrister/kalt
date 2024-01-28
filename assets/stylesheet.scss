@@ -71,7 +71,7 @@ input.success{
 input.error{
   background-image:url("omoji/suprised.svg");
   animation-duration: 2s;
-  background-color: $red-20;
+  background-color: red(20%);
 }
 
 .input-wrap{
