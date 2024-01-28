@@ -1,4 +1,4 @@
-<img src="https://ka.lt/media/intro-security-policy.svg" alt="" width="100%" height="auto">
+<img src="https://ka.lt/images/github/intro-security-policy.svg" alt="" width="100%" height="auto">
 
 ## Overview
 We are committed to maintaining the security of our software and protecting the privacy of our users. Since we store a lot of personal data, we have implemented a lot of different security measures in order to ensure none are leaked. 
