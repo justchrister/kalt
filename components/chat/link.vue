@@ -27,20 +27,17 @@
   }
   .link{
     display:inline-block;
-    background: $marine-10;
-    border: $border;
-    border-color: $marine-80;
     border-radius: sizer(0.5);
     width: auto;
     max-width: sizer(40);
     margin: sizer(1) 0;
     margin-right: auto;  // Pushes to the right
     padding: sizer(1);
+    @include hoverable;
+    @include border;
   }
   .link:hover{
-    cursor: pointer;
-    background: $marine-20;
-    border-color: $marine;
+    @include hovering;
     text-decoration:underline;
   }
 </style>
