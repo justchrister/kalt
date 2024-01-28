@@ -39,8 +39,8 @@
     <block margin="2">
       <h2> Ventures </h2>
       <venture-list>
-        <venture-shield id="tillit"/>
-        <venture-shield id="empress"/>
+        <venture-item id="tillit"/>
+        <venture-item id="empress"/>
       </venture-list>
     </block>
     <block>
