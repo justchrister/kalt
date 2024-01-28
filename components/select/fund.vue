@@ -33,7 +33,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size:contain;
-    background-image: url('/media/icons/funds/your.svg');
+    background-image: url('/icons/funds/your.svg');
   }
   .link{
     text-align:right;
