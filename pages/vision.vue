@@ -61,7 +61,7 @@
       </p>
     </block>
     <block margin="half">
-      <strong>Agressively optimistic</strong>
+      <strong>Aggressively optimistic</strong>
       <p>
         Creating Kalt won't be a walk in the park; it demands years of dedication and innovation. We are driven by our mission and determined to stay optimistic, even when faced with immense challenges.
       </p>
