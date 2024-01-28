@@ -38,7 +38,7 @@ select:focus{
   background-color:white;
 }
 select.loading{
-  background-image:url("/loading.gif");
+  background-image:url("/images/loading.gif");
   background-size: sizer(1);
   background-position:95% center;
   background-repeat:no-repeat;
@@ -62,7 +62,7 @@ input:active{
   @include selected;
 }
 input.loading{
-  background-image:url("/loading.gif");
+  background-image:url("/images/loading.gif");
 }
 input.success{
   background-image:url("/omoji/check-no-bg.svg");
