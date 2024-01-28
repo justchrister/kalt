@@ -1,7 +1,7 @@
 <template>
   <div class="fund" v-if="fund" @click="adjustrate()">
     <div class="icon">
-      <span :style="{ 'background-image': `url('/media/icons/funds/${props.ticker}.svg')` }"></span>
+      <span :style="{ 'background-image': `url('/icons/funds/${props.ticker}.svg')` }"></span>
     </div>
     <div class="name">
       {{fund.name}}
