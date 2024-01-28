@@ -1,9 +1,9 @@
 <template>
   <main>
-    <frame-wrap>
+    <frame>
       <frame-image src="/images/architecture/brutalist-house-in-affligem.jpg" />
       <frame-image src="/images/eddy-mercx-1970.jpg" />
-    </frame-wrap>
+    </frame>
     <block>
       <h1> Introduction </h1>
       <p> 
