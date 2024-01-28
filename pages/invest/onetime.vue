@@ -1,6 +1,5 @@
 <template>
   <main>
-    <navbar-tabs />
     <block margin="half">
       <h1>
         Let's invest in the future, today! <omoji emoji="✨" />
