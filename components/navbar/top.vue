@@ -117,7 +117,7 @@
     margin: 0;
     height: sizer(4);
     overflow:hidden;
-    padding: sizer(1) sizer(2) sizer(1) sizer(2.5+$margins);
+    padding: sizer(1) sizer(2) sizer(1) sizer(2.2+$margins);
     li.logomark{
       opacity:1;
       pointer-events : all;
