@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="notification" :id="props.color">
+    <div class="notification">
       {{ props.message }} <span id="x">x</span>
     </div>
   </div>
@@ -10,24 +10,20 @@
     message: {
       type: String,
       required: true
-    },
-    color:{
-      type: String,
-      required: false
     }
   })
 </script>
 <style scoped lang="scss">
-.wrap{
-  position:fixed;
-  height: sizer(4);
-  width:100vw;
-  bottom:0;
-  left:0;
-  position:fixed;
-  bottom: sizer(4);
-  z-index:8999;
-}
+  .wrap{
+    position:fixed;
+    height: sizer(4);
+    width:100vw;
+    bottom:0;
+    left:0;
+    position:fixed;
+    bottom: sizer(4);
+    z-index:8999;
+  }
   
   .notification{
     position:relative;
@@ -36,18 +32,11 @@
     max-width: $maxsitewidth; 
     margin:auto;
     padding: sizer(1) sizer(2);
-  }
-  #yellow{
-    background: $yellow-20;
-    border-color: $yellow;
-  }
-  #green{
-    background: $green-20;
-    border-color: $green;
-  }
-  #red{
-    background: $red-20;
-    border-color: $red;
+    @include border;
+    @include hoverable;
+    &:hover{
+      @include hovering;
+    }
   }
   #x{
     float:right;
