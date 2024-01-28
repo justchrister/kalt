@@ -80,7 +80,7 @@
     position:fixed;
     top: $border-width;
     left: $border-width;
-    background: $dark;
+    background: dark(100%);
     border-radius:100%;
     margin: sizer(1.4) sizer(1);
     animation-name: example;
@@ -158,7 +158,7 @@
     position: fixed;
     top: $border-width;
     width: auto;
-    color: $dark;
+    color: dark(100%);
     border: 0;
     &:hover,
     &:hover:before{
