@@ -20,7 +20,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: $blue-20;
+  background-color: blue(20%);
   border-radius: $border-radius;
 }
 .image:first-child {
