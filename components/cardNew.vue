@@ -375,7 +375,7 @@
     background-image: url('/media/icons/unionpay.svg');
   }
   .error-field{
-    background-color: $red-20;
+    background-color: red(20%);
     transition:background-color 0.2s $easing-in;
   }
 </style>
