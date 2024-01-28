@@ -87,9 +87,7 @@ export default defineEventHandler(async (event) => {
       await updateUser(user.id, createdUser.id)
     }
     const setupIntent = await createSetupIntent(createdUser?.id);
-    ok.log('', 'i made it here', setupIntent)
     if(setupIntent && createdUser) {
-      ok.log('', 'i made it here even ', setupIntent)
       await pub(supabase, {
         sender: 'server/api/acl/stripe/webhooks/users',
         id: user.id
