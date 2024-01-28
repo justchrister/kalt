@@ -1,5 +1,5 @@
 {
   "icons": [
-    { "src": "/icon/icon-192.png", "type": "image/png", "sizes": "192x192" }
+    { "src": "/icons/favicon/icon-192.png", "type": "image/png", "sizes": "192x192" }
   ]
 }
