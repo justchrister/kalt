@@ -1,11 +1,11 @@
 <template>
   <main>
     <intro title="Co-founders needed"
-    paragraph="We are always looking for talented individuals, both with and without a traditionaal education or relevant work experience."/>
+    paragraph="We are looking for exceptionally talented people to join us in building the next era of capitalism."/>
     <block>
       <h2> The company </h2>
       <p>
-        We are a forward-thinking organization that values innovation, creativity, and collaboration. Our team is committed to leveraging AI to drive positive change in various industries. We offer a supportive and inclusive work environment where you can grow professionally, contribute meaningfully, and make a significant impact.
+        We are a tiny forward-thinking firm focused on innovation, creativity, and collaboration. We are leveraging AI to drive positive change in various industries. We offer a supportive and inclusive work environment where you can grow professionally, contribute meaningfully, and make a significant impact.
       </p>
       <p>
         What we offer:
