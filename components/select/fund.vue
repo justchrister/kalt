@@ -23,7 +23,7 @@
   section:hover{
     @include hovering;
     .link{
-      color:$dark;
+      color:dark(100%);
     }
   }
   .icon{
@@ -38,7 +38,7 @@
   .link{
     text-align:right;
     font-size:75%;
-    color: $dark-60;
+    color: dark(60%);
     :after{
       display:inline;
       content:'->';
