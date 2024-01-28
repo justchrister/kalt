@@ -2,11 +2,11 @@
 <template>
   <main>
     <block margin="double" width="wide">
-      <h1 style="font-size: 250%;text-align:center;">
+      <h1 style="font-size: 200%;text-align:center;">
         Invest in the <strong>future</strong>, today.
       </h1>
       <nuxt-link to="/invite/request/amount">
-        <h1 style="font-size: 250%;text-align:center;">
+        <h1 style="font-size: 200%;text-align:center;">
           start →
         </h1>
       </nuxt-link>
