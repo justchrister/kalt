@@ -1,4 +1,4 @@
-<img src="https://ka.lt/media/intro-code-of-conduct.svg" alt="" width="100%" height="auto">
+<img src="https://ka.lt/images/github/intro-code-of-conduct.svg" alt="" width="100%" height="auto">
 
 
 ## Commitment
