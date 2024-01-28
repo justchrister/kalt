@@ -17,10 +17,10 @@
             Lack of structure/just enough structure
           </li>
           <li>
-            Opportunity to work on cutting-edge AI projects and applications
+            Opportunity to work on cutting-edge ML projects
           </li>
           <li>
-            Work on things that actually matter to you
+            Work on things that actually matter
           </li>
           <li>
             Mentorship and continuous learning opportunities
@@ -60,12 +60,12 @@
             Nuxt 3 based website
           </li>
           <li>
-            Supabase + vercel as backend
+            Supabase + Vercel as backend
           </li>
         </ul>
       </p>
       <p>
-        Read more on our <a href="https://github.com/justchrister/kalt" target="_blank"> Github page ↗</a>.
+        Read more on <a href="https://github.com/justchrister/kalt" target="_blank"> GitHub ↗</a>.
       </p>
     </block>
     <block>
@@ -74,7 +74,7 @@
         Your key characteristics:
         <ul>
           <li>
-            Focused and eager to build products.
+            Eager to build a product.
           </li>
           <li>
             Excellent problem-solving and analytical skills.
@@ -93,6 +93,29 @@
           </li>
           <li>
             A degree in math, statistics, CS, or engineering, is cool but not required.
+          </li>
+        </ul>
+      </p>
+      <p>
+        The open roles:
+        <ul>
+          <li>
+            Fullstack developer (TS, Node, Nuxt, Python)
+          </li>
+          <li>
+            Data scientist
+          </li>
+          <li>
+            Data engineer
+          </li>
+          <li>
+            ML engineer
+          </li>
+          <li>
+            Chief investment officer
+          </li>
+          <li>
+            Chief technology officer
           </li>
         </ul>
       </p>
