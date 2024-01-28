@@ -7,7 +7,7 @@
       <input-iban :initialValue="iban"/>
       <input-bank-code :initialValue="bankCode"/>
       <input-reference-text :initialValue="reference"/>
-      <input-button link="/profile">done</input-button>
+      <input-button link="/accounts">done</input-button>
     </block>
   </main>
 </template>
