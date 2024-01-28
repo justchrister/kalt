@@ -122,9 +122,9 @@
   .set-up-profile-card{
     &:hover{
       cursor:pointer;
-      background: $green-10;
+      background: green(10%);
     }
-    background: $green-20;
+    background: green(20%);
     border: $border;
     padding: sizer(1) sizer(1) sizer(1) sizer(2);
     display:grid;
