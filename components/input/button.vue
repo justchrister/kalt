@@ -29,7 +29,7 @@
     button{
       width: 100%;
       padding: sizer(1) sizer(2);
-      color: $dark-90;
+      color: dark(90%);
       @include font-body;
       @include border;
       border-color:transparent;
@@ -43,7 +43,7 @@
       transition: border-color 0.2s $easing-in-out;
       background-color:transparent;
       button{
-        color:$dark;
+        color:dark(100%);
         @include hovering;
         cursor: pointer;
       }
