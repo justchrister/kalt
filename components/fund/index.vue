@@ -1,7 +1,7 @@
 <template>
     <div class="fund" v-if="fund">
       <div class="icon">
-        <span :style="{ 'background-image': `url('/media/icons/funds/${shortTicker}.svg')` }"></span>
+        <span :style="{ 'background-image': `url('/icons/funds/${shortTicker}.svg')` }"></span>
       </div>
       <div class="name">
         {{fund.name}}
