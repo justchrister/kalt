@@ -39,7 +39,7 @@ The composables/messaging.ts file manages the publish-subscribe messaging system
 
 Using the Nuxt framework lets us get the best of both reactive web applications and server-side rendered ones, the navigation is blazing fast, will still having reactive elements. 
 
-The site leverages `clamp(MIN, VAL, MAX)` for the sizing of all the elements and components, through a sizer() function. This allows us to be auto-responsive for all screens. While this has its limitations, the limitations have an advantage: _Good design, all the time_. It requires abstract thinking around the design and being extremely deliberate about what to include and omitt. However, with proper testing, you can achieve a beatiful design that works on all surfaces, for all users, everywhere.
+The site leverages `clamp(MIN, VAL, MAX)` for the sizing of all the elements and components, through a sizer() function. This allows us to be auto-responsive for all screens. While this has its limitations, the limitations have an advantage: _Good design, all the time_. It requires abstract thinking around the design and being extremely deliberate about what to include and omit. However, with proper testing, you can achieve a beatiful design that works on all surfaces, for all users, everywhere.
 
 ### Deductive Design System
 The DDS reduces the design down to its most fundemental elements, and removes everything but the most essential, so the users get exactly the information they need exactly when they need it. It's intuitive, minimal and takes a lot of inspiration both from Japanese minimalism and Scandinavian functionalism. If its available on desktop, it should be available on mobile, so we never remove any element. 
