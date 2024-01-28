@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" :id="props.type">
+  <div class="wrap">
     <div class="notify">
       {{ props.message }}
     </div>
@@ -27,6 +27,11 @@
     z-index:2;
     left: 0;
     right: 0;
+    @include border;
+    @include hoverable;
+    &:hover{
+      @include hovering;
+    }
   }
   .notify{
     box-sizing: border-box;
@@ -34,17 +39,5 @@
     max-width: $maxsitewidth; 
     margin:auto;
     padding: sizer(1) 0;
-  }
-  #warn{
-    background: $yellow-20;
-    border-top-color: $yellow;
-  }
-  #success{
-    background: $green-20;
-    border-top-color: $green;
-  }
-  #error{
-    background: $red-20;
-    border-top-color: $red;
   }
 </style>
