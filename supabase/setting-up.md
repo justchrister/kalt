@@ -91,10 +91,6 @@ Name: webhook_transactions_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/transactions
 Table: sub_transactions_acl_stripe
 
-Name: webhook_cards_acl_stripe
-URL: https://ka.lt/api/acl/stripe/webhooks/cards
-Table: sub_cards_acl_stripe
-
 Name: webhook_users_acl_stripe
 URL: https://ka.lt/api/acl/stripe/webhooks/users
 Table: sub_users_acl_stripe
