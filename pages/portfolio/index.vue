@@ -88,7 +88,7 @@ ul{
   width:auto;
 }
 .live-bullet{
-  color: $red;
+  color: red(100%);
 }
 li{
   display:inline-block;
@@ -117,7 +117,7 @@ li{
   }
   .dark-mode li.active,
   .dark-mode li:hover{
-    background: $dark;
+    background: dark(100%);
   }
   */
 </style>
