@@ -124,7 +124,7 @@
     font-size:55%;
     line-height: 140%;
     font-weight:bold;
-    color: primaryColor(90%);
+    color: primary(90%);
     padding: sizer(0.1) sizer(0.35);
     display:inline-block;
     @include border;
