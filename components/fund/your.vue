@@ -29,14 +29,15 @@
       default: false
     }
   })
-  const { data:fund, error } = await supabase
+  const { data: fund, error } = await supabase
     .from('sys_funds')
     .select()
     .eq('ticker', props.ticker)
     .limit(1)
     .single()
   const rate = ref(0)
-  const state = await get(supabase).userDefinedFunds(auth.value.id, props.ticker);
+  const state = await get(supabase).userDefinedFund(user, props.ticker);
+  ok.log('', state)
   const logHearts = async () => {
     if(rate.value===3){
       if(props.ticker.length==3){
