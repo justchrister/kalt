@@ -17,7 +17,7 @@
             An academic environment where delivery is the key
           </li>
           <li>
-            Just enough structure, read about our <a>method ↗</a>
+            Just enough structure, read about our <a href="https://medium.com/@okchrister/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
           </li>
           <li>
             Apply cutting-edge ML/AI to problems that actually matter
@@ -99,7 +99,7 @@
         </ul>
       </p>
       <p>
-        A degree in math, statistics, CS, or engineering, is cool but not required.
+        A degree in math, statistics, computer science, or engineering, is cool but not required.
       </p>
     </block>
     <block margin="half">
@@ -119,7 +119,7 @@
             5 weeks of vacation
           </li>
           <li>
-            Clear strategy, following our <a>method ↗</a>
+            Clear strategy, following our <a href="https://medium.com/@okchrister/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
           </li>
           <li>
             Remote-first
