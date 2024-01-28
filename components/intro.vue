@@ -32,7 +32,7 @@ section{
   background-size:cover;
   h1{
     margin:0;
-    color: $dark-90;
+    color: dark(90%);
   }
   p{
     line-height:1.5;
