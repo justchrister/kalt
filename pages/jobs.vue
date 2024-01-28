@@ -2,48 +2,28 @@
   <main>
     <intro title="Co-founders needed"
     paragraph="We are looking for exceptionally talented people to join us in building the next era of capitalism."/>
-    <block>
+    <block margin="half">
       <h2> The company </h2>
       <p>
-        We are a tiny forward-thinking firm focused on innovation, creativity, and collaboration. We are leveraging AI to drive positive change in various industries. We offer a supportive and inclusive work environment where you can grow professionally, contribute meaningfully, and make a significant impact.
+        We are a small forward-thinking firm focused on innovation, creativity, and collaboration. We are leveraging AI to drive positive change in various industries. We offer a supportive and inclusive work environment where you can grow professionally, contribute meaningfully, and make a significant impact.
       </p>
       <p>
-        What we offer:
+        Learn more about our <nuxt-link to="/vision">vision →</nuxt-link>
+      </p>
+      <p>
+        Operational philosophy:
         <ul>
           <li>
-            A cut throat environment where delivery is key
+            An academic environment where delivery is the key
           </li>
           <li>
-            Lack of structure/just enough structure
+            Just enough structure, read about our <a>method ↗</a>
           </li>
           <li>
-            Opportunity to work on cutting-edge ML projects
-          </li>
-          <li>
-            Work on things that actually matter
+            Apply cutting-edge ML/AI to problems that actually matter
           </li>
           <li>
             Mentorship and continuous learning opportunities
-          </li>
-          <li>
-            Recognition and rewards for your achievements and contributions
-          </li>
-        </ul>
-      </p>
-      <p>
-        Benefits
-        <ul>
-          <li>
-            Remote only
-          </li>
-          <li>
-            Co-founder title
-          </li>
-          <li>
-            5 weeks of vacation
-          </li>
-          <li>
-            Clear strategy, following an OKR methodology
           </li>
         </ul>
       </p>
@@ -51,13 +31,13 @@
         Our tech-stack:
         <ul>
           <li>
-            Python based ML stack
+            Python ML stack
           </li>
           <li>
-            Node+TS based data-crawlers
+            Node/puppeteer data-crawlers
           </li>
           <li>
-            Nuxt 3 based website
+            Nuxt 3 website
           </li>
           <li>
             Supabase + Vercel as backend
@@ -65,42 +45,15 @@
         </ul>
       </p>
       <p>
-        Read more on <a href="https://github.com/justchrister/kalt" target="_blank"> GitHub ↗</a>.
+        Read more on <a href="https://github.com/justchrister/kalt" target="_blank"> GitHub ↗</a>
       </p>
     </block>
-    <block>
-      <h2> You </h2>
+    <block margin="half">
+      <h2>Open roles</h2>
       <p>
-        Your key characteristics:
         <ul>
           <li>
-            Eager to build a product.
-          </li>
-          <li>
-            Excellent problem-solving and analytical skills.
-          </li>
-          <li>
-            Ability to communicate effectively.
-          </li>
-          <li>
-            Loves working focused.
-          </li>
-          <li>
-            A make it work, make it great attitude.
-          </li>
-          <li>
-            Total dedication to the project.
-          </li>
-          <li>
-            A degree in math, statistics, CS, or engineering, is cool but not required.
-          </li>
-        </ul>
-      </p>
-      <p>
-        The open roles:
-        <ul>
-          <li>
-            Fullstack developer (TS, Node, Nuxt, Python)
+            Fullstack developer
           </li>
           <li>
             Data scientist
@@ -114,39 +67,85 @@
           <li>
             Chief investment officer
           </li>
+        </ul>
+      </p>
+    </block>
+    <block margin="half">
+      <h2> Qualifications and expectations </h2>
+      <p>
+        Building the new era of capitalism won't be a walk in the park; it demands years of dedication and innovation. All co-founders need to be aggressively optimistic and driven by our mission, even when faced with immense challenges. 
+      </p>
+      <p>
+        Key characteristics:
+        <ul>
           <li>
-            Chief technology officer
+            Eager to build products, not just tech.
+          </li>
+          <li>
+            Excellent problem-solving and analytical skills.
+          </li>
+          <li>
+            Ability to communicate effectively.
+          </li>
+          <li>
+            Loves focused work.
+          </li>
+          <li>
+            A make it work, make it great attitude.
+          </li>
+          <li>
+            Total dedication to the project.
+          </li>
+        </ul>
+      </p>
+      <p>
+        A degree in math, statistics, CS, or engineering, is cool but not required.
+      </p>
+    </block>
+    <block margin="half">
+      <h2>
+        Benefits and compensation
+      </h2>
+      <p>
+        All employees are paid a minimum of 75 000 EUR, the same salary the CEO is paid.
+      </p>
+      <p>
+        Benefits
+        <ul>
+          <li>
+            Co-founder title
+          </li>
+          <li>
+            5 weeks of vacation
+          </li>
+          <li>
+            Clear strategy, following our <a>method ↗</a>
+          </li>
+          <li>
+            Remote-first
+          </li>
+          <li>
+            Stock/cash based bonuses
           </li>
         </ul>
       </p>
     </block>
     <block>
       <h2>
-        Compensation
+        Apply now
       </h2>
       <p>
-        All employees are paid a minimum of 75 000 EUR, the same salary the CEO is paid.
-      </p>
-      <p>
-        There are also performance based bonuses, which are given out only based on performance not on inherently flawed performance indicators. You choose if this bonus should be in stock or cash.
-      </p>
-    </block>
-    <block>
-      <h2>
-        Apply now!
-      </h2>
-      <p>
-        Send us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch.
+        Send us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch quickly.
       </p>
     </block>
   </main>
 </template>
 <script setup lang="ts">
   definePageMeta({
-    pagename: 'Open application'
+    pagename: 'Jobs'
   })
   useHead({
-    title: 'Open application'
+    title: 'Jobs'
   })
 </script>
 <style scoped lang="scss">
