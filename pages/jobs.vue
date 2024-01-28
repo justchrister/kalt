@@ -17,7 +17,7 @@
             An academic environment where delivery is the key
           </li>
           <li>
-            Just enough structure, read about our <a href="https://medium.com/@okchrister/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
+            Just enough structure, read about our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
           </li>
           <li>
             Apply cutting-edge ML/AI to problems that actually matter
@@ -119,7 +119,7 @@
             5 weeks of vacation
           </li>
           <li>
-            Clear strategy, following our <a href="https://medium.com/@okchrister/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
+            Clear strategy, following our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
           </li>
           <li>
             Remote-first
