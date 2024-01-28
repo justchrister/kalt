@@ -63,7 +63,7 @@
 <style scoped lang="scss">
   footer{
     position:relative;
-    background: $dark;
+    background: dark(100%);
     padding: sizer(4) 0 sizer(2) 0;
     margin: sizer(4) auto 0 auto;
 
@@ -76,7 +76,7 @@
     gap: sizer(1);
     padding-top: sizer(1);
     border-top: $border;
-    border-color: $dark-80;
+    border-color: dark(80%);
     border-style: dashed;
   }
   p{
