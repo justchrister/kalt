@@ -39,10 +39,10 @@ export default defineNuxtConfig({
       viewport: 'width=500, initial-scale=1',
       title: 'Undefined',
       link: [ 
-        { rel: 'icon', type: "image/x-icon", href: '/icon/icon.ico' },
-        { rel: 'icon', type: "image/png", sizes: '32x32', href: '/icon/icon-32.png' } ,
-        { rel: 'icon', type: "image/png", sizes: '180x180', href: '/icon/icon-180.png' } ,
-        { rel: 'icon', type: "image/svg+xml", href: '/icon/icon.svg' } ,
+        { rel: 'icon', type: "image/x-icon", href: '/icons/favicon/icon.ico' },
+        { rel: 'icon', type: "image/png", sizes: '32x32', href: '/icons/favicon/icon-32.png' } ,
+        { rel: 'icon', type: "image/png", sizes: '180x180', href: '/icons/favicon/icon-180.png' } ,
+        { rel: 'icon', type: "image/svg+xml", href: '/icons/favicon/icon.svg' } ,
         { rel: 'manifest', type: "image/x-icon", href: '/manifest.webmanifest' }
       ],
       meta: [
