@@ -16,9 +16,6 @@
       <select-fund />
     </block>
     <block margin="1">
-      <card />
-    </block>
-    <block margin="1">
       <input-button @click="toggleAutoInvestments(true)">
         {{ activeText }}
         <loading-icon v-if="activeText==='activating' || activeText==='pausing'" />
