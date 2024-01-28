@@ -31,6 +31,6 @@
     }
   }
   #slash{
-    color: $dark-60;
+    color: dark(60%);
   }
 </style>
