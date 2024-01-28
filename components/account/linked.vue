@@ -59,12 +59,12 @@
     &:hover{
       @include hovering;
       .link{
-        color:$dark;
+        color:dark(100%);
       }
     }
   }
   .link{
-    color:$dark-80;
+    color:dark(80%);
     font-size:75%;
   }
 
