@@ -51,63 +51,6 @@
         This way, you are not only informed but can also appreciate the broader significance of your financial decisions. This is the biggest difference between Kalt and traditional ESG funds.
       </p>
     </block>
-    <block margin="none">
-      <h2> Product development principles </h2>
-    </block>
-    <block margin="half">
-      <strong>Build for people</strong>
-      <p>
-        Both our customer facing solution, such as this website, but also the infrastructure we are creating globally, needs to be built for the people actually living there.
-      </p>
-    </block>
-    <block margin="half">
-      <strong>Aggressively optimistic</strong>
-      <p>
-        Creating Kalt won't be a walk in the park; it demands years of dedication and innovation. We are driven by our mission and determined to stay optimistic, even when faced with immense challenges.
-      </p>
-    </block>
-    <block margin="half">
-      <strong>Equal opportunity</strong>
-      <p>
-        We believe that everyone should have access to this kind of investment opportunity. You should not have to be a millionaire to invest in fossil-free energy, and you can feel good knowing that your money is making a difference for families in developing regions, for the environment, and generating you a passive income.
-      </p>
-    </block>
-    <block margin="half">
-      <strong>Simple first, then powerful</strong>
-      <p>
-        Focus on simplicity in functionality before adding a bunch of shiny features that might not accomplish much. Skip the nonesense and jargon.
-      </p>
-    </block>
-    <block margin="half">
-      <strong>Maximize impact</strong>
-      <p>
-        Impact and wealth creation are not in opposition, they should work together, where wealth creation creates more impact and vice versa.
-      </p>
-    </block>
-    <block>
-      <strong>Aim for clarity</strong>
-      <p>
-        Everyone should understand what they are investing in, the risks, and how its contributing to the wealth creation.
-      </p>
-    </block>
-    <block>
-      <h2> Questions and answers </h2>
-      <chat-link to="/questions/how-does-it-work?">
-        How does it work?
-      </chat-link>
-      <chat-link to="/questions/ddf?">
-        What is a direct dividend fund?
-      </chat-link>
-      <chat-link to="/questions/how-do-you-make-money">
-        How does Kalt make money?
-      </chat-link>
-      <chat-link to="/questions/what-is-residual-income?">
-        What is residual income?
-      </chat-link>
-      <chat-link to="/questions/compound-interest?">
-        How does compound interest work?
-      </chat-link>
-    </block>
   </main>
 </template>
 <script lang="ts" setup>
