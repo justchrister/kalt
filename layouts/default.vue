@@ -4,6 +4,7 @@
     <navbar-top />
     <slot></slot>
     <navbar-bottom />
+    <update-fixed :count="3" />
   </div>
 </template>
 <script lang="ts" setup>
