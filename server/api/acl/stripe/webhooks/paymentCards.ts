@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
   const service = 'aclStripe';
   const topic = 'cards';
   const body = await readBody(event);
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // your stripe key here
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); 
   if (body.record.read) return 'message already read';
 
   const message = await sub(supabase, topic).entity(body.record.id);
