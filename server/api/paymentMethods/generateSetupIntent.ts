@@ -6,11 +6,13 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
-
+  
   const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
   const stripePaymentMethodConfiguration = process.env.STRIPE_PAYMENT_METHOD_CONFIGURATION as string;
   const stripe = new Stripe(stripeSecret); // your stripe key here
   
+  let data, error;
+
   const createSetupIntent = async (customerID: string) => {
     const setupIntent = await stripe.setupIntents.create({
       customer: customerID,
@@ -20,7 +22,7 @@ export default defineEventHandler( async (event) => {
       },
       payment_method_configuration: stripePaymentMethodConfiguration
     });
-    ok.log('success', 'created setupIntent: ', setupIntent)
+    ok.log('success', 'created setupIntent: ', setupIntent.client_secret)
     return setupIntent;
   }
   const saveSetupIntent = async (user, setupIntent) => {
@@ -46,8 +48,16 @@ export default defineEventHandler( async (event) => {
   if(user.paymentProviderId) {
     const setupIntent = await createSetupIntent(user.paymentProviderId);
     if(setupIntent) {
-      return await saveSetupIntent(user, setupIntent);
+      await saveSetupIntent(user, setupIntent);
+      data = {
+        intentToken: setupIntent.client_secret
+      }
+    }
+  } else {
+    ok.log('error', 'user.paymentProviderId not found')
+    error = {
+      message: 'user.paymentProviderId not found'
     }
   }
-  return 'error'
+  return {data, error}
 });
