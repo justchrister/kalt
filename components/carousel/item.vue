@@ -27,7 +27,7 @@
     padding: sizer(1) sizer(1.5);
     background: $light;
     box-sizing:border-box;
-    box-shadow: 0 0 sizer(2) 0 primary(5%);
+    @include drop-shadow;
   }
   .content p{
     color: dark(85%);
