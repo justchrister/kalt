@@ -46,7 +46,7 @@ export const get = (client: any) => {
     },
     setupIntent: async (user: user)=>{
       const { getSetupIntent } = await import('./get/setupIntent');
-      return await getSetupIntent(client, user) as setupIntent;
+      return await getSetupIntent(user) as setupIntent;
     },
     sharePrices: async () => {
       const { getSharePrices } = await import('./get/sharePrices');
