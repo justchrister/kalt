@@ -1,3 +1,4 @@
+import Stripe from 'stripe';
 import { ok } from '~/composables/ok'
 import { pub } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
@@ -5,6 +6,7 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); 
   
   const createSetupIntent = async (customerID: string) => {
     const setupIntent = await stripe.setupIntents.create({
@@ -28,6 +30,7 @@ export default defineEventHandler( async (event) => {
       'authenticationRequested': false
     });
     if(error) {
+      ok.log('error', error)
       return 'error'
     } else {
       return 'ok'
