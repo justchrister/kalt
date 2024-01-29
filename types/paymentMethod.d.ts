@@ -6,5 +6,6 @@ declare global {
         provider?: string;
         intentToken?: string;
         authenticationRequested?: boolean;
+        used?: boolean;
     }
 }
