@@ -6,7 +6,10 @@ import { serverSupabaseServiceRole } from '#supabase/server'
 export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); 
+
+  const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
+  const stripePaymentMethodConfiguration = process.env.STRIPE_PAYMENT_METHOD_CONFIGURATION as string;
+  const stripe = new Stripe(stripeSecret); // your stripe key here
   
   const createSetupIntent = async (customerID: string) => {
     const setupIntent = await stripe.setupIntents.create({
@@ -27,13 +30,14 @@ export default defineEventHandler( async (event) => {
     }).paymentMethods({
       'provider': 'stripe',
       'intentToken': setupIntent.client_secret,
-      'authenticationRequested': false
+      'authenticationRequested': false,
+      'used': false
     });
     if(error) {
       ok.log('error', error)
       return 'error'
     } else {
-      return 'ok'
+      return setupIntent
     }
   };
 
