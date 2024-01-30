@@ -110,7 +110,7 @@ const props = defineProps({
     height:sizer(2);
     width:sizer(5);
     background-size:contain;
-    background-position:center;
+    background-position:center; 
     background-repeat:no-repeat;
   }
   .icon#performance:before{
