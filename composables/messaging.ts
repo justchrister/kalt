@@ -4,12 +4,12 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
   const json = {
     ...content
   };
-  if(meta.event) json['event'] = meta.event;
-  if(meta.id) json['id'] = meta.id;
-  if(meta.timestamp) json['timestamp'] = meta.timestamp;
-  if(meta.sender) json['sender'] = meta.sender;
+  if (meta.event) json['event'] = meta.event;
+  if (meta.id) json['id'] = meta.id;
+  if (meta.timestamp) json['timestamp'] = meta.timestamp;
+  if (meta.sender) json['sender'] = meta.sender;
   const { error } = await client.from(topic).insert(json);
-  if(error) ok.log('error', error);
+  if (error) ok.log('error', error);
   return error;
 };
 
@@ -58,11 +58,11 @@ export const sub = (client: any, topic: any) => {
   return {
     entity: async (id: any) => {
       const { data, error } = await client
-        .from('topic_'+topic)
+        .from('topic_' + topic)
         .select()
         .eq('id', id)
         .order('timestamp', { ascending: true })
-      if(error) {
+      if (error) {
         return error
       } else {
         return ok.merge(data, 'id')[0]
@@ -70,24 +70,24 @@ export const sub = (client: any, topic: any) => {
     },
     message: async (id: any) => {
       const { data, error } = await client
-        .from('topic_'+topic)
+        .from('topic_' + topic)
         .select()
         .eq('id', id)
         .order('timestamp', { ascending: true })
-      if(error) {
+      if (error) {
         return error
       } else {
         return ok.merge(data, 'id')[0]
       }
     },
     read: async (service: any, id: any) => {
-      const subscription = 'sub_'+topic+'_'+service
+      const subscription = 'sub_' + topic + '_' + service
       const { error, data } = await client
         .from(subscription)
         .update({ read: true })
         .eq('event', id)
         .select()
-      if(error) {
+      if (error) {
         ok.log('error', error)
       } else {
         ok.log('', data)
