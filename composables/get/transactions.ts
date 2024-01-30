@@ -1,12 +1,12 @@
 import { ok } from '~/composables/ok'
 
 export const getTransactions = async (client, user) => {
-  const { data, error } = await client 
+  const { data, error } = await client
     .from('topic_transactions')
     .select()
     .eq('userId', user.id)
     .order('timestamp', { ascending: true })
-  if(error) {
+  if (error) {
     ok.log('error', error)
     return null
   } else {
