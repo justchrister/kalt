@@ -18,7 +18,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value)
-  const setupIntent = await get(supabase).setupIntent(user);
-  ok.log('', setupIntent)
+  const { data: setupIntent, error } = await get(supabase).setupIntent(user);
+  
 </script>
 <style scoped lang="scss"></style>
