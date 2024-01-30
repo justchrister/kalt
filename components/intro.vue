@@ -24,7 +24,7 @@
 section{
   padding: sizer(9) 0 sizer(7) 0;
   margin-bottom: sizer(5);
-  background:url('/images/gradient.jpg') no-repeat center center;
+  background:url('/images/gradient-2.jpg') no-repeat center center;
   background-size:cover;
   h1{
     margin:0;
