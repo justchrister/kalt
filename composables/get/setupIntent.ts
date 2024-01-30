@@ -1,5 +1,3 @@
-import { ok } from '~/composables/ok'
-
 export const getSetupIntent = async (user: user) => {
   try {
     const response = await fetch('/api/paymentMethods/generateSetupIntent', {
