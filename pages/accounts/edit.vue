@@ -4,9 +4,9 @@
       <h3>Edit linked bank account</h3>
     </block>
     <block>
-      <input-iban :initialValue="iban"/>
-      <input-bank-code :initialValue="bankCode"/>
-      <input-reference-text :initialValue="reference"/>
+      <input-iban :initialValue="iban" />
+      <input-bank-code :initialValue="bankCode" />
+      <input-reference-text :initialValue="reference" />
       <input-button link="/accounts">done</input-button>
     </block>
   </main>
@@ -26,10 +26,10 @@
   const iban = linkedBankAccount?.iban || null;
   const reference = linkedBankAccount?.reference || null;
   const bankCode = linkedBankAccount?.bankCode || null;
-  
+
 </script>
 <style scoped lang="scss">
-  button{
+  button {
     margin-top: sizer(2);
   }
 </style>
