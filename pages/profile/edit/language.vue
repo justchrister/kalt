@@ -3,10 +3,10 @@
     <ul>
       <span @click="navigateTo('/profile')">← back</span>
       <li v-for="language of data" :value="language.iso" :key="language.iso" @click="updateProfile(language.iso)">
-        <span class="iso">{{language.iso}}</span>
+        <span class="iso">{{ language.iso }}</span>
         <span>
-          {{language.name}}
-          <span class="icon" v-if="selected==language.iso"><loading-icon /></span>
+          {{ language.name }}
+          <span class="icon" v-if="selected == language.iso"><loading-icon /></span>
         </span>
       </li>
     </ul>
@@ -28,7 +28,7 @@
     .from('sys_languages')
     .select()
     .eq('available', true)
-  if(error)ok.log('error', 'could not get languages', error)
+  if (error) ok.log('error', 'could not get languages', error)
   const selected = ref();
   const updateProfile = async (iso) => {
     selected.value = iso;
@@ -38,7 +38,7 @@
     }).users({
       language: iso
     });
-    if(error) {
+    if (error) {
       ok.log('error', 'failed updating language: ', error)
     } else {
       await ok.sleep(200);
@@ -47,33 +47,38 @@
   };
 </script>
 <style scoped lang="scss">
+  .icon {
+    float: right;
+  }
 
-.icon{
-    float:right;
-  }
-  main{
+  main {
     max-width: sizer(35);
-    margin:0 auto;
+    margin: 0 auto;
   }
-  ul{
+
+  ul {
     padding: sizer(1) sizer(2);
   }
-  li{
-    display:grid;
-    grid-template-columns: sizer(4) 4fr ;
+
+  li {
+    display: grid;
+    grid-template-columns: sizer(4) 4fr;
     padding: sizer(1) sizer(2);
     margin: sizer(1) 0;
     @include border;
     @include hoverable;
-    &:hover{
+
+    &:hover {
       @include hovering;
     }
   }
-  .iso{
-    font-family:"Kalt Monospace", monospace;
-    font-size:75%;
+
+  .iso {
+    font-family: "Kalt Monospace", monospace;
+    font-size: 75%;
   }
-  span:hover{
-    cursor:pointer;
+
+  span:hover {
+    cursor: pointer;
   }
 </style>
