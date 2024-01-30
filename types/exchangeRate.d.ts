@@ -1,9 +1,9 @@
 export { exchangeRate };
 
 declare global {
-    interface exchangeRate {
-        from?: string;
-        to?: string;
-        rate?: number;
-    }
+  interface exchangeRate {
+    from?: string;
+    to?: string;
+    rate?: number;
+  }
 }
