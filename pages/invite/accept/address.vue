@@ -3,7 +3,7 @@
     <block>
       <h1> Where <span v-if="user.city">in {{ user.city }}</span> do you live?</h1>
       <form @submit.prevent="navigateTo('/invite/accept/card')">
-        <input-user :user="user" id="addressLine1"/>
+        <input-user :user="user" id="addressLine1" />
         <input-button link="">next →</input-button>
       </form>
     </block>
@@ -21,16 +21,14 @@
       content: 'Invest in the future, today.'
     }]
   })
-  const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value) as user;
+const supabase = useSupabaseClient()
+const auth = useSupabaseUser()
+const user = await get(supabase).user(auth.value) as user;
 </script>
 <style scoped lang="scss">
-
-.inputGroup{
+  .inputGroup {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: sizer(1);
   }
-  
 </style>
