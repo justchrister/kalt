@@ -1,21 +1,26 @@
 
 <template>
   <main>
-    <block v-if="max>0">
+    <block v-if="max > 0">
       <h1>Withdraw from account</h1>
       <form @submit.prevent="completeWithdrawTransaction()">
-        <input-amount-sell :uuid="uuid" :max="max" :portfolio="portfolioMax" :account="accountMax" :currency="user.currency"/>
+        <input-amount-sell :uuid="uuid" :max="max" :portfolio="portfolioMax" :account="accountMax"
+          :currency="user.currency" />
         <account-linked-card />
         <input-button>sell <loading-icon v-if="loading" /></input-button>
       </form>
     </block>
     <block v-else>
-      <h1> You have nothing to withdraw <omoji emoji="🙃"/></h1>
-      <h1> Let's change that <omoji emoji="✨"/> </h1>
+      <h1> You have nothing to withdraw
+        <omoji emoji="🙃" />
+      </h1>
+      <h1> Let's change that
+        <omoji emoji="✨" />
+      </h1>
       <input-button link="/invest">invest in something that matters</input-button>
     </block>
     <span v-if="notification" @click="setNotification(null)">
-      <banner-notification color="yellow" :message="notification"/>
+      <banner-notification color="yellow" :message="notification" />
     </span>
   </main>
 </template>
@@ -46,22 +51,22 @@
 
   const setNotification = async (message) => {
     ok.log('error', message)
-    notification.value=message
-    loading.value=false
+    notification.value = message
+    loading.value = false
     return
   }
-  
+
   const portfolioMax = await getPortfolioMax();
   const accountMax = await getAccountMax();
   const max = portfolioMax + accountMax;
   ok.log('', max)
   const completeWithdrawTransaction = async () => {
-    if(!max) return false;
-    if(!auth.value) return false;
+    if (!max) return false;
+    if (!auth.value) return false;
     loading.value = true
     const currentWithdrawTransaction = await sub(supabase, 'transactions').entity(uuid);
-    if(Math.abs(currentWithdrawTransaction.amount)>max){
-      setNotification ('Withdrawal amount exceeds max available')
+    if (Math.abs(currentWithdrawTransaction.amount) > max) {
+      setNotification('Withdrawal amount exceeds max available')
       loading.value = false;
       return false;
     }
@@ -69,13 +74,13 @@
       sender: 'pages/accounts/withdraw.vue',
       entity: uuid
     }).transactions({
-      userId: user?.id, 
+      userId: user?.id,
       status: 'pending',
       autoVest: 1
     });
-    if(error){
+    if (error) {
       ok.log('error', 'could not create withdraw transaction: ', error.message)
-      setNotification ('Could not create withdraw transaction: '+error.message)
+      setNotification('Could not create withdraw transaction: ' + error.message)
       loading.value = false
     } else {
       ok.log('success', 'Withdraw transaction created')
@@ -88,7 +93,7 @@
 
 </script>
 <style scoped lang="scss">
-  button{
+  button {
     margin-top: sizer(1);
   }
 </style>
