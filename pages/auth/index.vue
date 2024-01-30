@@ -3,26 +3,17 @@
   <main>
     <block margin="half">
       <h1 class="sans-serif">
-        Welcome back! <omoji emoji="😃" />
+        Welcome back!
+        <omoji emoji="😃" />
       </h1>
       <form @submit.prevent="signIn">
         <div class="input-wrap">
           <label for='email'> E-mail</label>
-          <input
-            type="email"
-            placeholder="Email"
-            v-model="email"
-            id='email'
-          />
+          <input type="email" placeholder="Email" v-model="email" id='email' />
         </div>
         <div class="input-wrap">
           <label for='password'> Password </label>
-          <input
-            type="password"
-            placeholder="Password"
-            v-model="password"
-            id='password'
-          />
+          <input type="password" placeholder="Password" v-model="password" id='password' />
         </div>
         <input-button>sign in <loading-icon v-if="loading" /></input-button>
       </form>
@@ -34,11 +25,10 @@
       </link-group>
     </block>
     <span v-if="notification" @click="setNotification(null)">
-      <banner-notification color="yellow" :message="notification"/>
+      <banner-notification color="yellow" :message="notification" />
     </span>
   </main>
 </template>
-
 <script setup lang="ts">
   definePageMeta({
     pagename: 'Hello'
@@ -54,32 +44,32 @@
 
   const setNotification = async (message) => {
     ok.log('error', message)
-    notification.value=message
-    loading.value=false
+    notification.value = message
+    loading.value = false
     return
   }
   const signIn = async () => {
     loading.value = true
 
-    if(!email.value){
-      setNotification ('Please enter the email');
-    } else if(!password.value){
-      setNotification ('Please enter the password');
-    } else if(password.value.length<8){
-      setNotification ('Password too short');
-    } else if(!email.value.includes('@')){
-      setNotification ('Please enter a valid email');
+    if (!email.value) {
+      setNotification('Please enter the email');
+    } else if (!password.value) {
+      setNotification('Please enter the password');
+    } else if (password.value.length < 8) {
+      setNotification('Password too short');
+    } else if (!email.value.includes('@')) {
+      setNotification('Please enter a valid email');
     } else {
-      const {data, error} = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: email.value,
         password: password.value,
       })
 
-      if(error) {
+      if (error) {
         loading.value = false
-        setNotification (error.message);
+        setNotification(error.message);
         ok.log('error', error)
-      } else if(data){
+      } else if (data) {
         ok.log('success', 'signed in ' + email.value + ' successfully');
         await navigateTo("/portfolio");
         loading.value = false
@@ -88,10 +78,10 @@
   }
 </script>
 <style scoped lang="scss">
-  button{
+  button {
     margin-top: sizer(2);
   }
-  a{
-    margin:0 sizer(0.5);
+  a {
+    margin: 0 sizer(0.5);
   }
 </style>
