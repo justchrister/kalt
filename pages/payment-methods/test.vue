@@ -1,6 +1,6 @@
 <template>
   <main>
-    
+
   </main>
 </template>
 <script lang="ts" setup>
@@ -21,6 +21,4 @@
   const setupIntent = await get(supabase).setupIntent(user);
   ok.log('', setupIntent)
 </script>
-<style scoped lang="scss">
-  
-</style>
+<style scoped lang="scss"></style>
