@@ -5,10 +5,10 @@ import { generate, count } from 'random-words';
 
 import { serverSupabaseServiceRole } from '#supabase/server'
 
-export default defineEventHandler( async (event) => {
+export default defineEventHandler(async (event) => {
 
   const keyPair = await ok.verifyKeyPair(event)
-  if(!keyPair) return 'unauthorized'
+  if (!keyPair) return 'unauthorized'
 
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
@@ -23,13 +23,13 @@ export default defineEventHandler( async (event) => {
   for (let i = 0; i < 3; i++) {
     const generatedCode = generateCode()
     await pub(supabase, {
-      sender:'server/api/invites/initialize.ts',
+      sender: 'server/api/invites/initialize.ts',
       id: user.id
     }).invites({
       issuedTo: user.id,
       used: false,
       code: generatedCode
-    } as user );
+    } as user);
   }
   return 'initialized'
 });
