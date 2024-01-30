@@ -3,10 +3,10 @@ import { get } from '~/composables/get'
 import { pub } from '~/composables/messaging'
 import { serverSupabaseServiceRole } from '#supabase/server'
 
-export default defineEventHandler( async (event) => {
+export default defineEventHandler(async (event) => {
 
   const keyPair = await ok.verifyKeyPair(event)
-  if(!keyPair) return 'unauthorized'
+  if (!keyPair) return 'unauthorized'
 
   const supabase = serverSupabaseServiceRole(event)
   const mockAsTodayIs = {
@@ -17,58 +17,58 @@ export default defineEventHandler( async (event) => {
   const testing = false;
 
   const gracePeriod = testing ? 0 : 2;
-  const { data, error} = await supabase
+  const { data, error } = await supabase
     .from('topic_autoInvest')
     .select()
     .order('timestamp', { ascending: true });
 
-  if(error) return;
-  
+  if (error) return;
+
   const merged = ok.merge(data, 'id') as autoInvest[];
   const active = merged.filter((entry: autoInvest) => entry.active)
 
   const now = testing ? new Date(mockAsTodayIs.yyyy, mockAsTodayIs.mm - 1, mockAsTodayIs.dd) : new Date();
-  const gracePeriodHoursAgo = new Date(now.getTime() - gracePeriod*60*60*1000);
-  const twentyFourHoursAgo = new Date(now.getTime() - 24*60*60*1000);
-  const oneWeekAgo = new Date(now.getTime() - 7*24*60*60*1000);
+  const gracePeriodHoursAgo = new Date(now.getTime() - gracePeriod * 60 * 60 * 1000);
+  const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+  const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
   const beginningOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   const middleOfMonth = new Date(now.getFullYear(), now.getMonth(), 15);
-  const endOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0);
+  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
   const notAdjustedRecently = active.filter((entry: autoInvest) => new Date(entry.timestamp as string) < gracePeriodHoursAgo)
 
   const createTransaction = async (userId: string, amount: number, autoInvestEntity: string, currency: string) => {
-      const errorTransaction = await pub(supabase, {
-        sender:'server/api/invest/auto.ts'
-      }).transactions({
-        userId,
-        type: 'deposit',
-        subType: 'card',
-        amount,
-        currency,
-        status: 'pending',
-        autoVest: 1
-      } as transaction );
+    const errorTransaction = await pub(supabase, {
+      sender: 'server/api/invest/auto.ts'
+    }).transactions({
+      userId,
+      type: 'deposit',
+      subType: 'card',
+      amount,
+      currency,
+      status: 'pending',
+      autoVest: 1
+    } as transaction);
 
-      if(errorTransaction) {
-        ok.log('error', errorTransaction)
-        return;
-      } else {
-        ok.log('success', 'created transaction')
-      }
+    if (errorTransaction) {
+      ok.log('error', errorTransaction)
+      return;
+    } else {
+      ok.log('success', 'created transaction')
+    }
 
-      const errorAutoInvest = await pub(supabase, {
-        sender:'server/api/invest/auto.ts',
-        id: autoInvestEntity
-      }).autoInvest({
-        lastCharged: ok.timestamptz()
-      } as autoInvest );
+    const errorAutoInvest = await pub(supabase, {
+      sender: 'server/api/invest/auto.ts',
+      id: autoInvestEntity
+    }).autoInvest({
+      lastCharged: ok.timestamptz()
+    } as autoInvest);
 
-      if(errorAutoInvest) {
-        ok.log('error', 'could not update auto invest: ',error)
-      } else {   
-        ok.log('success', 'updated auto invest')
-      }
+    if (errorAutoInvest) {
+      ok.log('error', 'could not update auto invest: ', error)
+    } else {
+      ok.log('success', 'updated auto invest')
+    }
   }
   const shouldCharge = (interval: string, lastCharged: Date) => {
     const today = now.getDate()
@@ -80,7 +80,7 @@ export default defineEventHandler( async (event) => {
       case interval === 'monthlyMiddle' && today === middleOfMonth.getDate() && lastCharged < middleOfMonth:
       case interval === 'monthlyEnd' && today === endOfMonth.getDate() && lastCharged < endOfMonth:
         return true
-      default: 
+      default:
         return false
     }
   }
@@ -95,8 +95,8 @@ export default defineEventHandler( async (event) => {
 
     const lastChargedDate = new Date(entry.lastCharged as string);
     const lastCharged = isNaN(lastChargedDate.getTime()) ? new Date(Date.UTC(1999, 0, 1)) : lastChargedDate;
-    
-    if(shouldCharge(interval, lastCharged)){
+
+    if (shouldCharge(interval, lastCharged)) {
       charged.push(entry)
       await createTransaction(userId, amount, entity, currency)
     }
