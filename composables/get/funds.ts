@@ -4,7 +4,7 @@ export const getFunds = async (client) => {
   const { data, error } = await client
     .from('sys_funds')
     .select()
-  if(error){
+  if (error) {
     ok.log('error', error)
     return
   } else {
