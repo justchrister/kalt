@@ -6,7 +6,7 @@ export const getLanguageDetails = async (client, iso) => {
     .eq('iso', iso || 'ENG')
     .limit(1)
     .single()
-  if(error) {
+  if (error) {
     return {
       iso: 'ENG',
       name: 'English'
