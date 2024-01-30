@@ -1,6 +1,6 @@
 <template>
   <main>
-    <navbar-tabs/>
+    <navbar-tabs />
     <block margin="2">
       <account-card />
       <input-button link="/accounts/transactions">transactions</input-button>
@@ -23,10 +23,9 @@
   useHead({
     title: 'Accounts'
   })
-  
 </script>
 <style scoped lang="scss">
-  button{
+  button {
     margin-top: sizer(1);
   }
 </style>
