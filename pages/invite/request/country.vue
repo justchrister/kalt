@@ -2,7 +2,7 @@
   <main>
     <block>
       <h1>Where do you live?</h1>
-      <input type="text" placeholder="Country" v-model="country" class="next"/>
+      <input type="text" placeholder="Country" v-model="country" class="next" />
       <input-button @click="requestInvite()">next -></input-button>
     </block>
   </main>
@@ -23,29 +23,23 @@
   const requestUuid = useCookie('requestUuid')
 
   const requestInvite = async () => {
-    
+
     const error = await pub(supabase, {
-      "sender":"pages/invite/request/index.vue",
+      "sender": "pages/invite/request/index.vue",
       "entity": requestUuid.value
     }).requestAccess({
       country: country.value,
     });
-    if(error){
-      ok.log('error', 'could not request access '+error.message)
+    if (error) {
+      ok.log('error', 'could not request access ' + error.message)
     } else {
       ok.log('success', 'requested access')
     }
     navigateTo('/success/request')
   }
-  
 </script>
 <style scoped lang="scss">
-  input{
+  input {
     margin-bottom: sizer(1);
-  }
-  .inputGroup{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: sizer(1);
   }
 </style>
