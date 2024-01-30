@@ -1,8 +1,8 @@
 export type { Hash };
 
 declare global {
-    interface Hash {
-        iv?: string;
-        content?: string;
-    }
+  interface Hash {
+    iv?: string;
+    content?: string;
+  }
 }
