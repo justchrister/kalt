@@ -7,7 +7,11 @@
     </frame>
     <block margin="half">
       <h1> We have sent you an email </h1>
-      <p> Simply click the link and set a new password. See you soon! <omoji emoji="✨" /> If you are still experiencing trouble signing in, please <nuxt-link to="/contact">contact us</nuxt-link>.</p>
+      <p>
+        Simply click the link and set a new password. See you soon!
+        <omoji emoji="✨" /> If you are still experiencing trouble signing in, please <nuxt-link to="/contact">contact
+          us</nuxt-link>.
+      </p>
     </block>
     <block margin="half">
       <input-button link="/auth">sign in →</input-button>
