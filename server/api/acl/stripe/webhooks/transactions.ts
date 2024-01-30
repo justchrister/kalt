@@ -3,10 +3,10 @@ import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server'
 import Stripe from 'stripe';
 
-export default defineEventHandler( async (event) => {
-  
+export default defineEventHandler(async (event) => {
+
   const keyPair = await ok.verifyKeyPair(event);
-  if(!keyPair) return 'unauthorized';
+  if (!keyPair) return 'unauthorized';
 
   const supabase = serverSupabaseServiceRole(event);
   const body = await readBody(event);
@@ -17,17 +17,17 @@ export default defineEventHandler( async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
-  if(message.status !== 'pending') return 'transaction not pending payment';
-  if(message.type !== 'deposit') return 'transaction not deposit';
-  if(message.subType !== 'card') return 'transaction not card';
+  if (message.status !== 'pending') return 'transaction not pending payment';
+  if (message.type !== 'deposit') return 'transaction not deposit';
+  if (message.subType !== 'card') return 'transaction not card';
 
-  const amountCents = message.amount*100;
+  const amountCents = message.amount * 100;
   const currencyLower = message.currency.toLowerCase();
 
   const chargeCard = async (customerId: string, cardId: string) => {
     try {
       const charge = await stripe.paymentIntents.create({
-        amount: amountCents, 
+        amount: amountCents,
         currency: currencyLower,
         description: message.transactionId,
         customer: customerId,
@@ -35,11 +35,11 @@ export default defineEventHandler( async (event) => {
         off_session: true, // Set to true if customer is not present
         confirm: true, // This will automatically confirm the payment
       });
-      
+
       ok.log('success', charge);
       return 'success'
     } catch (error: any) {
-      ok.log('error', 'failed to charge '+customerId+' / '+message.userId+': ', error.statusCode+': '+error.raw.message);
+      ok.log('error', 'failed to charge ' + customerId + ' / ' + message.userId + ': ', error.statusCode + ': ' + error.raw.message);
       return 'error'
     }
   }
@@ -51,7 +51,7 @@ export default defineEventHandler( async (event) => {
       userId: userId,
       status: status
     } as transaction);
-    if(error){
+    if (error) {
       ok.log('error', 'error updating payment pending status', error)
       return 'error'
     } else {
@@ -66,20 +66,20 @@ export default defineEventHandler( async (event) => {
       .eq('userId', userId)
       .limit(1)
       .single()
-    if(data){
+    if (data) {
       return data as any
     }
   }
 
   const transactionStatus = await updateTransactionStatus('processing', message.id, message.userId)
 
-  if(transactionStatus=='error') {
+  if (transactionStatus == 'error') {
     return 'failed to set as processing'
   } else {
     const stripeIds = await getStripeIds(message.userId);
-    if(!stripeIds || !stripeIds.stripeUserId || !stripeIds.stripeCardId) return 'no stripe ids found'
+    if (!stripeIds || !stripeIds.stripeUserId || !stripeIds.stripeCardId) return 'no stripe ids found'
     const charge = await chargeCard(stripeIds?.stripeUserId, stripeIds?.stripeCardId)
-    if(charge==='success'){
+    if (charge === 'success') {
       await updateTransactionStatus('complete', message.id, message.userId)
       return charge
     } else {
