@@ -7,7 +7,7 @@ export const getPaymentMethod = async (client, user) => {
     .select()
     .eq('id', user.id)
     .order('timestamp', { ascending: true })
-  if(error) {
+  if (error) {
     ok.log('error', 'failed getting payment method: ', error)
     return null
   } else {
