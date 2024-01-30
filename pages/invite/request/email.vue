@@ -2,8 +2,7 @@
   <main>
     <block>
       <h1>Where should we send the invite?</h1>
-
-      <input type="text" placeholder="email" v-model="email" class="next"/>
+      <input type="text" placeholder="email" v-model="email" class="next" />
       <input-button @click="requestInvite()">next -></input-button>
     </block>
   </main>
@@ -24,24 +23,23 @@
   const requestUuid = useCookie('requestUuid')
 
   const requestInvite = async () => {
-    
+
     const error = await pub(supabase, {
-      "sender":"pages/invite/request/index.vue",
+      "sender": "pages/invite/request/index.vue",
       "entity": requestUuid.value
     }).requestAccess({
       email: email.value
     });
-    if(error){
-      ok.log('error', 'could not request access '+error.message)
+    if (error) {
+      ok.log('error', 'could not request access ' + error.message)
     } else {
       ok.log('success', 'requested access')
     }
     navigateTo('/invite/request/name')
   }
-  
 </script>
 <style scoped lang="scss">
-  input{
+  input {
     margin-bottom: sizer(1);
   }
 </style>
