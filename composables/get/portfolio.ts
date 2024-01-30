@@ -21,10 +21,10 @@ export const getPortfolio = async (client, user) => {
   const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
   const { data: orders, error } = await client
     .from('topic_exchange')
-    .select('userId, timestamp, id, quantity, status, ticker', )
+    .select('userId, timestamp, id, quantity, status, ticker',)
     .eq('userId', user.id)
     .order('timestamp', { ascending: true })
-  if(error){
+  if (error) {
     return {
       error: error
     }
