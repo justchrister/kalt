@@ -18,8 +18,7 @@
   const stripePublicKey = runtimeConfig.public.STRIPE_PUBLIC_KEY as string;
   const stripeReturnUrl = runtimeConfig.public.STRIPE_RETURN_URL as string;
   const user = props.user as user;
-  const paymentMethod = await get(supabase).paymentMethod(user) as paymentMethod;
-  const setupIntent = await get(supabase).setupIntent(user) as paymentMethod;
+  const { data: setupIntent, error: setupIntentError } = await get(supabase).setupIntent(user);
   const loading = ref(true);
   const stripe = ref(null);
   const paymentElement = ref(null);
@@ -113,7 +112,7 @@
     try {
       stripe.value = await loadStripe();
       if (stripe.value) {
-        await createPaymentElement(paymentMethod.intentToken);
+        await createPaymentElement(setupIntent.intentToken);
         loading.value = false;
       } else {
         console.error('Stripe failed to load');
