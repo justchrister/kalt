@@ -25,8 +25,5 @@
       content: 'Invest in the future, today.'
     }]
   })
-  
+
 </script>
-<style scoped lang="scss">
-  
-</style>
