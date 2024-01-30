@@ -17,37 +17,37 @@ export const ok = {
       return { data: null, error };
     }
   },
-  toInt(input){
+  toInt(input) {
     const toString = input.toString();
     const pattern = /[^0-9]/g;
     const asInt = parseInt(toString.replace(pattern, '')) as int;
     return asInt;
   },
-  toFloat (input) {
+  toFloat(input) {
     // Remove all characters that are not digits, dots, or dashes
     const cleanedInput = input.replace(/[^\d.,-]/g, '');
-  
+
     // Remove commas if they exist
     const withoutCommas = cleanedInput.replace(/,/g, '');
     return parseFloat(withoutCommas);
   },
-  toChar(input){
+  toChar(input) {
     const pattern = /[^0-9]/g;
     return input.replace(pattern, '');
   },
   invertInt(number) {
     return -number;
   },
-  toPercent(int){
-    return int*100 + '%'
+  toPercent(int) {
+    return int * 100 + '%'
   },
   formatIBAN(iban) {
-    if(!iban) return null
+    if (!iban) return null
     const formattedIBAN = iban.match(/.{1,4}/g).join(' ');
     return formattedIBAN;
   },
   formatBankCode(bic) {
-    if(!bic) return null
+    if (!bic) return null
     const formattedBIC = bic.replace(/(.{4})(.{3})(.*)/, '$1 $2 $3');
     return formattedBIC;
   },
@@ -58,44 +58,44 @@ export const ok = {
     });
     return formatter.format(amount);
   },
-  log(type, ...inputs){
+  log(type, ...inputs) {
     // https://talyian.github.io/ansicolors/
     let label = '\x1b[34m● \x1b[0m'
-    let lineIcon ='\x1b[34m| \x1b[0m'
+    let lineIcon = '\x1b[34m| \x1b[0m'
     let text = ''
-    if (type==='success') {
+    if (type === 'success') {
       label = '\x1b[32m● \x1b[0m'
-      lineIcon ='\x1b[32m| \x1b[0m'
+      lineIcon = '\x1b[32m| \x1b[0m'
     }
-    if (type==='warn'){
+    if (type === 'warn') {
       label = '\x1b[33m● \x1b[0m'
-      lineIcon ='\x1b[33m| \x1b[0m'
+      lineIcon = '\x1b[33m| \x1b[0m'
     }
-    if (type==='error'){
+    if (type === 'error') {
       label = '\x1b[31m● \x1b[0m'
-      lineIcon ='\x1b[31m| \x1b[0m'
+      lineIcon = '\x1b[31m| \x1b[0m'
     }
-  
+
     inputs.forEach((input, i) => {
       if (Array.isArray(input) && input.every(x => typeof x === 'string')) {
         text += '\n' + input.map((elem, index) => `${lineIcon} ${String(index)}  "${elem}"`).join('\n');
       } else if (typeof input === 'object') {
         const formattedObject = JSON.stringify(input, null, 2)
           .split('\n')
-          .map((line) => lineIcon+' '+ line)
+          .map((line) => lineIcon + ' ' + line)
           .join('\n');
         text += '\n' + formattedObject;
       } else {
         text += input;
       }
     });
-    
+
     console.log(label + text)
     return
   },
 
   addZero(i) {
-    if (i < 10) {i = "0" + i}
+    if (i < 10) { i = "0" + i }
     return i;
   },
   sleep: async (ms) => {
@@ -117,15 +117,15 @@ export const ok = {
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   },
-  prettyTime(dateTime){
+  prettyTime(dateTime) {
     const hour = ok.addZero(new Date(dateTime).getHours())
     const minute = ok.addZero(new Date(dateTime).getMinutes())
-    return hour+":"+minute
+    return hour + ":" + minute
   },
   timestamptz(dd = null, mm = null, yyyy = null) {
     // Create the date object
     const date = dd && mm && yyyy ? new Date(Date.UTC(yyyy, mm - 1, dd)) : new Date();
-  
+
     // Extract and format the components of the date
     const year = date.getUTCFullYear();
     const month = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -134,47 +134,47 @@ export const ok = {
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
     const ms = String(date.getUTCMilliseconds()).padStart(3, '0');
-  
+
     // Format the timestamp
     const timestamptz = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${ms}Z`;
-  
+
     return timestamptz;
   },
   combineJsonByKeys(jsonArray, ...keysToMergeOn) {
     let result = [];
     let tempObj = {};
-  
+
     if (!jsonArray) return "No input";
-  
+
     jsonArray.forEach(jsonObj => {
       // Create a composite key using the keysToMergeOn
       const compositeKey = keysToMergeOn.map(key => jsonObj[key]).join('|');
-  
+
       if (!tempObj[compositeKey]) {
         tempObj[compositeKey] = {};
       }
-  
+
       for (const key in jsonObj) {
         if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
           tempObj[compositeKey][key] = jsonObj[key];
         }
       }
     });
-  
+
     for (const key in tempObj) {
       result.push(tempObj[key]);
     }
-  
+
     return result;
   },
-  verifyKeyPair: async (event:any) => {
+  verifyKeyPair: async (event: any) => {
     const secretCronKey = 'Bearer ' + process.env.CRON_SECRET;
     const secretWebhookKey = 'Bearer ' + process.env.WEBHOOK_SECRET;
     const incomingKey = event.node.req.headers['authorization'];
-    
-    if(!incomingKey) return false;
-    if(incomingKey === secretCronKey) return true;
-    if(incomingKey === secretWebhookKey) return true;
+
+    if (!incomingKey) return false;
+    if (incomingKey === secretCronKey) return true;
+    if (incomingKey === secretWebhookKey) return true;
     return false;
   },
   merge(jsonArray: any[], ...keysToMergeOn: string[]) {
@@ -183,23 +183,23 @@ export const ok = {
     if (!jsonArray || jsonArray.length === 0) {
       return [];
     }
-  
+
     jsonArray.forEach(jsonObj => {
       const compositeKey = keysToMergeOn.map(key => jsonObj[key]).join('|');
       tempObj[compositeKey] = tempObj[compositeKey] || {};
-  
+
       for (const key in jsonObj) {
         if (jsonObj[key] !== null && key !== 'event' && key !== 'sender') {
           tempObj[compositeKey][key] = jsonObj[key];
         }
       }
     });
-  
+
     const mergedArray = Object.values(tempObj);
 
     return mergedArray;
   },
-  uuid(){
+  uuid() {
     return uuidv4()
   },
   cleanMessage: async (message) => {
