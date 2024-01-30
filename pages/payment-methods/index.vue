@@ -1,7 +1,7 @@
 <template>
   <main>
     <block>
-      <stripe-elements-default-payment-method :user="user"/>
+      <stripe-elements-default-payment-method :user="user" />
     </block>
   </main>
 </template>
@@ -17,12 +17,9 @@
       content: 'Invest in the future, today.'
     }]
   })
-  
+
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  console.log(supabase)
   const user = await get(supabase).user(auth.value) as user;
-</script>
-<style scoped lang="scss">
-  
-</style>
+  </script>
+<style scoped lang="scss"></style>
