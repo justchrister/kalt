@@ -1,48 +1,51 @@
 <template>
   <main>
     <intro title="Co-founders needed"
-    paragraph="We are looking for exceptionally talented people to join us in building the next era of capitalism."/>
+      paragraph="We are looking for exceptionally talented people to join us in building the next era of capitalism." />
     <block margin="half">
       <h2> The company </h2>
       <p>
-        We are a small forward-thinking firm focused on innovation, creativity, and collaboration. We are leveraging AI to drive positive change in various industries. We offer a supportive and inclusive work environment where you can grow professionally, contribute meaningfully, and make a significant impact.
+        We are a small forward-thinking firm focused on innovation, creativity, and collaboration. We are leveraging AI to
+        drive positive change in various industries. We offer a supportive and inclusive work environment where you can
+        grow professionally, contribute meaningfully, and make a significant impact.
       </p>
       <p>
         Learn more about our <nuxt-link to="/vision">vision →</nuxt-link>
       </p>
       <p>
         Operational philosophy:
-        <ul>
-          <li>
-            An academic environment where delivery is the key
-          </li>
-          <li>
-            Just enough structure, read about our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
-          </li>
-          <li>
-            Apply cutting-edge ML/AI to problems that actually matter
-          </li>
-          <li>
-            Mentorship and continuous learning opportunities
-          </li>
-        </ul>
+      <ul>
+        <li>
+          An academic environment where delivery is the key
+        </li>
+        <li>
+          Just enough structure, read about our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d"
+            target="_blank">method ↗</a>
+        </li>
+        <li>
+          Apply cutting-edge ML/AI to problems that actually matter
+        </li>
+        <li>
+          Mentorship and continuous learning opportunities
+        </li>
+      </ul>
       </p>
       <p>
         Our tech-stack:
-        <ul>
-          <li>
-            Python ML stack
-          </li>
-          <li>
-            Node/puppeteer data-crawlers
-          </li>
-          <li>
-            Nuxt 3 website
-          </li>
-          <li>
-            Supabase + Vercel as backend
-          </li>
-        </ul>
+      <ul>
+        <li>
+          Python ML stack
+        </li>
+        <li>
+          Node/puppeteer data-crawlers
+        </li>
+        <li>
+          Nuxt 3 website
+        </li>
+        <li>
+          Supabase + Vercel as backend
+        </li>
+      </ul>
       </p>
       <p>
         Read more on <a href="https://github.com/justchrister/kalt" target="_blank"> GitHub ↗</a>
@@ -51,52 +54,53 @@
     <block margin="half">
       <h2>Open roles</h2>
       <p>
-        <ul>
-          <li>
-            Fullstack developer
-          </li>
-          <li>
-            Data scientist
-          </li>
-          <li>
-            Data engineer
-          </li>
-          <li>
-            ML engineer
-          </li>
-          <li>
-            Chief investment officer
-          </li>
-        </ul>
+      <ul>
+        <li>
+          Fullstack developer
+        </li>
+        <li>
+          Data scientist
+        </li>
+        <li>
+          Data engineer
+        </li>
+        <li>
+          ML engineer
+        </li>
+        <li>
+          Chief investment officer
+        </li>
+      </ul>
       </p>
     </block>
     <block margin="half">
       <h2> Qualifications and expectations </h2>
       <p>
-        Building the new era of capitalism won't be a walk in the park; it demands years of dedication and innovation. All co-founders need to be aggressively optimistic and driven by our mission, even when faced with immense challenges. 
+        Building the new era of capitalism won't be a walk in the park; it demands years of dedication and innovation. All
+        co-founders need to be aggressively optimistic and driven by our mission, even when faced with immense challenges.
       </p>
       <p>
         Key characteristics:
-        <ul>
-          <li>
-            Eager to build products, not just tech.
-          </li>
-          <li>
-            Excellent problem-solving and analytical skills.
-          </li>
-          <li>
-            Ability to communicate effectively.
-          </li>
-          <li>
-            Loves focused work.
-          </li>
-          <li>
-            A make it work, make it great attitude.
-          </li>
-          <li>
-            Total dedication to the project.
-          </li>
-        </ul>
+      <ul>
+        <li>
+          Eager to build products, not just tech.
+        </li>
+        <li>
+          Excellent problem-solving and analytical skills.
+        </li>
+        <li>
+          Ability to communicate effectively.
+        </li>
+        <li>
+          Loves focused work.
+        </li>
+        <li>
+          A make it work, make it great attitude.
+        </li>
+        <li>
+          Total dedication to the project.
+        </li>
+      </ul>
       </p>
       <p>
         A degree in math, statistics, computer science, or engineering, is cool but not required.
@@ -111,23 +115,24 @@
       </p>
       <p>
         Benefits
-        <ul>
-          <li>
-            Co-founder title
-          </li>
-          <li>
-            5 weeks of vacation
-          </li>
-          <li>
-            Clear strategy, following our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d" target="_blank">method ↗</a>
-          </li>
-          <li>
-            Remote-first
-          </li>
-          <li>
-            Stock/cash based bonuses
-          </li>
-        </ul>
+      <ul>
+        <li>
+          Co-founder title
+        </li>
+        <li>
+          5 weeks of vacation
+        </li>
+        <li>
+          Clear strategy, following our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d"
+            target="_blank">method ↗</a>
+        </li>
+        <li>
+          Remote-first
+        </li>
+        <li>
+          Stock/cash based bonuses
+        </li>
+      </ul>
       </p>
     </block>
     <block>
@@ -135,7 +140,8 @@
         Apply now
       </h2>
       <p>
-        Send us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch quickly.
+        Send us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch
+        quickly.
       </p>
     </block>
   </main>
@@ -149,17 +155,22 @@
   })
 </script>
 <style scoped lang="scss">
-  main{padding-top:0;}
-  ul{
-    li{
+  main {
+    padding-top: 0;
+  }
+
+  ul {
+    li {
       padding-left: sizer(1);
       margin-top: sizer(0.5);
     }
-    li:before{
-      content:'—';
+
+    li:before {
+      content: '—';
     }
   }
-  h2{
+
+  h2 {
     margin-bottom: sizer(1);
   }
 </style>
