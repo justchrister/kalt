@@ -2,7 +2,7 @@
   <main>
     <block>
       <h1> Which card would you like to charge?</h1>
-      
+
       <input-button link="/funds/your">build your fund →</input-button>
     </block>
   </main>
@@ -23,12 +23,3 @@
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
 </script>
-<style scoped lang="scss">
-
-.inputGroup{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: sizer(1);
-  }
-  
-</style>
