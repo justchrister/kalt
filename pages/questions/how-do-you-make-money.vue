@@ -5,10 +5,10 @@
         How does Kalt make money?
       </chat-question>
       <chat-answer>
-        When you invest, we take a 4% fee. 
+        When you invest, we take a 4% fee.
       </chat-answer>
       <chat-answer>
-        When you make money, we take a 12% fee. 
+        When you make money, we take a 12% fee.
       </chat-answer>
       <chat-link to="/invest">
         invest now
@@ -27,8 +27,4 @@
       content: 'Invest in the future, today.'
     }]
   })
-  
 </script>
-<style scoped lang="scss">
-  
-</style>
