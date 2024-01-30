@@ -7,7 +7,7 @@ export const getOpenExchangeOrder = async (client, ticker, type, quantityAbsolut
     .eq('ticker', ticker)
     .eq('type', type)
     .order('timestamp', { ascending: true })
-  if(error){
+  if (error) {
     return error
   } else {
     const combined = ok.combineJsonByKeys(data, 'id');
