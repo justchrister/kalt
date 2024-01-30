@@ -6,7 +6,7 @@ export const getProcessingExchangeOrder = async (client, id) => {
     .select()
     .eq('id', id)
     .order('timestamp', { ascending: true })
-  if(error){
+  if (error) {
     ok.log('error', error)
     return 'error'
   } else {
