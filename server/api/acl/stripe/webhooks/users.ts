@@ -7,7 +7,7 @@ import Stripe from 'stripe';
 export default defineEventHandler(async (event) => {
 
   const keyPair = await ok.verifyKeyPair(event)
-  if(!keyPair) return 'unauthorized'
+  if (!keyPair) return 'unauthorized'
 
   const topic = 'users';
   const service = 'aclStripe';
@@ -22,16 +22,16 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).message(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
-  if(message.sender==='server/api/acl/stripe/webhooks/users') return 'message from self';
+  if (message.sender === 'server/api/acl/stripe/webhooks/users') return 'message from self';
 
   const user = await get(supabase).user(message.id) as user;
-  if(!user) return 'could not find user'
+  if (!user) return 'could not find user'
 
   const createUser = async (user) => {
     const stripeUser = await stripe.customers.create({
       email: user.email,
-      name: user.firstName+' '+user.lastName,
-      metadata: { 
+      name: user.firstName + ' ' + user.lastName,
+      metadata: {
         userId: message.id
       }
     });
@@ -56,15 +56,15 @@ export default defineEventHandler(async (event) => {
   const updateStripeUser = async (user: user) => {
     return await stripe.customers.update(
       user.paymentProviderId, {
-        name: user.firstName+' '+user.lastName,
-      }
+      name: user.firstName + ' ' + user.lastName,
+    }
     );
   }
   const createSetupIntent = async (customerID: string) => {
     const setupIntent = await stripe.setupIntents.create({
       customer: customerID,
       usage: 'off_session',
-      automatic_payment_methods: {
+      automatic_payment_methods: {
         enabled: true
       },
       payment_method_configuration: stripePaymentMethodConfiguration
@@ -72,22 +72,22 @@ export default defineEventHandler(async (event) => {
     ok.log('success', 'created setupIntent: ', setupIntent)
     return setupIntent;
   }
-  if(user.paymentProviderId) {
-    if(message.firstName || message.lastName) {
+  if (user.paymentProviderId) {
+    if (message.firstName || message.lastName) {
       const updatedUser = await updateStripeUser(user);
       return updatedUser
     }
     return 'user already exists, and no change in customer information'
   }
-  if(!user.paymentProviderId){
+  if (!user.paymentProviderId) {
     const createdUser = await createUser(user);
-    if(!createdUser) {
+    if (!createdUser) {
       return 'could not create user'
     } else {
       await updateUser(user.id, createdUser.id)
     }
     const setupIntent = await createSetupIntent(createdUser?.id);
-    if(setupIntent && createdUser) {
+    if (setupIntent && createdUser) {
       await pub(supabase, {
         sender: 'server/api/acl/stripe/webhooks/users',
         id: user.id
