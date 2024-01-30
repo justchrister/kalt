@@ -6,11 +6,13 @@
     </block>
     <block margin="3">
       <h2>Data Processing</h2>
-      <p>We collect and process your personal data for the purpose of providing our services. Rest assured, we do not share this data with third parties.</p>
+      <p>We collect and process your personal data for the purpose of providing our services. Rest assured, we do not
+        share this data with third parties.</p>
     </block>
     <block>
       <h2>Data Deletion</h2>
-      <p>If you wish to have your data deleted from our system, please send an email to gdpr@ka.lt and we will proceed with the removal of your information.</p>
+      <p>If you wish to have your data deleted from our system, please send an email to gdpr@ka.lt and we will proceed
+        with the removal of your information.</p>
     </block>
   </main>
 </template>
@@ -27,10 +29,10 @@
       }
     ]
   })
-  
+
 </script>
 <style scoped lang="scss">
-  main{
-    margin-top:0;
+  main {
+    margin-top: 0;
   }
 </style>
