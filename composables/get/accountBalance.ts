@@ -8,7 +8,7 @@ export const getAccountBalance = async (client, user) => {
     .order('timestamp', { ascending: true })
   const merged = ok.merge(data, 'id');
   ok.log('', merged)
-  if(error) {
+  if (error) {
     ok.log('warn', error)
     return ok.formatCurrency(0, user.currency)
   } else {
