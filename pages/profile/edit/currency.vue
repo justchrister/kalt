@@ -3,9 +3,9 @@
     <ul>
       <span @click="navigateTo('/profile')">← back</span>
       <li v-for="currency of data" :value="currency.iso" :key="currency.iso" @click="updateProfile(currency.iso)">
-        <span class="iso">{{currency.iso}}</span>
-        <span>{{currency.name}}
-          <span class="icon" v-if="selected==currency.iso"><loading-icon /></span>
+        <span class="iso">{{ currency.iso }}</span>
+        <span>{{ currency.name }}
+          <span class="icon" v-if="selected == currency.iso"><loading-icon /></span>
         </span>
       </li>
     </ul>
@@ -37,7 +37,7 @@
     }).users({
       currency: iso
     });
-    if(error) {
+    if (error) {
       ok.log('error', 'failed updating currency: ', error)
     } else {
       await ok.sleep(200);
@@ -46,33 +46,38 @@
   };
 </script>
 <style scoped lang="scss">
+  .icon {
+    float: right;
+  }
 
-.icon{
-    float:right;
-  }
-  main{
+  main {
     max-width: sizer(35);
-    margin:0 auto;
+    margin: 0 auto;
   }
-  ul{
+
+  ul {
     padding: sizer(1) sizer(2);
   }
-  li{
-    display:grid;
-    grid-template-columns: sizer(4) 4fr ;
+
+  li {
+    display: grid;
+    grid-template-columns: sizer(4) 4fr;
     padding: sizer(1) sizer(2);
     margin: sizer(1) 0;
     @include border;
     @include hoverable;
-    &:hover{
+
+    &:hover {
       @include hovering;
     }
   }
-  .iso{
-    font-family:"Kalt Monospace", monospace;
-    font-size:75%;
+
+  .iso {
+    font-family: "Kalt Monospace", monospace;
+    font-size: 75%;
   }
-  span:hover{
-    cursor:pointer;
+
+  span:hover {
+    cursor: pointer;
   }
 </style>
