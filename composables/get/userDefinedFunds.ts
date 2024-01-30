@@ -1,7 +1,6 @@
 import { ok } from '~/composables/ok'
 
 export const getUserDefinedFunds = async (client, user, ticker) => {
-
   const { data, error } = await client
     .from('topic_userDefinedFunds')
     .select()
