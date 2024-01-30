@@ -5,7 +5,7 @@
         How does this website work?
       </chat-question>
       <chat-answer>
-        You build your own fund by choosing what matters to you. 
+        You build your own fund by choosing what matters to you.
       </chat-answer>
       <chat-image url="/images/gifs/your-fund.gif">
       </chat-image>
@@ -13,7 +13,8 @@
         Just adjust on a scale from one to three hearts
       </chat-answer>
       <chat-answer>
-        Based on your selection we invest in a variety of different assets, including art, solar panels, small businesses, and more. 
+        Based on your selection we invest in a variety of different assets, including art, solar panels, small businesses,
+        and more.
       </chat-answer>
       <chat-link to="/funds/your">
         build your own fund today
@@ -56,8 +57,4 @@
       content: 'Invest in the future, today.'
     }]
   })
-  
 </script>
-<style scoped lang="scss">
-  
-</style>
