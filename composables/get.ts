@@ -1,14 +1,14 @@
 export const get = (client: any) => {
   return {
-    accountBalance: async(user: user) => {
+    accountBalance: async (user: user) => {
       const { getAccountBalance } = await import('./get/accountBalance');
       return await getAccountBalance(client, user) as accountBalance;
     },
-    autoInvest: async(user: user) => {
+    autoInvest: async (user: user) => {
       const { getAutoInvest } = await import('./get/autoInvest');
       return await getAutoInvest(client, user) as autoInvest;
     },
-    exchangeRates: async(from, to) => {
+    exchangeRates: async (from, to) => {
       const { getExchangeRates } = await import('./get/exchangeRates');
       return await getExchangeRates(client, from, to) as exchangeRates;
     },
@@ -32,11 +32,11 @@ export const get = (client: any) => {
       const { getOpenExchangeOrder } = await import('./get/openExchangeOrder');
       return await getOpenExchangeOrder(client, ticker, type, quantityAbsolute) as exchangeOrder;
     },
-    paymentMethod: async (user: user)=>{
+    paymentMethod: async (user: user) => {
       const { getPaymentMethod } = await import('./get/paymentMethod');
       return await getPaymentMethod(client, user) as paymentMethod;
     },
-    portfolio: async(user: user) => {
+    portfolio: async (user: user) => {
       const { getPortfolio } = await import('./get/portfolio');
       return await getPortfolio(client, user) as portfolio;
     },
@@ -44,7 +44,7 @@ export const get = (client: any) => {
       const { getProcessingExchangeOrder } = await import('./get/processingExchangeOrder');
       return await getProcessingExchangeOrder(client, id) as exchangeOrder;
     },
-    setupIntent: async (user: user)=>{
+    setupIntent: async (user: user) => {
       const { getSetupIntent } = await import('./get/setupIntent');
       return await getSetupIntent(user) as setupIntent;
     },
@@ -60,7 +60,7 @@ export const get = (client: any) => {
       const { getUser } = await import('./get/user');
       return await getUser(client, auth) as user;
     },
-    userDefinedFund: async(user: user) => {
+    userDefinedFund: async (user: user) => {
       const { getUserDefinedFund } = await import('./get/userDefinedFund');
       return await getUserDefinedFund(client, user) as userDefinedFund;
     },
