@@ -2,11 +2,12 @@
   <main>
     <block margin="half">
       <h1>
-        Let's invest in the future, today! <omoji emoji="✨" />
+        Let's invest in the future, today!
+        <omoji emoji="✨" />
       </h1>
     </block>
     <block margin="1">
-      <input-amount-invest  :uuid="uuid" />
+      <input-amount-invest :uuid="uuid" />
     </block>
     <block margin="1">
       <select-fund />
@@ -48,7 +49,7 @@
       status: 'pending',
       autoVest: 1
     });
-    if(error){
+    if (error) {
       ok.log('error', 'could not create transaction', error)
       loading.value = false
     } else {
@@ -59,6 +60,3 @@
     };
   }
 </script>
-<style scoped lang="scss">
-  
-</style>
