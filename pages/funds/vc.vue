@@ -1,8 +1,9 @@
 <template>
   <main>
-    <intro title="A safer way to invest in early stage startups."/>
+    <intro title="A safer way to invest in early stage startups." />
     <block margin="half" :border="true">
-      <h3>The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in.</h3>
+      <h3>The venture capital fund gives you access to a wide variety of early stage startups around the world — with
+        clear set of criteria for picking the companies and founders we invest in.</h3>
     </block>
     <block margin="half">
       <criteria-list>
@@ -26,21 +27,27 @@
     <block margin="half">
       <h2> The thesis </h2>
       <p>
-        Our investment strategy is driven by the potential for meaningful change. If no compelling investment opportunities meet our criteria, we simply don't invest. 
+        Our investment strategy is driven by the potential for meaningful change. If no compelling investment
+        opportunities meet our criteria, we simply don't invest.
       </p>
       <p>
-        In the dynamic world of venture capital, we look for outstanding startups that combine innovation, sustainability, and profitability. We invest in companies with strong growth prospects in specific market segments, led by capable founding teams committed to responsible business and impactful outcomes. 
+        In the dynamic world of venture capital, we look for outstanding startups that combine innovation, sustainability,
+        and profitability. We invest in companies with strong growth prospects in specific market segments, led by capable
+        founding teams committed to responsible business and impactful outcomes.
       </p>
       <p>
-        With this approach, we don't just aim for financial growth; we are driving meaningful change, shaping a future where innovation, sustainability, and profitability coalesce. The criteria for us to consider an investment reflect our commitment to fostering innovation, sustainability, and ethical responsibility in the ventures we support.
+        With this approach, we don't just aim for financial growth; we are driving meaningful change, shaping a future
+        where innovation, sustainability, and profitability coalesce. The criteria for us to consider an investment
+        reflect our commitment to fostering innovation, sustainability, and ethical responsibility in the ventures we
+        support.
       </p>
       <input-button link="/invest">invest now -></input-button>
     </block>
     <block margin="2">
       <h2> Ventures </h2>
       <venture-list>
-        <venture-item id="tillit"/>
-        <venture-item id="empress"/>
+        <venture-item id="tillit" />
+        <venture-item id="empress" />
       </venture-list>
     </block>
     <block>
@@ -60,15 +67,10 @@
       content: 'Invest in the future, today.'
     }]
   })
-  
+
 </script>
 <style scoped lang="scss">
-.button-group{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: sizer(1);
-}
-  main{
-    padding-top:0;
+  main {
+    padding-top: 0;
   }
 </style>
