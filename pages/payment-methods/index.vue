@@ -21,5 +21,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
+  const defaultPaymentMethod = await get(supabase).defaultPaymentMethod(user);
+  ok.log('', defaultPaymentMethod)
   </script>
 <style scoped lang="scss"></style>
