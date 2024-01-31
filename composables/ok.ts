@@ -1,7 +1,26 @@
 // @ts-nocheck
 import { v4 as uuidv4 } from 'uuid';
 export const ok = {
-
+  async post(url, bodyContent){
+    try{
+      const response = await $fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ bodyContent })
+      });
+      return await response;
+    } catch (error) {
+      return {
+        data: null,
+        error: {
+          status: 501,
+          message: 'failed getting default payment method'
+        }
+      }
+    }
+  },
   async fetch(url) {
     try {
       const response = await fetch(url);
