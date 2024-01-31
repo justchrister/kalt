@@ -8,6 +8,10 @@ export const get = (client: any) => {
       const { getAutoInvest } = await import('./get/autoInvest');
       return await getAutoInvest(client, user) as autoInvest;
     },
+    defaultPaymentMethod: async (user: user) => {
+      const { getDefaultPaymentMethod } = await import('./get/defaultPaymentMethod');
+      return await getDefaultPaymentMethod(user) as defaultPaymentMethod;
+    },
     exchangeRates: async (from, to) => {
       const { getExchangeRates } = await import('./get/exchangeRates');
       return await getExchangeRates(client, from, to) as exchangeRates;
