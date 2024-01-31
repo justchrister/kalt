@@ -34,7 +34,7 @@
     }
   })
   const innerInterval = ref();
-
+  
   const updateAutoInvestInterval = async (selectedInterval: any) => {
     let interval = selectedInterval;
     if(selectedInterval === 'monthlyBeginning') {
