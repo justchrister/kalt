@@ -1,4 +1,4 @@
-export const getSetupIntent = async (user) => {
+export const getDefaultPaymentMethod = async (user) => {
   const response = await $fetch('/api/paymentMethods/default', {
     method: 'POST',
     headers: {
