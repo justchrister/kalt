@@ -1,16 +1,38 @@
+import Stripe from 'stripe';
 import { ok } from '~/composables/ok'
+import { pub } from '~/composables/messaging'
 import { get } from '~/composables/get'
-import { serverSupabaseClient } from '#supabase/server'
+import { serverSupabaseServiceRole } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event)
+  const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
-  const client = serverSupabaseClient(event)
 
-  const { data: user } = await client
-    .from('topic_users')
-    .select()
-    .eq('id', userId)
-    .order('timestamp', { ascending: true })
-  return user
+  const stripeSecret = process.env.STRIPE_SECRET_KEY as string;
+  const stripePaymentMethodConfiguration = process.env.STRIPE_PAYMENT_METHOD_CONFIGURATION as string;
+  const stripe = new Stripe(stripeSecret);
+  
+  let data, error;
+
+  if(!body.user){
+    error = {
+      status: 400,
+      message: 'no user'
+    }
+  } else if(!body.user.paymentProviderId){
+    error = {
+      status: 400,
+      message: 'no paymentProviderId'
+    }
+  }
+  
+  const getDefaultPaymentMethod = async (id: string) => {
+    return await stripe.paymentMethods.retrieve(id);
+  };
+  const user = await get(supabase).user(body.user);
+  const paymentMethod = await get(supabase).paymentMethod(user);
+  const paymentMethodMerged = ok.merge(paymentMethod, 'id');
+  data = await getDefaultPaymentMethod(paymentMethodMerged);
+
+  return { data, error };
 });
