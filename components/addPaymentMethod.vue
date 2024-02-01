@@ -97,19 +97,20 @@
     loading.value = true;
     const result = await stripe.value.confirmSetup({
       elements: elementsGroup.value,
-      confirmParams: {
-        return_url: stripeReturnUrl
-      },
+      redirect: 'if_required'
     });
-
+    ok.log('', 'created payment method:', result)
     if (!result.error) {
-      await pub(supabase, {
+      const error = await pub(supabase, {
         sender: 'components/addPaymentMethod.vue',
         id: user.id
-      }).paymentMethod({
+      }).paymentMethods({
         id: user.id, 
+        provider: 'stripe',
+        intentToken: setupIntent.intentToken,
         methodId: result.setupIntent.payment_method
       })
+      if(!error) navigateTo('/payment-methods');
     }
 
     loading.value = false;
