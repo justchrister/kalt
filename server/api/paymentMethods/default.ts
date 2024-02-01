@@ -31,8 +31,15 @@ export default defineEventHandler(async (event) => {
   };
   const user = await get(supabase).user(body.user);
   const paymentMethod = await get(supabase).paymentMethod(user);
-  const paymentMethodMerged = ok.merge(paymentMethod, 'id');
-  data = await getDefaultPaymentMethod(paymentMethodMerged);
+  ok.log('', paymentMethod)
+  if(!paymentMethod || !paymentMethod.methodId){
+    error = {
+      status: 400,
+      message: 'no paymentMethod'
+    }
+  } else {
+    data = await getDefaultPaymentMethod(paymentMethod.methodId);
+  }
 
   return { data, error };
 });
