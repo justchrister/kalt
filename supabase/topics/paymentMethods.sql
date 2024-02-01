@@ -12,6 +12,7 @@ CREATE TABLE "topic_paymentMethods" (
 --
     "provider"                text,
     "intentToken"             text,
+    "methodId"                text,
     "authenticationRequested" boolean
 );
 
