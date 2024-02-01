@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div id="payment-element"></div>
-    <loading-icon v-if="loading"/>
-    <input-button @click="handleSubmit()"><loading-icon v-if="loading"/> save payment method</input-button>
+    <div v-if="loading">
+      loading
+    </div>
+    <div :class="!loading ? true : 'loaded'">
+      <div id="payment-element"></div>
+      <input-button @click="handleSubmit()"><loading-icon v-if="loading"/> save payment method </input-button>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -87,7 +91,6 @@
 
   const handleSubmit = async () => {
     if (!stripe.value || !paymentElement.value) {
-      console.error('Stripe has not been initialized correctly.');
       return;
     }
 
@@ -99,10 +102,14 @@
       },
     });
 
-    if (result.error) {
-      console.error('Error in saving payment method:', result.error.message);
-    } else {
-      console.log('Payment method saved successfully:', result.setupIntent.payment_method);
+    if (!result.error) {
+      await pub(supabase, {
+        sender: 'components/addPaymentMethod.vue',
+        id: user.id
+      }).paymentMethod({
+        id: user.id, 
+        methodId: result.setupIntent.payment_method
+      })
     }
 
     loading.value = false;
@@ -114,17 +121,15 @@
       if (stripe.value) {
         await createPaymentElement(setupIntent.intentToken);
         loading.value = false;
-      } else {
-        console.error('Stripe failed to load');
       }
     } catch (error) {
-      console.error('Error loading Stripe:', error);
+      ok.log('error', 'could not load Stripe:', error);
     }
   });
 
 </script>
 <style scoped lang="scss">
-  .loading-wrapper{
-    transform: scale(2);
+  .loading{
+    opacity: 0  ;
   }
 </style>
