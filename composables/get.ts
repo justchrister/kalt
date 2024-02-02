@@ -10,7 +10,7 @@ export const get = (client: any) => {
     },
     defaultPaymentMethod: async (user: user) => {
       const { getDefaultPaymentMethod } = await import('./get/defaultPaymentMethod');
-      return await getDefaultPaymentMethod(user) as defaultPaymentMethod;
+      return await getDefaultPaymentMethod(client, user) as defaultPaymentMethod;
     },
     exchangeRates: async (from, to) => {
       const { getExchangeRates } = await import('./get/exchangeRates');
