@@ -1,7 +1,9 @@
 <template>
   <main>
     <block>
-      <stripe-elements-default-payment-method :user="user" />
+      <label> Default payment method: </label>
+      <payment-method-default :user="user" :link="false"/>
+      <input-button link="/payment-methods/add"> change payment method </input-button>
     </block>
   </main>
 </template>
@@ -21,7 +23,5 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
-  const defaultPaymentMethod = await get(supabase).defaultPaymentMethod(user);
-  ok.log('', defaultPaymentMethod)
   </script>
 <style scoped lang="scss"></style>
