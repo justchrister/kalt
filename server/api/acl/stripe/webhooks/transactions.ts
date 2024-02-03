@@ -1,4 +1,5 @@
 import { ok } from '~/composables/ok'
+import { get } from '~/composables/get'
 import { pub, sub } from '~/composables/messaging';
 import { serverSupabaseServiceRole } from '#supabase/server'
 import Stripe from 'stripe';
@@ -21,19 +22,30 @@ export default defineEventHandler(async (event) => {
   if (message.type !== 'deposit') return 'transaction not deposit';
   if (message.subType !== 'card') return 'transaction not card';
 
+  const user = await get(supabase).user(message.userId);
+
+  if ( !user || !user.paymentProviderId ) return 'no stripe ids found'
+
+  const paymentMethod = await get(supabase).paymentMethod(user);
+
+  if( !paymentMethod || !paymentMethod.methodId ) return 'no stripe payment method found'
+
   const amountCents = message.amount * 100;
   const currencyLower = message.currency.toLowerCase();
 
-  const chargeCard = async (customerId: string, cardId: string) => {
+  const chargeCard = async (customerId: string, paymentMethodId: string) => {
     try {
       const charge = await stripe.paymentIntents.create({
         amount: amountCents,
         currency: currencyLower,
         description: message.transactionId,
         customer: customerId,
-        payment_method: cardId,
-        off_session: true, // Set to true if customer is not present
-        confirm: true, // This will automatically confirm the payment
+        automatic_payment_methods: {
+          enabled: false,
+        },
+        payment_method: paymentMethodId,
+        off_session: true,
+        confirm: true
       });
 
       ok.log('success', charge);
@@ -59,26 +71,13 @@ export default defineEventHandler(async (event) => {
       return 'success'
     }
   }
-  const getStripeIds = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('acl_stripe')
-      .select()
-      .eq('userId', userId)
-      .limit(1)
-      .single()
-    if (data) {
-      return data as any
-    }
-  }
 
   const transactionStatus = await updateTransactionStatus('processing', message.id, message.userId)
 
   if (transactionStatus == 'error') {
     return 'failed to set as processing'
   } else {
-    const stripeIds = await getStripeIds(message.userId);
-    if (!stripeIds || !stripeIds.stripeUserId || !stripeIds.stripeCardId) return 'no stripe ids found'
-    const charge = await chargeCard(stripeIds?.stripeUserId, stripeIds?.stripeCardId)
+    const charge = await chargeCard(user.paymentProviderId, paymentMethod.methodId)
     if (charge === 'success') {
       await updateTransactionStatus('complete', message.id, message.userId)
       return charge
