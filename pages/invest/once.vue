@@ -7,7 +7,7 @@
       </h1>
     </block>
     <block margin="1">
-      <input-amount-invest :uuid="uuid" />
+      <input-invest :uuid="uuid" type="once" />
     </block>
     <block margin="1">
       <select-fund />
@@ -41,12 +41,13 @@
     loading.value = true
     const error = await pub(supabase, {
       sender: 'pages/invest/index.vue',
-      entity: uuid
+      id: uuid
     }).transactions({
       userId: user.id,
       type: 'deposit',
       subType: 'card',
       status: 'pending',
+      currency: user.currency || 'EUR',
       autoVest: 1
     });
     if (error) {
