@@ -1,9 +1,11 @@
 <template>
   <main>
     <block>
-      <h1> Which city <span v-if="user.country">in {{ user.country }}</span> do you live in?</h1>
-      <input-user :user="user" id="city" />
-      <input-button link="/invite/accept/address">next →</input-button>
+      <h1> Which city <span v-if="country.name">in {{ country.name }}</span> do you live in?</h1>
+      <form @submit.prevent="navigateTo('/invite/accept/address')">
+        <input-user :user="user" id="city" />
+        <input-button>next →</input-button>
+      </form>
     </block>
   </main>
 </template>
@@ -22,4 +24,10 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
+  const { data: country, error } = await supabase
+    .from('sys_countries')
+    .select()
+    .eq('iso2', user.country)
+    .limit(1)
+    .single()
 </script>
