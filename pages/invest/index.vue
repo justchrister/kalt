@@ -2,7 +2,7 @@
   <main>
     <block>
       <div class="wrapper">
-        <div class="column" @click="navigateTo('/invest/onetime')">
+        <div class="column" @click="navigateTo('/invest/once')">
           <div class="text">
             <div class="title">One time investment</div>
             <div class="explainer"> Invest a single amount in your personalized fund. Useful when sending larger amounts.
