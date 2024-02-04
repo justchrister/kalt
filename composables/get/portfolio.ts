@@ -17,7 +17,7 @@ const filterOnOnlyFulfilledOrders = async (orders: any) => {
 
 export const getPortfolio = async (client, user) => {
 
-  const assetPrices = await get(client).sharePrices() as any;
+  const {data: assetPrices}= await get(client).sharePrices() as any;
   const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
   const { data: orders, error } = await client
     .from('topic_exchange')
