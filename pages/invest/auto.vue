@@ -5,7 +5,7 @@
       paragraph="Wealth is built over time, its always better to invest steadily than a single sum one time." />
     <navbar-tabs />
     <block margin="1">
-      <input-invest :initialAmount="autoInvest.amount" type="autoInvest" />
+      <input-invest :initialAmount="autoInvest?.amount" type="autoInvest" />
     </block>
     <block margin="2">
       <label> Select interval: </label>
@@ -22,7 +22,8 @@
         <loading-icon v-if="activeText === 'activating' || activeText === 'pausing'" />
       </input-button>
       <div class="center-text">
-        <span class="deactivate" @click="toggleAutoInvestments(false)">pause automation</span>
+        <span class="deactivate" v-if="active" @click="toggleAutoInvestments(false)">pause automation</span>
+        <span class="deactivate" v-else>automation is active</span>
       </div>
     </block>
     <span v-if="notification" @click="setNotification('')">
@@ -54,14 +55,14 @@
   }
 
   const autoInvest = await get(supabase).autoInvest(user) as autoInvest;
-  const selectedInterval = ref(autoInvest.interval) as autoInvestIntervals;
-  const selectInterval = async (interval: string) => {
+  const selectedInterval = ref(autoInvest?.interval || null) as autoInvestIntervals;
+  const selectInterval = (interval: string) => {
     if (interval === 'monthly') {
-      if (autoInvest.type === 'monthlyBeginning') {
+      if (autoInvest.interval === 'monthlyBeginning') {
         selectedInterval.value = 'monthlyBeginning';
-      } else if (autoInvest.type === 'monthlyMiddle') {
+      } else if (autoInvest.interval === 'monthlyMiddle') {
         selectedInterval.value = 'monthlyMiddle';
-      } else if (autoInvest.type === 'monthlyEnd') {
+      } else if (autoInvest.interval === 'monthlyEnd') {
         selectedInterval.value = 'monthlyEnd';
       } else {
         selectedInterval.value = 'monthlyMiddle';
@@ -91,22 +92,9 @@
       return 'success'
     }
   }
-  const active = ref(autoInvest.active || false)
-  const activeText = ref(autoInvest.active ? 'active' : 'activate')
-  const userHasCard = async () => {
-    const card = await get(supabase).card(user);
-    if (card) {
-      return true
-    } else {
-      return false
-    }
-  }
+  const active = ref(autoInvest?.active || false)
+  const activeText = ref(autoInvest?.active ? 'active' : 'activate')
   const toggleAutoInvestments = async (status: boolean) => {
-    const hasCard = await userHasCard();
-    if (!hasCard) {
-      setNotification('Please add a payment card')
-      return
-    }
     // on
     if (active.value && status) {
       activeText.value = 'active'
