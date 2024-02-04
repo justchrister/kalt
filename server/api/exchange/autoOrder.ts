@@ -102,8 +102,11 @@ export default defineEventHandler(async (event) => {
     'withdrawTransaction': {},
     'updatedTransaction': {}
   }
-  const assetPrices = await get(supabase).sharePrices() as any;
-  ok.log('', 'assetPrices: ', assetPrices)
+  const {data: assetPrices, error: assetPricesError} = await get(supabase).sharePrices() as any;
+  if(assetPricesError) {
+    ok.log('error', 'could not calculate asset prices', assetPricesError)
+  }
+  
   const convertedCurrency = await get(supabase).exchangeRates('EUR', message.currency)
   const user = await get(supabase).user(message.userId);
   if (!user) return 'user not found'
@@ -111,10 +114,6 @@ export default defineEventHandler(async (event) => {
   const withdrawAmount = message.amount - (message.amount * (1 - autoVestRate));
 
 
-  const withdrawTransaction = await createWithdrawTransaction(user.id, withdrawAmount, message.currency);
-  response.withdrawTransaction = withdrawTransaction || {};
-  const updatedTransaction = await updateTransaction(user.id, message.id);
-  response.updatedTransaction = updatedTransaction || {};
 
   const calculateAllocationPercentage = (userFund: any) => {
     const total = userFund.reduce((total: any, { rate }) => total + rate, 0);
@@ -131,9 +130,15 @@ export default defineEventHandler(async (event) => {
   }
 
   const userDefinedFund = await get(supabase).userDefinedFund(user)
-  if (!userDefinedFund) return 'userDefinedFund not found'
-
+  if (!userDefinedFund) {
+    return {error: 'userDefinedFund not found'}
+  }
   const allocationPercentage = calculateAllocationPercentage(userDefinedFund)
+
+  const withdrawTransaction = await createWithdrawTransaction(user.id, withdrawAmount, message.currency);
+  response.withdrawTransaction = withdrawTransaction || {};
+  const updatedTransaction = await updateTransaction(user.id, message.id);
+  response.updatedTransaction = updatedTransaction || {};
 
   for (let i = 0; i < allocationPercentage.length; i++) {
     const entry = allocationPercentage[i];
