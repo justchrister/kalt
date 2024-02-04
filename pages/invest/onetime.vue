@@ -22,7 +22,7 @@
 <script lang="ts" setup>
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = ref(auth.value)
+  const user = await get(supabase).user(auth.value);
 
   definePageMeta({
     pagename: 'Invest',
