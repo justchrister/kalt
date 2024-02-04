@@ -32,8 +32,9 @@ export default defineEventHandler(async (event) => {
 
   const amountCents = message.amount * 100;
   const currencyLower = message.currency.toLowerCase();
+  
 
-  const chargeCard = async (customerId: string, paymentMethodId: string) => {
+  const charge = async (customerId: string, paymentMethodId: string) => {
     try {
       const charge = await stripe.paymentIntents.create({
         amount: amountCents,
@@ -77,13 +78,13 @@ export default defineEventHandler(async (event) => {
   if (transactionStatus == 'error') {
     return 'failed to set as processing'
   } else {
-    const charge = await chargeCard(user.paymentProviderId, paymentMethod.methodId)
-    if (charge === 'success') {
+    const charged = await charge(user.paymentProviderId, paymentMethod.methodId)
+    if (charged === 'success') {
       await updateTransactionStatus('complete', message.id, message.userId)
-      return charge
+      return charged
     } else {
       await updateTransactionStatus('failed', message.id, message.userId)
-      return 'failed to charge card'
+      return 'failed to charge payment method'
     }
   }
 
