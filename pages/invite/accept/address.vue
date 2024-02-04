@@ -2,7 +2,7 @@
   <main>
     <block>
       <h1> Where <span v-if="user.city">in {{ user.city }}</span> do you live?</h1>
-      <form @submit.prevent="navigateTo('/invite/accept/card')">
+      <form @submit.prevent="navigateTo('/invite/accept/payment-method')">
         <input-user :user="user" id="addressLine1" />
         <input-button link="">next →</input-button>
       </form>
