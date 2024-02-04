@@ -2,8 +2,10 @@
   <main>
     <block>
       <h1>Where should we send the invite?</h1>
-      <input type="text" placeholder="email" v-model="email" class="next" />
-      <input-button @click="requestInvite()">next -></input-button>
+      <form @submit.prevent="requestInvite()">
+        <input type="text" placeholder="email" v-model="email" class="next" />
+        <input-button>next -></input-button>
+      </form>
     </block>
   </main>
 </template>
