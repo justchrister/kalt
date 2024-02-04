@@ -1,27 +1,28 @@
 import { ok } from '~/composables/ok'
 import { get } from '~/composables/get'
 
-const filterOnOnlyFulfilledOrders = async (orders: any) => {
+const filterOnOnlyFulfilledOrders = (orders: any) => {
   const fulfilledOrders = [];
-  for (let i = 0; i < orders.length; i++) {
-    if (orders[i].status !== 'fulfilled') {
+  const ordersMerged = ok.merge(orders, 'id');
+  for (let i = 0; i < ordersMerged.length; i++) {
+    if (ordersMerged[i].status !== 'fulfilled') {
       continue;
     } else {
-      const filtreredArray = orders.filter(message => message.id === orders[i].id);
-      const order = ok.combineJsonByKeys(filtreredArray, 'id');
-      fulfilledOrders.push(...order);
+      fulfilledOrders.push(ordersMerged[i]);
     }
   }
+  ok.log('', 'fulfilledOrders:', fulfilledOrders)
   return fulfilledOrders;
 }
 
 export const getPortfolio = async (client, user) => {
 
-  const {data: assetPrices}= await get(client).sharePrices() as any;
+  const { data: sharePrices } = await $fetch('/api/exchange/sharePrices')
+  
   const convertedCurrency = await get(client).exchangeRates('EUR', user.currency) || 1;
   const { data: orders, error } = await client
     .from('topic_exchange')
-    .select('userId, timestamp, id, quantity, status, ticker',)
+    .select()
     .eq('userId', user.id)
     .order('timestamp', { ascending: true })
   if (error) {
@@ -29,7 +30,7 @@ export const getPortfolio = async (client, user) => {
       error: error
     }
   }
-  const fulfilledOrders = await filterOnOnlyFulfilledOrders(orders);
+  const fulfilledOrders = filterOnOnlyFulfilledOrders(orders);
   const portfolio = [];
   const dateValueMap = {};
   let value = 0;
@@ -62,22 +63,21 @@ export const getPortfolio = async (client, user) => {
   let firstDate = new Date(latestDate);
   firstDate.setDate(latestDate.getDate() - 365);
 
-  let runningValue = 0;  // Renamed from 'value' to 'runningValue'
+  let runningValue = 0;  
 
-  // Looping through the date range and filling missing ones
   while (firstDate <= latestDate) {
     const dateStr = firstDate.toISOString().split('T')[0];
     let todaysValueChange = dateValueMap[dateStr] || 0;
 
-    runningValue += todaysValueChange;  // Use 'runningValue' here
+    runningValue += todaysValueChange;
 
     portfolio.push({
       date: dateStr,
-      value: runningValue,  // And here
+      value: runningValue, 
     });
 
     firstDate.setDate(firstDate.getDate() + 1);
   }
-
+  ok.log('', portfolio)
   return portfolio;
 }
