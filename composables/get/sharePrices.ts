@@ -1,18 +1,42 @@
 import { ok } from '~/composables/ok'
 
 export const getSharePrices = async (client) => {
-  const { data: originOrders } = await client
+  const { data: originOrders, error: errorOriginOrders } = await client
     .from('topic_exchange')
     .select()
     .order('timestamp', { ascending: true })
     .eq('origin', true)
 
-  const { data: assetList } = await client
+  if (errorOriginOrders) {
+    return {
+      data: null,
+      error: errorOriginOrders
+    }
+  }
+  if(originOrders.length === 0) {
+    return {
+      data: null,
+      error: 'could not get originOrders'
+    }
+  }
+
+  const { data: assetList, error: errorAssetList } = await client
     .from('topic_assets')
     .select()
     .order('timestamp', { ascending: true })
   const assets = ok.combineJsonByKeys(assetList, 'ticker');
-
+  if (errorAssetList) {
+    return {
+      data: null,
+      error: errorAssetList
+    }
+  }
+  if(assetList.length === 0) {
+    return {
+      data: null,
+      error: 'could not get assets'
+    }
+  }
   const shares = {};
   originOrders.forEach(message => {
     if (shares[message.ticker]) {
@@ -30,5 +54,8 @@ export const getSharePrices = async (client) => {
     }
   });
 
-  return result;
+  return {
+    error: null,
+    data: result
+  };
 };
