@@ -6,7 +6,7 @@ export const getAutoInvest = async (client, user) => {
     .select()
     .eq('id', user.id)
     .order('timestamp', { ascending: true })
-  if (error) {
+  if (error || data.length === 0) {
     ok.log('error', error)
     return null
   } else {
