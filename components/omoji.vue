@@ -173,5 +173,9 @@ span.✔️ {
 span.✅{
   background-image:url('../omoji/check.svg');
 }
+span.•{
+  background-image:url('../omoji/check.svg');
+
+}
 </style>
 
