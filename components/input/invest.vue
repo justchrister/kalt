@@ -36,6 +36,10 @@
     type: {
       type: String,
       required: true
+    }, 
+    uuid: {
+      type: String,
+      required: false
     }
   })
   const amount =  ref(props.initialAmount || '')
@@ -60,9 +64,31 @@
         ok.log('error', 'could not update amount', error)
         state.value = 'error'
       } else {
-        ok.log('success', 'updated amount 🥰')
+        ok.log('success', 'updated amount')
         await ok.sleep(200)
         state.value = 'success'
+      }
+    } else if(props.type==="once"){
+      if(!props.uuid) ok.log('error', 'missing uuid')
+
+      const error = await pub(supabase, {
+        sender:'components/input/invest.vue',
+        id: props.uuid,
+      }).transactions({
+        userId: user.id,
+        amount: ok.toInt(amount.value),
+        currency: currency.value,
+        type: 'deposit',
+        subType: 'card',
+        status: 'incomplete',
+        autoVest: 1
+      });
+      if(error) {
+        ok.log('error', 'could not update amount', error)
+      }
+      if(!error) {
+        state.value = 'success'
+        ok.log('success', 'updated amount')
       }
     }
     initialAmount = null;
