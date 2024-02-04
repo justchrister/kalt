@@ -2,11 +2,13 @@
   <main>
     <block>
       <h1> What should we call you?</h1>
-      <div class="inputGroup">
-        <input-user :user="user" id="firstName" />
-        <input-user :user="user" id="lastName" />
-      </div>
-      <input-button link="/invite/accept/legal">next →</input-button>
+      <form @submit.prevent="next()">
+        <div class="inputGroup">
+          <input-user :user="user" id="firstName" />
+          <input-user :user="user" id="lastName" />
+        </div>
+        <input-button>next →</input-button>
+      </form>
     </block>
   </main>
 </template>
@@ -25,6 +27,7 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
+  const next = () => { navigateTo('/invite/accept/legal') };
 </script>
 <style scoped lang="scss">
   .inputGroup {
