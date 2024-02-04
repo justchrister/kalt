@@ -6,7 +6,7 @@
       <div :class="{ 'choice second': true, 'selected': second }" @click="select('second')">200$ — 500$</div>
       <div :class="{ 'choice third': true, 'selected': third }" @click="select('third')">500$ — 1,000$</div>
       <div :class="{ 'choice fourth': true, 'selected': fourth }" @click="select('fourth')">Over 1,000$</div>
-      <input-button @click="requestInvite()">next -></input-button>
+      <input-button @click="navigateTo('/invite/request/email')">next -></input-button>
     </block>
   </main>
 </template>
@@ -75,7 +75,6 @@
       ok.log('error', 'could not request access ' + error.message)
     } else {
       ok.log('success', 'requested access')
-      navigateTo('/invite/request/email')
     }
   }
 
