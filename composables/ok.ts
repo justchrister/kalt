@@ -196,6 +196,17 @@ export const ok = {
     if (incomingKey === secretWebhookKey) return true;
     return false;
   },
+  sum(sumField, array, groupByField) {
+    const grouped = array.reduce((acc, obj) => {
+      const key = obj[groupByField];
+      if (!acc[key]) {
+        acc[key] = { ...obj, [sumField]: 0 }; 
+      }
+      acc[key][sumField] += obj[sumField];
+      return acc;
+    }, {});
+    return Object.values(grouped);
+  },
   merge(jsonArray: any[], ...keysToMergeOn: string[]) {
     let tempObj: { [key: string]: any } = {};
 
