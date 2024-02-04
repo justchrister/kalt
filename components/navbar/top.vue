@@ -48,8 +48,8 @@
 <script setup lang="ts">
   const route = useRoute()
   const signedIn = ref(false)
-  const auth = useSupabaseUser()
   const toggleMenu = async () => { 
+    const auth = useSupabaseUser()
     document.getElementsByTagName("body")[0].classList.toggle("show-menu");
     if(auth.value) {
       signedIn.value = true
@@ -64,7 +64,8 @@
     }
   })
   const logoClick = async () => {
-    if(signedIn.value) {
+    const auth = useSupabaseUser()
+    if(auth.value) {
       navigateTo('/portfolio')
     } else {
       navigateTo('/')
