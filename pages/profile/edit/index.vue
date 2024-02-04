@@ -9,7 +9,7 @@
       <input-user id="city" />
       <input-user id="postalCode" />
       <input-user id="addressLine1" />
-      <input-birthdate />
+      <select-birthdate />
       <input-button link="/profile">done
         <omoji emoji="✔️" />
       </input-button>
@@ -24,6 +24,4 @@
   })
   useHead({ title: 'Edit' })
 
-  const supabase = useSupabaseClient();
-  const auth = useSupabaseUser();
 </script>
