@@ -29,7 +29,6 @@ export default defineEventHandler(async (event) => {
 
   const message = await sub(supabase, topic).entity(body.record.id);
   await sub(supabase, topic).read(service, body.record.event);
-
   if (message.status !== 'complete') {
     return 'wrong payment status'
   }
@@ -131,7 +130,7 @@ export default defineEventHandler(async (event) => {
     return userDefinedFundPercentage
   }
 
-  const userDefinedFund = await get(supabase).userDefinedFund(user.id)
+  const userDefinedFund = await get(supabase).userDefinedFund(user)
   if (!userDefinedFund) return 'userDefinedFund not found'
 
   const allocationPercentage = calculateAllocationPercentage(userDefinedFund)
