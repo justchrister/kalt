@@ -2,8 +2,10 @@
   <main>
     <block>
       <h1>Where do you live?</h1>
-      <input type="text" placeholder="Country" v-model="country" class="next" />
-      <input-button @click="requestInvite()">next -></input-button>
+      <form @submit.prevent="requestInvite()">
+        <input type="text" placeholder="Country" v-model="country" class="next" />
+        <input-button>next -></input-button>
+      </form>
     </block>
   </main>
 </template>
@@ -35,7 +37,7 @@
     } else {
       ok.log('success', 'requested access')
     }
-    navigateTo('/success/request')
+    navigateTo('/request/success')
   }
 </script>
 <style scoped lang="scss">
