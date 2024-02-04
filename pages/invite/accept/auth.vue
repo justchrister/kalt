@@ -3,9 +3,9 @@
   <main>
     <block margin="half">
       <h1 class="sans-serif">
-        Welcome to the club!
-        <omoji emoji="😃" />
+        Welcome to Kalt
       </h1>
+      <p> Set an email and a secure password </p>
       <form @submit.prevent="signUp">
         <div class="input-wrap">
           <label for='email'> E-mail</label>
@@ -73,7 +73,9 @@
   button {
     margin-top: sizer(2);
   }
-
+  h1{
+    margin-bottom:sizer(0.5);
+  }
   a {
     margin: 0 sizer(0.5);
   }
