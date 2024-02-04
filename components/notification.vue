@@ -7,10 +7,6 @@
 </template>
 <script setup lang="ts">
   const props = defineProps({
-    type: {
-      type: String,
-      required: false
-    },
     message: {
       type: String,
       required: false
