@@ -16,7 +16,7 @@
         @input="updatePaymentAmount"
       />
       <div class="currency">
-        {{ user.currency }}
+        {{ currency }}
       </div>
     </div>
   </div>
@@ -39,6 +39,7 @@
     }
   })
   const amount =  ref(props.initialAmount || '')
+  const currency = ref(user.currency || 'EUR')
 
   let initialAmount = amount.value
   let previousValue;
@@ -73,7 +74,7 @@
       const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
       return Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: user.currency
+        currency: currency.value
       }).format(val)
         .slice(0, sub ? -sub : undefined)
     }
