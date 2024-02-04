@@ -8,8 +8,13 @@ export const getProcessingExchangeOrder = async (client, id) => {
     .order('timestamp', { ascending: true })
   if (error) {
     ok.log('error', error)
-    return 'error'
+    return {
+      error: error
+    }
   } else {
-    return ok.merge(data, 'id')[0]
+    const merged = ok.merge(data, 'id')[0];
+    return {
+      data: merged
+    }
   }
 };
