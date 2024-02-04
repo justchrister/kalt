@@ -9,7 +9,7 @@ declare global {
     country?: string;
     city?: string;
     postalCode?: string;
-    birthdate?: Date;
+    birthdate?: string;
     addressLine1?: string;
     addressLine2?: string;
     autoVest?: number;
