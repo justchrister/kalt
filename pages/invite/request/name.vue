@@ -2,11 +2,13 @@
   <main>
     <block>
       <h1>Where should we send the invite?</h1>
-      <div class="inputGroup">
-        <input type="text" placeholder="First name" v-model="firstName" class="next" />
-        <input type="text" placeholder="Last name" v-model="lastName" class="next" />
-      </div>
-      <input-button @click="requestInvite()">next -></input-button>
+      <form @submit.prevent="requestInvite()">
+        <div class="inputGroup">
+          <input type="text" placeholder="First name" v-model="firstName" class="next" />
+          <input type="text" placeholder="Last name" v-model="lastName" class="next" />
+        </div>
+        <input-button>next -></input-button>
+      </form>
     </block>
   </main>
 </template>
