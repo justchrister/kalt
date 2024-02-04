@@ -15,7 +15,7 @@
         v-model="amount"
         @input="updatePaymentAmount"
       />
-      <div class="currency">{{ user.currency }}</div>
+      <div class="currency">{{ currency }}</div>
     </div>
   </div>
 </template>
@@ -30,11 +30,18 @@ const user = await get(supabase).user(auth.value)
     uuid: {
       type: String,
       required: true
+    },
+    initialAmount: {
+      type: Number,
+      required: false,
+      default: null
     }
   })
   
   const amount = ref(10);
-  let initialAmount = props.amount;
+  const currency = ref(user.currency || 'EUR');
+  
+  let initialAmount = props.initialAmount;
   let previousValue;
   const updatePaymentAmount = async () => { 
     if(initialAmount==ok.toInt(amount.value)) return
@@ -47,7 +54,7 @@ const user = await get(supabase).user(auth.value)
       }).transactions({
         userId: user.id,
         amount: ok.toInt(amount.value),
-        currency: user.currency,
+        currency: currency.value,
         type: 'deposit',
         subType: 'card',
         status: 'incomplete',
@@ -65,7 +72,7 @@ const user = await get(supabase).user(auth.value)
       const sub = 3 - (val.includes('.') ? val.length - val.indexOf('.') : 0)
       return Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: user.currency
+        currency: currency.value
       }).format(val)
         .slice(0, sub ? -sub : undefined)
     }
