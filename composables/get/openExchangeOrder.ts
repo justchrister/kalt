@@ -8,15 +8,22 @@ export const getOpenExchangeOrder = async (client, ticker, type, quantityAbsolut
     .eq('type', type)
     .order('timestamp', { ascending: true })
   if (error) {
-    return error
+    return {
+      error,
+      data: null
+    }
   } else {
-    const combined = ok.combineJsonByKeys(data, 'id');
+    const combined = ok.merge(data, 'id');
     const unfulfilledOrders = combined.filter(message => message.status === 'open');
     const ordersWithQuantityAbsolute = unfulfilledOrders.map(message => {
       message.quantityAbsolute = Math.abs(message.quantity);
       return message;
     });
     const order = ordersWithQuantityAbsolute.find(message => message.quantityAbsolute >= quantityAbsolute);
-    return order;
+
+    return {
+      error: null,
+      data: order
+    };
   }
 };
