@@ -24,8 +24,8 @@ export default defineEventHandler(async (event) => {
 
   const toggleAsProcessing = async (order: string, me: string, on: boolean) => {
     const error = await pub(supabase, {
-      sender: 'server/api/match/match.ts',
-      entity: order
+      sender: 'server/api/exchange/match.ts',
+      id: order
     }).exchangeOrders({
       status: on ? 'processing' : 'open',
       processingBy: on ? me : null
@@ -46,31 +46,30 @@ export default defineEventHandler(async (event) => {
     ...message
   } as any;
 
-  const fulfillingOrder = await get(supabase).openExchangeOrder(originalOrder.ticker, originalOrder.typeInverted, originalOrder.quantityAbsolute) as any;
-  if (!fulfillingOrder) return 'no fulfilling order available'
+  const {data: fulfillingOrder, error: fulfillingOrderError} = await get(supabase).openExchangeOrder(originalOrder.ticker, originalOrder.typeInverted, originalOrder.quantityAbsolute) as any;
+  if (!fulfillingOrder || fulfillingOrderError) return 'no fulfilling order available'
 
   const fulfillingOrderisSetAsProcessing = await toggleAsProcessing(fulfillingOrder.id, me, true);
   if (!fulfillingOrderisSetAsProcessing) return 'error';
 
-  await ok.sleep(500);
+  await ok.sleep(200);
 
   const amIProcessing = async (order: string, me: string) => {
-    const exchangeOrder = await get(supabase).processingExchangeOrder(order);
-    ok.log('', exchangeOrder)
-    if (exchangeOrder === 'error') {
+    const {data, error} = await get(supabase).processingExchangeOrder(order);
+    ok.log('', data)
+    if (error) {
       return false
-    }
-    if (exchangeOrder.processingBy === me) {
+    } else if (data.processingBy === me) {
       return true
     } else {
       return false
     }
   }
-  ok.log('', 'originalORder: ', originalOrder)
-  ok.log('', 'fulfillingOrder:', fulfillingOrder)
+  
   // check if both orders are processing
   const amIProcessingOriginalOrder = await amIProcessing(originalOrder.id, me);
   const amIProcessingFulfillingOrder = await amIProcessing(fulfillingOrder.id, me);
+
   if (!amIProcessingOriginalOrder || !amIProcessingFulfillingOrder) {
     if (amIProcessingOriginalOrder) {
       await toggleAsProcessing(originalOrder.id, me, false);
@@ -82,7 +81,7 @@ export default defineEventHandler(async (event) => {
   }
   if (fulfillingOrder.quantityAbsolute === originalOrder.quantityAbsolute) {
     await pub(supabase, {
-      sender: 'server/api/match/match.ts',
+      sender: 'server/api/exchange/match.ts',
       entity: originalOrder.id
     }).exchangeOrders({
       userId: originalOrder.userId,
@@ -91,7 +90,7 @@ export default defineEventHandler(async (event) => {
     } as any);
 
     await pub(supabase, {
-      sender: 'server/api/match/match.ts',
+      sender: 'server/api/exchange/match.ts',
       entity: fulfillingOrder.id
     }).exchangeOrders({
       userId: fulfillingOrder.userId,
@@ -104,7 +103,7 @@ export default defineEventHandler(async (event) => {
     const newOrderId2 = ok.uuid();
 
     await pub(supabase, {
-      sender: 'server/api/match/match.ts',
+      sender: 'server/api/exchange/match.ts',
       entity: originalOrder.id
     }).exchangeOrders({
       userId: originalOrder.userId,
@@ -113,7 +112,7 @@ export default defineEventHandler(async (event) => {
     } as any);
 
     await pub(supabase, {
-      sender: 'server/api/match/match.ts',
+      sender: 'server/api/exchange/match.ts',
       entity: fulfillingOrder.id
     }).exchangeOrders({
       userId: fulfillingOrder.userId,
@@ -125,7 +124,7 @@ export default defineEventHandler(async (event) => {
     } as any);
 
     await pub(supabase, {
-      sender: 'server/api/match/match.ts',
+      sender: 'server/api/exchange/match.ts',
       entity: newOrderId1
     }).exchangeOrders({
       status: 'fulfilled',
@@ -137,7 +136,7 @@ export default defineEventHandler(async (event) => {
     } as any);
 
     await pub(supabase, {
-      sender: 'server/api/match/match.ts',
+      sender: 'server/api/exchange/match.ts',
       entity: newOrderId2
     }).exchangeOrders({
       status: 'open',
