@@ -82,7 +82,7 @@ export default defineEventHandler(async (event) => {
   if (fulfillingOrder.quantityAbsolute === originalOrder.quantityAbsolute) {
     await pub(supabase, {
       sender: 'server/api/exchange/match.ts',
-      entity: originalOrder.id
+      id: originalOrder.id
     }).exchangeOrders({
       userId: originalOrder.userId,
       status: 'fulfilled',
@@ -91,7 +91,7 @@ export default defineEventHandler(async (event) => {
 
     await pub(supabase, {
       sender: 'server/api/exchange/match.ts',
-      entity: fulfillingOrder.id
+      id: fulfillingOrder.id
     }).exchangeOrders({
       userId: fulfillingOrder.userId,
       status: 'fulfilled',
@@ -104,7 +104,7 @@ export default defineEventHandler(async (event) => {
 
     await pub(supabase, {
       sender: 'server/api/exchange/match.ts',
-      entity: originalOrder.id
+      id: originalOrder.id
     }).exchangeOrders({
       userId: originalOrder.userId,
       status: 'fulfilled',
@@ -113,7 +113,7 @@ export default defineEventHandler(async (event) => {
 
     await pub(supabase, {
       sender: 'server/api/exchange/match.ts',
-      entity: fulfillingOrder.id
+      id: fulfillingOrder.id
     }).exchangeOrders({
       userId: fulfillingOrder.userId,
       status: 'split',
@@ -125,7 +125,7 @@ export default defineEventHandler(async (event) => {
 
     await pub(supabase, {
       sender: 'server/api/exchange/match.ts',
-      entity: newOrderId1
+      id: newOrderId1
     }).exchangeOrders({
       status: 'fulfilled',
       partOf: fulfillingOrder.id,
@@ -137,7 +137,7 @@ export default defineEventHandler(async (event) => {
 
     await pub(supabase, {
       sender: 'server/api/exchange/match.ts',
-      entity: newOrderId2
+      id: newOrderId2
     }).exchangeOrders({
       status: 'open',
       partOf: fulfillingOrder.id,
