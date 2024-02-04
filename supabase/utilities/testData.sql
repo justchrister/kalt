@@ -1,14 +1,4 @@
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1672122086', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', 'buy', 'open', null, null, null, true);
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1674800486', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', true);
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1677478886', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', 'buy', 'open', null, null, null, true);
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1682572886', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', 'buy', 'open', null, null, null, true);
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1672122086', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', 'buy', 'open', null, null, null, true);
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1672122086', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', 'buy', 'open', null, null, null, true);
-insert into public."topic_exchange" ("sent", "sender", "userId", "quantity", "ticker", "type", "status", "fulfilledBy", "splitInto", "partOf", "origin") values
-  ('1672122086', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 10, 'art', 'buy', 'open', null, null, null, true);
+insert into public."topic_exchange" ("timestamp", "sender", "userId", "quantity", "ticker", "type", "status", "origin") values
+  ('2022-02-04 19:57:41.689769+00', 'test data',  'DDF00002-9933-4eaf-886b-e6e7e5b0205a', 100, 'art', 'buy', 'open', true);
+insert into public."topic_exchange" ("timestamp", "sender", "userId", "quantity", "ticker", "type", "status", "origin") values
+  ('2023-03-04 19:57:41.689769+00', 'test data',  'DDF00001-9933-4eaf-886b-e6e7e5b0205a', 100, 'ffe', 'buy', 'open',true);
