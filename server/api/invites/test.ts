@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
   return {
     incomingKey,
     secretCronKey,
-    secretWebhookKey
+    secretWebhookKey, 
+    event
   }
 });
