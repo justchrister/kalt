@@ -13,7 +13,7 @@
         Learn more about our <nuxt-link to="/vision">vision →</nuxt-link>
       </p>
       <p>
-        Operational philosophy:
+        Operational philosophy: 
       <ul>
         <li>
           An academic environment where delivery is the key
