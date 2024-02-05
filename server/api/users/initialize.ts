@@ -10,11 +10,10 @@ export default defineEventHandler(async (event) => {
 
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
-  const user = await get(supabase).user(body.record.id) as user;
   // get data from on-boarding flow here
   await pub(supabase, {
     sender: 'server/api/users/initialize.ts',
-    id: user.id
+    id: body.record.id
   }).users({
     currency: 'EUR',
     language: 'ENG',
