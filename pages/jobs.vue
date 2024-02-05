@@ -23,10 +23,10 @@
             target="_blank">method ↗</a>
         </li>
         <li>
-          Apply cutting-edge ML/AI to problems that actually matter
+          Simple first, then powerful
         </li>
         <li>
-          Mentorship and continuous learning opportunities
+          Solve real problems with cutting-edge ML/AI
         </li>
       </ul>
       </p>
