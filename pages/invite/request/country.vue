@@ -37,7 +37,7 @@
     } else {
       ok.log('success', 'requested access')
     }
-    navigateTo('/request/success')
+    navigateTo('/invite/request/success')
   }
 </script>
 <style scoped lang="scss">
