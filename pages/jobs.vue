@@ -15,6 +15,7 @@
       xxx
       <p>
         Operational philosophy: 
+      </p>
       <ul>
         <li>
           An academic environment where delivery is the key
@@ -30,9 +31,9 @@
           Solve real problems with cutting-edge ML/AI
         </li>
       </ul>
-      </p>
       <p>
         Our tech-stack:
+      </p>
       <ul>
         <li>
           Python ML stack
@@ -47,14 +48,12 @@
           Supabase + Vercel as backend
         </li>
       </ul>
-      </p>
       <p>
         Read more on <a href="https://github.com/justchrister/kalt" target="_blank"> GitHub ↗</a>
       </p>
     </block>
     <block margin="half">
       <h2>Open roles</h2>
-      <p>
       <ul>
         <li>
           Fullstack developer
@@ -72,7 +71,6 @@
           Chief investment officer
         </li>
       </ul>
-      </p>
     </block>
     <block margin="half">
       <h2> Qualifications and expectations </h2>
@@ -82,6 +80,7 @@
       </p>
       <p>
         Key characteristics:
+      </p>
       <ul>
         <li>
           Eager to build products, not just tech.
@@ -102,7 +101,6 @@
           Total dedication to the project.
         </li>
       </ul>
-      </p>
       <p>
         A degree in math, statistics, computer science, or engineering, is cool but not required.
       </p>
@@ -115,7 +113,8 @@
         All employees are paid a minimum of 75 000 EUR, the same salary the CEO is paid.
       </p>
       <p>
-        Benefits
+        Benefitsxxx
+      </p>
       <ul>
         <li>
           Co-founder title
@@ -134,7 +133,6 @@
           Stock/cash based bonuses
         </li>
       </ul>
-      </p>
     </block>
     <block>
       <h2>
