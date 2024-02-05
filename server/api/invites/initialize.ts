@@ -12,7 +12,6 @@ export default defineEventHandler(async (event) => {
 
   const supabase = serverSupabaseServiceRole(event)
   const body = await readBody(event)
-  const user = await get(supabase).user(body.record.id) as user;
   const generateCode = () => {
     const one = generate({ minLength: 4, maxLength: 7 });
     const two = generate({ minLength: 5, maxLength: 7 });
@@ -24,9 +23,9 @@ export default defineEventHandler(async (event) => {
     const generatedCode = generateCode()
     await pub(supabase, {
       sender: 'server/api/invites/initialize.ts',
-      id: user.id
+      id: body.record.id
     }).invites({
-      issuedTo: user.id,
+      issuedTo: body.record.id,
       used: false,
       code: generatedCode
     } as user);
