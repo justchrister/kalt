@@ -158,6 +158,7 @@
   }
 
   ul {
+    padding-bottom: sizer(2);
     li {
       padding-left: sizer(1);
       margin-top: sizer(0.5);
