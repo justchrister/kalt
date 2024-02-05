@@ -12,7 +12,6 @@
       <p>
         Learn more about our <nuxt-link to="/vision">vision →</nuxt-link>
       </p>
-      xxx
       <p>
         Operational philosophy: 
       </p>
@@ -113,7 +112,7 @@
         All employees are paid a minimum of 75 000 EUR, the same salary the CEO is paid.
       </p>
       <p>
-        Benefitsxxx
+        Benefits
       </p>
       <ul>
         <li>
