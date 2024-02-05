@@ -12,6 +12,7 @@
       <p>
         Learn more about our <nuxt-link to="/vision">vision →</nuxt-link>
       </p>
+      xxx
       <p>
         Operational philosophy: 
       <ul>
