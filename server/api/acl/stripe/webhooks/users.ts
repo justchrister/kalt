@@ -36,10 +36,10 @@ export default defineEventHandler(async (event) => {
       }
     });
     if (stripeUser) {
-      ok.log('succes', 'created user:', stripeUser)
+      ok.log('succes', 'created Stripe user: '+stripeUser.id)
       return stripeUser;
     } else {
-      ok.log('error', 'could not create user')
+      ok.log('error', 'could not create Stripe user')
       return;
     }
   };
