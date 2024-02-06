@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
       'used': false
     });
     if (error) {
-      ok.log('error', error)
+      ok.log('error', 'failed to saveSetupIntent: '+error.message)
       return 'error'
     } else {
       return setupIntent
