@@ -37,7 +37,7 @@
       if (year.value > max.value) {
         wrong.value = true;
         notification.value='You must be at least 18 years old to use this service'
-        ok.log('', 'user under 18')
+        ok.log('warn', 'user under 18')
         return
       }
     }
