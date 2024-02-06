@@ -22,9 +22,6 @@
   })
   const state = ref('')
   const iban = ref(props.initialValue || null)
-  if(props.initialValue) {
-    ok.log('success', 'initial value: '+props.initialValue)
-  }
 
   const updateIBAN = async () => {
     state.value = 'loading'
@@ -36,7 +33,7 @@
     });
     if(error) {
       state.value = 'error'
-      ok.log('error', 'error updating IBAN', error)
+      ok.log('error', 'error updating IBAN: '+error.message)
     } else{
       state.value = 'success'
       ok.log('success', 'updated IBAN: '+iban.value)
