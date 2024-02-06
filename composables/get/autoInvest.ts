@@ -7,7 +7,7 @@ export const getAutoInvest = async (client, user) => {
     .eq('id', user.id)
     .order('timestamp', { ascending: true })
   if (error || data.length === 0) {
-    ok.log('error', error)
+    ok.log('error', 'could not getAutoInvest: '+error.message)
     return null
   } else {
     const combined = ok.merge(data, 'id')[0];
