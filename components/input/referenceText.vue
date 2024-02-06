@@ -34,8 +34,8 @@
       state.value = 'error'
       ok.log('error', 'error updating reference: '+error.message)
     } else{
+      ok.log('', 'updated reference')
       state.value = 'success'
-      ok.log('success', 'updated reference: '+reference.value)
     }
   }
 
