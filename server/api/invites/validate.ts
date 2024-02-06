@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
       .select()
     if (data) return true
     if (!data || error) {
-      ok.log('error', error)
+      ok.log('error', 'failed to useCode: '+error.message)
       return false
     }
   }
