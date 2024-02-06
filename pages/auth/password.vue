@@ -47,7 +47,7 @@
     if (!error) {
       navigateTo('/success/password')
     } else {
-      ok.log('error', 'password reset did not work? ' + error)
+      ok.log('error', 'password reset did not work: '+error.message)
       notification.value = {
         type: 'error',
         message: error.message
