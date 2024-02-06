@@ -1,6 +1,6 @@
 <template>
   <div @click="markedAsUnavail=true" class="outside-wrapper">
-    <modal title="This feature is not available (yet)" :show="markedAsUnavail">
+    <modal title="Feature is not available" :show="markedAsUnavail">
       We only offer our website in english, but will add more languages in the future.
     </modal>
     <label>Language: </label>
