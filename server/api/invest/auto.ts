@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
     } as transaction);
 
     if (errorTransaction) {
-      ok.log('error', errorTransaction)
+      ok.log('error', 'could not createTransactions: '+errorTransaction.message)
       return;
     } else {
       ok.log('success', 'created transaction')
@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
     } as autoInvest);
 
     if (errorAutoInvest) {
-      ok.log('error', 'could not update auto invest: ', error)
+      ok.log('error', 'could not update auto invest: '+errorAutoInvest.message)
     } else {
       ok.log('success', 'updated auto invest')
     }
