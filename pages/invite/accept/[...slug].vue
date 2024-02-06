@@ -21,20 +21,16 @@
   })
   const route = useRoute()
   const inviteCode = ref(route.params.slug[0] || null)
-  ok.log('', inviteCode.value)
   const startInvite = async () => {
     const { data, error } = await useFetch('/api/invites/validate?code=' + inviteCode.value, {
       method: 'POST'
     })
     const status = data?.value.status
     if (error.value) {
-      ok.log('', 'im here')
       return
     } else if (status === 'valid') {
-      ok.log('', status)
       navigateTo('/invite/accept/auth')
     } else {
-      ok.log('', status)
       return status
     }
   }
