@@ -74,7 +74,6 @@ const user = await get(supabase).user(auth.value) as user;
       notify2.value = false
     }
     if(amountFloat>0){
-    ok.log('', amountFloat)
       const error = await pub(supabase, {
         sender:'components/input/amountSell.vue',
         id: props.uuid
@@ -84,7 +83,7 @@ const user = await get(supabase).user(auth.value) as user;
         status: 'incomplete',
         type: 'withdraw'
       });
-      if(error) ok.log('error', 'could not update quantity', error)
+      if(error) ok.log('error', 'could not update quantity: '+error.message)
       if(!error) ok.log('success', 'updated quantity')
     } else{
       return false
