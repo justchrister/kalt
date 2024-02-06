@@ -106,7 +106,7 @@
       elements: elementsGroup.value,
       redirect: 'if_required'
     });
-    ok.log('', 'created payment method:', result)
+    ok.log('', 'created payment method')
     if (!result.error) {
       const error = await pub(supabase, {
         sender: 'components/addPaymentMethod.vue',
