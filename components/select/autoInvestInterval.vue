@@ -68,7 +68,7 @@
   }
   const isSelected = ref(props.selected === props.type || false);
   const setSelectedValue = async () => {
-    if(props.selected && props.selected.startsWith('monthly') && props.type==='monthly') {
+    if(props.selected.startsWith('monthly') && props.type==='monthly') {
       isSelected.value = true;
       updateAutoInvestInterval(props.selected);
     }
