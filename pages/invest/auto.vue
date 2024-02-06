@@ -46,9 +46,6 @@
   })
 
   const setNotification = async (message: string) => {
-    if (message) {
-      ok.log('warn', message)
-    }
     notification.value = message
     loading.value = false
     return
@@ -80,7 +77,7 @@
       active: activeStatus
     });
     if (error) {
-      ok.log('error', 'could not update autoInvestments' + error)
+      ok.log('error', 'could not update updateAutoInvestments: '+error.message)
       return 'error'
     } else {
       if (activeStatus) {
@@ -88,7 +85,7 @@
       } else {
         active.value = false
       }
-      ok.log('success', 'updated autoInvestments 🥰')
+      ok.log('success', 'updated autoInvestments')
       return 'success'
     }
   }
