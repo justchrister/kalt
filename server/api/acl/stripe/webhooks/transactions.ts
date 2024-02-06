@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
         confirm: true
       });
 
-      ok.log('success', charge);
+      ok.log('success', 'charged: ', charge);
       return 'success'
     } catch (error: any) {
       ok.log('error', 'failed to charge ' + customerId + ' / ' + message.userId + ': ', error.statusCode + ': ' + error.raw.message);
@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
       status: status
     } as transaction);
     if (error) {
-      ok.log('error', 'error updating payment pending status', error)
+      ok.log('error', 'could not updateTransactionStatus: '+error.message)
       return 'error'
     } else {
       ok.log('success', 'updated payment pending status')
