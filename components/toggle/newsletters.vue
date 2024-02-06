@@ -28,8 +28,8 @@
     if(error) {
       ok.log('error', 'Error updating user preferences: '+error.message)
     } else {
-      if(isOn.value) ok.log('', 'Subscribed to newsletters')
-      else ok.log('', 'Unsubscribed from newsletters')
+      if(isOn.value) ok.log('success', 'Subscribed to newsletters')
+      else ok.log('success', 'Unsubscribed from newsletters')
     }
   }
 </script>
