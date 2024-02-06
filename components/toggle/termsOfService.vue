@@ -24,7 +24,7 @@
       termsOfService: isOn.value
     });
     if(error) {
-      ok.log('error', 'Error updating user preferences: ', error)
+      ok.log('error', 'Error updating user preferences: '+error.message)
     } else {
       if(isOn.value) ok.log('', 'Accepted terms of service')
       else ok.log('', 'Declined terms of service')
