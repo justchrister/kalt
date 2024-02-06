@@ -187,9 +187,9 @@ export const ok = {
     return result;
   },
   verifyKeyPair: async (event: any) => {
-    const key = 'Bearer ' + process.env.CRON_SECRET;
+    const storedKey = 'Bearer ' + process.env.CRON_SECRET;
     const incomingKey = event.node.req.headers['authorization'];    
-    if (incomingKey === key) return true;
+    if (incomingKey === storedKey) return true;
     return false;
   },
   sum(sumField, array, groupByField) {
