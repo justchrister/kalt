@@ -4,7 +4,7 @@
   "crons": [
     {
       "path": "/api/invest/auto",
-      "schedule": "40 * * * *"
+      "schedule": "0 * * * *"
     },
     {
       "path": "/api/acl/norgesbank/updateExchangeRates",
