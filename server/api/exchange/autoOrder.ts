@@ -54,7 +54,7 @@ export default defineEventHandler(async (event) => {
       sender: 'server/api/exchange/autoOrder.ts'
     }).exchangeOrders(json);
     if (error) {
-      ok.log('error', error)
+      ok.log('error', 'could not createExchangeOrder: '+error.message)
       return error
     } else {
       return { json }
@@ -104,7 +104,7 @@ export default defineEventHandler(async (event) => {
   }
   const {data: assetPrices, error: assetPricesError} = await get(supabase).sharePrices() as any;
   if(assetPricesError) {
-    ok.log('error', 'could not calculate asset prices', assetPricesError)
+    ok.log('error', 'could not calculate asset prices: '+assetPricesError.message)
   }
   
   const convertedCurrency = await get(supabase).exchangeRates('EUR', message.currency)
@@ -145,7 +145,6 @@ export default defineEventHandler(async (event) => {
     if (entry.allocation === 0 || !entry.allocation) continue;
     const currencyConvertedSharePrice = assetPrices[entry.ticker] * convertedCurrency;
     const investQuantity = (message.amount * autoVestRate * entry.allocation) / currencyConvertedSharePrice;
-    ok.log('', 'investQuantity ' + entry.ticker + ': ', investQuantity)
     const exchangeOrder = await createExchangeOrder(user.id, investQuantity, entry.ticker);
     response.exchangeOrders.push(exchangeOrder);
   }
