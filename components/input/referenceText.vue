@@ -21,9 +21,6 @@
   })
   const state = ref('')
   const reference = ref(props.initialValue)
-  if(props.initialValue) {
-    ok.log('success', 'initial value: '+props.initialValue)
-  }
 
   const updateReference = async () => {
     state.value = 'loading'
@@ -35,7 +32,7 @@
     });
     if(error) {
       state.value = 'error'
-      ok.log('error', 'error updating reference', error)
+      ok.log('error', 'error updating reference: '+error.message)
     } else{
       state.value = 'success'
       ok.log('success', 'updated reference: '+reference.value)
