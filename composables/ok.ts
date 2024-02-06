@@ -189,13 +189,9 @@ export const ok = {
   verifyKeyPair: async (event: any) => {
     const secretCronKey = 'Bearer ' + process.env.CRON_SECRET;
     const secretWebhookKey = 'Bearer ' + process.env.WEBHOOK_SECRET;
-    const incomingKey = event.node.req.headers['authorization'];
-    const incomingKey2 = event.node.req.headers['auth'];
-    
+    const incomingKey = event.node.req.headers['authorization'];    
     if (incomingKey === secretCronKey) return true;
-    if (incomingKey2 === secretCronKey) return true;
     if (incomingKey === secretWebhookKey) return true;
-    if (incomingKey2 === secretWebhookKey) return true;
     return false;
   },
   sum(sumField, array, groupByField) {
