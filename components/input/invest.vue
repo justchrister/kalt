@@ -61,10 +61,9 @@
         amount: ok.toInt(amount.value)
       });
       if(error) {
-        ok.log('error', 'could not update amount', error)
+        ok.log('error', 'could not update amount: '+error.message)
         state.value = 'error'
       } else {
-        ok.log('success', 'updated amount')
         await ok.sleep(200)
         state.value = 'success'
       }
@@ -84,11 +83,10 @@
         autoVest: 1
       });
       if(error) {
-        ok.log('error', 'could not update amount', error)
+        ok.log('error', 'could not update amount: '+error.message)
       }
       if(!error) {
         state.value = 'success'
-        ok.log('success', 'updated amount')
       }
     }
     initialAmount = null;
