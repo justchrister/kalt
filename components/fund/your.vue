@@ -37,34 +37,8 @@
     .single()
   const rate = ref(0)
   const state = await get(supabase).userDefinedFunds(user, props.ticker);
-  ok.log('', state)
-  const logHearts = async () => {
-    if(rate.value===3){
-      if(props.ticker.length==3){
-        ok.log('', props.ticker+'       ♥ ♥ ♥')
-      } else {
-        ok.log('', props.ticker+'        ♥ ♥ ♥')
-      }
-    } 
-    if(rate.value===2) {
-      if(props.ticker.length==3){
-        ok.log('', props.ticker+'       ♥ ♥')
-      } else {
-        ok.log('', props.ticker+'        ♥ ♥')
-      }
-    }
-    if(rate.value===1) {
-      if(props.ticker.length==3){
-        ok.log('', props.ticker+'       ♥')
-      } else {
-        ok.log('', props.ticker+'        ♥')
-      }
-    }
-  }
   if(state && state.rate){
     rate.value = state.rate
-    ok.log('', 'rate: '+rate.value)
-    logHearts()
   }
   const adjustrate = async () => {
     if(rate.value===3){
@@ -72,7 +46,6 @@
     } else {
       rate.value = rate.value + 1
     }
-    logHearts()
     const { } = await pub(supabase, {
       sender:'components/fund/your.vue',
       id: user.id
