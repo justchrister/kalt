@@ -22,9 +22,6 @@
   })
   const state = ref('')
   const bankCode = ref(props.initialValue)
-  if(props.initialValue) {
-    ok.log('success', 'initial value: '+props.initialValue)
-  }
   const updateBankCode = async () => {
     state.value = 'loading'
     const error = await pub(supabase, {
@@ -35,7 +32,7 @@
     });
     if(error) {
       state.value = 'error'
-      ok.log('error', 'error updating bank code', error)
+      ok.log('error', 'error updating bank code: '+error.message)
     } else{
       state.value = 'success'
       ok.log('success', 'updated bank code: '+bankCode.value)
