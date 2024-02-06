@@ -191,8 +191,7 @@ export const ok = {
     const secretWebhookKey = 'Bearer ' + process.env.WEBHOOK_SECRET;
     const incomingKey = event.node.req.headers['authorization'];
     const incomingKey2 = event.node.req.headers['auth'];
-
-    if (!incomingKey || !incomingKey2) return false;
+    
     if (incomingKey === secretCronKey) return true;
     if (incomingKey2 === secretCronKey) return true;
     if (incomingKey === secretWebhookKey) return true;
