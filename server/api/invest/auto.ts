@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   }
   const testing = false;
 
-  const gracePeriodHours = 0;
+  const gracePeriodHours = 2;
   const gracePeriod = testing ? 0 : gracePeriodHours;
   const { data, error } = await supabase
     .from('topic_autoInvest')
