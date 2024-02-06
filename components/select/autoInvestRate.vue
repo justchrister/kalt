@@ -28,7 +28,7 @@
       autoVest: autoVest
     });
     if(error){
-      ok.log('', 'error updating auto-invest: ', error)
+      ok.log('', 'error updating auto-invest: '+error.message)
     } else {
       ok.log('', 'updated auto-invest: '+autoVestRate)
     }
