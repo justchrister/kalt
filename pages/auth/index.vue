@@ -43,7 +43,6 @@
   const notification = ref(null);
 
   const setNotification = async (message) => {
-    ok.log('error', message)
     notification.value = message
     loading.value = false
     return
@@ -68,7 +67,7 @@
       if (error) {
         loading.value = false
         setNotification(error.message);
-        ok.log('error', error)
+        ok.log('error', 'could not sign in: '+error.message)
       } else if (data) {
         ok.log('success', 'signed in ' + email.value + ' successfully');
         await navigateTo("/portfolio");
