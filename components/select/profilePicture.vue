@@ -69,7 +69,11 @@
     }).users({
       profilePicture: selectedProfilePicture
     });
-    if(error) ok.log('error', 'could not update profile picture: '+error.message)
+    if(error) {
+      ok.log('error', 'could not update profile picture: '+error.message)
+    } else {
+      ok.log('success', 'updated profile picture')
+    }
   };
 
 </script>
