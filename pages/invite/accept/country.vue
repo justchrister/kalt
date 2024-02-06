@@ -50,7 +50,7 @@
       country: iso
     });
     if (error) {
-      ok.log('error', 'failed updating country: ', error)
+      ok.log('error', 'failed updating country: '+error.message)
     } else {
       await ok.sleep(200);
       navigateTo('/invite/accept/city')
