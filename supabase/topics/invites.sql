@@ -10,10 +10,15 @@ CREATE TABLE "topic_invites" (
     "timestamp"           timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "sender"              text                            NOT NULL,
 -- 
-    "issuedTo"            text,
+    "issuedTo"            uuid,
     "code"                text,
     "used"                boolean
 );
 
 --- row level security
 ALTER TABLE "topic_invites" ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "SELF — Select" ON "public"."topic_invites"
+  AS PERMISSIVE FOR SELECT
+  TO authenticated
+  USING (auth.uid() = "issuedTo");
