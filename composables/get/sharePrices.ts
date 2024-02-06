@@ -34,7 +34,6 @@ export const getSharePrices = async (client) => {
   const assets = ok.sum('value', assetList, 'ticker');
   
   if (errorAssetList) {
-    ok.log('error', 'errorAssetList', errorAssetList)
     return {
       data: null,
       error: errorAssetList
