@@ -50,7 +50,6 @@
   }
 
   const setNotification = async (message) => {
-    ok.log('error', message)
     notification.value = message
     loading.value = false
     return
@@ -59,7 +58,6 @@
   const portfolioMax = await getPortfolioMax();
   const accountMax = await getAccountMax();
   const max = portfolioMax + accountMax;
-  ok.log('', max)
   const completeWithdrawTransaction = async () => {
     if (!max) return false;
     if (!auth.value) return false;
@@ -79,7 +77,6 @@
       autoVest: 1
     });
     if (error) {
-      ok.log('error', 'could not create withdraw transaction: ', error.message)
       setNotification('Could not create withdraw transaction: ' + error.message)
       loading.value = false
     } else {
