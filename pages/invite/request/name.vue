@@ -38,7 +38,7 @@
       lastName: lastName.value
     });
     if (error) {
-      ok.log('error', 'could not request access ' + error.message)
+      ok.log('error', 'failed to request access ' + error.message)
     } else {
       ok.log('success', 'requested access')
     }
