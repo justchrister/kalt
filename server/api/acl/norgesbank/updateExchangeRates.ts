@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
         currencies.push(currency.iso)
       }
     }
-    ok.log('', 'got the currencies', currencies)
+    ok.log('', 'got currencies:', currencies)
     return currencies
   }
 
@@ -48,8 +48,9 @@ export default defineEventHandler(async (event) => {
       return null
     }
     if (data) {
-      ok.log('success', 'got the rate for ' + iso + ': ' + data.data.dataSets[0].series["0:0:0:0"].observations["0"][0])
-      return data.data.dataSets[0].series["0:0:0:0"].observations["0"][0]
+      const rate = data.data.dataSets[0].series["0:0:0:0"].observations["0"][0];
+      ok.log('success', 'got the rate for ' + iso + ': ' + rate)
+      return rate
     }
   }
   const updateRate = async (pair) => {
