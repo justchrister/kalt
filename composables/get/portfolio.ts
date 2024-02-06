@@ -11,7 +11,6 @@ const filterOnOnlyFulfilledOrders = (orders: any) => {
       fulfilledOrders.push(ordersMerged[i]);
     }
   }
-  ok.log('', 'fulfilledOrders:', fulfilledOrders)
   return fulfilledOrders;
 }
 
@@ -54,10 +53,8 @@ export const getPortfolio = async (client, user) => {
 
   // Sort the dates to go from earliest to latest
   const sortedDates = Object.keys(dateValueMap).sort();
-  ok.log('', 'sortedDates:', sortedDates)
   const latestDate = new Date();
   latestDate.setHours(0, 0, 0, 0);
-  ok.log('', 'latestDate:'+latestDate)
 
   const numOfDays = 365;
 
@@ -80,6 +77,10 @@ export const getPortfolio = async (client, user) => {
       value: runningValue,
     });
   }
-  ok.log('', 'portfolio', portfolio)
+  if(portfolio.length === 0) {
+    ok.log('error', 'could not get portfolio')
+  } else {
+    ok.log('', 'got portfolio')
+  }
   return portfolio;
 }
