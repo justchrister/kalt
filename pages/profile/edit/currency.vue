@@ -38,7 +38,7 @@
       currency: iso
     });
     if (error) {
-      ok.log('error', 'failed updating currency: ', error)
+      ok.log('error', 'failed updating currency: '+error.message)
     } else {
       await ok.sleep(200);
       navigateTo('/profile')
