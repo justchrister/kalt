@@ -84,7 +84,7 @@ const user = await get(supabase).user(auth.value) as user;
         type: 'withdraw'
       });
       if(error) ok.log('error', 'could not update quantity: '+error.message)
-      if(!error) ok.log('success', 'updated quantity')
+      if(!error) ok.lgg('success', 'updated quantity')
     } else{
       return false
     }
