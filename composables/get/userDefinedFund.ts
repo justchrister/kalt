@@ -7,7 +7,7 @@ export const getUserDefinedFund = async (client, user) => {
     .eq('id', user.id)
     .order('timestamp', { ascending: true })
   if (error) {
-    ok.log('error', error)
+    ok.log('error','could not getUserDefinedFund: '+error.message)
     return null
   } else {
     return ok.combineJsonByKeys(data, 'ticker')
