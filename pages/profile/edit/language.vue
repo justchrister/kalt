@@ -28,7 +28,7 @@
     .from('sys_languages')
     .select()
     .eq('available', true)
-  if (error) ok.log('error', 'could not get languages', error)
+  if (error) ok.log('error', 'could not get languages: '+error.message)
   const selected = ref();
   const updateProfile = async (iso) => {
     selected.value = iso;
@@ -39,7 +39,7 @@
       language: iso
     });
     if (error) {
-      ok.log('error', 'failed updating language: ', error)
+      ok.log('error', 'failed updating language: '+error.message)
     } else {
       await ok.sleep(200);
       navigateTo('/profile')
