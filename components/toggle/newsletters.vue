@@ -26,7 +26,7 @@
       newsletters: isOn.value
     });
     if(error) {
-      ok.log('error', 'Error updating user preferences: ', error)
+      ok.log('error', 'Error updating user preferences: '+error.message)
     } else {
       if(isOn.value) ok.log('', 'Subscribed to newsletters')
       else ok.log('', 'Unsubscribed from newsletters')
