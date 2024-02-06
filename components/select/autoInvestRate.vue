@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrap">
-    <modal title="This feature is not available (yet)" :show="markedAsUnavail">
-      At the current moment 100% of all the dividends are reinvested. This feature will be available in the future, so that you can get automatic payments directly to your account.
+    <modal title="Feature is not available" :show="markedAsUnavail">
+      At the current moment 100% of all the dividends are reinvested. But we are planning on letting you get automatic payments directly to your account.
     </modal>
     <label>Select reinvestment ratio (%): </label>
     <div class="wrapper" @click="markedAsUnavail=true">
