@@ -5,9 +5,10 @@ export const getFunds = async (client) => {
     .from('sys_funds')
     .select()
   if (error) {
-    ok.log('error', error)
+    ok.log('error', 'could not getFunds: '+error.message)
     return
   } else {
+    ok.log('', 'got funds')
     return data
   }
 };
