@@ -106,7 +106,6 @@
       elements: elementsGroup.value,
       redirect: 'if_required'
     });
-    ok.log('', 'created payment method')
     if (!result.error) {
       const error = await pub(supabase, {
         sender: 'components/addPaymentMethod.vue',
@@ -117,7 +116,12 @@
         intentToken: setupIntent.intentToken,
         methodId: result.setupIntent.payment_method
       })
-      if(!error) navigateTo(props.submitRedirect);
+      if(!error) {
+        ok.log('success', 'created payment method')
+        navigateTo(props.submitRedirect)
+      } else {
+        ok.log('error', 'failed to save payment method')
+      }
     }
 
     loading.value = false;
