@@ -12,7 +12,6 @@
   
   if(user && user.performanceUpdates) {
     isOn.value = user.performanceUpdates;
-    ok.log('success', 'Got user preference on performanceUpdates: ', user.performanceUpdates)
   }
   const toggleValue = async () => {
     if(isOn.value){
