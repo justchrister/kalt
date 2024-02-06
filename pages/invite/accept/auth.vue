@@ -39,7 +39,6 @@
   const notification = ref(null);
 
   const setNotification = async (message) => {
-    ok.log('error', message)
     notification.value = message
     loading.value = false
     return
