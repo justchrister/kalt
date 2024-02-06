@@ -16,7 +16,8 @@ export default defineEventHandler(async (event) => {
   }
   const testing = false;
 
-  const gracePeriod = testing ? 0 : 2;
+  const gracePeriodHours = 1;
+  const gracePeriod = testing ? 0 : gracePeriodHours;
   const { data, error } = await supabase
     .from('topic_autoInvest')
     .select()
@@ -36,7 +37,6 @@ export default defineEventHandler(async (event) => {
   const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
   const notAdjustedRecently = active.filter((entry: autoInvest) => new Date(entry.timestamp as string) < gracePeriodHoursAgo)
-
   const createTransaction = async (userId: string, amount: number, autoInvestEntity: string, currency: string) => {
     const errorTransaction = await pub(supabase, {
       sender: 'server/api/invest/auto.ts'
@@ -86,8 +86,8 @@ export default defineEventHandler(async (event) => {
   }
   let charged = []
   for (const entry of notAdjustedRecently) {
-    const user = await get(supabase).user(entry.userId);
-    const userId = entry.userId as string;
+    const user = await get(supabase).user(entry.id);
+    const userId = entry.id as string;
     const currency = user?.currency as string || 'EUR';
     const entity = entry.id as string;
     const interval = entry.interval as string;
