@@ -32,7 +32,6 @@
   const notification = ref(null);
 
   const setNotification = async (message: string) => {
-    ok.log('error', message)
     notification.value = message
     loading.value = false
     return
@@ -52,7 +51,7 @@
       await ok.sleep(200);
       if (error) {
         loading.value = false
-        ok.log('error', 'password not changed', error)
+        ok.log('error', 'password not changed: '+error.message)
       } else {
         loading.value = false
         navigateTo('/auth')
