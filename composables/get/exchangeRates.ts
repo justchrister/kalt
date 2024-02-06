@@ -11,9 +11,10 @@ export const getExchangeRates = async (client, from, to) => {
     .limit(1)
     .single()
   if (error) {
-    ok.log('warn', 'could not get exchange rates')
+    ok.log('warn', 'could not get exchange rates'+from+' → '+to)
     return null
   } else {
+    ok.log('', 'got exchange rate '+from+' → '+to+' = '+data.rate)
     return data.rate
   }
 };
