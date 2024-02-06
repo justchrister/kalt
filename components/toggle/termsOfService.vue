@@ -26,8 +26,8 @@
     if(error) {
       ok.log('error', 'Error updating user preferences: '+error.message)
     } else {
-      if(isOn.value) ok.log('', 'Accepted terms of service')
-      else ok.log('', 'Declined terms of service')
+      if(isOn.value) ok.log('success', 'Accepted terms of service')
+      else ok.log('success', 'Declined terms of service')
     }
   }
 </script>
