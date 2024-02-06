@@ -63,7 +63,7 @@
     if(error) {
       ok.log('error', 'could not update auto investment interval: '+error.message)
     } else {
-      ok.log('success', 'autoInvestInterval was updated to: '+interval)
+      ok.log('success', 'autoInvestInterval updated')
     }
   }
   const isSelected = ref(props.selected === props.type || false);
