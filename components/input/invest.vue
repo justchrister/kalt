@@ -86,6 +86,7 @@
         ok.log('error', 'could not update amount: '+error.message)
       }
       if(!error) {
+        ok.log('', 'updated amount')
         state.value = 'success'
       }
     }
