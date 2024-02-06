@@ -51,7 +51,7 @@
       autoVest: 1
     });
     if (error) {
-      ok.log('error', 'could not create transaction', error)
+      ok.log('error', 'could not create transaction: '+error.message)
       loading.value = false
     } else {
       ok.log('success', 'transaction created')
