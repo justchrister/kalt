@@ -9,7 +9,7 @@ const createJsonAndPublish = async (client: any, meta: any, content: any, topic:
   if (meta.timestamp) json['timestamp'] = meta.timestamp;
   if (meta.sender) json['sender'] = meta.sender;
   const { error } = await client.from(topic).insert(json);
-  if (error) ok.log('error', error);
+  if (error) ok.log('error', 'error publishing message to '+topic, error);
   return error;
 };
 
@@ -88,9 +88,9 @@ export const sub = (client: any, topic: any) => {
         .eq('event', id)
         .select()
       if (error) {
-        ok.log('error', error)
+        ok.log('error', 'could not mark '+ id +' as read in '+subscription+': '+error.message)
       } else {
-        ok.log('', data)
+        ok.log('', 'successfully read message: ' + id + ' from ' + subscription)
       }
     }
   }
