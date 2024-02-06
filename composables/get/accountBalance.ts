@@ -7,9 +7,8 @@ export const getAccountBalance = async (client, user) => {
     .eq('userId', user.id)
     .order('timestamp', { ascending: true })
   const merged = ok.merge(data, 'id');
-  ok.log('', merged)
   if (error) {
-    ok.log('warn', error)
+    ok.log('error', 'could not getAccountBalance: '+error.message)
     return ok.formatCurrency(0, user.currency)
   } else {
     const filtered = merged.filter(message => (message.type === 'deposit' && message.status === 'complete') || (message.type === 'withdraw' && (message.status === 'complete' || message.status === 'pending')));
