@@ -61,7 +61,7 @@
       interval: interval
     });
     if(error) {
-      ok.log('error', error)
+      ok.log('error', 'could not update auto investment interval: '+error.message)
     } else {
       ok.log('success', 'autoInvestInterval was updated to: '+interval)
     }
