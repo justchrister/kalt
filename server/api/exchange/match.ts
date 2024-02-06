@@ -56,7 +56,6 @@ export default defineEventHandler(async (event) => {
 
   const amIProcessing = async (order: string, me: string) => {
     const {data, error} = await get(supabase).processingExchangeOrder(order);
-    ok.log('', data)
     if (error) {
       return false
     } else if (data.processingBy === me) {
