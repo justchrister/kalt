@@ -85,6 +85,22 @@ input[type="checkbox" i] + label{
   font-size: sizer(1.5);
 }
 
+textarea{
+  min-width:100%;
+  display:inline-block;
+  padding:sizer(0.5) sizer(1.2);
+  box-sizing:border-box;
+  height:sizer(13);
+  line-height:150%;
+  resize: none;
+  @include font-body;
+  @include border; 
+  @include hoverable; 
+}
+textarea:focus,
+textarea:active{
+  @include selected;
+}
 a:focus button{
   background-color:white;
 }
