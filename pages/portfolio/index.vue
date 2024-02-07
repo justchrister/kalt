@@ -21,9 +21,6 @@
             <li @click="days = 90" :class="{ active: days === 90 }">
               3 months
             </li>
-            <li @click="days = 180" :class="{ active: days === 180 }">
-              6 months
-            </li>
             <li @click="days = 365" :class="{ active: days === 365 }">
               1 year
             </li>
@@ -34,8 +31,11 @@
         </div>
       </nav>
     </block>
-    <block margin="1">
+    <block margin="4">
       <cta :showDivest="true" />
+    </block>
+    <block>
+      <invites :user="user" />
     </block>
   </main>
 </template>
@@ -48,6 +48,10 @@
     title: 'Portfolio'
   })
   const days = ref(30)
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value);
+
 </script>
 <style scoped lang="scss">
   .filters {
