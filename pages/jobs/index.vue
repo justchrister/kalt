@@ -137,8 +137,9 @@
       <h2>
         Apply now
       </h2>
+      <input-button link="/jobs/apply">Apply</input-button>
       <p>
-        Send us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch
+        Or end us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch
         quickly.
       </p>
     </block>
