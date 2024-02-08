@@ -94,26 +94,17 @@
     background-size:sizer(.85);
     background-repeat:no-repeat;
     background-position:sizer(.85) center;
-    transition: background-color 0.2s $easing-in-out;
     &:hover{
-      transition: background-color 0.2s $easing-in-out;
       cursor: pointer;
+      @include selected;
     }
   }
   .copyButton{
     width: sizer(5.7);
     background-image: url('/icons/copy.svg');
-    background-color: green(15%);
-    &:hover{
-      background-color: green(20%);
-    }
   }
   .shareButton{
     width: sizer(6.2);
     background-image: url('/icons/share.svg');
-    background-color: blue(15%);
-    &:hover{
-      background-color: blue(20%);
-    }
   }
 </style>
