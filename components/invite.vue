@@ -1,8 +1,15 @@
 <template>
   <div class="invite">
     <div class="code">{{ props.code }}</div>
-    <div class="copyButton" @click="copy(props.code)">COPY</div>
-    <div class="shareButton" @click="share(props.code)">SHARE</div>
+    <div class="copyButton" @click="copy(props.code)">
+      <span v-if="copyButtonState==='loaded'">COPY</span>
+      <span v-if="copyButtonState==='loading'"><loading-icon/></span>
+      <span v-if="copyButtonState==='success'">COPIED</span>
+    </div>
+    <div class="shareButton" @click="share(props.code)">
+      <span v-if="shareButtonState==='loaded'">SHARE</span>
+      <span v-if="shareButtonState==='loading'"><loading-icon/></span>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -12,15 +19,27 @@
       required: true
     }
   })
+  const copyButtonState = ref('loaded');
+  const shareButtonState = ref('loaded');
+
   const copy = (code: string) => {
+    copyButtonState.value = 'loading';
     const text = 'https://ka.lt/invite/' + code;
     navigator.clipboard.writeText(text).then(() => {
-      ok.log('', 'copied to clipboard')
+      setTimeout(() => {
+        copyButtonState.value = 'loaded';
+      }, 200);
+      copyButtonState.value = 'success';
+      copyButtonState.value = 'loaded';
+      setTimeout(() => {
+        copyButtonState.value = 'loaded';
+      }, 1000);
     }).catch(err => {
       ok.log('error', 'error in copying to clipboard', err);
     });
   }
   const share = (code: string) => {
+    shareButtonState.value = 'loading';
     if (navigator.share) {
       navigator.share({
         title: 'Kalt — The exclusive impact investing platform',
@@ -41,10 +60,10 @@
     @include border;
     @include hoverable;
     display: grid;
-    padding:sizer(.5);
-    max-height: sizer(5);
+    padding:sizer(1);
+    max-height: sizer(7);
     font-family: $monospace;
-    gap: sizer(.5);
+    gap: sizer(1);
     grid-template-columns: 1fr sizer(5.7) sizer(6.2);
     box-sizing:border-box;
     &:hover{
@@ -57,8 +76,8 @@
   }
   .code{
     font-family: $monospace;
-    font-size:sizer(1);
-    padding-left:sizer(0.5);
+    font-size:sizer(1.5);
+    padding-left:sizer(0.5) sizer(1);
     color:dark(70%);
   }
   .copyButton,
