@@ -1,8 +1,8 @@
 <template>
   <div class="invite">
     <div class="code">{{ props.code }}</div>
-    <div class="copyButton"></div>
-    <div class="shareButton" @click="share()"></div>
+    <div class="copyButton" @click="copy(props.code)">COPY</div>
+    <div class="shareButton" @click="share(props.code)">SHARE</div>
   </div>
 </template>
 <script setup lang="ts">
@@ -12,12 +12,20 @@
       required: true
     }
   })
-  const share = () => {
+  const copy = (code: string) => {
+    const text = 'https://ka.lt/invite/' + code;
+    navigator.clipboard.writeText(text).then(() => {
+      ok.log('', 'copied to clipboard')
+    }).catch(err => {
+      ok.log('error', 'error in copying to clipboard', err);
+    });
+  }
+  const share = (code: string) => {
     if (navigator.share) {
       navigator.share({
         title: 'Kalt — Invite',
         text: 'Build a purpose-driven portfolio at Kalt investment options on Kalt.',
-        url: 'https://kalt.com/invite/' + props.code
+        url: 'https://ka.lt/invite/' + code
       }).then(() => {
         // stuff
       })
@@ -37,7 +45,7 @@
     max-height: sizer(5);
     font-family: $monospace;
     gap: sizer(.5);
-    grid-template-columns: 1fr sizer(2) sizer(2);
+    grid-template-columns: 1fr sizer(5.7) sizer(6.2);
     box-sizing:border-box;
     &:hover{
       @include hovering;
@@ -56,11 +64,17 @@
   .copyButton,
   .shareButton{
     @include border;
-    width: sizer(2);
+    width: sizer(6.5);
     height: sizer(2);
-    background-size:50%;
+    font-weight:600;
+    line-height:sizer(2);
+    font-size:sizer(.8);
+    padding-left:sizer(2.5);
+    box-sizing:border-box;
+    color:dark(75%);
+    background-size:sizer(.85);
     background-repeat:no-repeat;
-    background-position:center;
+    background-position:sizer(.85) center;
     transition: background-color 0.2s $easing-in-out;
     &:hover{
       transition: background-color 0.2s $easing-in-out;
@@ -68,6 +82,7 @@
     }
   }
   .copyButton{
+    width: sizer(5.7);
     background-image: url('/icons/copy.svg');
     background-color: green(15%);
     &:hover{
@@ -75,6 +90,7 @@
     }
   }
   .shareButton{
+    width: sizer(6.2);
     background-image: url('/icons/share.svg');
     background-color: blue(15%);
     &:hover{
