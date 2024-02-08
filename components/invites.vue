@@ -2,7 +2,7 @@
   <div class="invites">
     <p>Invite some friends</p>
     <invite v-for="invite in invites" :key="invite.code" :code="invite.code" v-if="invites.length"/>
-    <input-button @click="requestInvities()" ><loading-icon v-if="loading"/> request more invites</input-button>
+    <input-button v-else @click="requestInvities()" ><loading-icon v-if="loading"/> request more invites</input-button>
   </div>
 </template>
 <script setup lang="ts">
