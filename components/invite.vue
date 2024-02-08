@@ -23,8 +23,8 @@
   const share = (code: string) => {
     if (navigator.share) {
       navigator.share({
-        title: 'Kalt — Invite',
-        text: 'Build a purpose-driven portfolio at Kalt investment options on Kalt.',
+        title: 'Kalt — The exclusive impact investing platform',
+        text: 'Build a purpose-driven portfolio on the invite-only investing platform.',
         url: 'https://ka.lt/invite/' + code
       }).then(() => {
         // stuff
