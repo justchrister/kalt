@@ -1,7 +1,10 @@
 <template>
   <div class="invites">
-    <p>Invites</p>
+    <p>Invite some friends</p>
     <invite v-for="invite in invites" :key="invite.code" :code="invite.code" />
+    <!-- 
+      If there are no invites, there should be a button to request more. 
+    -->
   </div>
 </template>
 <script setup lang="ts">
