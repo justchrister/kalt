@@ -61,7 +61,7 @@
     @include hoverable;
     display: grid;
     padding:sizer(1);
-    max-height: sizer(7);
+    max-height: sizer(6.5);
     font-family: $monospace;
     gap: sizer(1);
     grid-template-columns: 1fr sizer(5.7) sizer(6.2);
@@ -76,8 +76,8 @@
   }
   .code{
     font-family: $monospace;
-    font-size:sizer(1.5);
-    padding-left:sizer(0.5) sizer(1);
+    font-size:sizer(1.2);
+    padding-left:sizer(1) sizer(1);
     color:dark(70%);
   }
   .copyButton,
