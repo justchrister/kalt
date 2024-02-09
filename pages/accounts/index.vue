@@ -6,10 +6,6 @@
       <input-button link="/accounts/transactions">transactions</input-button>
     </block>
     <block margin="2">
-      <account-details />
-      <input-button link="/invest">invest →</input-button>
-    </block>
-    <block margin="2">
       <account-linked />
       <input-button link="/accounts/withdraw">← withdraw</input-button>
     </block>
