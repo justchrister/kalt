@@ -5,14 +5,20 @@
         How does Kalt make money?
       </chat-question>
       <chat-answer>
-        When you invest, we take a 4% fee.
+        When you invest, we take a fee between 0.5% and 3%.
       </chat-answer>
       <chat-answer>
-        When you make money, we take a 12% fee.
+        This is to cover payment processing fees. 
       </chat-answer>
-      <chat-link to="/invest">
-        invest now
-      </chat-link>
+      <chat-answer>
+        When we deliver results above the market average, we take a 20% fee.
+      </chat-answer>
+      <chat-question to="/how-we-calculate-market-average">
+        what is the market average?
+      </chat-question>
+      <chat-answer>
+        It's the average return of all investments in the stock market. Also called a "global index fund".
+      </chat-answer>
     </block>
   </main>
 </template>
