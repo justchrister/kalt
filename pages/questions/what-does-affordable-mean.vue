@@ -17,7 +17,10 @@
         Lower 15th percentile in m² rental prices.
       </chat-answer>
       <chat-answer>
-        Here we define affordable housing based on the rental prices in a specific area. By focusing on the lower 15th percentile of m² rental prices, we target housing options that are among the most affordable in the market. This method benchmarks affordability against the actual housing market, providing a realistic picture of what is affordable to the lowest-income segment of the population.
+        Here we define affordable housing based on the rental prices in a specific area. By focusing on the lower 15th percentile of m² rental prices, we target housing options that are among the most affordable in the market. This method benchmarks affordability against the actual housing market.
+      </chat-answer>
+      <chat-answer>
+        Both methods provide a realistic picture of what is affordable to the lowest-income segment of the population.
       </chat-answer>
       <chat-link to="/invest">
         invest now
