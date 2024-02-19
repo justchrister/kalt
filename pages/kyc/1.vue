@@ -7,7 +7,7 @@
       <p>
         What is the source of the money you are planning on investing?
       </p>
-      <form @prevent.default="save()">
+      <form @submit.prevent="save()">
         <input type="radio" id="income" name="sourceOfFunds" value="income" v-model="sourceOfFunds" @click="save()">
         <label class="radioRow" for="income">
           <span> Employment or business income </span>
@@ -33,18 +33,18 @@
           <span> Government benefits or insurance payouts</span>
           <span class="radio-icon"></span>
         </label>
-        <input-button link="/profile/kyc/2">next -> </input-button>
+        <input-button link="/kyc/2">next -> </input-button>
       </form>
     </block>
   </main>
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'source of funds',
+    pagename: 'Source of funds',
     middleware: 'auth'
   })
   useHead({
-    title: 'source of funds',
+    title: 'Source of funds',
     meta: [{
       name: 'description',
       content: 'Invest in the future, today.'
