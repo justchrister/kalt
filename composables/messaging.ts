@@ -27,6 +27,9 @@ export const pub = (client: any, meta: any) => {
     keys: async (content: key) => {
       return await createJsonAndPublish(client, meta, content, 'topic_keys');
     },
+    kyc: async(content: kyc) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_kyc');
+    },
     invites: async (content: invite) => {
       return await createJsonAndPublish(client, meta, content, 'topic_invites');
     },
