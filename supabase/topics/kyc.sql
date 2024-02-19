@@ -10,7 +10,8 @@ CREATE TABLE "topic_kyc" (
     "timestamp"           timestamptz                     NOT NULL        DEFAULT (now() at time zone 'utc'),
     "sender"              text                            NOT NULL,
 -- 
-    "sourceOfFunds"       text
+    "sourceOfFunds"       text,
+    "politicallyExposed"  boolean
 );
 
 --- row level security
