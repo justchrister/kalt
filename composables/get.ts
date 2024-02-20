@@ -24,6 +24,10 @@ export const get = (client: any) => {
       const { getKey } = await import('./get/key');
       return await getKey(client, auth) as key;
     },
+    kycStatus: async (auth: any) => {
+      const { getKycStatus } = await import('./get/kycStatus');
+      return await getKycStatus(client, auth) as boolean;
+    },
     languageDetails: async (iso: any) => {
       const { getLanguageDetails } = await import('./get/languageDetails');
       return await getLanguageDetails(client, iso) as languageDetails;
