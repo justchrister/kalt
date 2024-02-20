@@ -53,7 +53,7 @@
   const sourceOfFunds = ref('');
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth);
+  const user = await get(supabase).user(auth.value);
 
   const save = async () => {
     const error = await pub(supabase, {
