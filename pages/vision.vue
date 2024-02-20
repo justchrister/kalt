@@ -77,4 +77,10 @@
       content: 'Invest in the future, today.'
     }]
   })
+  useSeoMeta({
+    title: '● Kalt — Vision',
+    ogTitle: '● Kalt — Vision',
+    description: 'Building the next era of capitalism.',
+    ogDescription: 'Building the next era of capitalism.'
+  })
 </script>
