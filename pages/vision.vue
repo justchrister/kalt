@@ -78,7 +78,7 @@
     }]
   })
   useSeoMeta({
-    title: '● Kalt — Vision',
+    title: 'Kalt — Vision',
     ogTitle: '● Kalt — Vision',
     description: 'Building the next era of capitalism.',
     ogDescription: 'Building the next era of capitalism.',
