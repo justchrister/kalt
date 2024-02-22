@@ -1,15 +1,13 @@
 <template>
-    <div class="fund" v-if="fund">
+    <div class="fund" v-if="fund" @click="navigateTo(`/funds/${shortTicker}`)">
       <div class="icon">
         <span :style="{ 'background-image': `url('/icons/funds/${shortTicker}.svg')` }"></span>
       </div>
       <div class="name">
         {{fund.name}}
       </div>
-      <div class="rate">
-  <nuxt-link :to="`/funds/${shortTicker}`">
-        read more ->
-  </nuxt-link>
+      <div class="text">
+        learn more ->
       </div>
     </div>
 </template>
@@ -36,11 +34,24 @@
     text-decoration:none;
     display:grid;
     grid-template-columns: sizer(3) 1fr sizer(10);
-    border: $border;
     padding: sizer(1) sizer(1) sizer(1) sizer(1.5);
     line-height: sizer(4);
+    @include border;
+    @include hoverable;
+    &:hover{
+      cursor:pointer;
+      @include hovering;
+      .text{
+        color:dark(100%);
+      }
+    }
   }
-  .rate,
+  .text{
+    text-align:right;
+    font-size:85%;
+    color: dark(60%);
+    margin-right:sizer(.5);
+  }
   .name{
     text-decoration:none;
   }
