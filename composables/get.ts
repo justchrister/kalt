@@ -18,7 +18,7 @@ export const get = (client: any) => {
     },
     funds: async () => {
       const { getFunds } = await import('./get/funds');
-      return await getFunds(client) as funds;
+      return await getFunds(client) as fund[];
     },
     key: async (auth: any) => {
       const { getKey } = await import('./get/key');
