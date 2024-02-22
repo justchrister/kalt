@@ -5,9 +5,8 @@
     <block>
       <fund-your ticker="ffe" />
       <fund-your ticker="art" />
-      <fund-your ticker="ah" :beta="true" />
-      <fund-your ticker="smb" :beta="true" />
-      <fund-your ticker="vc" :beta="true" />
+      <fund-your ticker="ah" />
+      <fund-your ticker="smb" />
       <block>
         <input-button link="/invest">invest now -></input-button>
       </block>
