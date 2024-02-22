@@ -63,3 +63,10 @@ create type public."tickers" as enum (
     'art',
     'ah'
 );
+drop type public."funds_state";
+create type public."funds_state" as enum (
+    'active',
+    'inactive',
+    'beta',
+    'alfa'
+);
