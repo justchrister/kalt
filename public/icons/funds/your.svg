@@ -1,25 +1,5 @@
-<svg width="2373" height="1750" viewBox="0 0 2373 1750" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_885_267)">
-<g opacity="0.5" filter="url(#filter0_f_885_267)">
-<ellipse cx="1109.88" cy="844.894" rx="508.883" ry="152.345" fill="#0CF574"/>
-</g>
-<g opacity="0.5" filter="url(#filter1_f_885_267)">
-<ellipse cx="1254.18" cy="874.557" rx="508.883" ry="152.345" transform="rotate(-30.0284 1254.18 874.557)" fill="#0CF574"/>
-</g>
-</g>
-<defs>
-<filter id="filter0_f_885_267" x="-38.211" y="53.3373" width="2296.19" height="1583.11" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="319.605" result="effect1_foregroundBlur_885_267"/>
-</filter>
-<filter id="filter1_f_885_267" x="167.772" y="-51.5035" width="2172.82" height="1852.12" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="319.605" result="effect1_foregroundBlur_885_267"/>
-</filter>
-<clipPath id="clip0_885_267">
-<rect width="2373" height="1750" fill="white"/>
-</clipPath>
-</defs>
+<svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="34" cy="34" r="32" stroke="#161719" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 20"/>
+<circle cx="34" cy="34" r="21" transform="rotate(15 34 34)" stroke="#161719" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 20"/>
+<circle cx="33.7798" cy="33.7797" r="9.61815" transform="rotate(30 33.7798 33.7797)" stroke="#161719" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 20"/>
 </svg>
