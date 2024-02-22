@@ -4,6 +4,7 @@ export const getFunds = async (client) => {
   const { data, error } = await client
     .from('sys_funds')
     .select()
+    .neq('state', 'inactive')
   if (error) {
     ok.log('error', 'could not getFunds: '+error.message)
     return
