@@ -5,7 +5,7 @@
     </div>
     <div class="name">
       {{fund.name}}
-      <span class="beta" v-if="props.beta">BETA</span>
+      <span class="beta" v-if="fund.state==='beta'">BETA</span>
     </div>
     <div class="rate">
       <span :class="{ active: rate >= 1}"></span>
