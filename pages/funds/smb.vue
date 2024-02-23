@@ -41,7 +41,6 @@
     </block>
     <!-- insert map with locations -->
     <block>
-      <input-button link="/invest">invest now -></input-button>
       <select-fund />
     </block>
   </main>
