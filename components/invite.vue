@@ -1,14 +1,10 @@
 <template>
   <div class="invite">
     <div class="code">{{ props.code }}</div>
-    <div class="copyButton" @click="copy(props.code)">
-      <span v-if="copyButtonState==='loaded'">COPY</span>
-      <span v-if="copyButtonState==='loading'"><loading-icon/></span>
-      <span v-if="copyButtonState==='success'">COPIED</span>
-    </div>
-    <div class="shareButton" @click="share(props.code)">
-      <span v-if="shareButtonState==='loaded'">SHARE</span>
-      <span v-if="shareButtonState==='loading'"><loading-icon/></span>
+    <div :class="'button '+state" @click="share(props.code)">
+      <span v-if="!state">SEND</span>
+      <span v-if="state==='copied'">COPIED</span>
+      <span v-if="state==='loading'"><loading-icon/></span>
     </div>
   </div>
 </template>
@@ -19,39 +15,30 @@
       required: true
     }
   })
-  const copyButtonState = ref('loaded');
-  const shareButtonState = ref('loaded');
+  const state = ref('');
 
-  const copy = (code: string) => {
-    copyButtonState.value = 'loading';
+  const copy = async (code: string) => {
     const text = 'https://ka.lt/invite/' + code;
     navigator.clipboard.writeText(text).then(() => {
-      setTimeout(() => {
-        copyButtonState.value = 'loaded';
-      }, 200);
-      copyButtonState.value = 'success';
-      copyButtonState.value = 'loaded';
-      setTimeout(() => {
-        copyButtonState.value = 'loaded';
-      }, 1000);
     }).catch(err => {
-      ok.log('error', 'error in copying to clipboard', err);
     });
   }
-  const share = (code: string) => {
-    shareButtonState.value = 'loading';
+  const share = async (code: string) => {
+    state.value = 'loading';
+    await ok.sleep(200)
     if (navigator.share) {
       navigator.share({
         title: 'Kalt — The exclusive impact investing platform',
         text: 'Build a purpose-driven portfolio on the invite-only investing platform.',
         url: 'https://ka.lt/invite/' + code
       }).then(() => {
-        // stuff
+        state.value = '';
       })
       .catch(console.error);
     } else {
-      // Fallback for browsers that don't support the Web Share API
-      // idk wtf to do here? Open a modal?
+      await copy(code)
+      await ok.sleep(300)
+      state.value = 'copied';
     }
   }
 </script>
@@ -64,7 +51,7 @@
     max-height: sizer(6.5);
     font-family: $monospace;
     gap: sizer(1);
-    grid-template-columns: 1fr sizer(5.7) sizer(6.2);
+    grid-template-columns: 1fr sizer(6.5);
     box-sizing:border-box;
     &:hover{
       @include hovering;
@@ -80,11 +67,10 @@
     padding-left:sizer(1) sizer(1);
     color:dark(70%);
   }
-  .copyButton,
-  .shareButton{
+  .button{
     @include border;
-    width: sizer(6.5);
     height: sizer(2);
+    width: sizer(6.5);
     font-weight:600;
     line-height:sizer(2);
     font-size:sizer(.8);
@@ -94,17 +80,23 @@
     background-size:sizer(.85);
     background-repeat:no-repeat;
     background-position:sizer(.85) center;
+    transition:width .2s, padding-left .2s;
+    background-image: url('/icons/share.svg');
     &:hover{
       cursor: pointer;
       @include selected;
     }
   }
-  .copyButton{
-    width: sizer(5.7);
+  .button.copied{
+    transition:width .2s, padding-left .2s;
+    width:sizer(6.5);
     background-image: url('/icons/copy.svg');
+    background-color: green(20%);
   }
-  .shareButton{
-    width: sizer(6.2);
-    background-image: url('/icons/share.svg');
+  .button.loading{
+    transition:width .2s, padding-left .2s;
+    padding-left:sizer(.4);
+    width:sizer(2);
+    background-image:none;
   }
 </style>
