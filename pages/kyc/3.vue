@@ -51,11 +51,11 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Identification',
+    pagename: 'Photo id',
     middleware: 'auth'
   })
   useHead({
-    title: 'Identification',
+    title: 'Photo id',
     meta: [{
       name: 'description',
       content: 'Invest in the future, today.'
