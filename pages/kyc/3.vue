@@ -12,17 +12,16 @@
         @drop.prevent="handleDrop"
         :style="`background-image: url('${imagePreview}')`"
         >
-        <input 
+        <input
           type="file" 
           @change="upload($event.target.files[0])"
           ref="fileInput"
           class="fileInput">
-        <span v-if="!uploadState">Drag and drop your file here or click to select a file</span>
-        <span v-if="uploadState==='success'">Drag and drop your file here or click to select a file</span>
+        <span v-if="!uploadState || uploadState==='success'">drag and drop or click to upload</span>
         <span v-if="uploadState==='loading'"><loading-icon /> Uploading...</span>
       </div>
     </block>
-    <block>
+    <block margin="2">
         Requirements:
         <ul class="requirements">
           <li :class="selfieState">
