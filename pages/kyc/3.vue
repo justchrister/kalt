@@ -4,8 +4,9 @@
       <progress-bar :percentage="percentage+'%'" />
     </block>
     <block margin="2">
-      <p>
-        To verify that you are you upload a selfie of you holding your drivers licence, id card, or passport:</p>
+      <p>To verify that you are you we need a selfie of you holding your drivers licence, id card, or passport:</p>
+    </block>
+    <block margin="2">
       <div 
         :class="'dropZone '+uploadState" 
         @dragover.prevent="dragOver()" 
@@ -17,29 +18,29 @@
           @change="upload($event.target.files[0])"
           ref="fileInput"
           class="fileInput">
-        <span v-if="!uploadState || uploadState==='success'">drag and drop or click to upload</span>
+        <span v-if="!uploadState">drag and drop or click to upload</span>
+        <span v-if="uploadState==='success'">drag and drop or click to replace</span>
         <span v-if="uploadState==='loading'"><loading-icon /> Uploading...</span>
       </div>
     </block>
     <block margin="2">
-        Requirements:
-        <ul class="requirements">
-          <li :class="selfieState">
-            <loading-icon v-if="selfieState==='loading'"/>
-            <omoji emoji="✅" v-if="selfieState==='accepted'"/>
-            It has to be a selfie
-          </li>
-          <li :class="containsIdState">
-            <loading-icon v-if="containsIdState==='loading'"/>
-            <omoji emoji="✅" v-if="containsIdState==='accepted'"/>
-            Contains identification
-          </li>
-          <li :class="containsFaceState">
-            <loading-icon v-if="containsFaceState==='loading'"/>
-            <omoji emoji="✅" v-if="containsFaceState==='accepted'"/>
-            Contains your face
-          </li>
-        </ul>
+      <ul class="requirements" v-if="uploadState">
+        <li :class="selfieState">
+          Is a selfie
+          <loading-icon v-if="selfieState==='loading'"/>
+          <omoji emoji="✔️" v-if="selfieState==='accepted'"/>
+        </li>
+        <li :class="containsIdState">
+          Contains photo id
+          <loading-icon v-if="containsIdState==='loading'"/>
+          <omoji emoji="✔️" v-if="containsIdState==='accepted'"/>
+        </li>
+        <li :class="containsFaceState">
+          Contains your face
+          <loading-icon v-if="containsFaceState==='loading'"/>
+          <omoji emoji="✔️" v-if="containsFaceState==='accepted'"/>
+        </li>
+      </ul>
     </block>
     <block>
       
@@ -154,6 +155,9 @@
     cursor: pointer;
     left: 0;
     top: 0;
+  }
+  ul li{
+    display:inline; 
   }
   
 </style>
