@@ -110,7 +110,7 @@
       ok.log('error', 'Failed to upload to: userIdentification/'+user.id+': '+error.statusCode+' '+error.message)
     } else {
       uploadState.value = 'success'
-      percentage.value += 10;
+      percentage.value = 55;
       ok.log('', percentage.value)
     }
   }
