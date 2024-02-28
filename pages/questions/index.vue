@@ -25,8 +25,12 @@
   definePageMeta({
     pagename: 'Questions'
   })
-  useHead({
-    title: 'Questions'
+  useSeoMeta({
+    title: 'Your questions answered',
+    ogTitle: 'Kalt — Your questions answered',
+    description: 'We have compiled a list of the most common questions and answered them in an easy to read format.',
+    ogDescription: 'We have compiled a list of the most common questions and answered them in an easy to read format.',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
   })
 </script>
 <style scoped lang="scss">
