@@ -4,16 +4,13 @@
       "path": "."
     },
     {
-      "path": "../data.ka.lt"
+      "path": "../data"
     },
     {
-      "path": "../new.kalt"
+      "path": "../sudo"
     },
     {
-      "path": "../sudo.ka.lt"
-    },
-    {
-      "path": "../img.ka.lt"
+      "path": "../img"
     }
     
   ],
