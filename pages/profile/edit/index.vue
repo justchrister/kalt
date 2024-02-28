@@ -22,6 +22,14 @@
     pagename: 'Edit',
     middleware: 'auth'
   })
-  useHead({ title: 'Edit' })
+  
+  useSeoMeta({
+    title: 'Edit',
+    ogTitle: 'Kalt - Edit',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
+  })
+
 
 </script>
