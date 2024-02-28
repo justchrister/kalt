@@ -13,12 +13,13 @@
   definePageMeta({
     pagename: 'Request invite'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Request invite',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - Request invite',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const country = ref('')
   const supabase = useSupabaseClient()
