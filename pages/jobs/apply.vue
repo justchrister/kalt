@@ -83,12 +83,13 @@
   definePageMeta({
     pagename: 'Apply'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Apply',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - Apply',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-jobs.png'
   })
 
   const supabase = useSupabaseClient()
