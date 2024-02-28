@@ -28,7 +28,12 @@
     pagename: 'Profile',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Profile'
+  
+  useSeoMeta({
+    title: 'Profile',
+    ogTitle: 'Kalt - Profile',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 </script>
