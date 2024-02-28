@@ -30,8 +30,13 @@
     pagename: 'Divest',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Divest'
+  
+  useSeoMeta({
+    title: 'Divest',
+    ogTitle: 'Divest',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser() as any || '' as any
