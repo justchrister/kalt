@@ -34,4 +34,11 @@
       content: 'Invest in the future, today.'
     }]
   })
+  useSeoMeta({
+    title: 'What is residual income?',
+    ogTitle: 'Kalt — What is residual income?',
+    description: 'Explaining what residual income is and why it is a great tool for generating wealth.',
+    ogDescription: 'Explaining what residual income is and why it is a great tool for generating wealth.',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
+  })
 </script>
