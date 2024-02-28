@@ -41,8 +41,12 @@
     pagename: 'Invest',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Invest'
+  useSeoMeta({
+    title: 'Invest',
+    ogTitle: 'Kalt - Invest',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
   const setNotification = async (message: string) => {
