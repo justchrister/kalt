@@ -14,12 +14,12 @@
   definePageMeta({
     pagename: 'Update'
   })
-  useHead({
+  useSeoMeta({
     title: 'Update',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Update',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 </script>
 <style scoped lang="scss"></style>
