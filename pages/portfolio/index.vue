@@ -44,8 +44,13 @@
     pagename: 'Portfolio',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Portfolio'
+  
+  useSeoMeta({
+    title: 'Portfolio',
+    ogTitle: 'Kalt - Portfolio',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const days = ref(30)
   const supabase = useSupabaseClient()
