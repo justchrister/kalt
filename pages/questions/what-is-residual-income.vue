@@ -27,13 +27,6 @@
   definePageMeta({
     pagename: 'What is residual income?'
   })
-  useHead({
-    title: 'What is residual income?',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
-  })
   useSeoMeta({
     title: 'What is residual income?',
     ogTitle: 'Kalt — What is residual income?',
