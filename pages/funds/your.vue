@@ -19,12 +19,13 @@
     pagename: 'Your fund',
     middleware: 'auth'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Your fund',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - Your fund',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-funds-art.png'
   })
 </script>
 <style scoped lang="scss">
