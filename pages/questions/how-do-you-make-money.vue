@@ -33,4 +33,12 @@
       content: 'Invest in the future, today.'
     }]
   })
+
+  useSeoMeta({
+    title: 'What is a direct dividend fund?',
+    ogTitle: 'Kalt — What is a direct dividend fund?',
+    description: 'Explaining how the Kalt direct dividend funds™ are different from normal funds.',
+    ogDescription: 'Explaining how the Kalt direct dividend funds™ are different from normal funds.',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
+  })
 </script>
