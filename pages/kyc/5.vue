@@ -8,7 +8,7 @@
         How much do you make a year?
       </p>
       <form @submit.prevent="save()">
-        <input type="radio" id="underThirtyFive" name="sourceOfFunds" value="underThirtyFive" v-model="sourceOfFunds" @click="save()">
+        <input type="radio" id="underThirtyFive" name="sourceOfFunds" value="underThirtyFive" v-model="sourceOfFunds" @click="save(null, 30000)">
         <label class="radioRow" for="underThirtyFive">
           <span> Under 
             <span v-if="user.currency==='NOK'">
@@ -19,9 +19,9 @@
             </span>
           </span>
         </label>
-        <input type="radio" id="thirtyFiveToFifty" name="sourceOfFunds" value="thirtyFiveToFifty" v-model="sourceOfFunds" @click="save()">
+        <input type="radio" id="thirtyFiveToFifty" name="sourceOfFunds" value="thirtyFiveToFifty" v-model="sourceOfFunds" @click="save(35000, 50000)">
         <label class="radioRow" for="thirtyFiveToFifty">
-          <span class="incomeSpan">
+          <span class="incomeRange">
             <span v-if="user.currency==='NOK'">
               {{alternativeValues.thirtyFiveToFifty[0]}} {{ user.currency }}
             </span>
@@ -37,9 +37,9 @@
             </span>
           </span>
         </label>
-        <input type="radio" id="fiftyToSeventy" name="sourceOfFunds" value="fiftyToSeventy" v-model="sourceOfFunds" @click="save()">
+        <input type="radio" id="fiftyToSeventy" name="sourceOfFunds" value="fiftyToSeventy" v-model="sourceOfFunds" @click="save(50000, 70000)">
         <label class="radioRow" for="fiftyToSeventy">
-          <span class="incomeSpan">
+          <span class="incomeRange">
             <span v-if="user.currency==='NOK'">
               {{alternativeValues.fiftyToSeventy[0]}} {{ user.currency }}
             </span>
@@ -55,9 +55,9 @@
             </span>
           </span>
         </label>
-        <input type="radio" id="seventyToHundred" name="sourceOfFunds" value="seventyToHundred" v-model="sourceOfFunds" @click="save()">
+        <input type="radio" id="seventyToHundred" name="sourceOfFunds" value="seventyToHundred" v-model="sourceOfFunds" @click="save(70000, 100000)">
         <label class="radioRow" for="seventyToHundred">
-          <span class="incomeSpan">
+          <span class="incomeRange">
             
             <span v-if="user.currency==='NOK'">
               {{alternativeValues.seventyToHundred[0]}} {{ user.currency }}
@@ -74,7 +74,7 @@
             </span>
           </span>
         </label>
-        <input type="radio" id="overHundred" name="sourceOfFunds" value="overHundred" v-model="sourceOfFunds" @click="save()">
+        <input type="radio" id="overHundred" name="sourceOfFunds" value="overHundred" v-model="sourceOfFunds" @click="save(100000, null)">
         <label class="radioRow" for="overHundred">
           <span> Over 
             <span v-if="user.currency==='NOK'">
@@ -109,14 +109,22 @@
   const percentage = ref(70)
   const accepted = ref(false)
 
-  const save = async () => {
+  const save = async (from: any, to: any) => {
     if(user.id === undefined) return;
+    let rangeFrom = from;
+    let rangeTo = to;
+    if(user.currency === 'NOK' || user.currency==='DKK' || user.currency==='SEK'){
+      if(rangeFrom) rangeFrom = from * 10;
+      if(rangeFrom) rangeTo = to * 10;
+    }
     percentage.value = 75;
     const error = await pub(supabase, {
       id: user.id,
       sender:'pages/profile/kyc/1.vue'
     }).kyc({
-      'sourceOfFunds': sourceOfFunds.value
+      'incomeRangeFrom': rangeFrom,
+      'incomeRangeTo': rangeTo,
+      'incomeRangeCurrency': user.currency,
     });
     if(!error) accepted.value = true;
     
@@ -173,7 +181,7 @@
   input[type="radio"]:checked + label {
     @include selected;
   }
-  .incomeSpan{
+  .incomeRange{
     display:grid;
     grid-template-columns: sizer(9) sizer(1.1) sizer(10);
   }
