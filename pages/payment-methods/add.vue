@@ -10,12 +10,13 @@
     pagename: 'Payment method',
     middleware: 'auth'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Payment method',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - Payment method',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
