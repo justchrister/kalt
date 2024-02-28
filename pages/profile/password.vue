@@ -25,8 +25,13 @@
   definePageMeta({
     pagename: 'Password'
   })
-  useHead({
-    title: 'Password'
+  
+  useSeoMeta({
+    title: 'Password',
+    ogTitle: 'Password',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
   const notification = ref(null);
