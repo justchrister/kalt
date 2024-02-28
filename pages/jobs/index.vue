@@ -149,8 +149,13 @@
   definePageMeta({
     pagename: 'Jobs'
   })
-  useHead({
-    title: 'Jobs'
+  
+  useSeoMeta({
+    title: 'Jobs',
+    ogTitle: 'Kalt - Jobs',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-jobs.png'
   })
 </script>
 <style scoped lang="scss">
