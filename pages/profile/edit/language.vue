@@ -20,8 +20,13 @@
   definePageMeta({
     middleware: 'auth'
   })
-  useHead({
-    title: 'select language'
+  
+  useSeoMeta({
+    title: 'Language',
+    ogTitle: 'Kalt - Language',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
   const { data, error } = await supabase
