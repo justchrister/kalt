@@ -12,12 +12,12 @@
   definePageMeta({
     pagename: 'Welcome!'
   })
-  useHead({
-    title: 'Welcome!',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'Accept invite',
+    ogTitle: 'Kalt - Accept invite',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-invite.png'
   })
   const route = useRoute()
   const inviteCode = ref(route.params.slug[0] || null)
