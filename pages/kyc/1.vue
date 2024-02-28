@@ -43,12 +43,12 @@
     pagename: 'Source of funds',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Source of funds',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'KYC',
+    ogTitle: 'Kalt - KYC',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const sourceOfFunds = ref('');
   const supabase = useSupabaseClient()
