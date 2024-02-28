@@ -32,11 +32,11 @@
   definePageMeta({
     pagename: 'What does affordable mean?'
   })
-  useHead({
+  useSeoMeta({
     title: 'What does affordable mean?',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt — What does affordable mean?',
+    description: 'Explaining what we mean when we call something "affordable".',
+    ogDescription: 'Explaining what we mean when we call something "affordable".',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
   })
 </script>
