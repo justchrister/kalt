@@ -53,11 +53,12 @@
   definePageMeta({
     pagename: 'What is a direct dividend fund?'
   })
-  useHead({
+  useSeoMeta({
     title: 'What is a direct dividend fund?',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt — What is a direct dividend fund?',
+    description: 'Explaining how the Kalt direct dividend funds are different from normal funds.',
+    ogDescription: 'Explaining how the Kalt direct dividend funds are different from normal funds.',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
   })
+  // add ™ when submitted
 </script>
