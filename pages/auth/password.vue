@@ -25,8 +25,13 @@
   definePageMeta({
     pagename: 'Password reset'
   })
-  useHead({
-    title: 'Password reset'
+  
+  useSeoMeta({
+    title: 'Password reset',
+    ogTitle: 'Password reset',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const supabase = useSupabaseClient()
   const loading = ref(false)
