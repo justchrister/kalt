@@ -25,7 +25,7 @@
     ogTitle: 'Kalt - Your fund',
     description: 'Real assets, real impact.',
     ogDescription: 'Real assets, real impact.',
-    ogImage: 'https://ka.lt/images/meta-funds-art.png'
+    ogImage: 'https://ka.lt/images/meta-funds.png'
   })
 </script>
 <style scoped lang="scss">
