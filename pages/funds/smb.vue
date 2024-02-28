@@ -49,12 +49,13 @@
   definePageMeta({
     pagename: 'Small business'
   })
-  useHead({
+
+  useSeoMeta({
     title: 'Small business',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Small business',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
 </script>
