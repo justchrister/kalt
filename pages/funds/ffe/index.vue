@@ -3,8 +3,7 @@
     <intro title="Accelerate the transition to fossil-free energy" />
     <block margin="half" :border="true">
       <h3>
-        The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the
-        world — with clear set of criteria for picking the locations we invest in."
+        The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."
       </h3>
     </block>
     <block margin="half">
@@ -64,8 +63,8 @@
   useSeoMeta({
     title: 'Fossil-free energy',
     ogTitle: 'Kalt - Fossil-free energy',
-    description: 'Real assets, real impact.',
-    ogDescription: 'Real assets, real impact.',
+    description: 'The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in.',
+    ogDescription: 'The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in.',
     ogImage: 'https://ka.lt/images/meta-funds-energy.png'
   })
 </script>
