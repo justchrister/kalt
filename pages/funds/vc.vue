@@ -64,9 +64,9 @@
   useSeoMeta({
     title: 'Startups',
     ogTitle: 'Kalt - Startups',
-    description: 'Real assets, real impact.',
-    ogDescription: 'Real assets, real impact.',
-    ogImage: 'https://ka.lt/images/meta.png'
+    description: 'The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in.',
+    ogDescription: 'The venture capital fund gives you access to a wide variety of early stage startups around the world — with clear set of criteria for picking the companies and founders we invest in.',
+    ogImage: 'https://ka.lt/images/meta-funds-startups.png'
   })
 
 </script>
