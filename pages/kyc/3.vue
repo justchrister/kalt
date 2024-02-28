@@ -54,12 +54,12 @@
     pagename: 'Photo id',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Photo id',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'KYC',
+    ogTitle: 'Kalt - KYC',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
