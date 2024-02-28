@@ -10,6 +10,7 @@ export const getUserDefinedFund = async (client, user) => {
     ok.log('error','could not getUserDefinedFund: '+error.message)
     return null
   } else {
-    return ok.combineJsonByKeys(data, 'ticker')
+    const merged = ok.merge(data, 'id')[0] as userDefinedFund
+    return merged
   }
 };
