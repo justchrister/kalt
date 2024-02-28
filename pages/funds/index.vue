@@ -22,6 +22,13 @@
       content: 'Invest in the future, today.'
     }]
   })
+  useSeoMeta({
+    title: 'Kalt — Funds',
+    ogTitle: 'Kalt — Funds',
+    description: 'Our AI powered value funds.',
+    ogDescription: 'Our AI powered value funds.',
+    ogImage: 'https://ka.lt/images/meta-funds.png'
+  })
   const funds = await get(supabase).funds() as fund[];
 </script>
 <style scoped lang="scss">
