@@ -33,8 +33,13 @@
   definePageMeta({
     pagename: 'Hello'
   })
-  useHead({
-    title: 'Hello'
+  
+  useSeoMeta({
+    title: 'Hello',
+    ogTitle: 'Hello',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const loading = ref(false)
   const supabase = useSupabaseClient()
