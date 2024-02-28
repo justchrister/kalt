@@ -108,7 +108,12 @@
   definePageMeta({
     pagename: 'Whitepaper: Art fund'
   })
-  useHead({
-    title: 'Whitepaper: Art fund'
+
+  useSeoMeta({
+    title: 'Whitepaper',
+    ogTitle: 'Kalt - Whitepaper',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-funds-art.png'
   })
 </script>
