@@ -11,12 +11,13 @@
     pagename: 'Birthdate',
     middleware: 'auth'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Birthdate',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - Birthdate',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   
   const supabase = useSupabaseClient();
