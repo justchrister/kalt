@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /funds/your/
+Disallow: /invest/
+Disallow: /invite/
+Disallow: /kyc/
+Disallow: /legal/
+Disallow: /payment-methods/
+Disallow: /portfolio/
+Disallow: /profile/
+Disallow: /success/
+Disallow: /update/
+Disallow: /updates/
