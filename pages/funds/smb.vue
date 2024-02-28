@@ -53,9 +53,9 @@
   useSeoMeta({
     title: 'Small business',
     ogTitle: 'Small business',
-    description: 'Real assets, real impact.',
-    ogDescription: 'Real assets, real impact.',
-    ogImage: 'https://ka.lt/images/meta.png'
+    description: 'The small business fund offers a unique opportunity to invest in the backbone of global economies and local communities — small businesses. We apply a rigorous selection process, identifying companies with business models designed for profitability and a committed leadership.',
+    ogDescription: 'The small business fund offers a unique opportunity to invest in the backbone of global economies and local communities — small businesses. We apply a rigorous selection process, identifying companies with business models designed for profitability and a committed leadership.',
+    ogImage: 'https://ka.lt/images/meta-funds-small-business.png'
   })
 
 </script>
