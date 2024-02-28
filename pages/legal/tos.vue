@@ -100,14 +100,13 @@
   definePageMeta({
     pagename: 'Terms of service'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Terms of service',
-    meta: [
-      {
-        name: 'description',
-        content: 'Invest in the future, today.'
-      }
-    ]
+    ogTitle: 'Kalt — Terms of service',
+    description: 'Our terms of service.',
+    ogDescription: 'Our terms of service.',
+    ogImage: 'https://ka.lt/images/meta-legal.png'
   })
 
 </script>
