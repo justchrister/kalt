@@ -14,8 +14,13 @@
   definePageMeta({
     pagename: 'Bye'
   })
-  useHead({
-    title: 'Bye'
+  
+  useSeoMeta({
+    title: 'Bye',
+    ogTitle: 'Bye',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const supabase = useSupabaseClient()
   const { error } = await supabase.auth.signOut()
