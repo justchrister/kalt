@@ -58,14 +58,15 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Venture capital'
+    pagename: 'Startups'
   })
-  useHead({
-    title: 'Venture capital',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+
+  useSeoMeta({
+    title: 'Startups',
+    ogTitle: 'Kalt - Startups',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
 </script>
