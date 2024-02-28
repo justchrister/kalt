@@ -14,14 +14,14 @@
     pagename: 'error',
     middleware: ['default']
   })
-  useHead({
-    title: 'error',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
-  })
   
+  useSeoMeta({
+    title: 'Error',
+    ogTitle: 'Error',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
+  })
 </script>
 <style scoped lang="scss">
   
