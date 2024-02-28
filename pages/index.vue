@@ -48,7 +48,11 @@
   definePageMeta({
     pagename: 'Homepage'
   })
-  useHead({
-    title: 'Kalt'
+  useSeoMeta({
+    title: 'Kalt',
+    ogTitle: 'Kalt — Real assets, real impact',
+    description: 'Building the next era of capitalism.',
+    ogDescription: 'Building the next era of capitalism.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 </script>
