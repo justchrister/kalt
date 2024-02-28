@@ -60,12 +60,13 @@
   definePageMeta({
     pagename: 'Fossil-free energy'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'Fossil-free energy',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - Fossil-free energy',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-funds-energy.png'
   })
 </script>
 <style scoped lang="scss">
