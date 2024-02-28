@@ -46,6 +46,9 @@
         <li>
           Supabase + Vercel as backend
         </li>
+        <li>
+          Soon: Flutter for mobile
+        </li>
       </ul>
       <p>
         Read more on <a href="https://github.com/justchrister/kalt" target="_blank"> GitHub ↗</a>
@@ -119,9 +122,6 @@
           Co-founder title
         </li>
         <li>
-          5 weeks of vacation
-        </li>
-        <li>
           Clear strategy, following our <a href="https://k-lt.medium.com/the-kalt-method-afb1f91f981d"
             target="_blank">method ↗</a>
         </li>
@@ -137,7 +137,7 @@
       <h2>
         Apply now
       </h2>
-      <input-button link="/jobs/apply">Apply</input-button>
+      <input-button link="/jobs/apply">introduce yourself</input-button>
       <p>
         Or end us an email at <a href="mailto:sup@ka.lt">sup@ka.lt</a> with some info about yourself, and we'll be in touch
         quickly.
