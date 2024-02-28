@@ -50,11 +50,11 @@
   definePageMeta({
     pagename: 'How does it work?'
   })
-  useHead({
-    title: 'How does it work?',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'How does Kalt work?',
+    ogTitle: 'Kalt — How does Kalt work?',
+    description: 'Explaining how Kalt works and what makes us different.',
+    ogDescription: 'Explaining how Kalt works and what makes us different.',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
   })
 </script>
