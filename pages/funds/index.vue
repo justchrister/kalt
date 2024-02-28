@@ -15,15 +15,8 @@
   definePageMeta({
     pagename: 'Funds'
   })
-  useHead({
-    title: 'Funds',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
-  })
   useSeoMeta({
-    title: 'Kalt — Funds',
+    title: 'Funds',
     ogTitle: 'Kalt — Funds',
     description: 'Our AI powered value funds.',
     ogDescription: 'Our AI powered value funds.',
