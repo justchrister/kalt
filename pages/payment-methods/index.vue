@@ -9,15 +9,16 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'page',
+    pagename: 'Payment method',
     middleware: 'auth'
   })
-  useHead({
-    title: 'page',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  
+  useSeoMeta({
+    title: 'Payment method',
+    ogTitle: 'Kalt - Payment method',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
   const supabase = useSupabaseClient()
