@@ -58,16 +58,17 @@
   </main>
 </template>
 <script lang="ts" setup>
-definePageMeta({
-  pagename: 'Affordable housing'
-})
-useHead({
-  title: 'Affordable housing',
-  meta: [{
-    name: 'description',
-    content: 'Invest in the future, today.'
-  }]
-})
+  definePageMeta({
+    pagename: 'Affordable housing'
+  })
+
+  useSeoMeta({
+    title: 'Affordable housing',
+    ogTitle: 'Affordable housing',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
+  })
 
 </script>
 <style scoped lang="scss">
