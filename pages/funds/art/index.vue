@@ -54,10 +54,10 @@
     pagename: 'Art fund'
   })
   useSeoMeta({
-    title: 'Whitepaper',
-    ogTitle: 'Kalt - Whitepaper',
-    description: 'Real assets, real impact.',
-    ogDescription: 'Real assets, real impact.',
+    title: 'Art fund',
+    ogTitle: 'Kalt - Art fund',
+    description: 'The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in.',
+    ogDescription: 'The art fund invests in high quality blue- and red-chip art from a variety of artists around the world — with clear set of criteria for picking the artworks and artists we invest in.',
     ogImage: 'https://ka.lt/images/meta-funds-art.png'
   })
 </script>
