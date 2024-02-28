@@ -28,8 +28,12 @@
   definePageMeta({
     pagename: 'Welcome'
   })
-  useHead({
-    title: 'Welcome'
+  useSeoMeta({
+    title: 'Accept invite',
+    ogTitle: 'Kalt - Accept invite',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const loading = ref(false)
   const supabase = useSupabaseClient()
