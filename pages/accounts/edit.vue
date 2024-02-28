@@ -16,9 +16,15 @@
     pagename: 'Accounts',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Accounts'
+  
+  useSeoMeta({
+    title: 'Accounts',
+    ogTitle: 'Accounts',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
+  
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
