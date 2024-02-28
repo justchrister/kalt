@@ -1,7 +1,8 @@
 <template>
   <main>
-    <intro title="Build a purpose-driven portfolio"
-      paragraph="Choose what you want to invest in both through your subscription and when completing single investments." />
+    <intro 
+      title="Your value-driven fund"
+      paragraph="Choose what your fund will consist of by simply setting 0-3 hearts on each of the funds." />
     <block>
       <fund-your ticker="ffe" />
       <fund-your ticker="art" />
