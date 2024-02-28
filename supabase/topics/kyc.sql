@@ -12,6 +12,9 @@ CREATE TABLE "topic_kyc" (
 -- 
     "sourceOfFunds"       text,
     "politicallyExposed"  boolean
+    "incomeRangeFrom"     number,
+    "incomeRangeTO"       number,
+    "incomeCurrency"      text                                            REFERENCES sys_currencies(iso)
 );
 
 --- row level security
