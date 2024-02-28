@@ -24,12 +24,12 @@
     pagename: 'Country',
     middleware: 'auth'
   })
-  useHead({
-    title: 'Country',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'Accept invite',
+    ogTitle: 'Kalt - Accept invite',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   const getCountries = async () => {
     const { data, error } = await supabase
