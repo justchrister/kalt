@@ -70,15 +70,8 @@
   definePageMeta({
     pagename: 'Vision'
   })
-  useHead({
-    title: 'Vision',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
-  })
   useSeoMeta({
-    title: 'Kalt — Vision',
+    title: 'Vision',
     ogTitle: 'Kalt — Vision',
     description: 'Building the next era of capitalism.',
     ogDescription: 'Building the next era of capitalism.',
