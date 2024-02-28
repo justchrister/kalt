@@ -20,14 +20,12 @@
   definePageMeta({
     pagename: 'GDPR'
   })
-  useHead({
+  useSeoMeta({
     title: 'GDPR',
-    meta: [
-      {
-        name: 'description',
-        content: 'Invest in the future, today.'
-      }
-    ]
+    ogTitle: 'Kalt — GDPR',
+    description: 'Our GDPR policy.',
+    ogDescription: 'Our GDPR policy.',
+    ogImage: 'https://ka.lt/images/meta-legal.png'
   })
 
 </script>
