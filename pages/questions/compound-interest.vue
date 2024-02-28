@@ -24,11 +24,11 @@
   definePageMeta({
     pagename: 'Compound interest?'
   })
-  useHead({
-    title: 'Compound interest?',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'How does compound interest work?',
+    ogTitle: 'Kalt — How does compound interest work?',
+    description: 'Explaining why compound interest is so important when building wealth.',
+    ogDescription: 'Explaining why compound interest is so important when building wealth.',
+    ogImage: 'https://ka.lt/images/meta-questions.png'
   })
 </script>
