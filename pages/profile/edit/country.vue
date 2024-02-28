@@ -23,9 +23,13 @@
     middleware: 'auth'
   });
 
-  useHead({
-    title: 'select country'
-  });
+  useSeoMeta({
+    title: 'Country',
+    ogTitle: 'Kalt - Country',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
+  })
 
   const { data, error } = await supabase
     .from('sys_countries')
