@@ -65,9 +65,9 @@
   useSeoMeta({
     title: 'Affordable housing',
     ogTitle: 'Affordable housing',
-    description: 'Real assets, real impact.',
-    ogDescription: 'Real assets, real impact.',
-    ogImage: 'https://ka.lt/images/meta.png'
+    description: 'The fund strategically allocates capital in development of affordable housing around the world. In locations that yield a stable return on the investments, but also contributes to social good by combating housing inequality. All based on a set of criteria.',
+    ogDescription: 'The fund strategically allocates capital in development of affordable housing around the world. In locations that yield a stable return on the investments, but also contributes to social good by combating housing inequality. All based on a set of criteria.',
+    ogImage: 'https://ka.lt/images/meta-funds-housing.png'
   })
 
 </script>
