@@ -16,11 +16,16 @@
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value) as user;
   definePageMeta({
-    pagename: 'select currency',
+    pagename: 'Currency',
     middleware: 'auth'
   })
-  useHead({
-    title: 'select currency'
+
+  useSeoMeta({
+    title: 'Currency',
+    ogTitle: 'Kalt - Currency',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 
   const { data, error } = await supabase
