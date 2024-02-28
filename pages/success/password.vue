@@ -22,7 +22,11 @@
   definePageMeta({
     pagename: 'Lobby'
   })
-  useHead({
-    title: 'Lobby'
+  useSeoMeta({
+    title: 'Lobby',
+    ogTitle: 'Lobby',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 </script>
