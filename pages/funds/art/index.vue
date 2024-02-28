@@ -53,12 +53,12 @@
   definePageMeta({
     pagename: 'Art fund'
   })
-  useHead({
-    title: 'Art fund',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+  useSeoMeta({
+    title: 'Whitepaper',
+    ogTitle: 'Kalt - Whitepaper',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-funds-art.png'
   })
 </script>
 <style scoped lang="scss">
