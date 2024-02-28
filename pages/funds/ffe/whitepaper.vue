@@ -113,8 +113,12 @@
   definePageMeta({
     pagename: 'Whitepaper'
   })
-  useHead({
-    title: 'Whitepaper'
+  useSeoMeta({
+    title: 'Whitepaper',
+    ogTitle: 'Kalt - Whitepaper',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta-funds-energy.png'
   })
 </script>
 <style scoped lang="scss">
