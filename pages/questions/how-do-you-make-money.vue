@@ -26,19 +26,11 @@
   definePageMeta({
     pagename: 'How does Kalt make money?'
   })
-  useHead({
-    title: 'How does Kalt make money?',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
-  })
-
   useSeoMeta({
-    title: 'What is a direct dividend fund?',
-    ogTitle: 'Kalt — What is a direct dividend fund?',
-    description: 'Explaining how the Kalt direct dividend funds™ are different from normal funds.',
-    ogDescription: 'Explaining how the Kalt direct dividend funds™ are different from normal funds.',
+    title: 'How does Kalt make money?',
+    ogTitle: 'Kalt — How does Kalt make money?',
+    description: 'Explaining our fee structure.',
+    ogDescription: 'Explaining our fee structure.',
     ogImage: 'https://ka.lt/images/meta-questions.png'
   })
 </script>
