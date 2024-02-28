@@ -14,12 +14,12 @@
     pagename: 'Updates',
     middleware: 'auth'
   })
-  useHead({
+  useSeoMeta({
     title: 'Updates',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Updates',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
 </script>
 <style scoped lang="scss">
