@@ -12,12 +12,13 @@
     pagename: 'KYC',
     middleware: 'auth'
   })
-  useHead({
+  
+  useSeoMeta({
     title: 'KYC',
-    meta: [{
-      name: 'description',
-      content: 'Invest in the future, today.'
-    }]
+    ogTitle: 'Kalt - KYC',
+    description: 'Real assets, real impact.',
+    ogDescription: 'Real assets, real impact.',
+    ogImage: 'https://ka.lt/images/meta.png'
   })
   
 </script>
