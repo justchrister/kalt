@@ -44,8 +44,8 @@
     <block>
       <h2>The art</h2>
       <artwork title="All colored cast, part II" artist="Jean-Michel Basquiat"
-        image="/art/jean-michel-basquiat/all-coloured-cast-ii-mockup.webp" />
-      <artwork title="Untitled" artist="Nicolas Party" image="/art/nicolas-party/untitled-mockup.webp" />
+        image="/images/art/jean-michel-basquiat/all-coloured-cast-ii-mockup.webp" />
+      <artwork title="Untitled" artist="Nicolas Party" image="/images/art/nicolas-party/untitled-mockup.webp" />
     </block>
   </main>
 </template>
