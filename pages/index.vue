@@ -29,7 +29,7 @@
       <pill text="energy" to="funds/ffe" />
       <pill text="art" to="funds/art" />
       <pill text="housing" to="funds/ah" />
-      <pill text="startups" to="funds/vc" />
+      <pill text="small business" to="funds/smb" />
     </block>
     <carousel>
       <carousel-item title="Powered by AI">
