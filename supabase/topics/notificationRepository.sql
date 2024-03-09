@@ -1,9 +1,9 @@
 -- create a topic, by simply renaming all instances of <<topic_name>
 -- version 6.4.23
--- topic   "topic_notificationRepository"
+-- topic   "topic_updateRepository"
 
 --- create the table, with default values
-CREATE TABLE "topic_notificationRepository" (
+CREATE TABLE "topic_updateRepository" (
 -- meta information used for processing
     "event"               uuid                            NOT NULL        DEFAULT uuid_generate_v4()         PRIMARY KEY,
     "id"                  uuid                            NOT NULL        DEFAULT uuid_generate_v4(),
@@ -11,10 +11,12 @@ CREATE TABLE "topic_notificationRepository" (
     "sender"              text                            NOT NULL,
 -- 
     "targets"             text[],
-    "type"                text,
+    "category"            text,
     "subject"             text,
-    "message"             json
+    "ingress"             text,
+    "active"              boolean                        NOT NULL        DEFAULT true,
+    "messages"            json
 );
 
 --- row level security
-ALTER TABLE "topic_notificationRepository" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "topic_updateRepository" ENABLE ROW LEVEL SECURITY;
