@@ -3,7 +3,7 @@
     <div :class="{ 'icon': true, 'animated': !props.read }" :id="props.category">
     </div>
     <div class="content">
-      <h3>{{ props.title }}</h3>
+      <h3>{{ props.subject }}</h3>
       <p>{{ props.ingress }}</p>
     </div>
     <div class="date">
@@ -21,7 +21,7 @@ const props = defineProps({
     type: String,
     required: true
   },
-  title: {
+  subject: {
     type: String,
     required: true
   },
@@ -34,7 +34,7 @@ const props = defineProps({
     required: true
   },
   read: {
-    type: String,
+    type: Boolean,
     required: false,
     default: true
   }
