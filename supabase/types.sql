@@ -12,6 +12,11 @@ create type public."transaction_types" as enum (
     'deposit',
     'withdraw'
 );
+drop type public."cohort_types";
+create type public."cohort_types" as enum (
+    'variable',
+    'constant'
+);
 drop type public."transaction_subTypes";
 create type public."transaction_subTypes" as enum (
     'card',
