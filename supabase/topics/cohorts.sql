@@ -13,7 +13,7 @@ CREATE TABLE "topic_cohorts" (
     "type"          "cohort_types",
     "name"          text,
     "description"   text,
-    "active"        text
+    "active"        boolean
 );
 
 --- row level security
