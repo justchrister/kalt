@@ -14,9 +14,9 @@ CREATE TABLE "topic_transactions" (
     "type"                "transaction_types",
     "subType"             "transaction_subTypes",
     "status"              "transaction_statuses",
-    "autoVest"          DECIMAL(5, 4) 
-                          CHECK ("autoVest" >= 0 
-                          AND "autoVest" <= 1)
+    "autoVest"            DECIMAL(5, 4) 
+                            CHECK ("autoVest" >= 0 
+                            AND "autoVest" <= 1)
 );
 
 --- row level security
