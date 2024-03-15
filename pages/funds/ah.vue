@@ -38,7 +38,9 @@
         living, lessens the impact on the environment, and keeps key workers living close to their jobs. Creating spaces
         where neighbors can connect and support each other turns housing into communities, laying the groundwork for
         cities that can face the future with confidence.
+
       </p>
+      <chat-link link="/questions/what-does-affordable-mean">What does affordable mean?</chat-link>
       <p>
         Affordable housing stands as a solid investment opportunity. Its essence as a fundamental need provides a constant
         demand, offering a buffer against market volatility and ensuring a stable return on investment. In an economic
@@ -50,7 +52,7 @@
         synonymous with lasting quality and respect for the environment, embracing smart technology and sustainable
         design. This isn't just building for shelter, but carefully crafting the backdrop of everyday life for a thriving
         city. It's a commitment to a future where everyone has a stake in their community and the urban environment as a
-        whole.
+        whole. 
       </p>
       <input-button link="/invest">invest now -></input-button>
     </block>
