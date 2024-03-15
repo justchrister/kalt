@@ -24,6 +24,8 @@
           Projects should aligning with our broader sustainability goals.
         </criteria>
       </criteria-list>
+      <br>
+      <chat-link link="/questions/what-does-affordable-mean">What does affordable mean?</chat-link>
     </block>
     <block margin="half">
       <h2>The thesis</h2>
@@ -40,7 +42,6 @@
         cities that can face the future with confidence.
 
       </p>
-      <chat-link link="/questions/what-does-affordable-mean">What does affordable mean?</chat-link>
       <p>
         Affordable housing stands as a solid investment opportunity. Its essence as a fundamental need provides a constant
         demand, offering a buffer against market volatility and ensuring a stable return on investment. In an economic
