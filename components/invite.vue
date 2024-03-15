@@ -18,7 +18,7 @@
   const state = ref('');
 
   const copy = async (code: string) => {
-    const text = 'https://ka.lt/invite/' + code;
+    const text = 'https://ka.lt/invite/accept' + code;
     navigator.clipboard.writeText(text).then(() => {
     }).catch(err => {
     });
@@ -30,7 +30,7 @@
       navigator.share({
         title: 'Kalt — The exclusive impact investing platform',
         text: 'Build a purpose-driven portfolio on the invite-only investing platform.',
-        url: 'https://ka.lt/invite/' + code
+        url: 'https://ka.lt/invite/accept' + code
       }).then(() => {
         state.value = '';
       })
