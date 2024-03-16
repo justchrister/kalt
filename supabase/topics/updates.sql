@@ -23,7 +23,6 @@ CREATE TABLE "topic_updates" (
 --- row level security
 ALTER TABLE "topic_updates" ENABLE ROW LEVEL SECURITY;
 
-
 CREATE POLICY "SELF — Insert" ON public."topic_updates"
   AS PERMISSIVE FOR INSERT
   TO authenticated
