@@ -1,6 +1,6 @@
 -- create a topic/ledger, by simply renaming all instances of <<topic_name>
 -- version 10.03.24
--- topic   <<topic_name>>
+-- topic   updates
 
 --- create the table, with default values
 CREATE TABLE "topic_updates" (
