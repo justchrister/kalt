@@ -26,6 +26,7 @@ CREATE TABLE "topic_users" (
     "profilePicture"        text,
     "paymentProviderId"     text,
     "language"              text,
+    "cohorts"               text[],
     "currency"              text                                            REFERENCES sys_currencies(iso)
 );
 
