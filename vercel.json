@@ -9,6 +9,10 @@
     {
       "path": "/api/acl/norgesbank/updateExchangeRates",
       "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/updatesEngine/",
+      "schedule": "* * * * *"
     }
   ]
 }
