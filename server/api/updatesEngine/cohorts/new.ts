@@ -8,14 +8,13 @@ export default defineEventHandler( async (event) => {
   const {data:usersRaw, error:usersError} = await supabase
     .from('topic_users')
     .select()
+    .order('timestamp', {ascending: false})
   
-  const usersMerged = ok.merger(usersRaw, 'id')
-  const users = usersMerged[0]
-
-  ok.log('', users)
-  const updateCohorts = async () => {
-    
-  }
-  if(users) return users
-  if(usersError) return usersError
+  const merged = ok.merge(usersRaw, 'id')
+  
+  // filter only users created last 3 days
+  const last3Days = ok.filter(merged, (user) => {
+    return user.timestamp > Date.now() - 3*24*60*60*1000
+  })
+  if(merged) return merged
 });
