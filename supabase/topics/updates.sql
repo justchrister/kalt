@@ -16,7 +16,8 @@ CREATE TABLE "topic_updates" (
   "title"         text,
   "ingress"       text,
   "category"      text,
-  "read"          boolean
+  "read"          boolean,
+  "channel"       text
 );
 
 --- row level security
