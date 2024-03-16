@@ -13,6 +13,10 @@
     {
       "path": "/api/updatesEngine/cohorts",
       "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/updatesEngine/send",
+      "schedule": "* * * * *"
     }
   ]
 }
