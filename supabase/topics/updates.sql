@@ -11,6 +11,7 @@ CREATE TABLE "topic_updates" (
   "sender"        text            NOT NULL,
 -- columns
   "userId"        uuid            NOT NULL,
+  "updateId"      uuid,
   "cohort"        text,
   "messages"      json,
   "title"         text,
