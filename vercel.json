@@ -11,7 +11,7 @@
       "schedule": "0 * * * *"
     },
     {
-      "path": "/api/updatesEngine/",
+      "path": "/api/updatesEngine/cohorts",
       "schedule": "* * * * *"
     }
   ]
