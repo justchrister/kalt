@@ -5,11 +5,17 @@ export default defineEventHandler( async (event) => {
   const supabase = serverSupabaseServiceRole(event)
   const query = getQuery(event)
   const body = await readBody(event)
-  const data = await supabase
-    .from('auth.users')
+  const {data:usersRaw, error:usersError} = await supabase
+    .from('topic_users')
     .select()
+  
+  const usersMerged = ok.merger(usersRaw, 'id')
+  const users = usersMerged[0]
 
-  ok.log('', data)
-  if(data) return data
-  if(error) return error
+  ok.log('', users)
+  const updateCohorts = async () => {
+    
+  }
+  if(users) return users
+  if(usersError) return usersError
 });
