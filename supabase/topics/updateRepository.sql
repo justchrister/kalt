@@ -15,7 +15,8 @@ CREATE TABLE "topic_updateRepository" (
     "subject"             text,
     "ingress"             text,
     "active"              boolean                        NOT NULL        DEFAULT true,
-    "messages"            json
+    "messages"            json,
+    "channel"             text
 )
 
 --- row level security
