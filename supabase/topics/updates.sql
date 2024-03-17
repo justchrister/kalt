@@ -14,7 +14,7 @@ CREATE TABLE "topic_updates" (
   "updateId"      uuid,
   "cohort"        text,
   "messages"      json,
-  "title"         text,
+  "subject"       text,
   "ingress"       text,
   "category"      text,
   "read"          boolean,
