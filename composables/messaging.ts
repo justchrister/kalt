@@ -51,6 +51,9 @@ export const pub = (client: any, meta: any) => {
     requestAccess: async (content: requestAccess) => {
       return await createJsonAndPublish(client, meta, content, 'topic_requestAccess');
     },
+    update: async (content: update) => {
+      return await createJsonAndPublish(client, meta, content, 'topic_updates');
+    },
     userDefinedFunds: async (content: userDefinedFund) => {
       return await createJsonAndPublish(client, meta, content, 'topic_userDefinedFunds');
     },
