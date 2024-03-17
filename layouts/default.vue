@@ -20,13 +20,14 @@
     const { data, error } = await supabase
       .from('topic_updates')
       .select()
-      .eq('read', false)
       .eq('userId', user.id)
     if (error) {
       console.error(error)
       return
     }
-    updateCount.value = data.length
+    const merged = ok.merge(data, 'id')
+    const filtered = merged.filter((update: any) => !update.read) || 0;
+    updateCount.value = filtered.length
   }
 // fetch updates every 3 seconds
   fetchUpdates()
