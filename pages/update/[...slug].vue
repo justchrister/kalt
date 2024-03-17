@@ -1,12 +1,12 @@
 <template>
   <main>
     <block>
-      <chat-answer>
-        Thank you for your interest in Kalt. We are currently in closed beta, but we are working hard to get you in as soon as possible. We will notify you as soon as we are ready for you.
-      </chat-answer>
-    </block>
-    <block>
-      You are receiving this because you are a part of the following user cohorts: 
+      <span v-for="(message, index) in messages" :key="index" :class="'sent '+message.type">
+        <chat-answer v-if="message.type==='answer'">{{ message.text }}</chat-answer>
+        <chat-link v-if="message.type==='link'" :to="message.url">{{ message.text }}</chat-link>
+        <chat-image v-if="message.type==='image'" :url="message.url"></chat-image>
+        <chat-question v-if="message.type==='question'">{{ message.text }}</chat-question>
+      </span>
     </block>
   </main>
 </template>
@@ -21,5 +21,25 @@
     ogDescription: 'Real assets, real impact.',
     ogImage: 'https://ka.lt/images/meta.png'
   })
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value);
+  const route = useRoute()
+
+  const storedUpdateId = route.params.slug[0] || ''
+  const update = await get(supabase).update(user, storedUpdateId)
+  const messages = update.messages
+
+  const markAsRead = async () => {
+    if(update.read) return
+    const error = await pub(supabase, {
+      sender:'pages/update/[...slug].vue',
+      id: storedUpdateId
+    }).update({
+      userId: user.id,
+      read: true
+    });
+  }
+  await markAsRead()
 </script>
 <style scoped lang="scss"></style>
