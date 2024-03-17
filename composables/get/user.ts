@@ -1,11 +1,9 @@
 import { ok } from '~/composables/ok'
 
-export const getUser = async (client, auth) => {
-  let userId = auth.id;
+export const getUser = async (client: object, auth:any) => {
+  let userId = auth.id || auth;
   let email = auth.email;
-  if (!auth.id) {
-    userId = auth;
-  }
+
   if (!auth.email) {
     email = null;
   }
