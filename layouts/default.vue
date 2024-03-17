@@ -28,7 +28,8 @@
     }
     updateCount.value = data.length
   }
-
+// fetch updates every 3 seconds
   fetchUpdates()
+  setInterval(fetchUpdates, 3000)
 
 </script>
