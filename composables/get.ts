@@ -64,6 +64,14 @@ export const get = (client: any) => {
       const { getTransactions } = await import('./get/transactions');
       return await getTransactions(client, user) as transactions;
     },
+    update: async (user: user, updateId: string) => {
+      const { getUpdate } = await import('./get/update');
+      return await getUpdate(client, user, updateId) as update;
+    },
+    updates: async (user: user) => {
+      const { getUpdates } = await import('./get/updates');
+      return await getUpdates(client, user) as updates;
+    },
     user: async (auth: any) => {
       const { getUser } = await import('./get/user');
       return await getUser(client, auth) as user;
