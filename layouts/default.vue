@@ -24,6 +24,7 @@
     }
     const merged = ok.merge(data, 'id')
     const filtered = merged.filter((update: any) => !update.read);
+    
     if(filtered && filtered.length>=1){
       updateCount.value = filtered.length
     } else {
