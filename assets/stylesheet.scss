@@ -19,7 +19,9 @@ time, mark, audio, video {
 	border: 0;
 	vertical-align: baseline;
   color: dark(100%);
-  @include body;
+  font-family: $sans-serif;
+  font-weight: normal;
+  font-size: inherit;
 }
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
