@@ -1,7 +1,7 @@
 <template>
   <section>
     <block margin="none">
-      <h1 class="serif">{{props.title}}</h1>
+      <h1>{{props.title}}</h1>
       <p v-if="props.paragraph">
         {{ props.paragraph  }}
       </p>
@@ -27,12 +27,10 @@ section{
   background:url('/images/gradient-2.jpg') no-repeat center center;
   background-size:cover;
   h1{
-    margin:0;
     color: dark(90%);
   }
   p{
-    line-height:1.5;
-    padding-top: sizer(1.5);
+    line-height:150%;
   }
 }
 </style>
