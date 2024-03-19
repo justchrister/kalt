@@ -62,7 +62,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Affordable housing'
+    pagename: 'Housing'
   })
 
   useSeoMeta({
