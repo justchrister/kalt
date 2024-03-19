@@ -29,7 +29,7 @@
   const requestUuid = useCookie('requestUuid')
 
   const requestInvite = async () => {
-
+    if(!firstName.value || !lastName.value) return
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
       "entity": requestUuid.value
