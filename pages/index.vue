@@ -2,13 +2,13 @@
 <template>
   <main>
     <block margin="double" width="wide">
-      <h1 style="font-size: 200%;text-align:center;">
+      <h1 style="text-align:center;">
         Invest in the <strong>future</strong>, today.
       </h1>
       <nuxt-link to="/invite/request/amount">
-        <h1 style="font-size: 200%;text-align:center;">
+        <h2 style="text-align:center;">
           start →
-        </h1>
+        </h2>
       </nuxt-link>
     </block>
     <frame>
