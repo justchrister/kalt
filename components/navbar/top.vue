@@ -99,6 +99,13 @@
     width:100%;
     z-index: 2000;
   }
+  .logomark,
+  .logomark span,
+  button,
+  ul li,
+  ul li a{
+    font-size: $display-sub;
+  }
   .logomark span{
     font-weight:bold;
     opacity:1;
@@ -137,14 +144,6 @@
     }
   }
 
-  button,
-  li {
-    font-family: $sans-serif;
-    font-size: sizer(2);
-    font-weight:normal;
-    line-height: 150%;
-    font-display: optional;
-  }
   button {
     padding: sizer(1) sizer($margins);
     position: fixed;
