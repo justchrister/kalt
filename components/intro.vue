@@ -1,7 +1,7 @@
 <template>
   <section>
     <block margin="none">
-      <h1 class="sans-serif no-margin">{{props.title}}</h1>
+      <h1 class="serif">{{props.title}}</h1>
       <p v-if="props.paragraph">
         {{ props.paragraph  }}
       </p>
