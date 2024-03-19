@@ -25,7 +25,7 @@
         </criteria>
       </criteria-list>
       <br>
-      <chat-link link="/questions/what-does-affordable-mean">What does affordable mean?</chat-link>
+      <chat-link to="/questions/what-does-affordable-mean">What does affordable mean?</chat-link>
     </block>
     <block margin="half">
       <h2>The thesis</h2>
