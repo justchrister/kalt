@@ -28,7 +28,7 @@ select{
   display:inline-block;
   padding:sizer(0.6667) sizer(1.5) sizer(0.6667) sizer(1.2);
   border: $border;
-  @include font-body;
+  @include body;
   box-sizing:border-box;
   background-color:transparent;
   height:sizer(3.8);
@@ -52,7 +52,7 @@ input{
   background-size: sizer(1);
   background-position:right sizer(1) center;
   background-repeat:no-repeat;
-  @include font-body;
+  @include body;
   @include border; 
   @include hoverable; 
 }
@@ -93,7 +93,7 @@ textarea{
   height:sizer(13);
   line-height:150%;
   resize: none;
-  @include font-body;
+  @include body;
   @include border; 
   @include hoverable; 
 }
@@ -110,7 +110,7 @@ a:hover button{
   cursor: pointer;
 }
 label{
-  @include font-body;
+  @include body;
   font-size: sizer(1.2);
   margin: sizer(0.5) 0;
 }
