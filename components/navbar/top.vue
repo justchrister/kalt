@@ -104,6 +104,7 @@
   button,
   ul li,
   ul li a{
+    line-height:145%;
     font-size: $display-sub;
   }
   .logomark span{
