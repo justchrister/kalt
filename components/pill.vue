@@ -1,11 +1,11 @@
 <template>
   <nuxt-link :to="props.to" v-if="props.to">
     <div class="pill">
-      <omoji emoji="props.omoji" v-if="props.omoji"/> {{props.text}}
+      {{props.text}}
     </div>
   </nuxt-link>
   <div class="pill" v-else>
-    {{props.text}}
+    <small>{{props.text}}</small>
   </div>
 </template>
 <script setup lang="ts">
@@ -17,10 +17,6 @@
     text: {
       type: String,
       required: true
-    },
-    omoji:{
-      type: String,
-      required: false
     }
   })
 </script>
@@ -30,7 +26,6 @@
     display:inline-block;
     padding:0px sizer(1);
     margin-right: sizer(0.5);
-    font-size:75%;
     @include border;
     @include hoverable;
     &:hover{
