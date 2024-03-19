@@ -52,8 +52,10 @@
     text-align:right;
     color: dark(60%);
     margin-right:sizer(.5);
+    line-height: sizer(3.95);
   }
   .name{
+    line-height: sizer(3.95);
     text-decoration:none;
   }
   .icon span{
