@@ -2,7 +2,7 @@
   <main>
     <intro title="Invest in the fundament of all economies and communities." />
     <block margin="half" :border="true">
-      <h3>The small business fund offers a unique opportunity to invest in the backbone of global economies and local communities — small businesses. We apply a rigorous selection process, identifying companies with business models designed for profitability and a committed leadership. </h3>
+      The small business fund offers a unique opportunity to invest in the backbone of global economies and local communities — small businesses. We apply a rigorous selection process, identifying companies with business models designed for profitability and a committed leadership.
     </block>
     <block margin="half">
       <criteria-list>
