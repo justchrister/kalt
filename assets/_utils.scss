@@ -65,11 +65,15 @@ $monospace: "Source Code Pro", Monospace;
 
 
 // Font sizes 
+$display-sizer: 2.7;
+$display-sub-sizer: 2.025;
+$body-sizer: 1.5;
+$body-sub-sizer: 1.125;
 
-$display:      sizer(3);
-$display-sub:  sizer(2.66);
-$body:         sizer(1.5);
-$body-sub:     sizer(1.125);
+$display:      sizer($display-sizer);
+$display-sub:  sizer($display-sub-sizer);
+$body:         sizer($body-sizer);
+$body-sub:     sizer($body-sub-sizer);
 
 // Font mixins
 
@@ -108,9 +112,11 @@ $body-sub:     sizer(1.125);
 /* Typography */
 h1{
   @include display;
+  margin-bottom: sizer(calc($display-sizer/2));
 }
 h2{
   @include display-sub;
+  margin-bottom: sizer(calc($display-sub-sizer/2));
 }
 p{
   @include body;
