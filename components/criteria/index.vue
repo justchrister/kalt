@@ -13,10 +13,10 @@
   })
 </script>
 <style scoped lang="scss">
-div{
-  display:grid;
-  grid-template-columns: sizer(3.5) 1fr;
-}
+  div{
+    display:grid;
+    grid-template-columns: sizer(3.5) 1fr;
+  }
   span{
     width: sizer(3);
     display:inline-block;
