@@ -3,7 +3,7 @@
     <block>
       <h1>Where should we send the invite?</h1>
       <form @submit.prevent="requestInvite()">
-        <input type="text" placeholder="email" v-model="email" class="next" />
+        <input type="text" placeholder="E-mail" v-model="email" class="next" />
         <input-button>next -></input-button>
       </form>
     </block>
@@ -26,7 +26,9 @@
   const requestUuid = useCookie('requestUuid')
 
   const requestInvite = async () => {
-
+    if (!email.value) return
+    // match on email regex pattern
+    if(!email.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) return
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
       "entity": requestUuid.value
