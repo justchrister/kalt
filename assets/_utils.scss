@@ -66,21 +66,22 @@ $monospace: "Source Code Pro", Monospace;
 
 // Font sizes 
 
-$display:      sizer(3.5);
-$display-sub:  sizer(2);
+$display:      sizer(3);
+$display-sub:  sizer(2.66);
 $body:         sizer(1.5);
-$body-sub:     sizer(1);
+$body-sub:     sizer(1.125);
 
 // Font mixins
 
 @mixin display {
-  font-family: $serif;
+  font-family: $sans-serif;
   font-size: $display;
   line-height: 150%;
   font-display: optional;
 }
 @mixin display-sub {
   @include display;
+  font-family: $sans-serif;
   font-size: $display-sub;
 }
 
@@ -104,6 +105,27 @@ $body-sub:     sizer(1);
   font-display: optional;
 }
 
+/* Typography */
+h1{
+  @include display;
+}
+h2{
+  @include display-sub;
+}
+p{
+  @include body;
+  margin-bottom:$body;
+  line-height: 145%;
+}
+small{
+  @include body-sub;
+  line-height: 135%;
+}
+h1,h2,p,small{
+  &.serif{
+    font-family: $serif;
+  }
+}
 // Utility mixins
 @mixin hoverable {
   background-color: primary(1%);
