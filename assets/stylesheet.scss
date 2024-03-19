@@ -210,3 +210,28 @@ p.links{
     margin-right: sizer(2)
   }
 }
+
+
+/* Typography */
+h1{
+  @include display;
+  margin-bottom: sizer(calc($display-sizer/2));
+}
+h2{
+  @include display-sub;
+  margin-bottom: sizer(calc($display-sub-sizer/2));
+}
+p{
+  @include body;
+  margin-bottom:$body;
+  line-height: 145%;
+}
+small{
+  @include body-sub;
+  line-height: 135%;
+}
+h1,h2,p,small{
+  &.serif{
+    font-family: $serif;
+  }
+}
