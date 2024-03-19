@@ -6,9 +6,9 @@
         Invest in the <strong>future</strong>, today.
       </h1>
       <nuxt-link to="/invite/request/amount">
-        <h2 style="text-align:center;">
+        <h1 style="text-align:center;">
           start →
-        </h2>
+        </h1>
       </nuxt-link>
     </block>
     <frame>
