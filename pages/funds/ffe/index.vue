@@ -1,10 +1,8 @@
 <template>
   <main>
-    <intro title="Accelerate the transition to fossil-free energy" />
+    <intro title="Accelerate the global transition to fossil-free energy sources" />
     <block margin="half" :border="true">
-      <h3>
-        The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."
-      </h3>
+      The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."
     </block>
     <block margin="half">
       <criteria-list>
@@ -57,7 +55,7 @@
 </template>
 <script lang="ts" setup>
   definePageMeta({
-    pagename: 'Fossil-free energy'
+    pagename: 'Energy'
   })
   
   useSeoMeta({
