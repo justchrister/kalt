@@ -7,7 +7,9 @@
         {{fund.name}}
       </div>
       <div class="text">
-        learn more ->
+        <small>
+          learn more ->
+        </small>
       </div>
     </div>
 </template>
@@ -48,7 +50,6 @@
   }
   .text{
     text-align:right;
-    font-size:85%;
     color: dark(60%);
     margin-right:sizer(.5);
   }
