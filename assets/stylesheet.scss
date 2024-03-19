@@ -1,28 +1,120 @@
 @import 'fonts';
 @import 'utils';
-@import 'base';
 
+//  Override some defaults
 
-
-// things i dont know where to put yet..
-
-.center-text{
-  text-align: center;
+html, body, div, span, applet, object, iframe,
+h1, h2, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, ol, ul, li,
+fieldset, form, label, legend,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+  color: dark(100%);
+  @include body;
 }
-
-p.links{
-  a:first-child{
-    margin-right: sizer(2)
-  }
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
-
-
-// Page wrapper
+strong{
+  font-weight:bold;
+}
+body {
+	background: $light;
+	touch-action: manipulation; 
+	overflow-x: hidden;
+  @include body;
+}
 main{
   padding-top: sizer(15);
   min-height:100vh;
   box-sizing:border-box;
 }
+/* see components/block for lower level */
+
+ol, ul {
+	list-style: none;
+  @include body;
+}
+ol {
+  counter-reset: list-counter;
+  list-style-type: none;
+  padding: 0;
+}
+ol li::before {
+  counter-increment: list-counter;
+  content: "0" counter(list-counter);
+  margin-right: sizer(.85);
+}
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+  color: dark(100%);
+  text-decoration: underline;
+}
+* {
+  &:before,
+  &:after{
+    box-sizing: border-box;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::selection {
+    background-color: rgba($blue, 0.2);
+  }
+}
+
+a:focus {
+  border: none;
+  box-shadow: none;
+}
+textarea,
+input{
+  background:transparent;
+}
+
+/* Buttons */
+button{
+  background:transparent;
+  font-family: $sans-serif;
+  &:hover{
+    cursor:pointer;
+  }
+}
+
+a:focus button,
+a:hover button{
+  cursor: pointer;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
 select{
   width:100%;
   display:inline-block;
@@ -101,17 +193,19 @@ textarea:focus,
 textarea:active{
   @include selected;
 }
-a:focus button{
-  background-color:white;
-}
 
-a:focus button,
-a:hover button{
-  cursor: pointer;
-}
 label{
-  @include body;
-  font-size: sizer(1.2);
+  @include body-sub;
   margin: sizer(0.5) 0;
 }
+// things i dont know where to put yet..
 
+.center-text{
+  text-align: center;
+}
+
+p.links{
+  a:first-child{
+    margin-right: sizer(2)
+  }
+}
