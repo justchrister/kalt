@@ -1,9 +1,9 @@
 <template>
   <div>
-    <strong>criteria</strong>
-    <span>
+    <p>criteria:</p>
+    <ol>
       <slot></slot>
-    </span>
+    </ol>
   </div>
 </template>
 <script setup lang="ts">
