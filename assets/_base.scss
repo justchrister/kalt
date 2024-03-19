@@ -77,14 +77,11 @@ textarea,
 input{
   background:transparent;
 }
-sup{
-  vertical-align: super;
-  font-size: 66%;
-}
 
 /* Buttons */
 button{
   background:transparent;
+  font-family: $sans-serif;
   &:hover{
     cursor:pointer;
   }
