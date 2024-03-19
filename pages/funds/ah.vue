@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Combat housing inequality, through our fund." />
+    <intro title="Combat housing inequality by investing in accessible housing." />
     <block margin="half" :border="true">
       The fund strategically allocates capital in development of affordable housing around the world. In locations
         that yield a stable return on the investments, but also contributes to social good by combating housing
