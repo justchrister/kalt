@@ -2,8 +2,8 @@
   <main>
     <intro title="A safer way to invest in early stage startups." />
     <block margin="half" :border="true">
-      <h3>The venture capital fund gives you access to a wide variety of early stage startups around the world — with
-        clear set of criteria for picking the companies and founders we invest in.</h3>
+      The venture capital fund gives you access to a wide variety of early stage startups around the world — with
+        clear set of criteria for picking the companies and founders we invest in.
     </block>
     <block margin="half">
       <criteria-list>
