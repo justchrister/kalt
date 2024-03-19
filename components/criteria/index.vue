@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <span>0{{ props.nr }}</span>
-    <slot></slot>
-  </div>
+  <li>
+    <p><slot></slot></p>
+  </li>
 </template>
 <script setup lang="ts">
   const props = defineProps({
@@ -13,11 +12,11 @@
   })
 </script>
 <style scoped lang="scss">
-  div{
+  li{
     display:grid;
     grid-template-columns: sizer(3.5) 1fr;
   }
-  span{
+  .nr{
     width: sizer(3);
     display:inline-block;
   }
