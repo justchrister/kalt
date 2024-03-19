@@ -2,9 +2,9 @@
   <main>
     <intro title="Combat housing inequality, through our fund." />
     <block margin="half" :border="true">
-      <h3>The fund strategically allocates capital in development of affordable housing around the world. In locations
+      The fund strategically allocates capital in development of affordable housing around the world. In locations
         that yield a stable return on the investments, but also contributes to social good by combating housing
-        inequality. All based on a set of criteria. </h3>
+        inequality. All based on a set of criteria.
     </block>
     <block margin="half">
       <criteria-list>
