@@ -34,9 +34,9 @@
       updateCount.value = 0
     }
     return
-  }
+  };
   let intervalId = '';
-  if(auth.value.id && auth.value.id) {
+  if(auth.value && auth.value.id) {
     intervalId = setInterval(() => fetchUpdates(auth.value.id), 500)
-  }
+  };
 </script>
