@@ -24,17 +24,19 @@
       updateCount.value = 0 
       return
     }
+
     const merged = ok.merge(data, 'id')
     const filtered = merged.filter((update: any) => !update.read);
 
     if(filtered && filtered.length>=1){
       updateCount.value = filtered.length
     } else {
-      updateCount.value = 0 
+      updateCount.value = 0
     }
+    return
   }
   let intervalId = '';
-  if(auth.value.id) {
+  if(auth.value.id && auth.value.id) {
     intervalId = setInterval(() => fetchUpdates(auth.value.id), 500)
   }
 </script>
