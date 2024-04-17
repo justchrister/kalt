@@ -120,6 +120,9 @@ export const ok = {
   sleep: async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
+  wait: async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
   prettyCurrency(amount) {
     let amountRounded = (Math.ceil(amount * 10) / 10).toFixed(1);
     const formatter = new Intl.NumberFormat('en-US', {
