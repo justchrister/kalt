@@ -1,12 +1,11 @@
 <template>
-  <div class="wrap" v-if="show">
+  <div :class="'wrap height-'+props.modalHeight" v-if="show">
     <div class="background" @click="removeModal"></div>
     <div class="modal">
       <div class="title">
         <strong v-if="props.title">
           {{ props.title }}
         </strong>
-        <div class="close"></div>
       </div>
       <slot></slot>
     </div>
@@ -22,6 +21,11 @@
     title: {
       type: String, 
       required: false
+    },
+    modalHeight: {
+      type: String,
+      default: 'normal',
+      required: false
     }
   })
   const show = ref(props.show);
@@ -33,8 +37,12 @@
   }
 
   watch(() => props.show, (newValue, oldValue) => {
-    showModal()
-    
+    ok.log('', 'newValue: '+newValue)
+    if(newValue){
+      show.value = true
+    } else {
+      show.value = false
+    }
   })
 </script>
 <style scoped lang="scss">
@@ -69,5 +77,9 @@
   .title{
     width:100%;
     height:sizer(3.5);
+  }
+  .wrap.height-tall .modal{
+    top:calc(50vh - sizer(11));
+    height:sizer(22);
   }
 </style>
