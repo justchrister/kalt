@@ -4,8 +4,8 @@
       title="Your value-driven fund"
       paragraph="Choose what your fund will consist of by simply setting 0-3 hearts on each of the funds." />
     <block>
-      <fund-your ticker="ffe" />
       <fund-your ticker="art" />
+      <fund-your ticker="ffe" />
       <fund-your ticker="ah" />
       <fund-your ticker="smb" />
       <block>
