@@ -1,17 +1,28 @@
 <template>
-  <div class="fund" v-if="fund" @click="adjustrate()">
-    <div class="icon">
-      <span :style="{ 'background-image': `url('/icons/funds/${props.ticker}.svg')` }"></span>
+  <div>
+    <div class="fund" v-if="fund" @click="adjustrate()">
+      <div class="icon">
+        <span :style="{ 'background-image': `url('/icons/funds/${props.ticker}.svg')` }"></span>
+      </div>
+      <div class="name">
+        {{fund.name}}
+        <span class="beta" v-if="fund.state==='beta'">BETA</span>
+      </div>
+      <div class="rate">
+        <span :class="{ active: rate >= 1}"></span>
+        <span :class="{ active: rate >= 2}"></span>
+        <span :class="{ active: rate >= 3}"></span>
+      </div>
     </div>
-    <div class="name">
-      {{fund.name}}
-      <span class="beta" v-if="fund.state==='beta'">BETA</span>
-    </div>
-    <div class="rate">
-      <span :class="{ active: rate >= 1}"></span>
-      <span :class="{ active: rate >= 2}"></span>
-      <span :class="{ active: rate >= 3}"></span>
-    </div>
+
+    <modal :show="showModal" title="Beta fund" modalHeight="tall">
+        <p>Sorry, this fund is in beta and can't be added to your portfolio yet.</p>
+        <p>Would you like to be notified when it's available?</p>
+        <columns :n="2">
+          <input-button @click="removeModal()">no</input-button>
+          <input-button @click="showInterest()">yes <loading-icon v-if="loading"/></input-button>
+        </columns>
+      </modal>
   </div>
 </template>
 <script setup lang="ts">
@@ -22,11 +33,6 @@
     ticker: {
       type: String,
       required: true
-    }, 
-    beta: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   })
   const { data: fund, error } = await supabase
@@ -36,11 +42,21 @@
     .limit(1)
     .single()
   const rate = ref(0)
+  const loading = ref(false)
+  const showModal = ref(false)
+  const removeModal = () => {
+    showModal.value=false
+    ok.log('', 'modal is hidden')
+  }
   const state = await get(supabase).userDefinedFunds(user, props.ticker);
   if(state && state.rate){
     rate.value = state.rate
   }
   const adjustrate = async () => {
+    if(fund.state==="beta") {
+      showModal.value = true
+      return
+    }
     if(rate.value===3){
       rate.value = 0
     } else {
@@ -53,6 +69,21 @@
       'ticker': props.ticker,
       'rate': rate.value
     });
+  }
+  const showInterest = async () => {
+    loading.value = true;
+    props.ticker
+    const { data, error } = await supabase
+      .from('topic_fundsInterest')
+      .insert({
+        id: user.id,
+        ticker: props.ticker,
+        sender: "components/fund/your.vue"
+      })
+      .select()
+    ok.wait(300)
+    loading.value = false;
+    showModal.value = false
   }
 </script>
 <style scoped lang="scss">
