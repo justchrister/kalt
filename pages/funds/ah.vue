@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Combat housing inequality by investing in accessible housing." />
+    <intro title="Combat housing inequality by investing in accessible housing."  label="BETA FUND"/>
     <block margin="half" :border="true">
       The fund strategically allocates capital in development of affordable housing around the world. In locations
         that yield a stable return on the investments, but also contributes to social good by combating housing
