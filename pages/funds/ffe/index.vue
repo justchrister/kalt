@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Accelerate the global transition to fossil-free energy sources" />
+    <intro title="Accelerate the global transition to fossil-free energy sources"  label="BETA FUND"/>
     <block margin="half" :border="true">
       The fossil-free energy fund invests in high yield and growth fossil-free energy infrastructure all around the world — with clear set of criteria for picking the locations we invest in."
     </block>
