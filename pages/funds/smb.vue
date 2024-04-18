@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="Invest in the fundament of all economies and communities." />
+    <intro title="Invest in the fundament of all economies and communities."  label="BETA FUND"/>
     <block margin="half" :border="true">
       The small business fund offers a unique opportunity to invest in the backbone of global economies and local communities — small businesses. We apply a rigorous selection process, identifying companies with business models designed for profitability and a committed leadership.
     </block>
