@@ -27,16 +27,36 @@ $red: #ED6A5A;
   @return mix($dark, $light, $mix);
 }
 @function primary($mix){
-  @return mix($primary, $light, $mix);
+  @if $mix < 100% {
+    @return mix($primary, $light, $mix);
+  } @else {
+    $mix: 100% - ($mix - 100%);
+    @return mix($primary, $dark, $mix);
+  }
 }
 @function green($mix){
-  @return mix($green, $light, $mix);
+  @if $mix < 100% {
+    @return mix($green, $light, $mix);
+  } @else {
+    $mix: 100% - ($mix - 100%);
+    @return mix($green, $dark, $mix);
+  }
 }
 @function blue($mix){
-  @return mix($blue, $light, $mix);
+  @if $mix < 100% {
+    @return mix($blue, $light, $mix);
+  } @else {
+    $mix: 100% - ($mix - 100%);
+    @return mix($blue, $dark, $mix);
+  }
 }
 @function red($mix){
-  @return mix($red, $light, $mix);
+  @if $mix < 100% {
+    @return mix($red, $light, $mix);
+  } @else {
+    $mix: 100% - ($mix - 100%);
+    @return mix($red, $dark, $mix);
+  }
 }
 
 
