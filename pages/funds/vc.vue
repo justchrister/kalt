@@ -1,6 +1,6 @@
 <template>
   <main>
-    <intro title="A safer way to invest in early stage startups." />
+    <intro title="A safer way to invest in early stage startups." label="BETA FUND"/>
     <block margin="half" :border="true">
       The venture capital fund gives you access to a wide variety of early stage startups around the world — with
         clear set of criteria for picking the companies and founders we invest in.
