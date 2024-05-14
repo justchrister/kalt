@@ -34,6 +34,11 @@ To read data from our append-only ledgers, we use a series of get composables. T
 #### `messaging()` composable
 The composables/messaging.ts file manages the publish-subscribe messaging system in our application, facilitating decoupled communication between different parts or microservices. It exports functions for publishing messages to topics and subscribing to consume messages, providing an easy-to-use interface that abstracts away the underlying details of message transmission. This file may also handle error scenarios in the messaging system, such as failed message deliveries or subscriptions, enhancing the robustness of our application.
 
+### Stack
+
+1. Vercel & Heroku as hosting
+2. Supabase for auth, postgres, and raw storage
+
 ## Frontend
 <img src="https://ka.lt/images/github/grids.svg" alt="" width="100%" height="auto">
 
