@@ -36,8 +36,10 @@ The composables/messaging.ts file manages the publish-subscribe messaging system
 
 ### Stack
 
-1. Vercel & Heroku as hosting
+1. Vercel & Digital Ocean as hosting
 2. Supabase for auth, postgres, and raw storage
+3. Nuxt for frontends, Nodejs for backends, Python for data processing and ML
+
 
 ## Frontend
 <img src="https://ka.lt/images/github/grids.svg" alt="" width="100%" height="auto">
