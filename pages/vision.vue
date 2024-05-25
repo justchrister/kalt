@@ -19,7 +19,7 @@
     </block>
     <block>
       <strong> Vision </strong>
-      <h2> Building the new era of capitalism, where the goal is beyond financial growth.</h2>
+      <h2> Building the new era of capitalism, with a goal beyond financial growth.</h2>
     </block>
     <block>
       <strong> Mission </strong>
