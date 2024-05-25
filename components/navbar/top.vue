@@ -4,7 +4,7 @@
       <ul>
         <li class="logomark" @click="logoClick()">
           <div class="logo"></div>
-          <span>Kalt —</span> {{route.meta.pagename}}
+          <span> </span> {{route.meta.pagename}}
         </li>
 
         <span v-if="signedIn">
@@ -116,7 +116,7 @@
   }
   ul li:before{
     opacity:0;
-    content:'Kalt — ';
+    content:'  ';
     font-weight:bold;
     display:inline;
   }
