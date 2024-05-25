@@ -5,8 +5,8 @@ $columns: 45;
 $unit: calc($sitewidth/$columns);
 $unit-max: calc($maxsitewidth/$columns);
 
-@function sizer($multiplier){
-  @return clamp(1px, $unit*$multiplier, $unit-max*$multiplier);
+@function sizer($multiplier, $minValue: 1px){
+  @return clamp($minValue, $unit*$multiplier, $unit-max*$multiplier);
 }
 
 @mixin site-width {
