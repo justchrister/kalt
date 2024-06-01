@@ -4,7 +4,7 @@
       <ul>
         <li class="logomark" @click="logoClick()">
           <div class="logo"></div>
-          <span> </span> {{route.meta.pagename}}
+          <span class="logotext"> Kalt </span><span class="emdash"> — </span><span class="pagename">{{route.meta.pagename}}</span>
         </li>
 
         <span v-if="signedIn">
@@ -41,7 +41,7 @@
       </ul>
     </nav>
 
-    <button @click="toggleMenu()">menu</button>
+    <button @click="toggleMenu()"><span>menu</span></button>
   </header>
 </template>
 
@@ -76,15 +76,15 @@
   $logoSize: 1.6;
   $margins: 1.5;
   .logo{
-    width: sizer($logoSize);
-    height: sizer($logoSize);
+    width: sizer($logoSize, 23px);
+    height: sizer($logoSize, 23px);
     display:block;
     position:fixed;
     top: 0;
     left: 0;
     background: dark(100%);
     border-radius:100%;
-    margin: sizer(1.69) sizer(1) sizer(2) sizer($margins);
+    margin: sizer(1.69, 24.29375px) sizer(1, 14.375px) sizer(2, 28.75px) sizer($margins, 21.5625px);
     animation-name: example;
     animation-duration: 12s;
     animation-delay: 500ms;
@@ -105,9 +105,10 @@
   ul li,
   ul li a{
     line-height:145%;
-    font-size: $display-sub;
+    font-size: sizer($display-sub-sizer, 29.109375px);
   }
-  .logomark span{
+  .logomark span.logotext,
+  .logomark span.emdash{
     font-weight:bold;
     opacity:1;
   }
@@ -120,13 +121,19 @@
     font-weight:bold;
     display:inline;
   }
+  ul li:before{
+    opacity:0;
+    content:'Kalt — ';
+    font-weight:bold;
+    display:inline;
+  }
   .menu ul{
     position: fixed;
     z-index: 3;
     margin: 0;
     height: sizer(4);
     overflow:hidden;
-    padding: sizer(1) sizer(2) sizer(1) sizer(2.2+$margins);
+    padding: sizer(1, 14.375px) sizer(2, 28.7px) sizer(1, 14.375px) sizer(2.2+$margins, 53.1875px);
     li.logomark{
       opacity:1;
       pointer-events : all;
@@ -146,7 +153,7 @@
   }
 
   button {
-    padding: sizer(1) sizer($margins);
+    padding: sizer(1, 14.375px) sizer($margins, 21.5625px);
     position: fixed;
     top: $border-width;
     width: auto;
@@ -187,6 +194,12 @@
     opacity:1;
     pointer-events : all;
   }
+  .menu ul li span.logotext {
+    display:inline;
+  }
+  .menu ul li span.pagetext {
+    display:none;
+  }
   header button:before{
     opacity:1;
   }
@@ -195,5 +208,16 @@
 .show-menu main{
   opacity:0;
   pointer-events : none;
+}
+@media screen and (max-width: 630px) {
+
+  .show-menu .menu ul li.logomark span.emdash,
+  .show-menu .menu ul li.logomark span.pagename{
+    display:none;
+  }
+
+  .show-menu ul li:before{
+    display:none;
+  }
 }
 </style>
