@@ -211,6 +211,8 @@
 }
 @media screen and (max-width: 630px) {
 
+  .menu ul li.logomark span.emdash,
+  .menu ul li.logomark span.pagename,
   .show-menu .menu ul li.logomark span.emdash,
   .show-menu .menu ul li.logomark span.pagename{
     display:none;
