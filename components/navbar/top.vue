@@ -99,6 +99,9 @@
     width:100%;
     z-index: 2000;
   }
+  .logomark{
+    max-width:40vw; // control for mobile
+  }
   .logomark,
   .logomark span,
   button,
