@@ -7,7 +7,7 @@
           <span class="logotext"> Kalt </span><span class="emdash"> — </span><span class="pagename">{{route.meta.pagename}}</span>
         </li>
 
-        <span v-if="signedIn">
+        <span v-if="signedIn" class="menuItems">
           <li>
             <nuxt-link to="/invest" @click="toggleMenu()"> Invest </nuxt-link>
           </li>
@@ -21,7 +21,7 @@
             <a href="/auth/sign-out" @click="toggleMenu()"> Sign out </a>
           </li>
         </span>
-        <span  v-if="!signedIn">
+        <span  v-if="!signedIn" class="menuItems">
         <li>
           <nuxt-link to="/vision" @click="toggleMenu()"> Vision </nuxt-link>
         </li>
@@ -132,6 +132,7 @@
   }
   .menu ul{
     position: fixed;
+    width:auto;
     z-index: 3;
     margin: 0;
     height: sizer(4);
@@ -140,6 +141,9 @@
     li.logomark{
       opacity:1;
       pointer-events : all;
+    }
+    span.menuItems{
+      display:none;
     }
     li {
       opacity:0;
@@ -156,6 +160,7 @@
   }
 
   button {
+    z-index:9999;
     padding: sizer(1, 14.375px) sizer($margins, 21.5625px);
     position: fixed;
     top: $border-width;
@@ -166,12 +171,6 @@
     &:hover,
     &:hover:before{
       text-decoration: underline;
-    }
-    &:before{
-      content:"close ";
-      white-space: pre;
-      display:inline-block;
-      opacity:0;
     }
   }
 
@@ -193,6 +192,9 @@
   .menu ul{
     overflow: visible;
   }
+  .menu ul span.menuItems{
+    display:block;
+  }
   .menu ul li{
     opacity:1;
     pointer-events : all;
@@ -204,7 +206,9 @@
     display:none;
   }
   header button:before{
-    opacity:1;
+    content:"close ";
+    white-space: pre;
+    display:inline-block;
   }
 }
 .show-menu footer,
