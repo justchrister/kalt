@@ -1,7 +1,7 @@
 <template>
   <main>
     <navbar-tabs />
-    <block>      
+    <block>
       <span v-for="(update, index) in updates" :key="index">
 
         <update-single :id="update.id" :subject="update.subject" :ingress="update.ingress" category="general" date="01.01.2024" :read="false"/>
