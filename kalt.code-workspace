@@ -10,15 +10,11 @@
       "path": "../sudo"
     },
     {
+      "path": "../cors"
+    },
+    {
       "path": "../img"
     },
-    {
-      "path": "../Digitalocean-Puppeteer"
-    },
-    {
-      "path": "../justchrister"
-    }
-    
   ],
   "settings": {
     "html.autoClosingTags": false,
