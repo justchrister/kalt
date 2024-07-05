@@ -76,15 +76,15 @@
   $logoSize: 1.6;
   $margins: 1.5;
   .logo{
-    width: sizer($logoSize, 23px);
-    height: sizer($logoSize, 23px);
+    width: sizer($logoSize, 20.7px);
+    height: sizer($logoSize, 20.7px);
     display:block;
     position:fixed;
     top: 0;
     left: 0;
     background: dark(100%);
     border-radius:100%;
-    margin: sizer(1.69, 24.29375px) sizer(1, 14.375px) sizer(2, 28.75px) sizer($margins, 21.5625px);
+    margin: sizer(1.69, 21.864375px) sizer(1, 12.9375px) sizer(2, 25.875px) sizer($margins, 19.40625px);
     animation-name: example;
     animation-duration: 12s;
     animation-delay: 500ms;
@@ -108,7 +108,7 @@
   ul li,
   ul li a{
     line-height:145%;
-    font-size: sizer($display-sub-sizer, 29.109375px);
+    font-size: sizer($display-sub-sizer, 26.1984375px);
   }
   .logomark span.logotext,
   .logomark span.emdash{
@@ -137,7 +137,7 @@
     margin: 0;
     height: sizer(4);
     overflow:hidden;
-    padding: sizer(1, 14.375px) sizer(2, 28.7px) sizer(1, 14.375px) sizer(2.2+$margins, 53.1875px);
+    padding: sizer(1, 12.9375px) sizer(2, 25.83px) sizer(1, 12.9375px) sizer(2.2+$margins, 47.86875px);
     li.logomark{
       opacity:1;
       pointer-events : all;
@@ -161,7 +161,7 @@
 
   button {
     z-index:9999;
-    padding: sizer(1, 14.375px) sizer($margins, 21.5625px);
+    padding: sizer(1, 12.9375px) sizer($margins, 19.40625px);
     position: fixed;
     top: $border-width;
     width: auto;
