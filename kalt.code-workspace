@@ -4,7 +4,7 @@
       "path": "."
     },
     {
-      "path": "../data"
+      "path": "../harvest"
     },
     {
       "path": "../sudo"
