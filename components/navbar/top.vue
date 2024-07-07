@@ -100,6 +100,7 @@
     z-index: 2000;
   }
   .logomark{
+    color:dark(100%);
     max-width:40vw; // control for mobile
   }
   .logomark,
@@ -173,7 +174,6 @@
       text-decoration: underline;
     }
   }
-
 
   @keyframes example {
     0% {
