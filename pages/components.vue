@@ -1,6 +1,9 @@
 <template>
   <main>
     <block>
+      <chat-answer>
+        Quick update about how things are going at Kalt:
+      </chat-answer>
       <chat-note>
         {{ text }}
       </chat-note>
