@@ -6,10 +6,10 @@
       </h1>
       <div class="columns-2">
         <div class="request" @click="navigateTo('invite/request/amount')">
-          <nuxt-link to="invite/request/amount">Join waitlist</nuxt-link>
+          <nuxt-link to="invite/request/amount">Join waitlist ↗</nuxt-link>
         </div>
         <div class="learn" @click="navigateTo('/questions/how-does-it-work')">
-          How it works ->
+          <u>Our vision</u>
         </div>
       </div>
     </block>
@@ -53,7 +53,7 @@
 <style scoped lang="scss">
   .content{bottom:0;position:absolute;padding:sizer(4);}
   h1 {
-    font-size:sizer(4);
+    font-size:sizer(3.5);
     color:$dark;
     font-weight:500;
   }
@@ -88,19 +88,29 @@
   .columns-2{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    gap: sizer(1);
-    width:sizer(40);
+    gap: sizer(.5);
+    width:sizer(30);
     *{
-      font-size:sizer(2);
+      font-size:sizer(1.5);
+    }
+    .learn:hover{
+      text-decoration:underline;
+      cursor: pointer;
     }
     .request a{
+      border: sizer(0.1) solid $dark;
       text-decoration: none;
-      background-color:$light;
       color:dark(90%);
-      padding:sizer(1) sizer(3);
+      padding:sizer(.7) sizer(1.8);
       border-radius:50%;
       text-align:center;
       cursor:pointer;
+      &:hover{
+        background-color:rgba($light, 0.2)
+      }
     }
+  }
+  main{
+    padding-top:sizer(8);
   }
 </style>
