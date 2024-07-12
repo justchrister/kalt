@@ -135,6 +135,7 @@
     position: fixed;
     width:auto;
     z-index: 3;
+    top: 0;
     margin: 0;
     height: sizer(4);
     overflow:hidden;
