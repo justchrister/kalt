@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <div class="video-container">
+    <div class="video-container" @click="navigateTo('/invite/request/amount')">
       <h1>
         Invest in the <strong>future</strong>, today. <br/> <nuxt-link to="/invite/request/amount"> start → </nuxt-link>
       </h1>
@@ -16,12 +16,12 @@
         By investing in what you believe in, you can be sure that your money is aligned with your values.
       </p>
       <p>
-        Our funds
-      </p>
+        <u>Our funds:</u> 
       <pill text="energy" to="funds/ffe" />
       <pill text="art" to="funds/art" />
       <pill text="housing" to="funds/ah" />
       <pill text="small business" to="funds/smb" />
+    </p>
     </block>
     <block>
       <h2>Want to work with us?</h2>
@@ -47,30 +47,30 @@
   })
 </script>
 <style scoped lang="scss">
-h1 {
-  font-size:5vw;
-  padding-top:20vw;
-  padding-left:4vw;
-  color:$dark;
-}
-.video-container{
-  display:block;
-  position: relative;
-  margin:sizer(7) 10vw sizer(4) 10vw;
-  width:80vw;
-  height:40vw;
-  box-sizing: border-box;
-}
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: sizer(2); 
-  z-index: -1;
-}
+  h1 {
+    font-size:5vw;
+    padding-top:20vw;
+    padding-left:4vw;
+    color:$dark;
+  }
+  .video-container{
+    display:block;
+    position: relative;
+    margin:sizer(7) 10vw sizer(4) 10vw;
+    width:80vw;
+    height:40vw;
+    box-sizing: border-box;
+  }
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: sizer(2); 
+    z-index: -1;
+  }
   main{
     padding-top:0;
   }
