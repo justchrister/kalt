@@ -151,3 +151,21 @@ $body-sub:     sizer($body-sub-sizer);
 @mixin drop-shadow{
   box-shadow: 0 0 sizer(2) 0 primary(5%);
 }
+
+@keyframes backgroundColorAnimation{
+  0% {
+    background-color: blue(7%);
+  }
+  25%{
+    background-color: $light;
+  }
+  50% {
+    background-color: green(7%);
+  }
+  75% {
+    background-color: $light;
+  }
+  100% {
+    background-color: blue(7%); 
+  }
+}
