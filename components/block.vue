@@ -1,6 +1,7 @@
 <template>
   <div :class="'block '+classes">
     <slot></slot>
+    <video v-if="props.backgroundVideo" :src="props.backgroundVideo" class="background-video" autoplay muted loop></video>
   </div>
 </template>
 <script setup lang="ts">
@@ -11,6 +12,10 @@
     },
     border: {
       type: Boolean,
+      required: false
+    },
+    backgroundVideo: {
+      type: String,
       required: false
     }
   })
@@ -60,5 +65,16 @@
       @include border;
     }
     
+    .background-video {
+      margin: sizer(10) sizer(3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: sizer(80.5);
+      height: 100%;
+      object-fit: cover; // Ensures the video covers the entire area
+      border-radius: 15px; // Adjust the radius as needed
+      z-index: -1; // Ensure the video is behind other content
+    }
   }
 </style>
