@@ -191,7 +191,7 @@
   @keyframes moveDown {
     0% {
       transform: translateY(-10px);
-      opacity: 0.5;
+      opacity: 0.3;
     }
     75%{
       opacity: 1;
@@ -199,16 +199,6 @@
     100% {
       transform: translateY(0px);
       opacity: 1;
-    }
-  }
-  .menuItems li {
-    animation: moveDown 0.35s forwards;
-  }
-
-  // Use SCSS loop to apply animation delay
-  @for $i from 1 through 6 {
-    .menuItems li:nth-child(#{$i}) {
-      animation-delay: 0.02s * $i;
     }
   }
 </style>
@@ -221,7 +211,7 @@
     display:block;
   }
   .menu ul li{
-    opacity:0;
+    opacity:1;
     pointer-events : all;
   }
   .menu ul li span.logotext {
@@ -241,7 +231,7 @@
   opacity:0;
   pointer-events : none;
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 300px) {
 
   .menu ul li.logomark span.emdash,
   .menu ul li.logomark span.pagename,
