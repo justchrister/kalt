@@ -237,3 +237,9 @@ h1,h2,p,small{
     font-family: $serif;
   }
 }
+
+
+
+body{
+  animation: backgroundColorAnimation 20s infinite;
+}
