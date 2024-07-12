@@ -10,11 +10,8 @@
       "path": "../sudo"
     },
     {
-      "path": "../cors"
-    },
-    {
-      "path": "../img"
-    },
+      "path": "../ml"
+    }
   ],
   "settings": {
     "html.autoClosingTags": false,
