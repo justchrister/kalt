@@ -2,7 +2,7 @@
 <template>
   <main>
     <block margin="none">
-      <strong> {{ user.firstName }} {{ user.lastName }}</strong>
+      {{ user.firstName }} {{ user.lastName }}
     </block>
     <frame>
       <chart :days="days" />
