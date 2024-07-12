@@ -187,6 +187,30 @@
       transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
     }
   }
+
+  @keyframes moveDown {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0.5;
+    }
+    75%{
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  .menuItems li {
+    animation: moveDown 0.35s forwards;
+  }
+
+  // Use SCSS loop to apply animation delay
+  @for $i from 1 through 6 {
+    .menuItems li:nth-child(#{$i}) {
+      animation-delay: 0.02s * $i;
+    }
+  }
 </style>
 <style lang="scss">
 .show-menu{
@@ -197,7 +221,7 @@
     display:block;
   }
   .menu ul li{
-    opacity:1;
+    opacity:0;
     pointer-events : all;
   }
   .menu ul li span.logotext {
