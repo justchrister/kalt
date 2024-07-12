@@ -25,7 +25,7 @@
   });
   const supabase = useSupabaseClient()
   const runtimeConfig = useRuntimeConfig()
-
+  
   const stripePublicKey = runtimeConfig.public.STRIPE_PUBLIC_KEY as string;
   const stripeReturnUrl = runtimeConfig.public.STRIPE_RETURN_URL as string;
   const user = props.user as user;
