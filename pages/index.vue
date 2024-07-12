@@ -3,7 +3,7 @@
   <main>
     <div class="video-container" @click="navigateTo('/invite/request/amount')">
       <h1>
-        <span>Invest</span> <span>in</span> <span>the</span> <span><strong>future</strong>,</span> <span>today.</span> <br/> <span><nuxt-link to="/invite/request/amount"> start → </nuxt-link></span>
+        <span>Invest</span> <span>in</span> <span>the</span> <span>future,</span> <span>today.</span> <br/> <span><nuxt-link to="/invite/request/amount"> start → </nuxt-link></span>
       </h1>
       <video src="/videos/film-3.mp4" class="background-video" autoplay muted loop></video>
     </div>
@@ -17,10 +17,10 @@
       <p>
         Our funds:
       </p>
-      <pill text="energy" to="funds/ffe" />
+      <pill text="energy" to="funds/energy" />
       <pill text="art" to="funds/art" />
-      <pill text="housing" to="funds/ah" />
-      <pill text="small business" to="funds/smb" />
+      <pill text="housing" to="funds/housing" />
+      <pill text="small business" to="funds/small-business" />
     </block>
     <block>
       <h2>Want to work with us?</h2>
@@ -51,6 +51,7 @@
     padding-top:20vw;
     padding-left:4vw;
     color:$dark;
+    font-weight:500;
   }
   .video-container{
     display:block;
@@ -88,7 +89,7 @@
   }
 
   // Use SCSS loop to apply animation delay
-  @for $i from 1 through 6 {
+  @for $i from 1 through 7 {
     h1 span:nth-child(#{$i}) {
       animation-delay: 0.1s * $i;
     }
