@@ -5,7 +5,7 @@
     </modal>
     <label>Select reinvestment ratio (%): </label>
     <div class="wrapper" @click="markedAsUnavail=true">
-      <span>{{percent}}%</span>
+      <span>100 %</span>
       <span @click="remove()" class="button">-</span>
       <span @click="add()" class="button">+</span>
     </div>
