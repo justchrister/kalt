@@ -40,3 +40,8 @@
     intervalId = setInterval(() => fetchUpdates(auth.value.id), 500)
   };
 </script>
+<style lang="scss">
+  body{
+    animation: backgroundColorAnimation  5s infinite;
+  }
+</style>
