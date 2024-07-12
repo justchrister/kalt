@@ -1,18 +1,23 @@
 
 <template>
   <main>
-    <div class="video-container" @click="navigateTo('/invite/request/amount')">
-      <h1>
-        <span>Invest</span> <span>in</span> <span>the</span> <span>future,</span> <span>today.</span> <br/> <span><nuxt-link to="/invite/request/amount"> start → </nuxt-link></span>
+    <block width="extra-wide" padding="5" video="/videos/film-3.mp4">
+      <h1><span>A</span> <span>purpose</span><span>-</span><span>driven</span> <br/><span>investment</span> <span>platform</span><span>.</span>
       </h1>
-      <video src="/videos/film-3.mp4" class="background-video" autoplay muted loop></video>
-    </div>
+      <div class="columns-2">
+        <div class="request" @click="navigateTo('invite/request/amount')">
+          <nuxt-link to="invite/request/amount">Join waitlist ↗</nuxt-link>
+        </div>
+        <div class="learn" @click="navigateTo('/questions/how-does-it-work')">
+          <u>Our vision</u>
+        </div>
+      </div>
+    </block>
     <block>
-      <h2>Real impact</h2>
+      <h2>Our innovative technology lets you to grow your wealth while investing in things that matter to you.</h2>
       <p>
-        Our innovative technology lets you to grow your wealth while building a more sustainable future for everyone.</p>
-      <p>
-        By investing in what you believe in, you can be sure that your money is aligned with your values.
+        The only way to have actual lasting impact is to use market forces to drive a change. We call it the next era of capitalism. 
+        You can expect high returns, moderate risk, and complete transparency. 
       </p>
       <p>
         Our funds:
@@ -46,30 +51,11 @@
   })
 </script>
 <style scoped lang="scss">
+  .content{bottom:0;position:absolute;padding:sizer(4);}
   h1 {
-    font-size:5vw;
-    padding-top:20vw;
-    padding-left:4vw;
+    font-size:sizer(3.5);
     color:$dark;
     font-weight:500;
-  }
-  .video-container{
-    display:block;
-    position: relative;
-    margin:sizer(7) 10vw sizer(4) 10vw;
-    width:80vw;
-    height:40vw;
-    box-sizing: border-box;
-  }
-  .background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: sizer(0.8); 
-    z-index: -1;
   }
   @keyframes moveUp {
   0% {
@@ -87,14 +73,44 @@
     opacity: 0;
     animation: moveUp 0.5s forwards;
   }
+  h2 span {
+    display: inline-block;
+    opacity: 0;
+    animation: moveUp 0.5s forwards;
+  }
 
   // Use SCSS loop to apply animation delay
-  @for $i from 1 through 7 {
+  @for $i from 1 through 9 {
     h1 span:nth-child(#{$i}) {
-      animation-delay: 0.1s * $i;
+      animation-delay: 0.08s * $i;
+    }
+  }
+  .columns-2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: sizer(.5);
+    width:sizer(30);
+    *{
+      font-size:sizer(1.5);
+    }
+    .learn:hover{
+      text-decoration:underline;
+      cursor: pointer;
+    }
+    .request a{
+      border: sizer(0.1) solid $dark;
+      text-decoration: none;
+      color:dark(90%);
+      padding:sizer(.7) sizer(1.8);
+      border-radius:50%;
+      text-align:center;
+      cursor:pointer;
+      &:hover{
+        background-color:rgba($light, 0.2)
+      }
     }
   }
   main{
-    padding-top:0;
+    padding-top:sizer(8);
   }
 </style>
