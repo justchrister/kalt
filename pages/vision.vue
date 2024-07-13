@@ -1,11 +1,11 @@
 <template>
   <main>
-    <frame>
-      <frame-image src="/images/architecture/brutalist-house-in-affligem.jpg" />
-      <frame-image src="/images/eddy-mercx-1970.jpg" />
-    </frame>
+    <block width="extra-wide" padding="5" video="/videos/vision.webm">
+      <pill-next color="primary"> Vision </pill-next>
+      <h1><span>Building</span> <span>the</span> <span>next</span> <span>era</span> <span>of</span> <span>capitalism</span><span>,</span> <span>with</span> <span>a</span> <span>goal</span> <span>beyond</span> <span>financial</span> <span>growth</span><span>.</span>
+      </h1>
+    </block>
     <block>
-      <h1> Introduction </h1>
       <p>
         The only way to have actual lasting impact is to use market forces to drive a change. The issues we are facing
         require a lot of funding, and the only way to allocate the adequate capital, is if that capital actually gives a
@@ -18,12 +18,11 @@
       </p>
     </block>
     <block>
-      <strong> Vision </strong>
-      <!-- OLD: <h2> Building the new era of capitalism, where the goal is beyond financial growth.</h2> -->
+      <pill-next color="primary"> Vision </pill-next>
       <h2> Building the new era of capitalism, with a goal beyond financial growth.</h2>
     </block>
     <block>
-      <strong> Mission </strong>
+      <pill-next color="primary"> Mission </pill-next>
       <h2> Redefine impact investing </h2>
       <p>
         We want to empower individuals to maximize their positive impact on the world. By providing accessible investment
@@ -32,7 +31,7 @@
       </p>
     </block>
     <block>
-      <strong> Goal 01 </strong>
+      <pill-next color="primary"> Goal 01 </pill-next>
       <h2> 2x market returns </h2>
       <p>
         Portfolio performance driving impact is our guiding principle. To make investing in a sustainable future
@@ -44,7 +43,7 @@
       </p>
     </block>
     <block>
-      <strong> Goal 02 </strong>
+      <pill-next color="primary"> Goal 02 </pill-next>
       <h2> Impact that grows </h2>
       <p>
         The positive environmental and societal impact has to grow over time. The true measure of an investment lies not
@@ -53,7 +52,7 @@
       </p>
     </block>
     <block>
-      <strong> Goal 03 </strong>
+      <pill-next color="primary"> Goal 03 </pill-next>
       <h2> Make it transparent </h2>
       <p>
         Transparency is fundamental when making huge promises. It is vital that you both see and understand the impact of
@@ -79,3 +78,44 @@
     ogImage: 'https://ka.lt/images/meta-vision.png'
   })
 </script>
+<style lang="scss" scoped>
+  main{
+    padding-top:sizer(8);
+  }
+  .content{
+    bottom:0;
+    position:absolute;
+    padding:sizer(4);
+  }
+  h1 {
+    margin-top:sizer(1);
+    font-size:sizer(3.5);
+    color:$dark;
+    font-weight:500;
+  }
+  h2{
+    margin-top:sizer(0.4);
+  }
+  @keyframes moveUp {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+  }
+
+  h1 span {
+    display: inline-block;
+    opacity: 0;
+    animation: moveUp 0.5s forwards;
+  }
+  // Use SCSS loop to apply animation delay
+  @for $i from 1 through 25 {
+    h1 span:nth-child(#{$i}) {
+      animation-delay: 0.08s * $i;
+    }
+  }
+</style>

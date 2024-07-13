@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Keys within public, will be also exposed to the client-side
     public: {
+      DEMO: false,
       STRIPE_PUBLIC_KEY: 'will be replaced',
       STRIPE_RETURN_URL: 'will be replaced'
     }

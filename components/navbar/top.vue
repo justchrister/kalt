@@ -100,7 +100,8 @@
     z-index: 2000;
   }
   .logomark{
-    max-width:40vw; // control for mobile
+    color:dark(100%);
+    max-width:100vw; // control for mobile
   }
   .logomark,
   .logomark span,
@@ -134,6 +135,7 @@
     position: fixed;
     width:auto;
     z-index: 3;
+    top: 0;
     margin: 0;
     height: sizer(4);
     overflow:hidden;
@@ -174,7 +176,6 @@
     }
   }
 
-
   @keyframes example {
     0% {
       transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
@@ -184,6 +185,20 @@
     }
     100% {
       transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(177deg) rotateY(180deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg) skewY(0deg);
+    }
+  }
+
+  @keyframes moveDown {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0.3;
+    }
+    75%{
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
     }
   }
 </style>
@@ -216,7 +231,7 @@
   opacity:0;
   pointer-events : none;
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 300px) {
 
   .menu ul li.logomark span.emdash,
   .menu ul li.logomark span.pagename,

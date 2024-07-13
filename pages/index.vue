@@ -1,47 +1,41 @@
 
 <template>
   <main>
-    <block margin="double" width="wide">
-      <h1 style="text-align:center;">
-        Invest in the <strong>future</strong>, today.
+    <block width="extra-wide" padding="5" video="/videos/film-3.mp4">
+      <h1><span>A</span> <span>purpose</span><span>-</span><span>driven</span> <br/><span>investment</span> <span>platform</span><span>.</span>
       </h1>
-      <nuxt-link to="/invite/request/amount">
-        <h1 style="text-align:center;">
-          start →
-        </h1>
-      </nuxt-link>
+      <div class="columns-2">
+        <div class="request" @click="navigateTo('invite/request/amount')">
+          <nuxt-link to="invite/request/amount">Join waitlist ↗</nuxt-link>
+        </div>
+        <div class="learn" @click="navigateTo('/vision')">
+          <u>Our vision</u>
+        </div>
+      </div>
     </block>
-    <frame>
-      <frame-image src="/images/frontpage.webp" />
-      <frame-video src="/videos/film.mp4" />
-    </frame>
     <block>
-      <h1>
-        Make money, make a difference!
-      </h1>
+      <h2>Our innovative technology lets you to grow your wealth while investing in things that matter to you.</h2>
       <p>
-        Join us in using cutting-edge technology to make your money work for you and the world. With our innovative
-        approach, you can contribute to a sustainable future and generate income while making a positive impact.
+        The only way to have actual lasting impact is to use market forces to drive a change. We call it the next era of capitalism. 
+        You can expect high returns, moderate risk, and complete transparency. 
       </p>
       <p>
-        By investing in what you believe in, you can be sure that your money is aligned with your values.
+        Our funds:
       </p>
-      <pill text="energy" to="funds/ffe" />
+      <pill text="energy" to="funds/energy" />
       <pill text="art" to="funds/art" />
-      <pill text="housing" to="funds/ah" />
-      <pill text="small business" to="funds/smb" />
+      <pill text="housing" to="funds/housing" />
+      <pill text="small business" to="funds/small-business" />
     </block>
-    <carousel>
-      <carousel-item title="Powered by AI">
-        Capital is allocated using proprietary AI to earn you a stable return on your investment.
-      </carousel-item>
-      <carousel-item title="Impact investing">
-        The companies and assets we invest in always align with your values.
-      </carousel-item>
-      <carousel-item title="Curated assets">
-        All investments are carefully selected using quantitative investment strategies.
-      </carousel-item>
-    </carousel>
+    <block>
+      <h2>Want to work with us?</h2>
+      <p>
+        We are looking for exceptionally talented people to join us in building the next era of capitalism. In an academic environment, where the focus is delivery. 
+      </p>
+      <p> 
+        <nuxt-link to="/careers">Learn more →</nuxt-link>
+      </p>
+    </block>
   </main>
 </template>
 <script setup lang="ts">
@@ -56,3 +50,66 @@
     ogImage: 'https://ka.lt/images/meta.png'
   })
 </script>
+<style scoped lang="scss">
+  main{
+    padding-top:sizer(8);
+  }
+  .content{
+    bottom:0;
+    position:absolute;
+    padding:sizer(4);
+  }
+  h1 {
+    font-size:sizer(3.5);
+    color:$dark;
+    font-weight:500;
+  }
+  @keyframes moveUp {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+  }
+
+  h1 span {
+    display: inline-block;
+    opacity: 0;
+    animation: moveUp 0.5s forwards;
+  }
+  // Use SCSS loop to apply animation delay
+  @for $i from 1 through 9 {
+    h1 span:nth-child(#{$i}) {
+      animation-delay: 0.08s * $i;
+    }
+  }
+
+  .columns-2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: sizer(.5);
+    width:sizer(30);
+    *{
+      font-size:sizer(1.5);
+    }
+    .learn:hover{
+      text-decoration:underline;
+      cursor: pointer;
+    }
+    .request a{
+      border: sizer(0.1) solid $dark;
+      text-decoration: none;
+      color:dark(90%);
+      padding:sizer(.7) sizer(1.8);
+      border-radius:50%;
+      text-align:center;
+      cursor:pointer;
+      &:hover{
+        background-color:rgba($light, 0.2)
+      }
+    }
+  }
+</style>

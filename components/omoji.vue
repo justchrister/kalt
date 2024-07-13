@@ -24,8 +24,8 @@ span:selected{
 
 /* happy */
 span.happy,
-span.😊 ,
-span.🙂 { 
+span.😊,
+span.🙂{ 
   background-image:url('/omoji/happy.svg');
 }
 /* Super happy */
@@ -123,7 +123,7 @@ span.ⓘ{
 
 /* happy */
 span.happy,
-span.😊 ,
+span.😊,
 span.🙂 { 
   background-image:url('/omoji/happy.svg');
 }

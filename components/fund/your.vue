@@ -29,6 +29,10 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value);
+
+  const runtimeConfig = useRuntimeConfig()
+  const demo = runtimeConfig.public.DEMO as boolean;
+
   const props = defineProps({
     ticker: {
       type: String,
@@ -53,7 +57,8 @@
     rate.value = state.rate
   }
   const adjustrate = async () => {
-    if(fund.state==="beta") {
+    console.log(demo)
+    if(!demo && fund.state==="beta") {
       showModal.value = true
       return
     }
