@@ -100,7 +100,6 @@
     uploadState.value = 'loading'
     ok.log('', 'Starting upload to: userIdentification/'+user.id)
     if (file && file.type.startsWith('image/')) {
-      console.log(file)
       imagePreview.value = URL.createObjectURL(file);
     }
     verifyImage(file)
