@@ -1,8 +1,25 @@
 <template>
-  <div class="frame">
+  <div :class="classes">
     <slot></slot>
   </div>
 </template>
+
+<script setup lang="ts">
+  const props = defineProps({
+    width: {
+      type: String,
+      required: false
+    }
+  })
+
+  const classes = computed(() => {
+    let classes = ['frame']
+    if (props.width) {
+      classes.push(props.width)
+    }
+    return classes
+  })
+</script>
 <style scoped lang="scss">
 .frame {
   width: $sitewidth;
@@ -15,5 +32,8 @@
   align-content: flex-start;
   height: 50vw;
   max-height: 418px;
+  &.wide{
+    max-width: $maxsitewidth*1.3;
+  }
 }
 </style>
