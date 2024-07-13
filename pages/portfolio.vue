@@ -43,6 +43,9 @@
   const user = await get(supabase).user(auth.value);
 </script>
 <style scoped lang="scss">
+  main{
+    padding-top:sizer(8);
+  }
   .filters {
     margin-top: sizer(5);
     height: sizer(5);
