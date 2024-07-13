@@ -57,6 +57,7 @@
     rate.value = state.rate
   }
   const adjustrate = async () => {
+    console.log(demo)
     if(!demo && fund.state==="beta") {
       showModal.value = true
       return
