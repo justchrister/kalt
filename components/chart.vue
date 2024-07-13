@@ -240,8 +240,10 @@
     max-height: 100%;
   }
   .chart-container{
-    border: blue(30%) solid 1px;
-    background: blue(10%);
+    border: dark(30%) solid 1px;
+    background: blue(15%);
+    
+    animation: backgroundColorAnimation 60s infinite;
     width: 100%;
     height: 45vw;
     max-height: 365px;
