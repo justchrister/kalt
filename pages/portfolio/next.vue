@@ -6,6 +6,9 @@
     </frame-next>
     <block margin="none">
     </block>
+    <block margin="1">
+      <select-fund />
+    </block>
     <block margin="4">
       <cta :showDivest="true" />
     </block>
