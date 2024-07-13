@@ -17,8 +17,8 @@
       type: Boolean,
       required: false
     },
-    clickable: {
-      type: Boolean,
+    size: {
+      type: String,
       required: false
     }
   })
@@ -26,6 +26,9 @@
     let classes = ['pill']
     if (props.color) {
       classes.push(props.color)
+    }
+    if (props.size) {
+      classes.push(props.size)
     }
     if (props.active===true) {
       classes.push('active')
@@ -49,7 +52,7 @@
     &.clickable:hover{
       cursor: pointer;
     }
-    .small{
+    &.small{
       font-size: 70%;
     }
   }
