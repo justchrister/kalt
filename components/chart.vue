@@ -2,25 +2,26 @@
   <div class="container">
     <div class="pills-container">
       <div class="numbers">
-        <pill-next>
+        <pill-next size="small">
             {{ hoveredValue }}
           <span class="percentage">
+            <span v-if="isPositive(percentageChage)">↗</span>
             ({{ percentageChange }} %)
           </span>
         </pill-next>
       </div>
       <div class="filters">
-        <pill-next @click="setDays('thisMonth')" :active="active === 'thisMonth'" :clickable="true" color="blue">
-          this month
+        <pill-next @click="setDays('fromStart')" :active="active === 'fromStart'" :clickable="true" color="blue" size="small">
+          from start
         </pill-next>
-        <pill-next @click="setDays('threeMonths')" :active="active === 'threeMonths'" :clickable="true" color="blue">
-          3 months
-        </pill-next>
-        <pill-next @click="setDays('thisYear')" :active="active === 'thisYear'" :clickable="true" color="blue">
+        <pill-next @click="setDays('thisYear')" :active="active === 'thisYear'" :clickable="true" color="blue" size="small">
           this year
         </pill-next>
-        <pill-next @click="setDays('fromStart')" :active="active === 'fromStart'" :clickable="true" color="blue">
-          from start
+        <pill-next @click="setDays('threeMonths')" :active="active === 'threeMonths'" :clickable="true" color="blue" size="small">
+          3 months
+        </pill-next>
+        <pill-next @click="setDays('thisMonth')" :active="active === 'thisMonth'" :clickable="true" color="blue" size="small">
+          this month
         </pill-next>
       </div>
     </div>
@@ -35,155 +36,186 @@
   </div>
 </template>
 <script setup lang="ts">
-  import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
-import { Line } from 'vue-chartjs'
 
-const supabase = useSupabaseClient()
-const auth = useSupabaseUser()
-const user = await get(supabase).user(auth.value) as user;
-const currency = user.currency || 'EUR';
+  const runtimeConfig = useRuntimeConfig()
+  const demo = runtimeConfig.public.DEMO as boolean;
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-)
+    import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  } from 'chart.js'
+  import { Line } from 'vue-chartjs'
 
-const chartOptions = {
-  responsive: true,
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
+  const currency = user.currency || 'EUR';
 
-  maintainAspectRatio: false,
-  elements: {
-    point: {
-      radius: 2
-    }
-  },
-  animation: { duration: 1000 },
-  interaction: {
-    intersect: 0
-  },
-  scales: {
-    y: {
-      grid: { display: false },
-      border: { display: false },
-      ticks: { autoSkip: true, display: false }
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  )
+
+  const chartOptions = {
+    responsive: true,
+
+    maintainAspectRatio: false,
+    elements: {
+      point: {
+        radius: 2
+      }
     },
-    x: {
-      grid: { display: false },
-      border: { display: false },
-      ticks: { autoSkip: true, display: false }
-    }
-  },
-  plugins: {
-    legend: { display: false },
-    tooltip: {
-      backgroundColor: '#bedefb',
-      bodyFont: { 
-        family: 'Kalt Body',
-        color: '#161719' // Ensure this is set correctly
+    animation: { duration: 1000 },
+    interaction: {
+      intersect: 0
+    },
+    scales: {
+      y: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: { autoSkip: true, display: false }
       },
-      footerFont: { 
-        family: 'Kalt Body',
-        color: '#161719' // Ensure this is set correctly
-      },
-      displayColors: false,
-      cornerRadius: 0,
-      callbacks: {
-        label: function (context) {
-          let label = context.dataset.label || '';
-          if (context.parsed.y !== null) {
-            label += new Intl.NumberFormat(
-              'en-US',
-              {
-                style: 'currency',
-                currency: currency
-              }
-            ).format(context.parsed.y);
+      x: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: { autoSkip: true, display: false }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#bedefb',
+        bodyFont: { 
+          family: 'Kalt Body',
+          color: '#161719' // Ensure this is set correctly
+        },
+        footerFont: { 
+          family: 'Kalt Body',
+          color: '#161719' // Ensure this is set correctly
+        },
+        displayColors: false,
+        cornerRadius: 0,
+        callbacks: {
+          label: function (context) {
+            let label = context.dataset.label || '';
+            if (context.parsed.y !== null) {
+              label += new Intl.NumberFormat(
+                'en-US',
+                {
+                  style: 'currency',
+                  currency: currency
+                }
+              ).format(context.parsed.y);
+            }
+            updatePercentageChange(context.parsed.y)
+            updateHoveredValue(label)
+            return label;
           }
-          updatePercentageChange(context.parsed.y)
-          updateHoveredValue(label)
-          return label;
         }
       }
     }
   }
-}
 
-const color = '#161719';
-const labels = ref([]);
-const data = ref([]);
-const hoveredValue = ref(null);
-const percentageChange = ref(null);
+  const color = '#5fb0fc';
+  const labels = ref([]);
+  const data = ref([]);
+  const hoveredValue = ref(null);
+  const percentageChange = ref(null);
+  const isPositive = (number:number) => {
 
-const randomNumber = (from, to) => Math.floor(Math.random() * (to - from + 1) + from);
+    if (number > 0.000001) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  const trimLeadingZeros = (portfolio: { date: string, value: number }[]): { date: string, value: number }[] => {
+    while (portfolio.length > 1 && portfolio[0].value === 0) {
+      portfolio.shift();
+    }
+    return portfolio;
+  };
 
-const fetchPortfolio = async () => {
+  const randomNumber = (from, to) => Math.random() * (to - from) + from;
+  const dailyIncrease = (annualRate) => Math.pow(1 + annualRate, 1 / 365) - 1;
+
+  const fetchPortfolio = async () => {
+  const annualRateMin = 0.015;
+  const annualRateMax = 0.25;
+  const dailyRateMin = dailyIncrease(annualRateMin);
+  const dailyRateMax = dailyIncrease(annualRateMax);
+
   const portfolio = await get(supabase).portfolio(user);
-  portfolio.forEach(item => {
-    data.value.push(item.value * randomNumber(1, 1));
+  const trimmed = trimLeadingZeros(portfolio);
+
+  trimmed.forEach((item, index) => {
+    const randomIncrease = randomNumber(dailyRateMin, dailyRateMax);
+    console.log(randomIncrease);
+    if (demo) {
+      const previousValue = data.value[index - 1] || item.value;
+      const newValue = previousValue * (1 + randomNumber(0, randomIncrease));
+      data.value.push(newValue);
+    } else {
+      data.value.push(item.value);
+    }
     labels.value.push(item.date);
   });
+
   updatePercentageChange(data.value[data.value.length - 1]);
   updateHoveredValue(new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(data.value[data.value.length - 1]));
 };
 
-const chartData = computed(() => ({
-  labels: labels.value.slice(-days.value),
-  datasets: [{
-    label: "",
-    borderColor: color,
-    pointBackgroundColor: color,
-    pointBorderWidth: 0,
-    pointBorderColor: color,
-    data: data.value.slice(-days.value)
-  }]
-}));
+  const chartData = computed(() => ({
+    labels: labels.value.slice(-days.value),
+    datasets: [{
+      label: "",
+      borderColor: color,
+      pointBackgroundColor: color,
+      pointBorderWidth: 0,
+      pointBorderColor: color,
+      data: data.value.slice(-days.value)
+    }]
+  }));
 
-const updateHoveredValue = (value) => {
-  hoveredValue.value = value;
-};
+  const updateHoveredValue = (value) => {
+    hoveredValue.value = value;
+  };
 
-const days = ref(30)
-const updatePercentageChange = (lastValue) => {
-  const firstValue = data.value[data.value.length - days.value] || data.value[0];
-  const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
+  const days = ref(30)
+  const updatePercentageChange = (lastValue) => {
+    const firstValue = data.value[data.value.length - days.value] || data.value[0];
+    const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
 
-  if (rawPercentageChange === Infinity) {
-    percentageChange.value = 99.9;
-  } else if (isNaN(rawPercentageChange)) {
-    percentageChange.value = 0;
-  } else {
-    percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
-  }
-};
+    if (rawPercentageChange === Infinity) {
+      percentageChange.value = 99.9;
+    } else if (isNaN(rawPercentageChange)) {
+      percentageChange.value = 0;
+    } else {
+      percentageChange.value = parseFloat(rawPercentageChange.toFixed(1));
+    }
+  };
 
-const calculateProjection = (x) => {
-  const magicNumber = 1.006043959;
-  const lastValue = data.value[data.value.length - 1];
-  const rawPercentageChange = ((lastValue - x) / x) * 100;
-  // Use rawPercentageChange if needed for further calculations
-};
-
-const daysSoFarThisYear = () => {
+  const daysSoFarThisYear = () => {
     return Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-  }
+  };
+
   const daysSoFarThisMonth = () => {
     return Math.floor((new Date() - new Date(new Date().getFullYear(), new Date().getMonth(), 0)) / 1000 / 60 / 60 / 24);
-  }
-  const active = ref('thisMonth');
+  };
+
+  const active = ref('fromStart');
+
   const setDays = (range) => {
     active.value = range;
     if (range === 'thisMonth') {
@@ -196,8 +228,8 @@ const daysSoFarThisYear = () => {
       days.value = 99999999999
     } 
   }
-  setDays('thisMonth')
-  fetchPortfolio(); // This will run the fetching in the background
+  setDays('fromStart')
+  fetchPortfolio();
 </script>
 <style scoped lang="scss">
   .container{
@@ -209,11 +241,13 @@ const daysSoFarThisYear = () => {
     max-height: 100%;
   }
   .chart-container{
+    border: blue(30%) solid 1px;
+    background: blue(10%);
     width: 100%;
     height: 45vw;
     max-height: 365px;
-    background-image: radial-gradient(circle at 1px 1px, primary(30%) 1px, transparent 0);
-    background-size: sizer(1.3) sizer(1.3);
+    //background-image: radial-gradient(circle at 1px 1px, primary(30%) 1px, transparent 0);
+    //background-size: sizer(1.3) sizer(1.3);
     @include hoverable;
     border-radius: sizer(0.8);
   }
