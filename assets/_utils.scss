@@ -154,18 +154,9 @@ $body-sub:     sizer($body-sub-sizer);
 
 @keyframes backgroundColorAnimation{
   0%{
-    background-color: $light;
-  }
-  25%{
     background-color: blue(5%);
   }
-  50% {
-    background-color: $light;
-  }
-  75% {
-    background-color: green(5%);
-  }
   100% {
-    background-color: $light;
+    background-color: green(5%);
   }
 }
