@@ -69,9 +69,7 @@
       margin-bottom: sizer(4);
     }
     &.video{
-      padding-left: sizer(5);
-      padding-top: sizer(15);
-      padding-bottom: sizer(5);
+      padding: sizer(15) sizer(5) sizer(5) sizer(5);
     }
     &.margin-none{
       margin-bottom: 0;
@@ -104,9 +102,7 @@
 
   @media screen and (max-width: $maxsitewidth) {
     .block.video{
-      padding-left: sizer(2);
-      padding-top: sizer(10);
-      padding-bottom: sizer(3);
+      padding: sizer(10) sizer(2) sizer(3) sizer(2);
     }
   }
 </style>
