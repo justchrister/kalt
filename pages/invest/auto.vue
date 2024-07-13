@@ -3,7 +3,6 @@
   <main>
     <intro title="Automatic investments"
       paragraph="Wealth is built over time, its always better to invest steadily than a single sum one time." />
-    <navbar-tabs />
     <block margin="1">
       <input-invest :initialAmount="autoInvest?.amount" type="autoInvest" />
     </block>

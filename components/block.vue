@@ -1,7 +1,7 @@
 <template>
   <div :class="'block '+classes">
     <slot></slot>
-    <video v-if="props.video" :src="props.video" class="background-video" autoplay muted loop></video>
+    <video v-if="props.video" :src="props.video" class="background-video" autoplay muted loop playsinline></video>
   </div>
 </template>
 <script setup lang="ts">

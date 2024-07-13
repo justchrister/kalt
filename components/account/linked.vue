@@ -44,7 +44,6 @@
   const reference = account?.reference || 'not found'
   const iban = ok.formatIBAN(account?.iban) || 'not found'
   const bankCode = ok.formatBankCode(account?.bankCode) || 'not found'
-  console.log(reference)
   
 </script>
 <style scoped lang="scss">
