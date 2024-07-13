@@ -91,9 +91,14 @@ const chartOptions = {
     legend: { display: false },
     tooltip: {
       backgroundColor: '#bedefb',
-      color: '#161719',
-      bodyFont: { family: 'Kalt Body' },
-      footerFont: { family: 'Kalt Body' },
+      bodyFont: { 
+        family: 'Kalt Body',
+        color: '#161719' // Ensure this is set correctly
+      },
+      footerFont: { 
+        family: 'Kalt Body',
+        color: '#161719' // Ensure this is set correctly
+      },
       displayColors: false,
       cornerRadius: 0,
       callbacks: {
@@ -136,14 +141,14 @@ const fetchPortfolio = async () => {
 };
 
 const chartData = computed(() => ({
-  labels: labels.value.slice(-days),
+  labels: labels.value.slice(-days.value),
   datasets: [{
     label: "",
     borderColor: color,
     pointBackgroundColor: color,
     pointBorderWidth: 0,
     pointBorderColor: color,
-    data: data.value.slice(-days)
+    data: data.value.slice(-days.value)
   }]
 }));
 
@@ -153,7 +158,7 @@ const updateHoveredValue = (value) => {
 
 const days = ref(30)
 const updatePercentageChange = (lastValue) => {
-  const firstValue = data.value[data.value.length - days] || data.value[0];
+  const firstValue = data.value[data.value.length - days.value] || data.value[0];
   const rawPercentageChange = ((lastValue - firstValue) / firstValue) * 100;
 
   if (rawPercentageChange === Infinity) {
