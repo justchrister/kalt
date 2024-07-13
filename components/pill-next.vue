@@ -36,9 +36,11 @@
   .pill{
     display: inline-block;
     background-color: green(90%);
+    border: green(90%) solid sizer(0.02);
     border-radius:sizer(2);
     padding:0 sizer(1);
     font-size: 80%;
+    box-sizing: border-box;
     line-height:sizer(2);
     &.clickable:hover{
       cursor: pointer;
@@ -46,11 +48,17 @@
   }
   .blue{
     background-color: blue(40%);
+    border: blue(40%) solid sizer(0.02);
     &.clickable:hover{
-      background-color: blue(65%);
+      background-color: blue(45%);
+      border: blue(55%) solid sizer(0.02);
     }
     &.active{
-      background-color: blue(60%);
+      border: blue(100%) solid sizer(0.02);
     }
+  }
+  .primary{
+    background-color: primary(10%);
+    border: dark(100%) solid sizer(0.02);
   }
 </style>
