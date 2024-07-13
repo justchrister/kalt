@@ -49,6 +49,9 @@
     &.clickable:hover{
       cursor: pointer;
     }
+    .small{
+      font-size: 70%;
+    }
   }
   .blue{
     background-color: blue(40%);
