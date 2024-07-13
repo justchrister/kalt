@@ -51,40 +51,42 @@
   })
 </script>
 <style scoped lang="scss">
-  .content{bottom:0;position:absolute;padding:sizer(4);}
+  main{
+    padding-top:sizer(8);
+  }
+  .content{
+    bottom:0;
+    position:absolute;
+    padding:sizer(4);
+  }
   h1 {
     font-size:sizer(3.5);
     color:$dark;
     font-weight:500;
   }
   @keyframes moveUp {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
   }
-  100% {
-    transform: translateY(-10px);
-    opacity: 1;
-  }
-}
 
   h1 span {
     display: inline-block;
     opacity: 0;
     animation: moveUp 0.5s forwards;
   }
-  h2 span {
-    display: inline-block;
-    opacity: 0;
-    animation: moveUp 0.5s forwards;
-  }
-
   // Use SCSS loop to apply animation delay
   @for $i from 1 through 9 {
     h1 span:nth-child(#{$i}) {
       animation-delay: 0.08s * $i;
     }
   }
+
   .columns-2{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -109,8 +111,5 @@
         background-color:rgba($light, 0.2)
       }
     }
-  }
-  main{
-    padding-top:sizer(8);
   }
 </style>
