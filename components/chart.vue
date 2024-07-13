@@ -139,6 +139,32 @@
       return false;
     }
   }
+
+  // Helper function to get the day suffix
+  function getDaySuffix(day) {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  }
+
+  // Function to format the date
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+    const daySuffix = getDaySuffix(day);
+
+    return `${month} ${day}${daySuffix}, ${year}`;
+  }
   const trimLeadingZeros = (portfolio: { date: string, value: number }[]): { date: string, value: number }[] => {
     while (portfolio.length > 1 && portfolio[0].value === 0) {
       portfolio.shift();
@@ -160,7 +186,6 @@
 
   trimmed.forEach((item, index) => {
     const randomIncrease = randomNumber(dailyRateMin, dailyRateMax);
-    console.log(randomIncrease);
     if (demo) {
       const previousValue = data.value[index - 1] || item.value;
       const newValue = previousValue * (1 + randomNumber(0, randomIncrease));
@@ -168,7 +193,7 @@
     } else {
       data.value.push(item.value);
     }
-    labels.value.push(item.date);
+    labels.value.push(formatDate(item.date));
   });
 
   updatePercentageChange(data.value[data.value.length - 1]);
