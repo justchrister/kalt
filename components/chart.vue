@@ -76,7 +76,7 @@
         radius: 2
       }
     },
-    animation: { duration: 1000 },
+    animation: { duration: 300 },
     interaction: {
       intersect: 0
     },
@@ -95,17 +95,16 @@
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#bedefb',
-        bodyFont: { 
-          family: 'Kalt Body',
-          color: '#161719' // Ensure this is set correctly
-        },
-        footerFont: { 
-          family: 'Kalt Body',
-          color: '#161719' // Ensure this is set correctly
-        },
+        // https://www.chartjs.org/docs/latest/configuration/tooltip.html
+        backgroundColor: '#97ead0',
+        titleColor: '#161719',
+        bodyColor: '#161719',
+        titleFont: { family: 'Kalt Body', weight: '400' },
+        bodyFont: { family: 'Kalt Body', weight: '400' },
+        footerFont: { family: 'Kalt Body' },
         displayColors: false,
-        cornerRadius: 0,
+        padding: 10 ,
+        cornerRadius: 2,
         callbacks: {
           label: function (context) {
             let label = context.dataset.label || '';
@@ -249,7 +248,7 @@
     //background-image: radial-gradient(circle at 1px 1px, primary(30%) 1px, transparent 0);
     //background-size: sizer(1.3) sizer(1.3);
     @include hoverable;
-    border-radius: sizer(0.8);
+    border-radius: sizer(0.2);
   }
   .pills-container{
     display:grid;
