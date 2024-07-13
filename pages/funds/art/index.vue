@@ -8,36 +8,29 @@
     <block margin="half">
       <criteria-list>
         <criteria :nr="1">
-          The artist has a strong expression, and is aesthetical.
-          The artist's work is aesthetically strong and expressive.
+          The artist has a strong aesthetical expression
         </criteria>
         <criteria :nr="2">
-          The artist has international recognition, exhibited in at least 3 countries.
+          The artist has international recognition: exhibited in at least 3 countries
         </criteria>
         <criteria :nr="3">
-          Represented by a reputable gallery.
+          Represented by a reputable gallery
         </criteria>
         <criteria :nr="4">
-          Comparable art has appreciated by 15% or more in value.
+          Comparable art has appreciated by 30% or more in value.
         </criteria>
       </criteria-list>
     </block>
     <block margin="half">
       <h2> The thesis </h2>
       <p>
-        As wealth concentrates among the affluent, tangible luxury assets like art become even more lucrative. Art by
-        iconic artists like Monet, Basquiat, and Picasso are rare, adding a built-in value that stands the test of time.
+        As wealth becomes more concentrated among the wealthy, luxury assets like art are becoming increasingly lucrative. Iconic works by artists such as Monet, Basquiat, and Picasso are rare and have a lasting value.
       </p>
       <p>
-        With our proprietary quantitative model for investing in art, we can predict the future price appreciation of art
-        based on comparative artworks. The model is based on historic appreciation as well as seemingly subjective
-        characteristics of the specific artworks (made objective by AI
-        <omoji emoji="✨" /> ).
+        Using our unique quantitative model, we can predict how the value of art will increase over time. The machine learning model<omoji emoji="✨" />, analyzes both historical trends and specific characteristics of each artwork.
       </p>
       <p>
-        By investing in our art fund, you're not just buying into art; you're securing a share in a well-researched,
-        diversified portfolio of timeless works. It's not just about financial growth—it's about becoming part of a legacy
-        of value, in a market that's traditionally less volatile than stocks and bonds.
+        When you invest in our art fund, you’re not just buying art; you’re securing a stake in a carefully curated, diverse collection of timeless pieces. This isn’t just about growing your wealth—it’s about becoming part of a lasting legacy in a market that tends to be more stable than stocks and bonds.
       </p>
       <input-button link="/invest">invest now -></input-button>
     </block>
