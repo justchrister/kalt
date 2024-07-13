@@ -36,7 +36,6 @@
 
 
   const updates = await get(supabase).updates(user);
-  console.log(updates)
 </script>
 <style scoped lang="scss">
 .update{
