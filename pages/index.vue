@@ -8,7 +8,7 @@
         <div class="request" @click="navigateTo('invite/request/amount')">
           <nuxt-link to="invite/request/amount">Join waitlist ↗</nuxt-link>
         </div>
-        <div class="learn" @click="navigateTo('/questions/how-does-it-work')">
+        <div class="learn" @click="navigateTo('/vision')">
           <u>Our vision</u>
         </div>
       </div>
