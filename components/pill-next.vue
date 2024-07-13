@@ -16,6 +16,10 @@
     clickable: {
       type: Boolean,
       required: false
+    },
+    clickable: {
+      type: Boolean,
+      required: false
     }
   })
   const classes = computed(() => {
