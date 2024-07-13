@@ -17,13 +17,14 @@
       <select-fund />
     </block>
     <block margin="1">
-      <input-button @click="toggleAutoInvestments(true)">
-        {{ activeText }}
-        <loading-icon v-if="activeText === 'activating' || activeText === 'pausing'" />
-      </input-button>
-      <div class="center-text">
-        <span class="deactivate" v-if="active" @click="toggleAutoInvestments(false)">pause automation</span>
-        <span class="deactivate" v-else>automation is active</span>
+      <div class="pauseActivateWrapper">
+        <input-button @click="toggleAutoInvestments(true)" v-if="!active">
+          {{ activeText }}
+          <loading-icon v-if="activeText === 'activating' || activeText === 'pausing'" />
+        </input-button>
+        <div class="center-text pauseButton">
+          <span class="deactivate" v-if="active" @click="toggleAutoInvestments(false)">pause automation</span>
+        </div>
       </div>
     </block>
     <span v-if="notification" @click="setNotification('')">
@@ -103,7 +104,7 @@
     } else if (!active.value && status) {
       activeText.value = 'activating'
       const updated = await updateAutoInvestments(true)
-      await ok.sleep(200)
+      await ok.sleep(600)
       if (updated === 'success') {
         activeText.value = 'active'
       } else {
@@ -114,7 +115,7 @@
     if (!status && active.value) {
       activeText.value = 'pausing'
       const updated = await updateAutoInvestments(false)
-      await ok.sleep(200)
+      await ok.sleep(600)
       if (updated === 'success') {
         activeText.value = 'activate'
       } else {
@@ -133,5 +134,11 @@
     &:hover {
       cursor: pointer;
     }
+  }
+  .pauseActivateWrapper{
+    min-height:sizer(5);
+  }
+  .pauseButton{
+    line-height:sizer(5);
   }
 </style>
