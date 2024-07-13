@@ -1,5 +1,5 @@
 <template>
-    <div class="fund" v-if="fund" @click="navigateTo(`/funds/${shortTicker}`)">
+    <div class="fund" v-if="fund" @click="navigateTo(url)">
       <div class="icon">
         <span :style="{ 'background-image': `url('/icons/funds/${shortTicker}.svg')` }"></span>
       </div>
@@ -29,6 +29,13 @@
     .limit(1)
     .single()
   const shortTicker = props.ticker.split('.')[0] 
+  const tickerMap = {
+    'ffe': 'energy',
+    'art': 'art',
+    'ah': 'housing',
+    'smb': 'small-business'
+  }
+  const url = `/funds/${tickerMap[shortTicker]}`
 </script>
 <style scoped lang="scss">
   
