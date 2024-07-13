@@ -26,6 +26,9 @@
   </div>
 </template>
 <script setup lang="ts">
+  const runtimeConfig = useRuntimeConfig()
+  const demo = runtimeConfig.public.DEMO as boolean;
+
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value);
@@ -53,7 +56,7 @@
     rate.value = state.rate
   }
   const adjustrate = async () => {
-    if(fund.state==="beta") {
+    if(!demo && fund.state==="beta") {
       showModal.value = true
       return
     }
