@@ -5,19 +5,19 @@
       <h1><span>A</span> <span>purpose</span><span>-</span><span>driven</span> <br/><span>investment</span> <span>platform</span><span>.</span>
       </h1>
       <div class="columns-2">
-        <div class="request" @click="navigateTo('invite/request/amount')">
+        <div class="request" @click="navigateTo('/invite/request/amount')">
           <nuxt-link to="invite/request/amount">Join waitlist ↗</nuxt-link>
         </div>
-        <div class="learn" @click="navigateTo('/vision')">
-          <u>Our vision</u>
+        <div class="learn" @click="navigateTo('/questions/how-it-works')">
+          <u>How it works</u>
         </div>
       </div>
     </block>
     <block>
-      <h2>Our innovative technology lets you to grow your wealth while investing in things that matter to you.</h2>
+      <h2>Our innovative technology lets you grow your wealth while investing in things that matter to you.</h2>
       <p>
-        The only way to have actual lasting impact is to use market forces to drive a change. We call it the next era of capitalism. 
-        You can expect high returns, moderate risk, and complete transparency. 
+        Drive actual change and have a lasting impact by leveraging capital market forces. We call it the next era of capitalism, with a goal beyond financial growth.
+        You can expect twice the market returns, moderate risk profile, and complete transparency. 
       </p>
       <p>
         Our funds:
@@ -100,7 +100,7 @@
       cursor: pointer;
     }
     .request a{
-      border: sizer(0.1) solid $dark;
+      border: sizer(0.01) solid dark(80%);
       text-decoration: none;
       color:dark(90%);
       padding:sizer(.7) sizer(1.8);
