@@ -1,23 +1,17 @@
 <template>
   <div>
     <div class="profile-card" @click="navigateTo('/profile/edit')" v-if="profileSetUp">
-        <div class="image" :id="user.profilePicture">
-        </div>
-        <div class="details">
-          <div class="name">
-            {{ user.firstName }} {{ user.lastName }}  <kyc-status :user="user"/>
-          </div>
-          <div class="edit">
-            edit
-          </div>
-          <div class="bio">
-            <div class="birthdate">
-              {{ calculateAge(user.birthdate) }} years old — {{ user.city }}, {{ user.country }}
-            </div>
-          </div>
+      <div class="name">
+        {{ user.firstName }} {{ user.lastName }}  <kyc-status :user="user"/>
+      </div>
+      <pill-next size="small" >
+        edit
+      </pill-next>
+      <div class="birthdate">
+        {{ calculateAge(user.birthdate) }} years old — {{ user.city }}, {{ user.country }}
       </div>
     </div>
-    <div class="set-up-profile-card" @click="navigateTo('/profile/edit')"  v-else>
+    <div class="set-up" @click="navigateTo('/profile/edit')"  v-else>
       <span>
       Let's set up your profile! <omoji emoji="😃" /> 
       </span>
@@ -28,17 +22,30 @@
   </div>
 </template>
 <script setup lang="ts">
-  const supabase = useSupabaseClient();
-  const auth = useSupabaseUser();
-  const user = await get(supabase).user(auth.value) as user;
-  const isProfileSetUp = async (user) => {
+  const props = defineProps({
+    user: {
+      type: Object as user,
+      required: false
+    }
+  })
+  const userObject = ref();
+  if(!props.user){
+    const supabase = useSupabaseClient();
+    const auth = useSupabaseUser();
+    userObject.value = await get(supabase).user(auth.value) as user;
+  } else {
+    userObject.value = props.user;
+  }
+  const isProfileSetUp = (user) => {
     if(!user || user.firstName == null || user.lastName == null || user.birthdate == null || user.city == null || user.country == null){
+      ok.log('','profile is not set up, missing:',user);
+      const withNullValue = Object.keys(user).filter(key => user[key] == null);
       return false
     } else {
       return true
     }
   }
-  const profileSetUp = await isProfileSetUp(user)
+  const profileSetUp = isProfileSetUp(userObject.value) || false;
   function calculateAge(birthday) {
     const birthDate = new Date(birthday);
     const currentDate = new Date();
@@ -57,57 +64,16 @@
 </script>
 <style scoped lang="scss">
   .profile-card{
-    border-radius:3px;
-    display:grid;
-    grid-gap: sizer(1);
-    grid-template-columns: sizer(4) 4fr;
-  }
-  .image{
-    background-image:url('/images/pfp/4.png');
-    border-radius: sizer(4);
-    height: sizer(4);
-    background-size:contain;
-    background-repeat: no-repeat;
-    width: sizer(4);
-    &#alt1{
-      background-image:url('/images/pfp/1.png');
-    }
-    &#alt2{
-      background-image:url('/images/pfp/2.png');
-    }
-    &#alt3{
-      background-image:url('/images/pfp/3.png');
-    }
-    &#alt4{
-      background-image:url('/images/pfp/4.png');
-    }
-    &#alt5{
-      background-image:url('/images/pfp/5.png');
-    }
-    &#alt6{
-      background-image:url('/images/pfp/6.png');
-    }
-    &#alt7{
-      background-image:url('/images/pfp/7.png');
-    }
-    &#alt8{
-      background-image:url('/images/pfp/8.png');
-    }
-    &#alt9{
-      background-image:url('/images/pfp/9.png');
-    }
-    &#alt10{
-      background-image:url('/images/pfp/10.png');
-    }
-  }
-  .details{
+    padding: sizer(1) sizer(1);
     display:grid;
     grid-gap: 0px sizer(1);
-    grid-template-columns: 4fr sizer(3);
+    grid-template-columns: 1fr sizer(4);
+    @include border;
+    @include hoverable;
   }
 
   .profile-card:hover{
-    cursor:pointer;
+    @include hovering;
     .edit{
       text-decoration:underline;
     }
@@ -119,17 +85,20 @@
     font-size:80%;
     text-decoration:none;
   }
-  .set-up-profile-card{
-    &:hover{
-      cursor:pointer;
-      background: green(10%);
-    }
+  
+  .set-up{
     background: green(20%);
-    border: $border;
     padding: sizer(1) sizer(1) sizer(1) sizer(2);
     display:grid;
 
     grid-gap: sizer(1);
     grid-template-columns: 1fr sizer(2);
+    @include border;
+    @include hoverable;
+    background-color:yellow(5%);
+    &:hover{
+      @include hovering;
+      background-color:yellow(10%);
+    }
   }
 </style>
