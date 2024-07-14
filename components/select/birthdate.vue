@@ -4,7 +4,7 @@
     <nuxt-link to="/profile/edit/birthdate/year">
       <span v-if="!user.birthdate">Set your birthday</span>
       <span v-else>{{ formatDate(user.birthdate) }}</span>
-      <span>→</span>
+      <span class="arrow">→</span>
     </nuxt-link>
   </div>
 </template>
@@ -41,7 +41,7 @@
     margin: sizer(1) 0 0 0 ;
   }
   a{
-    padding: sizer(1) sizer(1);
+    padding: sizer(1) sizer(2) sizer(1) sizer(1);
     display:grid;
     grid-template-columns: 4fr sizer(4);
     text-decoration:none;
@@ -51,8 +51,7 @@
       @include hovering;
     }
   }
-  .iso{
-    font-family:"Kalt Monospace", monospace;
-    font-size:75%;
+  .arrow{
+    text-align:right;
   }
 </style>
