@@ -16,7 +16,7 @@
   const user = props.user as user;
   
   const minAge = 18;
-  const maxAge = 130;
+  const maxAge = 100;
 
   const max = ref(new Date().getFullYear() - minAge);
   const min = ref(new Date().getFullYear() - maxAge);
@@ -47,6 +47,7 @@
     }).users({
       birthdate: `${year.value}-${month.value}-${day.value}`
     });
+    console.log(`${year.value}-${month.value}-${day.value}`)
   };
 </script>
 <style scoped lang="scss"></style>
