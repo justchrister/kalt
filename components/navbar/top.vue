@@ -231,7 +231,7 @@
   opacity:0;
   pointer-events : none;
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 600px) {
 
   .menu ul li.logomark span.emdash,
   .menu ul li.logomark span.pagename,
