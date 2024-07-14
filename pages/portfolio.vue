@@ -15,6 +15,9 @@
     <block margin="4">
       <invites :user="user" />
     </block>
+    <block margin="4">
+      <profile-card :user="user" />
+    </block>
     <!--
 
       To do: Add your profile block here
