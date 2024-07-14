@@ -40,32 +40,29 @@
   const runtimeConfig = useRuntimeConfig()
   const demo = runtimeConfig.public.DEMO as boolean;
 
-    import {
+  import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
     PointElement,
     LineElement,
-    Title,
     Tooltip,
-    Legend
   } from 'chart.js'
   import { Line } from 'vue-chartjs'
-
-  const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value) as user;
-  const currency = user.currency || 'EUR';
 
   ChartJS.register(
     CategoryScale,
     LinearScale,
     PointElement,
     LineElement,
-    Title,
-    Tooltip,
-    Legend
+    Tooltip
   )
+
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
+  const currency = user.currency || 'EUR';
+
 
   const chartOptions = {
     responsive: true,
@@ -73,7 +70,8 @@
     maintainAspectRatio: false,
     elements: {
       point: {
-        radius: 2
+        radius: 0,
+        hoverRadius:3
       }
     },
     animation: { duration: 300 },
@@ -202,14 +200,16 @@
 
   const chartData = computed(() => ({
     labels: labels.value.slice(-days.value),
-    datasets: [{
-      label: "",
-      borderColor: color,
-      pointBackgroundColor: color,
-      pointBorderWidth: 0,
-      pointBorderColor: color,
-      data: data.value.slice(-days.value)
-    }]
+    datasets: [
+      {
+        label: "",
+        borderColor: color,
+        pointBackgroundColor: color,
+        pointBorderWidth: 0,
+        pointBorderColor: color,
+        data: data.value.slice(-days.value)
+      }
+    ]
   }));
 
   const updateHoveredValue = (value) => {
