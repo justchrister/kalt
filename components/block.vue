@@ -1,5 +1,6 @@
 <template>
-  <div :class="'block '+classes">
+  <div :class="classes">
+    <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-else> ↓ </span></label> 
     <slot></slot>
     <video v-if="props.video" :src="props.video" class="background-video" autoplay muted loop playsinline></video>
   </div>
@@ -25,23 +26,45 @@
     video: {
       type: String,
       required: false
+    },
+    type: {
+      type: String,
+      required: false
+    },
+    label: {
+      type: String,
+      required: false
     }
   })
-  const classes = ref('')
+  const classes = ref(['block'])
   if(props.width){ 
-    classes.value += ' width-'+props.width;
+    classes.value.push('width-'+props.width)
   }
   if(props.margin){ 
-    classes.value += ' margin-'+props.margin;
+    classes.value.push('margin-'+props.margin)
   }
   if(props.padding){ 
-    classes.value += ' padding-'+props.padding;
+    classes.value.push('padding-'+props.padding)
   }
   if(props.video){ 
-    classes.value += ' video';
+    classes.value.push('video')
   }
   if(props.border){ 
-    classes.value += ' border';
+    classes.value.push('border')
+  }
+  if(props.type){ 
+    classes.value.push(props.type)
+  }
+  let expanded = false;
+  const expand = async () => {
+    if(props.type == 'expand'){
+      expanded = !expanded;
+      if(expanded){
+        classes.value.push('expanded')
+      } else {
+        classes.value = classes.value.filter((item) => item !== 'expanded')
+      }
+    }
   }
 </script>
 <style scoped lang="scss">
@@ -99,7 +122,22 @@
       z-index: -1; // Ensure the video is behind other content
     }
   }
-
+  .block.expand{
+    overflow:hidden;
+    max-height:sizer(5);
+    margin-bottom:sizer(2);
+    label{
+      font-size:sizer(1.5);
+      line-height:sizer(5);
+      &:hover{
+        cursor:pointer;
+      
+      }
+    }
+    &.expanded{
+      max-height:10000px;
+    }
+  }
   @media screen and (max-width: $maxsitewidth) {
     .block.video{
       padding: sizer(10) sizer(2) sizer(3) sizer(2);
