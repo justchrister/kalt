@@ -28,13 +28,11 @@
       required: false
     }
   })
-  const userObject = ref();
+  const userObject = ref(props.user);
   if(!props.user){
     const supabase = useSupabaseClient();
     const auth = useSupabaseUser();
     userObject.value = await get(supabase).user(auth.value) as user;
-  } else {
-    userObject.value = props.user;
   }
   const isProfileSetUp = (userObj) => {
     switch (userObj){
@@ -60,7 +58,8 @@
         return true;
     }
   }
-  const profileSetUp = isProfileSetUp(userObject.value) || false;
+  const profileSetUp = isProfileSetUp(userObject.value);
+
   function calculateAge(birthday) {
     const birthDate = new Date(birthday);
     const currentDate = new Date();
