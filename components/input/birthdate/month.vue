@@ -42,6 +42,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { parse, format, isValid, set } from 'date-fns';
+
   const props = defineProps({
     user: {
       type: Object,
@@ -59,15 +61,33 @@
     selected.value = month;
     let monthAsString = month.toString();
     const userReInit = await get(supabase).user(user);
-    if(monthAsString.length===1){
+    if (monthAsString.length === 1) {
       monthAsString = '0' + monthAsString;
     }
+    
+    const birthdateParts = userReInit.birthdate?.split('-');
+    const year = parseInt(birthdateParts[0], 10);
+    const day = parseInt(birthdateParts[2], 10);
+    
+    let date = set(new Date(), { year, month: month - 1, date: day });
+    
+    if (!isValid(date)) {
+      // Adjust day to last valid day of the month if invalid
+      date = set(new Date(), { year, month: month, date: 0 }); // 0 date will give the last day of the previous month
+    }
+
+    const formattedDate = format(date, 'yyyy-MM-dd');
+    
     pub(supabase, { 
       sender: 'components/input/birthdate/month.vue',
       id: user.id 
     }).users({
-      birthdate: `${userReInit.birthdate?.split('-')[0]}-${monthAsString}-${userReInit.birthdate?.split('-')[2]}`
+      birthdate: formattedDate
     });
+
+    console.log(monthAsString);
+    console.log(userReInit.birthdate);
+    console.log(formattedDate);
   }
 </script>
 <style scoped lang="scss">
