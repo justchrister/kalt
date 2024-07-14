@@ -4,7 +4,7 @@
       <div class="name">
         {{ userObject.firstName }} {{ userObject.lastName }}  <kyc-status :user="userObject"/>
       </div>
-      <pill-next size="small" style="hoverable">
+      <pill-next size="small" type="hoverable">
         edit
       </pill-next>
       <div class="birthdate">
