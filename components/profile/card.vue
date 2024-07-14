@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div class="profile-card" @click="navigateTo('/profile/edit')" v-if="profileSetUp">
+    <div class="profile-card" @click="navigateTo('/profile')" v-if="profileSetUp">
       <div class="name">
-        {{ user.firstName }} {{ user.lastName }}  <kyc-status :user="user"/>
+        {{ userObject.firstName }} {{ userObject.lastName }}  <kyc-status :user="userObject"/>
       </div>
-      <pill-next size="small" >
+      <pill-next size="small" style="hoverable">
         edit
       </pill-next>
       <div class="birthdate">
-        {{ calculateAge(user.birthdate) }} years old — {{ user.city }}, {{ user.country }}
+        {{ calculateAge(userObject.birthdate) }} years old — {{ userObject.city }}, {{ userObject.country }}
       </div>
     </div>
-    <div class="set-up" @click="navigateTo('/profile/edit')"  v-else>
+    <div class="set-up" @click="navigateTo('/profile')"  v-else>
       <span>
       Let's set up your profile! <omoji emoji="😃" /> 
       </span>
@@ -36,13 +36,28 @@
   } else {
     userObject.value = props.user;
   }
-  const isProfileSetUp = (user) => {
-    if(!user || user.firstName == null || user.lastName == null || user.birthdate == null || user.city == null || user.country == null){
-      ok.log('','profile is not set up, missing:',user);
-      const withNullValue = Object.keys(user).filter(key => user[key] == null);
-      return false
-    } else {
-      return true
+  const isProfileSetUp = (userObj) => {
+    switch (userObj){
+      case userObj == null:
+        console.log('no user')
+        return false;
+      case userObj.firstName == null:
+        console.log('missing first name')
+        return false;
+      case userObj.lastName == null:
+        console.log('missing last name')
+        return false;
+      case userObj.birthdate == null:
+        console.log('missing birthdate')
+        return false;
+      case userObj.city == null:
+        console.log('missing city')
+        return false;
+      case userObj.country == null:
+        console.log('missing country')
+        return false;
+      default:
+        return true;
     }
   }
   const profileSetUp = isProfileSetUp(userObject.value) || false;
