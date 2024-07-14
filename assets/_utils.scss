@@ -20,6 +20,7 @@ $dark: #161719;
 $primary: #586BA4;
 $green: #8BE8CB;
 $blue: #5FB0FC;
+$yellow: #FFE66D;
 $red: #ED6A5A;
 
 
@@ -48,6 +49,14 @@ $red: #ED6A5A;
   } @else {
     $mix: 100% - ($mix - 100%);
     @return mix($blue, $dark, $mix);
+  }
+}
+@function yellow($mix){
+  @if $mix < 100% {
+    @return mix($yellow, $light, $mix);
+  } @else {
+    $mix: 100% - ($mix - 100%);
+    @return mix($yellow, $dark, $mix);
   }
 }
 @function red($mix){

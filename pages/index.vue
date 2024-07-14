@@ -112,4 +112,10 @@
       }
     }
   }
+
+  .columns-3{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: sizer(.5);
+  }
 </style>

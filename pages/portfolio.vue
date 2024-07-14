@@ -4,7 +4,8 @@
     <frame width="wide">
       <chart/>
     </frame>
-    <block margin="none">
+    <block margin="1" v-if="!profileSetUp">
+      <profile-card :user="user" />
     </block>
     <block margin="1">
       <select-fund />
@@ -15,14 +16,9 @@
     <block margin="4">
       <invites :user="user" />
     </block>
-    <!--
-
-      To do: Add your profile block here
-
-    <block>
-      {{user.firstName}} {{user.lastName}} 
+    <block margin="4" v-if="profileSetUp">
+      <profile-card :user="user" />
     </block>
-    -->
   </main>
 </template>
 <script setup lang="ts">
@@ -41,6 +37,32 @@
   const supabase = useSupabaseClient()
   const auth = useSupabaseUser()
   const user = await get(supabase).user(auth.value);
+
+  const isProfileSetUp = (userObj) => {
+    switch (userObj){
+      case userObj == null:
+        console.log('no user')
+        return false;
+      case userObj.firstName == null:
+        console.log('missing first name')
+        return false;
+      case userObj.lastName == null:
+        console.log('missing last name')
+        return false;
+      case userObj.birthdate == null:
+        console.log('missing birthdate')
+        return false;
+      case userObj.city == null:
+        console.log('missing city')
+        return false;
+      case userObj.country == null:
+        console.log('missing country')
+        return false;
+      default:
+        return true;
+    }
+  }
+  const profileSetUp = isProfileSetUp(user) || false;
 </script>
 <style scoped lang="scss">
   main{
