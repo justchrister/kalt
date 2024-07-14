@@ -1,10 +1,7 @@
 <template>
   <main>
     <block margin="2">
-      <navbar-tabs :hidePfp="true" />
-    </block>
-    <block margin="2">
-      <profile-card />
+      <profile-card/>
     </block>
     <block margin="2">
       <select-currency />
@@ -15,8 +12,7 @@
     <block margin="2">
       <select-language />
     </block>
-    <block margin="2">
-      <label> Legal stuff</label>
+    <block margin="2" type="expand" label="Legal stuff">
       <toggle-performance-updates />
       <toggle-newsletters />
       <toggle-terms-of-service />
