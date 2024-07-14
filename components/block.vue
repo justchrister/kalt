@@ -1,8 +1,10 @@
 <template>
   <div :class="classes">
-    <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-else> ↓ </span></label> 
+    <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-if="props.type == 'expand' && !expanded"> ↓ </span></label> 
     <slot></slot>
-    <video v-if="props.video" :src="props.video" class="background-video" autoplay muted loop playsinline></video>
+    <video v-if="props.video" autoplay muted loop playsinline>
+      <source :src="props.video" type="video/mp4">
+    </video>
   </div>
 </template>
 <script setup lang="ts">
@@ -76,24 +78,15 @@
     &.margin-half{
       margin-bottom: sizer(5);
     }
-    &.margin-double{
-      margin-bottom: sizer(20);
-    }
-    &.margin-1{
-      margin-bottom: sizer(1);
-    }
-    &.margin-2{
-      margin-bottom: sizer(2);
-    }
-    &.margin-3{
-      margin-bottom: sizer(3);
-    }
-    &.margin-4{
-      margin-bottom: sizer(4);
+    @for $i from 1 through 20 {
+      &.margin-#{$i} {
+        margin-bottom: sizer($i);
+      }
     }
     &.video{
       padding: sizer(15) sizer(5) sizer(5) sizer(5);
     }
+    &.margin-0,
     &.margin-none{
       margin-bottom: 0;
     }
@@ -111,7 +104,7 @@
       @include border;
     }
     
-    .background-video {
+    video {
       position: absolute;
       top: 0;
       left: 0;
