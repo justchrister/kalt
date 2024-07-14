@@ -263,19 +263,16 @@
   .chart-sizer{
     height: 100%;
     max-height: 100%;
+    background: #fff;
+    border-radius: sizer(0.2);
+    border: dark(30%) solid 1px;
+    @include drop-shadow;
   }
   .chart-container{
-    border: dark(30%) solid 1px;
-    background: blue(15%);
-    
-    animation: backgroundColorAnimation 60s infinite;
     width: 100%;
     height: 45vw;
     max-height: 365px;
-    //background-image: radial-gradient(circle at 1px 1px, primary(30%) 1px, transparent 0);
-    //background-size: sizer(1.3) sizer(1.3);
     @include hoverable;
-    border-radius: sizer(0.2);
   }
   .pills-container{
     display:grid;
