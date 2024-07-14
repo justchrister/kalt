@@ -20,6 +20,10 @@
     size: {
       type: String,
       required: false
+    },
+    type: {
+      type: String,
+      required: false
     }
   })
   const classes = computed(() => {
@@ -29,6 +33,9 @@
     }
     if (props.size) {
       classes.push(props.size)
+    }
+    if (props.type) {
+      classes.push(props.type)
     }
     if (props.active===true) {
       classes.push('active')
@@ -42,8 +49,6 @@
 <style scoped lang="scss">
   .pill{
     display: inline-block;
-    background-color: green(90%);
-    border: green(90%) solid sizer(0.02);
     border-radius:sizer(2);
     padding:0 sizer(1);
     font-size: 80%;
@@ -55,6 +60,18 @@
     &.small{
       font-size: 70%;
     }
+    &.hoverable{
+      @include hoverable;
+      @include border;
+      border-radius:sizer(2);
+      &:hover{
+        @include hovering;
+      }
+    }
+  }
+  .green{
+    background-color: green(90%);
+    border: green(90%) solid sizer(0.02);
   }
   .blue{
     background-color: blue(40%);
