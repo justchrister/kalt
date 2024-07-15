@@ -1,7 +1,7 @@
 
 <template>
   <main>
-    <block width="extra-wide" padding="5" video="/videos/film-3.mp4">
+    <block width="extra-wide" padding="5" video="/videos/frontpage-min.mp4">
       <h1><span>A</span> <span>purpose</span><span>-</span><span>driven</span> <br/><span>investment</span> <span>platform</span><span>.</span>
       </h1>
       <div class="columns-2">
