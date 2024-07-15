@@ -58,7 +58,7 @@
   if (props.type) {
     classes.value.push(props.type);
   }
-
+  
   let expanded = false;
   const expand = async () => {
     if (props.type == 'expand') {
@@ -89,10 +89,17 @@
 
   onMounted(() => {
     if (props.video) {
-      videoControl.value?.addEventListener('loadeddata', () => {
-        ensureVideoPlaying();
-        videoInterval = setInterval(ensureVideoPlaying, 1000);
-      });
+      if (videoControl.value) {
+        videoControl.value.addEventListener('loadeddata', () => {
+          ensureVideoPlaying();
+          videoInterval = setInterval(ensureVideoPlaying, 200);
+        });
+        // If video is already loaded, ensure it plays
+        if (videoControl.value.readyState >= 2) {
+          ensureVideoPlaying();
+          videoInterval = setInterval(ensureVideoPlaying, 200);
+        }
+      }
     }
   });
 
