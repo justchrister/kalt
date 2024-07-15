@@ -72,12 +72,10 @@
   const videoControl = ref();
 
   const ensureVideoPlaying = () => {
-    if (videoControl.value.paused || videoControl.value.ended){
-      videoControl.value.play();
-    }
+    videoControl.value.play();
   };
 
-  let videoInterval8;
+  let videoInterval;
 
   onMounted(() => {
     if (props.video){
