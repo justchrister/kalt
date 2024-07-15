@@ -11,82 +11,93 @@
   const props = defineProps({
     margin: {
       type: String,
-      required: false
+      required: false,
     },
     padding: {
       type: String,
-      required: false
+      required: false,
     },
     border: {
       type: Boolean,
-      required: false
+      required: false,
     },
-    width:{
+    width: {
       type: String,
-      required: false
+      required: false,
     },
     video: {
       type: String,
-      required: false
+      required: false,
     },
     type: {
       type: String,
-      required: false
+      required: false,
     },
     label: {
       type: String,
-      required: false
-    }
-  })
-  const classes = ref(['block'])
-  if(props.width){ 
-    classes.value.push('width-'+props.width)
+      required: false,
+    },
+  });
+
+  const classes = ref(['block']);
+  if (props.width) {
+    classes.value.push('width-' + props.width);
   }
-  if(props.margin){ 
-    classes.value.push('margin-'+props.margin)
+  if (props.margin) {
+    classes.value.push('margin-' + props.margin);
   }
-  if(props.padding){ 
-    classes.value.push('padding-'+props.padding)
+  if (props.padding) {
+    classes.value.push('padding-' + props.padding);
   }
-  if(props.video){ 
-    classes.value.push('video')
+  if (props.video) {
+    classes.value.push('video');
   }
-  if(props.border){ 
-    classes.value.push('border')
+  if (props.border) {
+    classes.value.push('border');
   }
-  if(props.type){ 
-    classes.value.push(props.type)
+  if (props.type) {
+    classes.value.push(props.type);
   }
+
   let expanded = false;
   const expand = async () => {
-    if(props.type == 'expand'){
+    if (props.type == 'expand') {
       expanded = !expanded;
-      if(expanded){
-        classes.value.push('expanded')
+      if (expanded) {
+        classes.value.push('expanded');
       } else {
-        classes.value = classes.value.filter((item) => item !== 'expanded')
+        classes.value = classes.value.filter((item) => item !== 'expanded');
       }
     }
-  }
-
-  const videoControl = ref();
-
-  const ensureVideoPlaying = () => {
-    console.log('im playing it!!')
-    videoControl.value.play();
   };
 
-  let videoInterval;
+  const videoControl = ref<HTMLVideoElement | null>(null);
+
+  const ensureVideoPlaying = () => {
+    if (videoControl.value) {
+      if (videoControl.value.paused || videoControl.value.ended) {
+        videoControl.value.play().catch((error) => {
+          console.error("Error playing the video:", error);
+        });
+      }
+    } else {
+      console.error("Video element is not ready");
+    }
+  };
+
+  let videoInterval: ReturnType<typeof setInterval>;
 
   onMounted(() => {
-    if (props.video){
-      ensureVideoPlaying();
-      videoInterval = setInterval(ensureVideoPlaying, 1000);
+    if (props.video) {
+      videoControl.value?.addEventListener('loadeddata', () => {
+        ensureVideoPlaying();
+        videoInterval = setInterval(ensureVideoPlaying, 1000);
+      });
     }
   });
 
   onBeforeUnmount(() => {
-    if (props.video){
+    if (props.video) {
       clearInterval(videoInterval);
     }
   });
