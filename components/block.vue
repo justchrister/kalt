@@ -2,11 +2,9 @@
   <div :class="classes">
     <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-if="props.type == 'expand' && !expanded"> ↓ </span></label> 
     <slot></slot>
-    <ClientOnly>
-      <video v-if="props.video" autoplay muted loop playsinline v-once>
-        <source :src="props.video" type="video/mp4">
-      </video>
-    </ClientOnly>
+    <video v-if="props.video" autoplay muted loop playsinline v-once preload="auto">
+      <source :src="props.video" type="video/mp4">
+    </video>
   </div>
 </template>
 <script setup lang="ts">
