@@ -107,6 +107,7 @@
     width: $sitewidth;
     max-width: $maxsitewidth;
     margin:0 auto sizer(10) auto;
+    box-sizing: border-box;
     position: relative;
     &.margin-half{
       margin-bottom: sizer(5);
@@ -117,7 +118,7 @@
       }
     }
     &.video{
-      padding: sizer(15) sizer(5) sizer(5) sizer(5);
+      padding: sizer(10) sizer(5) sizer(5) sizer(5);
     }
     &.margin-0,
     &.margin-none{
@@ -164,7 +165,7 @@
       max-height:10000px;
     }
   }
-  @media screen and (max-width: $maxsitewidth) {
+  @media screen and (max-width: 838px) {
     .block.video{
       padding: sizer(10) sizer(2) sizer(3) sizer(2);
     }
