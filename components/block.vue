@@ -2,7 +2,7 @@
   <div :class="classes">
     <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-if="props.type == 'expand' && !expanded"> ↓ </span></label> 
     <slot></slot>
-    <video v-if="props.video" autoplay muted loop playsinline v-once preload="auto">
+    <video v-if="props.video" autoplay muted loop playsinline v-once preload="auto" :ref="videoControl">
       <source :src="props.video" type="video/mp4">
     </video>
   </div>
@@ -69,15 +69,15 @@
     }
   }
 
-  const video = ref(null);
+  const videoControl = ref();
 
   const ensureVideoPlaying = () => {
-    if (video.value.paused || video.value.ended){
-      video.value.play();
+    if (videoControl.value.paused || videoControl.value.ended){
+      videoControl.value.play();
     }
   };
 
-  let videoInterval = null as any;
+  let videoInterval8;
 
   onMounted(() => {
     if (props.video){
