@@ -1,8 +1,8 @@
 <template>
-  <div :class="classes">
+  <div :class="classes" @click="ensureVideoPlaying()">
     <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-if="props.type == 'expand' && !expanded"> ↓ </span></label> 
     <slot></slot>
-    <video v-if="props.video" autoplay muted autoPlay loop playsinline v-once preload="auto" :ref="videoControl">
+    <video v-if="props.video" autoplay muted autoPlay loop playsinline v-once preload="auto" ref="videoControl">
       <source :src="props.video" type="video/mp4">
     </video>
   </div>
@@ -71,7 +71,7 @@
     }
   };
 
-  const videoControl = ref<HTMLVideoElement | null>(null);
+  const videoControl = ref();
 
   const ensureVideoPlaying = () => {
     if (videoControl.value) {
@@ -85,26 +85,17 @@
     }
   };
 
-  let videoInterval: ReturnType<typeof setInterval>;
+  let videoInterval;
 
   onMounted(() => {
     if (props.video) {
-      if (videoControl.value) {
-        videoControl.value.addEventListener('loadeddata', () => {
-          ensureVideoPlaying();
-          videoInterval = setInterval(ensureVideoPlaying, 200);
-        });
-        // If video is already loaded, ensure it plays
-        if (videoControl.value.readyState >= 2) {
-          ensureVideoPlaying();
-          videoInterval = setInterval(ensureVideoPlaying, 200);
-        }
-      }
+      ensureVideoPlaying();
+      videoInterval = setInterval(ensureVideoPlaying, 200);
     }
   });
 
   onBeforeUnmount(() => {
-    if (props.video) {
+    if (videoInterval && props.video) {
       clearInterval(videoInterval);
     }
   });
