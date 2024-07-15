@@ -68,6 +68,29 @@
       }
     }
   }
+
+  const video = ref(null);
+
+  const ensureVideoPlaying = () => {
+    if (video.value.paused || video.value.ended){
+      video.value.play();
+    }
+  };
+
+  let videoInterval = null as any;
+
+  onMounted(() => {
+    if (props.video){
+      ensureVideoPlaying();
+      videoInterval = setInterval(ensureVideoPlaying, 1000);
+    }
+  });
+
+  onBeforeUnmount(() => {
+    if (props.video){
+      clearInterval(videoInterval);
+    }
+  });
 </script>
 <style scoped lang="scss">
   .block {
