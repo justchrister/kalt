@@ -33,7 +33,7 @@
         We are looking for exceptionally talented people to join us in building the next era of capitalism. In an academic environment, where the focus is delivery. 
       </p>
       <p> 
-        <nuxt-link to="/careers">Learn more →</nuxt-link>
+        <nuxt-link to="/jobs">Learn more →</nuxt-link>
       </p>
     </block>
   </main>
