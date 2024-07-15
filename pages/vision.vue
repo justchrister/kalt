@@ -1,6 +1,6 @@
 <template>
   <main>
-    <block width="extra-wide" padding="5" video="/videos/vision-2.mp4">
+    <block width="extra-wide" padding="5" video="/videos/vision-min.mp4">
       <pill-next color="primary"> Vision </pill-next>
       <h1><span>Building</span> <span>the</span> <span>next</span> <span>era</span> <span>of</span> <span>capitalism</span><span>,</span> <span>with</span> <span>a</span> <span>goal</span> <span>beyond</span> <span>financial</span> <span>growth</span><span>.</span>
       </h1>
