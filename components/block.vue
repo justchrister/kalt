@@ -75,11 +75,9 @@
 
   const ensureVideoPlaying = () => {
     if (videoControl.value) {
-      if (videoControl.value.paused || videoControl.value.ended) {
-        videoControl.value.play().catch((error) => {
-          console.error("Error playing the video:", error);
-        });
-      }
+      videoControl.value.play().catch((error) => {
+        console.error("Error playing the video:", error);
+      });
     } else {
       console.error("Video element is not ready");
     }
