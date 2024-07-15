@@ -72,6 +72,7 @@
   const videoControl = ref();
 
   const ensureVideoPlaying = () => {
+    console.log('im playing it!!')
     videoControl.value.play();
   };
 
