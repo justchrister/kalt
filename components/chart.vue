@@ -2,7 +2,7 @@
   <div class="container">
     <div class="pills-container">
       <div class="numbers">
-        <pill-next size="small">
+        <pill-next size="small" color="green">
             {{ hoveredValue }}
           <span class="percentage">
             <span v-if="isPositive(percentageChage)">↗</span>
