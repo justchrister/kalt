@@ -5,7 +5,7 @@
         <pill-next size="small" color="green">
             {{ hoveredValue }}
           <span class="percentage">
-            <span v-if="isPositive(percentageChage)">↗</span>
+            <span v-if="isPositive(percentageChange)">↗</span>
             ({{ percentageChange }} %)
           </span>
         </pill-next>
