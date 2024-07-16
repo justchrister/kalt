@@ -12,10 +12,15 @@
   </div>
 </template>
 <script setup lang="ts">
+  const props = defineProps({
+    user: {
+      type: Object,
+      required: true
+    }
+  })
+
   const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value) as user;
-  const languageDetails = await get(supabase).languageDetails(user?.language || 'ENG');
+  const languageDetails = await get(supabase).languageDetails(props.user.language || 'ENG');
   const markedAsUnavail = ref(false)
 </script>
 <style scoped lang="scss">
