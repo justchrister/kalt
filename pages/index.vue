@@ -14,18 +14,20 @@
       </div>
     </block>
     <block>
-      <h2>Our innovative technology lets you grow your wealth while investing in things that matter to you.</h2>
+      <h2><!--Our innovative technology lets you g--> Grow your wealth and drive actual change by investing in things that matter to you.</h2>
       <p>
-        Drive actual change and have a lasting impact by leveraging capital market forces. We call it the next era of capitalism, with a goal beyond financial growth.
-        You can expect twice the market returns, moderate risk profile, and complete transparency. 
+        We know, it sounds too good to be true. But with our innovative technology your investments can have a lasting positive impact on the world, while you earn money all the time. 
+      </p>
+      <p>
+        Its the next era of capitalism, with a goal beyond financial growth. You can expect twice the market returns, moderate risk profile, and complete transparency. 
       </p>
       <p>
         Our funds:
+        <pill-next to="funds/energy" color="none" :clickable="true">energy</pill-next>
+        <pill-next to="funds/art" color="none" :clickable="true">art</pill-next>
+        <pill-next to="funds/housing" color="none" :clickable="true">housing</pill-next>
+        <pill-next to="funds/small-business" color="none" :clickable="true">small business</pill-next>
       </p>
-      <pill text="energy" to="funds/energy" />
-      <pill text="art" to="funds/art" />
-      <pill text="housing" to="funds/housing" />
-      <pill text="small business" to="funds/small-business" />
     </block>
     <block>
       <h2>Want to work with us?</h2>
@@ -117,5 +119,8 @@
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: sizer(.5);
+  }
+  .pill{
+    margin-right:sizer(.5);
   }
 </style>
