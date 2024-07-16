@@ -1,6 +1,6 @@
 <template>
   <main>
-    <block width="extra-wide" padding="5" video="/videos/vision-min.mp4">
+    <block width="extra-wide" padding="5" video="/videos/vision.mp4">
       <h1><span>Building</span> <span>the</span> <span>next</span> <span>era</span> <span>of</span> <span>capitalism</span><span>,</span> <span>with</span> <span>a</span> <span>goal</span> <span>beyond</span> <span>financial</span> <span>growth</span><span>.</span>
       </h1>
     </block>
@@ -17,11 +17,11 @@
       </p>
     </block>
     <block>
-      <pill-next color="primary"> Vision </pill-next>
+      <pill-next color="none"> Vision </pill-next>
       <h2> Building the new era of capitalism, with a goal beyond financial growth.</h2>
     </block>
     <block>
-      <pill-next color="primary"> Mission </pill-next>
+      <pill-next color="none"> Mission </pill-next>
       <h2> Redefine impact investing </h2>
       <p>
         We want to empower individuals to maximize their positive impact on the world. By providing accessible investment
@@ -30,7 +30,7 @@
       </p>
     </block>
     <block>
-      <pill-next color="primary"> Goal 01 </pill-next>
+      <pill-next color="none"> Goal 01 </pill-next>
       <h2> 2x market returns </h2>
       <p>
         Portfolio performance driving impact is our guiding principle. To make investing in a sustainable future
@@ -42,7 +42,7 @@
       </p>
     </block>
     <block>
-      <pill-next color="primary"> Goal 02 </pill-next>
+      <pill-next color="none"> Goal 02 </pill-next>
       <h2> Impact that grows </h2>
       <p>
         The positive environmental and societal impact has to grow over time. The true measure of an investment lies not
@@ -51,7 +51,7 @@
       </p>
     </block>
     <block>
-      <pill-next color="primary"> Goal 03 </pill-next>
+      <pill-next color="none"> Goal 03 </pill-next>
       <h2> Make it transparent </h2>
       <p>
         Transparency is fundamental when making huge promises. It is vital that you both see and understand the impact of
