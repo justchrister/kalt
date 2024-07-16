@@ -24,12 +24,12 @@
   const country = ref('')
   const supabase = useSupabaseClient()
   const requestUuid = useCookie('requestUuid')
-
+  console.log('request uuid:'+requestUuid.value)
   const requestInvite = async () => {
     if(!country.value) return
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
-      "entity": requestUuid.value
+      "id": requestUuid.value
     }).requestAccess({
       country: country.value,
     });
