@@ -3,28 +3,28 @@
     <block margin="4">
       <h2>Details</h2>
       <div class="col-2">
-        <input-user id="firstName" />
-        <input-user id="lastName" />
+        <input-user id="firstName" :user="user"/>
+        <input-user id="lastName" :user="user"/>
       </div>
-      <select-birthdate />
-      <select-country />
+      <select-birthdate :user="user"/>
+      <select-country :user="user"/>
       <div class="col-1-4">
-        <input-user id="city" />
-        <input-user id="postalCode" />
+        <input-user id="city" :user="user"/>
+        <input-user id="postalCode" :user="user"/>
       </div>
-      <input-user id="addressLine1" />
+      <input-user id="addressLine1" :user="user"/>
     </block>
     <block margin="none">
       <h2>Preferences</h2>
     </block>
     <block margin="2">
-      <select-currency />
+      <select-currency :user="user"/>
     </block>
     <block margin="2">
-      <select-auto-invest-rate />
+      <select-auto-invest-rate :user="user"/>
     </block>
     <block margin="2">
-      <select-language />
+      <select-language :user="user"/>
     </block>
     <block margin="2" type="expand" label="Legal stuff">
       <toggle-performance-updates />
@@ -46,6 +46,10 @@
     ogDescription: 'Real assets, real impact.',
     ogImage: 'https://ka.lt/images/meta.png'
   })
+  const supabase = useSupabaseClient()
+  const auth = useSupabaseUser()
+  const user = await get(supabase).user(auth.value) as user;
+
 </script>
 <style lang="scss" scoped>
   .col-2{
