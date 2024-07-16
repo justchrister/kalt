@@ -25,6 +25,7 @@
   const supabase = useSupabaseClient()
   const requestUuid = useCookie('requestUuid')
   requestUuid.value = ok.uuid()
+  console.log('request uuid:'+requestUuid.value)
 
   const first = ref(true);
   const second = ref(false);
@@ -67,7 +68,7 @@
     }
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
-      "entity": requestUuid.value
+      "id": requestUuid.value
     }).requestAccess({
       monthlyInvestFrom,
       monthlyInvestTo
