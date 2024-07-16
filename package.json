@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "processMedia": "node prebuild/processMedia.js",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
