@@ -1,6 +1,5 @@
 <template>
   <main>
-    <navbar-tabs />
     <block>
       <span v-for="(update, index) in updates" :key="index">
 
