@@ -4,6 +4,7 @@ $maxsitewidth: 720px;
 $columns: 45;
 $unit: calc($sitewidth/$columns);
 $unit-max: calc($maxsitewidth/$columns);
+$pageTransitionDuration: 200ms;
 
 @function sizer($multiplier, $minValue: 1px){
   @return clamp($minValue, $unit*$multiplier, $unit-max*$multiplier);
