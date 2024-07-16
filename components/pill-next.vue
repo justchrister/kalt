@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" >
+  <div :class="classes" @click="clickedOn()">
     <slot></slot>
   </div>
 </template>
@@ -24,6 +24,10 @@
     type: {
       type: String,
       required: false
+    }, 
+    to: {
+      type: String,
+      required: false
     }
   })
   const classes = computed(() => {
@@ -45,6 +49,10 @@
     }
     return classes
   })
+  const clickedOn = () => {
+    if(!props.to) return
+    navigateTo(props.to)
+  }
 </script>
 <style scoped lang="scss">
   .pill{
@@ -89,6 +97,9 @@
     border: dark(100%) solid sizer(0.02);
   }
   .color-none{
-    border: dark(80%) solid sizer(0.02);
+    border: dark(50%) solid sizer(0.02);
+  }
+  .clickable:hover{
+    cursor: pointer;
   }
 </style>
