@@ -83,9 +83,9 @@
     animation: moveUp 0.5s forwards;
   }
   // Use SCSS loop to apply animation delay
-  @for $i from 1 through 9 {
+  @for $i from 1 through 25 {
     h1 span:nth-child(#{$i}) {
-      animation-delay: 0.08s * $i;
+      animation-delay: $pageTransitionDuration + (80ms * $i);
     }
   }
 
