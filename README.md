@@ -2,6 +2,8 @@
 
 [<img alt="Licence: MIT" src="https://ka.lt/images/github/shield-licence.svg">](https://github.com/justchrister/kalt/blob/master/LICENCE.md) [<img alt="" src="https://img.shields.io/website?style=flat-square&down_message=offline&up_message=online&url=https%3A%2F%2Fka.lt">](https://ka.lt/) [<img alt="" src="https://img.shields.io/uptimerobot/ratio/m794185416-8ffeb1920e5dc9f7c754d4d3?style=flat-square">](https://status.ka.lt/) <img alt="" src="https://img.shields.io/github/last-commit/justchrister/kalt?style=flat-square"> <img alt="" src="https://img.shields.io/github/commit-activity/m/justchrister/kalt?style=flat-square">
 
+# This repo has been moved to a private repo in the Kalt org
+
 # Kalt — Make money, make a difference
 
 Kalt is a startup building the tools for a new era of capitalism, where the goal is beyond financial growth. By allowing anyone to build a purpose-driven portfolio and earn direct dividends from it. 
