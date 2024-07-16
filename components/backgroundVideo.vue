@@ -37,7 +37,7 @@
     }
     return null;
   }
-  
+
   const loadVideos = () => {
     const speed = determineNetworkSpeed();
     if (speed && speed < mbPs) {
@@ -72,8 +72,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; // Ensures the video covers the entire area
-    border-radius: 15px; // Adjust the radius as needed
-    z-index: -1; // Ensure the video is behind other content
+    object-fit: cover;
+    border-radius: sizer(1);
+    z-index: -1;
   }
 </style>
