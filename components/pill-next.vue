@@ -55,6 +55,13 @@
   }
 </script>
 <style scoped lang="scss">
+
+  .color-none{
+    border: dark(50%) solid sizer(0.02);
+  }
+  .clickable:hover{
+    cursor: pointer;
+  }
   .pill{
     display: inline-block;
     border-radius:sizer(2);
@@ -62,9 +69,6 @@
     font-size: 80%;
     box-sizing: border-box;
     line-height:sizer(2);
-    &.clickable:hover{
-      cursor: pointer;
-    }
     &.small{
       font-size: 70%;
     }
@@ -95,11 +99,5 @@
   .color-primary{
     background-color: primary(10%);
     border: dark(100%) solid sizer(0.02);
-  }
-  .color-none{
-    border: dark(50%) solid sizer(0.02);
-  }
-  .clickable:hover{
-    cursor: pointer;
   }
 </style>
