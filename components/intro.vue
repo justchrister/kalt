@@ -35,7 +35,10 @@
 section{
   padding: sizer(9) 0 sizer(7) 0;
   margin-bottom: sizer(5);
-  background:url('/images/gradient-2.jpg') no-repeat center center;
+  background-color:primary(10%);
+  background-image:url('/images/gradient-2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
   background-size:cover;
 
   &.none{
