@@ -24,6 +24,7 @@
   const email = ref('')
   const supabase = useSupabaseClient()
   const requestUuid = useCookie('requestUuid')
+  console.log('request uuid:'+requestUuid.value)
 
   const requestInvite = async () => {
     if (!email.value) return
@@ -31,7 +32,7 @@
     if(!email.value.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) return
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
-      "entity": requestUuid.value
+      "id": requestUuid.value
     }).requestAccess({
       email: email.value
     });
