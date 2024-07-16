@@ -1,17 +1,23 @@
 <template>
-  <div :class="{loadingCurrently: loading }">
-    <div class="loadingLabel" v-if="loading">Loading...</div>
+  <div :class="loadingClass">
+  <!--
+      if its needed, we can add an interstitial loading thing
+      <div class="loadingLabel" v-if="loading">Loading...</div>
+    -->
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
 <script setup lang="ts">
-import { set } from 'date-fns';
+  import { set } from 'date-fns';
 
   console.log("✨ https://ka.lt/jobs ✨")
   const nuxtApp = useNuxtApp();
   const loading = ref(true);
+  const loadingClass = computed(() => {
+    return loading.value ? 'loadingCurrently' : (!loading.value ? 'loadingComplete' : '');
+  });
   nuxtApp.hook("page:start", () => {
     loading.value = true;
   });
@@ -30,12 +36,20 @@ import { set } from 'date-fns';
     position:fixed;
     top:0;
     bottom:0;
-
   }
   .loadingCurrently {
     footer,
     main{
       opacity: 0;
+      transition: opacity 200ms;
     }
   }
+  .loadingComplete {
+    footer,
+    main{
+      opacity: 1;
+      transition: opacity 200ms;
+    }
+  }
+  
 </style>
