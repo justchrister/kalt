@@ -67,7 +67,7 @@
     }
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
-      "entity": requestUuid.value
+      "id": requestUuid.value
     }).requestAccess({
       monthlyInvestFrom,
       monthlyInvestTo
