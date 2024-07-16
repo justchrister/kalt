@@ -1,9 +1,9 @@
 <template>
   <video v-if="props.mp4" autoplay muted autoPlay loop playsinline ref="vid">
     <source :src="posterFileName" type="image/jpg">
-    <source :src="mp4" type="video/mp4" v-if="mp4">
-    <source :src="ogg" type="video/ogg" v-if="ogg">
-    <source :src="webm" type="video/webm" v-if="webm">
+    <source :src="'videos/output/'+mp4" type="video/mp4" v-if="mp4">
+    <source :src="'videos/output/'+ogg" type="video/ogg" v-if="ogg">
+    <source :src="'videos/output/'+webm" type="video/webm" v-if="webm">
   </video>
 </template>
 <script setup lang="ts">
@@ -33,12 +33,11 @@
   const determineNetworkSpeed = () => {
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     if (connection) {
-      const speed = connection.downlink;
-      console.log('speed', speed);
-      return speed;
+      return connection.downlink;
     }
     return null;
   }
+  
   const loadVideos = () => {
     const speed = determineNetworkSpeed();
     if (speed && speed < mbPs) {
