@@ -2,9 +2,7 @@
   <div :class="classes" @click="ensureVideoPlaying()">
     <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-if="props.type == 'expand' && !expanded"> ↓ </span></label> 
     <slot></slot>
-    <video v-if="props.video" autoplay muted autoPlay loop playsinline ref="videoControl">
-      <source :src="props.video" type="video/mp4">
-    </video>
+    <background-video v-if="props.video" :mp4="props.video" />
   </div>
 </template>
 <script setup lang="ts">
@@ -71,19 +69,6 @@
     }
   };
 
-  const videoControl = ref();
-
-  const nuxtApp = useNuxtApp();
-
-  nuxtApp.hook("page:finish", () => {
-    if(props.video && videoControl.value){
-      setTimeout(() => {
-        videoControl.value.play();
-      }, 200);
-      console.log('played video')
-    }
-  });
-
   
 </script>
 <style scoped lang="scss">
@@ -120,17 +105,6 @@
     &.border{
       padding: sizer(1.5) sizer(2);
       @include border;
-    }
-    
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; // Ensures the video covers the entire area
-      border-radius: 15px; // Adjust the radius as needed
-      z-index: -1; // Ensure the video is behind other content
     }
   }
   .block.expand{
