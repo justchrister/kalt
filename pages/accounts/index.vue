@@ -1,6 +1,5 @@
 <template>
   <main>
-    <navbar-tabs />
     <block margin="2">
       <account-card />
       <input-button link="/accounts/transactions">transactions</input-button>
