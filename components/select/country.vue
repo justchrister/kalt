@@ -1,18 +1,23 @@
 <template>
   <div>
-  <label>Country: </label>
-  <nuxt-link to="/profile/edit/country">
-    <span class="iso">{{countryDetails.iso2}}</span>
-    <span>{{countryDetails.name}}</span>
-    <span>→</span>
-  </nuxt-link></div>
+    <label>Country: </label>
+    <nuxt-link to="/profile/edit/country">
+      <span class="iso">{{countryDetails.iso2}}</span>
+      <span>{{countryDetails.name}}</span>
+      <span>→</span>
+    </nuxt-link>
+  </div>
 </template>
 <script setup lang="ts">
-  const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value) as user;
+  const props = defineProps({
+    user: {
+      type: Object,
+      required: true
+    } 
+  })
   
-  const getCountryDetails = async (country) => {
+  const getCountryDetails = async (country: string) => {
+    const supabase = useSupabaseClient()
     const { data, error } = await supabase
       .from('sys_countries')
       .select()
@@ -25,7 +30,7 @@
     }
   }
 
-  const countryDetails = await getCountryDetails(user?.country);
+  const countryDetails = await getCountryDetails(props.user?.country);
 </script>
 <style scoped lang="scss">
   div{
