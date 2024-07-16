@@ -73,22 +73,15 @@
 
   const videoControl = ref();
 
-  const ensureVideoPlaying = () => {
+  const nuxtApp = useNuxtApp();
+
+  nuxtApp.hook("page:finish", () => {
     if(props.video && videoControl.value){
-      videoControl.value.play();
-    }
-  };
-
-  let videoInterval;
-
-  onMounted(() => {
-    if (props.video) {
-      ensureVideoPlaying();
-      videoInterval = setInterval(() => {
-        console.log("Running ensureVideoPlaying");
-        ensureVideoPlaying();
+      setTimeout(() => {
+        videoControl.value.play();
       }, 200);
-    } 
+      console.log('played video')
+    }
   });
 
   
