@@ -18,11 +18,21 @@
           this year
         </pill-next>
         <pill-next @click="setDays('threeMonths')" :active="active === 'threeMonths'" :clickable="true" color="blue" size="small">
-          3 months
+          90 days
         </pill-next>
-        <pill-next @click="setDays('thisMonth')" :active="active === 'thisMonth'" :clickable="true" color="blue" size="small">
-          this month
-        </pill-next>
+        <!--
+        TO ADD: 
+          1. More filter options
+          2. That they are always live (web socket connect)
+          2. That they always have projected values
+        <pill-next @click="setDays('threeMonths')" :active="active === 'threeMonths'" :clickable="true" color="blue" size="small">
+          •••
+        </pill-next>-->
+        <!--
+          <pill-next @click="setDays('thisMonth')" :active="active === 'thisMonth'" :clickable="true" color="blue" size="small">
+            this month
+          </pill-next>
+        -->
       </div>
     </div>
     <div class="chart-container">
@@ -276,7 +286,7 @@
   }
   .pills-container{
     display:grid;
-    grid-template-columns: sizer(12) 1fr;
+    grid-template-columns: 2fr 3fr;
     gap: sizer(1);
     margin-bottom:sizer(1);
   }
