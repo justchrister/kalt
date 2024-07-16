@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" @click="ensureVideoPlaying()">
+  <div :class="classes">
     <label v-if="props.label" @click="expand()">{{props.label}} <span v-if="props.type == 'expand' && expanded">↑</span> <span v-if="props.type == 'expand' && !expanded"> ↓ </span></label> 
     <slot></slot>
     <background-video v-if="props.video" :mp4="props.video" />
