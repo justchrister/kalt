@@ -74,14 +74,8 @@
   const videoControl = ref();
 
   const ensureVideoPlaying = () => {
-    if (videoControl.value) {
-      if (videoControl.value.paused || videoControl.value.ended) {
-        videoControl.value.play().catch((error) => {
-          console.error("Error playing the video:", error);
-        });
-      }
-    } else {
-      console.error("Video element is not ready");
+    if(props.video && videoControl.value){
+      videoControl.value.play();
     }
   };
 
@@ -90,15 +84,14 @@
   onMounted(() => {
     if (props.video) {
       ensureVideoPlaying();
-      videoInterval = setInterval(ensureVideoPlaying, 200);
-    }
+      videoInterval = setInterval(() => {
+        console.log("Running ensureVideoPlaying");
+        ensureVideoPlaying();
+      }, 200);
+    } 
   });
 
-  onBeforeUnmount(() => {
-    if (videoInterval && props.video) {
-      clearInterval(videoInterval);
-    }
-  });
+  
 </script>
 <style scoped lang="scss">
   .block {
