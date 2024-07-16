@@ -19,19 +19,21 @@
     id: {
       type: String,
       required: true
+    },
+    user: {
+      type: Object,
+      required: true
     }
   })
 
   const state = ref('loading')
-  const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value) as user;
-  const content = ref(user[props.id] || null)
+  const content = ref(props.user[props.id] || null)
   state.value = ''
   const updateProfile = async () => {
+    const supabase = useSupabaseClient()
     state.value = 'loading'
     const error = await pub(supabase, {
-      id: user.id, 
+      id: props.user.id, 
       sender:'components/input/user.vue'
     }).users({
       [props.id]: content.value
