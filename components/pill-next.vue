@@ -29,7 +29,7 @@
   const classes = computed(() => {
     let classes = ['pill']
     if (props.color) {
-      classes.push(props.color)
+      classes.push('color-'+props.color)
     }
     if (props.size) {
       classes.push(props.size)
@@ -69,11 +69,11 @@
       }
     }
   }
-  .green{
+  .color-green{
     background-color: green(90%);
     border: green(90%) solid sizer(0.02);
   }
-  .blue{
+  .color-blue{
     background-color: blue(40%);
     border: blue(40%) solid sizer(0.02);
     &.clickable:hover{
@@ -84,8 +84,11 @@
       border: blue(100%) solid sizer(0.02);
     }
   }
-  .primary{
+  .color-primary{
     background-color: primary(10%);
     border: dark(100%) solid sizer(0.02);
+  }
+  .color-none{
+    border: dark(80%) solid sizer(0.02);
   }
 </style>
