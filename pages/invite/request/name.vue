@@ -27,12 +27,14 @@
   const lastName = ref('')
   const supabase = useSupabaseClient()
   const requestUuid = useCookie('requestUuid')
+  console.log('request uuid:'+requestUuid.value)
+
 
   const requestInvite = async () => {
     if(!firstName.value || !lastName.value) return
     const error = await pub(supabase, {
       "sender": "pages/invite/request/index.vue",
-      "entity": requestUuid.value
+      "id": requestUuid.value
     }).requestAccess({
       firstName: firstName.value,
       lastName: lastName.value
