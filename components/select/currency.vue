@@ -9,11 +9,15 @@
   </div>
 </template>
 <script setup lang="ts">
-  const supabase = useSupabaseClient()
-  const auth = useSupabaseUser()
-  const user = await get(supabase).user(auth.value)
+  const props = defineProps({
+    user: {
+      type: Object,
+      required: true
+    }
+  })
 
-  const getCurrencyDetails = async (currency) => {
+  const getCurrencyDetails = async (currency: string) => {
+    const supabase = useSupabaseClient()
     const { data, error } = await supabase
       .from('sys_currencies')
       .select()
@@ -32,7 +36,7 @@
     }
   }
 
-  const currencyDetails = await getCurrencyDetails(user.currency || 'EUR');
+  const currencyDetails = await getCurrencyDetails(props.user.currency || 'EUR');
 </script>
 <style scoped lang="scss">
   a{
