@@ -6,5 +6,7 @@ declare global {
     firstName?: string;
     lastName?: string;
     country?: string;
+    investFrom?: number;
+    investTo?: number;
   }
 }
